@@ -29,6 +29,8 @@ output:
 
 ---
 
+<!-- NOTE: if you want to build the book, you have to click 'Build Book' over on the Build tab; if you just click 'knit' on Index.Rmd, it'll start just putting "Placeholder" as text in the individual chapters -->
+
 <!-- If you want a quote before the first chapter, put it here -->
 \begin{savequote}[8cm]
 \textlatin{Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...}
