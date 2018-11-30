@@ -7,9 +7,8 @@ degreedate: Michaelmas 2014
 abstract: This is a sexy abstract.
 acknowledgements: For my parents.
 dedication: Jesus saves.
-abbreviations:
-bibliography: thesis.bib
-toc: yes #table of contents in front?
+abbreviations: text/abbreviations #without file extension
+bibliography: references.bib
 toc-depth: 2
 minitoc: yes #mini-table of contents at start of each chapter?
 lot: yes #list of tables in front?

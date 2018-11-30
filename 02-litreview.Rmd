@@ -1,3 +1,5 @@
 # Background
 
+If you want chapters to start with a quote, then, confusingly, you have to put it in the end of the preceding Rmd file because bookdown requires new chapters to start with a heading one.
+
 Here is a lot of text.

@@ -35,14 +35,14 @@
 
 % This adds a "DRAFT" footer to every normal page.  (The first page of each chapter is not a "normal" page.)
 $if(draft)$
-  \fancyfoot[C]{\emph{DRAFT Printed on \today}}
+\fancyfoot[C]{\emph{DRAFT Printed on \today}}
 $endif$
 
 % This highlights (in blue) corrections marked with (for words) \mccorrect{blah} or (for whole
 % paragraphs) \begin{mccorrection} . . . \end{mccorrection}.  This can be useful for sending a PDF of
 % your corrected thesis to your examiners for review.  Turn it off, and the blue disappears.
 $if(corrections)$
-  \correctionstrue
+\correctionstrue
 $endif$
 
 %%%%% BIBLIOGRAPHY SETUP
@@ -64,7 +64,7 @@ $endif$
 \renewcommand*{\bibfont}{\raggedright\small}
 
 % Change this to the name of your .bib file (usually exported from a citation manager like Zotero or EndNote).
-\addbibresource{thesis.bib}
+\addbibresource{$bibliography$}
 
 
 % Uncomment this if you want equation numbers per section (2.3.12), instead of per chapter (2.18):
@@ -133,9 +133,9 @@ $endif$
 % This is used to create the separate, one-page abstract that you are required to hand into the Exam
 % Schools.  You can comment it out to generate a PDF for printing or whatnot.
 $if(abstractseparate)$
-  \begin{abstractseparate}
-    $abstract$
-  \end{abstractseparate}
+\begin{abstractseparate}
+  $abstract$
+\end{abstractseparate}
 $endif$
 
 % JEM: Pages are roman numbered from here, though page numbers are invisible until ToC.  This is in
@@ -147,16 +147,16 @@ $endif$
 
 %%%%% DEDICATION -- If you'd like one, un-comment the following.
 $if(dedication)$
-  \begin{dedication}
-    $dedication$
-  \end{dedication}
+\begin{dedication}
+  $dedication$
+\end{dedication}
 $endif$
 
 %%%%% ACKNOWLEDGEMENTS -- Nothing to do here except comment out if you don't want it.
 $if(acknowledgements)$
-  \begin{acknowledgements}
- 	  $acknowledgements$
-  \end{acknowledgements}
+\begin{acknowledgements}
+ 	$acknowledgements$
+\end{acknowledgements}
 $endif$
 
 
@@ -183,13 +183,11 @@ $endif$
 \flushbottom
 
 % This is where the whole-document ToC appears:
-$if(toc)$
-  \tableofcontents
-$endif$
+\tableofcontents
 
 $if(lof)$
-  \listoffigures
-  	\mtcaddchapter
+\listoffigures
+	\mtcaddchapter
   	% \mtcaddchapter is needed when adding a non-chapter (but chapter-like) entity to avoid confusing minitoc
 $endif$
 
@@ -202,7 +200,7 @@ $endif$
 % formatted.  The template can handle any kind of list though, so this might be a good place for a
 % glossary, etc.
 $if(abbreviations)$
-  \include{$abbreviations$}
+\include{$abbreviations$}
 $endif$
 
 % The Roman pages, like the Roman Empire, must come to its inevitable close.
