@@ -1,17 +1,32 @@
 ---
-title: "A Book"
-author: "Frida Gomam"
-site: bookdown::bookdown_site
+title: Suitably impressive thesis title
+author: Your Name
+college: Your College
+degree: Doctor of Philosophy
+degreedate: Michaelmas 2014
+abstract: This is a sexy abstract.
+acknowledgements: For my parents.
+dedication: Jesus saves.
+abbreviations:
+bibliography: thesis.bib
+toc: yes #table of contents in front?
+toc-depth: 2
+minitoc: yes #mini-table of contents at start of each chapter?
+lot: yes #list of tables in front?
+mini-lot: no #at start of each chapter?
+lof: yes #list of figures in front?
+mini-lof: no #at start of each chapter?
+draft: yes
+corrections: yes
+abstractseparate: yes
 documentclass: book
+site: bookdown::bookdown_site
 output:
   #bookdown::gitbook: default
-  bookdown::pdf_book: default
+  bookdown::pdf_book:
+    template: template.tex
+    keep_tex: yes
+    citation_package: biblatex
+
 ---
-
-# Hello World
-
-Hi.
-
-Bye.
-
 <!-- If you need PDF output, uncomment bookdown::pdf_book above in YAML. You will need a LaTeX installation, e.g., https://yihui.name/tinytex/ -->
