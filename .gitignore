@@ -3,3 +3,8 @@
 .RData
 .Ruserdata
 .DS_Store
+_bookdown_files
+_book
+_main.maf
+_main.mlf*
+_main.mtc*
