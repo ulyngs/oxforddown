@@ -15,7 +15,6 @@ If you are doing a thesis that will involve lots of math, you will want to read 
 
 
 <!-- MATH and PHYSICS majors: Uncomment the following section -->
-<!--
 $$\sum_{j=1}^n (\delta\theta_j)^2 \leq {{\beta_i^2}\over{\delta_i^2 + \rho_i^2}}
 \left[ 2\rho_i^2 + {\delta_i^2\beta_i^2\over{\delta_i^2 + \rho_i^2}} \right] \equiv \omega_i^2
 $$
@@ -31,14 +30,16 @@ $$
 
 Another equation:
 
-$$\det\left|\,\begin{matrix}%
+$$
+\det\left|\,\begin{matrix}
 c_0&c_1\hfill&c_2\hfill&\ldots&c_n\hfill\cr
 c_1&c_2\hfill&c_3\hfill&\ldots&c_{n+1}\hfill\cr
 c_2&c_3\hfill&c_4\hfill&\ldots&c_{n+2}\hfill\cr
 \,\vdots\hfill&\,\vdots\hfill&
   \,\vdots\hfill&&\,\vdots\hfill\cr
 c_n&c_{n+1}\hfill&c_{n+2}\hfill&\ldots&c_{2n}\hfill\cr
-\end{matrix}\right|>0$$
+\end{matrix}\right|>0
+$$
 
 
 Lapidus and Pindar, Numerical Solution of Partial Differential Equations in Science and
@@ -67,7 +68,6 @@ Another L\&P (p126)
 $$
 \int_{A_e} (\,\cdot\,) dx dy = \int_{-1}^1\!\int_{-1}^1 (\,\cdot\,) \det[J] d\xi d\eta.
 $$
--->
 
 ## Chemistry 101: Symbols
 

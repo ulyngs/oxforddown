@@ -3,7 +3,7 @@
 `r if(!knitr:::is_latex_output()) '# (APPENDIX) Appendix {-}'` 
 
 <!--
-If you feel it necessary to include an appendix, it goes here.
+If you feel it necessary to include an appendix, it goes here. The first appendix should include the commands above.
 -->
 
 
@@ -20,5 +20,7 @@ This first appendix includes all of the R chunks of code that were hidden throug
 
 ```{r ref.label='include_packages_2', results='hide', echo = TRUE}
 ```
+
+
 
 # The Second Appendix, for Fun
