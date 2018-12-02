@@ -385,7 +385,7 @@
 \setlength{\textfloatsep}{20pt plus15pt minus4pt}
 
 % JEM: Fix paragraph spacing within quotes for multi-par quotes
-\renewenvironment{savequote}[1][10cm]{%
+\renewenvironment{savequote}[1][8cm]{%
 \begin{lrbox}{\@quotebox}
 \begin{minipage}[t]{#1}\footnotesize\slshape%
 \setlength{\parskip}{6px}}{%

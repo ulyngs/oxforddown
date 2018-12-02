@@ -1,9 +1,12 @@
-\begin{savequote}[8cm]
-\textlatin{Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...}
+```{block type='savequote'}
+Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...
 
 There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain...
-  \qauthor{--- Cicero's \textit{de Finibus Bonorum et Malorum}}
-\end{savequote}
+
+\qauthor{--- Cicero's \textit{de Finibus Bonorum et Malorum}}
+```
+
+<!-- Note the little gotcha in the savequote block here: if you want to note the author, you have to use LaTeX syntax directly with \qauthor{}, and when you do that, you must also use LaTeX formatting syntax if you want to, for example, italicise something -->
 
 # R Markdown Basics {#rmd-basics}
 <!--
@@ -11,8 +14,6 @@ The {#rmd-basics} text after the chapter declaration will allow us to link throu
 -->
 
 \minitoc
-
-If you want chapters to start with a quote, then, confusingly, you have to put it in the end of the preceding Rmd file because bookdown requires new chapters to start with a heading one.
 
 Here is a brief introduction into using _R Markdown_. _Markdown_ is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. _R Markdown_ provides the flexibility of _Markdown_ with the implementation of **R** input and output.  For more details on using _R Markdown_ see <http://rmarkdown.rstudio.com>.  
 
