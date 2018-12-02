@@ -87,14 +87,13 @@ As you see with `$2 \pi$` above, mathematics can be added by surrounding the mat
 
 ## Including plots
 
-You can also embed plots.  For example, here is a way to use the base **R** graphics package to produce a plot using the built-in `pressure` dataset:
+You can also embed plots.  For example, Figure \@ref(fig:pressure) shows a way to use the base **R** graphics package to produce a plot using the built-in `pressure` dataset.
 
-
-```{r pressure, echo=FALSE, cache=TRUE}
+```{r pressure, echo=FALSE, cache=TRUE, fig.cap="A dynamically generated plot using the built-in 'pressure' dataset"}
 plot(pressure)
 ```
 
-Note that the `echo=FALSE` parameter was added to the code chunk to prevent printing of the **R** code that generated the plot.  There are plenty of other ways to add chunk options.  More information is available at <http://yihui.name/knitr/options/>.
+Note that the `echo=FALSE` parameter was added to the code chunk to prevent printing of the **R** code that generated the plot. There are plenty of other ways to add chunk options.  More information is available at <http://yihui.name/knitr/options/>.
 
 Another useful chunk option is the setting of `cache=TRUE` as you see here.  If document rendering becomes time consuming due to long computations or plots that are expensive to generate you can use knitr caching to improve performance.  Later in this file, you'll see a way to reference plots created in **R** or external figures.
 
@@ -178,9 +177,9 @@ flights %>% filter(arr_delay == 1539,
             minute, carrier_name, arr_delay))
 ```
 
-We see that the flight occurred on March 3rd and departed a little after 2 PM on its way to Dallas/Fort Worth.  Lastly, we show how we can visualize the arrival delay of all departing flights from Portland on March 3rd against time of departure.
+We see that the flight occurred on March 3rd and departed a little after 2 PM on its way to Dallas/Fort Worth.  Lastly, Figure \@ref(fig:march3plot) shows how we can visualize the arrival delay of all departing flights from Portland on March 3rd against time of departure.
 
-```{r march3plot, fig.height=3, fig.width=6}
+```{r march3plot, fig.height=3, fig.width=6, fig.cap="Arrival delay of departing flights from Portland on March 3rd."}
 flights %>% filter(month == 3, day == 3) %>%
   ggplot(aes(x = dep_time, y = arr_delay)) + geom_point()
 ```
