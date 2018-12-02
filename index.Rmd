@@ -6,7 +6,8 @@ degree: Doctor of Philosophy
 degreedate: Michaelmas 2014
 abstract: |
   `r if(knitr:::is_latex_output()) paste(readLines("text/00--abstract.Rmd"), collapse = '\n  ')`
-acknowledgements: For my parents.
+acknowledgements: |
+  `r if(knitr:::is_latex_output()) paste(readLines("text/00--acknowledgements.Rmd"), collapse = '\n  ')`
 dedication: To Yihui Xie
 abbreviations: text/abbreviations #without file extension
 bibliography: references.bib
