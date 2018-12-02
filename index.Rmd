@@ -4,9 +4,10 @@ author: Your Name
 college: Your College
 degree: Doctor of Philosophy
 degreedate: Michaelmas 2014
-abstract: This is a sexy abstract.
+abstract: |
+  `r if(knitr:::is_latex_output()) paste(readLines("text/00--abstract.Rmd"), collapse = '\n  ')`
 acknowledgements: For my parents.
-dedication: Jesus saves.
+dedication: To Yihui Xie
 abbreviations: text/abbreviations #without file extension
 bibliography: references.bib
 toc-depth: 2
