@@ -10,15 +10,16 @@ acknowledgements: For my parents.
 dedication: To Yihui Xie
 abbreviations: text/abbreviations #without file extension
 bibliography: references.bib
+abstractseparate: yes #include front page w/ abstract for examination schools?
 toc-depth: 2
-mini-toc: yes #mini-table of contents at start of each chapter?
 lot: yes #list of tables in front?
-mini-lot: no #at start of each chapter?
 lof: yes #list of figures in front?
-mini-lof: no #at start of each chapter?
+mini-toc: yes #mini-table of contents at start of each chapter?
+mini-lot: no #mini-list of tables by start of each chapter?
+mini-lof: no #mini-list of figures by start of each chapter?
 draft: yes
 corrections: yes
-abstractseparate: yes
+page-layout: nobind #'nobind' for PDF output (equal margins), 'twoside' for two-sided binding (mirror margins and blank pages), leave blank for one-sided binding (left margin > right margin)
 documentclass: book
 site: bookdown::bookdown_site
 output:
