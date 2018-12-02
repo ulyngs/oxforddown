@@ -21,11 +21,11 @@
 % The most common choices should be below.  You can also do other things, like replacing "a4paper" with "letterpaper", etc.
 
 % This one will format for two-sided binding (ie left and right pages have mirror margins; blank pages inserted where needed):
-\documentclass[a4paper,twoside]{templates/ociamthesis}
+%\documentclass[a4paper,twoside]{templates/ociamthesis}
 % This one will format for one-sided binding (ie left margin > right margin; no extra blank pages):
 %\documentclass[a4paper]{ociamthesis}
 % This one will format for PDF output (ie equal margins, no extra blank pages):
-%\documentclass[a4paper,nobind]{ociamthesis}
+\documentclass[a4paper,nobind]{templates/ociamthesis}
 
 % UL 30 Nov 2018 pandoc puts lists in 'tightlist' command when no space between bullet points in Rmd file
 \providecommand{\tightlist}{%
@@ -35,6 +35,21 @@
 $if(highlighting-macros)$
 $highlighting-macros$
 $endif$
+
+%UL 2 Dec 2018 add a bit of white space before and after code blocks
+\renewenvironment{Shaded}
+{
+  \vspace{4pt}%
+  \begin{snugshade}%
+}{%
+  \end{snugshade}%
+  \vspace{4pt}%
+}
+%UL 2 Dec 2018 reduce whitespace around verbatim environments
+\usepackage{etoolbox}
+\makeatletter
+\preto{\@verbatim}{\topsep=0pt \partopsep=0pt }
+\makeatother
 
 %%%%% SELECT YOUR DRAFT OPTIONS
 % Three options going on here; use in any combination.  But remember to turn the first two off before
@@ -120,8 +135,13 @@ $endif$
 % You can set the spacing here for the roman-numbered pages (acknowledgements, table of contents, etc.)
 \setlength{\frontmatterbaselineskip}{17pt plus1pt minus1pt}
 
-% UL: You can set the spacing here for the separate abstract page to be handed in to Examination schools
-\setlength{\abstractseparateskip}{13pt plus1pt minus1pt}
+% UL: You can set the line and paragraph spacing here for the separate abstract page to be handed in to Examination schools
+\setlength{\abstractseparatelineskip}{13pt plus1pt minus1pt}
+\setlength{\abstractseparateparskip}{0pt plus 1pt}
+
+% UL: You can set the general paragraph spacing here - I've set it to 2pt (was 0) so
+% it's less claustrophobic
+\setlength{\parskip}{2pt plus 1pt}
 
 
 % Leave this line alone; it gets things started for the real document.

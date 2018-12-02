@@ -105,9 +105,9 @@ We can load in this data set using the following command:
 flights <- read.csv("data/flights.csv")
 ```
 
-The data is now stored in the data frame called `flights` in **R**.  To get a better feel for the variables included in this dataset we can use a variety of functions.  Here we can see the dimensions (rows by columns) and also the names of the columns.
+The data is now stored in the data frame called `flights` in **R**.  To get a better feel for the variables included in this dataset we can use a variety of functions.  Here we can see the dimensions (rows by columns) and also the names of the columns. (Note also how we use the chunk option `vspaceout` to add a bit of white space after each R output.)
 
-```{r str}
+```{r str, vspaceout='8pt'}
 dim(flights)
 names(flights)
 ```

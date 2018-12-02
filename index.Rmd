@@ -31,3 +31,16 @@ output:
 ---
 
 <!-- NOTE: if you want to compile the whole thesis, you must click 'Build Book' over on the Build tab; if you just click 'knit' on Index.Rmd, it'll put "Placeholder" as text in individual chapters instead of compiling all the content -->
+
+<!-- this code chunk enables us to add verticalspace after R output with 'vspaceout'  -->
+```{r setup_output, include=FALSE}
+hook_output_def = knitr::knit_hooks$get('output')
+knitr::knit_hooks$set(output = function(x, options) {
+  if (!is.null(options$vspaceout)) {
+    end <- paste0("\\vspace{", options$vspaceout, "}")
+    stringr::str_c(hook_output_def(x, options), end)
+  } else {
+    hook_output_def(x, options)
+  }
+})
+```
