@@ -33,10 +33,13 @@
 \newlength{\singlebaselineskip}
 \newlength{\frontmatterbaselineskip}
 \newlength{\textbaselineskip}
+% UL 2 Dec 2018: make it possible to customise spacing in separate abstract page
+\newlength{\abstractseparateskip}  
 
 \setlength{\singlebaselineskip}{\baselineskip}
 \setlength{\frontmatterbaselineskip}{17pt plus1pt minus1pt}
 \setlength{\textbaselineskip}{22pt plus2pt}
+\setlength{\abstractseparateskip}{10pt plus1pt minus1pt}
 
 \newcommand{\submittedtext}{{A thesis submitted for the degree of}}
 \usepackage{varwidth}
@@ -307,7 +310,7 @@
   {\Large \bfseries  Abstract}
   \end{center}
 \vspace{1ex}
-   \setlength{\baselineskip}{\z@}}
+   \setlength{\baselineskip}{\abstractseparateskip}}  %UL was \z@
 {\vfill\end{alwayssingle}\restoregeometry}
 
 
