@@ -11,7 +11,7 @@ dedication: To Yihui Xie
 abbreviations: text/abbreviations #without file extension
 bibliography: references.bib
 toc-depth: 2
-minitoc: yes #mini-table of contents at start of each chapter?
+mini-toc: yes #mini-table of contents at start of each chapter?
 lot: yes #list of tables in front?
 mini-lot: no #at start of each chapter?
 lof: yes #list of figures in front?
@@ -24,7 +24,7 @@ site: bookdown::bookdown_site
 output:
   #bookdown::gitbook: default
   bookdown::pdf_book:
-    template: template.tex
+    template: templates/template.tex
     keep_tex: yes
     citation_package: biblatex
 

@@ -1,0 +1,226 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% OXFORD THESIS TEMPLATE
+
+% Use this template to produce a standard thesis that meets the Oxford University requirements for DPhil submission
+%
+% Originally by Keith A. Gillow (gillow@maths.ox.ac.uk), 1997
+% Modified by Sam Evans (sam@samuelevansresearch.org), 2007
+% Modified by John McManigle (john@oxfordechoes.com), 2015
+%
+% This version Copyright (c) 2015-2017 John McManigle
+%
+% Broad permissions are granted to use, modify, and distribute this software
+% as specified in the MIT License included in this distribution's LICENSE file.
+%
+
+% I've (John) tried to comment this file extensively, so read through it to see how to use the various options.  Remember
+% that in LaTeX, any line starting with a % is NOT executed.  Several places below, you have a choice of which line to use
+% out of multiple options (eg draft vs final, for PDF vs for binding, etc.)  When you pick one, add a % to the beginning of
+% the lines you don't want.
+
+
+%%%%% CHOOSE PAGE LAYOUT
+% The most common choices should be below.  You can also do other things, like replacing "a4paper" with "letterpaper", etc.
+
+% This one will format for two-sided binding (ie left and right pages have mirror margins; blank pages inserted where needed):
+\documentclass[a4paper,twoside]{ociamthesis}
+% This one will format for one-sided binding (ie left margin > right margin; no extra blank pages):
+%\documentclass[a4paper]{ociamthesis}
+% This one will format for PDF output (ie equal margins, no extra blank pages):
+%\documentclass[a4paper,nobind]{ociamthesis} 
+
+
+
+%%%%% SELECT YOUR DRAFT OPTIONS
+% Three options going on here; use in any combination.  But remember to turn the first two off before
+% generating a PDF to send to the printer!
+
+% This adds a "DRAFT" footer to every normal page.  (The first page of each chapter is not a "normal" page.)
+\fancyfoot[C]{\emph{DRAFT Printed on \today}}  
+
+% This highlights (in blue) corrections marked with (for words) \mccorrect{blah} or (for whole
+% paragraphs) \begin{mccorrection} . . . \end{mccorrection}.  This can be useful for sending a PDF of
+% your corrected thesis to your examiners for review.  Turn it off, and the blue disappears.
+\correctionstrue
+
+
+%%%%% BIBLIOGRAPHY SETUP
+% Note that your bibliography will require some tweaking depending on your department, preferred format, etc.
+% The options included below are just very basic "sciencey" and "humanitiesey" options to get started.
+% If you've not used LaTeX before, I recommend reading a little about biblatex/biber and getting started with it.
+% If you're already a LaTeX pro and are used to natbib or something, modify as necessary.
+% Either way, you'll have to choose and configure an appropriate bibliography format...
+
+% The science-type option: numerical in-text citation with references in order of appearance.
+\usepackage[style=numeric-comp, sorting=none, backend=biber, doi=false, isbn=false]{biblatex}
+\newcommand*{\bibtitle}{References}
+
+% The humanities-type option: author-year in-text citation with an alphabetical works cited.
+%\usepackage[style=authoryear, sorting=nyt, backend=biber, maxcitenames=2, useprefix, doi=false, isbn=false]{biblatex}
+%\newcommand*{\bibtitle}{Works Cited}
+
+% This makes the bibliography left-aligned (not 'justified') and slightly smaller font.
+\renewcommand*{\bibfont}{\raggedright\small}
+
+% Change this to the name of your .bib file (usually exported from a citation manager like Zotero or EndNote).
+\addbibresource{references.bib}
+
+
+% Uncomment this if you want equation numbers per section (2.3.12), instead of per chapter (2.18):
+%\numberwithin{equation}{subsection}
+
+
+
+%%%%% THESIS / TITLE PAGE INFORMATION
+% Everybody needs to complete the following:
+\title{Suitably impressive thesis title}
+\author{Your Name}
+\college{Your College}
+
+% Master's candidates who require the alternate title page (with candidate number and word count)
+% must also un-comment and complete the following three lines:
+%\masterssubmissiontrue
+%\candidateno{933516}
+%\wordcount{28,815}
+
+% Uncomment the following line if your degree also includes exams (eg most masters):
+%\renewcommand{\submittedtext}{Submitted in partial completion of the}
+% Your full degree name.  (But remember that DPhils aren't "in" anything.  They're just DPhils.)
+\degree{Doctor of Philosophy}
+% Term and year of submission, or date if your board requires (eg most masters)
+\degreedate{Michaelmas 2014}
+
+
+%%%%% YOUR OWN PERSONAL MACROS
+% This is a good place to dump your own LaTeX macros as they come up.
+
+% To make text superscripts shortcuts
+	\renewcommand{\th}{\textsuperscript{th}} % ex: I won 4\th place
+	\newcommand{\nd}{\textsuperscript{nd}}
+	\renewcommand{\st}{\textsuperscript{st}}
+	\newcommand{\rd}{\textsuperscript{rd}}
+
+%%%%% THE ACTUAL DOCUMENT STARTS HERE
+\begin{document}
+
+
+
+%%%%% CHOOSE YOUR LINE SPACING HERE
+% This is the official option.  Use it for your submission copy and library copy:
+\setlength{\textbaselineskip}{22pt plus2pt}
+% This is closer spacing (about 1.5-spaced) that you might prefer for your personal copies:
+%\setlength{\textbaselineskip}{18pt plus2pt minus1pt}
+
+% You can set the spacing here for the roman-numbered pages (acknowledgements, table of contents, etc.)
+\setlength{\frontmatterbaselineskip}{17pt plus1pt minus1pt}
+
+% Leave this line alone; it gets things started for the real document.
+\setlength{\baselineskip}{\textbaselineskip}
+
+
+%%%%% CHOOSE YOUR SECTION NUMBERING DEPTH HERE
+% You have two choices.  First, how far down are sections numbered?  (Below that, they're named but
+% don't get numbers.)  Second, what level of section appears in the table of contents?  These don't have
+% to match: you can have numbered sections that don't show up in the ToC, or unnumbered sections that
+% do.  Throughout, 0 = chapter; 1 = section; 2 = subsection; 3 = subsubsection, 4 = paragraph...
+
+% The level that gets a number:
+\setcounter{secnumdepth}{2}
+% The level that shows up in the ToC:
+\setcounter{tocdepth}{2}
+
+
+%%%%% ABSTRACT SEPARATE
+% This is used to create the separate, one-page abstract that you are required to hand into the Exam
+% Schools.  You can comment it out to generate a PDF for printing or whatnot.
+\begin{abstractseparate}
+	\input{text/abstract} % Create an abstract.tex file in the 'text' folder for your abstract.
+\end{abstractseparate}
+
+
+% JEM: Pages are roman numbered from here, though page numbers are invisible until ToC.  This is in
+% keeping with most typesetting conventions.
+\begin{romanpages}
+
+% Title page is created here
+\maketitle
+
+%%%%% DEDICATION -- If you'd like one, un-comment the following.
+%\begin{dedication}
+%This thesis is dedicated to\\
+%someone\\
+%for some special reason\\
+%\end{dedication}
+
+%%%%% ACKNOWLEDGEMENTS -- Nothing to do here except comment out if you don't want it.
+\begin{acknowledgements}
+ 	\input{text/acknowledgements}
+\end{acknowledgements}
+
+%%%%% ABSTRACT -- Nothing to do here except comment out if you don't want it.
+\begin{abstract}
+	\input{text/abstract}
+\end{abstract}
+
+%%%%% MINI TABLES
+% This lays the groundwork for per-chapter, mini tables of contents.  Comment the following line
+% (and remove \minitoc from the chapter files) if you don't want this.  Un-comment either of the
+% next two lines if you want a per-chapter list of figures or tables.
+\dominitoc % include a mini table of contents
+%\dominilof  % include a mini list of figures
+%\dominilot  % include a mini list of tables
+
+% This aligns the bottom of the text of each page.  It generally makes things look better.
+\flushbottom
+
+% This is where the whole-document ToC appears:
+\tableofcontents
+
+\listoffigures
+	\mtcaddchapter
+% \mtcaddchapter is needed when adding a non-chapter (but chapter-like) entity to avoid confusing minitoc
+
+% Uncomment to generate a list of tables:
+%\listoftables
+%	\mtcaddchapter
+
+%%%%% LIST OF ABBREVIATIONS
+% This example includes a list of abbreviations.  Look at text/abbreviations.tex to see how that file is
+% formatted.  The template can handle any kind of list though, so this might be a good place for a
+% glossary, etc.
+\include{text/abbreviations}
+
+% The Roman pages, like the Roman Empire, must come to its inevitable close.
+\end{romanpages}
+
+
+%%%%% CHAPTERS
+% Add or remove any chapters you'd like here, by file name (excluding '.tex'):
+\flushbottom
+\include{text/ch1-intro}
+\include{text/ch2-litreview}
+
+
+%% APPENDICES %% 
+% Starts lettered appendices, adds a heading in table of contents, and adds a
+%    page that just says "Appendices" to signal the end of your main text.
+\startappendices
+% Add or remove any appendices you'd like here:
+\include{text/appendix-1}
+
+
+%%%%% REFERENCES
+
+% JEM: Quote for the top of references (just like a chapter quote if you're using them).  Comment to skip.
+\begin{savequote}[8cm]
+The first kind of intellectual and artistic personality belongs to the hedgehogs, the second to the foxes \dots
+  \qauthor{--- Sir Isaiah Berlin \cite{berlin_hedgehog_2013}}
+\end{savequote}
+
+\setlength{\baselineskip}{0pt} % JEM: Single-space References
+
+{\renewcommand*\MakeUppercase[1]{#1}%
+\printbibliography[heading=bibintoc,title={\bibtitle}]}
+
+
+\end{document}
