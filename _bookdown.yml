@@ -1,1 +1,8 @@
-rmd_files: ["index.Rmd", "text/00-intro.Rmd", "text/01-chap1.Rmd", "text/02-chap2.Rmd", "text/03-chap3.Rmd", "text/04-conclusion.Rmd", "text/05-appendices.Rmd"]
+# you can be lazy and just let bookdown search for the .Rmd files to merge into your thesis
+# for this to work, make sure to start any acknowledgements and/or abstract Rmd files with 
+# an underscore, e.g. _abstract.Rmd. Otherwise bookdown will start to merge the abstract 
+# in to the body text which almost certainly isn't what you want
+rmd_subdir: ["text"]
+
+#alternatively you can comment out rmd_subdir and specify manually what files to include
+#rmd_files: ["index.Rmd", "text/00-intro.Rmd", "text/01-chap1.Rmd", "text/02-chap2.Rmd", "text/03-chap3.Rmd", "text/04-conclusion.Rmd", "text/05-appendices.Rmd"]

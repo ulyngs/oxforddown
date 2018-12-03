@@ -5,9 +5,9 @@ college: Your College
 degree: Doctor of Philosophy
 degreedate: Michaelmas 2014
 abstract: |
-  `r if(knitr:::is_latex_output()) paste(readLines("text/00--abstract.Rmd"), collapse = '\n  ')`
+  `r if(knitr:::is_latex_output()) paste(readLines("text/_abstract.Rmd"), collapse = '\n  ')`
 acknowledgements: |
-  `r if(knitr:::is_latex_output()) paste(readLines("text/00--acknowledgements.Rmd"), collapse = '\n  ')`
+  `r if(knitr:::is_latex_output()) paste(readLines("text/_acknowledgements.Rmd"), collapse = '\n  ')`
 dedication: To Yihui Xie
 abbreviations: text/abbreviations #without file extension
 bibliography: references.bib
