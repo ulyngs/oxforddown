@@ -8,3 +8,5 @@ _book
 _main.maf
 _main.mlf*
 _main.mtc*
+text/*.tex
+text/*.aux
