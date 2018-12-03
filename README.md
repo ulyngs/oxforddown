@@ -10,6 +10,8 @@ Note that this project is still work in progress.
 - clone the repo or download it as a zip
 - open **oxdown-from-scratch.Rproj** in RStudio
 - click 'Build Book' on the 'Build' tab to compile the book with the sample content
+![](screenshots/build.png)
+![](screenshots/compiled.png)
 
 To use this template to write your thesis, you do the following:
 - set meta data (your name etc) in index.Rmd
