@@ -11,6 +11,7 @@ acknowledgements: |
 dedication: To Yihui Xie
 abbreviations: text/abbreviations #without file extension
 bibliography: references.bib
+bib-humanities: false #set to true if you want author-year in-text
 abstractseparate: yes #include front page w/ abstract for examination schools?
 toc-depth: 2
 lot: yes #list of tables in front?

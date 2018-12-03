@@ -78,12 +78,21 @@ $endif$
 % Either way, you'll have to choose and configure an appropriate bibliography format...
 
 % The science-type option: numerical in-text citation with references in order of appearance.
-\usepackage[style=numeric-comp, sorting=none, backend=biber, doi=false, isbn=false]{biblatex}
-\newcommand*{\bibtitle}{References}
+% \usepackage[style=numeric-comp, sorting=none, backend=biber, doi=false, isbn=false]{biblatex}
+% \newcommand*{\bibtitle}{References}
 
 % The humanities-type option: author-year in-text citation with an alphabetical works cited.
-%\usepackage[style=authoryear, sorting=nyt, backend=biber, maxcitenames=2, useprefix, doi=false, isbn=false]{biblatex}
-%\newcommand*{\bibtitle}{Works Cited}
+% \usepackage[style=authoryear, sorting=nyt, backend=biber, maxcitenames=2, useprefix, doi=false, isbn=false]{biblatex}
+% \newcommand*{\bibtitle}{Works Cited}
+
+%UL 3 Dec 2018: set this from YAML in index.Rmd
+$if(bib-humanities)$
+\usepackage[style=authoryear, sorting=nyt, backend=biber, maxcitenames=2, useprefix, doi=false, isbn=false]{biblatex}
+\newcommand*{\bibtitle}{Works Cited}
+$else$
+\usepackage[style=numeric-comp, sorting=none, backend=biber, doi=false, isbn=false]{biblatex}
+\newcommand*{\bibtitle}{References}
+$endif$
 
 % This makes the bibliography left-aligned (not 'justified') and slightly smaller font.
 \renewcommand*{\bibfont}{\raggedright\small}
