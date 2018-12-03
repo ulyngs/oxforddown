@@ -1,0 +1,26 @@
+```{block type='savequote'}
+Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...
+
+There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain...
+
+\qauthor{--- Cicero's \textit{de Finibus Bonorum et Malorum}}
+```
+
+<!-- Note a gotcha in the savequote block: for the author, you have to use LaTeX syntax directly with \qauthor, and when doing so, you must also use LaTeX instead of Markdown syntax to, for example, italicise something inside \qauthor{} -->
+
+# Some Final Notes on The OxThesis template
+The OxThesis template lets you add some wittiness to you thesis by including a block of type `savequote` at the beginning of chapters.
+
+For when it comes time to do corrections, the OxThesis template supplies two perhaps useful \LaTeX\ commands you can use directly in your .Rmd files. First, the `mccorrect` command allows you to highlight a short correction \mccorrect{like this one}.  When the thesis is typeset normally, the correction will just appear as part of the text. However, when you declare `corrections: yes` in **index.Rmd**, that correction will be highlighted in blue. That might be useful for submitting a post-viva, corrected copy to your examiners so they can quickly verify you've completed the task.
+
+The potential problem with this tip when you write in R Markdown, though, is that you must then use \LaTeX\ rather than _R Markdown_ syntax inside of an `mccorrect` short correction.
+
+For larger chunks, you can put them in a block of type `mccorrection`, like this:
+
+```{block type='mccorrection'}
+For larger chunks, like this paragraph or indeed entire figures, you can use the `mccorrection` environment.  This environment highlights paragraph-sized and larger blocks with the same blue colour.
+```
+
+Inside these, you can use the _R Markdown_ syntax.
+
+For \LaTeX\ minded people, you can read through **templates/template.tex** to play around with the various additional customisation options in  there as well as  **templates/ociamthesis.cls** which supplies the base class.  For example, **template.tex** provides a separate option for master's degree submissions, which changes identifying information to candidate number and includes a word count. At the time of writing, these must be set directly in **template.tex** rather than from the YAML header in **index.Rmd**. (Note also that \LaTeX has a hard time doing word counts automatically, so you'll have to enter the count manually if you require this.)

@@ -3,7 +3,7 @@ title: Suitably impressive thesis title
 author: Your Name
 college: Your College
 degree: Doctor of Philosophy
-degreedate: Michaelmas 2014
+degreedate: Michaelmas 2018
 abstract: |
   `r if(knitr:::is_latex_output()) paste(readLines("text/_abstract.Rmd"), collapse = '\n  ')`
 acknowledgements: |
@@ -34,7 +34,7 @@ output:
 
 <!-- NOTE: if you want to compile the whole thesis, you must click 'Build Book' over on the Build tab; if you just click 'knit' on Index.Rmd, it'll put "Placeholder" as text in individual chapters instead of compiling all the content -->
 
-<!-- this code chunk enables us to add verticalspace after R output with 'vspaceout'  -->
+<!-- this code chunk enables us to add verticalspace after R output with 'vspaceout', see https://stackoverflow.com/questions/43379224/add-vertical-space-above-and-below-figures-code-chunks  -->
 ```{r setup_output, include=FALSE}
 hook_output_def = knitr::knit_hooks$get('output')
 knitr::knit_hooks$set(output = function(x, options) {
