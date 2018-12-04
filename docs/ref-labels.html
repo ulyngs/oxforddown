@@ -248,7 +248,7 @@ Template for R Markdown</a>
 <p>In the <strong>R</strong> chunk below, we will load in the Oxford logo stored as <code>beltcrest.png</code> in the figures directory. We then give it the caption of “Oxford logo”, the label of “oxfordlogo”, and specify that this is a figure. Make note of the different <strong>R</strong> chunk options that are given in the R Markdown file (not shown in the knitted document).</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">include_graphics</span>(<span class="dt">path =</span> <span class="st">&quot;figures/beltcrest.png&quot;</span>)</code></pre>
 <div class="figure"><span id="fig:oxfordlogo"></span>
-<img src="figures/beltcrest.png" alt="Oxford logo" width="483" />
+<img src="figures/beltcrest.png" alt="Oxford logo" width="60%" />
 <p class="caption">
 Figure 3.1: Oxford logo
 </p>
@@ -270,20 +270,20 @@ Figure 3.2: Mean Delays by Airline
 <p>Here is a reference to this image: Figure <a href="ref-labels.html#fig:delaysboxplot">3.2</a>.</p>
 <p>A table linking these carrier codes to airline names is available at <a href="https://github.com/ismayc/pnwflights14/blob/master/data/airlines.csv" class="uri">https://github.com/ismayc/pnwflights14/blob/master/data/airlines.csv</a>.</p>
 
-<p>Next, we will explore the use of the <code>out.extra</code> chunk option, which can be used to shrink or expand an image loaded from a file by specifying <code>&quot;scale= &quot;</code>. Here we use the mathematical graph stored in the “subdivision.pdf” file.</p>
+<p>Next, we will explore the use of the <code>out.extra</code> chunk option, which can be used to shrink or expand an image loaded from a file by specifying <code>&quot;scale= &quot;</code>. Here we use the mathematical graph stored in the “subdivision.png” file.</p>
 <div class="figure"><span id="fig:subd"></span>
-<img src="figures/subdivision.png" alt="Subdiv. graph" width="916" scale=0.75 />
+<img src="figures/subdivision.png" alt="Subdiv. graph" width="60%" scale=0.75 />
 <p class="caption">
 Figure 3.3: Subdiv. graph
 </p>
 </div>
 <p>Here is a reference to this image: Figure <a href="ref-labels.html#fig:subd">3.3</a>. Note that <code>echo=FALSE</code> is specified so that the <strong>R</strong> code is hidden in the document.</p>
-<div id="more-figure-stuff" class="section level5">
-<h5><span class="header-section-number">3.2.0.0.1</span> More Figure Stuff</h5>
+<div id="more-figure-stuff" class="section level5 unnumbered">
+<h5>More Figure Stuff</h5>
 <!-- in LaTeX output, a heading 5 turns into a paragraph heading, i.e. \paragraph{More Figure Stuff}, which appears as bold text on the same line as the subsequent paragraph text  -->
 <p>Lastly, we will explore how to rotate and enlarge figures using the <code>out.extra</code> chunk option. (Currently this only works in the PDF version of the book.)</p>
 <div class="figure"><span id="fig:subd2"></span>
-<img src="figures/subdivision.png" alt="A Larger Figure, Flipped Upside Down" width="916" angle=180, scale=1.1 />
+<img src="figures/subdivision.png" alt="A Larger Figure, Flipped Upside Down" width="60%" angle=180, scale=1.1 />
 <p class="caption">
 Figure 3.4: A Larger Figure, Flipped Upside Down
 </p>
@@ -360,7 +360,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": null,
+"download": ["_main.pdf"],
 "toc": {
 "collapse": "subsection"
 }

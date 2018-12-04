@@ -57,7 +57,7 @@ If you need a graphic or tabular material to be part of the text, you can just p
 
 In the **R** chunk below, we will load in the Oxford logo stored as `beltcrest.png` in the figures directory.  We then give it the caption of "Oxford logo", the label of "oxfordlogo", and specify that this is a figure.  Make note of the different **R** chunk options that are given in the R Markdown file (not shown in the knitted document).
 
-```{r oxfordlogo, fig.cap="Oxford logo"}
+```{r oxfordlogo, fig.cap="Oxford logo", out.width='60%'}
 include_graphics(path = "figures/beltcrest.png")
 ```
 
@@ -81,19 +81,19 @@ A table linking these carrier codes to airline names is available at <https://gi
 
 \clearpage
 
-Next, we will explore the use of the `out.extra` chunk option, which can be used to shrink or expand an image loaded from a file by specifying `"scale= "`. Here we use the mathematical graph stored in the "subdivision.pdf" file.
+Next, we will explore the use of the `out.extra` chunk option, which can be used to shrink or expand an image loaded from a file by specifying `"scale= "`. Here we use the mathematical graph stored in the "subdivision.png" file.
 
-```{r subd, results="asis", echo=FALSE, fig.cap="Subdiv. graph", out.extra="scale=0.75"}
+```{r subd, results="asis", echo=FALSE, fig.cap="Subdiv. graph", out.extra="scale=0.75", out.width='60%'}
 include_graphics("figures/subdivision.png")
 ```
 
 Here is a reference to this image: Figure \@ref(fig:subd).  Note that `echo=FALSE` is specified so that the **R** code is hidden in the document.
 
-##### More Figure Stuff
+##### More Figure Stuff {-}
 <!-- in LaTeX output, a heading 5 turns into a paragraph heading, i.e. \paragraph{More Figure Stuff}, which appears as bold text on the same line as the subsequent paragraph text  -->
 Lastly, we will explore how to rotate and enlarge figures using the `out.extra` chunk option.  (Currently this only works in the PDF version of the book.)
 
-```{r subd2, results="asis", echo=FALSE, out.extra="angle=180, scale=1.1", fig.cap="A Larger Figure, Flipped Upside Down"}
+```{r subd2, results="asis", echo=FALSE, out.extra="angle=180, scale=1.1", fig.cap="A Larger Figure, Flipped Upside Down", out.width='60%'}
 include_graphics("figures/subdivision.png")
 ```
 
