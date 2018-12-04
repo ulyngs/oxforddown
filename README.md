@@ -13,7 +13,7 @@ Please note that this project is still work in progress.
 # Usage
 - clone the repo or download it as a zip
 - open **oxdown-from-scratch.Rproj** in RStudio
-- click 'Build Book' on the 'Build' tab to compile the book with the sample content
+- click 'Build Book' on the 'Build' tab, or open index.Rmd and click 'knit', to compile the book with sample content
 ![](screenshots/build.png)
 ![](screenshots/compiled.png)
 
