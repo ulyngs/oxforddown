@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>3 Tables, Graphics, References, and Labels | Oxford University Thesis Template for R Markdown</title>
+  <meta name="description" content="Oxford University Thesis<br />
+Template for R Markdown">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+
+  <meta property="og:title" content="3 Tables, Graphics, References, and Labels | Oxford University Thesis Template for R Markdown />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="ulyngs/oxforddown" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3 Tables, Graphics, References, and Labels | Oxford University Thesis Template for R Markdown />
+  <meta name="twitter:site" content="@ulyngs" />
+  
+  
+
+<meta name="author" content="Your Name">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="math-sci.html">
+<link rel="next" href="some-final-notes-on-the-oxthesis-template.html">
+<style type="text/css">
+p.abstract{
+  text-align: center;
+  font-weight: bold;
+}
+div.abstract{
+  margin: auto;
+  width: 90%;
+}
+</style>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a><ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#why-use-it"><i class="fa fa-check"></i><b>0.1</b> Why use it?</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#who-should-use-it"><i class="fa fa-check"></i><b>0.2</b> Who should use it?</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="rmd-basics.html"><a href="rmd-basics.html"><i class="fa fa-check"></i><b>1</b> R Markdown Basics</a><ul>
+<li class="chapter" data-level="1.1" data-path="rmd-basics.html"><a href="rmd-basics.html#lists"><i class="fa fa-check"></i><b>1.1</b> Lists</a></li>
+<li class="chapter" data-level="1.2" data-path="rmd-basics.html"><a href="rmd-basics.html#line-breaks"><i class="fa fa-check"></i><b>1.2</b> Line breaks</a></li>
+<li class="chapter" data-level="1.3" data-path="rmd-basics.html"><a href="rmd-basics.html#r-chunks"><i class="fa fa-check"></i><b>1.3</b> R chunks</a></li>
+<li class="chapter" data-level="1.4" data-path="rmd-basics.html"><a href="rmd-basics.html#inline-code"><i class="fa fa-check"></i><b>1.4</b> Inline code</a></li>
+<li class="chapter" data-level="1.5" data-path="rmd-basics.html"><a href="rmd-basics.html#including-plots"><i class="fa fa-check"></i><b>1.5</b> Including plots</a></li>
+<li class="chapter" data-level="1.6" data-path="rmd-basics.html"><a href="rmd-basics.html#loading-and-exploring-data"><i class="fa fa-check"></i><b>1.6</b> Loading and exploring data</a></li>
+<li class="chapter" data-level="1.7" data-path="rmd-basics.html"><a href="rmd-basics.html#additional-resources"><i class="fa fa-check"></i><b>1.7</b> Additional resources</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="math-sci.html"><a href="math-sci.html"><i class="fa fa-check"></i><b>2</b> Mathematics and Science</a><ul>
+<li class="chapter" data-level="2.1" data-path="math-sci.html"><a href="math-sci.html#math"><i class="fa fa-check"></i><b>2.1</b> Math</a></li>
+<li class="chapter" data-level="2.2" data-path="math-sci.html"><a href="math-sci.html#chemistry-101-symbols"><i class="fa fa-check"></i><b>2.2</b> Chemistry 101: Symbols</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="math-sci.html"><a href="math-sci.html#typesetting-reactions"><i class="fa fa-check"></i><b>2.2.1</b> Typesetting reactions</a></li>
+<li class="chapter" data-level="2.2.2" data-path="math-sci.html"><a href="math-sci.html#other-examples-of-reactions"><i class="fa fa-check"></i><b>2.2.2</b> Other examples of reactions</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="math-sci.html"><a href="math-sci.html#physics"><i class="fa fa-check"></i><b>2.3</b> Physics</a></li>
+<li class="chapter" data-level="2.4" data-path="math-sci.html"><a href="math-sci.html#biology"><i class="fa fa-check"></i><b>2.4</b> Biology</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="ref-labels.html"><a href="ref-labels.html"><i class="fa fa-check"></i><b>3</b> Tables, Graphics, References, and Labels</a><ul>
+<li class="chapter" data-level="3.1" data-path="ref-labels.html"><a href="ref-labels.html#tables"><i class="fa fa-check"></i><b>3.1</b> Tables</a></li>
+<li class="chapter" data-level="3.2" data-path="ref-labels.html"><a href="ref-labels.html#figures"><i class="fa fa-check"></i><b>3.2</b> Figures</a></li>
+<li class="chapter" data-level="3.3" data-path="ref-labels.html"><a href="ref-labels.html#footnotes"><i class="fa fa-check"></i><b>3.3</b> Footnotes</a></li>
+<li class="chapter" data-level="3.4" data-path="ref-labels.html"><a href="ref-labels.html#bibliographies"><i class="fa fa-check"></i><b>3.4</b> Bibliographies</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="some-final-notes-on-the-oxthesis-template.html"><a href="some-final-notes-on-the-oxthesis-template.html"><i class="fa fa-check"></i><b>4</b> Some Final Notes on The OxThesis template</a></li>
+<li class="chapter" data-level="" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i>Conclusion</a></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="the-first-appendix.html"><a href="the-first-appendix.html"><i class="fa fa-check"></i><b>A</b> The First Appendix</a></li>
+<li class="chapter" data-level="B" data-path="the-second-appendix-for-fun.html"><a href="the-second-appendix-for-fun.html"><i class="fa fa-check"></i><b>B</b> The Second Appendix, for Fun</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Oxford University Thesis<br />
+Template for R Markdown</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="ref-labels" class="section level1">
+<h1><span class="header-section-number">3</span> Tables, Graphics, References, and Labels</h1>
+<div id="tables" class="section level2">
+<h2><span class="header-section-number">3.1</span> Tables</h2>
+<p>In addition to the tables that can be automatically generated from a data frame in <strong>R</strong> that you saw in <a href="rmd-basics.html#rmd-basics">R Markdown Basics</a> using the <code>kable</code> function, you can also create tables using <em>pandoc</em>. (More information is available at <a href="http://pandoc.org/README.html#tables" class="uri">http://pandoc.org/README.html#tables</a>.) This might be useful if you don’t have values specifically stored in <strong>R</strong>, but you’d like to display them in table form. Below is an example. Pay careful attention to the alignment in the table and hyphens to create the rows and columns.</p>
+<table>
+<caption><span id="tab:inher">Table 3.1: </span> Correlation of Inheritance Factors for Parents and Child</caption>
+<colgroup>
+<col width="31%" />
+<col width="50%" />
+<col width="18%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Factors</th>
+<th align="center">Correlation between Parents &amp; Child</th>
+<th align="center">Inherited</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Education</td>
+<td align="center">-0.49</td>
+<td align="center">Yes</td>
+</tr>
+<tr class="even">
+<td align="center">Socio-Economic Status</td>
+<td align="center">0.28</td>
+<td align="center">Slight</td>
+</tr>
+<tr class="odd">
+<td align="center">Income</td>
+<td align="center">0.08</td>
+<td align="center">No</td>
+</tr>
+<tr class="even">
+<td align="center">Family Size</td>
+<td align="center">0.18</td>
+<td align="center">Slight</td>
+</tr>
+<tr class="odd">
+<td align="center">Occupational Prestige</td>
+<td align="center">0.21</td>
+<td align="center">Slight</td>
+</tr>
+</tbody>
+</table>
+<p>We can also create a link to the table by doing the following: Table <a href="ref-labels.html#tab:inher">3.1</a>. If you go back to <a href="rmd-basics.html#loading-and-exploring-data">Loading and exploring data</a> and look at the <code>kable</code> table, we can create a reference to this max delays table too: Table <a href="rmd-basics.html#tab:maxdelays">1.1</a>. The addition of the <code>(\#tab:inher)</code> option to the end of the table caption allows us to then make a reference to Table <code>\@ref(tab:label)</code>. Note that this reference could appear anywhere throughout the document after the table has appeared.</p>
+<p>We will next explore ways to create this label-ref link using figures.</p>
+
+<!-- clearpage ends the page, and also dumps out all floats.
+  Floats are things like tables and figures. -->
+</div>
+<div id="figures" class="section level2">
+<h2><span class="header-section-number">3.2</span> Figures</h2>
+<p>If your thesis has a lot of figures, <em>R Markdown</em> might behave better for you than that other word processor. One perk is that it will automatically number the figures accordingly in each chapter. You’ll also be able to create a label for each figure, add a caption, and then reference the figure in a way similar to what we saw with tables earlier. If you label your figures, you can move the figures around and <em>R Markdown</em> will automatically adjust the numbering for you. No need for you to remember! So that you don’t have to get too far into LaTeX to do this, a couple <strong>R</strong> functions have been created for you to assist. You’ll see their use below.</p>
+<p>One thing that may be annoying is the way <em>R Markdown</em> handles “floats” like tables and figures (it’s really ’s fault).  will try to find the best place to put your object based on the text around it and until you’re really, truly done writing you should just leave it where it lies. There are some optional arguments specified in the options parameter of the <code>label</code> function. If you need to shift your figure around, it might be good to look here on tweaking the options argument: <a href="https://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions" class="uri">https://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions</a></p>
+<p>If you need a graphic or tabular material to be part of the text, you can just put it inline. If you need it to appear in the list of figures or tables, it should be placed in a code chunk.</p>
+<p>In the <strong>R</strong> chunk below, we will load in the Oxford logo stored as <code>beltcrest.png</code> in the figures directory. We then give it the caption of “Oxford logo”, the label of “oxfordlogo”, and specify that this is a figure. Make note of the different <strong>R</strong> chunk options that are given in the R Markdown file (not shown in the knitted document).</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">include_graphics</span>(<span class="dt">path =</span> <span class="st">&quot;figures/beltcrest.png&quot;</span>)</code></pre>
+<div class="figure"><span id="fig:oxfordlogo"></span>
+<img src="figures/beltcrest.png" alt="Oxford logo" width="483" />
+<p class="caption">
+Figure 3.1: Oxford logo
+</p>
+</div>
+<p>Here is a reference to the Oxford logo: Figure <a href="ref-labels.html#fig:oxfordlogo">3.1</a>. Note the use of the <code>fig:</code> code here. By naming the <strong>R</strong> chunk that contains the figure, we can then reference that figure later as done in the first sentence here. We can also specify the caption for the figure via the R chunk option <code>fig.cap</code>.</p>
+
+<!-- starts a new page and stops trying to place floats such as tables and figures -->
+<p>Below we will investigate how to save the output of an <strong>R</strong> plot and label it in a way similar to that done above. Recall the <code>flights</code> dataset from Chapter <a href="rmd-basics.html#rmd-basics">1</a>. (Note that we’ve shown a different way to reference a section or chapter here.) We will next explore a bar graph with the mean flight departure delays by airline from Portland for 2014. Note also the use of the <code>scale</code> parameter which is discussed on the next page.</p>
+<pre class="sourceCode r"><code class="sourceCode r">flights <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(carrier) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">summarize</span>(<span class="dt">mean_dep_delay =</span> <span class="kw">mean</span>(dep_delay)) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> carrier, <span class="dt">y =</span> mean_dep_delay)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">position =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;red&quot;</span>)</code></pre>
+<div class="figure"><span id="fig:delaysboxplot"></span>
+<img src="_main_files/figure-html/delaysboxplot-1.png" alt="Mean Delays by Airline" width="576" />
+<p class="caption">
+Figure 3.2: Mean Delays by Airline
+</p>
+</div>
+<p>Here is a reference to this image: Figure <a href="ref-labels.html#fig:delaysboxplot">3.2</a>.</p>
+<p>A table linking these carrier codes to airline names is available at <a href="https://github.com/ismayc/pnwflights14/blob/master/data/airlines.csv" class="uri">https://github.com/ismayc/pnwflights14/blob/master/data/airlines.csv</a>.</p>
+
+<p>Next, we will explore the use of the <code>out.extra</code> chunk option, which can be used to shrink or expand an image loaded from a file by specifying <code>&quot;scale= &quot;</code>. Here we use the mathematical graph stored in the “subdivision.pdf” file.</p>
+<div class="figure"><span id="fig:subd"></span>
+<img src="figures/subdivision.png" alt="Subdiv. graph" width="916" scale=0.75 />
+<p class="caption">
+Figure 3.3: Subdiv. graph
+</p>
+</div>
+<p>Here is a reference to this image: Figure <a href="ref-labels.html#fig:subd">3.3</a>. Note that <code>echo=FALSE</code> is specified so that the <strong>R</strong> code is hidden in the document.</p>
+<div id="more-figure-stuff" class="section level5">
+<h5><span class="header-section-number">3.2.0.0.1</span> More Figure Stuff</h5>
+<!-- in LaTeX output, a heading 5 turns into a paragraph heading, i.e. \paragraph{More Figure Stuff}, which appears as bold text on the same line as the subsequent paragraph text  -->
+<p>Lastly, we will explore how to rotate and enlarge figures using the <code>out.extra</code> chunk option. (Currently this only works in the PDF version of the book.)</p>
+<div class="figure"><span id="fig:subd2"></span>
+<img src="figures/subdivision.png" alt="A Larger Figure, Flipped Upside Down" width="916" angle=180, scale=1.1 />
+<p class="caption">
+Figure 3.4: A Larger Figure, Flipped Upside Down
+</p>
+</div>
+<p>As another example, here is a reference: Figure <a href="ref-labels.html#fig:subd2">3.4</a>.</p>
+</div>
+</div>
+<div id="footnotes" class="section level2">
+<h2><span class="header-section-number">3.3</span> Footnotes</h2>
+<p>You might want to footnote something.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> The footnote will be in a smaller font and placed appropriately.</p>
+</div>
+<div id="bibliographies" class="section level2">
+<h2><span class="header-section-number">3.4</span> Bibliographies</h2>
+<p>Of course you will need to cite things, and you will probably accumulate an armful of sources. There are a variety of tools available for creating a bibliography database (stored with the .bib extension). In addition to BibTeX suggested below, you may want to consider using the free and easy-to-use tool called Zotero.</p>
+<p><em>R Markdown</em> uses <em>pandoc</em> (<a href="http://pandoc.org/" class="uri">http://pandoc.org/</a>) to build its bibliographies. One nice caveat of this is that you won’t have to do a second compile to load in references as standard LaTeX requires. To cite references in your thesis (after creating your bibliography database), place the reference name inside square brackets and precede it by the “at” symbol. For example, here’s a reference to a book about worrying: <span class="citation">(Molina and Borkovec 1994)</span>. This <code>Molina1994</code> entry appears in a file called <code>references.bib</code>. This bibliography database file was created by a program called BibTeX. You can call this file something else if you like (look at the YAML header in the main .Rmd file).</p>
+
+<div class="savequote">
+<p>
+Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit…
+</p>
+<p>
+There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain…
+</p>
+</div>
+<!-- Note a gotcha in the savequote block: for the author, you have to use LaTeX syntax directly with \qauthor, and when doing so, you must also use LaTeX instead of Markdown syntax to, for example, italicise something inside \qauthor{} -->
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>footnote text<a href="ref-labels.html#fnref1" class="footnote-back">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="math-sci.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="some-final-notes-on-the-oxthesis-template.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
