@@ -12,7 +12,9 @@ output:
   # bookdown::gitbook: default
 
 ##### set metadata common to PDF and html output
-title: Oxford University Thesis Template for R Markdown
+title: |
+  Oxford University Thesis   
+  Template for R Markdown
 author: Your Name
 bibliography: references.bib
 
@@ -28,7 +30,7 @@ abstract: |
   `r paste(readLines("text/_abstract.Rmd"), collapse = '\n  ')`
 acknowledgements: |
   `r paste(readLines("text/_acknowledgements.Rmd"), collapse = '\n  ')`
-dedication: To Yihui Xie
+dedication: For Yihui Xie
 abbreviations: text/abbreviations #without file extension
 bib-humanities: false #set to true if you want author-year in-text
 abstractseparate: yes #include front page w/ abstract for examination schools?
