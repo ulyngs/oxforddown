@@ -4,7 +4,11 @@ A template for writing an Oxford University thesis in R Markdown.
 
 The template uses the [bookdown](https://bookdown.org) R package together with the [OxThesis LaTeX template](https://github.com/mcmanigle/OxThesis), plus lots and lots of inspiration and sample content from [thesisdown](https://github.com/ismayc/thesisdown).
 
-Note that this project is still work in progress.
+# Example output
+- PDF output: see [**example.pdf**](https://github.com/ulyngs/oxforddown/blob/master/example.pdf)
+- Gitbook output: see [ulyngs.github.io/oxforddown/](https://ulyngs.github.io/oxforddown/)
+
+Please note that this project is still work in progress.
 
 # Usage
 - clone the repo or download it as a zip
