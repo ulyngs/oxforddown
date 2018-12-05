@@ -1,3 +1,17 @@
+```{block type='savequote', include=knitr::opts_knit$get('rmarkdown.pandoc.to') == 'latex'}
+Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...
+
+There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain...
+
+\qauthor{--- Cicero's \textit{de Finibus Bonorum et Malorum}}
+```
+<!-- Note a gotcha in the savequote block: for the qauthor, you have to use LaTeX syntax directly, and when doing so, you must also use LaTeX instead of Markdown syntax to, for example, italicise something inside \qauthor{}
+
+include=knitr::opts_knit$get('rmarkdown.pandoc.to') == 'latex' ensures that it's only shown when output is latex
+
+-->
+
+
 # R Markdown Basics {#rmd-basics}
 <!--
 The {#rmd-basics} text after the chapter declaration will allow us to link throughout the document back to the beginning of this chapter. Reference labels will automatically be generated if you don't specify them, as the lowercase title with spaces replaced by hypens (e.g. r-markdown-basics). Look for the reference to this label at the beginning of the next chapter.

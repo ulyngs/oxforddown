@@ -5,11 +5,12 @@ site: bookdown::bookdown_site
 
 ##### decide between PDF and gitbook output - uncomment what you want
 output:
-  # bookdown::pdf_book:
-  #   template: templates/template.tex
-  #   keep_tex: yes
-  #   citation_package: biblatex
-  bookdown::gitbook: default
+  bookdown::pdf_book:
+    template: templates/template.tex
+    keep_tex: yes
+    citation_package: biblatex
+  # bookdown::gitbook: default
+  # bookdown::word_document2: default   #NOTE: EXPERIMENTAL
 
 ##### set metadata common to PDF and html output
 title: |

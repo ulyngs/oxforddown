@@ -5,6 +5,6 @@
 rmd_subdir: ["text"]
 
 #alternatively you can comment out rmd_subdir and specify manually what files to include
-#rmd_files: ["index.Rmd", "text/00-intro.Rmd", "text/01-chap1.Rmd", "text/02-chap2.Rmd", "text/03-chap3.Rmd", "text/04-conclusion.Rmd", "text/05-appendices.Rmd"]
-
+#rmd_files: ["index.Rmd", "text/01-rmd-basics.Rmd", "text/02-math-sci.Rmd", "text/03-table-graphics-refs.Rmd", "text/04-oxthesis.Rmd", "text/05-conclusion.Rmd", "text/06-appendices.Rmd", "text/99-references.Rmd"]
+  
 output_dir: "docs"

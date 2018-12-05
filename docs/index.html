@@ -169,6 +169,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="the-first-appendix.html"><a href="the-first-appendix.html"><i class="fa fa-check"></i><b>A</b> The First Appendix</a></li>
 <li class="chapter" data-level="B" data-path="the-second-appendix-for-fun.html"><a href="the-second-appendix-for-fun.html"><i class="fa fa-check"></i><b>B</b> The Second Appendix, for Fun</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
 
       </nav>
@@ -216,6 +217,11 @@ Having your code and commentary all together in one place has a plethora of bene
 <h2><span class="header-section-number">0.2</span> Who should use it?</h2>
 <p>Anyone who needs to use data analysis, math, tables, a lot of figures, complex cross-references, or who just cares about reproducibility in research should use <em>R Markdown</em>. If you are working in ‘softer’ fields, the user-friendly nature of <em>Markdown</em> and its ability to keep track of and easily include figures, automatically generate a table of contents, index, references, table of figures, etc. should still make it of great benefit to nearly anyone writing a thesis project.</p>
 
+<!-- Note a gotcha in the savequote block: for the qauthor, you have to use LaTeX syntax directly, and when doing so, you must also use LaTeX instead of Markdown syntax to, for example, italicise something inside \qauthor{}
+
+include=knitr::opts_knit$get('rmarkdown.pandoc.to') == 'latex' ensures that it's only shown when output is latex
+
+-->
 </div>
 </div>
             </section>
@@ -261,7 +267,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["_main.pdf"],
+"download": ["_main.pdf", "_main.epub"],
 "toc": {
 "collapse": "subsection"
 }

@@ -5,12 +5,12 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>4 Some Final Notes on The OxThesis template | Oxford University Thesis Template for R Markdown</title>
+  <title>References | Oxford University Thesis Template for R Markdown</title>
   <meta name="description" content="Oxford University Thesis<br />
 Template for R Markdown">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="4 Some Final Notes on The OxThesis template | Oxford University Thesis Template for R Markdown />
+  <meta property="og:title" content="References | Oxford University Thesis Template for R Markdown />
   <meta property="og:type" content="book" />
   
   
@@ -18,7 +18,7 @@ Template for R Markdown">
   <meta name="github-repo" content="ulyngs/oxforddown" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4 Some Final Notes on The OxThesis template | Oxford University Thesis Template for R Markdown />
+  <meta name="twitter:title" content="References | Oxford University Thesis Template for R Markdown />
   <meta name="twitter:site" content="@ulyngs" />
   
   
@@ -32,8 +32,8 @@ Template for R Markdown">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="ref-labels.html">
-<link rel="next" href="conclusion.html">
+<link rel="prev" href="the-second-appendix-for-fun.html">
+
 <style type="text/css">
 p.abstract{
   text-align: center;
@@ -188,31 +188,29 @@ Template for R Markdown</a>
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="some-final-notes-on-the-oxthesis-template" class="section level1">
-<h1><span class="header-section-number">4</span> Some Final Notes on The OxThesis template</h1>
-<p>The OxThesis template lets you add some wittiness to you thesis by including a block of type <code>savequote</code> at the beginning of chapters.</p>
-<p>When it is time to do corrections, the OxThesis template supplies two perhaps useful  commands you can use directly in your .Rmd files. First, the <code>mccorrect</code> command allows you to highlight a short correction . When the thesis is typeset normally, the correction will just appear as part of the text. However, when you declare <code>corrections: yes</code> in <strong>index.Rmd</strong>, that correction will be highlighted in blue. That might be useful for submitting a post-viva, corrected copy to your examiners so they can quickly verify you’ve completed the task.</p>
-<p>The potential problem with this tip when you write in R Markdown, though, is that you must then use  rather than <em>R Markdown</em> syntax inside of a <code>mccorrect</code> short correction.</p>
-<p>For larger chunks, you can put them in a block of type <code>mccorrection</code>, like this:</p>
-<div class="mccorrection">
-<p>
-For larger chunks, like this paragraph or indeed entire figures, you can use the <code>mccorrection</code> environment. This environment highlights paragraph-sized and larger blocks with the same blue colour.
-</p>
-</div>
-<!-- NOTE: if you're trying to output as word doc, this block may cause an error in compilation - you can avoid this by adding the chunk option include=knitr::opts_knit$get('rmarkdown.pandoc.to') == 'latex' which will exclude it from word output-->
-<p>Inside these, you can use <em>R Markdown</em> syntax.</p>
-<p>For  minded people, you can read through <strong>templates/template.tex</strong> to play around with the various additional customisation options in there as well as <strong>templates/ociamthesis.cls</strong> which supplies the base class. For example, <strong>template.tex</strong> provides a separate option for master’s degree submissions, which changes identifying information to candidate number and includes a word count. At the time of writing, these must be set directly in <strong>template.tex</strong> rather than from the YAML header in <strong>index.Rmd</strong>. (Note also that has a hard time doing word counts automatically, so you’ll have to enter the count manually if you require this.)</p>
-<p>Best practices for collaboration and change tracking when using R Markdown are still an open question. In the blog post <a href="https://livefreeordichotomize.com/2018/09/14/one-year-to-dissertate/"><strong>One year to dissertate</strong></a> by Lucy D’Agostino, which I highly recommend, the author notes how she would knit .Rmd files to a <code>word_document</code>, then use the <code>googledrive</code> R package to send this to Google Drive for comments / revisions from co-authors, then incorporate Google Drive suggestions <em>by hand</em> into the .Rmd source files. This is a bit clunky, and there are ongoing discussions among the <em>R Markdown</em> developers about what the best way is to handle collaborative writing (see <a href="https://github.com/rstudio/rmarkdown/issues/1463">issue #1463</a> on GitHub, with <a href="http://criticmarkup.com">CriticMarkup</a> being among the suggestions.</p>
-<p>For now, this is still an open question in the community of R Markdown users. Knitting to a format that can easily be imported to Google Docs for comments, then going over suggested revisions and manually incorporating them back in to the .Rmd source files, has worked ok for me personally. For article writing, I sometimes upload the near-final draft to <a href="https://www.overleaf.com/">Overleaf</a>, then collaboratively make final edits to the  file in there. I suspect some great solution will be developed in the not-to-distant future, probably by the RStudio team.</p>
+<div id="references" class="section level1 unnumbered">
+<h1>References</h1>
+<!-- If you're outputting to LaTeX, the heading and references will be generated by the OxThesis LaTeX template. This .Rmd file serves only to add the References headline to gitbook output before  the references are added by pandoc -->
 
+<div id="refs" class="references">
+<div>
+<p>Molina, S. T., and T. D. Borkovec. 1994. “The Penn State Worry Questionnaire: Psychometric Properties and Associated Characteristics.” In <em>Worrying: Perspectives on Theory, Assessment and Treatment</em>, edited by G. C. L. Davey and F. Tallis, 265–83. New York: Wiley.</p>
 </div>
+</div>
+</div>
+
+
+
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="ref-labels.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="conclusion.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="the-second-appendix-for-fun.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
