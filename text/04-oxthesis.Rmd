@@ -11,21 +11,35 @@ There is no one who loves pain itself, who seeks after it and wants to have it, 
 # Some Final Notes on The OxThesis template
 The OxThesis template lets you add some wittiness to you thesis by including a block of type `savequote` at the beginning of chapters.
 
-When it is time to do corrections, the OxThesis template supplies two perhaps useful \LaTeX\ commands you can use directly in your .Rmd files. First, the `mccorrect` command allows you to highlight a short correction \mccorrect{like this one}.  When the thesis is typeset normally, the correction will just appear as part of the text. However, when you declare `corrections: yes` in **index.Rmd**, that correction will be highlighted in blue. That might be useful for submitting a post-viva, corrected copy to your examiners so they can quickly verify you've completed the task.
+When it is time to do corrections, the OxThesis template supplies two perhaps useful \LaTeX\ commands you can use directly in your .Rmd files. First, the `mccorrect` command allows you to highlight a short correction \mccorrect{like this one}.  When the thesis is typeset normally, the correction will just appear as part of the text. However, when you declare `corrections: yes` in **index.Rmd**, that correction will be highlighted in blue in PDF output. That might be useful for submitting a post-viva, corrected copy to your examiners so they can quickly verify you've completed the task.
 
-The potential problem with this tip when you write in R Markdown, though, is that you must then use \LaTeX\ rather than _R Markdown_ syntax inside of a `mccorrect` short correction.
+When taking this route, you must use \LaTeX\ rather than _R Markdown_ syntax inside of a `mccorrect` short correction. Also, the content of these corrections won't show up in gitbook output.
 
 For larger chunks, you can put them in a block of type `mccorrection`, like this:
 
 ```{block type='mccorrection'}
 For larger chunks, like this paragraph or indeed entire figures, you can use the `mccorrection` environment. This environment highlights paragraph-sized and larger blocks with the same blue colour.
 ```
+
+Inside these, you can use _R Markdown_ syntax. The content of these blocks will also show up in gitbook output.
 <!-- NOTE: if you're trying to output as word doc, this block may cause an error in compilation - you can avoid this by adding the chunk option include=knitr::opts_knit$get('rmarkdown.pandoc.to') == 'latex' which will exclude it from word output-->
 
-Inside these, you can use _R Markdown_ syntax.
+An alternative, perhaps more hack-ish, route comes from [this stack overflow tip](https://stackoverflow.com/questions/47298106/getting-r-printed-texts-to-have-color-esp-in-r-markdown-knits) and uses the function `text_spec` from the package `kableExtra` to apply a background color to corrections.
 
-For \LaTeX\ minded people, you can read through **templates/template.tex** to play around with the various additional customisation options in  there as well as  **templates/ociamthesis.cls** which supplies the base class.  For example, **template.tex** provides a separate option for master's degree submissions, which changes identifying information to candidate number and includes a word count. At the time of writing, these must be set directly in **template.tex** rather than from the YAML header in **index.Rmd**. (Note also that \LaTeX has a hard time doing word counts automatically, so you'll have to enter the count manually if you require this.)
+```{r, include=FALSE}
+library(kableExtra)
+options(knitr.table.format = as.character(knitr::opts_knit$get('rmarkdown.pandoc.to')))
+mccorrect <- function(text) {
+  text_spec(text, background = "#CCCCFF")
+}
+```
 
+Taking this approach, I might say that `r mccorrect("this is a correction.")` It's not elegant, but it should work and apply the blue corrections background color to both PDF and HTML output.
+
+## Diving in to the OxThesis Latex template
+For LaTeX minded people, you can read through **templates/template.tex** to play around with the various additional customisation options in  there as well as  **templates/ociamthesis.cls** which supplies the base class.  For example, **template.tex** provides a separate option for master's degree submissions, which changes identifying information to candidate number and includes a word count. At the time of writing, these must be set directly in **template.tex** rather than from the YAML header in **index.Rmd**. (Note also that LaTeX has a hard time doing word counts automatically, so you'll have to enter the count manually if you require this.)
+
+## Collaborative writing
 Best practices for collaboration and change tracking when using R Markdown are still an open question. In the blog post [**One year to dissertate**](https://livefreeordichotomize.com/2018/09/14/one-year-to-dissertate/) by Lucy D'Agostino, which I highly recommend, the author notes how she would knit .Rmd files to a `word_document`, then use the `googledrive` R package to send this to Google Drive for comments / revisions from co-authors, then incorporate Google Drive suggestions *by hand* into the .Rmd source files. This is a bit clunky, and there are ongoing discussions among the _R Markdown_ developers about what the best way is to handle collaborative writing (see [issue #1463](https://github.com/rstudio/rmarkdown/issues/1463) on GitHub, with [CriticMarkup](http://criticmarkup.com) being among the suggestions. 
 
 For now, this is still an open question in the community of R Markdown users. Knitting to a format that can easily be imported to Google Docs for comments, then going over suggested revisions and manually incorporating them back in to the .Rmd source files, has worked ok for me personally. For article writing, I sometimes upload the near-final draft to [Overleaf](https://www.overleaf.com/), then collaboratively make final edits to the \LaTeX\ file in there. I suspect some great solution will be developed in the not-to-distant future, probably by the RStudio team.

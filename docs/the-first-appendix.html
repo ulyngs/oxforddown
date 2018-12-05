@@ -164,7 +164,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3" data-path="ref-labels.html"><a href="ref-labels.html#footnotes"><i class="fa fa-check"></i><b>3.3</b> Footnotes</a></li>
 <li class="chapter" data-level="3.4" data-path="ref-labels.html"><a href="ref-labels.html#bibliographies"><i class="fa fa-check"></i><b>3.4</b> Bibliographies</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="some-final-notes-on-the-oxthesis-template.html"><a href="some-final-notes-on-the-oxthesis-template.html"><i class="fa fa-check"></i><b>4</b> Some Final Notes on The OxThesis template</a></li>
+<li class="chapter" data-level="4" data-path="some-final-notes-on-the-oxthesis-template.html"><a href="some-final-notes-on-the-oxthesis-template.html"><i class="fa fa-check"></i><b>4</b> Some Final Notes on The OxThesis template</a><ul>
+<li class="chapter" data-level="4.1" data-path="some-final-notes-on-the-oxthesis-template.html"><a href="some-final-notes-on-the-oxthesis-template.html#diving-in-to-the-oxthesis-latex-template"><i class="fa fa-check"></i><b>4.1</b> Diving in to the OxThesis Latex template</a></li>
+<li class="chapter" data-level="4.2" data-path="some-final-notes-on-the-oxthesis-template.html"><a href="some-final-notes-on-the-oxthesis-template.html#collaborative-writing"><i class="fa fa-check"></i><b>4.2</b> Collaborative writing</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i>Conclusion</a></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="the-first-appendix.html"><a href="the-first-appendix.html"><i class="fa fa-check"></i><b>A</b> The First Appendix</a></li>
@@ -190,8 +193,17 @@ Template for R Markdown</a>
             <section class="normal" id="section-">
 <div id="the-first-appendix" class="section level1">
 <h1><span class="header-section-number">A</span> The First Appendix</h1>
-<p>This first appendix includes all of the R chunks of code that were hidden throughout the document (using the <code>include = FALSE</code> chunk tag) to help with readibility and/or setup.</p>
-<p><strong>In the main Rmd file</strong></p>
+<p>This first appendix includes the R chunks of code that were hidden throughout the document (using the <code>include = FALSE</code> chunk tag) to help with readibility and/or setup.</p>
+<p><strong>In the index.Rmd file</strong></p>
+<pre class="sourceCode r"><code class="sourceCode r">hook_output_def =<span class="st"> </span>knitr<span class="op">::</span>knit_hooks<span class="op">$</span><span class="kw">get</span>(<span class="st">&#39;output&#39;</span>)
+knitr<span class="op">::</span>knit_hooks<span class="op">$</span><span class="kw">set</span>(<span class="dt">output =</span> <span class="cf">function</span>(x, options) {
+  <span class="cf">if</span> (<span class="op">!</span><span class="kw">is.null</span>(options<span class="op">$</span>vspaceout)) {
+    end &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">vspace{&quot;</span>, options<span class="op">$</span>vspaceout, <span class="st">&quot;}&quot;</span>)
+    stringr<span class="op">::</span><span class="kw">str_c</span>(<span class="kw">hook_output_def</span>(x, options), end)
+  } <span class="cf">else</span> {
+    <span class="kw">hook_output_def</span>(x, options)
+  }
+})</code></pre>
 <p><strong>In Chapter <a href="ref-labels.html#ref-labels">3</a>:</strong></p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(devtools))
   <span class="kw">install.packages</span>(<span class="st">&quot;devtools&quot;</span>, <span class="dt">repos =</span> <span class="st">&quot;http://cran.rstudio.com&quot;</span>)
