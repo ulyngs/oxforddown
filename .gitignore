@@ -10,3 +10,4 @@ _main.mlf*
 _main.mtc*
 text/*.tex
 text/*.aux
+*.mlt*
