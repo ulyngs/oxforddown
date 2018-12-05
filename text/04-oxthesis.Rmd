@@ -1,4 +1,4 @@
-```{block type='savequote'}
+```{block type='savequote', include=knitr::opts_knit$get('rmarkdown.pandoc.to') == 'latex'}
 Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...
 
 There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain...
@@ -11,7 +11,7 @@ There is no one who loves pain itself, who seeks after it and wants to have it, 
 # Some Final Notes on The OxThesis template
 The OxThesis template lets you add some wittiness to you thesis by including a block of type `savequote` at the beginning of chapters.
 
-For when it comes time to do corrections, the OxThesis template supplies two perhaps useful \LaTeX\ commands you can use directly in your .Rmd files. First, the `mccorrect` command allows you to highlight a short correction \mccorrect{like this one}.  When the thesis is typeset normally, the correction will just appear as part of the text. However, when you declare `corrections: yes` in **index.Rmd**, that correction will be highlighted in blue. That might be useful for submitting a post-viva, corrected copy to your examiners so they can quickly verify you've completed the task.
+When it is time to do corrections, the OxThesis template supplies two perhaps useful \LaTeX\ commands you can use directly in your .Rmd files. First, the `mccorrect` command allows you to highlight a short correction \mccorrect{like this one}.  When the thesis is typeset normally, the correction will just appear as part of the text. However, when you declare `corrections: yes` in **index.Rmd**, that correction will be highlighted in blue. That might be useful for submitting a post-viva, corrected copy to your examiners so they can quickly verify you've completed the task.
 
 The potential problem with this tip when you write in R Markdown, though, is that you must then use \LaTeX\ rather than _R Markdown_ syntax inside of an `mccorrect` short correction.
 

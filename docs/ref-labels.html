@@ -300,14 +300,6 @@ Figure 3.4: A Larger Figure, Flipped Upside Down
 <p>Of course you will need to cite things, and you will probably accumulate an armful of sources. There are a variety of tools available for creating a bibliography database (stored with the .bib extension). In addition to BibTeX suggested below, you may want to consider using the free and easy-to-use tool called Zotero.</p>
 <p><em>R Markdown</em> uses <em>pandoc</em> (<a href="http://pandoc.org/" class="uri">http://pandoc.org/</a>) to build its bibliographies. One nice caveat of this is that you won’t have to do a second compile to load in references as standard LaTeX requires. To cite references in your thesis (after creating your bibliography database), place the reference name inside square brackets and precede it by the “at” symbol. For example, here’s a reference to a book about worrying: <span class="citation">(Molina and Borkovec 1994)</span>. This <code>Molina1994</code> entry appears in a file called <code>references.bib</code>. This bibliography database file was created by a program called BibTeX. You can call this file something else if you like (look at the YAML header in the main .Rmd file).</p>
 
-<div class="savequote">
-<p>
-Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit…
-</p>
-<p>
-There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain…
-</p>
-</div>
 <!-- Note a gotcha in the savequote block: for the author, you have to use LaTeX syntax directly with \qauthor, and when doing so, you must also use LaTeX instead of Markdown syntax to, for example, italicise something inside \qauthor{} -->
 </div>
 </div>

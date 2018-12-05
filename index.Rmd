@@ -5,11 +5,11 @@ site: bookdown::bookdown_site
 
 ##### decide between PDF and gitbook output - uncomment what you want
 output:
-  bookdown::pdf_book:
-    template: templates/template.tex
-    keep_tex: yes
-    citation_package: biblatex
-  # bookdown::gitbook: default
+  # bookdown::pdf_book:
+  #   template: templates/template.tex
+  #   keep_tex: yes
+  #   citation_package: biblatex
+  bookdown::gitbook: default
 
 ##### set metadata common to PDF and html output
 title: |
@@ -64,6 +64,7 @@ knitr::knit_hooks$set(output = function(x, options) {
 
 \minitoc  <!-- this creates the mini table of contents -->
 
+<!-- this adds an image for gitbook output -->
 <img src="figures/cover.png" width="315" height="445" alt="Cover image" align="right" style="margin: 0 1em 0 1em" />
 
 Welcome to the _R Markdown_ Oxford University thesis template. The sample content is adapted from [`thesisdown`](https://github.com/ismayc/thesisdown) and the formatting of PDF output is adapted from the [OxThesis \LaTeX\ template](https://github.com/mcmanigle/OxThesis). Hopefully writing your thesis in R Markdown will provide a nicer interface for those that have never used TeX or LaTeX before. More importantly, using _R Markdown_ allows you to embed chunks of code directly into your thesis, and generate plots and tables directly from their underlying data, avoiding copy-paste steps. Hopefully, this _R Markdown_ template gets you in the habit of doing reproducible research, which benefits you long-term as a researcher, but also will greatly help anyone that is trying to reproduce or build onto your results down the road.

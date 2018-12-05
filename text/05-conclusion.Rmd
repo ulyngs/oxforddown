@@ -1,4 +1,4 @@
-```{block type='savequote'}
+```{block type='savequote', include=knitr::opts_knit$get('rmarkdown.pandoc.to') == 'latex'}
 Alles Gescheite ist schon gedacht worden.   <!-- ending a line with 2+ spaces gives a line break -->
 Man muss nur versuchen, es noch einmal zu denken.
 
@@ -9,10 +9,8 @@ what is necessary is only to try to think them again.
 ```
 
 # Conclusion {-}
-
 If we don't want Conclusion to have a chapter number next to it, we can add the `{-}` attribute.
 
 **More info**
 
 And here's some other random info: the first paragraph after a chapter title or section head _shouldn't be_ indented, because indents are to tell the reader that you're starting a new paragraph. Since that's obvious after a chapter or section title, proper typesetting doesn't add an indent there.
-
