@@ -8,8 +8,6 @@ The template uses the [bookdown](https://bookdown.org) R package together with t
 - PDF output: see [**docs/_main.pdf**](https://github.com/ulyngs/oxforddown/blob/master/docs/_main.pdf)
 - Gitbook output: see [ulyngs.github.io/oxforddown/](https://ulyngs.github.io/oxforddown/)
 
-Please note that this project is still work in progress.
-
 # Usage
 - clone the repo or download it as a zip
 - open **oxdown-from-scratch.Rproj** in RStudio
