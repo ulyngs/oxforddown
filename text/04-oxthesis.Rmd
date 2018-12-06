@@ -25,9 +25,9 @@ Now we can `r mccorrect("apply corrections *inline*")`using this function, which
 
 [^argh]: It seems this in turn has the bug that the asterisks will correctly be turned into italics on HTML output, but will be rendered literally with LaTeX... FML.
 
-For larger chunks, you can put them in a block of type `mccorrection` (which in the **.tex** file for PDF output will put the content between `\begin{mccorrection}` and `\end{mccorrection}`, and in the HTML file for gitbook output between `<div class="mccorrection">` and `</div>`:
+For larger chunks, you can put them in a block of type `mccorrection` (which in the **.tex** file for PDF output will put the content between `\begin{mccorrection}` and `\end{mccorrection}`, and in the HTML file for gitbook output between `<div class="mccorrection">` and `</div>`. Rather than doing it directly, we use params$corrections to set it from the YAML header in **index.Rmd**.
 
-```{block type='mccorrection'}
+```{block type=params$corrections}
 For larger chunks, like this paragraph or indeed entire figures, you can use the `mccorrection` environment. This environment **highlights paragraph-sized and larger blocks** with the same blue colour.
 ```
 
