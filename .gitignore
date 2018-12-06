@@ -11,3 +11,4 @@ _main.mtc*
 text/*.tex
 text/*.aux
 *.mlt*
+_main.*
