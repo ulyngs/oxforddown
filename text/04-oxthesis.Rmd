@@ -27,7 +27,9 @@ Now we can `r mccorrect("apply corrections *inline*")`using this function, which
 
 For larger chunks, you can put them in a block of type `mccorrection` (which in the **.tex** file for PDF output will put the content between `\begin{mccorrection}` and `\end{mccorrection}`, and in the HTML file for gitbook output between `<div class="mccorrection">` and `</div>`. Rather than doing it directly, we use params$corrections to set it from the YAML header in **index.Rmd**.
 
-```{block type=params$corrections}
+We are outputting to: `r as.character(knitr::opts_knit$get('rmarkdown.pandoc.to'))`.
+
+```{block type='mccorrection'}
 For larger chunks, like this paragraph or indeed entire figures, you can use the `mccorrection` environment. This environment **highlights paragraph-sized and larger blocks** with the same blue colour.
 ```
 
