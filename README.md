@@ -4,6 +4,10 @@ A template for writing an Oxford University thesis in R Markdown.
 
 The template uses the [bookdown](https://bookdown.org) R package together with the [OxThesis LaTeX template](https://github.com/mcmanigle/OxThesis), plus lots and lots of inspiration and sample content from [thesisdown](https://github.com/ismayc/thesisdown).
 
+# Requirements
+- LaTeX - if you're lazy and got sufficient disc space, just download and install the MacTeX distribution from [tug.org/mactex/](http://www.tug.org/mactex/). If you're short on disc space, go for the BasicTeX distribution from the same site, or Yihui Xie's [TinyTeX](https://yihui.name/tinytex/).
+- [R](https://cran.rstudio.com) and [RStudio](https://www.rstudio.com/products/rstudio/download/) - for the latter, I recommend installing the latest [preview version of RStudio version 1.2](https://www.rstudio.com/products/rstudio/download/preview/) which includes some fantastically useful features.
+
 # Example output
 - PDF output: see [**docs/_main.pdf**](https://github.com/ulyngs/oxforddown/blob/master/docs/_main.pdf)
 - Gitbook output: see [ulyngs.github.io/oxforddown/](https://ulyngs.github.io/oxforddown/)
