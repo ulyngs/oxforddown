@@ -15,6 +15,12 @@ The template uses the [bookdown](https://bookdown.org) R package together with t
 
 # Usage
 - clone the repo or download it as a zip
+- install the `bookdown` and `thesisdown` packages
+```
+install.packages("devtools")
+devtools::install_github("rstudio/bookdown")
+devtools::install_github("ismayc/thesisdown")
+```
 - open **oxdown-from-scratch.Rproj** in RStudio
 - click 'Build Book' on the 'Build' tab, or open index.Rmd and click 'knit', to compile the book with sample content
 ![](screenshots/build.png)
