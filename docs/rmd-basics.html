@@ -10,7 +10,7 @@
 Template for R Markdown">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="1 R Markdown Basics | Oxford University Thesis Template for R Markdown />
+  <meta property="og:title" content="1 R Markdown Basics | Oxford University Thesis Template for R Markdown" />
   <meta property="og:type" content="book" />
   
   
@@ -18,12 +18,12 @@ Template for R Markdown">
   <meta name="github-repo" content="ulyngs/oxforddown" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="1 R Markdown Basics | Oxford University Thesis Template for R Markdown />
+  <meta name="twitter:title" content="1 R Markdown Basics | Oxford University Thesis Template for R Markdown" />
   <meta name="twitter:site" content="@ulyngs" />
   
   
 
-<meta name="author" content="Your Name">
+<meta name="author" content="Author Name">
 
 
 
@@ -124,6 +124,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
 <body>
@@ -165,8 +166,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.4" data-path="ref-labels.html"><a href="ref-labels.html#bibliographies"><i class="fa fa-check"></i><b>3.4</b> Bibliographies</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="some-final-notes-on-the-oxthesis-template.html"><a href="some-final-notes-on-the-oxthesis-template.html"><i class="fa fa-check"></i><b>4</b> Some Final Notes on The OxThesis template</a><ul>
-<li class="chapter" data-level="4.1" data-path="some-final-notes-on-the-oxthesis-template.html"><a href="some-final-notes-on-the-oxthesis-template.html#diving-in-to-the-oxthesis-latex-template"><i class="fa fa-check"></i><b>4.1</b> Diving in to the OxThesis Latex template</a></li>
-<li class="chapter" data-level="4.2" data-path="some-final-notes-on-the-oxthesis-template.html"><a href="some-final-notes-on-the-oxthesis-template.html#collaborative-writing"><i class="fa fa-check"></i><b>4.2</b> Collaborative writing</a></li>
+<li class="chapter" data-level="4.1" data-path="some-final-notes-on-the-oxthesis-template.html"><a href="some-final-notes-on-the-oxthesis-template.html#quotes-by-beginning-of-chapters"><i class="fa fa-check"></i><b>4.1</b> Quotes by beginning of chapters</a></li>
+<li class="chapter" data-level="4.2" data-path="some-final-notes-on-the-oxthesis-template.html"><a href="some-final-notes-on-the-oxthesis-template.html#highlighting-of-corrections"><i class="fa fa-check"></i><b>4.2</b> Highlighting of corrections</a></li>
+<li class="chapter" data-level="4.3" data-path="some-final-notes-on-the-oxthesis-template.html"><a href="some-final-notes-on-the-oxthesis-template.html#diving-in-to-the-oxthesis-latex-template"><i class="fa fa-check"></i><b>4.3</b> Diving in to the OxThesis LaTeX template</a></li>
+<li class="chapter" data-level="4.4" data-path="some-final-notes-on-the-oxthesis-template.html"><a href="some-final-notes-on-the-oxthesis-template.html#collaborative-writing"><i class="fa fa-check"></i><b>4.4</b> Collaborative writing</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i>Conclusion</a></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
@@ -193,10 +196,10 @@ Template for R Markdown</a>
             <section class="normal" id="section-">
 <div id="rmd-basics" class="section level1">
 <h1><span class="header-section-number">1</span> R Markdown Basics</h1>
+<p><!-- this will include a mini table of contents-->
 <!--
 The {#rmd-basics} text after the chapter declaration will allow us to link throughout the document back to the beginning of this chapter. Reference labels will automatically be generated if you don't specify them, as the lowercase title with spaces replaced by hypens (e.g. r-markdown-basics). Look for the reference to this label at the beginning of the next chapter.
--->
-
+--></p>
 <p>Here is a brief introduction to using <em>R Markdown</em>. <em>Markdown</em> is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. <em>R Markdown</em> provides the flexibility of <em>Markdown</em> with the implementation of <strong>R</strong> input and output. For more details on using <em>R Markdown</em> see <a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a>.</p>
 <p>Be careful with your spacing in <em>Markdown</em> documents. While whitespace largely is ignored, it does at times give <em>Markdown</em> signals as to how to proceed. As a habit, try to keep everything left aligned whenever possible, especially as you type a new paragraph. In other words, there is no need to indent basic text in the Rmd document (in fact, it might cause your text to do funny things if you do).</p>
 <div id="lists" class="section level2">
@@ -264,7 +267,7 @@ This should be a new paragraph.</p>
 <h2><span class="header-section-number">1.5</span> Including plots</h2>
 <p>You can also embed plots. For example, Figure <a href="rmd-basics.html#fig:pressure">1.1</a> shows a way to use the base <strong>R</strong> graphics package to produce a plot using the built-in <code>pressure</code> dataset.</p>
 <div class="figure"><span id="fig:pressure"></span>
-<img src="_main_files/figure-html/pressure-1.png" alt="A dynamically generated plot" width="672" />
+<img src="_main_files/figure-html/pressure-1.png" alt="A dynamically generated plot"  />
 <p class="caption">
 Figure 1.1: A dynamically generated plot
 </p>
@@ -280,13 +283,11 @@ Figure 1.1: A dynamically generated plot
 <p>The data is now stored in the data frame called <code>flights</code> in <strong>R</strong>. To get a better feel for the variables included in this dataset we can use a variety of functions. Here we can see the dimensions (rows by columns) and also the names of the columns. (Note also how we use the chunk option <code>vspaceout</code> to add a bit of white space after each R command’s output - this chunk option does not exist by default, but is created by the chunk you will find if you inspect <strong>index.Rmd</strong>)</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span>(flights)</code></pre>
 <pre><code>## [1] 52808    16</code></pre>
-
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(flights)</code></pre>
 <pre><code>##  [1] &quot;month&quot;        &quot;day&quot;          &quot;dep_time&quot;     &quot;dep_delay&quot;   
 ##  [5] &quot;arr_time&quot;     &quot;arr_delay&quot;    &quot;carrier&quot;      &quot;tailnum&quot;     
 ##  [9] &quot;flight&quot;       &quot;dest&quot;         &quot;air_time&quot;     &quot;distance&quot;    
 ## [13] &quot;hour&quot;         &quot;minute&quot;       &quot;carrier_name&quot; &quot;dest_name&quot;</code></pre>
-
 <p>Another good idea is to take a look at the dataset in table form. With this dataset having more than 50,000 rows, we won’t explicitly show the results of the command here. I recommend you enter the command into the Console <strong><em>after</em></strong> you have run the <strong>R</strong> chunks above to load the data into <strong>R</strong>.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">View</span>(flights)</code></pre>
 <p>While not required, it is highly recommended you use the <code>dplyr</code> package to manipulate and summarize your data set as needed. It uses a syntax that is easy to understand using chaining operations. Below I’ve created a few examples of using <code>dplyr</code> to get information about the Portland flights in 2014. You will also see the use of the <code>ggplot2</code> package, which produces beautiful, high-quality academic visuals.</p>
@@ -321,57 +322,107 @@ max_delays &lt;-<span class="st"> </span>flights2 <span class="op">%&gt;%</span>
       <span class="dt">longtable =</span> <span class="ot">TRUE</span>,
       <span class="dt">booktabs =</span> <span class="ot">TRUE</span>)</code></pre>
 <table>
-<caption><span id="tab:maxdelays">Table 1.1: </span>Maximum Delays by Airline</caption>
+<caption>
+<span id="tab:maxdelays">Table 1.1: </span>Maximum Delays by Airline
+</caption>
 <thead>
-<tr class="header">
-<th align="left">Airline</th>
-<th align="right">Max Arrival Delay</th>
+<tr>
+<th style="text-align:left;">
+Airline
+</th>
+<th style="text-align:right;">
+Max Arrival Delay
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="left">Alaska Airlines Inc.</td>
-<td align="right">338</td>
+<tr>
+<td style="text-align:left;">
+Alaska Airlines Inc.
+</td>
+<td style="text-align:right;">
+338
+</td>
 </tr>
-<tr class="even">
-<td align="left">American Airlines Inc.</td>
-<td align="right">1539</td>
+<tr>
+<td style="text-align:left;">
+American Airlines Inc.
+</td>
+<td style="text-align:right;">
+1539
+</td>
 </tr>
-<tr class="odd">
-<td align="left">Delta Air Lines Inc.</td>
-<td align="right">651</td>
+<tr>
+<td style="text-align:left;">
+Delta Air Lines Inc.
+</td>
+<td style="text-align:right;">
+651
+</td>
 </tr>
-<tr class="even">
-<td align="left">Frontier Airlines Inc.</td>
-<td align="right">575</td>
+<tr>
+<td style="text-align:left;">
+Frontier Airlines Inc.
+</td>
+<td style="text-align:right;">
+575
+</td>
 </tr>
-<tr class="odd">
-<td align="left">Hawaiian Airlines Inc.</td>
-<td align="right">407</td>
+<tr>
+<td style="text-align:left;">
+Hawaiian Airlines Inc.
+</td>
+<td style="text-align:right;">
+407
+</td>
 </tr>
-<tr class="even">
-<td align="left">JetBlue Airways</td>
-<td align="right">273</td>
+<tr>
+<td style="text-align:left;">
+JetBlue Airways
+</td>
+<td style="text-align:right;">
+273
+</td>
 </tr>
-<tr class="odd">
-<td align="left">SkyWest Airlines Inc.</td>
-<td align="right">421</td>
+<tr>
+<td style="text-align:left;">
+SkyWest Airlines Inc.
+</td>
+<td style="text-align:right;">
+421
+</td>
 </tr>
-<tr class="even">
-<td align="left">Southwest Airlines Co.</td>
-<td align="right">694</td>
+<tr>
+<td style="text-align:left;">
+Southwest Airlines Co.
+</td>
+<td style="text-align:right;">
+694
+</td>
 </tr>
-<tr class="odd">
-<td align="left">United Air Lines Inc.</td>
-<td align="right">472</td>
+<tr>
+<td style="text-align:left;">
+United Air Lines Inc.
+</td>
+<td style="text-align:right;">
+472
+</td>
 </tr>
-<tr class="even">
-<td align="left">US Airways Inc.</td>
-<td align="right">347</td>
+<tr>
+<td style="text-align:left;">
+US Airways Inc.
+</td>
+<td style="text-align:right;">
+347
+</td>
 </tr>
-<tr class="odd">
-<td align="left">Virgin America</td>
-<td align="right">366</td>
+<tr>
+<td style="text-align:left;">
+Virgin America
+</td>
+<td style="text-align:right;">
+366
+</td>
 </tr>
 </tbody>
 </table>
@@ -387,7 +438,7 @@ max_delays &lt;-<span class="st"> </span>flights2 <span class="op">%&gt;%</span>
 <pre class="sourceCode r"><code class="sourceCode r">flights <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(month <span class="op">==</span><span class="st"> </span><span class="dv">3</span>, day <span class="op">==</span><span class="st"> </span><span class="dv">3</span>) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> dep_time, <span class="dt">y =</span> arr_delay)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</code></pre>
 <div class="figure"><span id="fig:march3plot"></span>
-<img src="_main_files/figure-html/march3plot-1.png" alt="Arrival delay of departing flights from Portland on March 3rd." width="576" />
+<img src="_main_files/figure-html/march3plot-1.png" alt="Arrival delay of departing flights from Portland on March 3rd."  />
 <p class="caption">
 Figure 1.2: Arrival delay of departing flights from Portland on March 3rd.
 </p>
@@ -445,7 +496,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["_main.pdf", "_main.epub"],
+"download": ["_main.pdf"],
 "toc": {
 "collapse": "subsection"
 }

@@ -9,6 +9,8 @@ There is no one who loves pain itself, who seeks after it and wants to have it, 
 <!-- Note a gotcha in the savequote block: for the author, you have to use LaTeX syntax directly with \qauthor, and when doing so, you must also use LaTeX instead of Markdown syntax to, for example, italicise something inside \qauthor{} -->
 
 # Some Final Notes on The OxThesis template
+\minitoc <!-- this will include a mini table of contents-->
+
 ## Quotes by beginning of chapters
 The OxThesis LaTeX template lets you add some wittiness to you thesis by including a block of type `savequote` at the beginning of chapters, using the syntax ```` ```{block type='savequote'} ````. You will probably also want to add the chunk option `include=knitr::opts_knit$get('rmarkdown.pandoc.to') == 'latex'` so these quotes are only included in PDF output.
 
@@ -17,17 +19,17 @@ For more on custom block types, see the relevant section in [_Authoring Books wi
 ## Highlighting of corrections
 The OxThesis template supplies two \LaTeX\ commands you can use directly in your .Rmd files if you only care about PDF output. First, the `mccorrect` command allows you to highlight a short correction \mccorrect{like this one}. When the thesis is typeset normally, the correction will just appear as part of the text. However, when you declare `corrections: yes` in **index.Rmd**, that correction will be highlighted in blue in PDF output. That might be useful for submitting a post-viva, corrected copy to your examiners so they can quickly verify you've completed the task. You must use \LaTeX\ rather than _R Markdown_ syntax inside of a `mccorrect` short correction.
 
-The obvious problem is that raw LaTeX doesn't show up in HTML output, and we might want to showcase corrections in our gitbook output as well. To do that, the `oxforddown` template adds a little **R** function also named `mccorrect` that lets us do the same thing (this is created in the setup chunk that begins **index.Rmd**). [^hackish]
+The obvious problem is that raw LaTeX doesn't show up in HTML output, and we might want to showcase corrections in our gitbook output as well. To do that, the `oxforddown` template adds a little **R** function also named `mccorrect` that lets us do the same thing (this is created in the setup chunk that begins **index.Rmd**).[^hackish]
 
 [^hackish]: This alternative, perhaps more hack-ish, route is taken from [this stack overflow tip](https://stackoverflow.com/questions/47298106/getting-r-printed-texts-to-have-color-esp-in-r-markdown-knits) and uses the function `text_spec` from the package `kableExtra` to apply a background color to corrections.
 
-Now we can `r mccorrect("apply corrections *inline*")`using this function, which will apply the blue corrections background color in both PDF and HTML output. [^argh]
+Now we can `r mccorrect("apply corrections inline")`using this function, which will apply the blue corrections `to background color in both PDF`{mccorrect} and HTML output.[^argh]
 
-[^argh]: It seems this in turn has the bug that the asterisks will correctly be turned into italics on HTML output, but will be rendered literally with LaTeX... FML.
+[^argh]: This in turn causes a problem with markdown formatting syntax - asterisks will correctly be turned into italics in HTML output, but rendered literally with LaTeX... I will eventually correct this by instead using attributes assigned to inline code, so that the stuff to add coloring is only added *after* the markdown has been converted to its output format, see [lee-phillips.org/panflute-gnuplot/](https://lee-phillips.org/panflute-gnuplot/).
 
 For larger chunks, you can put them in a block of type `mccorrection` (which in the **.tex** file for PDF output will put the content between `\begin{mccorrection}` and `\end{mccorrection}`, and in the HTML file for gitbook output between `<div class="mccorrection">` and `</div>`. Rather than doing it directly, we use params$corrections to set it from the YAML header in **index.Rmd**.
 
-We are outputting to: `r as.character(knitr::opts_knit$get('rmarkdown.pandoc.to'))`.
+<!-- We are outputting to: `r as.character(knitr::opts_knit$get('rmarkdown.pandoc.to'))`. -->
 
 ```{block type='mccorrection'}
 For larger chunks, like this paragraph or indeed entire figures, you can use the `mccorrection` environment. This environment **highlights paragraph-sized and larger blocks** with the same blue colour.

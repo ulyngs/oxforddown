@@ -10,7 +10,7 @@
 Template for R Markdown">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="A The First Appendix | Oxford University Thesis Template for R Markdown />
+  <meta property="og:title" content="A The First Appendix | Oxford University Thesis Template for R Markdown" />
   <meta property="og:type" content="book" />
   
   
@@ -18,12 +18,12 @@ Template for R Markdown">
   <meta name="github-repo" content="ulyngs/oxforddown" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="A The First Appendix | Oxford University Thesis Template for R Markdown />
+  <meta name="twitter:title" content="A The First Appendix | Oxford University Thesis Template for R Markdown" />
   <meta name="twitter:site" content="@ulyngs" />
   
   
 
-<meta name="author" content="Your Name">
+<meta name="author" content="Author Name">
 
 
 
@@ -124,6 +124,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
 <body>
@@ -165,8 +166,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.4" data-path="ref-labels.html"><a href="ref-labels.html#bibliographies"><i class="fa fa-check"></i><b>3.4</b> Bibliographies</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="some-final-notes-on-the-oxthesis-template.html"><a href="some-final-notes-on-the-oxthesis-template.html"><i class="fa fa-check"></i><b>4</b> Some Final Notes on The OxThesis template</a><ul>
-<li class="chapter" data-level="4.1" data-path="some-final-notes-on-the-oxthesis-template.html"><a href="some-final-notes-on-the-oxthesis-template.html#diving-in-to-the-oxthesis-latex-template"><i class="fa fa-check"></i><b>4.1</b> Diving in to the OxThesis Latex template</a></li>
-<li class="chapter" data-level="4.2" data-path="some-final-notes-on-the-oxthesis-template.html"><a href="some-final-notes-on-the-oxthesis-template.html#collaborative-writing"><i class="fa fa-check"></i><b>4.2</b> Collaborative writing</a></li>
+<li class="chapter" data-level="4.1" data-path="some-final-notes-on-the-oxthesis-template.html"><a href="some-final-notes-on-the-oxthesis-template.html#quotes-by-beginning-of-chapters"><i class="fa fa-check"></i><b>4.1</b> Quotes by beginning of chapters</a></li>
+<li class="chapter" data-level="4.2" data-path="some-final-notes-on-the-oxthesis-template.html"><a href="some-final-notes-on-the-oxthesis-template.html#highlighting-of-corrections"><i class="fa fa-check"></i><b>4.2</b> Highlighting of corrections</a></li>
+<li class="chapter" data-level="4.3" data-path="some-final-notes-on-the-oxthesis-template.html"><a href="some-final-notes-on-the-oxthesis-template.html#diving-in-to-the-oxthesis-latex-template"><i class="fa fa-check"></i><b>4.3</b> Diving in to the OxThesis LaTeX template</a></li>
+<li class="chapter" data-level="4.4" data-path="some-final-notes-on-the-oxthesis-template.html"><a href="some-final-notes-on-the-oxthesis-template.html#collaborative-writing"><i class="fa fa-check"></i><b>4.4</b> Collaborative writing</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i>Conclusion</a></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
@@ -195,15 +198,47 @@ Template for R Markdown</a>
 <h1><span class="header-section-number">A</span> The First Appendix</h1>
 <p>This first appendix includes the R chunks of code that were hidden throughout the document (using the <code>include = FALSE</code> chunk tag) to help with readibility and/or setup.</p>
 <p><strong>In the index.Rmd file</strong></p>
-<pre class="sourceCode r"><code class="sourceCode r">hook_output_def =<span class="st"> </span>knitr<span class="op">::</span>knit_hooks<span class="op">$</span><span class="kw">get</span>(<span class="st">&#39;output&#39;</span>)
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(knitr)
+<span class="kw">library</span>(kableExtra)
+
+<span class="co">##### add chunk options for PDF output ####</span>
+<span class="co"># add option vspace_output which adds white space after each R command&#39;s output</span>
+hook_output_def =<span class="st"> </span>knitr<span class="op">::</span>knit_hooks<span class="op">$</span><span class="kw">get</span>(<span class="st">&#39;output&#39;</span>)
 knitr<span class="op">::</span>knit_hooks<span class="op">$</span><span class="kw">set</span>(<span class="dt">output =</span> <span class="cf">function</span>(x, options) {
-  <span class="cf">if</span> (<span class="op">!</span><span class="kw">is.null</span>(options<span class="op">$</span>vspaceout)) {
-    end &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">vspace{&quot;</span>, options<span class="op">$</span>vspaceout, <span class="st">&quot;}&quot;</span>)
+  <span class="cf">if</span> (<span class="op">!</span><span class="kw">is.null</span>(options<span class="op">$</span>vspace_output)) {
+    end &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">vspace{&quot;</span>, options<span class="op">$</span>vspace_output, <span class="st">&quot;}&quot;</span>)
     stringr<span class="op">::</span><span class="kw">str_c</span>(<span class="kw">hook_output_def</span>(x, options), end)
   } <span class="cf">else</span> {
     <span class="kw">hook_output_def</span>(x, options)
   }
-})</code></pre>
+})
+
+<span class="co"># add chunk option vspace_chunk which positions entire chunk vertically</span>
+<span class="co"># hook_chunk = knit_hooks$get(&#39;chunk&#39;)</span>
+<span class="co"># knitr::knit_hooks$set(chunk = function(x, options) {</span>
+<span class="co">#   txt = hook_chunk(x, options)</span>
+<span class="co">#   # add chunk option &#39;vspaceout&#39; to position chunks vertically with \vspace</span>
+<span class="co">#   if (!is.null(options$vspace_chunk)) {</span>
+<span class="co">#     latex_vspace &lt;- paste0(&quot;\\1\\\\vspace\\{&quot;, options$vspace_chunk, &quot;\\}&quot;)</span>
+<span class="co">#     txt &lt;- sub(&#39;(\\\\begin[^}]+})&#39;, latex_vspace, txt)  </span>
+<span class="co">#   }</span>
+<span class="co">#   return(txt)</span>
+<span class="co"># })</span>
+
+<span class="co">### function to grab all inline code</span>
+<span class="co"># knitr::knit_hooks$set(inline = function(x){ </span>
+<span class="co">#       if (strsplit(as.character(x), &quot; &quot;)[[1]][[1]] == &quot;mccorrect&quot;) {</span>
+<span class="co">#         paste0(&quot;\\mccorrect{&quot;, x, &quot;}&quot;)</span>
+<span class="co">#       } else {</span>
+<span class="co">#         paste0(&quot;FALSE! &quot;, x)</span>
+<span class="co">#       }</span>
+<span class="co"># })</span>
+
+<span class="co">#this creates a function to supply inline background shading of corrections</span>
+<span class="kw">options</span>(<span class="dt">knitr.table.format =</span> <span class="kw">as.character</span>(knitr<span class="op">::</span>opts_knit<span class="op">$</span><span class="kw">get</span>(<span class="st">&#39;rmarkdown.pandoc.to&#39;</span>)))
+mccorrect &lt;-<span class="st"> </span><span class="cf">function</span>(text) {
+  <span class="kw">text_spec</span>(text, <span class="dt">background =</span> <span class="kw">ifelse</span>(params<span class="op">$</span>corrections, <span class="st">&quot;#CCCCFF&quot;</span>, <span class="st">&quot;#FFFFFF&quot;</span>))
+}</code></pre>
 <p><strong>In Chapter <a href="ref-labels.html#ref-labels">3</a>:</strong></p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(devtools))
   <span class="kw">install.packages</span>(<span class="st">&quot;devtools&quot;</span>, <span class="dt">repos =</span> <span class="st">&quot;http://cran.rstudio.com&quot;</span>)
@@ -263,7 +298,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["_main.pdf", "_main.epub"],
+"download": ["_main.pdf"],
 "toc": {
 "collapse": "subsection"
 }

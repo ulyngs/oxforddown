@@ -16,7 +16,7 @@ output:
 title: |
   Oxford University Thesis \
   Template for R Markdown
-author: Your Name
+author: Author Name
 bibliography: references.bib
 github-repo: ulyngs/oxforddown
 twitter-handle: ulyngs
@@ -34,7 +34,7 @@ abstractseparate: true #include front page w/ abstract for examination schools?
 toc-depth: 2
 lof: true #list of figures in front?
 lot: true #list of tables in front?
-mini-toc: false #mini-table of contents at start of each chapter?
+mini-toc: true #mini-table of contents at start of each chapter? (this just prepares it; you must also add \minitoc after the chapter titles)
 mini-lot: false #mini-list of tables by start of each chapter?
 mini-lof: false #mini-list of figures by start of each chapter?
 draft: true
@@ -46,22 +46,32 @@ page-layout: nobind #'nobind' for PDF output (equal margins), 'twoside' for two-
 <!-- NOTE: if you want to compile the whole thesis, you must click 'Build Book' over on the Build tab; if you just click 'knit' on Index.Rmd, it'll put "Placeholder" as text in individual chapters instead of compiling all the content -->
 <!-- this code chunk enables us to add verticalspace after R output with 'vspaceout', see https://stackoverflow.com/questions/43379224/add-vertical-space-above-and-below-figures-code-chunks  -->
 ```{r setup_output, include=FALSE}
-if(!require(knitr))
-  install.packages("knitr", repos = "http://cran.rstudio.com")
-if(!require(kableExtra))
-    install.packages("kableExtra", repos = "http://cran.rstudio.com")
 library(knitr)
 library(kableExtra)
 
+##### add chunk options for PDF output ####
+# add option vspace_output which adds white space after each R command's output
 hook_output_def = knitr::knit_hooks$get('output')
 knitr::knit_hooks$set(output = function(x, options) {
-  if (!is.null(options$vspaceout)) {
-    end <- paste0("\\vspace{", options$vspaceout, "}")
+  if (!is.null(options$vspace_output)) {
+    end <- paste0("\\vspace{", options$vspace_output, "}")
     stringr::str_c(hook_output_def(x, options), end)
   } else {
     hook_output_def(x, options)
   }
 })
+
+# add chunk option vspace_chunk which positions entire chunk vertically
+# hook_chunk = knit_hooks$get('chunk')
+# knitr::knit_hooks$set(chunk = function(x, options) {
+#   txt = hook_chunk(x, options)
+#   # add chunk option 'vspaceout' to position chunks vertically with \vspace
+#   if (!is.null(options$vspace_chunk)) {
+#     latex_vspace <- paste0("\\1\\\\vspace\\{", options$vspace_chunk, "\\}")
+#     txt <- sub('(\\\\begin[^}]+})', latex_vspace, txt)  
+#   }
+#   return(txt)
+# })
 
 ### function to grab all inline code
 # knitr::knit_hooks$set(inline = function(x){ 
@@ -81,8 +91,7 @@ mccorrect <- function(text) {
 ```
 
 # Introduction {-}
-
-\minitoc  <!-- this creates the mini table of contents -->
+\adjustmtc <!-- if your introduction is unnumbered, then you must include this LaTeX command here to correct counter on the mini table of contents -->
 
 <!-- this adds an image for gitbook output -->
 <img src="figures/cover.png" width="315" height="445" alt="Cover image" align="right" style="margin: 0 1em 0 1em" />

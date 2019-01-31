@@ -1,4 +1,5 @@
 # Mathematics and Science {#math-sci}
+\minitoc <!-- this will include a mini table of contents-->
 
 <!-- Required to number equations in HTML files -->
 <script type="text/x-mathjax-config">

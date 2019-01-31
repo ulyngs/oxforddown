@@ -15,8 +15,8 @@ library(thesisdown)
 flights <- read.csv("data/flights.csv")
 ```
 
-
 # Tables, Graphics, References, and Labels {#ref-labels}
+\minitoc <!-- this will include a mini table of contents-->
 
 ## Tables
 

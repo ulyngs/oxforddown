@@ -23,7 +23,7 @@ Template for R Markdown">
   
   
 
-<meta name="author" content="Your Name">
+<meta name="author" content="Author Name">
 
 
 
@@ -124,6 +124,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
 <body>
@@ -165,8 +166,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.4" data-path="ref-labels.html"><a href="ref-labels.html#bibliographies"><i class="fa fa-check"></i><b>3.4</b> Bibliographies</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="some-final-notes-on-the-oxthesis-template.html"><a href="some-final-notes-on-the-oxthesis-template.html"><i class="fa fa-check"></i><b>4</b> Some Final Notes on The OxThesis template</a><ul>
-<li class="chapter" data-level="4.1" data-path="some-final-notes-on-the-oxthesis-template.html"><a href="some-final-notes-on-the-oxthesis-template.html#diving-in-to-the-oxthesis-latex-template"><i class="fa fa-check"></i><b>4.1</b> Diving in to the OxThesis Latex template</a></li>
-<li class="chapter" data-level="4.2" data-path="some-final-notes-on-the-oxthesis-template.html"><a href="some-final-notes-on-the-oxthesis-template.html#collaborative-writing"><i class="fa fa-check"></i><b>4.2</b> Collaborative writing</a></li>
+<li class="chapter" data-level="4.1" data-path="some-final-notes-on-the-oxthesis-template.html"><a href="some-final-notes-on-the-oxthesis-template.html#quotes-by-beginning-of-chapters"><i class="fa fa-check"></i><b>4.1</b> Quotes by beginning of chapters</a></li>
+<li class="chapter" data-level="4.2" data-path="some-final-notes-on-the-oxthesis-template.html"><a href="some-final-notes-on-the-oxthesis-template.html#highlighting-of-corrections"><i class="fa fa-check"></i><b>4.2</b> Highlighting of corrections</a></li>
+<li class="chapter" data-level="4.3" data-path="some-final-notes-on-the-oxthesis-template.html"><a href="some-final-notes-on-the-oxthesis-template.html#diving-in-to-the-oxthesis-latex-template"><i class="fa fa-check"></i><b>4.3</b> Diving in to the OxThesis LaTeX template</a></li>
+<li class="chapter" data-level="4.4" data-path="some-final-notes-on-the-oxthesis-template.html"><a href="some-final-notes-on-the-oxthesis-template.html#collaborative-writing"><i class="fa fa-check"></i><b>4.4</b> Collaborative writing</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i>Conclusion</a></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
@@ -194,7 +197,7 @@ Template for R Markdown</a>
 <div id="header">
 <h1 class="title">Oxford University Thesis<br />
 Template for R Markdown</h1>
-<p class="author"><em>Your Name</em></p>
+<p class="author"><em>Author Name</em></p>
 <div class="abstract">
 <p class="abstract">Abstract</p>
 <p>This <em>R Markdown</em> template is for writing an Oxford University thesis. The template is built using the Yihui Xie’s <code>bookdown</code> package, with heavy inspiration and reuse of content from Chester Ismay’s <code>thesisdown</code> package, and the <code>OxThesis</code>  template (most recently adapted by John McManigle).</p>
@@ -204,10 +207,10 @@ Congratulations for taking a step further into the lands of open, reproducible s
 </div>
 <div id="introduction" class="section level1 unnumbered">
 <h1>Introduction</h1>
-<p><!-- this creates the mini table of contents --></p>
+<p><!-- if your introduction is unnumbered, then you must include this LaTeX command here to correct counter on the mini table of contents --></p>
 <!-- this adds an image for gitbook output -->
 <p><img src="figures/cover.png" width="315" height="445" alt="Cover image" align="right" style="margin: 0 1em 0 1em" /></p>
-<p>Welcome to the <em>R Markdown</em> Oxford University thesis template. The <span style="background-color:blue;">sample content</span> is adapted from <a href="https://github.com/ismayc/thesisdown"><code>thesisdown</code></a> and the formatting of PDF output is adapted from the <a href="https://github.com/mcmanigle/OxThesis">OxThesis  template</a>. Hopefully writing your thesis in R Markdown will provide a nicer interface for those that have never used TeX or LaTeX before. More importantly, using <em>R Markdown</em> allows you to embed chunks of code directly into your thesis, and generate plots and tables directly from their underlying data, avoiding copy-paste steps. Hopefully, this <em>R Markdown</em> template gets you in the habit of doing reproducible research, which benefits you long-term as a researcher, but also will greatly help anyone that is trying to reproduce or build onto your results down the road.</p>
+<p>Welcome to the <em>R Markdown</em> Oxford University thesis template. The sample content is adapted from <a href="https://github.com/ismayc/thesisdown"><code>thesisdown</code></a> and the formatting of PDF output is adapted from the <a href="https://github.com/mcmanigle/OxThesis">OxThesis  template</a>. Hopefully writing your thesis in R Markdown will provide a nicer interface for those that have never used TeX or LaTeX before. More importantly, using <em>R Markdown</em> allows you to embed chunks of code directly into your thesis, and generate plots and tables directly from their underlying data, avoiding copy-paste steps. Hopefully, this <em>R Markdown</em> template gets you in the habit of doing reproducible research, which benefits you long-term as a researcher, but also will greatly help anyone that is trying to reproduce or build onto your results down the road.</p>
 <p>Hopefully, you won’t have much of a learning period to go through and you will reap the benefits of a nicely formatted thesis. The use of LaTeX in combination with <em>Markdown</em> is more consistent than the output of a word processor, much less prone to corruption or crashing, and the resulting file is smaller than a Word file. While you may never have had problems using Word in the past, your thesis is likely going to be about twice as large and complex as anything you’ve written before, taxing Word’s capabilities. After working with <em>Markdown</em> and <strong>R</strong> together for a few weeks, we are confident this will be your reporting style of choice going forward.</p>
 <div id="why-use-it" class="section level2">
 <h2><span class="header-section-number">0.1</span> Why use it?</h2>
@@ -270,7 +273,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["_main.pdf", "_main.epub"],
+"download": ["_main.pdf"],
 "toc": {
 "collapse": "subsection"
 }
