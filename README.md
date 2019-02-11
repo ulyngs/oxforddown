@@ -18,6 +18,7 @@ The template uses the [bookdown](https://bookdown.org) R package together with t
 - open **oxforddown.Rproj** in RStudio
 - click 'Build Book' on the 'Build' tab (or click its dropdown arrow and choose either `bookdown::pdf_book` or `bookdown::git_book`), or open index.Rmd and click 'knit', to compile the book with sample content
 - please note that I haven't implemented word output yet - it might work but no guarantees!
+
 ![](screenshots/build.png)
 ![](screenshots/compiled.png)
 
