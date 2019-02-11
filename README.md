@@ -25,7 +25,7 @@ The template uses the [bookdown](https://bookdown.org) R package together with t
 To use this template to write your thesis, do the following:
 - set meta data (your name etc) in **index.Rmd**
 - write the individual chapters, as well as abstract and acknowledgements, as **.Rmd** files in **text/**
-- note that **.Rmd** files that you don't want to be included in the body text must be given file names that start with an underscore (e.g. **text/\_abstract.Rmd** and **text/\_acknowledgements.Rmd**) - alternatively, you can specify manually in **\_bookdown.yml** which files should be merged into the body text)
+- note that **.Rmd** files you don't want included in the body text must be given file names that begin with an underscore (e.g. **text/\_abstract.Rmd** and **text/\_acknowledgements.Rmd**) - alternatively, you can specify manually in **\_bookdown.yml** which files should be merged into the body text)
 
 This project will in time be turned into an R package that supply the template as an R Markdown template within RStudio.
 
