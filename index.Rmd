@@ -90,6 +90,23 @@ mccorrect <- function(text) {
 
 ```
 
+```{r package_check, include=FALSE}
+# List of packages required
+pkg <- c("devtools", "bookdown")
+# Check if packages are not installed and assign the
+# names of the packages not installed to the variable new.pkg
+new.pkg <- pkg[!(pkg %in% installed.packages())]
+# If there are any packages in the list that aren't installed,
+# install them
+if (length(new.pkg))
+  install.packages(new.pkg, repos = "http://cran.rstudio.com")
+
+if (!("thesisdown" %in% installed.packages()))
+  devtools::install_github("ismayc/thesisdown")
+```
+
+
+
 # Introduction {-}
 \adjustmtc <!-- if your introduction is unnumbered, then you must include this LaTeX command here to correct counter on the mini table of contents -->
 
