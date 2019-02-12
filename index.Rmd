@@ -43,13 +43,15 @@ params:
 page-layout: nobind #'nobind' for PDF output (equal margins), 'twoside' for two-sided binding (mirror margins and blank pages), leave blank for one-sided binding (left margin > right margin)
 ---
 
-<!-- NOTE: if you want to compile the whole thesis, you must click 'Build Book' over on the Build tab; if you just click 'knit' on Index.Rmd, it'll put "Placeholder" as text in individual chapters instead of compiling all the content -->
-<!-- this code chunk enables us to add verticalspace after R output with 'vspaceout', see https://stackoverflow.com/questions/43379224/add-vertical-space-above-and-below-figures-code-chunks  -->
+<!-- NOTE: if you want to compile the whole thesis, you must click 'Build Book' over on the Build tab; if you just click 'knit' on Index.Rmd, it may just put "Placeholder" as text in individual chapters instead of compiling all the content -->
 ```{r setup_output, include=FALSE}
 library(knitr)
 library(kableExtra)
 
 ##### add chunk options for PDF output ####
+# for guidance on how to create your own chunk options
+# see https://ulyngs.github.io/blog/posts/2019-02-01-how-to-create-your-own-chunk-options-in-r-markdown/
+
 # add option vspace_output which adds white space after each R command's output
 hook_output_def = knitr::knit_hooks$get('output')
 knitr::knit_hooks$set(output = function(x, options) {
@@ -60,27 +62,6 @@ knitr::knit_hooks$set(output = function(x, options) {
     hook_output_def(x, options)
   }
 })
-
-# add chunk option vspace_chunk which positions entire chunk vertically
-# hook_chunk = knit_hooks$get('chunk')
-# knitr::knit_hooks$set(chunk = function(x, options) {
-#   txt = hook_chunk(x, options)
-#   # add chunk option 'vspaceout' to position chunks vertically with \vspace
-#   if (!is.null(options$vspace_chunk)) {
-#     latex_vspace <- paste0("\\1\\\\vspace\\{", options$vspace_chunk, "\\}")
-#     txt <- sub('(\\\\begin[^}]+})', latex_vspace, txt)  
-#   }
-#   return(txt)
-# })
-
-### function to grab all inline code
-# knitr::knit_hooks$set(inline = function(x){ 
-#       if (strsplit(as.character(x), " ")[[1]][[1]] == "mccorrect") {
-#         paste0("\\mccorrect{", x, "}")
-#       } else {
-#         paste0("FALSE! ", x)
-#       }
-# })
 
 #this creates a function to supply inline background shading of corrections
 options(knitr.table.format = as.character(knitr::opts_knit$get('rmarkdown.pandoc.to')))
