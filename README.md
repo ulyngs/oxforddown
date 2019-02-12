@@ -17,13 +17,15 @@ The template uses the [bookdown](https://bookdown.org) R package together with t
 - clone the **ulyngs/oxforddown** repo or download it as a zip
 - open **oxforddown.Rproj** in RStudio
 - click 'Build Book' on the 'Build' tab (or click its dropdown arrow and choose either `bookdown::pdf_book` or `bookdown::git_book`), or open index.Rmd and click 'knit', to compile the book with sample content
+- please note that I haven't implemented word output yet - it might work but no guarantees!
+
 ![](screenshots/build.png)
 ![](screenshots/compiled.png)
 
 To use this template to write your thesis, do the following:
 - set meta data (your name etc) in **index.Rmd**
 - write the individual chapters, as well as abstract and acknowledgements, as **.Rmd** files in **text/**
-- note that **.Rmd** files that you don't want to be included in the body text, must be given file names that start with an underscore (e.g. **text/\_abstract.Rmd** and **text/\_acknowledgements.Rmd**) - alternatively, you can specify manually in **\_bookdown.yml** which files should be merged into the body text)
+- note that **.Rmd** files you don't want included in the body text must be given file names that begin with an underscore (e.g. **text/\_abstract.Rmd** and **text/\_acknowledgements.Rmd**) - alternatively, you can specify manually in **\_bookdown.yml** which files should be merged into the body text)
 
 This project will in time be turned into an R package that supply the template as an R Markdown template within RStudio.
 
