@@ -11,12 +11,12 @@ This first appendix includes the R chunks of code that were hidden throughout th
 
 **In the index.Rmd file**
 
-```{r ref.label='setup_output', results='hide', echo = TRUE}
+```{r ref.label='setup_output', eval=FALSE, echo = TRUE}
 ```
 
 **In Chapter \@ref(ref-labels):**
 
-```{r ref.label='include_packages_2', results='hide', echo = TRUE}
+```{r ref.label='include_packages_2', eval=FALSE, echo = TRUE}
 ```
 
 
