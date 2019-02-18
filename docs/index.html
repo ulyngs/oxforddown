@@ -223,10 +223,14 @@ Having your code and commentary all together in one place has a plethora of bene
 <h2><span class="header-section-number">0.2</span> Who should use it?</h2>
 <p>Anyone who needs to use data analysis, math, tables, a lot of figures, complex cross-references, or who just cares about reproducibility in research should use <em>R Markdown</em>. If you are working in ‘softer’ fields, the user-friendly nature of <em>Markdown</em> and its ability to keep track of and easily include figures, automatically generate a table of contents, index, references, table of figures, etc. should still make it of great benefit to nearly anyone writing a thesis project.</p>
 
-<!-- Note a gotcha in the savequote block: for the qauthor, you have to use LaTeX syntax directly, and when doing so, you must also use LaTeX instead of Markdown syntax to, for example, italicise something inside \qauthor{}
 
-include=knitr::opts_knit$get('rmarkdown.pandoc.to') == 'latex' ensures that it's only shown when output is latex
-
+<!-- 
+Two notes on the chunk options when including a cute quote:
+i) include=knitr::opts_knit$get('rmarkdown.pandoc.to') == 'latex' means that these quotes are only included when output is latex
+ii) add the reference for the quote with quote_author="my author name". 
+iii) You can't use markdown syntax inside chunk options, so if you want to e.g. italicise a book name in the 
+quote reference use a 'text reference': Create a named piece of text with '(ref:label-name) My text',
+then link to this in the chunk option with quote_author='(ref:label-name)'
 -->
 </div>
 </div>

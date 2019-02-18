@@ -1,12 +1,14 @@
-```{block type='savequote', include=knitr::opts_knit$get('rmarkdown.pandoc.to') == 'latex'}
-Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...
+```{block type='savequote', include=knitr::opts_knit$get('rmarkdown.pandoc.to') == 'latex', quote_author='(ref:goethe-quote)'}
+Alles Gescheite ist schon gedacht worden.\
+Man muss nur versuchen, es noch einmal zu denken.
 
-There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain...
+All intelligent thoughts have already been thought;\
+what is necessary is only to try to think them again.
 
-\qauthor{--- Cicero's \textit{de Finibus Bonorum et Malorum}}
+<!-- ending a line with a lonely backslash inserts a linebreak -->
 ```
+(ref:goethe-quote) --- Johann Wolfgang von Goethe [@von_goethe_wilhelm_1829]
 
-<!-- Note a gotcha in the savequote block: for the author, you have to use LaTeX syntax directly with \qauthor, and when doing so, you must also use LaTeX instead of Markdown syntax to, for example, italicise something inside \qauthor{} -->
 
 # Some Final Notes on The OxThesis template
 \minitoc <!-- this will include a mini table of contents-->

@@ -198,11 +198,13 @@ Template for R Markdown</a>
 <h1><span class="header-section-number">A</span> The First Appendix</h1>
 <p>This first appendix includes the R chunks of code that were hidden throughout the document (using the <code>include = FALSE</code> chunk tag) to help with readibility and/or setup.</p>
 <p><strong>In the index.Rmd file</strong></p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(knitr)
-<span class="kw">library</span>(kableExtra)
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(kableExtra)
 
 <span class="co">##### add chunk options for PDF output ####</span>
-<span class="co"># add option vspace_output which adds white space after each R command&#39;s output</span>
+<span class="co"># for guidance on how to create your own chunk options see</span>
+<span class="co"># https://ulyngs.github.io/blog/posts/2019-02-01-how-to-create-your-own-chunk-options-in-r-markdown/</span>
+
+<span class="co"># add chunk option &#39;vspace_output&#39; that can be used to add white space after each R command&#39;s output</span>
 hook_output_def =<span class="st"> </span>knitr<span class="op">::</span>knit_hooks<span class="op">$</span><span class="kw">get</span>(<span class="st">&#39;output&#39;</span>)
 knitr<span class="op">::</span>knit_hooks<span class="op">$</span><span class="kw">set</span>(<span class="dt">output =</span> <span class="cf">function</span>(x, options) {
   <span class="cf">if</span> (<span class="op">!</span><span class="kw">is.null</span>(options<span class="op">$</span>vspace_output)) {
@@ -213,26 +215,18 @@ knitr<span class="op">::</span>knit_hooks<span class="op">$</span><span class="k
   }
 })
 
-<span class="co"># add chunk option vspace_chunk which positions entire chunk vertically</span>
-<span class="co"># hook_chunk = knit_hooks$get(&#39;chunk&#39;)</span>
-<span class="co"># knitr::knit_hooks$set(chunk = function(x, options) {</span>
-<span class="co">#   txt = hook_chunk(x, options)</span>
-<span class="co">#   # add chunk option &#39;vspaceout&#39; to position chunks vertically with \vspace</span>
-<span class="co">#   if (!is.null(options$vspace_chunk)) {</span>
-<span class="co">#     latex_vspace &lt;- paste0(&quot;\\1\\\\vspace\\{&quot;, options$vspace_chunk, &quot;\\}&quot;)</span>
-<span class="co">#     txt &lt;- sub(&#39;(\\\\begin[^}]+})&#39;, latex_vspace, txt)  </span>
-<span class="co">#   }</span>
-<span class="co">#   return(txt)</span>
-<span class="co"># })</span>
-
-<span class="co">### function to grab all inline code</span>
-<span class="co"># knitr::knit_hooks$set(inline = function(x){ </span>
-<span class="co">#       if (strsplit(as.character(x), &quot; &quot;)[[1]][[1]] == &quot;mccorrect&quot;) {</span>
-<span class="co">#         paste0(&quot;\\mccorrect{&quot;, x, &quot;}&quot;)</span>
-<span class="co">#       } else {</span>
-<span class="co">#         paste0(&quot;FALSE! &quot;, x)</span>
-<span class="co">#       }</span>
-<span class="co"># })</span>
+hook_chunk =<span class="st"> </span>knitr<span class="op">::</span>knit_hooks<span class="op">$</span><span class="kw">get</span>(<span class="st">&#39;chunk&#39;</span>)
+knitr<span class="op">::</span>knit_hooks<span class="op">$</span><span class="kw">set</span>(<span class="dt">chunk =</span> <span class="cf">function</span>(x, options) {
+  txt =<span class="st"> </span><span class="kw">hook_chunk</span>(x, options)
+  <span class="co"># add chunk option &#39;quote_author&#39; which adds \qauthor{...} to the end of a chunk.</span>
+  <span class="co"># This is used to give the author of the cute quotes you can add to chapter openings</span>
+  <span class="cf">if</span> (<span class="op">!</span><span class="kw">is.null</span>(options<span class="op">$</span>quote_author)) {
+    latex_include &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;</span><span class="ch">\\\\</span><span class="st">qauthor</span><span class="ch">\\</span><span class="st">{&quot;</span>, options<span class="op">$</span>quote_author, <span class="st">&quot;</span><span class="ch">\\</span><span class="st">}</span><span class="ch">\\</span><span class="st">1&quot;</span>)
+    <span class="kw">gsub</span>(<span class="st">&#39;(</span><span class="ch">\\\\</span><span class="st">end</span><span class="ch">\\</span><span class="st">{savequote</span><span class="ch">\\</span><span class="st">})&#39;</span>, latex_include, txt)
+  } <span class="cf">else</span> {
+    <span class="kw">return</span>(txt)  <span class="co"># pass to default hook</span>
+  }
+})
 
 <span class="co">#this creates a function to supply inline background shading of corrections</span>
 <span class="kw">options</span>(<span class="dt">knitr.table.format =</span> <span class="kw">as.character</span>(knitr<span class="op">::</span>opts_knit<span class="op">$</span><span class="kw">get</span>(<span class="st">&#39;rmarkdown.pandoc.to&#39;</span>)))

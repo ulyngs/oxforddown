@@ -14,7 +14,7 @@ output:
     keep_md: true
   bookdown::word_document2: default   #NOTE: EXPERIMENTAL
 title: |
-  Oxford University Thesis \
+  An Oxford University Thesis \
   Template for R Markdown
 author: Author Name
 bibliography: references.bib
@@ -44,15 +44,17 @@ page-layout: nobind #'nobind' for PDF output (equal margins), 'twoside' for two-
 ---
 
 <!-- NOTE: if you want to compile the whole thesis, you must click 'Build Book' over on the Build tab; if you just click 'knit' on Index.Rmd, it may just put "Placeholder" as text in individual chapters instead of compiling all the content -->
+
+
+<!-- NOTE: you must include the setup_output chunk below by the top of your index.Rmd file; this chunk creates additional chunk option that makes it easier to use the OxThesis LaTeX template with R Markdown -->
 ```{r setup_output, include=FALSE}
-library(knitr)
 library(kableExtra)
 
 ##### add chunk options for PDF output ####
-# for guidance on how to create your own chunk options
-# see https://ulyngs.github.io/blog/posts/2019-02-01-how-to-create-your-own-chunk-options-in-r-markdown/
+# for guidance on how to create your own chunk options see
+# https://ulyngs.github.io/blog/posts/2019-02-01-how-to-create-your-own-chunk-options-in-r-markdown/
 
-# add option vspace_output which adds white space after each R command's output
+# add chunk option 'vspace_output' that can be used to add white space after each R command's output
 hook_output_def = knitr::knit_hooks$get('output')
 knitr::knit_hooks$set(output = function(x, options) {
   if (!is.null(options$vspace_output)) {
@@ -60,6 +62,19 @@ knitr::knit_hooks$set(output = function(x, options) {
     stringr::str_c(hook_output_def(x, options), end)
   } else {
     hook_output_def(x, options)
+  }
+})
+
+hook_chunk = knitr::knit_hooks$get('chunk')
+knitr::knit_hooks$set(chunk = function(x, options) {
+  txt = hook_chunk(x, options)
+  # add chunk option 'quote_author' which adds \qauthor{...} to the end of a chunk.
+  # This is used to give the author of the cute quotes you can add to chapter openings
+  if (!is.null(options$quote_author)) {
+    latex_include <- paste0("\\\\qauthor\\{", options$quote_author, "\\}\\1")
+    gsub('(\\\\end\\{savequote\\})', latex_include, txt)
+  } else {
+    return(txt)  # pass to default hook
   }
 })
 
