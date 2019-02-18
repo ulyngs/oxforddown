@@ -43,48 +43,20 @@ params:
 page-layout: nobind #'nobind' for PDF output (equal margins), 'twoside' for two-sided binding (mirror margins and blank pages), leave blank for one-sided binding (left margin > right margin)
 ---
 
-<!-- NOTE: if you want to compile the whole thesis, you must click 'Build Book' over on the Build tab; if you just click 'knit' on Index.Rmd, it may just put "Placeholder" as text in individual chapters instead of compiling all the content -->
+<!-- NOTE ON COMPILING YOUR THESIS: 
+- if you want to compile the whole thesis, click 'Build Book' over on the Build tab; if you just click 'knit' on Index.Rmd, it may just put "Placeholder" as text in individual chapters instead of compiling all the conten¨¨
+- compiling your thesis will leave a lot of files in your working directory, mostly for the mini tables of content - you can run the command 'file.remove(list.files(pattern = ".log$|.maf$|.mtc"))' in the R console to remove them in one go
+ -->
 
 
-<!-- NOTE: you must include the setup_output chunk below by the top of your index.Rmd file; this chunk creates additional chunk option that makes it easier to use the OxThesis LaTeX template with R Markdown -->
-```{r setup_output, include=FALSE}
-library(kableExtra)
-
-##### add chunk options for PDF output ####
-# for guidance on how to create your own chunk options see
-# https://ulyngs.github.io/blog/posts/2019-02-01-how-to-create-your-own-chunk-options-in-r-markdown/
-
-# add chunk option 'vspace_output' that can be used to add white space after each R command's output
-hook_output_def = knitr::knit_hooks$get('output')
-knitr::knit_hooks$set(output = function(x, options) {
-  if (!is.null(options$vspace_output)) {
-    end <- paste0("\\vspace{", options$vspace_output, "}")
-    stringr::str_c(hook_output_def(x, options), end)
-  } else {
-    hook_output_def(x, options)
-  }
-})
-
-hook_chunk = knitr::knit_hooks$get('chunk')
-knitr::knit_hooks$set(chunk = function(x, options) {
-  txt = hook_chunk(x, options)
-  # add chunk option 'quote_author' which adds \qauthor{...} to the end of a chunk.
-  # This is used to give the author of the cute quotes you can add to chapter openings
-  if (!is.null(options$quote_author)) {
-    latex_include <- paste0("\\\\qauthor\\{", options$quote_author, "\\}\\1")
-    gsub('(\\\\end\\{savequote\\})', latex_include, txt)
-  } else {
-    return(txt)  # pass to default hook
-  }
-})
-
-#this creates a function to supply inline background shading of corrections
-options(knitr.table.format = as.character(knitr::opts_knit$get('rmarkdown.pandoc.to')))
-mccorrect <- function(text) {
-  text_spec(text, background = ifelse(params$corrections, "#CCCCFF", "#FFFFFF"))
-}
-
+```{r create_chunk_options, include=FALSE}
+source('scripts/create_chunk_options.R')
 ```
+<!-- NOTE ON CREATING NEW CHUNK OPTIONS: 
+- include the create_chunk_options chunk above at the top of your index.Rmd file
+- this adds code to create additional chunk options you need (e.g. for adding author references to the quotes you see at the top of chapter 1 and 4 with r markdown rather than latex syntax)
+- if you need to create additional chunk options for your own purposes, I recommend you do it in the file scripts/create_chunk_options.R to avoid clutter in index.Rmd
+-->
 
 ```{r package_check, include=FALSE}
 # List of packages required
@@ -104,7 +76,7 @@ if (!("thesisdown" %in% installed.packages()))
 
 
 # Introduction {-}
-\adjustmtc <!-- if your introduction is unnumbered, then you must include this LaTeX command here to correct counter on the mini table of contents -->
+\adjustmtc <!-- you must include this LaTeX command after unnumbered chapter and part headings to correct the counter on the mini table of contents -->
 
 <!-- this adds an image for gitbook output -->
 <img src="figures/cover.png" width="315" height="445" alt="Cover image" align="right" style="margin: 0 1em 0 1em" />

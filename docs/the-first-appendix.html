@@ -5,12 +5,12 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>A The First Appendix | Oxford University Thesis Template for R Markdown</title>
-  <meta name="description" content="Oxford University Thesis<br />
+  <title>A The First Appendix | An Oxford University Thesis Template for R Markdown</title>
+  <meta name="description" content="An Oxford University Thesis<br />
 Template for R Markdown">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="A The First Appendix | Oxford University Thesis Template for R Markdown" />
+  <meta property="og:title" content="A The First Appendix | An Oxford University Thesis Template for R Markdown" />
   <meta property="og:type" content="book" />
   
   
@@ -18,7 +18,7 @@ Template for R Markdown">
   <meta name="github-repo" content="ulyngs/oxforddown" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="A The First Appendix | Oxford University Thesis Template for R Markdown" />
+  <meta name="twitter:title" content="A The First Appendix | An Oxford University Thesis Template for R Markdown" />
   <meta name="twitter:site" content="@ulyngs" />
   
   
@@ -185,7 +185,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Oxford University Thesis<br />
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">An Oxford University Thesis<br />
 Template for R Markdown</a>
           </h1>
         </div>
@@ -198,41 +198,6 @@ Template for R Markdown</a>
 <h1><span class="header-section-number">A</span> The First Appendix</h1>
 <p>This first appendix includes the R chunks of code that were hidden throughout the document (using the <code>include = FALSE</code> chunk tag) to help with readibility and/or setup.</p>
 <p><strong>In the index.Rmd file</strong></p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(kableExtra)
-
-<span class="co">##### add chunk options for PDF output ####</span>
-<span class="co"># for guidance on how to create your own chunk options see</span>
-<span class="co"># https://ulyngs.github.io/blog/posts/2019-02-01-how-to-create-your-own-chunk-options-in-r-markdown/</span>
-
-<span class="co"># add chunk option &#39;vspace_output&#39; that can be used to add white space after each R command&#39;s output</span>
-hook_output_def =<span class="st"> </span>knitr<span class="op">::</span>knit_hooks<span class="op">$</span><span class="kw">get</span>(<span class="st">&#39;output&#39;</span>)
-knitr<span class="op">::</span>knit_hooks<span class="op">$</span><span class="kw">set</span>(<span class="dt">output =</span> <span class="cf">function</span>(x, options) {
-  <span class="cf">if</span> (<span class="op">!</span><span class="kw">is.null</span>(options<span class="op">$</span>vspace_output)) {
-    end &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">vspace{&quot;</span>, options<span class="op">$</span>vspace_output, <span class="st">&quot;}&quot;</span>)
-    stringr<span class="op">::</span><span class="kw">str_c</span>(<span class="kw">hook_output_def</span>(x, options), end)
-  } <span class="cf">else</span> {
-    <span class="kw">hook_output_def</span>(x, options)
-  }
-})
-
-hook_chunk =<span class="st"> </span>knitr<span class="op">::</span>knit_hooks<span class="op">$</span><span class="kw">get</span>(<span class="st">&#39;chunk&#39;</span>)
-knitr<span class="op">::</span>knit_hooks<span class="op">$</span><span class="kw">set</span>(<span class="dt">chunk =</span> <span class="cf">function</span>(x, options) {
-  txt =<span class="st"> </span><span class="kw">hook_chunk</span>(x, options)
-  <span class="co"># add chunk option &#39;quote_author&#39; which adds \qauthor{...} to the end of a chunk.</span>
-  <span class="co"># This is used to give the author of the cute quotes you can add to chapter openings</span>
-  <span class="cf">if</span> (<span class="op">!</span><span class="kw">is.null</span>(options<span class="op">$</span>quote_author)) {
-    latex_include &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;</span><span class="ch">\\\\</span><span class="st">qauthor</span><span class="ch">\\</span><span class="st">{&quot;</span>, options<span class="op">$</span>quote_author, <span class="st">&quot;</span><span class="ch">\\</span><span class="st">}</span><span class="ch">\\</span><span class="st">1&quot;</span>)
-    <span class="kw">gsub</span>(<span class="st">&#39;(</span><span class="ch">\\\\</span><span class="st">end</span><span class="ch">\\</span><span class="st">{savequote</span><span class="ch">\\</span><span class="st">})&#39;</span>, latex_include, txt)
-  } <span class="cf">else</span> {
-    <span class="kw">return</span>(txt)  <span class="co"># pass to default hook</span>
-  }
-})
-
-<span class="co">#this creates a function to supply inline background shading of corrections</span>
-<span class="kw">options</span>(<span class="dt">knitr.table.format =</span> <span class="kw">as.character</span>(knitr<span class="op">::</span>opts_knit<span class="op">$</span><span class="kw">get</span>(<span class="st">&#39;rmarkdown.pandoc.to&#39;</span>)))
-mccorrect &lt;-<span class="st"> </span><span class="cf">function</span>(text) {
-  <span class="kw">text_spec</span>(text, <span class="dt">background =</span> <span class="kw">ifelse</span>(params<span class="op">$</span>corrections, <span class="st">&quot;#CCCCFF&quot;</span>, <span class="st">&quot;#FFFFFF&quot;</span>))
-}</code></pre>
 <p><strong>In Chapter <a href="ref-labels.html#ref-labels">3</a>:</strong></p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(devtools))
   <span class="kw">install.packages</span>(<span class="st">&quot;devtools&quot;</span>, <span class="dt">repos =</span> <span class="st">&quot;http://cran.rstudio.com&quot;</span>)

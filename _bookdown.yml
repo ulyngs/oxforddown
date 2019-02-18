@@ -8,3 +8,5 @@ rmd_subdir: ["text"]
 #rmd_files: ["index.Rmd", "text/01-rmd-basics.Rmd", "text/02-math-sci.Rmd", "text/03-table-graphics-refs.Rmd", "text/04-oxthesis.Rmd", "text/05-conclusion.Rmd", "text/06-appendices.Rmd", "text/99-references.Rmd"]
   
 output_dir: "docs"
+
+
