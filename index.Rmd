@@ -14,6 +14,7 @@ output:
     keep_md: true
   bookdown::word_document2: default   #NOTE: EXPERIMENTAL
 title: |
+  `oxforddown`: \
   An Oxford University Thesis \
   Template for R Markdown
 author: Author Name
@@ -29,14 +30,14 @@ acknowledgements: |
   `r paste(readLines("text/_acknowledgements.Rmd"), collapse = '\n  ')`
 dedication: For Yihui Xie
 abbreviations: text/abbreviations #without file extension
-bib-humanities: false #set to true if you want author-year in-text
-abstractseparate: true #include front page w/ abstract for examination schools?
+bib-humanities: false   #set to true if you want in-text references formatted as author-year
+abstractseparate: true  #include front page w/ abstract for examination schools?
 toc-depth: 2
 lof: true #list of figures in front?
 lot: true #list of tables in front?
-mini-toc: true #mini-table of contents at start of each chapter? (this just prepares it; you must also add \minitoc after the chapter titles)
-mini-lot: false #mini-list of tables by start of each chapter?
-mini-lof: false #mini-list of figures by start of each chapter?
+mini-toc: true  #mini-table of contents at start of each chapter? (this just prepares it; you must also add \minitoc after the chapter titles)
+mini-lot: false  #mini-list of tables by start of each chapter?
+mini-lof: false  #mini-list of figures by start of each chapter?
 draft: true
 params:
   corrections: true # 'mccorrection' to apply blue background to corrections; otherwise false
