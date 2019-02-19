@@ -7,11 +7,12 @@ output:
     template: templates/template.tex
     keep_tex: true
     citation_package: biblatex
-    md_extensions: +inline_code_attributes
+    pandoc_args: ["--filter", "correction_filter.py"]
   bookdown::gitbook:
     link-citations: true
     css: style.css
     keep_md: true
+    md_extensions: +native_spans
   bookdown::word_document2: default   #NOTE: EXPERIMENTAL
 title: |
   `oxforddown`: \

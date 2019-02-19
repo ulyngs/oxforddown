@@ -436,7 +436,7 @@
 
 \usepackage{framed}
 \OuterFrameSep=-9pt
-\newenvironment{mccorrection}
+\newenvironment{correction}
 {\ifcorrections\colorlet{shadecolor}{blue!20}\if@nobreak\m@csectiontrue\fi\begin{shaded}\ifm@csection\noindent\ignorespaces\fi\fi}
 {\ifcorrections\end{shaded}\m@csectionfalse\ifx\@captype\@undefined\@nobreakfalse\fi\fi}
 

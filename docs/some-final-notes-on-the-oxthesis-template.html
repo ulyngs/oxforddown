@@ -167,8 +167,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.4" data-path="ref-labels.html"><a href="ref-labels.html#bibliographies"><i class="fa fa-check"></i><b>3.4</b> Bibliographies</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="some-final-notes-on-the-oxthesis-template.html"><a href="some-final-notes-on-the-oxthesis-template.html"><i class="fa fa-check"></i><b>4</b> Some Final Notes on The OxThesis template</a><ul>
-<li class="chapter" data-level="4.1" data-path="some-final-notes-on-the-oxthesis-template.html"><a href="some-final-notes-on-the-oxthesis-template.html#quotes-by-beginning-of-chapters"><i class="fa fa-check"></i><b>4.1</b> Quotes by beginning of chapters</a></li>
-<li class="chapter" data-level="4.2" data-path="some-final-notes-on-the-oxthesis-template.html"><a href="some-final-notes-on-the-oxthesis-template.html#highlighting-of-corrections---in-progress"><i class="fa fa-check"></i><b>4.2</b> Highlighting of corrections - IN PROGRESS</a></li>
+<li class="chapter" data-level="4.1" data-path="some-final-notes-on-the-oxthesis-template.html"><a href="some-final-notes-on-the-oxthesis-template.html#beginning-chapters-with-quotes"><i class="fa fa-check"></i><b>4.1</b> Beginning chapters with quotes</a></li>
+<li class="chapter" data-level="4.2" data-path="some-final-notes-on-the-oxthesis-template.html"><a href="some-final-notes-on-the-oxthesis-template.html#highlighting-of-corrections"><i class="fa fa-check"></i><b>4.2</b> Highlighting of corrections</a></li>
 <li class="chapter" data-level="4.3" data-path="some-final-notes-on-the-oxthesis-template.html"><a href="some-final-notes-on-the-oxthesis-template.html#diving-in-to-the-oxthesis-latex-template"><i class="fa fa-check"></i><b>4.3</b> Diving in to the OxThesis LaTeX template</a></li>
 <li class="chapter" data-level="4.4" data-path="some-final-notes-on-the-oxthesis-template.html"><a href="some-final-notes-on-the-oxthesis-template.html#collaborative-writing"><i class="fa fa-check"></i><b>4.4</b> Collaborative writing</a></li>
 </ul></li>
@@ -199,23 +199,28 @@ Template for R Markdown</a>
 <div id="some-final-notes-on-the-oxthesis-template" class="section level1">
 <h1><span class="header-section-number">4</span> Some Final Notes on The OxThesis template</h1>
 <p><!-- this will include a mini table of contents--></p>
-<div id="quotes-by-beginning-of-chapters" class="section level2">
-<h2><span class="header-section-number">4.1</span> Quotes by beginning of chapters</h2>
-<p>The OxThesis LaTeX template lets you add some wittiness to you thesis by including a block of type <code>savequote</code> at the beginning of chapters, using the syntax <code>```{block type='savequote'}</code>. You will probably also want to add the chunk option <code>include=knitr::opts_knit$get('rmarkdown.pandoc.to') == 'latex'</code> so these quotes are only included in PDF output.</p>
-<p>For more on custom block types, see the relevant section in <a href="https://bookdown.org/yihui/bookdown/custom-blocks.html"><em>Authoring Books with R Markdown</em></a>.</p>
+<div id="beginning-chapters-with-quotes" class="section level2">
+<h2><span class="header-section-number">4.1</span> Beginning chapters with quotes</h2>
+<p>The OxThesis LaTeX template lets you add some wittiness to you thesis by including a block of type <code>savequote</code> at the beginning of chapters. With R Markdown, use the syntax <code>```{block type='savequote'}</code>.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>
+You will probably also want to add the chunk option <code>include=knitr::opts_knit$get('rmarkdown.pandoc.to') == 'latex'</code> so that quotes are only included in PDF output.</p>
+<p>Add the reference for the quote with the chunk option <code>quote_author=&quot;my author name&quot;</code>.
+It’s not possible to use markdown syntax inside chunk options, so if you want to e.g. italicise a book name in the reference use a ‘text reference’: Create a named piece of text with ‘(ref:label-name) My text’, then point to this in the chunk option with <code>quote_author='(ref:label-name)'</code>.</p>
 </div>
-<div id="highlighting-of-corrections---in-progress" class="section level2">
-<h2><span class="header-section-number">4.2</span> Highlighting of corrections - IN PROGRESS</h2>
-<p>The OxThesis template supplies two  commands you can use directly in your .Rmd files if you only care about PDF output. First, the <code>mccorrect</code> command allows you to highlight a short correction . When the thesis is typeset normally, the correction will just appear as part of the text. However, when you declare <code>corrections: yes</code> in <strong>index.Rmd</strong>, that correction will be highlighted in blue in PDF output. That might be useful for submitting a post-viva, corrected copy to your examiners so they can quickly verify you’ve completed the task. You must use  rather than <em>R Markdown</em> syntax inside of a <code>mccorrect</code> short correction.</p>
-<p>One challenge this raises is that raw LaTeX doesn’t show up in HTML output, and we might want to showcase corrections in gitbook output as well.
-To achieve that, the <code>oxforddown</code> template adds a little <strong>R</strong> function also named <code>mccorrect</code> that does the same thing (this is created in the setup chunk in <strong>index.Rmd</strong>).<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
-<p>Then we can <span style="     border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: #CCCCFF;">apply corrections inline</span>using this function, which will apply the blue corrections <code>background color in both PDF</code>{mccorrect} and HTML output.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></p>
-<p>For larger chunks, you can put them in a block of type <code>mccorrection</code> (which in the <strong>.tex</strong> file for PDF output will put the content between <code>\begin{mccorrection}</code> and <code>\end{mccorrection}</code>, and in the HTML file for gitbook output between <code>&lt;div class=&quot;mccorrection&quot;&gt;</code> and <code>&lt;/div&gt;</code>.</p>
-<div class="mccorrection">
+<div id="highlighting-of-corrections" class="section level2">
+<h2><span class="header-section-number">4.2</span> Highlighting of corrections</h2>
+<p>For when it comes time to do corrections, you may want to highlight corrections you have made when you submit a post-viva, corrected copy to your examiners so they can quickly verify you’ve completed the task. You can do so like this:</p>
+<p>First, you may highlight <strong>short, inline corrections</strong> by wrapping them in a <code>&lt;span&gt;</code> tag with the class ‘correction’.
+In other words, <code>&lt;span class=&quot;correction&quot;&gt;do like this&lt;/span&gt;</code>, which in <span class="correction">the output will be highlighed in blue</span>.
+To stop inline corrections from being highlighted in PDF output, comment out <code>pandoc_args: [&quot;--filter&quot;, &quot;correction_filter.py&quot;]</code> under <code>bookdown::pdf_book</code> in the YAML header.
+To stop corrections being highlighed in gitbook output, comment out the styling for <code>.correction</code> in <strong>style.css</strong>.</p>
+<p>Second, for entire blocks of added or change material, you can put it in a block of type <code>correction</code>.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>
+Like so:</p>
+<div class="correction">
 <p>
-For larger chunks, like this paragraph or indeed entire figures, you can use the <code>mccorrection</code> environment. This environment <strong>highlights paragraph-sized and larger blocks</strong> with the same blue colour.
+For larger chunks, like this paragraph or indeed entire figures, you can use the <code>correction</code> block type. This environment <strong>highlights paragraph-sized and larger blocks</strong> with the same blue colour.
 </p>
 </div>
+<p>To stop blocks of corrections from being highlighted in PDF output, set <code>corrections: false</code> under <code>params</code> in the YAML header, and comment out the styling for the class <code>.correction</code> in <strong>style.css</strong>.<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a></p>
 </div>
 <div id="diving-in-to-the-oxthesis-latex-template" class="section level2">
 <h2><span class="header-section-number">4.3</span> Diving in to the OxThesis LaTeX template</h2>
@@ -237,8 +242,9 @@ I suspect some great solution will be developed in the not-to-distant future, pr
 <div class="footnotes">
 <hr />
 <ol start="2">
-<li id="fn2"><p>This alternative, slightly hack-ish, route is taken from <a href="https://stackoverflow.com/questions/47298106/getting-r-printed-texts-to-have-color-esp-in-r-markdown-knits">this stack overflow tip</a> and uses the function <code>text_spec</code> from the package <code>kableExtra</code> to apply a background color to corrections.<a href="some-final-notes-on-the-oxthesis-template.html#fnref2" class="footnote-back">↩</a></p></li>
-<li id="fn3"><p>This in turn does cause a problem with markdown formatting syntax - asterisks will correctly be turned into italics in HTML output, but rendered literally with LaTeX… I will eventually correct this by instead using attributes assigned to inline code, so that the stuff to add coloring is only added <em>after</em> the markdown has been converted to its output format, see <a href="https://lee-phillips.org/panflute-gnuplot/">lee-phillips.org/panflute-gnuplot/</a>.<a href="some-final-notes-on-the-oxthesis-template.html#fnref3" class="footnote-back">↩</a></p></li>
+<li id="fn2"><p>For more on custom block types, see the relevant section in <a href="https://bookdown.org/yihui/bookdown/custom-blocks.html"><em>Authoring Books with R Markdown</em></a>.<a href="some-final-notes-on-the-oxthesis-template.html#fnref2" class="footnote-back">↩</a></p></li>
+<li id="fn3"><p>In the <strong>.tex</strong> file for PDF output, this will put the content between <code>\begin{correction}</code> and <code>\end{correction}</code>; in gitbook output it will be put between <code>&lt;div class=&quot;correction&quot;&gt;</code> and <code>&lt;/div&gt;</code>.<a href="some-final-notes-on-the-oxthesis-template.html#fnref3" class="footnote-back">↩</a></p></li>
+<li id="fn4"><p>I will streamline this eventually so that <code>corrections: true/false</code> in the YAML header is the only thing one will need to tweak to adjust whether or not corrections will be highlighted.<a href="some-final-notes-on-the-oxthesis-template.html#fnref4" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
             </section>
