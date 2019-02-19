@@ -7,7 +7,7 @@ The template uses the [bookdown](https://bookdown.org) R package together with t
 # Requirements
 - LaTeX - if you're lazy and got sufficient disc space, just download and install the MacTeX distribution from [tug.org/mactex/](http://www.tug.org/mactex/). If you're short on disc space, go for the BasicTeX distribution from the same site, or Yihui Xie's [TinyTeX](https://yihui.name/tinytex/).
 - [R](https://cran.rstudio.com) and [RStudio](https://www.rstudio.com/products/rstudio/download/) - for the latter, I recommend installing the latest [preview version of RStudio version 1.2](https://www.rstudio.com/products/rstudio/download/preview/) which includes some fantastically useful features.
-- Python plus the `pandocfilters` library (https://github.com/jgm/pandocfilters) (for using pandoc filters to highlight corrections)
+- A Python 2 or 3 installation plus the `pandocfilters` library (https://github.com/jgm/pandocfilters) (for using pandoc filters to highlight corrections)
 - a number of R packages (including `bookdown` and `thesisdown`) which should (hopefully) be automatically installed for you (if you don't have them already) when you knit this project for the first time in RStudio
 
 # Example output
