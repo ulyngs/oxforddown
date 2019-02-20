@@ -1,4 +1,11 @@
+# check if the right packages are installed to create the chunk options
+if (!("knitr" %in% installed.packages()))
+  install.packages("knitr")
+
+if (!("kableExtra" %in% installed.packages()))
+  install.packages("kableExtra")
 library(kableExtra)
+
 
 ##### add chunk options for PDF output ####
 # for guidance on how to create your own chunk options see
