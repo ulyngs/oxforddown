@@ -12,4 +12,4 @@ output_dir: "docs"
 
 # You can provide a link here if you want people to be able to suggest and submit changes
 # to the source .Rmd files on your github repo, cf. https://bookdown.org/yihui/bookdown/html.html
-edit: https://github.com/ulyngs/oxforddown/tree/master/text/%s
+edit: https://github.com/ulyngs/oxforddown/tree/master/%s
