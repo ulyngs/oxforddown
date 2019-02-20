@@ -16,11 +16,11 @@ Template for R Markdown">
   
   
   
-  <meta name="github-repo" content="ulyngs/oxforddown" />
+  
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="3 Tables, Graphics, References, and Labels | oxforddown: An Oxford University Thesis Template for R Markdown" />
-  <meta name="twitter:site" content="@ulyngs" />
+  
   
   
 
@@ -125,7 +125,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-<link rel="stylesheet" href="style.css" type="text/css" />
+<link rel="stylesheet" href="templates/style.css" type="text/css" />
 </head>
 
 <body>
@@ -272,7 +272,7 @@ Figure 3.1: Oxford logo
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> carrier, <span class="dt">y =</span> mean_dep_delay)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">position =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="dt">fill =</span> <span class="st">&quot;red&quot;</span>)</code></pre>
 <div class="figure"><span id="fig:delaysboxplot"></span>
-<img src="_main_files/figure-html/delaysboxplot-1.png" alt="Mean Delays by Airline"  />
+<img src="_main_files/figure-html/delaysboxplot-1.png" alt="Mean Delays by Airline" width="576" />
 <p class="caption">
 Figure 3.2: Mean Delays by Airline
 </p>
@@ -340,14 +340,14 @@ gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
 "github": false,
-"facebook": true,
+"facebook": false,
 "twitter": true,
 "google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": false
 },
 "fontsettings": {
 "theme": "white",
@@ -355,8 +355,8 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": null,
-"text": null
+"link": "https://github.com/ulyngs/oxforddown/tree/master/text/text/03-table-graphics-refs.Rmd",
+"text": "Edit"
 },
 "history": {
 "link": null,

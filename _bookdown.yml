@@ -1,12 +1,15 @@
-# you can be lazy and just let bookdown search for the .Rmd files to merge into your thesis
-# for this to work, make sure to start any acknowledgements and/or abstract Rmd files with 
-# an underscore, e.g. _abstract.Rmd. Otherwise bookdown will start to merge the abstract 
-# in to the body text which almost certainly isn't what you want
+# You can be lazy and just let bookdown search for the .Rmd files to merge into your thesis.
+# For this to work, make sure to start any acknowledgements and/or abstract Rmd files with 
+# an underscore, e.g. _abstract.Rmd. 
+# Otherwise bookdown will start to merge the abstract in to the body text which almost 
+# certainly isn't what you want
 rmd_subdir: ["text"]
 
-#alternatively you can comment out rmd_subdir and specify manually what files to include
+# Alternatively, you can comment out rmd_subdir and specify manually what files to include with rmd_files
 #rmd_files: ["index.Rmd", "text/01-rmd-basics.Rmd", "text/02-math-sci.Rmd", "text/03-table-graphics-refs.Rmd", "text/04-oxthesis.Rmd", "text/05-conclusion.Rmd", "text/06-appendices.Rmd", "text/99-references.Rmd"]
   
 output_dir: "docs"
 
-
+# You can provide a link here if you want people to be able to suggest and submit changes
+# to the source .Rmd files on your github repo, cf. https://bookdown.org/yihui/bookdown/html.html
+edit: https://github.com/ulyngs/oxforddown/tree/master/text/%s

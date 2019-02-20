@@ -1,28 +1,12 @@
 ---
-knit: bookdown::render_book
-documentclass: book
-site: bookdown::bookdown_site
-output:
-  bookdown::pdf_book:
-    template: templates/template.tex
-    keep_tex: true
-    citation_package: biblatex
-    pandoc_args: ["--lua-filter=scripts_and_filters/correction_filter.lua"] #comment out to stop applying blue background to inline corrections
-  bookdown::gitbook:
-    link-citations: true
-    css: style.css
-    keep_md: true
-  bookdown::word_document2: default   #NOTE: EXPERIMENTAL
-params:
-  corrections: true # set false to stop applying blue background to blocks of corrections
+#####################
+## thesis metadata ##
+#####################
 title: |
   `oxforddown`: \
   An Oxford University Thesis \
   Template for R Markdown
 author: Author Name
-bibliography: references.bib
-github-repo: ulyngs/oxforddown
-twitter-handle: ulyngs
 college: Your College
 degree: Doctor of Philosophy
 degreedate: Michaelmas 2018
@@ -31,32 +15,68 @@ abstract: |
 acknowledgements: |
   `r paste(readLines("text/_acknowledgements.Rmd"), collapse = '\n  ')`
 dedication: For Yihui Xie
-abbreviations: text/abbreviations #without file extension
+abbreviations: text/abbreviations # path to .tex file with abbreviations
+
+#######################
+## bibliography path ##
+#######################
+bibliography: references.bib
+
+#####################
+## PDF formatting  ##
+#####################
+abstractseparate: true  # include front page w/ abstract for examination schools?
 bib-humanities: false   #set to true if you want in-text references formatted as author-year
-abstractseparate: true  #include front page w/ abstract for examination schools?
-toc-depth: 2
-lof: true #list of figures in front?
-lot: true #list of tables in front?
-mini-toc: true  #mini-table of contents at start of each chapter? (this just prepares it; you must also add \minitoc after the chapter titles)
-mini-lot: false  #mini-list of tables by start of each chapter?
-mini-lof: false  #mini-list of figures by start of each chapter?
-draft: true
+draft: true # add as DRAFT mark in the footer?
 page-layout: nobind #'nobind' for PDF output (equal margins), 'twoside' for two-sided binding (mirror margins and blank pages), leave blank for one-sided binding (left margin > right margin)
+toc-depth: 2 # depth of table of contents
+lof: true # list of figures in front?
+lot: true # list of tables in front?
+mini-toc: true  # mini-table of contents at start of each chapter? (this just prepares it; you must also add \minitoc after the chapter titles)
+mini-lot: false  # mini-list of tables by start of each chapter?
+mini-lof: false  # mini-list of figures by start of each chapter?
+params:
+  corrections: true # set false to stop applying blue background to blocks of corrections
+
+####################
+## output options ##
+####################
+output:
+  bookdown::pdf_book:
+    template: templates/template.tex
+    keep_tex: true
+    citation_package: biblatex  
+    pandoc_args: ["--lua-filter=scripts_and_filters/correction_filter.lua"] #remove filter to stop applying blue background to inline corrections
+  bookdown::gitbook:
+    link-citations: true
+    css: templates/style.css
+    keep_md: false
+    config:
+      sharing:
+        facebook: false
+        twitter: yes
+        all: false
+  bookdown::word_document2: default   #NOTE: EXPERIMENTAL
+site: bookdown::bookdown_site
+knit: bookdown::render_book
+
 ---
 
-<!-- NOTE ON COMPILING YOUR THESIS: 
-- if you want to compile the whole thesis, click 'Build Book' over on the Build tab; if you just click 'knit' on Index.Rmd, it may just put "Placeholder" as text in individual chapters instead of compiling all the conten¨¨
-- compiling your thesis will leave a lot of files in your working directory, mostly for the mini tables of content - you can run the command 'file.remove(list.files(pattern = ".log$|.maf$|.mtc"))' in the R console to remove them in one go
- -->
+<!-- NOTE ON COMPILING YOUR THESIS:
+i) click 'Build book' over on the Build tab; 
+alternatively, click the little black rectangle to choose between PDF and gitbook output
 
+ii) compiling your thesis will leave random files in your working directory, mostly for the mini tables of content;
+Typing 'file.remove(list.files(pattern = ".log$|.maf$|.mtc"))' in the R console will remove them in one go.
+-->
 
 ```{r create_chunk_options, include=FALSE}
 source('scripts_and_filters/create_chunk_options.R')
 ```
 <!-- NOTE ON CREATING NEW CHUNK OPTIONS: 
-- include the create_chunk_options chunk above at the top of your index.Rmd file
-- this adds code to create additional chunk options you need (e.g. for adding author references to the quotes you see at the top of chapter 1 and 4 with r markdown rather than latex syntax)
-- if you need to create additional chunk options for your own purposes, I recommend you do it in the file scripts/create_chunk_options.R to avoid clutter in index.Rmd
+Include the create_chunk_options chunk above at the top of your index.Rmd file
+This includes code to create additional chunk options you need (e.g. for adding author references to savequotes)
+If you need to create additional chunk options do so in the file scripts/create_chunk_options.R
 -->
 
 ```{r package_check, include=FALSE}

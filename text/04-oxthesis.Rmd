@@ -29,7 +29,7 @@ In other words, `<span class="correction">do like this</span>`, which in <span c
 To stop inline corrections from being highlighted in PDF output, comment out `pandoc_args: ["--lua-filter=scripts_and_filters/correction_filter.lua"]` in the YAML header. 
 To stop corrections being highlighed in gitbook output, comment out the styling for `.correction` in **style.css**.
 
-Second, for entire blocks of added or change material, you can put it in a block of type `correction`.^[In the **.tex** file for PDF output, this will put the content between `\begin{correction}` and `\end{correction}`; in gitbook output it will be put between `<div class="correction">` and `</div>`.]
+Second, for entire blocks of added or changed material, you can put it in a block of type `correction`.^[In the **.tex** file for PDF output, this will put the content between `\begin{correction}` and `\end{correction}`; in gitbook output it will be put between `<div class="correction">` and `</div>`.]
 Like so:
 
 ```{block type='correction'}
