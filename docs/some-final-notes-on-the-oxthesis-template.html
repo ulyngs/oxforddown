@@ -210,8 +210,8 @@ It’s not possible to use markdown syntax inside chunk options, so if you want 
 <h2><span class="header-section-number">4.2</span> Highlighting of corrections</h2>
 <p>For when it comes time to do corrections, you may want to highlight corrections you have made when you submit a post-viva, corrected copy to your examiners so they can quickly verify you’ve completed the task. You can do so like this:</p>
 <p>First, you may highlight <strong>short, inline corrections</strong> by wrapping them in a <code>&lt;span&gt;</code> tag with the class ‘correction’.
-In other words, <code>&lt;span class=&quot;correction&quot;&gt;do like this&lt;/span&gt;</code>, which in <span class="correction">the output will be highlighed in blue</span>.
-To stop inline corrections from being highlighted in PDF output, comment out <code>pandoc_args: [&quot;--filter&quot;, &quot;correction_filter.py&quot;]</code> under <code>bookdown::pdf_book</code> in the YAML header.
+In other words, <code>&lt;span class=&quot;correction&quot;&gt;do like this&lt;/span&gt;</code>, which in <span class="correction">the output will be highlighted in blue</span>.
+To stop inline corrections from being highlighted in PDF output, comment out <code>pandoc_args: [&quot;--lua-filter=scripts_and_filters/correction_filter.lua&quot;]</code> in the YAML header.
 To stop corrections being highlighed in gitbook output, comment out the styling for <code>.correction</code> in <strong>style.css</strong>.</p>
 <p>Second, for entire blocks of added or change material, you can put it in a block of type <code>correction</code>.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>
 Like so:</p>

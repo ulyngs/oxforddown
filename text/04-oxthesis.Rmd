@@ -25,8 +25,8 @@ It's not possible to use markdown syntax inside chunk options, so if you want to
 For when it comes time to do corrections, you may want to highlight corrections you have made when you submit a post-viva, corrected copy to your examiners so they can quickly verify you've completed the task. You can do so like this:
 
 First, you may highlight **short, inline corrections** by wrapping them in a `<span>` tag with the class 'correction'. 
-In other words, `<span class="correction">do like this</span>`, which in <span class="correction">the output will be highlighed in blue</span>.
-To stop inline corrections from being highlighted in PDF output, comment out `pandoc_args: ["--filter", "correction_filter.py"]` under `bookdown::pdf_book` in the YAML header. 
+In other words, `<span class="correction">do like this</span>`, which in <span class="correction">the output will be highlighted in blue</span>.
+To stop inline corrections from being highlighted in PDF output, comment out `pandoc_args: ["--lua-filter=scripts_and_filters/correction_filter.lua"]` in the YAML header. 
 To stop corrections being highlighed in gitbook output, comment out the styling for `.correction` in **style.css**.
 
 Second, for entire blocks of added or change material, you can put it in a block of type `correction`.^[In the **.tex** file for PDF output, this will put the content between `\begin{correction}` and `\end{correction}`; in gitbook output it will be put between `<div class="correction">` and `</div>`.]

@@ -7,13 +7,14 @@ output:
     template: templates/template.tex
     keep_tex: true
     citation_package: biblatex
-    pandoc_args: ["--filter", "correction_filter.py"]
+    pandoc_args: ["--lua-filter=scripts_and_filters/correction_filter.lua"] #comment out to stop applying blue background to inline corrections
   bookdown::gitbook:
     link-citations: true
     css: style.css
     keep_md: true
-    md_extensions: +native_spans
   bookdown::word_document2: default   #NOTE: EXPERIMENTAL
+params:
+  corrections: true # set false to stop applying blue background to blocks of corrections
 title: |
   `oxforddown`: \
   An Oxford University Thesis \
@@ -40,8 +41,6 @@ mini-toc: true  #mini-table of contents at start of each chapter? (this just pre
 mini-lot: false  #mini-list of tables by start of each chapter?
 mini-lof: false  #mini-list of figures by start of each chapter?
 draft: true
-params:
-  corrections: true # 'mccorrection' to apply blue background to corrections; otherwise false
 page-layout: nobind #'nobind' for PDF output (equal margins), 'twoside' for two-sided binding (mirror margins and blank pages), leave blank for one-sided binding (left margin > right margin)
 ---
 
@@ -52,7 +51,7 @@ page-layout: nobind #'nobind' for PDF output (equal margins), 'twoside' for two-
 
 
 ```{r create_chunk_options, include=FALSE}
-source('scripts/create_chunk_options.R')
+source('scripts_and_filters/create_chunk_options.R')
 ```
 <!-- NOTE ON CREATING NEW CHUNK OPTIONS: 
 - include the create_chunk_options chunk above at the top of your index.Rmd file
