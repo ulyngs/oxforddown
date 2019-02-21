@@ -57,6 +57,7 @@ output:
         twitter: yes
         all: false
   bookdown::word_document2: default   #NOTE: EXPERIMENTAL
+documentclass: book
 site: bookdown::bookdown_site
 knit: bookdown::render_book
 
@@ -115,3 +116,4 @@ Having your code and commentary all together in one place has a plethora of bene
 
 ## Who should use it?
 Anyone who needs to use data analysis, math, tables, a lot of figures, complex cross-references, or who just cares about reproducibility in research should use _R Markdown_. If you are working in 'softer' fields, the user-friendly nature of _Markdown_ and its ability to keep track of and easily include figures, automatically generate a table of contents, index, references, table of figures, etc. should still make it of great benefit to nearly anyone writing a thesis project.
+
