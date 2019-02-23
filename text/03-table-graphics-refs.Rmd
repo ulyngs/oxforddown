@@ -57,7 +57,7 @@ If you need a graphic or tabular material to be part of the text, you can just p
 
 In the **R** chunk below, we will load in the Oxford logo stored as `beltcrest.png` in the figures directory.  We then give it the caption of "Oxford logo", the label of "oxfordlogo", and specify that this is a figure.  Make note of the different **R** chunk options that are given in the R Markdown file (not shown in the knitted document).
 
-```{r oxfordlogo, fig.cap="Oxford logo", out.width='60%'}
+```{r oxfordlogo, fig.cap="Oxford logo", out.width='60%', fig.align='center'}
 include_graphics(path = "figures/beltcrest.png")
 ```
 
