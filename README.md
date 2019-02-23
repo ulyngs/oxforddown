@@ -32,8 +32,9 @@ The template uses the [bookdown](https://bookdown.org) R package together with t
 
 ## Writing your thesis
 To use this template to write your thesis, do the following:
-- set meta data (your name, college, etc.) in **index.Rmd**
+- update the YAML header (the stuff at the top between '---') in **index.Rmd** with your name, college, etc.
 - write the individual chapters, as well as abstract and acknowledgements, as **.Rmd** files in **text/**
+- for abbreviations, update **text/abbreviations.tex** (for now, follow the LaTeX syntax in the sample file)
 - note that **.Rmd** files you don't want included in the body text should be given file names that begin with an underscore (e.g. **text/\_abstract.Rmd** and **text/\_acknowledgements.Rmd**) - alternatively, you can specify manually in **\_bookdown.yml** which files should be merged into the body text)
 
 # Current limitations
