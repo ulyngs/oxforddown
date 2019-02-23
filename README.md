@@ -26,7 +26,7 @@ The template uses the [bookdown](https://bookdown.org) R package together with t
 ![](screenshots/build.png)
 ![](screenshots/compiled.png)
 
-### HTML
+### Gitbook output
 - in the terminal (not the R console!) tab, type 'make gitbook'
 - the set of HTML files for the gitbook are stored in the **docs/** folder, and the front page (docs/index.html) is opened in a browser
 
