@@ -12,3 +12,4 @@ text/*.tex
 text/*.aux
 *.mlt*
 _main.*
+.httr-oauth

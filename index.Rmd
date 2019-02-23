@@ -41,6 +41,9 @@ params:
 ####################
 ## output options ##
 ####################
+documentclass: book
+site: bookdown::bookdown_site
+knit: bookdown::render_book
 output:
   bookdown::pdf_book:
     template: templates/template.tex
@@ -57,9 +60,6 @@ output:
         twitter: yes
         all: false
   bookdown::word_document2: default   #NOTE: EXPERIMENTAL
-documentclass: book
-site: bookdown::bookdown_site
-knit: bookdown::render_book
 
 ---
 
@@ -67,8 +67,8 @@ knit: bookdown::render_book
 i) click 'Build book' over on the Build tab; 
 alternatively, click the little black rectangle to choose between PDF and gitbook output
 
-ii) compiling your thesis will leave random files in your working directory, mostly for the mini tables of content;
-Typing 'file.remove(list.files(pattern = ".log$|.maf$|.mtc"))' in the R console will remove them in one go.
+ii) compiling your thesis will leave random files in your working directory, mostly for the mini tables of content
+Type 'make clean' in the terminal, or 'file.remove(list.files(pattern = ".log$|.maf$|.mtc"))' in the R console to remove them
 -->
 
 ```{r create_chunk_options, include=FALSE}
