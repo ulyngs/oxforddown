@@ -38,37 +38,20 @@ mini-lof: false  # mini-list of figures by start of each chapter?
 params:
   corrections: true # set false to stop applying blue background to blocks of corrections
 
-####################
-## output options ##
-####################
+#####################
+## output options  ##
+#####################
+## see _output.yml ##
 documentclass: book
 site: bookdown::bookdown_site
 knit: bookdown::render_book
-output:
-  bookdown::pdf_book:
-    template: templates/template.tex
-    keep_tex: true
-    citation_package: biblatex  
-    pandoc_args: ["--lua-filter=scripts_and_filters/correction_filter.lua"] #remove filter to stop applying blue background to inline corrections
-  bookdown::gitbook:
-    link-citations: true
-    css: templates/style.css
-    keep_md: false
-    config:
-      sharing:
-        facebook: false
-        twitter: yes
-        all: false
-  bookdown::word_document2: default   #NOTE: EXPERIMENTAL
 
 ---
 
 <!-- NOTE ON COMPILING YOUR THESIS:
-i) click 'Build book' over on the Build tab; 
-alternatively, click the little black rectangle to choose between PDF and gitbook output
+For PDF output, click 'Build book' over on the Build tab. Output (and .tex) is stored as docs/_main.pdf
 
-ii) compiling your thesis will leave random files in your working directory, mostly for the mini tables of content
-Type 'make clean' in the terminal, or 'file.remove(list.files(pattern = ".log$|.maf$|.mtc"))' in the R console to remove them
+For gitbook output, go to the terminal (not the R console) and type 'make gitbook'. A set of HTML files is stored in docs/
 -->
 
 ```{r create_chunk_options, include=FALSE}
@@ -76,7 +59,7 @@ source('scripts_and_filters/create_chunk_options.R')
 ```
 <!-- NOTE ON CREATING NEW CHUNK OPTIONS: 
 Include the create_chunk_options chunk above at the top of your index.Rmd file
-This includes code to create additional chunk options you need (e.g. for adding author references to savequotes)
+This will include code to create additional chunk options you need (e.g. for adding author references to savequotes)
 If you need to create additional chunk options do so in the file scripts/create_chunk_options.R
 -->
 
