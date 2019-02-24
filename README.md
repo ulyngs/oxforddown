@@ -30,6 +30,9 @@ The template uses the [bookdown](https://bookdown.org) R package together with t
 - in the terminal (not the R console!) tab, type 'make gitbook'
 - the set of HTML files for the gitbook are stored in the **docs/** folder, and the front page (docs/index.html) is opened in a browser
 
+![](screenshots/build_gitbook.png)
+![](screenshots/compiled_gitbook.png)
+
 ## Writing your thesis
 To use this template to write your thesis, do the following:
 - update the YAML header (the stuff at the top between '---') in **index.Rmd** with your name, college, etc.
