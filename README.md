@@ -36,13 +36,12 @@ The template uses the [bookdown](https://bookdown.org) R package together with t
 ## Writing your thesis
 To use this template to write your thesis, do the following:
 - update the YAML header (the stuff at the top between '---') in **index.Rmd** with your name, college, etc.
-- write the individual chapters, as well as abstract and acknowledgements, as **.Rmd** files in **text/**
-- for abbreviations, update **text/abbreviations.tex** (for now, follow the LaTeX syntax in the sample file)
-- note that **.Rmd** files you don't want included in the body text should be given file names that begin with an underscore (e.g. **text/\_abstract.Rmd** and **text/\_acknowledgements.Rmd**) - alternatively, you can specify manually in **\_bookdown.yml** which files should be merged into the body text)
+- write the individual chapters, as well as abstract and acknowledgements, as **.Rmd** files in the folder **text/**
+- for abbreviations, change **text/abbreviations.tex** to fit your needs (for now, follow the LaTeX syntax in the sample file)
+- note that **.Rmd** files you don't want included in the body of your thesis must be given file names that begin with an underscore (e.g. **text/\_abstract.Rmd** and **text/\_acknowledgements.Rmd**) - alternatively, specify manually in **\_bookdown.yml** which files should be merged into the body text -  otherwise knitr will try include them when you build the thesis
 
 # Current limitations
 - at the moment only PDF and HTML output have been properly implemented; I will look into Word output further down the line
-- at the moment, because the individual chapters live in a subfolder knitting or previewing individual chapters causes trouble - I will implement a fix at some point
 
 This project will in time be turned into an R package that supply the template as an R Markdown template within RStudio.
 
