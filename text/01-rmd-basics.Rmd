@@ -1,3 +1,11 @@
+---
+output:
+  bookdown::word_document2: default
+  bookdown::pdf_document2:
+    template: chapter_templates/brief_template.tex
+  bookdown::html_document2: default
+---
+
 ```{block type='savequote', include=knitr::opts_knit$get('rmarkdown.pandoc.to') == 'latex', quote_author='(ref:cicero-quote)'}
 Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...
 
