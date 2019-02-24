@@ -44,7 +44,6 @@ params:
 ## see _output.yml ##
 documentclass: book
 site: bookdown::bookdown_site
-knit: bookdown::render_book
 
 ---
 
