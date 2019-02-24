@@ -37,8 +37,6 @@
 % UL 1 Dec 2018, fix to include code in shaded environments
 $if(highlighting-macros)$
 $highlighting-macros$
-$endif$
-
 %UL 2 Dec 2018 add a bit of white space before and after code blocks
 \renewenvironment{Shaded}
 {
@@ -48,6 +46,8 @@ $endif$
   \end{snugshade}%
   \vspace{4pt}%
 }
+$endif$
+
 %UL 2 Dec 2018 reduce whitespace around verbatim environments
 \usepackage{etoolbox}
 \makeatletter
