@@ -40,6 +40,22 @@ To use this template to write your thesis, do the following:
 - for abbreviations, change **text/abbreviations.tex** to fit your needs (for now, follow the LaTeX syntax in the sample file)
 - note that **.Rmd** files you don't want included in the body of your thesis must be given file names that begin with an underscore (e.g. **text/\_abstract.Rmd** and **text/\_acknowledgements.Rmd**) - alternatively, specify manually in **\_bookdown.yml** which files should be merged into the body text -  otherwise knitr will try include them when you build the thesis
 
+## Knitting individual chapters
+You might want to knit just an individual chapter without compiling the entire thesis. To do this:
+1. open the **.Rmd** file of a chapter you'd like to knit
+2. add a YAML header, specifying the output formats you might want (e.g. `bookdown::word_document2` for a word document that you might want to upload to Google Docs for feedback from collaborators; NOTE: use the [bookdown formats](https://bookdown.org/yihui/bookdown/a-single-document.html), rather than the plain rmarkdown ones (e.g. rmarkdown::word_document) to include cross-referencing ability
+3 click the dropdown arrow to the right of the 'knit' button, and make sure 'Knit Directory' is set to 'Project Directory'
+4. choose the output format you want to knit to
+
+The output file is then saved in **text/**.
+
+Tip: To remove your knitted chapters and their supporting files (e.g.  \*\_cache and \*\_files/), type `make clean-previews` in the terminal tab.
+
+![](screenshots/preview_yaml.png)
+![](screenshots/preview_knit_dir.png)
+![](screenshots/preview_output.png)
+![](screenshots/preview_word.png)
+
 # Current limitations
 - at the moment only PDF and HTML output have been properly implemented; I will look into Word output further down the line
 
