@@ -52,8 +52,8 @@ The output file is then saved in **text/**.
 Tip: To remove your knitted chapters and their supporting files (e.g.  \*\_cache and \*\_files/), type `make clean-previews` in the terminal tab.
 
 ![](screenshots/preview_yaml.png)
-![](screenshots/preview_knit_dir.png)
-![](screenshots/preview_output.png)
+![](screenshots/knit_dir_small.png)
+![](screenshots/preview_output_small.png)
 ![](screenshots/preview_word.png)
 
 # Current limitations
