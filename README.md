@@ -57,7 +57,7 @@ Tip: To remove your knitted chapters and their supporting files (e.g.  \*\_cache
 ![](screenshots/preview_word.png)
 
 # Current limitations
-- at the moment only PDF and HTML output have been properly implemented; I will look into Word output further down the line
+- at the moment only PDF and HTML output have been properly implemented; I will improve on the Word output further down the line
 
 This project will in time be turned into an R package that supply the template as an R Markdown template within RStudio.
 
