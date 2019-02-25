@@ -7,9 +7,9 @@ gitbook:
 	Rscript -e 'browseURL("docs/index.html")'
 
 clean:
-	rm -f *.log *.mtc* *.maf text/*.log text/*.maf text/*.mtc*
+	rm -f *.log *.mtc* *.maf
 	
 clean-previews:
-	rm -f text/*.docx text/*.html text/*.pdf
+	rm -f text/*.docx text/*.html text/*.pdf text/*.log text/*.maf text/*.mtc*
 	rm -R text/*_cache
 	rm -R text/*_files
