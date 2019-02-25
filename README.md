@@ -44,7 +44,7 @@ To use this template to write your thesis, do the following:
 You might want to knit just an individual chapter without compiling the entire thesis. To do this:
 1. open the **.Rmd** file of a chapter you'd like to knit
 2. add a YAML header, specifying the output formats you might want (e.g. `bookdown::word_document2` for a word document that you might want to upload to Google Docs for feedback from collaborators; NOTE: use the [bookdown formats](https://bookdown.org/yihui/bookdown/a-single-document.html), rather than the plain rmarkdown ones (e.g. rmarkdown::word_document) to include cross-referencing ability
-3 click the dropdown arrow to the right of the 'knit' button, and make sure 'Knit Directory' is set to 'Project Directory'
+3. click the dropdown arrow to the right of the 'knit' button, and make sure 'Knit Directory' is set to 'Project Directory'
 4. choose the output format you want to knit to
 
 The output file is then saved in **text/**.
@@ -52,8 +52,8 @@ The output file is then saved in **text/**.
 Tip: To remove your knitted chapters and their supporting files (e.g.  \*\_cache and \*\_files/), type `make clean-previews` in the terminal tab.
 
 ![](screenshots/preview_yaml.png)
-![](screenshots/preview_knit_dir.png)
-![](screenshots/preview_output.png)
+![](screenshots/knit_dir_small.png)
+![](screenshots/preview_output_small.png)
 ![](screenshots/preview_word.png)
 
 # Current limitations
