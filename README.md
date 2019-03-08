@@ -43,7 +43,7 @@ To use this template to write your thesis, do the following:
 ## Knitting individual chapters
 You might want to knit just an individual chapter without compiling the entire thesis. To do this:
 1. open the **.Rmd** file of a chapter you'd like to knit
-2. add a YAML header, specifying the output formats you might want (e.g. `bookdown::word_document2` for a word document that you might want to upload to Google Docs for feedback from collaborators; NOTE: use the [bookdown formats](https://bookdown.org/yihui/bookdown/a-single-document.html), rather than the plain rmarkdown ones (e.g. rmarkdown::word_document) to include cross-referencing ability
+2. add a YAML header, specifying the output formats you might want (e.g. `bookdown::word_document2` for a word document that you might want to upload to Google Docs for feedback from collaborators; NOTE: use the [bookdown formats](https://bookdown.org/yihui/bookdown/a-single-document.html), rather than the plain rmarkdown ones (e.g. bookdown::word_document2) so that cross-referencing ability is enabled
 3. click the dropdown arrow to the right of the 'knit' button, and make sure 'Knit Directory' is set to 'Project Directory'
 4. choose the output format you want to knit to
 
