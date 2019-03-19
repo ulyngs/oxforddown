@@ -1,9 +1,10 @@
 # check if the right packages are installed to create the chunk options
 if (!("knitr" %in% installed.packages()))
-  install.packages("knitr")
+  install.packages("knitr", repos = "http://cran.rstudio.com")
 
 if (!("kableExtra" %in% installed.packages()))
-  install.packages("kableExtra")
+  install.packages("kableExtra", repos = "http://cran.rstudio.com")
+
 library(kableExtra)
 
 
