@@ -91,13 +91,22 @@ Here is a reference to this image: Figure \@ref(fig:subd).  Note that `echo=FALS
 
 ##### More Figure Stuff {-}
 <!-- in LaTeX output, a heading 5 turns into a paragraph heading, i.e. \paragraph{More Figure Stuff}, which appears as bold text on the same line as the subsequent paragraph text  -->
-Lastly, we will explore how to rotate and enlarge figures using the `out.extra` chunk option.  (Currently this only works in the PDF version of the book.)
+Lastly, we will explore how to rotate figures using the `out.extra` chunk option. The syntax is different for LaTeX and HTML, so for ease we might start by assigning the right string to a variable that will first check what format we're outputting to:
 
-```{r subd2, results="asis", echo=FALSE, out.extra="angle=180, scale=1.1", fig.cap="A Larger Figure, Flipped Upside Down", out.width='60%'}
+```{r define-out-extra, echo=TRUE}
+if (knitr::opts_knit$get('rmarkdown.pandoc.to') == 'latex'){
+  rotate180 <- "angle=180"
+} else {
+  rotate180 <- "style='transform:rotate(180deg);'"
+}
+```
+
+Then we can refer to that in our chunk options to rotate a figure, as shown in Figure \@ref(fig:subd2).
+
+```{r subd2, results="asis", echo=FALSE, out.extra=rotate180, fig.cap="A Larger Figure, Flipped Upside Down", out.width='60%'}
 include_graphics("figures/subdivision.png")
 ```
 
-As another example, here is a reference: Figure \@ref(fig:subd2).
 
 ## Footnotes
 
