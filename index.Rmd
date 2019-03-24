@@ -11,11 +11,11 @@ college: Your College
 degree: Doctor of Philosophy
 degreedate: Michaelmas 2018
 abstract: |
-  `r paste(readLines("text/_abstract.Rmd"), collapse = '\n  ')`
+  `r paste(readLines("chapters/_abstract.Rmd"), collapse = '\n  ')`
 acknowledgements: |
-  `r paste(readLines("text/_acknowledgements.Rmd"), collapse = '\n  ')`
+  `r paste(readLines("chapters/_acknowledgements.Rmd"), collapse = '\n  ')`
 dedication: For Yihui Xie
-abbreviations: text/abbreviations # path to .tex file with abbreviations
+abbreviations: chapters/abbreviations # path to .tex file with abbreviations
 
 #######################
 ## bibliography path ##

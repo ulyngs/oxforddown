@@ -12,7 +12,7 @@
 %
 %-------------------------- identification ---------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{ociamthesis}[2015/04/30 Oxford thesis class]
+\ProvidesClass{templates/ociamthesis}[2015/04/30 Oxford thesis class]
 %-------------------------- initial code -----------------------
 
 % JEM: Defaults to one-side, but passing 'twoside' should set everything up for that
