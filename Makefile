@@ -12,6 +12,6 @@ clean:
 	rm -f *.log *.mtc* *.maf
 	
 clean-previews:
-	rm -f text/*.docx text/*.html text/*.pdf text/*.log text/*.maf text/*.mtc*
-	rm -R text/*_cache
-	rm -R text/*_files
+	rm -f chapters/*.docx chapters/*.html chapters/*.pdf chapters/*.log chapters/*.maf chapters/*.mtc*
+	rm -R chapters/*_cache
+	rm -R chapters/*_files
