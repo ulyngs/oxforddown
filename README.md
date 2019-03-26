@@ -8,7 +8,7 @@ The template uses the [bookdown](https://bookdown.org) R package together with t
 - LaTeX - if you're lazy and got sufficient disc space, just download and install the MacTeX distribution from [tug.org/mactex/](http://www.tug.org/mactex/). If you're short on disc space, go for the BasicTeX distribution from the same site. 
   - (For opaque reasons, Yihui Xie's [TinyTeX](https://yihui.name/tinytex/) sometimes causes trouble! If you are unable to get the PDF output to work with TinyTex, try uninstalling it with tinytex::uninstall_tinytex(), then install the MacTeX LaTeX distribution and restart RStudio.)
 - [R](https://cran.rstudio.com) and [RStudio version 1.2 preview](https://www.rstudio.com/products/rstudio/download/preview/)
-- (pandoc version 2 or higher - comes bundled with RStudio v1.2 preview)
+  - (pandoc version 2 or higher - comes bundled with RStudio v1.2 preview)
 - a number of R packages (including `bookdown` and `thesisdown`) which should (hopefully) be automatically installed for you (if you don't have them already) when you knit this project for the first time in RStudio
 
 # Example output
@@ -37,9 +37,9 @@ The template uses the [bookdown](https://bookdown.org) R package together with t
 ## Writing your thesis
 To use this template to write your thesis, do the following:
 - update the YAML header (the stuff at the top between '---') in **index.Rmd** with your name, college, etc.
-- write the individual chapters, as well as abstract and acknowledgements, as **.Rmd** files in the folder **text/**
-- for abbreviations, change **text/abbreviations.tex** to fit your needs (for now, follow the LaTeX syntax in the sample file)
-- note that **.Rmd** files you don't want included in the body of your thesis must be given file names that begin with an underscore (e.g. **text/\_abstract.Rmd** and **text/\_acknowledgements.Rmd**) - alternatively, specify manually in **\_bookdown.yml** which files should be merged into the body text -  otherwise knitr will try include them when you build the thesis
+- write the individual chapters, as well as abstract and acknowledgements, as **.Rmd** files in the folder **chapters/**
+- for abbreviations, change **chapters/abbreviations.tex** to fit your needs (for now, follow the LaTeX syntax in the sample file)
+- note that **.Rmd** files you don't want included in the body of your thesis must be given file names that begin with an underscore (e.g. **chapters/\_abstract.Rmd** and **chapters/\_acknowledgements.Rmd**) - alternatively, specify manually in **\_bookdown.yml** which files should be merged into the body text -  otherwise knitr will try include them when you build the thesis
 
 ## Knitting individual chapters
 You might want to knit just an individual chapter without compiling the entire thesis. To do this:
@@ -48,7 +48,7 @@ You might want to knit just an individual chapter without compiling the entire t
 3. click the dropdown arrow to the right of the 'knit' button, and make sure 'Knit Directory' is set to 'Project Directory'
 4. choose the output format you want to knit to
 
-The output file is then saved in **text/**.
+The output file is then saved in **chapters/**.
 
 Tip: To remove your knitted chapters and their supporting files (e.g.  \*\_cache and \*\_files/), type `make clean-previews` in the terminal tab.
 
