@@ -29,9 +29,9 @@ abstractseparate: true  # include front page w/ abstract for examination schools
 bib-humanities: false   #set to true if you want in-text references formatted as author-year
 draft: true # add as DRAFT mark in the footer?
 page-layout: nobind #'nobind' for PDF output (equal margins), 'twoside' for two-sided binding (mirror margins and blank pages), leave blank for one-sided binding (left margin > right margin)
-toc-depth: 2 # depth of table of contents
-lof: true # list of figures in front?
-lot: true # list of tables in front?
+toc-depth: 2 # depth of heading to include in table of contents
+lof: true # list of figures in front matter?
+lot: true # list of tables in front matter?
 mini-toc: true  # mini-table of contents at start of each chapter? (this just prepares it; you must also add \minitoc after the chapter titles)
 mini-lot: false  # mini-list of tables by start of each chapter?
 mini-lof: false  # mini-list of figures by start of each chapter?
@@ -58,8 +58,8 @@ source('scripts_and_filters/create_chunk_options.R')
 ```
 <!-- NOTE ON CREATING NEW CHUNK OPTIONS: 
 Include the create_chunk_options chunk above at the top of your index.Rmd file
-This will include code to create additional chunk options you need (e.g. for adding author references to savequotes)
-If you need to create additional chunk options do so in the file scripts/create_chunk_options.R
+This will include code to create additional chunk options (e.g. for adding author references to savequotes)
+If you need to create your own additional chunk options, edit the file scripts/create_chunk_options.R
 -->
 
 ```{r package_check, include=FALSE}
@@ -72,30 +72,35 @@ new.pkg <- pkg[!(pkg %in% installed.packages())]
 # install them
 if (length(new.pkg))
   install.packages(new.pkg, repos = "http://cran.rstudio.com")
-
-if (!("thesisdown" %in% installed.packages()))
-  devtools::install_github("ismayc/thesisdown")
 ```
 
 
-
 # Introduction {-}
-\adjustmtc <!-- you must include this LaTeX command after unnumbered chapter and part headings to correct the counter on the mini table of contents -->
+\adjustmtc <!-- you must include this LaTeX command after unnumbered headings, otherwise the numbers in the mini table of contents will be incorrect -->
 
-<!-- this adds an image for gitbook output -->
+<!-- this adds an image in gitbook output --> 
 <img src="figures/cover.png" width="315" height="445" alt="Cover image" align="right" style="margin: 0 1em 0 1em" />
 
-Welcome to the _R Markdown_ Oxford University thesis template. The sample content is adapted from [`thesisdown`](https://github.com/ismayc/thesisdown) and the formatting of PDF output is adapted from the [OxThesis \LaTeX\ template](https://github.com/mcmanigle/OxThesis). Hopefully writing your thesis in R Markdown will provide a nicer interface for those that have never used TeX or LaTeX before. More importantly, using _R Markdown_ allows you to embed chunks of code directly into your thesis, and generate plots and tables directly from their underlying data, avoiding copy-paste steps. Hopefully, this _R Markdown_ template gets you in the habit of doing reproducible research, which benefits you long-term as a researcher, but also will greatly help anyone that is trying to reproduce or build onto your results down the road.
+Welcome to the *R Markdown* Oxford University thesis template. 
+This sample content is adapted from [`thesisdown`](https://github.com/ismayc/thesisdown) and the formatting of PDF output is adapted from the [OxThesis \LaTeX\ template](https://github.com/mcmanigle/OxThesis). 
+Hopefully, writing your thesis in R Markdown will provide a nicer interface for to the OxThesis template for those that have never used TeX or LaTeX before.
+More importantly, using *R Markdown* allows you to embed chunks of code directly into your thesis, and generate plots and tables directly from their underlying data, avoiding copy-paste steps. 
+Finally, this *R Markdown* template gets you in the habit of doing reproducible research, which benefits you long-term as a researcher, but also will greatly help anyone that is trying to reproduce or build onto your results down the road.
 
-Hopefully, you won't have much of a learning period to go through and you will reap the benefits of a nicely formatted thesis.  The use of LaTeX in combination with _Markdown_ is more consistent than the output of a word processor, much less prone to corruption or crashing, and the resulting file is smaller than a Word file. While you may never have had problems using Word in the past, your thesis is likely going to be about twice as large and complex as anything you've written before, taxing Word's capabilities.  After working with _Markdown_ and **R** together for a few weeks, we are confident this will be your reporting style of choice going forward.
+The use of LaTeX in combination with *Markdown* is more consistent than the output of a word processor, much less prone to corruption or crashing, and the resulting file is smaller than a Word file. 
+While you may never have had problems using Word in the past, your thesis is likely going to be about twice as large and complex as anything you've written before, taxing Word's capabilities.
 
 ## Why use it?
-_R Markdown_ creates a simple and straightforward way to interface with the beauty of LaTeX.  Packages have been written in **R** to work directly with LaTeX to produce nicely formatting tables and paragraphs. In addition to creating a user friendly interface to LaTeX, _R Markdown_ also allows you to read in your data, to analyze it and to visualize it using **R**, **Python** or other languages, and also to provide the documentation and commentary on the results of your project.  Further, it allows for results of code output to be passed inline to the commentary of your results.  You'll see more on this later, focusing on **R**. If you are more into **Python** or something else, you can still use _R Markdown_ - see ['Other language engines'](https://bookdown.org/yihui/rmarkdown/language-engines.html) in Yihui Xie's [_R Markdown: The Definitive Guide_](https://bookdown.org/yihui/rmarkdown/language-engines.html).
+*R Markdown* creates a simple and straightforward way to interface with the beauty of LaTeX.
+Packages have been written in **R** to work directly with LaTeX to produce nicely formatting tables and paragraphs. 
+In addition to creating a user friendly interface to LaTeX, *R Markdown* also allows you to read in your data, to analyze it and to visualize it using **R**, **Python** or other languages, and provide the documentation and commentary on the results of your project.  
+Further, it allows for results of code output to be passed inline to the commentary of your results.
+You'll see more on this later, focusing on **R**. If you are more into **Python** or something else, you can still use *R Markdown* - see ['Other language engines'](https://bookdown.org/yihui/rmarkdown/language-engines.html) in Yihui Xie's [*R Markdown: The Definitive Guide*](https://bookdown.org/yihui/rmarkdown/language-engines.html).
 
 <!-- 
 Having your code and commentary all together in one place has a plethora of benefits!
 -->
 
 ## Who should use it?
-Anyone who needs to use data analysis, math, tables, a lot of figures, complex cross-references, or who just cares about reproducibility in research should use _R Markdown_. If you are working in 'softer' fields, the user-friendly nature of _Markdown_ and its ability to keep track of and easily include figures, automatically generate a table of contents, index, references, table of figures, etc. should still make it of great benefit to nearly anyone writing a thesis project.
-
+Anyone who needs to use data analysis, math, tables, a lot of figures, complex cross-references, or who just cares about reproducibility in research can benefit from using *R Markdown*. 
+If you are working in 'softer' fields, the user-friendly nature of the *Markdown* syntax and its ability to keep track of and easily include figures, automatically generate a table of contents, index, references, table of figures, etc. should still make it of great benefit to your thesis project.
