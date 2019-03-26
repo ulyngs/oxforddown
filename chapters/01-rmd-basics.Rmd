@@ -6,7 +6,7 @@ output:
   bookdown::html_document2: default
 ---
 
-```{block type='savequote', include=knitr::opts_knit$get('rmarkdown.pandoc.to') == 'latex', quote_author='(ref:cicero-quote)'}
+```{block type='savequote', quote_author='(ref:cicero-quote)', include=knitr::opts_knit$get('rmarkdown.pandoc.to') == 'latex'}
 Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...
 
 There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain...
@@ -14,12 +14,10 @@ There is no one who loves pain itself, who seeks after it and wants to have it, 
 (ref:cicero-quote) --- Cicero's *de Finibus Bonorum et Malorum*.
 
 <!-- 
-Two notes on the chunk options when including a cute quote:
-i) include=knitr::opts_knit$get('rmarkdown.pandoc.to') == 'latex' means that these quotes are only included when output is latex
-ii) add the reference for the quote with quote_author="my author name". 
-iii) You can't use markdown syntax inside chunk options, so if you want to e.g. italicise a book name in the 
-quote reference use a 'text reference': Create a named piece of text with '(ref:label-name) My text',
-then link to this in the chunk option with quote_author='(ref:label-name)'
+Three notes on chunk options for adding an opening quote in PDF output:
+i) add the reference for the quote with quote_author="my author name",
+ii) include=knitr::opts_knit$get('rmarkdown.pandoc.to') == 'latex' means that these quotes are only included when output is latex (in HTML output, it would appear by the end of the previous page)
+iii) You can't use markdown syntax inside chunk options, so if you want to e.g. italicise a book name in the quote reference use a 'text reference': Create a named piece of text with '(ref:label-name) My text', then link to this in the chunk option with quote_author='(ref:label-name)'
 -->
 
 # R Markdown Basics {#rmd-basics}
