@@ -1,0 +1,165 @@
+---
+output:
+  bookdown::html_document2: default
+  bookdown::pdf_document2:
+    template: chapter_templates/brief_template.tex
+  bookdown::word_document2: default
+---
+
+```{block type='savequote', quote_author='(ref:cicero-quote)', include=knitr::opts_knit$get('rmarkdown.pandoc.to') == 'latex'}
+Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...
+
+There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain...
+```
+(ref:cicero-quote) --- Cicero's *de Finibus Bonorum et Malorum*.
+
+<!-- 
+Notes for adding an opening quote in PDF output:
+i) add the reference for the quote with the chunk option quote_author="my author name",
+ii) include=knitr::opts_knit$get('rmarkdown.pandoc.to') == 'latex' means that these quotes are only included when output is latex (in HTML output, it would appear by the end of the previous page)
+iii) You can't use markdown syntax inside chunk options, so if you want to e.g. italicise a book name in the quote reference use a 'text reference': Create a named piece of text with '(ref:label-name) My text', then link to this in the chunk option with quote_author='(ref:label-name)'
+-->
+
+# R Markdown Basics: The Markdown syntax {#rmd-basics}
+\minitoc <!-- this will include a mini table of contents-->
+
+<!--
+The {#rmd-basics} text after the chapter declaration will allow us to link throughout the document back to the beginning of this chapter. Reference labels will automatically be generated if you don't specify them, as the lowercase title with spaces replaced by hypens (e.g. r-markdown-basics). Look for the reference to this label at the beginning of the next chapter.
+-->
+
+Here is a brief introduction to using *R Markdown*. 
+*Markdown* is a simple formatting syntax for authoring HTML, PDF, and MS Word documents and much, much more. 
+*R Markdown* provides the flexibility of *Markdown* with the implementation of **R** input and output.  For more details on using *R Markdown* see <http://rmarkdown.rstudio.com>.
+
+Be careful with your spacing in *Markdown* documents. 
+While whitespace largely is ignored, it does at times give *Markdown* signals as to how to proceed. 
+As a habit, try to keep everything left aligned whenever possible, especially as you type a new paragraph. 
+In other words, there is no need to indent basic text in the Rmd document (in fact, it might cause your text to do funny things if you do).
+
+## Markdown basic syntax
+### Italics and bold
+- *Italics* are done like \*this\* or \_this\_
+- **Bold** is done like \*\*this\*\* or \_\_this\_\_
+- **_Bold and italics_** is done like \*\*\*this\*\*\*, \_\_\_this\_\_\_, or (the most transparent solution) \*\*\_this\_\*\*
+
+### Inline code
+- `Inline code` is created with backticks like `` `this` ``
+
+### Sub and superscript 
+Sub~2~ and super^2^ script is created like this\~2\~ and this\^2\^
+
+### Strikethrough
+- ~~Strikethrough~~ is done \~\~like this\~\~
+
+### 'Escaping' (aka "What if I need an actual asterisk?")
+- To include an actual \*, \_ or \\, add another \\ in front of them: \\\*, \\\_, \\\\
+
+### Endash (--), emdash (---)
+- -- and --- with \- \-\- and \-\-\-
+
+### Blockquotes
+Do like this:
+
+> Put a \> in front of the line.
+
+### Headings
+- are done with \#'s of increasing number, i.e. 
+  - \# First-level heading
+  - \#\# Second-level heading
+  - \#\#\# Etc.
+
+In PDF output, a level-five heading will turn into a paragraph heading, i.e. `\paragraph{My level-five heading}`, which will appears as bold text on the same line as the subsequent paragraph.
+
+
+### Lists
+Unordered list by starting a line with an \* or a \-:
+
+* Item 1
+* Item 2
+
+Ordered lists by starting a line with a number:
+
+1. Item 1
+4. Item 2
+
+Notice that you rcan mislabel the numbers and *Markdown* will still make the order right in the output.
+
+To create a sublist, indent the values a bit (at least four spaces or a tab):
+
+1. Item 1
+1. Item 2
+1. Item 3
+    - Item 3a
+    - Item 3b
+
+### Line breaks
+
+The official *Markdown* way to create line breaks is by ending a line with more than two spaces.
+
+Roses are red.
+Violets are blue.
+
+This appears on the same line in the output, because we didn't add spaces after red.
+
+Roses are red.   
+Violets are blue.
+
+This appears with a line break because I added spaces after red.
+
+I find this is confusing, so I recommend the alternative way: Ending a line with a backslash will also create a linebreak:
+
+Roses are red.\
+Violets are blue.
+
+To create a new paragraph, you put a blank line.
+
+Therefore, this line starts its own paragraph.
+
+### Hyperlinks
+- [This is a hyperlink](https://www.google.com) created by writing the text you want turned into a clickable link in `[square brackets followed by a](https://hyperlink-in-parentheses)`
+
+### Footnotes
+- Are created^[my footnote text] by writing either \^[my footnote text] for supplying the footnote content inline, or something like `[^a-random-footnote-label]` and supplying the text elsewhere in the format shown below [^test-footnote]:
+
+`[^a-random-footnote-label]: This is a random test.`
+
+[^test-footnote]: This is a random test.
+
+### Comments
+To write comments within your text that won't actually be included in the output, you use the same syntax as for writing comments in HTML. That is, \<!\-\- this will not be included in the output \-\->.
+
+<!-- It is super useful to use comments! -->
+
+### Math
+The syntax for writing math is stolen from LaTeX. To write a math expression that will be shown **inline**, enclose it in dollar signs.
+  - This: \$A = \\pi*r^{2}\$  Becomes: $A = \pi*r^{2}$
+  
+To write a math expression that will be shown in a block, enclose it in two dollar signs.\
+This: \$\$A = \\pi*r^{2}\$\$ Becomes:
+$$A = \pi*r^{2}$$
+
+To create numbered equations, put them in an 'equation' environment and give them a label with the syntax `(\#eq:label)`, like this:
+
+```latex
+\begin{equation} 
+  f\left(k\right) = \binom{n}{k} p^k\left(1-p\right)^{n-k}
+  (\#eq:binom)
+\end{equation} 
+```
+
+Becomes:
+\begin{equation}
+f\left(k\right)=\binom{n}{k}p^k\left(1-p\right)^{n-k}
+(\#eq:binom)
+\end{equation}
+
+
+For more (e.g. how to theorems), see e.g. the documentation on [bookdown.org](https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html#equations)
+
+
+
+## Additional resources
+
+- *R Markdown: The Definitive Guide* - <https://bookdown.org/yihui/rmarkdown/>
+
+- *R for Data Science* - <https://r4ds.had.co.nz>

@@ -5,13 +5,13 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>1 R Markdown Basics | oxforddown: An Oxford University Thesis Template for R Markdown</title>
+  <title>1 R Markdown Basics: The Markdown syntax | oxforddown: An Oxford University Thesis Template for R Markdown</title>
   <meta name="description" content="oxforddown:<br />
 An Oxford University Thesis<br />
 Template for R Markdown">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="1 R Markdown Basics | oxforddown: An Oxford University Thesis Template for R Markdown" />
+  <meta property="og:title" content="1 R Markdown Basics: The Markdown syntax | oxforddown: An Oxford University Thesis Template for R Markdown" />
   <meta property="og:type" content="book" />
   
   
@@ -19,7 +19,7 @@ Template for R Markdown">
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="1 R Markdown Basics | oxforddown: An Oxford University Thesis Template for R Markdown" />
+  <meta name="twitter:title" content="1 R Markdown Basics: The Markdown syntax | oxforddown: An Oxford University Thesis Template for R Markdown" />
   
   
   
@@ -33,8 +33,8 @@ Template for R Markdown">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="index.html">
-<link rel="next" href="math-sci.html">
+<link rel="prev" href="introduction.html">
+<link rel="next" href="code.html">
 <style type="text/css">
 p.abstract{
   text-align: center;
@@ -138,39 +138,63 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a><ul>
-<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#why-use-it"><i class="fa fa-check"></i><b>0.1</b> Why use it?</a></li>
-<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#who-should-use-it"><i class="fa fa-check"></i><b>0.2</b> Who should use it?</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i>Introduction</a><ul>
+<li class="chapter" data-level="0.1" data-path="introduction.html"><a href="introduction.html#why-use-it"><i class="fa fa-check"></i><b>0.1</b> Why use it?</a></li>
+<li class="chapter" data-level="0.2" data-path="introduction.html"><a href="introduction.html#who-should-use-it"><i class="fa fa-check"></i><b>0.2</b> Who should use it?</a></li>
 </ul></li>
-<li class="chapter" data-level="1" data-path="rmd-basics.html"><a href="rmd-basics.html"><i class="fa fa-check"></i><b>1</b> R Markdown Basics</a><ul>
-<li class="chapter" data-level="1.1" data-path="rmd-basics.html"><a href="rmd-basics.html#lists"><i class="fa fa-check"></i><b>1.1</b> Lists</a></li>
-<li class="chapter" data-level="1.2" data-path="rmd-basics.html"><a href="rmd-basics.html#line-breaks"><i class="fa fa-check"></i><b>1.2</b> Line breaks</a></li>
-<li class="chapter" data-level="1.3" data-path="rmd-basics.html"><a href="rmd-basics.html#r-chunks"><i class="fa fa-check"></i><b>1.3</b> R chunks</a></li>
-<li class="chapter" data-level="1.4" data-path="rmd-basics.html"><a href="rmd-basics.html#inline-code"><i class="fa fa-check"></i><b>1.4</b> Inline code</a></li>
-<li class="chapter" data-level="1.5" data-path="rmd-basics.html"><a href="rmd-basics.html#including-plots"><i class="fa fa-check"></i><b>1.5</b> Including plots</a></li>
-<li class="chapter" data-level="1.6" data-path="rmd-basics.html"><a href="rmd-basics.html#loading-and-exploring-data"><i class="fa fa-check"></i><b>1.6</b> Loading and exploring data</a></li>
-<li class="chapter" data-level="1.7" data-path="rmd-basics.html"><a href="rmd-basics.html#additional-resources"><i class="fa fa-check"></i><b>1.7</b> Additional resources</a></li>
+<li class="chapter" data-level="1" data-path="rmd-basics.html"><a href="rmd-basics.html"><i class="fa fa-check"></i><b>1</b> R Markdown Basics: The Markdown syntax</a><ul>
+<li class="chapter" data-level="1.1" data-path="rmd-basics.html"><a href="rmd-basics.html#markdown-basic-syntax"><i class="fa fa-check"></i><b>1.1</b> Markdown basic syntax</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="rmd-basics.html"><a href="rmd-basics.html#italics-and-bold"><i class="fa fa-check"></i><b>1.1.1</b> Italics and bold</a></li>
+<li class="chapter" data-level="1.1.2" data-path="rmd-basics.html"><a href="rmd-basics.html#inline-code"><i class="fa fa-check"></i><b>1.1.2</b> Inline code</a></li>
+<li class="chapter" data-level="1.1.3" data-path="rmd-basics.html"><a href="rmd-basics.html#sub-and-superscript"><i class="fa fa-check"></i><b>1.1.3</b> Sub and superscript</a></li>
+<li class="chapter" data-level="1.1.4" data-path="rmd-basics.html"><a href="rmd-basics.html#strikethrough"><i class="fa fa-check"></i><b>1.1.4</b> Strikethrough</a></li>
+<li class="chapter" data-level="1.1.5" data-path="rmd-basics.html"><a href="rmd-basics.html#escaping-aka-what-if-i-need-an-actual-asterisk"><i class="fa fa-check"></i><b>1.1.5</b> ‘Escaping’ (aka “What if I need an actual asterisk?”)</a></li>
+<li class="chapter" data-level="1.1.6" data-path="rmd-basics.html"><a href="rmd-basics.html#endash-emdash"><i class="fa fa-check"></i><b>1.1.6</b> Endash (–), emdash (—)</a></li>
+<li class="chapter" data-level="1.1.7" data-path="rmd-basics.html"><a href="rmd-basics.html#blockquotes"><i class="fa fa-check"></i><b>1.1.7</b> Blockquotes</a></li>
+<li class="chapter" data-level="1.1.8" data-path="rmd-basics.html"><a href="rmd-basics.html#headings"><i class="fa fa-check"></i><b>1.1.8</b> Headings</a></li>
+<li class="chapter" data-level="1.1.9" data-path="rmd-basics.html"><a href="rmd-basics.html#lists"><i class="fa fa-check"></i><b>1.1.9</b> Lists</a></li>
+<li class="chapter" data-level="1.1.10" data-path="rmd-basics.html"><a href="rmd-basics.html#line-breaks"><i class="fa fa-check"></i><b>1.1.10</b> Line breaks</a></li>
+<li class="chapter" data-level="1.1.11" data-path="rmd-basics.html"><a href="rmd-basics.html#hyperlinks"><i class="fa fa-check"></i><b>1.1.11</b> Hyperlinks</a></li>
+<li class="chapter" data-level="1.1.12" data-path="rmd-basics.html"><a href="rmd-basics.html#footnotes"><i class="fa fa-check"></i><b>1.1.12</b> Footnotes</a></li>
+<li class="chapter" data-level="1.1.13" data-path="rmd-basics.html"><a href="rmd-basics.html#comments"><i class="fa fa-check"></i><b>1.1.13</b> Comments</a></li>
+<li class="chapter" data-level="1.1.14" data-path="rmd-basics.html"><a href="rmd-basics.html#math"><i class="fa fa-check"></i><b>1.1.14</b> Math</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="math-sci.html"><a href="math-sci.html"><i class="fa fa-check"></i><b>2</b> Mathematics and Science</a><ul>
-<li class="chapter" data-level="2.1" data-path="math-sci.html"><a href="math-sci.html#math"><i class="fa fa-check"></i><b>2.1</b> Math</a></li>
-<li class="chapter" data-level="2.2" data-path="math-sci.html"><a href="math-sci.html#chemistry-101-symbols"><i class="fa fa-check"></i><b>2.2</b> Chemistry 101: Symbols</a><ul>
-<li class="chapter" data-level="2.2.1" data-path="math-sci.html"><a href="math-sci.html#typesetting-reactions"><i class="fa fa-check"></i><b>2.2.1</b> Typesetting reactions</a></li>
-<li class="chapter" data-level="2.2.2" data-path="math-sci.html"><a href="math-sci.html#other-examples-of-reactions"><i class="fa fa-check"></i><b>2.2.2</b> Other examples of reactions</a></li>
+<li class="chapter" data-level="1.2" data-path="rmd-basics.html"><a href="rmd-basics.html#additional-resources"><i class="fa fa-check"></i><b>1.2</b> Additional resources</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="math-sci.html"><a href="math-sci.html#physics"><i class="fa fa-check"></i><b>2.3</b> Physics</a></li>
-<li class="chapter" data-level="2.4" data-path="math-sci.html"><a href="math-sci.html#biology"><i class="fa fa-check"></i><b>2.4</b> Biology</a></li>
+<li class="chapter" data-level="2" data-path="code.html"><a href="code.html"><i class="fa fa-check"></i><b>2</b> Adding code</a><ul>
+<li class="chapter" data-level="2.1" data-path="code.html"><a href="code.html#code-chunks"><i class="fa fa-check"></i><b>2.1</b> Code chunks</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="code.html"><a href="code.html#setup-chunks"><i class="fa fa-check"></i><b>2.1.1</b> Setup chunks</a></li>
+<li class="chapter" data-level="2.1.2" data-path="code.html"><a href="code.html#including-images"><i class="fa fa-check"></i><b>2.1.2</b> Including images</a></li>
+<li class="chapter" data-level="2.1.3" data-path="code.html"><a href="code.html#including-plots"><i class="fa fa-check"></i><b>2.1.3</b> Including plots</a></li>
+<li class="chapter" data-level="2.1.4" data-path="code.html"><a href="code.html#including-tables"><i class="fa fa-check"></i><b>2.1.4</b> Including tables</a></li>
+<li class="chapter" data-level="2.1.5" data-path="code.html"><a href="code.html#a-note-on-content-positioning"><i class="fa fa-check"></i><b>2.1.5</b> A note on content positioning</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="ref-labels.html"><a href="ref-labels.html"><i class="fa fa-check"></i><b>3</b> Tables, Graphics, References, and Labels</a><ul>
-<li class="chapter" data-level="3.1" data-path="ref-labels.html"><a href="ref-labels.html#tables"><i class="fa fa-check"></i><b>3.1</b> Tables</a></li>
-<li class="chapter" data-level="3.2" data-path="ref-labels.html"><a href="ref-labels.html#figures"><i class="fa fa-check"></i><b>3.2</b> Figures</a></li>
-<li class="chapter" data-level="3.3" data-path="ref-labels.html"><a href="ref-labels.html#footnotes"><i class="fa fa-check"></i><b>3.3</b> Footnotes</a></li>
-<li class="chapter" data-level="3.4" data-path="ref-labels.html"><a href="ref-labels.html#bibliographies"><i class="fa fa-check"></i><b>3.4</b> Bibliographies</a></li>
+<li class="chapter" data-level="2.2" data-path="code.html"><a href="code.html#inline-code-1"><i class="fa fa-check"></i><b>2.2</b> Inline code</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="code.html"><a href="code.html#referring-to-results-computed-in-other-languages-than-r"><i class="fa fa-check"></i><b>2.2.1</b> Referring to results computed in other languages than R</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="some-final-notes-on-the-oxthesis-template.html"><a href="some-final-notes-on-the-oxthesis-template.html"><i class="fa fa-check"></i><b>4</b> Some Final Notes on The OxThesis template</a><ul>
-<li class="chapter" data-level="4.1" data-path="some-final-notes-on-the-oxthesis-template.html"><a href="some-final-notes-on-the-oxthesis-template.html#beginning-chapters-with-quotes"><i class="fa fa-check"></i><b>4.1</b> Beginning chapters with quotes</a></li>
-<li class="chapter" data-level="4.2" data-path="some-final-notes-on-the-oxthesis-template.html"><a href="some-final-notes-on-the-oxthesis-template.html#highlighting-of-corrections"><i class="fa fa-check"></i><b>4.2</b> Highlighting of corrections</a></li>
-<li class="chapter" data-level="4.3" data-path="some-final-notes-on-the-oxthesis-template.html"><a href="some-final-notes-on-the-oxthesis-template.html#diving-in-to-the-oxthesis-latex-template"><i class="fa fa-check"></i><b>4.3</b> Diving in to the OxThesis LaTeX template</a></li>
-<li class="chapter" data-level="4.4" data-path="some-final-notes-on-the-oxthesis-template.html"><a href="some-final-notes-on-the-oxthesis-template.html#collaborative-writing"><i class="fa fa-check"></i><b>4.4</b> Collaborative writing</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="cites-and-refs.html"><a href="cites-and-refs.html"><i class="fa fa-check"></i><b>3</b> Citations and cross-references</a><ul>
+<li class="chapter" data-level="3.1" data-path="cites-and-refs.html"><a href="cites-and-refs.html#citations"><i class="fa fa-check"></i><b>3.1</b> Citations</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="cites-and-refs.html"><a href="cites-and-refs.html#pdf-output"><i class="fa fa-check"></i><b>3.1.1</b> PDF output</a></li>
+<li class="chapter" data-level="3.1.2" data-path="cites-and-refs.html"><a href="cites-and-refs.html#gitbook-output"><i class="fa fa-check"></i><b>3.1.2</b> Gitbook output</a></li>
+<li class="chapter" data-level="3.1.3" data-path="cites-and-refs.html"><a href="cites-and-refs.html#insert-references-easily-with-the-citr-add-in"><i class="fa fa-check"></i><b>3.1.3</b> Insert references easily with the <code>citr</code> add-in</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="cites-and-refs.html"><a href="cites-and-refs.html#cross-referencing"><i class="fa fa-check"></i><b>3.2</b> Cross-referencing</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="cites-and-refs.html"><a href="cites-and-refs.html#section-references"><i class="fa fa-check"></i><b>3.2.1</b> Section references</a></li>
+<li class="chapter" data-level="3.2.2" data-path="cites-and-refs.html"><a href="cites-and-refs.html#figure-image-and-plot-references"><i class="fa fa-check"></i><b>3.2.2</b> Figure (image and plot) references</a></li>
+<li class="chapter" data-level="3.2.3" data-path="cites-and-refs.html"><a href="cites-and-refs.html#table-references"><i class="fa fa-check"></i><b>3.2.3</b> Table references</a></li>
+<li class="chapter" data-level="3.2.4" data-path="cites-and-refs.html"><a href="cites-and-refs.html#including-page-numbers"><i class="fa fa-check"></i><b>3.2.4</b> Including page numbers</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="final-notes-on-the-oxthesis-template-and-on-collaboration.html"><a href="final-notes-on-the-oxthesis-template-and-on-collaboration.html"><i class="fa fa-check"></i><b>4</b> Final Notes on The OxThesis template and on collaboration</a><ul>
+<li class="chapter" data-level="4.1" data-path="final-notes-on-the-oxthesis-template-and-on-collaboration.html"><a href="final-notes-on-the-oxthesis-template-and-on-collaboration.html#beginning-chapters-with-quotes"><i class="fa fa-check"></i><b>4.1</b> Beginning chapters with quotes</a></li>
+<li class="chapter" data-level="4.2" data-path="final-notes-on-the-oxthesis-template-and-on-collaboration.html"><a href="final-notes-on-the-oxthesis-template-and-on-collaboration.html#highlighting-corrections"><i class="fa fa-check"></i><b>4.2</b> Highlighting corrections</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="final-notes-on-the-oxthesis-template-and-on-collaboration.html"><a href="final-notes-on-the-oxthesis-template-and-on-collaboration.html#short-inline-corrections"><i class="fa fa-check"></i><b>4.2.1</b> Short, inline corrections</a></li>
+<li class="chapter" data-level="4.2.2" data-path="final-notes-on-the-oxthesis-template-and-on-collaboration.html"><a href="final-notes-on-the-oxthesis-template-and-on-collaboration.html#blocks-of-added-or-changed-material"><i class="fa fa-check"></i><b>4.2.2</b> Blocks of added or changed material</a></li>
+<li class="chapter" data-level="4.2.3" data-path="final-notes-on-the-oxthesis-template-and-on-collaboration.html"><a href="final-notes-on-the-oxthesis-template-and-on-collaboration.html#stopping-corrections-from-being-highlighted-in-the-output"><i class="fa fa-check"></i><b>4.2.3</b> Stopping corrections from being highlighted in the output</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="final-notes-on-the-oxthesis-template-and-on-collaboration.html"><a href="final-notes-on-the-oxthesis-template-and-on-collaboration.html#diving-in-to-the-oxthesis-latex-template"><i class="fa fa-check"></i><b>4.3</b> Diving in to the OxThesis LaTeX template</a></li>
+<li class="chapter" data-level="4.4" data-path="final-notes-on-the-oxthesis-template-and-on-collaboration.html"><a href="final-notes-on-the-oxthesis-template-and-on-collaboration.html#collaborative-writing"><i class="fa fa-check"></i><b>4.4</b> Collaborative writing</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i>Conclusion</a></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
@@ -197,27 +221,89 @@ Template for R Markdown</a>
 
             <section class="normal" id="section-">
 <div id="rmd-basics" class="section level1">
-<h1><span class="header-section-number">1</span> R Markdown Basics</h1>
+<h1><span class="header-section-number">1</span> R Markdown Basics: The Markdown syntax</h1>
 <p><!-- this will include a mini table of contents--></p>
 <!--
 The {#rmd-basics} text after the chapter declaration will allow us to link throughout the document back to the beginning of this chapter. Reference labels will automatically be generated if you don't specify them, as the lowercase title with spaces replaced by hypens (e.g. r-markdown-basics). Look for the reference to this label at the beginning of the next chapter.
 -->
-<p>Here is a brief introduction to using <em>R Markdown</em>. <em>Markdown</em> is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. <em>R Markdown</em> provides the flexibility of <em>Markdown</em> with the implementation of <strong>R</strong> input and output. For more details on using <em>R Markdown</em> see <a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a>.</p>
-<p>Be careful with your spacing in <em>Markdown</em> documents. While whitespace largely is ignored, it does at times give <em>Markdown</em> signals as to how to proceed. As a habit, try to keep everything left aligned whenever possible, especially as you type a new paragraph. In other words, there is no need to indent basic text in the Rmd document (in fact, it might cause your text to do funny things if you do).</p>
-<div id="lists" class="section level2">
-<h2><span class="header-section-number">1.1</span> Lists</h2>
-<p>It’s easy to create a list. It can be unordered like</p>
+<p>Here is a brief introduction to using <em>R Markdown</em>.
+<em>Markdown</em> is a simple formatting syntax for authoring HTML, PDF, and MS Word documents and much, much more.
+<em>R Markdown</em> provides the flexibility of <em>Markdown</em> with the implementation of <strong>R</strong> input and output. For more details on using <em>R Markdown</em> see <a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a>.</p>
+<p>Be careful with your spacing in <em>Markdown</em> documents.
+While whitespace largely is ignored, it does at times give <em>Markdown</em> signals as to how to proceed.
+As a habit, try to keep everything left aligned whenever possible, especially as you type a new paragraph.
+In other words, there is no need to indent basic text in the Rmd document (in fact, it might cause your text to do funny things if you do).</p>
+<div id="markdown-basic-syntax" class="section level2">
+<h2><span class="header-section-number">1.1</span> Markdown basic syntax</h2>
+<div id="italics-and-bold" class="section level3">
+<h3><span class="header-section-number">1.1.1</span> Italics and bold</h3>
+<ul>
+<li><em>Italics</em> are done like *this* or _this_</li>
+<li><strong>Bold</strong> is done like **this** or __this__</li>
+<li><strong><em>Bold and italics</em></strong> is done like ***this***, ___this___, or (the most transparent solution) **_this_**</li>
+</ul>
+</div>
+<div id="inline-code" class="section level3">
+<h3><span class="header-section-number">1.1.2</span> Inline code</h3>
+<ul>
+<li><code>Inline code</code> is created with backticks like <code>`this`</code></li>
+</ul>
+</div>
+<div id="sub-and-superscript" class="section level3">
+<h3><span class="header-section-number">1.1.3</span> Sub and superscript</h3>
+<p>Sub<sub>2</sub> and super<sup>2</sup> script is created like this~2~ and this^2^</p>
+</div>
+<div id="strikethrough" class="section level3">
+<h3><span class="header-section-number">1.1.4</span> Strikethrough</h3>
+<ul>
+<li><del>Strikethrough</del> is done ~~like this~~</li>
+</ul>
+</div>
+<div id="escaping-aka-what-if-i-need-an-actual-asterisk" class="section level3">
+<h3><span class="header-section-number">1.1.5</span> ‘Escaping’ (aka “What if I need an actual asterisk?”)</h3>
+<ul>
+<li>To include an actual *, _ or \, add another \ in front of them: \*, \_, \\</li>
+</ul>
+</div>
+<div id="endash-emdash" class="section level3">
+<h3><span class="header-section-number">1.1.6</span> Endash (–), emdash (—)</h3>
+<ul>
+<li>– and — with - -- and ---</li>
+</ul>
+</div>
+<div id="blockquotes" class="section level3">
+<h3><span class="header-section-number">1.1.7</span> Blockquotes</h3>
+<p>Do like this:</p>
+<blockquote>
+<p>Put a &gt; in front of the line.</p>
+</blockquote>
+</div>
+<div id="headings" class="section level3">
+<h3><span class="header-section-number">1.1.8</span> Headings</h3>
+<ul>
+<li>are done with #’s of increasing number, i.e.
+<ul>
+<li># First-level heading</li>
+<li>## Second-level heading</li>
+<li>### Etc.</li>
+</ul></li>
+</ul>
+<p>In PDF output, a level-five heading will turn into a paragraph heading, i.e. <code>\paragraph{My level-five heading}</code>, which will appears as bold text on the same line as the subsequent paragraph.</p>
+</div>
+<div id="lists" class="section level3">
+<h3><span class="header-section-number">1.1.9</span> Lists</h3>
+<p>Unordered list by starting a line with an * or a -:</p>
 <ul>
 <li>Item 1</li>
 <li>Item 2</li>
 </ul>
-<p>or it can be ordered like</p>
+<p>Ordered lists by starting a line with a number:</p>
 <ol style="list-style-type: decimal">
 <li>Item 1</li>
 <li>Item 2</li>
 </ol>
-<p>Notice that I intentionally mislabeled Item 2 as number 4. <em>Markdown</em> automatically figures this out! You can put any numbers in the list and it will create the list. Check it out below.</p>
-<p>To create a sublist, just indent the values a bit (at least four spaces or a tab). (Here’s one case where indentation is key!)</p>
+<p>Notice that you rcan mislabel the numbers and <em>Markdown</em> will still make the order right in the output.</p>
+<p>To create a sublist, indent the values a bit (at least four spaces or a tab):</p>
 <ol style="list-style-type: decimal">
 <li>Item 1</li>
 <li>Item 2</li>
@@ -228,226 +314,61 @@ The {#rmd-basics} text after the chapter declaration will allow us to link throu
 </ul></li>
 </ol>
 </div>
-<div id="line-breaks" class="section level2">
-<h2><span class="header-section-number">1.2</span> Line breaks</h2>
-<p>Make sure to add white space between lines if you’d like to start a new paragraph. Look at what happens below in the outputted document if you don’t:</p>
-<p>Here is the first sentence. Here is another sentence. Here is the last sentence to end the paragraph.
-This should be a new paragraph.</p>
-<p><em>Now for the correct way:</em> Here is the first sentence. Here is another sentence. Here is the last sentence to end the paragraph.</p>
-<p>This should be a new paragraph.</p>
+<div id="line-breaks" class="section level3">
+<h3><span class="header-section-number">1.1.10</span> Line breaks</h3>
+<p>The official <em>Markdown</em> way to create line breaks is by ending a line with more than two spaces.</p>
+<p>Roses are red.
+Violets are blue.</p>
+<p>This appears on the same line in the output, because we didn’t add spaces after red.</p>
+<p>Roses are red.<br />
+Violets are blue.</p>
+<p>This appears with a line break because I added spaces after red.</p>
+<p>I find this is confusing, so I recommend the alternative way: Ending a line with a backslash will also create a linebreak:</p>
+<p>Roses are red.<br />
+Violets are blue.</p>
+<p>To create a new paragraph, you put a blank line.</p>
+<p>Therefore, this line starts its own paragraph.</p>
 </div>
-<div id="r-chunks" class="section level2">
-<h2><span class="header-section-number">1.3</span> R chunks</h2>
-<p>When you click the <strong>Knit</strong> button above a document will be generated that includes both content as well as the output of any embedded <strong>R</strong> code chunks within the document. You can embed an <strong>R</strong> code chunk like this (<code>cars</code> is a built-in <strong>R</strong> dataset):</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(cars)</code></pre>
-<pre><code>##      speed           dist       
-##  Min.   : 4.0   Min.   :  2.00  
-##  1st Qu.:12.0   1st Qu.: 26.00  
-##  Median :15.0   Median : 36.00  
-##  Mean   :15.4   Mean   : 42.98  
-##  3rd Qu.:19.0   3rd Qu.: 56.00  
-##  Max.   :25.0   Max.   :120.00</code></pre>
-</div>
-<div id="inline-code" class="section level2">
-<h2><span class="header-section-number">1.4</span> Inline code</h2>
-<p>If you’d like to put the results of your analysis directly into your discussion, add inline code like this:</p>
-<blockquote>
-<p>The <code>cos</code> of <span class="math inline">\(2 \pi\)</span> is 1.</p>
-</blockquote>
-<p>Another example would be the direct calculation of the standard deviation:</p>
-<blockquote>
-<p>The standard deviation of <code>speed</code> in <code>cars</code> is 5.2876444.</p>
-</blockquote>
-<p>One last neat feature is the use of the <code>ifelse</code> conditional statement which can be used to output text depending on the result of an <strong>R</strong> calculation:</p>
-<blockquote>
-<p>The standard deviation is less than 6.</p>
-</blockquote>
-<p>Note the use of <code>&gt;</code> here, which signifies a quotation environment that will be indented.</p>
-<p>As you see with <code>$2 \pi$</code> above, mathematics can be added by surrounding the mathematical text with dollar signs. More examples of this are in <a href="math-sci.html#math-sci">Mathematics and Science</a>.</p>
-</div>
-<div id="including-plots" class="section level2">
-<h2><span class="header-section-number">1.5</span> Including plots</h2>
-<p>You can also embed plots. For example, Figure <a href="rmd-basics.html#fig:pressure">1.1</a> shows a way to use the base <strong>R</strong> graphics package to produce a plot using the built-in <code>pressure</code> dataset.</p>
-<div class="figure"><span id="fig:pressure"></span>
-<img src="_main_files/figure-html/pressure-1.png" alt="A dynamically generated plot" width="672" />
-<p class="caption">
-Figure 1.1: A dynamically generated plot
-</p>
-</div>
-<p>Note that the <code>echo=FALSE</code> parameter was added to the code chunk to prevent printing of the <strong>R</strong> code that generated the plot. There are plenty of other ways to add chunk options. More information is available at <a href="http://yihui.name/knitr/options/" class="uri">http://yihui.name/knitr/options/</a>.</p>
-<p>Another useful chunk option is the setting of <code>cache=TRUE</code> as you see here. If document rendering becomes time consuming due to long computations or plots that are expensive to generate you can use knitr caching to improve performance. Later in this file, you’ll see a way to reference plots created in <strong>R</strong> or external figures.</p>
-</div>
-<div id="loading-and-exploring-data" class="section level2">
-<h2><span class="header-section-number">1.6</span> Loading and exploring data</h2>
-<p>Included in this template is a file called <code>flights.csv</code>. This file includes a subset of the larger dataset of information about all flights that departed from Seattle and Portland in 2014. More information about this dataset and its <strong>R</strong> package is available at <a href="http://github.com/ismayc/pnwflights14" class="uri">http://github.com/ismayc/pnwflights14</a>. This subset includes only Portland flights and only rows that were complete with no missing values. Merges were also done with the <code>airports</code> and <code>airlines</code> data sets in the <code>pnwflights14</code> package to get more descriptive airport and airline names.</p>
-<p>We can load in this data set using the following command:</p>
-<pre class="sourceCode r"><code class="sourceCode r">flights &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/flights.csv&quot;</span>)</code></pre>
-<p>The data is now stored in the data frame called <code>flights</code> in <strong>R</strong>. To get a better feel for the variables included in this dataset we can use a variety of functions. Here we can see the dimensions (rows by columns) and also the names of the columns. (Note also how we use the chunk option <code>vspaceout</code> to add a bit of white space after each R command’s output - this chunk option does not exist by default, but is created by the chunk you will find if you inspect <strong>index.Rmd</strong>)</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dim</span>(flights)</code></pre>
-<pre><code>## [1] 52808    16</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(flights)</code></pre>
-<pre><code>##  [1] &quot;month&quot;        &quot;day&quot;          &quot;dep_time&quot;     &quot;dep_delay&quot;   
-##  [5] &quot;arr_time&quot;     &quot;arr_delay&quot;    &quot;carrier&quot;      &quot;tailnum&quot;     
-##  [9] &quot;flight&quot;       &quot;dest&quot;         &quot;air_time&quot;     &quot;distance&quot;    
-## [13] &quot;hour&quot;         &quot;minute&quot;       &quot;carrier_name&quot; &quot;dest_name&quot;</code></pre>
-<p>Another good idea is to take a look at the dataset in table form. With this dataset having more than 50,000 rows, we won’t explicitly show the results of the command here. I recommend you enter the command into the Console <strong><em>after</em></strong> you have run the <strong>R</strong> chunks above to load the data into <strong>R</strong>.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">View</span>(flights)</code></pre>
-<p>While not required, it is highly recommended you use the <code>dplyr</code> package to manipulate and summarize your data set as needed. It uses a syntax that is easy to understand using chaining operations. Below I’ve created a few examples of using <code>dplyr</code> to get information about the Portland flights in 2014. You will also see the use of the <code>ggplot2</code> package, which produces beautiful, high-quality academic visuals.</p>
-<p>We begin by checking to ensure that needed packages are installed and then we load them into our current working environment:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># List of packages required for this analysis</span>
-pkg &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;dplyr&quot;</span>, <span class="st">&quot;ggplot2&quot;</span>, <span class="st">&quot;knitr&quot;</span>, <span class="st">&quot;bookdown&quot;</span>, <span class="st">&quot;devtools&quot;</span>, <span class="st">&quot;thesisdown&quot;</span>)
-<span class="co"># Check if packages are not installed and assign the</span>
-<span class="co"># names of the packages not installed to the variable new.pkg</span>
-new.pkg &lt;-<span class="st"> </span>pkg[<span class="op">!</span>(pkg <span class="op">%in%</span><span class="st"> </span><span class="kw">installed.packages</span>())]
-<span class="co"># If there are any packages in the list that aren&#39;t installed,</span>
-<span class="co"># install them</span>
-<span class="cf">if</span> (<span class="kw">length</span>(new.pkg))
-  <span class="kw">install.packages</span>(new.pkg, <span class="dt">repos =</span> <span class="st">&quot;http://cran.rstudio.com&quot;</span>)
-<span class="co"># Load packages (thesisdown will load all of the packages as well)</span>
-<span class="kw">library</span>(thesisdown)</code></pre>
-
-<p>The example we show here does the following:</p>
+<div id="hyperlinks" class="section level3">
+<h3><span class="header-section-number">1.1.11</span> Hyperlinks</h3>
 <ul>
-<li><p>Selects only the <code>carrier_name</code> and <code>arr_delay</code> from the <code>flights</code> dataset and then assigns this subset to a new variable called <code>flights2</code>.</p></li>
-<li><p>Using <code>flights2</code>, we determine the largest arrival delay for each of the carriers.</p></li>
+<li><a href="https://www.google.com">This is a hyperlink</a> created by writing the text you want turned into a clickable link in <code>[square brackets followed by a](https://hyperlink-in-parentheses)</code></li>
 </ul>
-<pre class="sourceCode r"><code class="sourceCode r">flights2 &lt;-<span class="st"> </span>flights <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">select</span>(carrier_name, arr_delay)
-max_delays &lt;-<span class="st"> </span>flights2 <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">group_by</span>(carrier_name) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">max_arr_delay =</span> <span class="kw">max</span>(arr_delay, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))</code></pre>
-<p>A useful function in the <code>knitr</code> package for making nice tables in <em>R Markdown</em> is called <code>kable</code>. It is much easier to use than manually entering values into a table by copying and pasting values into Excel or LaTeX. This again goes to show how nice reproducible documents can be! (Note the use of <code>results=&quot;asis&quot;</code>, which will produce the table instead of the code to create the table.) The <code>caption.short</code> argument is used to include a shorter title to appear in the List of Tables.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">kable</span>(max_delays,
-      <span class="dt">col.names =</span> <span class="kw">c</span>(<span class="st">&quot;Airline&quot;</span>, <span class="st">&quot;Max Arrival Delay&quot;</span>),
-      <span class="dt">caption =</span> <span class="st">&quot;Maximum Delays by Airline&quot;</span>,
-      <span class="dt">caption.short =</span> <span class="st">&quot;Max Delays by Airline&quot;</span>,
-      <span class="dt">longtable =</span> <span class="ot">TRUE</span>,
-      <span class="dt">booktabs =</span> <span class="ot">TRUE</span>)</code></pre>
-<table>
-<caption>
-<span id="tab:maxdelays">Table 1.1: </span>Maximum Delays by Airline
-</caption>
-<thead>
-<tr>
-<th style="text-align:left;">
-Airline
-</th>
-<th style="text-align:right;">
-Max Arrival Delay
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-Alaska Airlines Inc.
-</td>
-<td style="text-align:right;">
-338
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-American Airlines Inc.
-</td>
-<td style="text-align:right;">
-1539
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Delta Air Lines Inc.
-</td>
-<td style="text-align:right;">
-651
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Frontier Airlines Inc.
-</td>
-<td style="text-align:right;">
-575
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Hawaiian Airlines Inc.
-</td>
-<td style="text-align:right;">
-407
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-JetBlue Airways
-</td>
-<td style="text-align:right;">
-273
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-SkyWest Airlines Inc.
-</td>
-<td style="text-align:right;">
-421
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Southwest Airlines Co.
-</td>
-<td style="text-align:right;">
-694
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-United Air Lines Inc.
-</td>
-<td style="text-align:right;">
-472
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-US Airways Inc.
-</td>
-<td style="text-align:right;">
-347
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Virgin America
-</td>
-<td style="text-align:right;">
-366
-</td>
-</tr>
-</tbody>
-</table>
-<p>The last two options make the table a little easier-to-read.</p>
-<p>We can further look into the properties of the largest value here for American Airlines Inc. To do so, we can isolate the row corresponding to the arrival delay of 1539 minutes for American in our original <code>flights</code> dataset.</p>
-<pre class="sourceCode r"><code class="sourceCode r">flights <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(arr_delay <span class="op">==</span><span class="st"> </span><span class="dv">1539</span>,
-                  carrier_name <span class="op">==</span><span class="st"> &quot;American Airlines Inc.&quot;</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">select</span>(<span class="op">-</span><span class="kw">c</span>(month, day, carrier, dest_name, hour,
-            minute, carrier_name, arr_delay))</code></pre>
-<pre><code>##   dep_time dep_delay arr_time tailnum flight dest air_time distance
-## 1     1403      1553     1934  N595AA   1568  DFW      182     1616</code></pre>
-<p>We see that the flight occurred on March 3rd and departed a little after 2 PM on its way to Dallas/Fort Worth. Lastly, Figure <a href="rmd-basics.html#fig:march3plot">1.2</a> shows how we can visualize the arrival delay of all departing flights from Portland on March 3rd against time of departure.</p>
-<pre class="sourceCode r"><code class="sourceCode r">flights <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(month <span class="op">==</span><span class="st"> </span><span class="dv">3</span>, day <span class="op">==</span><span class="st"> </span><span class="dv">3</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> dep_time, <span class="dt">y =</span> arr_delay)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</code></pre>
-<div class="figure"><span id="fig:march3plot"></span>
-<img src="_main_files/figure-html/march3plot-1.png" alt="Arrival delay of departing flights from Portland on March 3rd." width="576" />
-<p class="caption">
-Figure 1.2: Arrival delay of departing flights from Portland on March 3rd.
-</p>
+</div>
+<div id="footnotes" class="section level3">
+<h3><span class="header-section-number">1.1.12</span> Footnotes</h3>
+<ul>
+<li>Are created<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> by writing either ^[my footnote text] for supplying the footnote content inline, or something like <code>[^a-random-footnote-label]</code> and supplying the text elsewhere in the format shown below:<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></li>
+</ul>
+<p><code>[^a-random-footnote-label]: This is a random test.</code></p>
+</div>
+<div id="comments" class="section level3">
+<h3><span class="header-section-number">1.1.13</span> Comments</h3>
+<p>To write comments within your text that won’t actually be included in the output, you use the same syntax as for writing comments in HTML. That is, &lt;!-- this will not be included in the output --&gt;.</p>
+<!-- It is super useful to use comments! -->
+</div>
+<div id="math" class="section level3">
+<h3><span class="header-section-number">1.1.14</span> Math</h3>
+<p>The syntax for writing math is stolen from LaTeX. To write a math expression that will be shown <strong>inline</strong>, enclose it in dollar signs.
+- This: $A = \pi*r^{2}$ Becomes: <span class="math inline">\(A = \pi*r^{2}\)</span></p>
+<p>To write a math expression that will be shown in a block, enclose it in two dollar signs.<br />
+This: $$A = \pi*r^{2}$$ Becomes:
+<span class="math display">\[A = \pi*r^{2}\]</span></p>
+<p>To create numbered equations, put them in an ‘equation’ environment and give them a label with the syntax <code>(\#eq:label)</code>, like this:</p>
+<pre class="sourceCode latex"><code class="sourceCode latex"><span class="kw">\begin</span>{<span class="ex">equation</span>}<span class="ss"> </span>
+<span class="ss">  f</span><span class="sc">\left</span><span class="ss">(k</span><span class="sc">\right</span><span class="ss">) = </span><span class="sc">\binom</span><span class="ss">{n}{k} p^k</span><span class="sc">\left</span><span class="ss">(1-p</span><span class="sc">\right</span><span class="ss">)^{n-k}</span>
+<span class="ss">  (</span><span class="sc">\#</span><span class="ss">eq:binom)</span>
+<span class="kw">\end</span>{<span class="ex">equation</span>} </code></pre>
+<p>Becomes:
+<span class="math display" id="eq:binom">\[\begin{equation}
+f\left(k\right)=\binom{n}{k}p^k\left(1-p\right)^{n-k}
+\tag{1.1}
+\end{equation}\]</span></p>
+<p>For more (e.g. how to theorems), see e.g. the documentation on <a href="https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html#equations">bookdown.org</a></p>
 </div>
 </div>
 <div id="additional-resources" class="section level2">
-<h2><span class="header-section-number">1.7</span> Additional resources</h2>
+<h2><span class="header-section-number">1.2</span> Additional resources</h2>
 <ul>
 <li><p><em>R Markdown: The Definitive Guide</em> - <a href="https://bookdown.org/yihui/rmarkdown/" class="uri">https://bookdown.org/yihui/rmarkdown/</a></p></li>
 <li><p><em>R for Data Science</em> - <a href="https://r4ds.had.co.nz" class="uri">https://r4ds.had.co.nz</a></p></li>
@@ -455,13 +376,20 @@ Figure 1.2: Arrival delay of departing flights from Portland on March 3rd.
 
 </div>
 </div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>my footnote text<a href="rmd-basics.html#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn2"><p>This is a random test.<a href="rmd-basics.html#fnref2" class="footnote-back">↩</a></p></li>
+</ol>
+</div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="math-sci.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="introduction.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="code.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -491,7 +419,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/ulyngs/oxforddown/tree/master/text/01-rmd-basics.Rmd",
+"link": "https://github.com/ulyngs/oxforddown/tree/master/chapters/01-rmd-basics-markdown.Rmd",
 "text": "Edit"
 },
 "history": {

@@ -1,12 +1,13 @@
-```{block type='savequote', include=knitr::opts_knit$get('rmarkdown.pandoc.to') == 'latex'}
-Alles Gescheite ist schon gedacht worden.   <!-- ending a line with 2+ spaces gives a line break -->
+```{block type='savequote', include=knitr::opts_knit$get('rmarkdown.pandoc.to') == 'latex', quote_author='(ref:goethe-quote)'}
+Alles Gescheite ist schon gedacht worden.\
 Man muss nur versuchen, es noch einmal zu denken.
 
-All intelligent thoughts have already been thought;   
+All intelligent thoughts have already been thought;\
 what is necessary is only to try to think them again.
 
-\qauthor{--- Johann Wolfgang von Goethe \cite{von_goethe_wilhelm_1829}}
+<!-- ending a line with a lonely backslash inserts a linebreak -->
 ```
+(ref:goethe-quote) --- Johann Wolfgang von Goethe [@von_goethe_wilhelm_1829]
 
 # Conclusion {-}
 If we don't want Conclusion to have a chapter number next to it, we can add the `{-}` attribute.

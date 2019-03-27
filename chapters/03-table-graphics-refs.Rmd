@@ -1,119 +1,150 @@
-```{r include_packages_2, include = FALSE}
-if(!require(devtools))
-  install.packages("devtools", repos = "http://cran.rstudio.com")
-if(!require(dplyr))
-    install.packages("dplyr", repos = "http://cran.rstudio.com")
-if(!require(ggplot2))
-    install.packages("ggplot2", repos = "http://cran.rstudio.com")
-if(!require(ggplot2))
-    install.packages("bookdown", repos = "http://cran.rstudio.com")
-if(!require(thesisdown)){
-  library(devtools)
-  devtools::install_github("ismayc/thesisdown")
-  }
-library(thesisdown)
-flights <- read.csv("data/flights.csv")
-```
+---
+output: bookdown::html_document2
+---
 
-# Tables, Graphics, References, and Labels {#ref-labels}
+# Citations and cross-references {#cites-and-refs}
 \minitoc <!-- this will include a mini table of contents-->
 
-## Tables
+## Citations
+The usual way to include citations in an *R Markdown* document is to put references in a plain text file with the extension **.bib**, in **BibTex** format.[^bib-formats]
+Then reference the path to this file in **index.Rmd**'s YAML header with `bibliography: example.bib`
 
-In addition to the tables that can be automatically generated from a data frame in **R** that you saw in [R Markdown Basics] using the `kable` function, you can also create tables using _pandoc_. (More information is available at <http://pandoc.org/README.html#tables>.)  This might be useful if you don't have values specifically stored in **R**, but you'd like to display them in table form.  Below is an example.  Pay careful attention to the alignment in the table and hyphens to create the rows and columns.
+[^bib-formats]: The bibliography can be in other formats as well, including EndNote (**.enl**) and RIS (**.ris**), see [rmarkdown.rstudio.com/authoring_bibliographies_and_citations](https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html).
 
-----------------------------------------------------------------------------------
-  Factors                    Correlation between Parents & Child      Inherited
-------------------------- ----------------------------------------- --------------
-  Education                                -0.49                         Yes
+Most reference managers are able to do this automatically - [Zotero](https://www.zotero.org) with the [Better BibTex plug-in](https://retorque.re/zotero-better-bibtex/) works best, but I personally use [Mendeley](https://www.mendeley.com)).
 
-  Socio-Economic Status                     0.28                        Slight
+Here is an example of an entry in a **.bib** file:
+```bibtex
+@article{Shea2014,
+  author =        {Shea, Nicholas and Boldt, Annika},
+  journal =       {Trends in Cognitive Sciences},
+  pages =         {186--193},
+  title =         {{Supra-personal cognitive control}},
+  volume =        {18},
+  year =          {2014},
+  doi =           {10.1016/j.tics.2014.01.006},
+}
+```
 
-  Income                                    0.08                          No
+In this entry highlighed section, 'Shea2014' is the **citation identifier**.
+To default way to cite an entry in your text is with this syntax: `[@citation-identifier]`.
 
-  Family Size                               0.18                        Slight
+So I might cite some things [@Shea2014; @Lottridge2012].
 
-  Occupational Prestige                     0.21                        Slight
-------------------------- ----------------------------------------- --------------
-Table: (\#tab:inher) Correlation of Inheritance Factors for Parents and Child
+### PDF output
+In PDF output, the bibliography is handled by the OxThesis LaTeX template.
+If you set `bib-humanities: true` in **index.Rmd**, then in-text references will be formatted as author-year; otherwise references will be shown as numbers.
 
-We can also create a link to the table by doing the following: Table \@ref(tab:inher).  If you go back to [Loading and exploring data] and look at the `kable` table, we can create a reference to this max delays table too: Table \@ref(tab:maxdelays). The addition of the `(\#tab:inher)` option to the end of the table caption allows us to then make a reference to Table `\@ref(tab:label)`. Note that this reference could appear anywhere throughout the document after the table has appeared.
+If you choose author-year formatting, a number of variations on the citation syntax are useful to know:
 
-We will next explore ways to create this label-ref link using figures.
+- Put author names outside the parenthesis
+  - This: `@Shea2014 says blah.`
+  - Becomes: @Shea2014 says blah.
+- Include only the citation-year (in parenthesis)
+  - This: `Shea et al. says blah [-@Shea2014]`
+  - Becomes: Shea et al. says blah [-@Shea2014]
+- Add text and page or chapter references to the citation
+  - This: `[see @Shea2014, pp. 33-35; also @Wu2016, ch. 1]`
+  - Becomes: Blah blah [see @Shea2014, pp. 33-35; also @Wu2016, ch. 1].
+
+### Gitbook output
+In gitbook output, citations are by default inserted in the Chicago author-date format.
+
+To change the format, add `csl: some-other-style.csl` in **index.Rmd**'s YAML header. 
+You can browse through and download styles at [zotero.org/styles](https://www.zotero.org/styles).
+
 
 \clearpage
 
 <!-- clearpage ends the page, and also dumps out all floats.
   Floats are things like tables and figures. -->
 
+### Insert references easily with the `citr` add-in
+For an easy way to insert citations, try the [`citr`](https://github.com/crsh/citr) RStudio add-in (Figure \@ref(fig:citr)).
+You can install this add-in by typing `install.packages("citr")` in the R Console.
 
-## Figures
-
-If your thesis has a lot of figures, _R Markdown_ might behave better for you than that other word processor. One perk is that it will automatically number the figures accordingly in each chapter. You'll also be able to create a label for each figure, add a caption, and then reference the figure in a way similar to what we saw with tables earlier. If you label your figures, you can move the figures around and _R Markdown_ will automatically adjust the numbering for you. No need for you to remember! So that you don't have to get too far into LaTeX to do this, a couple **R** functions have been created for you to assist. You'll see their use below.
-
-One thing that may be annoying is the way _R Markdown_ handles "floats" like tables and figures (it's really \LaTeX's fault). \LaTeX\ will try to find the best place to put your object based on the text around it and until you're really, truly done writing you should just leave it where it lies. There are some optional arguments specified in the options parameter of the `label` function.  If you need to shift your figure around, it might be good to look here on tweaking the options argument:  <https://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions>
-
-If you need a graphic or tabular material to be part of the text, you can just put it inline. If you need it to appear in the list of figures or tables, it should be placed in a code chunk.
-
-In the **R** chunk below, we will load in the Oxford logo stored as `beltcrest.png` in the figures directory.  We then give it the caption of "Oxford logo", the label of "oxfordlogo", and specify that this is a figure.  Make note of the different **R** chunk options that are given in the R Markdown file (not shown in the knitted document).
-
-```{r oxfordlogo, fig.cap="Oxford logo", out.width='60%', fig.align='center'}
-include_graphics(path = "figures/beltcrest.png")
-```
-
-Here is a reference to the Oxford logo: Figure \@ref(fig:oxfordlogo).  Note the use of the `fig:` code here. By naming the **R** chunk that contains the figure, we can then reference that figure later as done in the first sentence here.  We can also specify the caption for the figure via the R chunk option `fig.cap`.
-
-\clearpage
-<!-- starts a new page and stops trying to place floats such as tables and figures -->
-
-Below we will investigate how to save the output of an **R** plot and label it in a way similar to that done above.  Recall the `flights` dataset from Chapter \@ref(rmd-basics). (Note that we've shown a different way to reference a section or chapter here.) We will next explore a bar graph with the mean flight departure delays by airline from Portland for 2014. Note also the use of the `scale` parameter which is discussed on the next page.
-
-```{r delaysboxplot, warnings=FALSE, messages=FALSE, fig.cap="Mean Delays by Airline", fig.width=6}
-flights %>% group_by(carrier) %>%
-  summarize(mean_dep_delay = mean(dep_delay)) %>%
-  ggplot(aes(x = carrier, y = mean_dep_delay)) +
-  geom_bar(position = "identity", stat = "identity", fill = "red")
-```
-
-Here is a reference to this image: Figure \@ref(fig:delaysboxplot).
-
-A table linking these carrier codes to airline names is available at <https://github.com/ismayc/pnwflights14/blob/master/data/airlines.csv>.
-
-\clearpage
-
-Next, we will explore the use of the `out.extra` chunk option, which can be used to shrink or expand an image loaded from a file by specifying `"scale= "`. Here we use the mathematical graph stored in the "subdivision.png" file.
-
-```{r subd, results="asis", echo=FALSE, fig.cap="Subdiv. graph", out.extra="scale=0.75", out.width='60%'}
-include_graphics("figures/subdivision.png")
-```
-
-Here is a reference to this image: Figure \@ref(fig:subd).  Note that `echo=FALSE` is specified so that the **R** code is hidden in the document.
-
-##### More Figure Stuff {-}
-<!-- in LaTeX output, a heading 5 turns into a paragraph heading, i.e. \paragraph{More Figure Stuff}, which appears as bold text on the same line as the subsequent paragraph text  -->
-Lastly, we will explore how to rotate figures using the `out.extra` chunk option. The syntax is different for LaTeX and HTML, so for ease we might start by assigning the right string to a variable that will first check what format we're outputting to:
-
-```{r define-out-extra, echo=TRUE}
-if (knitr::opts_knit$get('rmarkdown.pandoc.to') == 'latex'){
-  rotate180 <- "angle=180"
+```{r citr, echo=FALSE, fig.cap="The `citr` add-in", out.width="80%", fig.align='center'}
+# include dynamic gif if output is HTML; otherwise screenshot
+if (knitr::opts_knit$get('rmarkdown.pandoc.to') == 'html'){
+  knitr::include_graphics("https://raw.githubusercontent.com/crsh/citr/master/tools/images/addin_demo.gif")
 } else {
-  rotate180 <- "style='transform:rotate(180deg);'"
+  knitr::include_graphics("figures/citr.png")
 }
 ```
 
-Then we can refer to that in our chunk options to rotate a figure, as shown in Figure \@ref(fig:subd2).
+## Cross-referencing
+We can make cross-references to **sections** within our document, as well as to **figures** (images and plots) and **tables**.
 
-```{r subd2, results="asis", echo=FALSE, out.extra=rotate180, fig.cap="A Larger Figure, Flipped Upside Down", out.width='60%'}
-include_graphics("figures/subdivision.png")
+The general cross-referencing syntax is **`\@ref(label)`**
+
+### Section references
+Headers are automatically assigned a reference label, which is the text in lower caps separated by dashes. For example, `# My header` is automatically given the label `my-header`. So `# My header` can be referenced with `\@ref(my-section)`
+
+Remember what we wrote in section \@ref(citations)?
+
+We can also use **hyperlink syntax** and add \# before the label:
+
+- So if we write `Remember what we wrote up in [the previous section](#citations)?`
+- It becomes Remember what we wrote up in [the previous section](#citations)?
+
+#### Creating custom labels
+It is a very good idea to create **custom labels** for our sections. This is because the automatically assigned labels will change when we change the titles of the sections - to avoid this, we can create the labels ourselves and leave them untouched if we change the section titles.
+
+We create custom labels by adding `{#label}` after a header, e.g. `# My section {#my-label}`.
+See [our chapter title](#cites-and-refs) for an example. That was section \@ref(cites-and-refs).
+
+### Figure (image and plot) references
+- To refer to figures (i.e. images and plots) use the syntax `\@ref(fig:label)`
+- **GOTCHA**: Figures and tables must have captions if you wish to cross-reference them.
+
+Let's add an image:
+```{r captain, fig.align='center', fig.cap="A marvel-lous meme", out.width="65%"}
+knitr::include_graphics("figures/captain.jpeg")
 ```
 
+We refer to this image with `\@ref(fig:captain)`.
+So Figure \@ref(fig:captain) is [this image](#captain).
 
-## Footnotes
+And in Figure \@ref(fig:cars-plot) we saw a [cars plot](#cars-plot).
 
-You might want to footnote something. ^[footnote text] The footnote will be in a smaller font and placed appropriately.
 
-## Bibliographies
+### Table references
+- To refer to tables use the syntax `\@ref(tab:label)`
 
-Of course you will need to cite things, and you will probably accumulate an armful of sources. There are a variety of tools available for creating a bibliography database (stored with the .bib extension).  In addition to BibTeX suggested below, you may want to consider using the free and easy-to-use tool called Zotero.
+Let's include a table:
+```{r cars-table2}
+knitr::kable(cars[1:5,],
+            caption="Stopping cars")
+```
 
-_R Markdown_ uses _pandoc_ (<http://pandoc.org/>) to build its bibliographies.  One nice caveat of this is that you won't have to do a second compile to load in references as standard LaTeX requires. To cite references in your thesis (after creating your bibliography database), place the reference name inside square brackets and precede it by the "at" symbol.  For example, here's a reference to a book about worrying:  [@Molina1994].  This `Molina1994` entry appears in a file called `references.bib`.  This bibliography database file was created by a program called BibTeX. You can call this file something else if you like (look at the YAML header in the main .Rmd file).
+We refer to this table with `\@ref(tab:cars-table2)`. 
+So Table \@ref(tab:cars-table2) is [this table](#cars-table2).
+
+And in Table \@ref(tab:cars-table) we saw more or less [the same cars table](#cars-table).
+
+### Including page numbers
+Finally, in the PDF output we might also want to include the page number of a reference, so that it's easy to find in physical printed output.
+LaTeX has a command for this, which looks like this: `\pageref{fig/tab:label}` (note: curly braces, not parentheses)
+
+When we output to PDF, we can use raw LaTeX directly in our .Rmd files. So if we wanted to include the page of the cars plot we could write:
+
+- This: `Figure \@ref(fig:cars-plot) on page \pageref(fig:cars-plot)`
+- Becomes: Figure \@ref(fig:cars-plot) on page \pageref{fig:cars-plot}
+
+#### Include page numbers only in PDF output
+A problem here is that LaTeX commands won't display in HTML output, so in the gitbook output we'd see simply "Figure \@ref(fig:cars-plot) on page ".
+
+A not super elegant way to get around this is to insert the text with inline R code, in which we first make a check of the output format and then insert the appropriate text.
+
+- So this: `` ``r ''`r ifelse(knitr::opts_knit$get('rmarkdown.pandoc.to') == 'latex', "Figure \\@ref(fig:cars-plot) on page \\pageref{fig:cars-plot}", "")` ``
+- Inserts this (check this on both PDF and gitbook): `r ifelse(knitr::opts_knit$get('rmarkdown.pandoc.to') == 'latex', "Figure \\@ref(fig:cars-plot) on page \\pageref{fig:cars-plot}", "")`
+
+Note that we need to escape the backslash with another backslash here to get the correct output.
+
+A slightly less verbose way of doing this is to add a code chunk in which we assign the value of `knitr::opts_knit$get('rmarkdown.pandoc.to') == 'latex'` to a short variable, like this:
+
+```{r}
+is_pdf <- knitr::opts_knit$get('rmarkdown.pandoc.to') == 'latex'
+```
+
+Then we could less verbosely write `` ``r ''`r ifelse(is_pdf, "Figure \\@ref(fig:cars-plot) on page \\pageref{fig:cars-plot}", "")` ``, to get `r ifelse(is_pdf, "Figure \\@ref(fig:cars-plot) on page \\pageref{fig:cars-plot}", "")`.

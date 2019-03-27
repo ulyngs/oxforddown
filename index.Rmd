@@ -20,13 +20,13 @@ abbreviations: chapters/abbreviations # path to .tex file with abbreviations
 #######################
 ## bibliography path ##
 #######################
-bibliography: references.bib
+bibliography: example.bib
 
 #####################
 ## PDF formatting  ##
 #####################
 abstractseparate: true  # include front page w/ abstract for examination schools?
-bib-humanities: false   #set to true if you want in-text references formatted as author-year
+bib-humanities: true   #set to true if you want in-text references formatted as author-year
 draft: true # add as DRAFT mark in the footer?
 page-layout: nobind #'nobind' for PDF output (equal margins), 'twoside' for two-sided binding (mirror margins and blank pages), leave blank for one-sided binding (left margin > right margin)
 toc-depth: 2 # depth of heading to include in table of contents

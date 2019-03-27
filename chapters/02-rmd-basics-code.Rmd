@@ -1,0 +1,151 @@
+---
+output: bookdown::html_document2
+---
+
+# Adding code {#code}
+\minitoc <!-- this will include a mini table of contents-->
+
+The magic of R Markdown is that we can add code within our document to make it dynamic.
+
+We do this either as *code chunks* (generally used for loading libraries and data, performing calculations, and adding images, plots, and tables), or *inline code* (generally used for dynamically reporting results within our text).
+
+## Code chunks
+The syntax of a code chunk is shown in Figure \@ref(fig:chunk-parts).
+
+```{r chunk-parts, echo=FALSE, fig.cap="Code chunk syntax", out.width="100%", message=FALSE}
+library(tidyverse)
+knitr::include_graphics("figures/chunk-parts.png")
+```
+
+Common chunk options include (see e.g. [bookdown.org](https://bookdown.org/yihui/rmarkdown/r-code.html)):
+
+- `echo`: whether or not to display code in knitted output
+- `eval`: whether or to to run the code in the chunk when knitting
+- `include`: wheter to include anything from the from a code chunk in the output document
+- `fig.cap`: figure caption
+
+### Setup chunks
+An R Markdown document usually begins with a chunk that is used to **load libraries**, and to **set default chunk options** with `knitr::opts_chunk$set`.
+
+In your thesis, this will probably happen in **index.Rmd** and/or as opening chunks in each of your chapters.
+
+<!-- ````markdown -->
+<!-- `r ''````{r setup, include=FALSE} -->
+<!-- # don't show code unless we explicitly set echo = TRUE -->
+<!-- knitr::opts_chunk$set(echo = FALSE) -->
+
+<!-- library(tidyverse) -->
+<!-- ``` -->
+<!-- ```` -->
+
+### Including images
+Code chunks are also used for including images, with `include_graphics` from the `knitr` package, as in Figure \@ref(fig:oxford-logo)
+
+```{r oxford-logo, fig.cap="Oxford logo", out.width='50%', fig.align='center'}
+knitr::include_graphics("figures/beltcrest.png")
+```
+
+Useful chunk options for figures include:
+- `out.width` (use with a percentage) for setting the image size 
+- if you've got an image that gets waaay to big in your output, it will be constrained to the page width by setting `out.width = "100%"`
+
+#### Figure rotation {-}
+You can use the chunk option `out.extra` to rotate images.
+
+The syntax is different for LaTeX and HTML, so for ease we might start by assigning the right string to a variable that depends on the format you're outputting to:
+
+```{r}
+if (knitr::opts_knit$get('rmarkdown.pandoc.to') == 'latex'){
+  rotate180 <- "angle=180"
+} else {
+  rotate180 <- "style='transform:rotate(180deg);'"
+}
+```
+
+Then you can reference that variable as the value of `out.extra` to rotate images, as in Figure \@ref(fig:oxford-logo-rotated).
+
+```{r oxford-logo-rotated, out.extra=rotate180, fig.cap="Oxford logo, rotated", out.width='50%', fig.align='center'}
+knitr::include_graphics("figures/beltcrest.png")
+```
+
+
+### Including plots
+Similarly, code chunks are used for including dynamically generated plots.
+You use ordinary code in R or other languages - Figure \@ref(fig:cars-plot) shows a plot of the `cars` dataset of stopping distances for cars at various speeds (this dataset is built in to **R**).
+
+```{r cars-plot, fig.cap = "A ggplot of car stuff"}
+cars %>% 
+  ggplot() +
+    aes(x = speed, y = dist) +
+    geom_point()
+```
+
+Under the hood, plots are included in your document in the same way as images - when you build the book or knit a chapter, the plot is automatically generated from your code, saved as an image, then included into the output document.
+
+### Including tables
+Tables are usually included with the `kable` function from the `knitr` package.
+
+Table \@ref(tab:cars-table) shows the first rows of that cars data - read in your own data, then use this approach to automatically generate tables.
+
+```{r cars-table}
+cars %>% 
+  head() %>% 
+  knitr::kable(caption = "A knitr kable table")
+```
+
+- Gotcha: when using [`kable`](https://www.rdocumentation.org/packages/knitr/versions/1.21/topics/kable), captions  are set inside the `kable` function
+- The `kable` package is often used with the [`kableExtra`](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html) package
+
+### A note on content positioning
+One thing that may be annoying is the way *R Markdown* handles "floats" like tables and figures.
+
+In your PDF output, LaTeX will try to find the best place to put your object based on the text around it and until you're really, truly done writing you should just leave it where it lies.
+
+When the time comes for you to make final tweaks to content positioning, read the relevant [R Markdown documentation](https://bookdown.org/yihui/rmarkdown/) to see if there are easy ways to do what you want.
+
+If you have very specific needs, you might have to read up on LaTeX (<https://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions>) for your PDF output and/or on how to style HTML documents with CSS for your gitbook output.
+
+## Inline code
+'Inline code' simply means inclusion of code inside text. 
+
+The syntax for doing this is `` ``r ''`r R_CODE` ``
+
+For example, `` ``r ''`r 4 + 4` `` would output `r 4 + 4` in your text.
+
+You will usually use this in parts of your thesis where you report results - read in data or results in a code chunk, store things you want to report in a variable, then insert the value of that variable in your text.
+
+For example, we might assign the number of rows in the `cars` dataset to a variable:
+
+```{r}
+num_car_observations <- nrow(cars)
+```
+
+We might then write:\
+"In the `cars` dataset, we have `` ``r ''`r num_car_observations` `` observations."
+
+Which would output:\
+"In the `cars` dataset, we have `r num_car_observations` observations."
+
+
+### Referring to results computed in other languages than R
+[At the moment](https://stackoverflow.com/questions/47818461/is-there-a-way-in-knitr-to-evaluate-inline-code-chunks-of-other-languages), inline code only works with R, so syntax such as `` `python code here` `` is not valid.
+However, you can use the [`reticulate`](https://rstudio.github.io/reticulate/articles/r_markdown.html) package to access variables from python chunks. Here's a Python code chunk:
+
+```{python}
+my_number = 4 + 8
+print(my_number)
+```
+
+The `reticulate` package allows **R** to access variables defined in python environments with the syntax `py$variable`:
+
+```{r}
+# check if reticulate is installed
+if (!("reticulate" %in% installed.packages()))
+  install.packages("reticulate", repos = "http://cran.rstudio.com")
+
+library(reticulate)
+py$my_number
+```
+
+This means that inline, we can include results from python chunks with `` ``r ''`r py$variable` ``.
+For example, we can state that the value of `my_number` defined in the python chunk, is `r py$my_number`.
