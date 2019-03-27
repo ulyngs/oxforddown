@@ -1,6 +1,6 @@
 pdf:
 	Rscript -e 'bookdown::render_book("index.Rmd", output_format = "bookdown::pdf_book")'
-	rm -f *.log *.mtc* *.maf chapters/abbreviations.aux
+	rm -f *.log *.mtc* *.maf *.aux *.bcf *.lof *.lot *.out *.toc chapters/abbreviations.aux
 	rm -r _bookdown_files/
 
 gitbook:
