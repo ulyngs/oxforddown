@@ -1,5 +1,13 @@
 ---
-output: bookdown::html_document2
+#########################################
+# options for knitting a single chapter #
+#########################################
+output:
+  bookdown::html_document2: default
+  bookdown::word_document2: default
+  bookdown::pdf_document2:
+    template: templates/brief_template.tex
+documentclass: book
 ---
 
 # Citations and cross-references {#cites-and-refs}

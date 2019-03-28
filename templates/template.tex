@@ -91,7 +91,7 @@ $endif$
 %UL 3 Dec 2018: set this from YAML in index.Rmd
 $if(bib-humanities)$
 \usepackage[style=authoryear, sorting=nyt, backend=biber, maxcitenames=2, useprefix, doi=false, isbn=false]{biblatex}
-\newcommand*{\bibtitle}{Works Cited}
+\newcommand*{\bibtitle}{$bibliography-heading-in-pdf$}
 $else$
 \usepackage[style=numeric-comp, sorting=none, backend=biber, doi=false, isbn=false]{biblatex}
 \newcommand*{\bibtitle}{References}

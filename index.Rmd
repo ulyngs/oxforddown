@@ -11,16 +11,17 @@ college: Your College
 degree: Doctor of Philosophy
 degreedate: Michaelmas 2018
 abstract: |
-  `r paste(readLines("chapters/_abstract.Rmd"), collapse = '\n  ')`
+  `r paste(readLines("front-and-back-matter/_abstract.Rmd"), collapse = '\n  ')`
 acknowledgements: |
-  `r paste(readLines("chapters/_acknowledgements.Rmd"), collapse = '\n  ')`
+  `r paste(readLines("front-and-back-matter/_acknowledgements.Rmd"), collapse = '\n  ')`
 dedication: For Yihui Xie
-abbreviations: chapters/abbreviations # path to .tex file with abbreviations
+abbreviations: "front-and-back-matter/abbreviations" # path to .tex file with abbreviations
 
 #######################
 ## bibliography path ##
 #######################
-bibliography: example.bib
+bibliography: bibliography/example.bib
+bibliography-heading-in-pdf: Works Cited
 
 #####################
 ## PDF formatting  ##
@@ -57,14 +58,13 @@ output:
         all: false
   bookdown::word_document2: default   #NOTE: EXPERIMENTAL
 documentclass: book
-site: bookdown::bookdown_site
 
 ---
 
 <!-- NOTE ON COMPILING YOUR THESIS:
-For PDF output, click 'Build book' over on the Build tab. Output (and .tex) is stored as docs/_main.pdf
+PDF output: type 'make pdf' in the terminal (not the R console), or click 'Build All' over on the Build tab. Output (and .tex) is generated and saved as docs/_main.pdf
 
-For gitbook output, go to the terminal (not the R console) and type 'make gitbook'. A set of HTML files is stored in docs/
+Gitbook output: type 'make gitbook' in the terminal (not the R console). A set of HTML files is stored in the docs/ folder
 -->
 
 ```{r create_chunk_options, include=FALSE}

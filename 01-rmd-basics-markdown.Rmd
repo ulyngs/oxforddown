@@ -1,9 +1,13 @@
 ---
+#########################################
+# options for knitting a single chapter #
+#########################################
 output:
   bookdown::html_document2: default
-  bookdown::pdf_document2:
-    template: chapter_templates/brief_template.tex
   bookdown::word_document2: default
+  bookdown::pdf_document2:
+    template: templates/brief_template.tex
+documentclass: book
 ---
 
 ```{block type='savequote', quote_author='(ref:cicero-quote)', include=knitr::opts_knit$get('rmarkdown.pandoc.to') == 'latex'}
