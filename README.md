@@ -9,7 +9,7 @@ The template uses the [bookdown](https://bookdown.org) R package together with t
   - (For opaque reasons, Yihui Xie's [TinyTeX](https://yihui.name/tinytex/) sometimes causes trouble! If you are unable to get the PDF output to work with TinyTex, try uninstalling it with tinytex::uninstall_tinytex(), then install the MacTeX LaTeX distribution and restart RStudio.)
 - [R](https://cran.rstudio.com) and [RStudio version 1.2 preview](https://www.rstudio.com/products/rstudio/download/preview/)
   - (pandoc version 2 or higher - comes bundled with RStudio v1.2 preview)
-- a number of R packages (including `bookdown` and `thesisdown`) which should (hopefully) be automatically installed for you (if you don't have them already) when you knit this project for the first time in RStudio
+- The R packages `bookdown`, `tidyverse`and `kableExtra` (should be automatically installed for you if you don't already have them, when you build this project for the first time in RStudio)
 
 # Example output
 - PDF output: see [**docs/_main.pdf**](https://github.com/ulyngs/oxforddown/blob/master/docs/_main.pdf)
@@ -19,10 +19,10 @@ The template uses the [bookdown](https://bookdown.org) R package together with t
 - clone the **ulyngs/oxforddown** repo or download it as a zip
 - open **oxforddown.Rproj** in RStudio
 
-## Compiling the thesis
+## Compiling your thesis
 ### PDF output
-- click 'Build Book' on the 'Build' tab
-- the compiled PDF (and the **.tex** file) is saved as **docs/\_main.pdf**, and the PDF is opened in the RStudio Viewer
+- click 'Build All' on the 'Build' tab *or* type 'make pdf' in the terminal (not the R console!)
+- the compiled PDF is saved as **docs/\_main.pdf**, and the PDF is opened
 
 ![](screenshots/build.png)
 ![](screenshots/compiled.png)
@@ -37,27 +37,31 @@ The template uses the [bookdown](https://bookdown.org) R package together with t
 ## Writing your thesis
 To use this template to write your thesis, do the following:
 - update the YAML header (the stuff at the top between '---') in **index.Rmd** with your name, college, etc.
-- write the individual chapters, as well as abstract and acknowledgements, as **.Rmd** files in the folder **chapters/**
-- for abbreviations, change **chapters/abbreviations.tex** to fit your needs (for now, follow the LaTeX syntax in the sample file)
-- note that **.Rmd** files you don't want included in the body of your thesis must be given file names that begin with an underscore (e.g. **chapters/\_abstract.Rmd** and **chapters/\_acknowledgements.Rmd**) - alternatively, specify manually in **\_bookdown.yml** which files should be merged into the body text -  otherwise knitr will try include them when you build the thesis
+- write the individual chapters as **.Rmd** files in the root folder
+- write the front matter (abstract, acknowledgements, abbreviations) and back matter (appendices) by adjusting the **.Rmd** files in **front-and-back-matter/** folder
+- for abbreviations, change **front-and-back-matter/abbreviations.tex** to fit your needs (follow the LaTeX syntax in there)
+
+Note that **.Rmd** files you don't want included in the body text must be given file names that begin with an underscore (e.g. **front-and-back-matter/\_abstract.Rmd** and **front-and-back-matter/\_acknowledgements.Rmd**). (Alternatively, you may specify manually in **\_bookdown.yml** which files should be merged into the body text.)
 
 ## Knitting individual chapters
-You might want to knit just an individual chapter without compiling the entire thesis. To do this:
+To knit just an individual chapter without compiling the entire thesis:
 1. open the **.Rmd** file of a chapter you'd like to knit
-2. add a YAML header, specifying the output formats you might want (e.g. `bookdown::word_document2` for a word document that you might want to upload to Google Docs for feedback from collaborators; NOTE: use the [bookdown formats](https://bookdown.org/yihui/bookdown/a-single-document.html), rather than the plain rmarkdown ones (e.g. bookdown::word_document2) so that cross-referencing ability is enabled
-3. click the dropdown arrow to the right of the 'knit' button, and make sure 'Knit Directory' is set to 'Project Directory'
-4. choose the output format you want to knit to
+2. add a YAML header which specifies the output formats you want (e.g. `bookdown::word_document2` for a word document that you might want to upload to Google Docs for feedback from collaborators; NOTE: use the [bookdown formats](https://bookdown.org/yihui/bookdown/a-single-document.html), rather than the plain rmarkdown ones (e.g. bookdown::word_document2) so that cross-referencing ability is enabled. 
+  - To output to PDF without including the template content, use `bookdown::pdf_documents2: template: templates/brief_template.tex` as shown in the sample chapters
 
-The output file is then saved in **chapters/**.
-
-Tip: To remove your knitted chapters and their supporting files (e.g.  \*\_cache and \*\_files/), type `make clean-previews` in the terminal tab.
+The output file is then saved in the root folder.
 
 ![](screenshots/preview_yaml.png)
 ![](screenshots/knit_dir_small.png)
 ![](screenshots/preview_output_small.png)
 ![](screenshots/preview_word.png)
 
-# Current limitations
+## Cleaning up generated auxiliary files
+By default, when you build the entire thesis, the auxillary files will be removed (to adjust how this is done, edit the **Makefile**.
+
+To easily clean up files generated when knitting individual chapters, type 'make clean-knits' in the terminal.
+
+# Limitations
 - at the moment only PDF and HTML output have been properly implemented; I will improve on the Word output further down the line
 
 This project will in time be turned into an R package that supply the template as an R Markdown template within RStudio.
