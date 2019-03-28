@@ -51,11 +51,6 @@ To knit just an individual chapter without compiling the entire thesis:
 
 The output file is then saved in the root folder.
 
-![](screenshots/preview_yaml.png)
-![](screenshots/knit_dir_small.png)
-![](screenshots/preview_output_small.png)
-![](screenshots/preview_word.png)
-
 ## Cleaning up generated auxiliary files
 By default, when you build the entire thesis, the auxillary files will be removed (to adjust how this is done, edit the **Makefile**.
 
