@@ -12,6 +12,7 @@ library(kableExtra)
 # for guidance on how to create your own chunk options see
 # https://ulyngs.github.io/blog/posts/2019-02-01-how-to-create-your-own-chunk-options-in-r-markdown/
 
+
 # add chunk option 'vspace_output' that can be used to add white space after each R command's output
 hook_output_def = knitr::knit_hooks$get('output')
 knitr::knit_hooks$set(output = function(x, options) {
@@ -36,8 +37,3 @@ knitr::knit_hooks$set(chunk = function(x, options) {
   }
 })
 
-#this creates a function to supply inline background shading of corrections
-options(knitr.table.format = as.character(knitr::opts_knit$get('rmarkdown.pandoc.to')))
-mccorrect <- function(text) {
-  text_spec(text, background = ifelse(params$corrections, "#CCCCFF", "#FFFFFF"))
-}

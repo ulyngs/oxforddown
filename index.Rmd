@@ -56,7 +56,8 @@ output:
         facebook: false
         twitter: yes
         all: false
-  bookdown::word_document2: default   #NOTE: EXPERIMENTAL
+  bookdown::word_document2:
+    toc: true   
 documentclass: book
 
 ---
@@ -67,7 +68,7 @@ PDF output: type 'make pdf' in the terminal (not the R console), or click 'Build
 Gitbook output: type 'make gitbook' in the terminal (not the R console). A set of HTML files is stored in the docs/ folder
 -->
 
-```{r create_chunk_options, include=FALSE}
+```{r create_chunk_options, include=FALSE, eval=knitr::is_latex_output()}
 source('scripts_and_filters/create_chunk_options.R')
 ```
 <!-- NOTE ON CREATING NEW CHUNK OPTIONS: 

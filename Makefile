@@ -8,6 +8,10 @@ gitbook:
 	Rscript -e 'bookdown::render_book("index.Rmd", output_format = "bookdown::gitbook")'
 	Rscript -e 'browseURL("docs/index.html")'
 
+word:
+	Rscript -e 'bookdown::render_book("index.Rmd", output_format = "bookdown::word_document2")'
+	Rscript -e 'browseURL("docs/_main.docx")'
+
 clean:
 	rm -f *.log *.mtc* *.maf *.aux
 	
