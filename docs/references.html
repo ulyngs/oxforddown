@@ -5,13 +5,13 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>3 Citations and cross-references | oxforddown: An Oxford University Thesis Template for R Markdown</title>
+  <title>References | oxforddown: An Oxford University Thesis Template for R Markdown</title>
   <meta name="description" content="oxforddown:<br />
 An Oxford University Thesis<br />
 Template for R Markdown">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="3 Citations and cross-references | oxforddown: An Oxford University Thesis Template for R Markdown" />
+  <meta property="og:title" content="References | oxforddown: An Oxford University Thesis Template for R Markdown" />
   <meta property="og:type" content="book" />
   
   
@@ -19,7 +19,7 @@ Template for R Markdown">
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3 Citations and cross-references | oxforddown: An Oxford University Thesis Template for R Markdown" />
+  <meta name="twitter:title" content="References | oxforddown: An Oxford University Thesis Template for R Markdown" />
   
   
   
@@ -33,8 +33,8 @@ Template for R Markdown">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="code.html">
-<link rel="next" href="final-notes-on-the-oxthesis-template-and-on-collaboration.html">
+<link rel="prev" href="the-second-appendix-for-fun.html">
+
 <style type="text/css">
 p.abstract{
   text-align: center;
@@ -220,189 +220,45 @@ Template for R Markdown</a>
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="cites-and-refs" class="section level1">
-<h1><span class="header-section-number">3</span> Citations and cross-references</h1>
-<p><!-- this will include a mini table of contents--></p>
-<div id="citations" class="section level2">
-<h2><span class="header-section-number">3.1</span> Citations</h2>
-<p>The usual way to include citations in an <em>R Markdown</em> document is to put references in a plain text file with the extension <strong>.bib</strong>, in <strong>BibTex</strong> format.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>
-Then reference the path to this file in <strong>index.Rmd</strong>’s YAML header with <code>bibliography: example.bib</code></p>
-<p>Most reference managers are able to do this automatically - <a href="https://www.zotero.org">Zotero</a> with the <a href="https://retorque.re/zotero-better-bibtex/">Better BibTex plug-in</a> works best, but I personally use <a href="https://www.mendeley.com">Mendeley</a>).</p>
-<p>Here is an example of an entry in a <strong>.bib</strong> file:</p>
-<pre class="sourceCode bibtex"><code class="sourceCode bibtex"><span class="va">@article</span>{<span class="ot">Shea2014</span>,
-  <span class="dt">author</span> =        {Shea, Nicholas and Boldt, Annika},
-  <span class="dt">journal</span> =       {Trends in Cognitive Sciences},
-  <span class="dt">pages</span> =         {186--193},
-  <span class="dt">title</span> =         {{Supra-personal cognitive control}},
-  <span class="dt">volume</span> =        {18},
-  <span class="dt">year</span> =          {2014},
-  <span class="dt">doi</span> =           {10.1016/j.tics.2014.01.006},
-}</code></pre>
-<p>In this entry highlighed section, ‘Shea2014’ is the <strong>citation identifier</strong>.
-To default way to cite an entry in your text is with this syntax: <code>[@citation-identifier]</code>.</p>
-<p>So I might cite some things <span class="citation">(Shea et al. 2014; Lottridge et al. 2012)</span>.</p>
-<div id="pdf-output" class="section level3">
-<h3><span class="header-section-number">3.1.1</span> PDF output</h3>
-<p>In PDF output, the bibliography is handled by the OxThesis LaTeX template.
-If you set <code>bib-humanities: true</code> in <strong>index.Rmd</strong>, then in-text references will be formatted as author-year; otherwise references will be shown as numbers.</p>
-<p>If you choose author-year formatting, a number of variations on the citation syntax are useful to know:</p>
-<ul>
-<li>Put author names outside the parenthesis
-<ul>
-<li>This: <code>@Shea2014 says blah.</code></li>
-<li>Becomes: <span class="citation">Shea et al. (2014)</span> says blah.</li>
-</ul></li>
-<li>Include only the citation-year (in parenthesis)
-<ul>
-<li>This: <code>Shea et al. says blah [-@Shea2014]</code></li>
-<li>Becomes: Shea et al. says blah <span class="citation">(2014)</span></li>
-</ul></li>
-<li>Add text and page or chapter references to the citation
-<ul>
-<li>This: <code>[see @Shea2014, pp. 33-35; also @Wu2016, ch. 1]</code></li>
-<li>Becomes: Blah blah <span class="citation">(see Shea et al. 2014, 33–35; also Wu 2016, ch. 1)</span>.</li>
-</ul></li>
-</ul>
-</div>
-<div id="gitbook-output" class="section level3">
-<h3><span class="header-section-number">3.1.2</span> Gitbook output</h3>
-<p>In gitbook output, citations are by default inserted in the Chicago author-date format.</p>
-<p>To change the format, add <code>csl: some-other-style.csl</code> in <strong>index.Rmd</strong>’s YAML header.
-You can browse through and download styles at <a href="https://www.zotero.org/styles">zotero.org/styles</a>.</p>
+<div id="references" class="section level1 unnumbered">
+<h1>References</h1>
+<!-- If you're outputting to LaTeX, the heading and references will be generated by the OxThesis LaTeX template. This .Rmd file serves only to add the References headline to gitbook output before  the references are added by pandoc -->
 
-<!-- clearpage ends the page, and also dumps out all floats.
-  Floats are things like tables and figures. -->
+<div id="refs" class="references">
+<div>
+<p>Darwin, Charles. 1859. <em>On the Origin of Species by Means of Natural Selection or the Preservation of Favoured Races in the Struggle for Life</em>. London: John Murray.</p>
 </div>
-<div id="insert-references-easily-with-the-citr-add-in" class="section level3">
-<h3><span class="header-section-number">3.1.3</span> Insert references easily with the <code>citr</code> add-in</h3>
-<p>For an easy way to insert citations, try the <a href="https://github.com/crsh/citr"><code>citr</code></a> RStudio add-in (Figure <a href="cites-and-refs.html#fig:citr">3.1</a>).
-You can install this add-in by typing <code>install.packages(&quot;citr&quot;)</code> in the R Console.</p>
-<div class="figure" style="text-align: center"><span id="fig:citr"></span>
-<img src="https://raw.githubusercontent.com/crsh/citr/master/tools/images/addin_demo.gif" alt="The `citr` add-in" width="80%" />
-<p class="caption">
-Figure 3.1: The <code>citr</code> add-in
-</p>
+<div>
+<p>Goethe, Johann Wolfgang von. 1829. <em>Wilhelm Meisters Wanderjahre Oder Die Entsagenden</em>. Cotta.</p>
 </div>
+<div>
+<p>Lottridge, Danielle, Eli Marschner, Ellen Wang, Maria Romanovsky, and Clifford Nass. 2012. “Browser design impacts multitasking.” In <em>Proceedings of the Human Factors and Ergonomics Society 56th Annual Meeting</em>. <a href="https://doi.org/10.1177/1071181312561289">https://doi.org/10.1177/1071181312561289</a>.</p>
 </div>
+<div>
+<p>Shea, Nicholas, Annika Boldt, Dan Bang, Nick Yeung, Cecilia Heyes, and Chris D Frith. 2014. “Supra-personal cognitive control and metacognition.” <em>Trends in Cognitive Sciences</em> 18 (4): 186–93. <a href="https://doi.org/10.1016/j.tics.2014.01.006">https://doi.org/10.1016/j.tics.2014.01.006</a>.</p>
 </div>
-<div id="cross-referencing" class="section level2">
-<h2><span class="header-section-number">3.2</span> Cross-referencing</h2>
-<p>We can make cross-references to <strong>sections</strong> within our document, as well as to <strong>figures</strong> (images and plots) and <strong>tables</strong>.</p>
-<p>The general cross-referencing syntax is <strong><code>\@ref(label)</code></strong></p>
-<div id="section-references" class="section level3">
-<h3><span class="header-section-number">3.2.1</span> Section references</h3>
-<p>Headers are automatically assigned a reference label, which is the text in lower caps separated by dashes. For example, <code># My header</code> is automatically given the label <code>my-header</code>. So <code># My header</code> can be referenced with <code>\@ref(my-section)</code></p>
-<p>Remember what we wrote in section <a href="cites-and-refs.html#citations">3.1</a>?</p>
-<p>We can also use <strong>hyperlink syntax</strong> and add # before the label:</p>
-<ul>
-<li>So if we write <code>Remember what we wrote up in [the previous section](#citations)?</code></li>
-<li>It becomes Remember what we wrote up in <a href="cites-and-refs.html#citations">the previous section</a>?</li>
-</ul>
-<div id="creating-custom-labels" class="section level4">
-<h4><span class="header-section-number">3.2.1.1</span> Creating custom labels</h4>
-<p>It is a very good idea to create <strong>custom labels</strong> for our sections. This is because the automatically assigned labels will change when we change the titles of the sections - to avoid this, we can create the labels ourselves and leave them untouched if we change the section titles.</p>
-<p>We create custom labels by adding <code>{#label}</code> after a header, e.g. <code># My section {#my-label}</code>.
-See <a href="cites-and-refs.html#cites-and-refs">our chapter title</a> for an example. That was section <a href="cites-and-refs.html#cites-and-refs">3</a>.</p>
+<div>
+<p>Wu, Tim. 2016. <em>The Attention Merchants: The Epic Scramble to Get Inside Our Heads</em>. Knopf Publishing Group.</p>
 </div>
 </div>
-<div id="figure-image-and-plot-references" class="section level3">
-<h3><span class="header-section-number">3.2.2</span> Figure (image and plot) references</h3>
-<ul>
-<li>To refer to figures (i.e. images and plots) use the syntax <code>\@ref(fig:label)</code></li>
-<li><strong>GOTCHA</strong>: Figures and tables must have captions if you wish to cross-reference them.</li>
-</ul>
-<p>Let’s add an image:</p>
-<pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;figures/captain.jpeg&quot;</span>)</code></pre>
-<div class="figure" style="text-align: center"><span id="fig:captain"></span>
-<img src="figures/captain.jpeg" alt="A marvel-lous meme" width="65%" />
-<p class="caption">
-Figure 3.2: A marvel-lous meme
-</p>
 </div>
-<p>We refer to this image with <code>\@ref(fig:captain)</code>.
-So Figure <a href="cites-and-refs.html#fig:captain">3.2</a> is <a href="#captain">this image</a>.</p>
-<p>And in Figure <a href="code.html#fig:cars-plot">2.4</a> we saw a <a href="#cars-plot">cars plot</a>.</p>
-</div>
-<div id="table-references" class="section level3">
-<h3><span class="header-section-number">3.2.3</span> Table references</h3>
-<ul>
-<li>To refer to tables use the syntax <code>\@ref(tab:label)</code></li>
-</ul>
-<p>Let’s include a table:</p>
-<pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span><span class="kw">kable</span>(cars[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>,],
-            <span class="dt">caption=</span><span class="st">&quot;Stopping cars&quot;</span>)</code></pre>
-<table>
-<caption><span id="tab:cars-table2">Table 3.1: </span>Stopping cars</caption>
-<thead>
-<tr class="header">
-<th align="right">speed</th>
-<th align="right">dist</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="right">4</td>
-<td align="right">2</td>
-</tr>
-<tr class="even">
-<td align="right">4</td>
-<td align="right">10</td>
-</tr>
-<tr class="odd">
-<td align="right">7</td>
-<td align="right">4</td>
-</tr>
-<tr class="even">
-<td align="right">7</td>
-<td align="right">22</td>
-</tr>
-<tr class="odd">
-<td align="right">8</td>
-<td align="right">16</td>
-</tr>
-</tbody>
-</table>
-<p>We refer to this table with <code>\@ref(tab:cars-table2)</code>.
-So Table <a href="cites-and-refs.html#tab:cars-table2">3.1</a> is <a href="#cars-table2">this table</a>.</p>
-<p>And in Table <a href="code.html#tab:cars-table">2.1</a> we saw more or less <a href="#cars-table">the same cars table</a>.</p>
-</div>
-<div id="including-page-numbers" class="section level3">
-<h3><span class="header-section-number">3.2.4</span> Including page numbers</h3>
-<p>Finally, in the PDF output we might also want to include the page number of a reference, so that it’s easy to find in physical printed output.
-LaTeX has a command for this, which looks like this: <code>\pageref{fig/tab:label}</code> (note: curly braces, not parentheses)</p>
-<p>When we output to PDF, we can use raw LaTeX directly in our .Rmd files. So if we wanted to include the page of the cars plot we could write:</p>
-<ul>
-<li>This: <code>Figure \@ref(fig:cars-plot) on page \pageref(fig:cars-plot)</code></li>
-<li>Becomes: Figure <a href="code.html#fig:cars-plot">2.4</a> on page </li>
-</ul>
-<div id="include-page-numbers-only-in-pdf-output" class="section level4">
-<h4><span class="header-section-number">3.2.4.1</span> Include page numbers only in PDF output</h4>
-<p>A problem here is that LaTeX commands don’t display in HTML output, so in the gitbook output we’d see simply “Figure <a href="code.html#fig:cars-plot">2.4</a> on page”.</p>
-<p>One way to get around this is to use inline R code to insert the text, and use an <code>ifelse</code> statement to check the output format and then insert the appropriate text.</p>
-<ul>
-<li>So this: <code>`r ifelse(knitr::is_latex_output(), &quot;Figure \\@ref(fig:cars-plot) on page \\pageref{fig:cars-plot}&quot;, &quot;&quot;)`</code></li>
-<li>Inserts this (check this on both PDF and gitbook):</li>
-</ul>
-<p>Note that we need to escape the backslash with another backslash here to get the correct output.</p>
 
 
-</div>
-</div>
-</div>
-</div>
-<div class="footnotes">
-<hr />
-<ol start="3">
-<li id="fn3"><p>The bibliography can be in other formats as well, including EndNote (<strong>.enl</strong>) and RIS (<strong>.ris</strong>), see <a href="https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html">rmarkdown.rstudio.com/authoring_bibliographies_and_citations</a>.<a href="cites-and-refs.html#fnref3" class="footnote-back">↩</a></p></li>
-</ol>
-</div>
+
+
+
+
+
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="code.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="final-notes-on-the-oxthesis-template-and-on-collaboration.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="the-second-appendix-for-fun.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -432,7 +288,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/ulyngs/oxforddown/tree/master/03-rmd-basics-cites-and-refs.Rmd",
+"link": "https://github.com/ulyngs/oxforddown/tree/master/front-and-back-matter/99-references.Rmd",
 "text": "Edit"
 },
 "history": {

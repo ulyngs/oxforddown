@@ -37,14 +37,14 @@ An R Markdown document usually begins with a chunk that is used to **load librar
 
 In your thesis, this will probably happen in **index.Rmd** and/or as opening chunks in each of your chapters.
 
-<!-- ````markdown -->
-<!-- `r ''````{r setup, include=FALSE} -->
-<!-- # don't show code unless we explicitly set echo = TRUE -->
-<!-- knitr::opts_chunk$set(echo = FALSE) -->
+````markdown
+`r ''````{r setup, include=FALSE}
+# don't show code unless we explicitly set echo = TRUE
+knitr::opts_chunk$set(echo = FALSE)
 
-<!-- library(tidyverse) -->
-<!-- ``` -->
-<!-- ```` -->
+library(tidyverse)
+```
+````
 
 ### Including images
 Code chunks are also used for including images, with `include_graphics` from the `knitr` package, as in Figure \@ref(fig:oxford-logo)
@@ -72,7 +72,7 @@ if (knitr::opts_knit$get('rmarkdown.pandoc.to') == 'latex'){
 
 Then you can reference that variable as the value of `out.extra` to rotate images, as in Figure \@ref(fig:oxford-logo-rotated).
 
-```{r oxford-logo-rotated, out.extra=rotate180, fig.cap="Oxford logo, rotated", out.width='50%', fig.align='center'}
+```{r oxford-logo-rotated, out.extra=rotate180, fig.cap="Oxford logo, rotated", out.width='50%', fig.align='center', echo=FALSE}
 knitr::include_graphics("figures/beltcrest.png")
 ```
 

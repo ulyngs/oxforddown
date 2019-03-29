@@ -197,6 +197,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.4" data-path="final-notes-on-the-oxthesis-template-and-on-collaboration.html"><a href="final-notes-on-the-oxthesis-template-and-on-collaboration.html#collaborative-writing"><i class="fa fa-check"></i><b>4.4</b> Collaborative writing</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i>Conclusion</a></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="the-first-appendix.html"><a href="the-first-appendix.html"><i class="fa fa-check"></i><b>A</b> The First Appendix</a></li>
+<li class="chapter" data-level="B" data-path="the-second-appendix-for-fun.html"><a href="the-second-appendix-for-fun.html"><i class="fa fa-check"></i><b>B</b> The Second Appendix, for Fun</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
 
       </nav>
@@ -241,13 +245,12 @@ Figure 2.1: Code chunk syntax
 <h3><span class="header-section-number">2.1.1</span> Setup chunks</h3>
 <p>An R Markdown document usually begins with a chunk that is used to <strong>load libraries</strong>, and to <strong>set default chunk options</strong> with <code>knitr::opts_chunk$set</code>.</p>
 <p>In your thesis, this will probably happen in <strong>index.Rmd</strong> and/or as opening chunks in each of your chapters.</p>
-<!-- ````markdown -->
-<!-- ```{r setup, include=FALSE} -->
-<!-- # don't show code unless we explicitly set echo = TRUE -->
-<!-- knitr::opts_chunk$set(echo = FALSE) -->
-<!-- library(tidyverse) -->
-<!-- ``` -->
-<!-- ```` -->
+<pre class="sourceCode markdown"><code class="sourceCode markdown"><span class="bn">```{r setup, include=FALSE}</span>
+<span class="bn"># don&#39;t show code unless we explicitly set echo = TRUE</span>
+<span class="bn">knitr::opts_chunk$set(echo = FALSE)</span>
+
+<span class="bn">library(tidyverse)</span>
+<span class="bn">```</span></code></pre>
 </div>
 <div id="including-images" class="section level3">
 <h3><span class="header-section-number">2.1.2</span> Including images</h3>
@@ -272,7 +275,6 @@ Figure 2.2: Oxford logo
   rotate180 &lt;-<span class="st"> &quot;style=&#39;transform:rotate(180deg);&#39;&quot;</span>
 }</code></pre>
 <p>Then you can reference that variable as the value of <code>out.extra</code> to rotate images, as in Figure <a href="code.html#fig:oxford-logo-rotated">2.3</a>.</p>
-<pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;figures/beltcrest.png&quot;</span>)</code></pre>
 <div class="figure" style="text-align: center"><span id="fig:oxford-logo-rotated"></span>
 <img src="figures/beltcrest.png" alt="Oxford logo, rotated" width="50%" style='transform:rotate(180deg);' />
 <p class="caption">
@@ -305,67 +307,37 @@ Figure 2.4: A ggplot of car stuff
 <span class="st">  </span><span class="kw">head</span>() <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span>knitr<span class="op">::</span><span class="kw">kable</span>(<span class="dt">caption =</span> <span class="st">&quot;A knitr kable table&quot;</span>)</code></pre>
 <table>
-<caption>
-<span id="tab:cars-table">Table 2.1: </span>A knitr kable table
-</caption>
+<caption><span id="tab:cars-table">Table 2.1: </span>A knitr kable table</caption>
 <thead>
-<tr>
-<th style="text-align:right;">
-speed
-</th>
-<th style="text-align:right;">
-dist
-</th>
+<tr class="header">
+<th align="right">speed</th>
+<th align="right">dist</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-2
-</td>
+<tr class="odd">
+<td align="right">4</td>
+<td align="right">2</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-10
-</td>
+<tr class="even">
+<td align="right">4</td>
+<td align="right">10</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-7
-</td>
-<td style="text-align:right;">
-4
-</td>
+<tr class="odd">
+<td align="right">7</td>
+<td align="right">4</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-7
-</td>
-<td style="text-align:right;">
-22
-</td>
+<tr class="even">
+<td align="right">7</td>
+<td align="right">22</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:right;">
-16
-</td>
+<tr class="odd">
+<td align="right">8</td>
+<td align="right">16</td>
 </tr>
-<tr>
-<td style="text-align:right;">
-9
-</td>
-<td style="text-align:right;">
-10
-</td>
+<tr class="even">
+<td align="right">9</td>
+<td align="right">10</td>
 </tr>
 </tbody>
 </table>
