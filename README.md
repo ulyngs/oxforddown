@@ -2,7 +2,7 @@
 
 A template for writing an Oxford University thesis in R Markdown.
 
-The template uses the [bookdown](https://bookdown.org) R package together with the [OxThesis LaTeX template](https://github.com/mcmanigle/OxThesis), plus lots and lots of inspiration from [thesisdown](https://github.com/ismayc/thesisdown).
+The template uses the [bookdown](https://bookdown.org) R package together with the [OxThesis LaTeX template](https://github.com/mcmanigle/OxThesis), plus lots of inspiration from [thesisdown](https://github.com/ismayc/thesisdown).
 
 # Requirements
 - LaTeX - if you're lazy and got sufficient disc space, just download and install the MacTeX distribution from [tug.org/mactex/](http://www.tug.org/mactex/). If you're short on disc space, go for the BasicTeX distribution from the same site. 
@@ -37,24 +37,24 @@ The template uses the [bookdown](https://bookdown.org) R package together with t
 ## Writing your thesis
 To use this template to write your thesis, do the following:
 - update the YAML header (the stuff at the top between '---') in **index.Rmd** with your name, college, etc.
-- write the individual chapters as **.Rmd** files in the root folder
+- write the individual chapters as **.Rmd** files in the root folder - **the introduction chapter *must* be named _00-introduction.Rmd**.
 - write the front matter (abstract, acknowledgements, abbreviations) and back matter (appendices) by adjusting the **.Rmd** files in **front-and-back-matter/** folder
 - for abbreviations, change **front-and-back-matter/abbreviations.tex** to fit your needs (follow the LaTeX syntax in there)
 
-Note that **.Rmd** files you don't want included in the body text must be given file names that begin with an underscore (e.g. **front-and-back-matter/\_abstract.Rmd** and **front-and-back-matter/\_acknowledgements.Rmd**). (Alternatively, you may specify manually in **\_bookdown.yml** which files should be merged into the body text.)
+**.Rmd** files you don't want included in the body text must be given file names that begin with an underscore (e.g. **front-and-back-matter/\_abstract.Rmd** and **front-and-back-matter/\_acknowledgements.Rmd**). (Alternatively, specify manually in **\_bookdown.yml** which files should be merged into the body text.)
 
 ## Knitting individual chapters
-To knit just an individual chapter without compiling the entire thesis:
-1. open the **.Rmd** file of a chapter you'd like to knit
-2. add a YAML header which specifies the output formats you want (e.g. `bookdown::word_document2` for a word document that you might want to upload to Google Docs for feedback from collaborators; NOTE: use the [bookdown formats](https://bookdown.org/yihui/bookdown/a-single-document.html), rather than the plain rmarkdown ones (e.g. bookdown::word_document2) so that cross-referencing ability is enabled. 
-  - To output to PDF without including the template content, use `bookdown::pdf_documents2: template: templates/brief_template.tex` as shown in the sample chapters
+To knit an individual chapter without compiling the entire thesis:
+1. open the **.Rmd** file of a chapter
+2. add a YAML header specifying the output format(s) (e.g. `bookdown::word_document2` for a word document you might want to upload to Google Docs for feedback from collaborators)
+  - To output a single chapter to PDF, use `bookdown::pdf_documents2: template: templates/brief_template.tex` - this will format the chapter in the OxThesis style but without including the front matter (table of contents, abstract, etc)
 
-The output file is then saved in the root folder.
+The output file is saved in the root folder.
 
 ## Cleaning up generated auxiliary files
-By default, when you build the entire thesis, the auxillary files will be removed (to adjust how this is done, edit the **Makefile**.
+By default, when you build the entire thesis, the auxillary files will be removed (to adjust how this is done, edit **Makefile**).
 
-To easily clean up files generated when knitting individual chapters, type 'make clean-knits' in the terminal.
+To clean up files generated when knitting individual chapters, type 'make clean-knits' in the terminal.
 
 # Limitations
 - at the moment only PDF and HTML output have been properly implemented; I will improve on the Word output further down the line
