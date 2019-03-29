@@ -138,9 +138,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i>Introduction</a><ul>
-<li class="chapter" data-level="0.1" data-path="introduction.html"><a href="introduction.html#why-use-it"><i class="fa fa-check"></i><b>0.1</b> Why use it?</a></li>
-<li class="chapter" data-level="0.2" data-path="introduction.html"><a href="introduction.html#who-should-use-it"><i class="fa fa-check"></i><b>0.2</b> Who should use it?</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a><ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#why-use-it"><i class="fa fa-check"></i><b>0.1</b> Why use it?</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#who-should-use-it"><i class="fa fa-check"></i><b>0.2</b> Who should use it?</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="rmd-basics.html"><a href="rmd-basics.html"><i class="fa fa-check"></i><b>1</b> R Markdown Basics: The Markdown syntax</a><ul>
 <li class="chapter" data-level="1.1" data-path="rmd-basics.html"><a href="rmd-basics.html#markdown-basic-syntax"><i class="fa fa-check"></i><b>1.1</b> Markdown basic syntax</a><ul>
@@ -224,7 +224,7 @@ Template for R Markdown</a>
 <p>The OxThesis LaTeX template lets you inject some wittiness into your thesis by including a block of type <code>savequote</code> at the beginning of chapters.
 To do this, use the syntax <code>```{block type='savequote'}</code>.<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a></p>
 <p>Add the reference for the quote with the chunk option <code>quote_author=&quot;my author name&quot;</code>.
-You will also want to add the chunk option <code>include=knitr::opts_knit$get('rmarkdown.pandoc.to') == 'latex'</code> so that quotes are only included in PDF output.</p>
+You will also want to add the chunk option <code>include=knitr::is_latex_output()</code> so that quotes are only included in PDF output.</p>
 <p>It’s not possible to use markdown syntax inside chunk options, so if you want to e.g. italicise a book name in the reference use a <a href="https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html#text-references">‘text reference’</a>: Create a named piece of text with ‘(ref:label-name) My text’, then point to this in the chunk option with <code>quote_author='(ref:label-name)'</code>.</p>
 </div>
 <div id="highlighting-corrections" class="section level2">
@@ -234,7 +234,7 @@ You can do so like this:</p>
 <div id="short-inline-corrections" class="section level3">
 <h3><span class="header-section-number">4.2.1</span> Short, inline corrections</h3>
 <p>Highlight <strong>short, inline corrections</strong> by wrapping them in a <code>&lt;span&gt;</code> tag with the class ‘correction’.
-In other words, if you do <code>&lt;span class=&quot;correction&quot;&gt;like this&lt;/span&gt;</code>, the text between the span tags will in <span class="correction">the output will be highlighted in blue</span>.</p>
+In other words, if you do <code>&lt;span class=&quot;correction&quot;&gt;like this&lt;/span&gt;</code>, the text between the span tags will <span class="correction">be highlighted in blue</span> in the output.</p>
 </div>
 <div id="blocks-of-added-or-changed-material" class="section level3">
 <h3><span class="header-section-number">4.2.2</span> Blocks of added or changed material</h3>

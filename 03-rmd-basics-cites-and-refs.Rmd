@@ -140,19 +140,11 @@ When we output to PDF, we can use raw LaTeX directly in our .Rmd files. So if we
 - Becomes: Figure \@ref(fig:cars-plot) on page \pageref{fig:cars-plot}
 
 #### Include page numbers only in PDF output
-A problem here is that LaTeX commands won't display in HTML output, so in the gitbook output we'd see simply "Figure \@ref(fig:cars-plot) on page ".
+A problem here is that LaTeX commands don't display in HTML output, so in the gitbook output we'd see simply "Figure \@ref(fig:cars-plot) on page ".
 
-A not super elegant way to get around this is to insert the text with inline R code, in which we first make a check of the output format and then insert the appropriate text.
+One way to get around this is to use inline R code to insert the text, and use an `ifelse` statement to check the output format and then insert the appropriate text.
 
-- So this: `` ``r ''`r ifelse(knitr::opts_knit$get('rmarkdown.pandoc.to') == 'latex', "Figure \\@ref(fig:cars-plot) on page \\pageref{fig:cars-plot}", "")` ``
-- Inserts this (check this on both PDF and gitbook): `r ifelse(knitr::opts_knit$get('rmarkdown.pandoc.to') == 'latex', "Figure \\@ref(fig:cars-plot) on page \\pageref{fig:cars-plot}", "")`
+- So this: `` ``r ''`r ifelse(knitr::is_latex_output(), "Figure \\@ref(fig:cars-plot) on page \\pageref{fig:cars-plot}", "")` ``
+- Inserts this (check this on both PDF and gitbook): `r ifelse(knitr::is_latex_output(), "Figure \\@ref(fig:cars-plot) on page \\pageref{fig:cars-plot}", "")`
 
 Note that we need to escape the backslash with another backslash here to get the correct output.
-
-A slightly less verbose way of doing this is to add a code chunk in which we assign the value of `knitr::opts_knit$get('rmarkdown.pandoc.to') == 'latex'` to a short variable, like this:
-
-```{r}
-is_pdf <- knitr::opts_knit$get('rmarkdown.pandoc.to') == 'latex'
-```
-
-Then we could less verbosely write `` ``r ''`r ifelse(is_pdf, "Figure \\@ref(fig:cars-plot) on page \\pageref{fig:cars-plot}", "")` ``, to get `r ifelse(is_pdf, "Figure \\@ref(fig:cars-plot) on page \\pageref{fig:cars-plot}", "")`.

@@ -138,9 +138,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i>Introduction</a><ul>
-<li class="chapter" data-level="0.1" data-path="introduction.html"><a href="introduction.html#why-use-it"><i class="fa fa-check"></i><b>0.1</b> Why use it?</a></li>
-<li class="chapter" data-level="0.2" data-path="introduction.html"><a href="introduction.html#who-should-use-it"><i class="fa fa-check"></i><b>0.2</b> Who should use it?</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a><ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#why-use-it"><i class="fa fa-check"></i><b>0.1</b> Why use it?</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#who-should-use-it"><i class="fa fa-check"></i><b>0.2</b> Who should use it?</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="rmd-basics.html"><a href="rmd-basics.html"><i class="fa fa-check"></i><b>1</b> R Markdown Basics: The Markdown syntax</a><ul>
 <li class="chapter" data-level="1.1" data-path="rmd-basics.html"><a href="rmd-basics.html#markdown-basic-syntax"><i class="fa fa-check"></i><b>1.1</b> Markdown basic syntax</a><ul>
@@ -399,16 +399,13 @@ LaTeX has a command for this, which looks like this: <code>\pageref{fig/tab:labe
 </ul>
 <div id="include-page-numbers-only-in-pdf-output" class="section level4">
 <h4><span class="header-section-number">3.2.4.1</span> Include page numbers only in PDF output</h4>
-<p>A problem here is that LaTeX commands won’t display in HTML output, so in the gitbook output we’d see simply “Figure <a href="code.html#fig:cars-plot">2.4</a> on page”.</p>
-<p>A not super elegant way to get around this is to insert the text with inline R code, in which we first make a check of the output format and then insert the appropriate text.</p>
+<p>A problem here is that LaTeX commands don’t display in HTML output, so in the gitbook output we’d see simply “Figure <a href="code.html#fig:cars-plot">2.4</a> on page”.</p>
+<p>One way to get around this is to use inline R code to insert the text, and use an <code>ifelse</code> statement to check the output format and then insert the appropriate text.</p>
 <ul>
-<li>So this: <code>`r ifelse(knitr::opts_knit$get('rmarkdown.pandoc.to') == 'latex', &quot;Figure \\@ref(fig:cars-plot) on page \\pageref{fig:cars-plot}&quot;, &quot;&quot;)`</code></li>
+<li>So this: <code>`r ifelse(knitr::is_latex_output(), &quot;Figure \\@ref(fig:cars-plot) on page \\pageref{fig:cars-plot}&quot;, &quot;&quot;)`</code></li>
 <li>Inserts this (check this on both PDF and gitbook):</li>
 </ul>
 <p>Note that we need to escape the backslash with another backslash here to get the correct output.</p>
-<p>A slightly less verbose way of doing this is to add a code chunk in which we assign the value of <code>knitr::opts_knit$get('rmarkdown.pandoc.to') == 'latex'</code> to a short variable, like this:</p>
-<pre class="sourceCode r"><code class="sourceCode r">is_pdf &lt;-<span class="st"> </span>knitr<span class="op">::</span>opts_knit<span class="op">$</span><span class="kw">get</span>(<span class="st">&#39;rmarkdown.pandoc.to&#39;</span>) <span class="op">==</span><span class="st"> &#39;latex&#39;</span></code></pre>
-<p>Then we could less verbosely write <code>`r ifelse(is_pdf, &quot;Figure \\@ref(fig:cars-plot) on page \\pageref{fig:cars-plot}&quot;, &quot;&quot;)`</code>, to get .</p>
 
 
 </div>

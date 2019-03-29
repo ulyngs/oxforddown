@@ -7,7 +7,7 @@ output:
 documentclass: book
 ---
 
-```{block type='savequote', include=knitr::opts_knit$get('rmarkdown.pandoc.to') == 'latex', quote_author='(ref:darwin-quote)'}
+```{block type='savequote', include=knitr::is_latex_output(), quote_author='(ref:darwin-quote)'}
 There is grandeur in this view of life, with its several powers, having been originally breathed into a few forms or into one; and that, whilst this planet has gone cycling on according to the fixed law of gravity, from so simple a beginning endless forms most beautiful and most wonderful have been, and are being, evolved.
 
 ```
@@ -21,7 +21,7 @@ The OxThesis LaTeX template lets you inject some wittiness into your thesis by i
 To do this, use the syntax ```` ```{block type='savequote'} ````.^[For more on custom block types, see the relevant section in [_Authoring Books with R Markdown_](https://bookdown.org/yihui/bookdown/custom-blocks.html).]
 
 Add the reference for the quote with the chunk option `quote_author="my author name"`. 
-You will also want to add the chunk option `include=knitr::opts_knit$get('rmarkdown.pandoc.to') == 'latex'` so that quotes are only included in PDF output.
+You will also want to add the chunk option `include=knitr::is_latex_output()` so that quotes are only included in PDF output.
 
 It's not possible to use markdown syntax inside chunk options, so if you want to e.g. italicise a book name in the reference use a ['text reference'](https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html#text-references): Create a named piece of text with '(ref:label-name) My text', then point to this in the chunk option with `quote_author='(ref:label-name)'`.
 
@@ -32,7 +32,7 @@ You can do so like this:
 
 ### Short, inline corrections
 Highlight **short, inline corrections** by wrapping them in a `<span>` tag with the class 'correction'. 
-In other words, if you do `<span class="correction">like this</span>`, the text between the span tags will in <span class="correction">the output will be highlighted in blue</span>.
+In other words, if you do `<span class="correction">like this</span>`, the text between the span tags will <span class="correction">be highlighted in blue</span> in the output.
 
 ### Blocks of added or changed material
 Highlight entire **blocks of added or changed material** by putting them in a block of type `correction`, using the syntax ```` ```{block type='correction'} ````.^[In the **.tex** file for PDF output, this will put the content between `\begin{correction}` and `\end{correction}`; in gitbook output it will be put between `<div class="correction">` and `</div>`.]

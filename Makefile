@@ -7,7 +7,6 @@ pdf:
 gitbook:
 	Rscript -e 'bookdown::render_book("index.Rmd", output_format = "bookdown::gitbook")'
 	Rscript -e 'browseURL("docs/index.html")'
-	rm -r _bookdown_files/
 
 clean:
 	rm -f *.log *.mtc* *.maf *.aux

@@ -88,3 +88,6 @@ if (length(new.pkg))
   install.packages(new.pkg, repos = "http://cran.rstudio.com")
 ```
 
+
+```{r introduction, child = '_00-introduction.Rmd'}
+```
