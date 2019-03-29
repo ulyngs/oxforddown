@@ -24,8 +24,8 @@ The template uses the [bookdown](https://bookdown.org) R package together with t
 - click 'Build All' on the 'Build' tab *or* type 'make pdf' in the terminal (not the R console!)
 - the compiled PDF is saved as **docs/\_main.pdf**, and the PDF is opened
 
-![](screenshots/build.png)
-![](screenshots/compiled.png)
+![](screenshots/build_all.png)
+![](screenshots/compiled_pdf.png)
 
 ### Gitbook output
 - in the terminal tab (not the R console!), type 'make gitbook'
