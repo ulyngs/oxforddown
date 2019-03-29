@@ -34,6 +34,12 @@ The template uses the [bookdown](https://bookdown.org) R package together with t
 ![](screenshots/build_gitbook.png)
 ![](screenshots/compiled_gitbook.png)
 
+### Word output
+- in the terminal tab (not the R console!), type 'make word'
+- the compiled MS Word document is saved as **docs/\_main.docx** and opened
+
+The Word output has no template behind it, and many things do not work (e.g. image rotation, highlighting corrections). **I encourage pull requests that optimise the Word output, e.g. by using tools from the [`officer`](https://github.com/davidgohel/officer) package.**
+
 ## Writing your thesis
 To use this template to write your thesis, do the following:
 - update the YAML header (the stuff at the top between '---') in **index.Rmd** with your name, college, etc.
