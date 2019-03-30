@@ -1,3 +1,7 @@
+# check for basic packages required
+if (!("bookdown" %in% installed.packages()))
+  install.packages("knitr", repos = "http://cran.rstudio.com")
+
 # check if the right packages are installed to create the chunk options
 if (!("knitr" %in% installed.packages()))
   install.packages("knitr", repos = "http://cran.rstudio.com")

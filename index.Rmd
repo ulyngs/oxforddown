@@ -62,32 +62,15 @@ documentclass: book
 
 ---
 
-<!-- NOTE ON COMPILING YOUR THESIS:
-PDF output: type 'make pdf' in the terminal (not the R console), or click 'Build All' over on the Build tab. Output (and .tex) is generated and saved as docs/_main.pdf
-
-Gitbook output: type 'make gitbook' in the terminal (not the R console). A set of HTML files is stored in the docs/ folder
--->
 
 ```{r create_chunk_options, include=FALSE, eval=knitr::is_latex_output()}
 source('scripts_and_filters/create_chunk_options.R')
 ```
-<!-- NOTE ON CREATING NEW CHUNK OPTIONS: 
+<!--
 Include the create_chunk_options chunk above at the top of your index.Rmd file
 This will include code to create additional chunk options (e.g. for adding author references to savequotes)
 If you need to create your own additional chunk options, edit the file scripts/create_chunk_options.R
 -->
-
-```{r package_check, include=FALSE}
-# List of packages required
-pkg <- c("devtools", "bookdown")
-# Check if packages are not installed and assign the
-# names of the packages not installed to the variable new.pkg
-new.pkg <- pkg[!(pkg %in% installed.packages())]
-# If there are any packages in the list that aren't installed,
-# install them
-if (length(new.pkg))
-  install.packages(new.pkg, repos = "http://cran.rstudio.com")
-```
 
 
 ```{r introduction, child = '_00-introduction.Rmd'}
