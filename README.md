@@ -2,6 +2,11 @@
 
 A template for writing an Oxford University thesis in R Markdown.
 
+See the video tutorial for how to use the template:
+[![oxforddown tutorial](https://img.youtube.com/vi/Yf1W1BBS9cU&t=2s/0.jpg)](https://www.youtube.com/watch?v=Yf1W1BBS9cU&t=2s "oxforddown tutorial")
+
+For how to write your content with the R Markdown syntax, read through the sample content.
+
 The template uses the [bookdown](https://bookdown.org) R package together with the [OxThesis LaTeX template](https://github.com/mcmanigle/OxThesis), plus lots of inspiration from [thesisdown](https://github.com/ismayc/thesisdown).
 
 # Requirements
