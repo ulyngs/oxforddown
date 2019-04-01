@@ -2,7 +2,7 @@
 
 A template for writing an Oxford University thesis in R Markdown.
 
-See the video tutorial for how to use the template:
+See the video tutorial for how to use the template:\
 [![oxforddown tutorial](https://img.youtube.com/vi/Yf1W1BBS9cU/0.jpg)](https://www.youtube.com/watch?v=Yf1W1BBS9cU)
 
 For how to write your content with the R Markdown syntax, read through the sample content.
