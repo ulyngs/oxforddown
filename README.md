@@ -2,8 +2,17 @@
 
 A template for writing an Oxford University thesis in R Markdown.
 
-See the video tutorial for how to use the template:\
-[![oxforddown tutorial](https://img.youtube.com/vi/Yf1W1BBS9cU/0.jpg)](https://www.youtube.com/watch?v=Yf1W1BBS9cU)
+See the video tutorials for how to use the template:
+- [Part 1: Building the entire thesis](https://www.youtube.com/watch?v=Yf1W1BBS9cU)
+- [Part 2: Building a single chapter](https://www.youtube.com/watch?v=-EJfCA3VA-I)
+- [Part 3: Understanding the file structure](https://www.youtube.com/watch?v=jafgJobOgpc)
+- [Part 4: A walk-through example of creating your thesis](https://www.youtube.com/watch?v=uWpinaVSZ6Q)
+- [Part 5: The content included in index.Rmd (or: why the introduction chapter is special)](https://www.youtube.com/watch?v=FPlwCj5ZH8M)
+- [Part 6: Adjusting the order of chapters](https://www.youtube.com/watch?v=-0M3TuDnu7Y)
+- [Part 7: Adjusting build settings in \_bookdown.yml](https://www.youtube.com/watch?v=jXYfC8RXTvg)
+- [Part 8: Using the Makefile](https://www.youtube.com/watch?v=L6mV8z32RfE)
+- [Part 9: The LaTeX templates](https://www.youtube.com/watch?v=o2fd_O1On7g)
+
 
 For how to write your content with the R Markdown syntax, read through the sample content.
 
