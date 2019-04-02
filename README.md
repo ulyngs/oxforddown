@@ -9,8 +9,8 @@ See the video tutorials for how to use the template:
 - [Part 4: A walk-through example of creating your thesis](https://www.youtube.com/watch?v=uWpinaVSZ6Q)
 - [Part 5: The content included in index.Rmd (or: why the introduction chapter is special)](https://www.youtube.com/watch?v=FPlwCj5ZH8M)
 - [Part 6: Adjusting the order of chapters](https://www.youtube.com/watch?v=-0M3TuDnu7Y)
-- [Part 7: Adjusting build settings in \_bookdown.yml](https://www.youtube.com/watch?v=jXYfC8RXTvg)
-- [Part 8: Using the Makefile](https://www.youtube.com/watch?v=L6mV8z32RfE)
+- [Part 7: \_bookdown.yml: Adjusting build settings](https://www.youtube.com/watch?v=jXYfC8RXTvg)
+- [Part 8: Makefile: Adjusting build settings](https://www.youtube.com/watch?v=L6mV8z32RfE)
 - [Part 9: The LaTeX templates](https://www.youtube.com/watch?v=o2fd_O1On7g)
 
 
