@@ -136,6 +136,12 @@ Which would output:\
 
 
 ### Referring to results computed in other languages than R
+```{r, include=FALSE}
+# check if the reticulate package is installed
+if (!("reticulate" %in% installed.packages()))
+  install.packages("reticulate", repos = "http://cran.rstudio.com")
+```
+
 [At the moment](https://stackoverflow.com/questions/47818461/is-there-a-way-in-knitr-to-evaluate-inline-code-chunks-of-other-languages), inline code only works with R, so syntax such as `` `python code here` `` is not valid.
 However, you can use the [`reticulate`](https://rstudio.github.io/reticulate/articles/r_markdown.html) package to access variables from python chunks. Here's a Python code chunk:
 
@@ -147,10 +153,6 @@ print(my_number)
 The `reticulate` package allows **R** to access variables defined in python environments with the syntax `py$variable`:
 
 ```{r}
-# check if reticulate is installed
-if (!("reticulate" %in% installed.packages()))
-  install.packages("reticulate", repos = "http://cran.rstudio.com")
-
 library(reticulate)
 py$my_number
 ```
