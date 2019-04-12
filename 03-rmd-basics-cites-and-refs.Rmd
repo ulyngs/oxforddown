@@ -1,7 +1,4 @@
 ---
-#########################################
-# options for knitting a single chapter #
-#########################################
 output:
   bookdown::html_document2: default
   bookdown::word_document2: default
@@ -90,7 +87,7 @@ Headers are automatically assigned a reference label, which is the text in lower
 
 Remember what we wrote in section \@ref(citations)?
 
-We can also use **hyperlink syntax** and add \# before the label:
+We can also use **hyperlink syntax** and add \# before the label, though this is only guaranteed to work properly in HTML output:
 
 - So if we write `Remember what we wrote up in [the previous section](#citations)?`
 - It becomes Remember what we wrote up in [the previous section](#citations)?
@@ -111,9 +108,9 @@ knitr::include_graphics("figures/captain.jpeg")
 ```
 
 We refer to this image with `\@ref(fig:captain)`.
-So Figure \@ref(fig:captain) is [this image](#captain).
+So Figure \@ref(fig:captain) is [this image](#fig:captain).
 
-And in Figure \@ref(fig:cars-plot) we saw a [cars plot](#cars-plot).
+And in Figure \@ref(fig:cars-plot) we saw a [cars plot](#fig:cars-plot).
 
 
 ### Table references
@@ -126,9 +123,9 @@ knitr::kable(cars[1:5,],
 ```
 
 We refer to this table with `\@ref(tab:cars-table2)`. 
-So Table \@ref(tab:cars-table2) is [this table](#cars-table2).
+So Table \@ref(tab:cars-table2) is [this table](#tab:cars-table2).
 
-And in Table \@ref(tab:cars-table) we saw more or less [the same cars table](#cars-table).
+And in Table \@ref(tab:cars-table) we saw more or less [the same cars table](#tab:cars-table).
 
 ### Including page numbers
 Finally, in the PDF output we might also want to include the page number of a reference, so that it's easy to find in physical printed output.

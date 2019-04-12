@@ -27,6 +27,7 @@ Template for R Markdown">
 <meta name="author" content="Author Name">
 
 
+<meta name="date" content="2019-12-04">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -139,8 +140,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <ul class="summary">
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a><ul>
-<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#why-use-it"><i class="fa fa-check"></i><b>0.1</b> Why use it?</a></li>
-<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#who-should-use-it"><i class="fa fa-check"></i><b>0.2</b> Who should use it?</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#why-use-it"><i class="fa fa-check"></i>Why use it?</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#who-should-use-it"><i class="fa fa-check"></i>Who should use it?</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="rmd-basics.html"><a href="rmd-basics.html"><i class="fa fa-check"></i><b>1</b> R Markdown Basics: The Markdown syntax</a><ul>
 <li class="chapter" data-level="1.1" data-path="rmd-basics.html"><a href="rmd-basics.html#markdown-basic-syntax"><i class="fa fa-check"></i><b>1.1</b> Markdown basic syntax</a><ul>
@@ -293,7 +294,7 @@ Figure 3.1: The <code>citr</code> add-in
 <h3><span class="header-section-number">3.2.1</span> Section references</h3>
 <p>Headers are automatically assigned a reference label, which is the text in lower caps separated by dashes. For example, <code># My header</code> is automatically given the label <code>my-header</code>. So <code># My header</code> can be referenced with <code>\@ref(my-section)</code></p>
 <p>Remember what we wrote in section <a href="cites-and-refs.html#citations">3.1</a>?</p>
-<p>We can also use <strong>hyperlink syntax</strong> and add # before the label:</p>
+<p>We can also use <strong>hyperlink syntax</strong> and add # before the label, though this is only guaranteed to work properly in HTML output:</p>
 <ul>
 <li>So if we write <code>Remember what we wrote up in [the previous section](#citations)?</code></li>
 <li>It becomes Remember what we wrote up in <a href="cites-and-refs.html#citations">the previous section</a>?</li>
@@ -320,8 +321,8 @@ Figure 3.2: A marvel-lous meme
 </p>
 </div>
 <p>We refer to this image with <code>\@ref(fig:captain)</code>.
-So Figure <a href="cites-and-refs.html#fig:captain">3.2</a> is <a href="#captain">this image</a>.</p>
-<p>And in Figure <a href="code.html#fig:cars-plot">2.4</a> we saw a <a href="#cars-plot">cars plot</a>.</p>
+So Figure <a href="cites-and-refs.html#fig:captain">3.2</a> is <a href="cites-and-refs.html#fig:captain">this image</a>.</p>
+<p>And in Figure <a href="code.html#fig:cars-plot">2.4</a> we saw a <a href="code.html#fig:cars-plot">cars plot</a>.</p>
 </div>
 <div id="table-references" class="section level3">
 <h3><span class="header-section-number">3.2.3</span> Table references</h3>
@@ -363,8 +364,8 @@ So Figure <a href="cites-and-refs.html#fig:captain">3.2</a> is <a href="#captain
 </tbody>
 </table>
 <p>We refer to this table with <code>\@ref(tab:cars-table2)</code>.
-So Table <a href="cites-and-refs.html#tab:cars-table2">3.1</a> is <a href="#cars-table2">this table</a>.</p>
-<p>And in Table <a href="code.html#tab:cars-table">2.1</a> we saw more or less <a href="#cars-table">the same cars table</a>.</p>
+So Table <a href="cites-and-refs.html#tab:cars-table2">3.1</a> is <a href="cites-and-refs.html#tab:cars-table2">this table</a>.</p>
+<p>And in Table <a href="code.html#tab:cars-table">2.1</a> we saw more or less <a href="code.html#tab:cars-table">the same cars table</a>.</p>
 </div>
 <div id="including-page-numbers" class="section level3">
 <h3><span class="header-section-number">3.2.4</span> Including page numbers</h3>

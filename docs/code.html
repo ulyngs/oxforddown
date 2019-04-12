@@ -27,6 +27,7 @@ Template for R Markdown">
 <meta name="author" content="Author Name">
 
 
+<meta name="date" content="2019-12-04">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -139,8 +140,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <ul class="summary">
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a><ul>
-<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#why-use-it"><i class="fa fa-check"></i><b>0.1</b> Why use it?</a></li>
-<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#who-should-use-it"><i class="fa fa-check"></i><b>0.2</b> Who should use it?</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#why-use-it"><i class="fa fa-check"></i>Why use it?</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#who-should-use-it"><i class="fa fa-check"></i>Who should use it?</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="rmd-basics.html"><a href="rmd-basics.html"><i class="fa fa-check"></i><b>1</b> R Markdown Basics: The Markdown syntax</a><ul>
 <li class="chapter" data-level="1.1" data-path="rmd-basics.html"><a href="rmd-basics.html#markdown-basic-syntax"><i class="fa fa-check"></i><b>1.1</b> Markdown basic syntax</a><ul>
@@ -374,11 +375,7 @@ However, you can use the <a href="https://rstudio.github.io/reticulate/articles/
 <span class="bu">print</span>(my_number)</code></pre>
 <pre><code>## 12</code></pre>
 <p>The <code>reticulate</code> package allows <strong>R</strong> to access variables defined in python environments with the syntax <code>py$variable</code>:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># check if reticulate is installed</span>
-<span class="cf">if</span> (<span class="op">!</span>(<span class="st">&quot;reticulate&quot;</span> <span class="op">%in%</span><span class="st"> </span><span class="kw">installed.packages</span>()))
-  <span class="kw">install.packages</span>(<span class="st">&quot;reticulate&quot;</span>, <span class="dt">repos =</span> <span class="st">&quot;http://cran.rstudio.com&quot;</span>)
-
-<span class="kw">library</span>(reticulate)
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(reticulate)
 py<span class="op">$</span>my_number</code></pre>
 <pre><code>## [1] 12</code></pre>
 <p>This means that inline, we can include results from python chunks with <code>`r py$variable`</code>.
