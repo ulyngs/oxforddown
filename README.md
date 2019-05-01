@@ -78,8 +78,6 @@ By default, when you build the entire thesis, the auxillary files will be remove
 To clean up files generated when knitting individual chapters, type 'make clean-knits' in the terminal.
 
 # Limitations
-- at the moment only PDF and HTML output have been properly implemented; I will improve on the Word output further down the line
-
-This project will in time be turned into an R package that supply the template as an R Markdown template within RStudio.
+- at the moment only PDF and HTML output have been properly implemented; I may improve on the Word output further down the line
 
 Enjoy!
