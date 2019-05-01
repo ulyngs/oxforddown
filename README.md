@@ -24,6 +24,7 @@ The template uses the [bookdown](https://bookdown.org) R package together with t
 - [R](https://cran.rstudio.com) and [RStudio version 1.2 preview](https://www.rstudio.com/products/rstudio/download/preview/)
   - (pandoc version 2 or higher - comes bundled with RStudio v1.2 preview)
 - The R packages `bookdown`, `tidyverse`and `kableExtra` (should be automatically installed for you if you don't already have them, when you build this project for the first time in RStudio)
+- (If on a Mac): Command line developer tools installed. You can install these by typing `xcode-select --install` in a terminal prompt
 
 # Example output
 - PDF output: see [**docs/_main.pdf**](https://github.com/ulyngs/oxforddown/blob/master/docs/_main.pdf)
