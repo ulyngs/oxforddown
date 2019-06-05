@@ -21,9 +21,10 @@ The template uses the [bookdown](https://bookdown.org) R package together with t
 # Requirements
 - LaTeX - if you're lazy and got sufficient disc space, just download and install the MacTeX distribution from [tug.org/mactex/](http://www.tug.org/mactex/). If you're short on disc space, go for the BasicTeX distribution from the same site. 
   - (For opaque reasons, Yihui Xie's [TinyTeX](https://yihui.name/tinytex/) sometimes causes trouble! If you are unable to get the PDF output to work with TinyTex, try uninstalling it with tinytex::uninstall_tinytex(), then install the MacTeX LaTeX distribution and restart RStudio.)
-- [R](https://cran.rstudio.com) and [RStudio version 1.2 preview](https://www.rstudio.com/products/rstudio/download/preview/)
-  - (pandoc version 2 or higher - comes bundled with RStudio v1.2 preview)
+- [R](https://cran.rstudio.com) and [RStudio version 1.2 or higher](https://www.rstudio.com/products/rstudio/download/#download)
+  - (pandoc version 2 or higher - comes bundled with RStudio v1.2+)
 - The R packages `bookdown`, `tidyverse`and `kableExtra` (should be automatically installed for you if you don't already have them, when you build this project for the first time in RStudio)
+- (If on a Mac): Command line developer tools. You can install these by typing `xcode-select --install` in a terminal prompt
 
 # Example output
 - PDF output: see [**docs/_main.pdf**](https://github.com/ulyngs/oxforddown/blob/master/docs/_main.pdf)
@@ -58,7 +59,7 @@ The Word output has no template behind it, and many things do not work (e.g. ima
 To use this template to write your thesis, do the following:
 - update the YAML header (the stuff at the top between '---') in **index.Rmd** with your name, college, etc.
 - write the individual chapters as **.Rmd** files in the root folder - **the introduction chapter *must* be named _00-introduction.Rmd**.
-- write the front matter (abstract, acknowledgements, abbreviations) and back matter (appendices) by adjusting the **.Rmd** files in **front-and-back-matter/** folder
+- write the front matter (abstract, acknowledgements, abbreviations) and back matter (appendices) by adjusting the **.Rmd** files in the **front-and-back-matter/** folder
 - for abbreviations, change **front-and-back-matter/abbreviations.tex** to fit your needs (follow the LaTeX syntax in there)
 
 **.Rmd** files you don't want included in the body text must be given file names that begin with an underscore (e.g. **front-and-back-matter/\_abstract.Rmd** and **front-and-back-matter/\_acknowledgements.Rmd**). (Alternatively, specify manually in **\_bookdown.yml** which files should be merged into the body text.)
@@ -77,8 +78,6 @@ By default, when you build the entire thesis, the auxillary files will be remove
 To clean up files generated when knitting individual chapters, type 'make clean-knits' in the terminal.
 
 # Limitations
-- at the moment only PDF and HTML output have been properly implemented; I will improve on the Word output further down the line
-
-This project will in time be turned into an R package that supply the template as an R Markdown template within RStudio.
+- at the moment only PDF and HTML output have been properly implemented; I may improve on the Word output further down the line
 
 Enjoy!
