@@ -49,7 +49,6 @@ output:
     citation_package: biblatex  
     pandoc_args: ["--lua-filter=scripts_and_filters/correction_filter.lua"] #remove filter to stop applying blue background to inline corrections
   bookdown::gitbook:
-    link-citations: true
     css: templates/style.css
     config:
       sharing:
@@ -58,6 +57,7 @@ output:
         all: false
   bookdown::word_document2:
     toc: true   
+link-citations: true
 documentclass: book
 
 ---

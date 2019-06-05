@@ -27,7 +27,6 @@ Template for R Markdown">
 <meta name="author" content="Author Name">
 
 
-<meta name="date" content="2019-12-04">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -241,7 +240,7 @@ Then reference the path to this file in <strong>index.Rmd</strong>’s YAML head
 }</code></pre>
 <p>In this entry highlighed section, ‘Shea2014’ is the <strong>citation identifier</strong>.
 To default way to cite an entry in your text is with this syntax: <code>[@citation-identifier]</code>.</p>
-<p>So I might cite some things <span class="citation">(Shea et al. 2014; Lottridge et al. 2012)</span>.</p>
+<p>So I might cite some things <span class="citation">(Shea et al. <a href="#ref-Shea2014">2014</a>; Lottridge et al. <a href="#ref-Lottridge2012">2012</a>)</span>.</p>
 <div id="pdf-output" class="section level3">
 <h3><span class="header-section-number">3.1.1</span> PDF output</h3>
 <p>In PDF output, the bibliography is handled by the OxThesis LaTeX template.
@@ -251,17 +250,17 @@ If you set <code>bib-humanities: true</code> in <strong>index.Rmd</strong>, then
 <li>Put author names outside the parenthesis
 <ul>
 <li>This: <code>@Shea2014 says blah.</code></li>
-<li>Becomes: <span class="citation">Shea et al. (2014)</span> says blah.</li>
+<li>Becomes: <span class="citation">Shea et al. (<a href="#ref-Shea2014">2014</a>)</span> says blah.</li>
 </ul></li>
 <li>Include only the citation-year (in parenthesis)
 <ul>
 <li>This: <code>Shea et al. says blah [-@Shea2014]</code></li>
-<li>Becomes: Shea et al. says blah <span class="citation">(2014)</span></li>
+<li>Becomes: Shea et al. says blah <span class="citation">(<a href="#ref-Shea2014">2014</a>)</span></li>
 </ul></li>
 <li>Add text and page or chapter references to the citation
 <ul>
 <li>This: <code>[see @Shea2014, pp. 33-35; also @Wu2016, ch. 1]</code></li>
-<li>Becomes: Blah blah <span class="citation">(see Shea et al. 2014, 33–35; also Wu 2016, ch. 1)</span>.</li>
+<li>Becomes: Blah blah <span class="citation">(see Shea et al. <a href="#ref-Shea2014">2014</a>, 33–35; also Wu <a href="#ref-Wu2016">2016</a>, ch. 1)</span>.</li>
 </ul></li>
 </ul>
 </div>
@@ -389,6 +388,18 @@ LaTeX has a command for this, which looks like this: <code>\pageref{fig/tab:labe
 
 </div>
 </div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-Shea2014">
+<p>Shea, Nicholas, Annika Boldt, Dan Bang, Nick Yeung, Cecilia Heyes, and Chris D Frith. 2014. “Supra-personal cognitive control and metacognition.” <em>Trends in Cognitive Sciences</em> 18 (4): 186–93. <a href="https://doi.org/10.1016/j.tics.2014.01.006">https://doi.org/10.1016/j.tics.2014.01.006</a>.</p>
+</div>
+<div id="ref-Lottridge2012">
+<p>Lottridge, Danielle, Eli Marschner, Ellen Wang, Maria Romanovsky, and Clifford Nass. 2012. “Browser design impacts multitasking.” In <em>Proceedings of the Human Factors and Ergonomics Society 56th Annual Meeting</em>. <a href="https://doi.org/10.1177/1071181312561289">https://doi.org/10.1177/1071181312561289</a>.</p>
+</div>
+<div id="ref-Wu2016">
+<p>Wu, Tim. 2016. <em>The Attention Merchants: The Epic Scramble to Get Inside Our Heads</em>. Knopf Publishing Group.</p>
 </div>
 </div>
 <div class="footnotes">
