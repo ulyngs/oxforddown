@@ -139,7 +139,9 @@ The syntax for writing math is stolen from LaTeX. To write a math expression tha
   - This: \$A = \\pi*r^{2}\$  Becomes: $A = \pi*r^{2}$
   
 To write a math expression that will be shown in a block, enclose it in two dollar signs.\
-This: \$\$A = \\pi*r^{2}\$\$ Becomes:
+This: `r ifelse(knitr::opts_knit$get('rmarkdown.pandoc.to') == 'latex', "\\$\\$A = \\\\pi*r^{2}\\$\\$", "<span>&#36;</span>\\$A = \\\\pi*r^{2}\\$\\$")`
+
+Becomes: 
 $$A = \pi*r^{2}$$
 
 To create numbered equations, put them in an 'equation' environment and give them a label with the syntax `(\#eq:label)`, like this:
