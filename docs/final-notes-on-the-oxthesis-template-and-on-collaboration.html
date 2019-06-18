@@ -252,7 +252,7 @@ For larger chunks, like this paragraph or indeed entire figures, you can use the
 </div>
 <div id="stopping-corrections-from-being-highlighted-in-the-output" class="section level3">
 <h3><span class="header-section-number">4.2.3</span> Stopping corrections from being highlighted in the output</h3>
-<p>For <strong>PDF</strong> output, (i) go to <strong>index.Rmd</strong>, (ii) set <code>corrections: false</code> under <code>params</code> in the YAML header (stops block of corrections from being highlighted), (iii) comment out <code>pandoc_args: [&quot;--lua-filter=scripts_and_filters/correction_filter.lua&quot;]</code> (stops inline corrections from being highlighted).</p>
+<p>For <strong>PDF</strong> output, go to <strong>index.Rmd</strong> and (i) set <code>corrections: false</code> under <code>params</code> in the YAML header (stops block of corrections from being highlighted), (ii) comment out <code>pandoc_args: [&quot;--lua-filter=scripts_and_filters/correction_filter.lua&quot;]</code> (stops inline corrections from being highlighted).</p>
 <p>For <strong>gitbook</strong> output, go to <strong>style.css</strong> and comment out the styling for <code>.correction</code>.</p>
 </div>
 </div>

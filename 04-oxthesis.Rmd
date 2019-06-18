@@ -43,7 +43,7 @@ For larger chunks, like this paragraph or indeed entire figures, you can use the
 ```
 
 ### Stopping corrections from being highlighted in the output
-For **PDF** output, (i) go to **index.Rmd**, (ii) set `corrections: false` under `params` in the YAML header (stops block of corrections from being highlighted), (iii) comment out `pandoc_args: ["--lua-filter=scripts_and_filters/correction_filter.lua"]` (stops inline corrections from being highlighted).
+For **PDF** output, go to **index.Rmd** and (i) set `corrections: false` under `params` in the YAML header (stops block of corrections from being highlighted), (ii) comment out `pandoc_args: ["--lua-filter=scripts_and_filters/correction_filter.lua"]` (stops inline corrections from being highlighted).
 
 For **gitbook** output, go to **style.css** and comment out the styling for `.correction`.
 
