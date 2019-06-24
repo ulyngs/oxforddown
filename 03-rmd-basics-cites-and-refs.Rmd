@@ -12,11 +12,12 @@ documentclass: book
 
 ## Citations
 The usual way to include citations in an *R Markdown* document is to put references in a plain text file with the extension **.bib**, in **BibTex** format.[^bib-formats]
-Then reference the path to this file in **index.Rmd**'s YAML header with `bibliography: example.bib`
+Then reference the path to this file in **index.Rmd**'s YAML header with `bibliography: example.bib`.
 
 [^bib-formats]: The bibliography can be in other formats as well, including EndNote (**.enl**) and RIS (**.ris**), see [rmarkdown.rstudio.com/authoring_bibliographies_and_citations](https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html).
 
-Most reference managers are able to do this automatically - [Zotero](https://www.zotero.org) with the [Better BibTex plug-in](https://retorque.re/zotero-better-bibtex/) works best, but I personally use [Mendeley](https://www.mendeley.com)).
+Most reference managers can create a .bib file with you references automatically.
+However, the **by far** best reference manager to use with *R Markdown* is [Zotero](https://www.zotero.org) with the [Better BibTex plug-in](https://retorque.re/zotero-better-bibtex/), because the `citr` plugin for RStudio (see below) can read references directly from your Zotero library!
 
 Here is an example of an entry in a **.bib** file:
 ```bibtex

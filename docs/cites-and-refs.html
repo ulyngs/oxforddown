@@ -225,8 +225,9 @@ Template for R Markdown</a>
 <div id="citations" class="section level2">
 <h2><span class="header-section-number">3.1</span> Citations</h2>
 <p>The usual way to include citations in an <em>R Markdown</em> document is to put references in a plain text file with the extension <strong>.bib</strong>, in <strong>BibTex</strong> format.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>
-Then reference the path to this file in <strong>index.Rmd</strong>’s YAML header with <code>bibliography: example.bib</code></p>
-<p>Most reference managers are able to do this automatically - <a href="https://www.zotero.org">Zotero</a> with the <a href="https://retorque.re/zotero-better-bibtex/">Better BibTex plug-in</a> works best, but I personally use <a href="https://www.mendeley.com">Mendeley</a>).</p>
+Then reference the path to this file in <strong>index.Rmd</strong>’s YAML header with <code>bibliography: example.bib</code>.</p>
+<p>Most reference managers can create a .bib file with you references automatically.
+However, the <strong>by far</strong> best reference manager to use with <em>R Markdown</em> is <a href="https://www.zotero.org">Zotero</a> with the <a href="https://retorque.re/zotero-better-bibtex/">Better BibTex plug-in</a>, because the <code>citr</code> plugin for RStudio (see below) can read references directly from your Zotero library!</p>
 <p>Here is an example of an entry in a <strong>.bib</strong> file:</p>
 <pre class="sourceCode bibtex"><code class="sourceCode bibtex"><span class="va">@article</span>{<span class="ot">Shea2014</span>,
   <span class="dt">author</span> =        {Shea, Nicholas and Boldt, Annika},
