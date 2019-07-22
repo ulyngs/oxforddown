@@ -27,7 +27,7 @@ The template uses the [bookdown](https://bookdown.org) R package together with t
 - (If on a Mac): Command line developer tools. You can install these by typing `xcode-select --install` in a terminal prompt
 
 # Example output
-- PDF output: see [**_main.pdf**](https://github.com/ulyngs/oxforddown/blob/master/_main.pdf)
+- PDF output: see [**docs/_main.pdf**](https://github.com/ulyngs/oxforddown/blob/master/_main.pdf)
 - Gitbook output: see [ulyngs.github.io/oxforddown/](https://ulyngs.github.io/oxforddown/)
 
 # Usage
