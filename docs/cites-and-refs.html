@@ -8,7 +8,7 @@
   <meta name="description" content="oxforddown:<br />
 An Oxford University Thesis<br />
 Template for R Markdown" />
-  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
 
   <meta property="og:title" content="3 Citations and cross-references | oxforddown: An Oxford University Thesis Template for R Markdown" />
   <meta property="og:type" content="book" />
@@ -66,7 +66,6 @@ a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
 a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
@@ -229,15 +228,15 @@ Then reference the path to this file in <strong>index.Rmd</strong>’s YAML head
 <p>Most reference managers can create a .bib file with you references automatically.
 However, the <strong>by far</strong> best reference manager to use with <em>R Markdown</em> is <a href="https://www.zotero.org">Zotero</a> with the <a href="https://retorque.re/zotero-better-bibtex/">Better BibTex plug-in</a>, because the <code>citr</code> plugin for RStudio (see below) can read references directly from your Zotero library!</p>
 <p>Here is an example of an entry in a <strong>.bib</strong> file:</p>
-<pre class="sourceCode bibtex"><code class="sourceCode bibtex"><span class="va">@article</span>{<span class="ot">Shea2014</span>,
-  <span class="dt">author</span> =        {Shea, Nicholas and Boldt, Annika},
-  <span class="dt">journal</span> =       {Trends in Cognitive Sciences},
-  <span class="dt">pages</span> =         {186--193},
-  <span class="dt">title</span> =         {{Supra-personal cognitive control}},
-  <span class="dt">volume</span> =        {18},
-  <span class="dt">year</span> =          {2014},
-  <span class="dt">doi</span> =           {10.1016/j.tics.2014.01.006},
-}</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bibtex"><code class="sourceCode bibtex"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="va">@article</span>{<span class="ot">Shea2014</span>,</a>
+<a class="sourceLine" id="cb12-2" data-line-number="2">  <span class="dt">author</span> =        {Shea, Nicholas and Boldt, Annika},</a>
+<a class="sourceLine" id="cb12-3" data-line-number="3">  <span class="dt">journal</span> =       {Trends in Cognitive Sciences},</a>
+<a class="sourceLine" id="cb12-4" data-line-number="4">  <span class="dt">pages</span> =         {186--193},</a>
+<a class="sourceLine" id="cb12-5" data-line-number="5">  <span class="dt">title</span> =         {{Supra-personal cognitive control}},</a>
+<a class="sourceLine" id="cb12-6" data-line-number="6">  <span class="dt">volume</span> =        {18},</a>
+<a class="sourceLine" id="cb12-7" data-line-number="7">  <span class="dt">year</span> =          {2014},</a>
+<a class="sourceLine" id="cb12-8" data-line-number="8">  <span class="dt">doi</span> =           {10.1016/j.tics.2014.01.006},</a>
+<a class="sourceLine" id="cb12-9" data-line-number="9">}</a></code></pre></div>
 <p>In this entry highlighed section, ‘Shea2014’ is the <strong>citation identifier</strong>.
 To default way to cite an entry in your text is with this syntax: <code>[@citation-identifier]</code>.</p>
 <p>So I might cite some things <span class="citation">(Shea et al. <a href="#ref-Shea2014">2014</a>; Lottridge et al. <a href="#ref-Lottridge2012">2012</a>)</span>.</p>
@@ -312,7 +311,7 @@ See <a href="cites-and-refs.html#cites-and-refs">our chapter title</a> for an ex
 <li><strong>GOTCHA</strong>: Figures and tables must have captions if you wish to cross-reference them.</li>
 </ul>
 <p>Let’s add an image:</p>
-<pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;figures/captain.jpeg&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;figures/captain.jpeg&quot;</span>)</a></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:captain"></span>
 <img src="figures/captain.jpeg" alt="A marvel-lous meme" width="65%" />
 <p class="caption">
@@ -329,8 +328,8 @@ So Figure <a href="cites-and-refs.html#fig:captain">3.2</a> is <a href="cites-an
 <li>To refer to tables use the syntax <code>\@ref(tab:label)</code></li>
 </ul>
 <p>Let’s include a table:</p>
-<pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span><span class="kw">kable</span>(cars[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>,],
-            <span class="dt">caption=</span><span class="st">&quot;Stopping cars&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(cars[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>,],</a>
+<a class="sourceLine" id="cb14-2" data-line-number="2">            <span class="dt">caption=</span><span class="st">&quot;Stopping cars&quot;</span>)</a></code></pre></div>
 <table>
 <caption><span id="tab:cars-table2">Table 3.1: </span>Stopping cars</caption>
 <thead>
@@ -451,7 +450,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": "docs/_main.pdf",
+"download": ["_main.pdf"],
 "toc": {
 "collapse": "subsection"
 }

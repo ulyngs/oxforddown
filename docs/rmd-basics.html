@@ -8,7 +8,7 @@
   <meta name="description" content="oxforddown:<br />
 An Oxford University Thesis<br />
 Template for R Markdown" />
-  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
 
   <meta property="og:title" content="1 R Markdown Basics: The Markdown syntax | oxforddown: An Oxford University Thesis Template for R Markdown" />
   <meta property="og:type" content="book" />
@@ -66,7 +66,6 @@ a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
 a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
@@ -355,10 +354,10 @@ This: <span>$</span>$A = \pi*r^{2}$$</p>
 <p>Becomes:
 <span class="math display">\[A = \pi*r^{2}\]</span></p>
 <p>To create numbered equations, put them in an ‘equation’ environment and give them a label with the syntax <code>(\#eq:label)</code>, like this:</p>
-<pre class="sourceCode latex"><code class="sourceCode latex"><span class="kw">\begin</span>{<span class="ex">equation</span>}<span class="ss"> </span>
-<span class="ss">  f</span><span class="sc">\left</span><span class="ss">(k</span><span class="sc">\right</span><span class="ss">) = </span><span class="sc">\binom</span><span class="ss">{n}{k} p^k</span><span class="sc">\left</span><span class="ss">(1-p</span><span class="sc">\right</span><span class="ss">)^{n-k}</span>
-<span class="ss">  (</span><span class="sc">\#</span><span class="ss">eq:binom)</span>
-<span class="kw">\end</span>{<span class="ex">equation</span>} </code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode latex"><code class="sourceCode latex"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">\begin</span>{<span class="ex">equation</span>}<span class="ss"> </span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="ss">  f</span><span class="sc">\left</span><span class="ss">(k</span><span class="sc">\right</span><span class="ss">) = </span><span class="sc">\binom</span><span class="ss">{n}{k} p^k</span><span class="sc">\left</span><span class="ss">(1-p</span><span class="sc">\right</span><span class="ss">)^{n-k}</span></a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="ss">  (</span><span class="sc">\#</span><span class="ss">eq:binom)</span></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="kw">\end</span>{<span class="ex">equation</span>} </a></code></pre></div>
 <p>Becomes:
 <span class="math display" id="eq:binom">\[\begin{equation}
 f\left(k\right)=\binom{n}{k}p^k\left(1-p\right)^{n-k}
@@ -426,7 +425,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": "docs/_main.pdf",
+"download": ["_main.pdf"],
 "toc": {
 "collapse": "subsection"
 }

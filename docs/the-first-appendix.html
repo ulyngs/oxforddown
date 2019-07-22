@@ -8,7 +8,7 @@
   <meta name="description" content="oxforddown:<br />
 An Oxford University Thesis<br />
 Template for R Markdown" />
-  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
 
   <meta property="og:title" content="A The First Appendix | oxforddown: An Oxford University Thesis Template for R Markdown" />
   <meta property="og:type" content="book" />
@@ -66,7 +66,6 @@ a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
 a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
@@ -223,10 +222,10 @@ Template for R Markdown</a>
 <h1><span class="header-section-number">A</span> The First Appendix</h1>
 <p>This first appendix includes an R chunk that was hidden in the document (using <code>echo = FALSE</code>) to help with readibility:</p>
 <p><strong>In 02-rmd-basics-code.Rmd</strong></p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
-knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;figures/chunk-parts.png&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb15-2" data-line-number="2">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;figures/chunk-parts.png&quot;</span>)</a></code></pre></div>
 <p><strong>And here’s another one from the same chapter, i.e. Chapter <a href="code.html#code">2</a>:</strong></p>
-<pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;figures/beltcrest.png&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;figures/beltcrest.png&quot;</span>)</a></code></pre></div>
 </div>
             </section>
 
@@ -271,7 +270,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": "docs/_main.pdf",
+"download": ["_main.pdf"],
 "toc": {
 "collapse": "subsection"
 }

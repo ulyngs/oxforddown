@@ -8,7 +8,7 @@
   <meta name="description" content="oxforddown:<br />
 An Oxford University Thesis<br />
 Template for R Markdown" />
-  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2 Adding code | oxforddown: An Oxford University Thesis Template for R Markdown" />
   <meta property="og:type" content="book" />
@@ -66,7 +66,6 @@ a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
 a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
@@ -245,17 +244,17 @@ Figure 2.1: Code chunk syntax
 <h3><span class="header-section-number">2.1.1</span> Setup chunks</h3>
 <p>An R Markdown document usually begins with a chunk that is used to <strong>load libraries</strong>, and to <strong>set default chunk options</strong> with <code>knitr::opts_chunk$set</code>.</p>
 <p>In your thesis, this will probably happen in <strong>index.Rmd</strong> and/or as opening chunks in each of your chapters.</p>
-<pre class="sourceCode markdown"><code class="sourceCode markdown"><span class="bn">```{r setup, include=FALSE}</span>
-<span class="bn"># don&#39;t show code unless we explicitly set echo = TRUE</span>
-<span class="bn">knitr::opts_chunk$set(echo = FALSE)</span>
-
-<span class="bn">library(tidyverse)</span>
-<span class="bn">```</span></code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="bn">```{r setup, include=FALSE}</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="bn"># don&#39;t show code unless we explicitly set echo = TRUE</span></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="bn">knitr::opts_chunk$set(echo = FALSE)</span></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="bn">library(tidyverse)</span></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="bn">```</span></a></code></pre></div>
 </div>
 <div id="including-images" class="section level3">
 <h3><span class="header-section-number">2.1.2</span> Including images</h3>
 <p>Code chunks are also used for including images, with <code>include_graphics</code> from the <code>knitr</code> package, as in Figure <a href="code.html#fig:oxford-logo">2.2</a></p>
-<pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;figures/beltcrest.png&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;figures/beltcrest.png&quot;</span>)</a></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:oxford-logo"></span>
 <img src="figures/beltcrest.png" alt="Oxford logo" width="50%" />
 <p class="caption">
@@ -271,11 +270,11 @@ Figure 2.2: Oxford logo
 <h4>Figure rotation</h4>
 <p>You can use the chunk option <code>out.extra</code> to rotate images.</p>
 <p>The syntax is different for LaTeX and HTML, so for ease we might start by assigning the right string to a variable that depends on the format you’re outputting to:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="cf">if</span> (knitr<span class="op">::</span>opts_knit<span class="op">$</span><span class="kw">get</span>(<span class="st">&#39;rmarkdown.pandoc.to&#39;</span>) <span class="op">==</span><span class="st"> &#39;latex&#39;</span>){
-  rotate180 &lt;-<span class="st"> &quot;angle=180&quot;</span>
-} <span class="cf">else</span> {
-  rotate180 &lt;-<span class="st"> &quot;style=&#39;transform:rotate(180deg);&#39;&quot;</span>
-}</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="cf">if</span> (knitr<span class="op">::</span>opts_knit<span class="op">$</span><span class="kw">get</span>(<span class="st">&#39;rmarkdown.pandoc.to&#39;</span>) <span class="op">==</span><span class="st"> &#39;latex&#39;</span>){</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">  rotate180 &lt;-<span class="st"> &quot;angle=180&quot;</span></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3">} <span class="cf">else</span> {</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4">  rotate180 &lt;-<span class="st"> &quot;style=&#39;transform:rotate(180deg);&#39;&quot;</span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5">}</a></code></pre></div>
 <p>Then you can reference that variable as the value of <code>out.extra</code> to rotate images, as in Figure <a href="code.html#fig:oxford-logo-rotated">2.3</a>.</p>
 <div class="figure" style="text-align: center"><span id="fig:oxford-logo-rotated"></span>
 <img src="figures/beltcrest.png" alt="Oxford logo, rotated" width="50%" style='transform:rotate(180deg);' />
@@ -289,10 +288,10 @@ Figure 2.3: Oxford logo, rotated
 <h3><span class="header-section-number">2.1.3</span> Including plots</h3>
 <p>Similarly, code chunks are used for including dynamically generated plots.
 You use ordinary code in R or other languages - Figure <a href="code.html#fig:cars-plot">2.4</a> shows a plot of the <code>cars</code> dataset of stopping distances for cars at various speeds (this dataset is built in to <strong>R</strong>).</p>
-<pre class="sourceCode r"><code class="sourceCode r">cars <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">ggplot</span>() <span class="op">+</span>
-<span class="st">    </span><span class="kw">aes</span>(<span class="dt">x =</span> speed, <span class="dt">y =</span> dist) <span class="op">+</span>
-<span class="st">    </span><span class="kw">geom_point</span>()</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">cars <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="st">  </span><span class="kw">ggplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="st">    </span><span class="kw">aes</span>(<span class="dt">x =</span> speed, <span class="dt">y =</span> dist) <span class="op">+</span></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="st">    </span><span class="kw">geom_point</span>()</a></code></pre></div>
 <div class="figure"><span id="fig:cars-plot"></span>
 <img src="_main_files/figure-html/cars-plot-1.png" alt="A ggplot of car stuff" width="672" />
 <p class="caption">
@@ -305,9 +304,9 @@ Figure 2.4: A ggplot of car stuff
 <h3><span class="header-section-number">2.1.4</span> Including tables</h3>
 <p>Tables are usually included with the <code>kable</code> function from the <code>knitr</code> package.</p>
 <p>Table <a href="code.html#tab:cars-table">2.1</a> shows the first rows of that cars data - read in your own data, then use this approach to automatically generate tables.</p>
-<pre class="sourceCode r"><code class="sourceCode r">cars <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">head</span>() <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span>knitr<span class="op">::</span><span class="kw">kable</span>(<span class="dt">caption =</span> <span class="st">&quot;A knitr kable table&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">cars <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="st">  </span><span class="kw">head</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="st">  </span>knitr<span class="op">::</span><span class="kw">kable</span>(<span class="dt">caption =</span> <span class="st">&quot;A knitr kable table&quot;</span>)</a></code></pre></div>
 <table>
 <caption><span id="tab:cars-table">Table 2.1: </span>A knitr kable table</caption>
 <thead>
@@ -363,7 +362,7 @@ Figure 2.4: A ggplot of car stuff
 <p>For example, <code>`r 4 + 4`</code> would output 8 in your text.</p>
 <p>You will usually use this in parts of your thesis where you report results - read in data or results in a code chunk, store things you want to report in a variable, then insert the value of that variable in your text.</p>
 <p>For example, we might assign the number of rows in the <code>cars</code> dataset to a variable:</p>
-<pre class="sourceCode r"><code class="sourceCode r">num_car_observations &lt;-<span class="st"> </span><span class="kw">nrow</span>(cars)</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">num_car_observations &lt;-<span class="st"> </span><span class="kw">nrow</span>(cars)</a></code></pre></div>
 <p>We might then write:<br />
 “In the <code>cars</code> dataset, we have <code>`r num_car_observations`</code> observations.”</p>
 <p>Which would output:<br />
@@ -372,12 +371,12 @@ Figure 2.4: A ggplot of car stuff
 <h3><span class="header-section-number">2.2.1</span> Referring to results computed in other languages than R</h3>
 <p><a href="https://stackoverflow.com/questions/47818461/is-there-a-way-in-knitr-to-evaluate-inline-code-chunks-of-other-languages">At the moment</a>, inline code only works with R, so syntax such as <code>`python code here`</code> is not valid.
 However, you can use the <a href="https://rstudio.github.io/reticulate/articles/r_markdown.html"><code>reticulate</code></a> package to access variables from python chunks. Here’s a Python code chunk:</p>
-<pre class="sourceCode python"><code class="sourceCode python">my_number <span class="op">=</span> <span class="dv">4</span> <span class="op">+</span> <span class="dv">8</span>
-<span class="bu">print</span>(my_number)</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb8-1" data-line-number="1">my_number <span class="op">=</span> <span class="dv">4</span> <span class="op">+</span> <span class="dv">8</span></a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="bu">print</span>(my_number)</a></code></pre></div>
 <pre><code>## 12</code></pre>
 <p>The <code>reticulate</code> package allows <strong>R</strong> to access variables defined in python environments with the syntax <code>py$variable</code>:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(reticulate)
-py<span class="op">$</span>my_number</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw">library</span>(reticulate)</a>
+<a class="sourceLine" id="cb10-2" data-line-number="2">py<span class="op">$</span>my_number</a></code></pre></div>
 <pre><code>## [1] 12</code></pre>
 <p>This means that inline, we can include results from python chunks with <code>`r py$variable`</code>.
 For example, we can state that the value of <code>my_number</code> defined in the python chunk, is 12.</p>
@@ -428,7 +427,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": "docs/_main.pdf",
+"download": ["_main.pdf"],
 "toc": {
 "collapse": "subsection"
 }
