@@ -55,6 +55,7 @@ output:
         facebook: false
         twitter: yes
         all: false
+      download: ["docs/_main.pdf"]
   bookdown::word_document2:
     toc: true   
 link-citations: true
