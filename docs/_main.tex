@@ -1,0 +1,1201 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% OXFORD THESIS TEMPLATE
+
+% Use this template to produce a standard thesis that meets the Oxford University requirements for DPhil submission
+%
+% Originally by Keith A. Gillow (gillow@maths.ox.ac.uk), 1997
+% Modified by Sam Evans (sam@samuelevansresearch.org), 2007
+% Modified by John McManigle (john@oxfordechoes.com), 2015
+% Modified by Ulrik Lyngs (ulrik.lyngs@cs.ox.ac.uk), 2018, for use with R Markdown
+%
+% Ulrik Lyngs, 25 Nov 2018: Following John McManigle, broad permissions are granted to use, modify, and distribute this software
+% as specified in the MIT License included in this distribution's LICENSE file.
+%
+% John tried to comment this file extensively, so read through it to see how to use the various options.  Remember
+% that in LaTeX, any line starting with a % is NOT executed.  Several places below, you have a choice of which line to use
+% out of multiple options (eg draft vs final, for PDF vs for binding, etc.)  When you pick one, add a % to the beginning of
+% the lines you don't want.
+
+
+%%%%% CHOOSE PAGE LAYOUT
+% The most common choices should be below.  You can also do other things, like replacing "a4paper" with "letterpaper", etc.
+
+% This one will format for two-sided binding (ie left and right pages have mirror margins; blank pages inserted where needed):
+%\documentclass[a4paper,twoside]{templates/ociamthesis}
+% This one will format for one-sided binding (ie left margin > right margin; no extra blank pages):
+%\documentclass[a4paper]{ociamthesis}
+% This one will format for PDF output (ie equal margins, no extra blank pages):
+%\documentclass[a4paper,nobind]{templates/ociamthesis}
+%UL 2 Dec 2018: pass this in from YAML
+\documentclass[a4paper, nobind]{templates/ociamthesis}
+
+
+% UL 30 Nov 2018 pandoc puts lists in 'tightlist' command when no space between bullet points in Rmd file
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+ 
+% UL 1 Dec 2018, fix to include code in shaded environments
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+%UL 2 Dec 2018 add a bit of white space before and after code blocks
+\renewenvironment{Shaded}
+{
+  \vspace{4pt}%
+  \begin{snugshade}%
+}{%
+  \end{snugshade}%
+  \vspace{4pt}%
+}
+
+%UL 2 Dec 2018 reduce whitespace around verbatim environments
+\usepackage{etoolbox}
+\makeatletter
+\preto{\@verbatim}{\topsep=0pt \partopsep=0pt }
+\makeatother
+
+%UL 26 Mar 2019, enable strikethrough
+\usepackage[normalem]{ulem}
+
+%%%%% SELECT YOUR DRAFT OPTIONS
+% Three options going on here; use in any combination.  But remember to turn the first two off before
+% generating a PDF to send to the printer!
+
+% This adds a "DRAFT" footer to every normal page.  (The first page of each chapter is not a "normal" page.)
+\fancyfoot[C]{\emph{DRAFT Printed on \today}}
+
+% This highlights (in blue) corrections marked with (for words) \mccorrect{blah} or (for whole
+% paragraphs) \begin{mccorrection} . . . \end{mccorrection}.  This can be useful for sending a PDF of
+% your corrected thesis to your examiners for review.  Turn it off, and the blue disappears.
+\correctionstrue
+
+%%%%% BIBLIOGRAPHY SETUP
+% Note that your bibliography will require some tweaking depending on your department, preferred format, etc.
+% The options included below are just very basic "sciencey" and "humanitiesey" options to get started.
+% If you've not used LaTeX before, I recommend reading a little about biblatex/biber and getting started with it.
+% If you're already a LaTeX pro and are used to natbib or something, modify as necessary.
+% Either way, you'll have to choose and configure an appropriate bibliography format...
+
+% The science-type option: numerical in-text citation with references in order of appearance.
+% \usepackage[style=numeric-comp, sorting=none, backend=biber, doi=false, isbn=false]{biblatex}
+% \newcommand*{\bibtitle}{References}
+
+% The humanities-type option: author-year in-text citation with an alphabetical works cited.
+% \usepackage[style=authoryear, sorting=nyt, backend=biber, maxcitenames=2, useprefix, doi=false, isbn=false]{biblatex}
+% \newcommand*{\bibtitle}{Works Cited}
+
+%UL 3 Dec 2018: set this from YAML in index.Rmd
+\usepackage[style=authoryear, sorting=nyt, backend=biber, maxcitenames=2, useprefix, doi=false, isbn=false]{biblatex}
+\newcommand*{\bibtitle}{Works Cited}
+
+% This makes the bibliography left-aligned (not 'justified') and slightly smaller font.
+\renewcommand*{\bibfont}{\raggedright\small}
+
+% Change this to the name of your .bib file (usually exported from a citation manager like Zotero or EndNote).
+\addbibresource{bibliography/example.bib}
+
+
+% Uncomment this if you want equation numbers per section (2.3.12), instead of per chapter (2.18):
+%\numberwithin{equation}{subsection}
+
+
+%%%%% THESIS / TITLE PAGE INFORMATION
+% Everybody needs to complete the following:
+\title{\texttt{oxforddown}:\\
+An Oxford University Thesis\\
+Template for R Markdown}
+\author{Author Name}
+\college{Your College}
+
+% Master's candidates who require the alternate title page (with candidate number and word count)
+% must also un-comment and complete the following three lines:
+%\masterssubmissiontrue
+%\candidateno{933516}
+%\wordcount{28,815}
+
+% Uncomment the following line if your degree also includes exams (eg most masters):
+%\renewcommand{\submittedtext}{Submitted in partial completion of the}
+% Your full degree name.  (But remember that DPhils aren't "in" anything.  They're just DPhils.)
+\degree{Doctor of Philosophy}
+% Term and year of submission, or date if your board requires (eg most masters)
+\degreedate{Michaelmas 2018}
+
+
+%%%%% YOUR OWN PERSONAL MACROS
+% This is a good place to dump your own LaTeX macros as they come up.
+
+% To make text superscripts shortcuts
+	\renewcommand{\th}{\textsuperscript{th}} % ex: I won 4\th place
+	\newcommand{\nd}{\textsuperscript{nd}}
+	\renewcommand{\st}{\textsuperscript{st}}
+	\newcommand{\rd}{\textsuperscript{rd}}
+
+%%%%% THE ACTUAL DOCUMENT STARTS HERE
+\begin{document}
+
+%%%%% CHOOSE YOUR LINE SPACING HERE
+% This is the official option.  Use it for your submission copy and library copy:
+\setlength{\textbaselineskip}{22pt plus2pt}
+% This is closer spacing (about 1.5-spaced) that you might prefer for your personal copies:
+%\setlength{\textbaselineskip}{18pt plus2pt minus1pt}
+
+% You can set the spacing here for the roman-numbered pages (acknowledgements, table of contents, etc.)
+\setlength{\frontmatterbaselineskip}{17pt plus1pt minus1pt}
+
+% UL: You can set the line and paragraph spacing here for the separate abstract page to be handed in to Examination schools
+\setlength{\abstractseparatelineskip}{13pt plus1pt minus1pt}
+\setlength{\abstractseparateparskip}{0pt plus 1pt}
+
+% UL: You can set the general paragraph spacing here - I've set it to 2pt (was 0) so
+% it's less claustrophobic
+\setlength{\parskip}{2pt plus 1pt}
+
+
+% Leave this line alone; it gets things started for the real document.
+\setlength{\baselineskip}{\textbaselineskip}
+
+
+%%%%% CHOOSE YOUR SECTION NUMBERING DEPTH HERE
+% You have two choices.  First, how far down are sections numbered?  (Below that, they're named but
+% don't get numbers.)  Second, what level of section appears in the table of contents?  These don't have
+% to match: you can have numbered sections that don't show up in the ToC, or unnumbered sections that
+% do.  Throughout, 0 = chapter; 1 = section; 2 = subsection; 3 = subsubsection, 4 = paragraph...
+
+% The level that gets a number:
+\setcounter{secnumdepth}{2}
+% The level that shows up in the ToC:
+\setcounter{tocdepth}{2}
+
+
+%%%%% ABSTRACT SEPARATE
+% This is used to create the separate, one-page abstract that you are required to hand into the Exam
+% Schools.  You can comment it out to generate a PDF for printing or whatnot.
+\begin{abstractseparate}
+  This \emph{R Markdown} template is for writing an Oxford University thesis. The template is built using Yihui Xie's \texttt{bookdown} package, with heavy inspiration from Chester Ismay's \texttt{thesisdown} and the \texttt{OxThesis} \LaTeX~template (most recently adapted by John McManigle).
+  
+  This template's sample content include illustrations of how to write a thesis in R Markdown, and largely follows the structure from \href{https://ulyngs.github.io/rmarkdown-workshop-2019/}{this R Markdown workshop}.
+  
+  Congratulations for taking a step further into the lands of open, reproducible science by writing your thesis using a tool that allows you to transparently include tables and dynamically generated plots directly from the underlying data. Hip hooray!
+\end{abstractseparate}
+
+% JEM: Pages are roman numbered from here, though page numbers are invisible until ToC.  This is in
+% keeping with most typesetting conventions.
+\begin{romanpages}
+
+% Title page is created here
+\maketitle
+
+%%%%% DEDICATION -- If you'd like one, un-comment the following.
+\begin{dedication}
+  For Yihui Xie
+\end{dedication}
+
+%%%%% ACKNOWLEDGEMENTS -- Nothing to do here except comment out if you don't want it.
+\begin{acknowledgements}
+ 	This is where you will normally thank your advisor, colleagues, family and friends, as well as funding and institutional support. In our case, we will give our praises to the people who developed the ideas and tools that allow us to push open science a little step forward by writing plain-text, transparent, and reproducible theses in R Markdown.
+
+We must be grateful to John Gruber for inventing the original version of Markdown, to John MacFarlane for creating Pandoc (\url{http://pandoc.org}) which converts Markdown to a large number of output formats, and to Yihui Xie for creating \texttt{knitr} which introduced R Markdown as a way of embedding code in Markdown documents, and \texttt{bookdown} which added tools for technical and longer-form writing.
+
+Special thanks to \href{http://chester.rbind.io}{Chester Ismay}, who created the \texttt{thesisdown} package that helped many a PhD student write their theses in R Markdown. And a very special tahnks to John McManigle, whose adaption of Sam Evans' adaptation of Keith Gillow's original maths template for writing an Oxford University DPhil thesis in \LaTeX~provided the template that I adapted for R Markdown.
+
+Finally, profuse thanks to JJ Allaire, the founder and CEO of \href{http://rstudio.com}{RStudio}, and Hadley Wickham, the mastermind of the tidyverse without whom we'd all just given up and done data science in Python instead. Thanks for making data science easier, more accessible, and more fun for us all.
+
+\begin{flushright}
+Ulrik Lyngs \\
+Linacre College, Oxford \\
+2 December 2018
+\end{flushright}
+\end{acknowledgements}
+
+
+%%%%% ABSTRACT -- Nothing to do here except comment out if you don't want it.
+\begin{abstract}
+	This \emph{R Markdown} template is for writing an Oxford University thesis. The template is built using Yihui Xie's \texttt{bookdown} package, with heavy inspiration from Chester Ismay's \texttt{thesisdown} and the \texttt{OxThesis} \LaTeX~template (most recently adapted by John McManigle).
+
+This template's sample content include illustrations of how to write a thesis in R Markdown, and largely follows the structure from \href{https://ulyngs.github.io/rmarkdown-workshop-2019/}{this R Markdown workshop}.
+
+Congratulations for taking a step further into the lands of open, reproducible science by writing your thesis using a tool that allows you to transparently include tables and dynamically generated plots directly from the underlying data. Hip hooray!
+\end{abstract}
+
+%%%%% MINI TABLES
+% This lays the groundwork for per-chapter, mini tables of contents.  Comment the following line
+% (and remove \minitoc from the chapter files) if you don't want this.  Un-comment either of the
+% next two lines if you want a per-chapter list of figures or tables.
+  \dominitoc % include a mini table of contents
+
+% This aligns the bottom of the text of each page.  It generally makes things look better.
+\flushbottom
+
+% This is where the whole-document ToC appears:
+\tableofcontents
+
+\listoffigures
+	\mtcaddchapter
+  	% \mtcaddchapter is needed when adding a non-chapter (but chapter-like) entity to avoid confusing minitoc
+
+% Uncomment to generate a list of tables:
+\listoftables
+  \mtcaddchapter
+%%%%% LIST OF ABBREVIATIONS
+% This example includes a list of abbreviations.  Look at text/abbreviations.tex to see how that file is
+% formatted.  The template can handle any kind of list though, so this might be a good place for a
+% glossary, etc.
+\include{front-and-back-matter/abbreviations}
+
+% The Roman pages, like the Roman Empire, must come to its inevitable close.
+\end{romanpages}
+
+%%%%% CHAPTERS
+% Add or remove any chapters you'd like here, by file name (excluding '.tex'):
+\flushbottom
+
+% all your chapters and appendices will appear here
+\hypertarget{introduction}{%
+\chapter*{Introduction}\label{introduction}}
+\addcontentsline{toc}{chapter}{Introduction}
+
+\adjustmtc
+
+Welcome to the \emph{R Markdown} Oxford University thesis template.
+This sample content is adapted from \href{https://github.com/ismayc/thesisdown}{\texttt{thesisdown}} and the formatting of PDF output is adapted from the \href{https://github.com/mcmanigle/OxThesis}{OxThesis LaTeX template}.
+Hopefully, writing your thesis in R Markdown will provide a nicer interface to the OxThesis template if you haven't used TeX or LaTeX before.
+More importantly, using \emph{R Markdown} allows you to embed chunks of code directly into your thesis and generate plots and tables directly from the underlying data, avoiding copy-paste steps.
+This will get you into the habit of doing reproducible research, which benefits you long-term as a researcher, but also will greatly help anyone that is trying to reproduce or build upon your results down the road.
+
+Using LaTeX together with \emph{Markdown} is more consistent than the output of a word processor, much less prone to corruption or crashing, and the resulting file is smaller than a Word file.
+While you may never have had problems using Word in the past, your thesis is likely going to be about twice as large and complex as anything you've written before, taxing Word's capabilities.
+
+\hypertarget{why-use-it}{%
+\section*{Why use it?}\label{why-use-it}}
+\addcontentsline{toc}{section}{Why use it?}
+
+\emph{R Markdown} creates a simple and straightforward way to interface with the beauty of LaTeX.
+Packages have been written in \textbf{R} to work directly with LaTeX to produce nicely formatting tables and paragraphs.
+In addition to creating a user friendly interface to LaTeX, \emph{R Markdown} allows you to read in your data, analyze it and to visualize it using \textbf{R}, \textbf{Python} or other languages, and provide documentation and commentary on the results of your project.\\
+Further, it allows for results of code output to be passed inline to the commentary of your results.
+You'll see more on this later, focusing on \textbf{R}. If you are more into \textbf{Python} or something else, you can still use \emph{R Markdown} - see \href{https://bookdown.org/yihui/rmarkdown/language-engines.html}{`Other language engines'} in Yihui Xie's \href{https://bookdown.org/yihui/rmarkdown/language-engines.html}{\emph{R Markdown: The Definitive Guide}}.
+
+\hypertarget{who-should-use-it}{%
+\section*{Who should use it?}\label{who-should-use-it}}
+\addcontentsline{toc}{section}{Who should use it?}
+
+Anyone who needs to use data analysis, math, tables, a lot of figures, complex cross-references, or who just cares about reproducibility in research can benefit from using \emph{R Markdown}.
+If you are working in `softer' fields, the user-friendly nature of the \emph{Markdown} syntax and its ability to keep track of and easily include figures, automatically generate a table of contents, index, references, table of figures, etc. should still make it of great benefit to your thesis project.
+
+\begin{savequote}
+Neque porro quisquam est qui dolorem ipsum quia dolor sit amet,
+consectetur, adipisci velit\ldots{}
+
+There is no one who loves pain itself, who seeks after it and wants to
+have it, simply because it is pain\ldots{}
+\qauthor{--- Cicero's \emph{de Finibus Bonorum et Malorum}.}\end{savequote}
+
+
+
+\hypertarget{rmd-basics}{%
+\chapter{R Markdown Basics: The Markdown syntax}\label{rmd-basics}}
+
+\minitoc 
+
+Here is a brief introduction to using \emph{R Markdown}.
+\emph{Markdown} is a simple formatting syntax for authoring HTML, PDF, and MS Word documents and much, much more.
+\emph{R Markdown} provides the flexibility of \emph{Markdown} with the implementation of \textbf{R} input and output. For more details on using \emph{R Markdown} see \url{http://rmarkdown.rstudio.com}.
+
+Be careful with your spacing in \emph{Markdown} documents.
+While whitespace largely is ignored, it does at times give \emph{Markdown} signals as to how to proceed.
+As a habit, try to keep everything left aligned whenever possible, especially as you type a new paragraph.
+In other words, there is no need to indent basic text in the Rmd document (in fact, it might cause your text to do funny things if you do).
+
+\hypertarget{markdown-basic-syntax}{%
+\section{Markdown basic syntax}\label{markdown-basic-syntax}}
+
+\hypertarget{italics-and-bold}{%
+\subsection{Italics and bold}\label{italics-and-bold}}
+
+\begin{itemize}
+\tightlist
+\item
+  \emph{Italics} are done like *this* or \_this\_
+\item
+  \textbf{Bold} is done like **this** or \_\_this\_\_
+\item
+  \textbf{\emph{Bold and italics}} is done like ***this***, \_\_\_this\_\_\_, or (the most transparent solution, in my opinion) **\_this\_**
+\end{itemize}
+
+\hypertarget{inline-code}{%
+\subsection{Inline code}\label{inline-code}}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{Inline\ code} is created with backticks like \texttt{\textasciigrave{}this\textasciigrave{}}
+\end{itemize}
+
+\hypertarget{sub-and-superscript}{%
+\subsection{Sub and superscript}\label{sub-and-superscript}}
+
+Sub\textsubscript{2} and super\textsuperscript{2} script is created like this\textasciitilde{}2\textasciitilde{} and this\^{}2\^{}
+
+\hypertarget{strikethrough}{%
+\subsection{Strikethrough}\label{strikethrough}}
+
+\begin{itemize}
+\tightlist
+\item
+  \sout{Strikethrough} is done \textasciitilde{}\textasciitilde{}like this\textasciitilde{}\textasciitilde{}
+\end{itemize}
+
+\hypertarget{escaping-aka-what-if-i-need-an-actual-asterisk}{%
+\subsection{`Escaping' (aka ``What if I need an actual asterisk?'')}\label{escaping-aka-what-if-i-need-an-actual-asterisk}}
+
+\begin{itemize}
+\tightlist
+\item
+  To include an actual *, \_ or \textbackslash{}, add another \textbackslash{} in front of them: \textbackslash{}*, \textbackslash{}\_, \textbackslash{}\textbackslash{}
+\end{itemize}
+
+\hypertarget{endash-emdash}{%
+\subsection{Endash (--), emdash (---)}\label{endash-emdash}}
+
+\begin{itemize}
+\tightlist
+\item
+  -- and --- with -\/- and -\/-\/-
+\end{itemize}
+
+\hypertarget{blockquotes}{%
+\subsection{Blockquotes}\label{blockquotes}}
+
+Do like this:
+
+\begin{quote}
+Put a \textgreater{} in front of the line.
+\end{quote}
+
+\hypertarget{headings}{%
+\subsection{Headings}\label{headings}}
+
+\begin{itemize}
+\tightlist
+\item
+  are done with \#'s of increasing number, i.e.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \# First-level heading
+  \item
+    \#\# Second-level heading
+  \item
+    \#\#\# Etc.
+  \end{itemize}
+\end{itemize}
+
+In PDF output, a level-five heading will turn into a paragraph heading, i.e. \texttt{\textbackslash{}paragraph\{My\ level-five\ heading\}}, which appears as bold text on the same line as the subsequent paragraph.
+
+\hypertarget{lists}{%
+\subsection{Lists}\label{lists}}
+
+Unordered list by starting a line with an * or a -:
+
+\begin{itemize}
+\tightlist
+\item
+  Item 1
+\item
+  Item 2
+\end{itemize}
+
+Ordered lists by starting a line with a number:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Item 1
+\item
+  Item 2
+\end{enumerate}
+
+Notice that you can mislabel the numbers and \emph{Markdown} will still make the order right in the output.
+
+To create a sublist, indent the values a bit (at least four spaces or a tab):
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Item 1
+\item
+  Item 2
+\item
+  Item 3
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Item 3a
+  \item
+    Item 3b
+  \end{itemize}
+\end{enumerate}
+
+\hypertarget{line-breaks}{%
+\subsection{Line breaks}\label{line-breaks}}
+
+The official \emph{Markdown} way to create line breaks is by ending a line with more than two spaces.
+
+Roses are red.
+Violets are blue.
+
+This appears on the same line in the output, because we didn't add spaces after red.
+
+Roses are red.\\
+Violets are blue.
+
+This appears with a line break because I added spaces after red.
+
+I find this is confusing, so I recommend the alternative way: Ending a line with a backslash will also create a linebreak:
+
+Roses are red.\\
+Violets are blue.
+
+To create a new paragraph, you put a blank line.
+
+Therefore, this line starts its own paragraph.
+
+\hypertarget{hyperlinks}{%
+\subsection{Hyperlinks}\label{hyperlinks}}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://www.google.com}{This is a hyperlink} created by writing the text you want turned into a clickable link in \texttt{{[}square\ brackets\ followed\ by\ a{]}(https://hyperlink-in-parentheses)}
+\end{itemize}
+
+\hypertarget{footnotes}{%
+\subsection{Footnotes}\label{footnotes}}
+
+\begin{itemize}
+\tightlist
+\item
+  Are created\footnote{my footnote text} by writing either \^{}{[}my footnote text{]} for supplying the footnote content inline, or something like \texttt{{[}\^{}a-random-footnote-label{]}} and supplying the text elsewhere in the format shown below \footnote{This is a random test.}:
+\end{itemize}
+
+\texttt{{[}\^{}a-random-footnote-label{]}:\ This\ is\ a\ random\ test.}
+
+\hypertarget{comments}{%
+\subsection{Comments}\label{comments}}
+
+To write comments within your text that won't actually be included in the output, use the same syntax as for writing comments in HTML. That is, \textless{}!-\/- this will not be included in the output -\/-\textgreater{}.
+
+\hypertarget{math}{%
+\subsection{Math}\label{math}}
+
+The syntax for writing math is stolen from LaTeX. To write a math expression that will be shown \textbf{inline}, enclose it in dollar signs.
+- This: \$A = \textbackslash{}pi*r\^{}\{2\}\$ Becomes: \(A = \pi*r^{2}\)
+
+To write a math expression that will be shown in a block, enclose it in two dollar signs.\\
+This: \$\$A = \textbackslash{}pi*r\^{}\{2\}\$\$
+
+Becomes:
+\[A = \pi*r^{2}\]
+
+To create numbered equations, put them in an `equation' environment and give them a label with the syntax \texttt{(\textbackslash{}\#eq:label)}, like this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{\textbackslash{}begin}\NormalTok{\{}\ExtensionTok{equation}\NormalTok{\}}\SpecialStringTok{ }
+\SpecialStringTok{  f}\SpecialCharTok{\textbackslash{}left}\SpecialStringTok{(k}\SpecialCharTok{\textbackslash{}right}\SpecialStringTok{) = }\SpecialCharTok{\textbackslash{}binom}\SpecialStringTok{\{n\}\{k\} p^k}\SpecialCharTok{\textbackslash{}left}\SpecialStringTok{(1-p}\SpecialCharTok{\textbackslash{}right}\SpecialStringTok{)^\{n-k\}}
+\SpecialStringTok{  (}\SpecialCharTok{\textbackslash{}#}\SpecialStringTok{eq:binom)}
+\KeywordTok{\textbackslash{}end}\NormalTok{\{}\ExtensionTok{equation}\NormalTok{\} }
+\end{Highlighting}
+\end{Shaded}
+
+Becomes:
+\begin{equation}
+f\left(k\right)=\binom{n}{k}p^k\left(1-p\right)^{n-k}
+\label{eq:binom}
+\end{equation}
+
+For more (e.g.~how to theorems), see e.g.~the documentation on \href{https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html\#equations}{bookdown.org}
+
+\hypertarget{additional-resources}{%
+\section{Additional resources}\label{additional-resources}}
+
+\begin{itemize}
+\item
+  \emph{R Markdown: The Definitive Guide} - \url{https://bookdown.org/yihui/rmarkdown/}
+\item
+  \emph{R for Data Science} - \url{https://r4ds.had.co.nz}
+\end{itemize}
+
+\hypertarget{code}{%
+\chapter{Adding code}\label{code}}
+
+\minitoc 
+
+The magic of R Markdown is that we can add code within our document to make it dynamic.
+
+We do this either as \emph{code chunks} (generally used for loading libraries and data, performing calculations, and adding images, plots, and tables), or \emph{inline code} (generally used for dynamically reporting results within our text).
+
+\hypertarget{code-chunks}{%
+\section{Code chunks}\label{code-chunks}}
+
+The syntax of a code chunk is shown in Figure \ref{fig:chunk-parts}.
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{figures/chunk-parts} \caption{Code chunk syntax}\label{fig:chunk-parts}
+\end{figure}
+
+Common chunk options include (see e.g. \href{https://bookdown.org/yihui/rmarkdown/r-code.html}{bookdown.org}):
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{echo}: whether or not to display code in knitted output
+\item
+  \texttt{eval}: whether or to to run the code in the chunk when knitting
+\item
+  \texttt{include}: wheter to include anything from the from a code chunk in the output document
+\item
+  \texttt{fig.cap}: figure caption
+\end{itemize}
+
+\textbf{IMPORTANT}: Do \emph{not} use underscoores in your chunk labels - if you do, you are likely to get an error in PDF output saying something like ``! Package caption Error: \textbackslash{}caption outside float''.
+
+\hypertarget{setup-chunks}{%
+\subsection{Setup chunks}\label{setup-chunks}}
+
+An R Markdown document usually begins with a chunk that is used to \textbf{load libraries}, and to \textbf{set default chunk options} with \texttt{knitr::opts\_chunk\$set}.
+
+In your thesis, this will probably happen in \textbf{index.Rmd} and/or as opening chunks in each of your chapters.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BaseNTok{```\{r setup, include=FALSE\}}
+\BaseNTok{# don't show code unless we explicitly set echo = TRUE}
+\BaseNTok{knitr::opts_chunk$set(echo = FALSE)}
+
+\BaseNTok{library(tidyverse)}
+\BaseNTok{```}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{including-images}{%
+\subsection{Including images}\label{including-images}}
+
+Code chunks are also used for including images, with \texttt{include\_graphics} from the \texttt{knitr} package, as in Figure \ref{fig:oxford-logo}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{knitr}\OperatorTok{::}\KeywordTok{include_graphics}\NormalTok{(}\StringTok{"figures/beltcrest.png"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.5\linewidth]{figures/beltcrest} 
+
+}
+
+\caption{Oxford logo}\label{fig:oxford-logo}
+\end{figure}
+
+Useful chunk options for figures include:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{out.width} (use with a percentage) for setting the image size
+\item
+  if you've got an image that gets waaay to big in your output, it will be constrained to the page width by setting \texttt{out.width\ =\ "100\%"}
+\end{itemize}
+
+\hypertarget{figure-rotation}{%
+\subsubsection*{Figure rotation}\label{figure-rotation}}
+\addcontentsline{toc}{subsubsection}{Figure rotation}
+
+You can use the chunk option \texttt{out.extra} to rotate images.
+
+The syntax is different for LaTeX and HTML, so for ease we might start by assigning the right string to a variable that depends on the format you're outputting to:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if}\NormalTok{ (knitr}\OperatorTok{::}\NormalTok{opts_knit}\OperatorTok{$}\KeywordTok{get}\NormalTok{(}\StringTok{'rmarkdown.pandoc.to'}\NormalTok{) }\OperatorTok{==}\StringTok{ 'latex'}\NormalTok{)\{}
+\NormalTok{  rotate180 <-}\StringTok{ "angle=180"}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+\NormalTok{  rotate180 <-}\StringTok{ "style='transform:rotate(180deg);'"}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Then you can reference that variable as the value of \texttt{out.extra} to rotate images, as in Figure \ref{fig:oxford-logo-rotated}.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.5\linewidth,angle=180]{figures/beltcrest} 
+
+}
+
+\caption{Oxford logo, rotated}\label{fig:oxford-logo-rotated}
+\end{figure}
+
+\hypertarget{including-plots}{%
+\subsection{Including plots}\label{including-plots}}
+
+Similarly, code chunks are used for including dynamically generated plots.
+You use ordinary code in R or other languages - Figure \ref{fig:cars-plot} shows a plot of the \texttt{cars} dataset of stopping distances for cars at various speeds (this dataset is built in to \textbf{R}).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cars }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{ggplot}\NormalTok{() }\OperatorTok{+}
+\StringTok{    }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ speed, }\DataTypeTok{y =}\NormalTok{ dist) }\OperatorTok{+}
+\StringTok{    }\KeywordTok{geom_point}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{_main_files/figure-latex/cars-plot-1.pdf}
+\caption{\label{fig:cars-plot}A ggplot of car stuff}
+\end{figure}
+
+Under the hood, plots are included in your document in the same way as images - when you build the book or knit a chapter, the plot is automatically generated from your code, saved as an image, then included into the output document.
+
+\hypertarget{including-tables}{%
+\subsection{Including tables}\label{including-tables}}
+
+Tables are usually included with the \texttt{kable} function from the \texttt{knitr} package.
+
+Table \ref{tab:cars-table} shows the first rows of that cars data - read in your own data, then use this approach to automatically generate tables.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cars }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\KeywordTok{head}\NormalTok{() }\OperatorTok{%>%}\StringTok{ }
+\StringTok{  }\NormalTok{knitr}\OperatorTok{::}\KeywordTok{kable}\NormalTok{(}\DataTypeTok{caption =} \StringTok{"A knitr kable table"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{table}[t]
+
+\caption{\label{tab:cars-table}A knitr kable table}
+\centering
+\begin{tabular}{r|r}
+\hline
+speed & dist\\
+\hline
+4 & 2\\
+\hline
+4 & 10\\
+\hline
+7 & 4\\
+\hline
+7 & 22\\
+\hline
+8 & 16\\
+\hline
+9 & 10\\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{itemize}
+\tightlist
+\item
+  Gotcha: when using \href{https://www.rdocumentation.org/packages/knitr/versions/1.21/topics/kable}{\texttt{kable}}, captions are set inside the \texttt{kable} function
+\item
+  The \texttt{kable} package is often used with the \href{https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html}{\texttt{kableExtra}} package
+\end{itemize}
+
+\hypertarget{a-note-on-content-positioning}{%
+\subsection{A note on content positioning}\label{a-note-on-content-positioning}}
+
+One thing that may be annoying is the way \emph{R Markdown} handles ``floats'' like tables and figures.
+
+In your PDF output, LaTeX will try to find the best place to put your object based on the text around it and until you're really, truly done writing you should just leave it where it lies.
+
+When the time comes for you to make final tweaks to content positioning, read the relevant \href{https://bookdown.org/yihui/rmarkdown/}{R Markdown documentation} to see if there are easy ways to do what you want.
+
+If you have very specific needs, you might have to read up on LaTeX (\url{https://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions}) for your PDF output and/or on how to style HTML documents with CSS for your gitbook output.
+
+\hypertarget{inline-code-1}{%
+\section{Inline code}\label{inline-code-1}}
+
+`Inline code' simply means inclusion of code inside text.
+
+The syntax for doing this is \texttt{\textasciigrave{}r\ R\_CODE\textasciigrave{}}
+
+For example, \texttt{\textasciigrave{}r\ 4\ +\ 4\textasciigrave{}} would output 8 in your text.
+
+You will usually use this in parts of your thesis where you report results - read in data or results in a code chunk, store things you want to report in a variable, then insert the value of that variable in your text.
+
+For example, we might assign the number of rows in the \texttt{cars} dataset to a variable:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{num_car_observations <-}\StringTok{ }\KeywordTok{nrow}\NormalTok{(cars)}
+\end{Highlighting}
+\end{Shaded}
+
+We might then write:\\
+``In the \texttt{cars} dataset, we have \texttt{\textasciigrave{}r\ num\_car\_observations\textasciigrave{}} observations.''
+
+Which would output:\\
+``In the \texttt{cars} dataset, we have 50 observations.''
+
+\hypertarget{referring-to-results-computed-in-other-languages-than-r}{%
+\subsection{Referring to results computed in other languages than R}\label{referring-to-results-computed-in-other-languages-than-r}}
+
+\href{https://stackoverflow.com/questions/47818461/is-there-a-way-in-knitr-to-evaluate-inline-code-chunks-of-other-languages}{At the moment}, inline code only works with R, so syntax such as \texttt{\textasciigrave{}python\ code\ here\textasciigrave{}} is not valid.
+However, you can use the \href{https://rstudio.github.io/reticulate/articles/r_markdown.html}{\texttt{reticulate}} package to access variables from python chunks. Here's a Python code chunk:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my_number }\OperatorTok{=} \DecValTok{4} \OperatorTok{+} \DecValTok{8}
+\BuiltInTok{print}\NormalTok{(my_number)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 12
+\end{verbatim}
+
+The \texttt{reticulate} package allows \textbf{R} to access variables defined in python environments with the syntax \texttt{py\$variable}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(reticulate)}
+\NormalTok{py}\OperatorTok{$}\NormalTok{my_number}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 12
+\end{verbatim}
+
+This means that inline, we can include results from python chunks with \texttt{\textasciigrave{}r\ py\$variable\textasciigrave{}}.
+For example, we can state that the value of \texttt{my\_number} defined in the python chunk, is 12.
+
+\hypertarget{cites-and-refs}{%
+\chapter{Citations and cross-references}\label{cites-and-refs}}
+
+\minitoc 
+
+\hypertarget{citations}{%
+\section{Citations}\label{citations}}
+
+The usual way to include citations in an \emph{R Markdown} document is to put references in a plain text file with the extension \textbf{.bib}, in \textbf{BibTex} format.\footnote{The bibliography can be in other formats as well, including EndNote (\textbf{.enl}) and RIS (\textbf{.ris}), see \href{https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html}{rmarkdown.rstudio.com/authoring\_bibliographies\_and\_citations}.}
+Then reference the path to this file in \textbf{index.Rmd}'s YAML header with \texttt{bibliography:\ example.bib}.
+
+Most reference managers can create a .bib file with you references automatically.
+However, the \textbf{by far} best reference manager to use with \emph{R Markdown} is \href{https://www.zotero.org}{Zotero} with the \href{https://retorque.re/zotero-better-bibtex/}{Better BibTex plug-in}, because the \texttt{citr} plugin for RStudio (see below) can read references directly from your Zotero library!
+
+Here is an example of an entry in a \textbf{.bib} file:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\VariableTok{@article}\NormalTok{\{}\OtherTok{Shea2014}\NormalTok{,}
+  \DataTypeTok{author}\NormalTok{ =        \{Shea, Nicholas and Boldt, Annika\},}
+  \DataTypeTok{journal}\NormalTok{ =       \{Trends in Cognitive Sciences\},}
+  \DataTypeTok{pages}\NormalTok{ =         \{186--193\},}
+  \DataTypeTok{title}\NormalTok{ =         \{\{Supra-personal cognitive control\}\},}
+  \DataTypeTok{volume}\NormalTok{ =        \{18\},}
+  \DataTypeTok{year}\NormalTok{ =          \{2014\},}
+  \DataTypeTok{doi}\NormalTok{ =           \{10.1016/j.tics.2014.01.006\},}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+In this entry highlighed section, `Shea2014' is the \textbf{citation identifier}.
+To default way to cite an entry in your text is with this syntax: \texttt{{[}@citation-identifier{]}}.
+
+So I might cite some things \autocites{Shea2014}{Lottridge2012}.
+
+\hypertarget{pdf-output}{%
+\subsection{PDF output}\label{pdf-output}}
+
+In PDF output, the bibliography is handled by the OxThesis LaTeX template.
+If you set \texttt{bib-humanities:\ true} in \textbf{index.Rmd}, then in-text references will be formatted as author-year; otherwise references will be shown as numbers.
+
+If you choose author-year formatting, a number of variations on the citation syntax are useful to know:
+
+\begin{itemize}
+\tightlist
+\item
+  Put author names outside the parenthesis
+
+  \begin{itemize}
+  \tightlist
+  \item
+    This: \texttt{@Shea2014\ says\ blah.}
+  \item
+    Becomes: \textcite{Shea2014} says blah.
+  \end{itemize}
+\item
+  Include only the citation-year (in parenthesis)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    This: \texttt{Shea\ et\ al.\ says\ blah\ {[}-@Shea2014{]}}
+  \item
+    Becomes: Shea et al.~says blah \autocite*{Shea2014}
+  \end{itemize}
+\item
+  Add text and page or chapter references to the citation
+
+  \begin{itemize}
+  \tightlist
+  \item
+    This: \texttt{{[}see\ @Shea2014,\ pp.\ 33-35;\ also\ @Wu2016,\ ch.\ 1{]}}
+  \item
+    Becomes: Blah blah \autocites[see][pp.~33-35]{Shea2014}[also][ch.~1]{Wu2016}.
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{gitbook-output}{%
+\subsection{Gitbook output}\label{gitbook-output}}
+
+In gitbook output, citations are by default inserted in the Chicago author-date format.
+
+To change the format, add \texttt{csl:\ some-other-style.csl} in \textbf{index.Rmd}'s YAML header.
+You can browse through and download styles at \href{https://www.zotero.org/styles}{zotero.org/styles}.
+
+\clearpage
+
+\hypertarget{insert-references-easily-with-the-citr-add-in}{%
+\subsection{\texorpdfstring{Insert references easily with the \texttt{citr} add-in}{Insert references easily with the citr add-in}}\label{insert-references-easily-with-the-citr-add-in}}
+
+For an easy way to insert citations, try the \href{https://github.com/crsh/citr}{\texttt{citr}} RStudio add-in (Figure \ref{fig:citr}).
+You can install this add-in by typing \texttt{install.packages("citr")} in the R Console.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{figures/citr} 
+
+}
+
+\caption{The `citr` add-in}\label{fig:citr}
+\end{figure}
+
+\hypertarget{cross-referencing}{%
+\section{Cross-referencing}\label{cross-referencing}}
+
+We can make cross-references to \textbf{sections} within our document, as well as to \textbf{figures} (images and plots) and \textbf{tables}.
+
+The general cross-referencing syntax is \textbf{\texttt{\textbackslash{}@ref(label)}}
+
+\hypertarget{section-references}{%
+\subsection{Section references}\label{section-references}}
+
+Headers are automatically assigned a reference label, which is the text in lower caps separated by dashes. For example, \texttt{\#\ My\ header} is automatically given the label \texttt{my-header}. So \texttt{\#\ My\ header} can be referenced with \texttt{\textbackslash{}@ref(my-section)}
+
+Remember what we wrote in section \ref{citations}?
+
+We can also use \textbf{hyperlink syntax} and add \# before the label, though this is only guaranteed to work properly in HTML output:
+
+\begin{itemize}
+\tightlist
+\item
+  So if we write \texttt{Remember\ what\ we\ wrote\ up\ in\ {[}the\ previous\ section{]}(\#citations)?}
+\item
+  It becomes Remember what we wrote up in \protect\hyperlink{citations}{the previous section}?
+\end{itemize}
+
+\hypertarget{creating-custom-labels}{%
+\subsubsection{Creating custom labels}\label{creating-custom-labels}}
+
+It is a very good idea to create \textbf{custom labels} for our sections. This is because the automatically assigned labels will change when we change the titles of the sections - to avoid this, we can create the labels ourselves and leave them untouched if we change the section titles.
+
+We create custom labels by adding \texttt{\{\#label\}} after a header, e.g. \texttt{\#\ My\ section\ \{\#my-label\}}.
+See \protect\hyperlink{cites-and-refs}{our chapter title} for an example. That was section \ref{cites-and-refs}.
+
+\hypertarget{figure-image-and-plot-references}{%
+\subsection{Figure (image and plot) references}\label{figure-image-and-plot-references}}
+
+\begin{itemize}
+\tightlist
+\item
+  To refer to figures (i.e.~images and plots) use the syntax \texttt{\textbackslash{}@ref(fig:label)}
+\item
+  \textbf{GOTCHA}: Figures and tables must have captions if you wish to cross-reference them.
+\end{itemize}
+
+Let's add an image:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{knitr}\OperatorTok{::}\KeywordTok{include_graphics}\NormalTok{(}\StringTok{"figures/captain.jpeg"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.65\linewidth]{figures/captain} 
+
+}
+
+\caption{A marvel-lous meme}\label{fig:captain}
+\end{figure}
+
+We refer to this image with \texttt{\textbackslash{}@ref(fig:captain)}.
+So Figure \ref{fig:captain} is \protect\hyperlink{fig:captain}{this image}.
+
+And in Figure \ref{fig:cars-plot} we saw a \protect\hyperlink{fig:cars-plot}{cars plot}.
+
+\hypertarget{table-references}{%
+\subsection{Table references}\label{table-references}}
+
+\begin{itemize}
+\tightlist
+\item
+  To refer to tables use the syntax \texttt{\textbackslash{}@ref(tab:label)}
+\end{itemize}
+
+Let's include a table:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{knitr}\OperatorTok{::}\KeywordTok{kable}\NormalTok{(cars[}\DecValTok{1}\OperatorTok{:}\DecValTok{5}\NormalTok{,],}
+            \DataTypeTok{caption=}\StringTok{"Stopping cars"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{table}[t]
+
+\caption{\label{tab:cars-table2}Stopping cars}
+\centering
+\begin{tabular}{r|r}
+\hline
+speed & dist\\
+\hline
+4 & 2\\
+\hline
+4 & 10\\
+\hline
+7 & 4\\
+\hline
+7 & 22\\
+\hline
+8 & 16\\
+\hline
+\end{tabular}
+\end{table}
+
+We refer to this table with \texttt{\textbackslash{}@ref(tab:cars-table2)}.
+So Table \ref{tab:cars-table2} is \protect\hyperlink{tab:cars-table2}{this table}.
+
+And in Table \ref{tab:cars-table} we saw more or less \protect\hyperlink{tab:cars-table}{the same cars table}.
+
+\hypertarget{including-page-numbers}{%
+\subsection{Including page numbers}\label{including-page-numbers}}
+
+Finally, in the PDF output we might also want to include the page number of a reference, so that it's easy to find in physical printed output.
+LaTeX has a command for this, which looks like this: \texttt{\textbackslash{}pageref\{fig/tab:label\}} (note: curly braces, not parentheses)
+
+When we output to PDF, we can use raw LaTeX directly in our .Rmd files. So if we wanted to include the page of the cars plot we could write:
+
+\begin{itemize}
+\tightlist
+\item
+  This: \texttt{Figure\ \textbackslash{}@ref(fig:cars-plot)\ on\ page\ \textbackslash{}pageref(fig:cars-plot)}
+\item
+  Becomes: Figure \ref{fig:cars-plot} on page \pageref{fig:cars-plot}
+\end{itemize}
+
+\hypertarget{include-page-numbers-only-in-pdf-output}{%
+\subsubsection{Include page numbers only in PDF output}\label{include-page-numbers-only-in-pdf-output}}
+
+A problem here is that LaTeX commands don't display in HTML output, so in the gitbook output we'd see simply ``Figure \ref{fig:cars-plot} on page''.
+
+One way to get around this is to use inline R code to insert the text, and use an \texttt{ifelse} statement to check the output format and then insert the appropriate text.
+
+\begin{itemize}
+\tightlist
+\item
+  So this: \texttt{\textasciigrave{}r\ ifelse(knitr::is\_latex\_output(),\ "Figure\ \textbackslash{}\textbackslash{}@ref(fig:cars-plot)\ on\ page\ \textbackslash{}\textbackslash{}pageref\{fig:cars-plot\}",\ "")\textasciigrave{}}
+\item
+  Inserts this (check this on both PDF and gitbook): Figure \ref{fig:cars-plot} on page \pageref{fig:cars-plot}
+\end{itemize}
+
+Note that we need to escape the backslash with another backslash here to get the correct output.
+
+\begin{savequote}
+There is grandeur in this view of life, with its several powers, having
+been originally breathed into a few forms or into one; and that, whilst
+this planet has gone cycling on according to the fixed law of gravity,
+from so simple a beginning endless forms most beautiful and most
+wonderful have been, and are being, evolved.
+\qauthor{--- Charles Darwin \autocite{Darwin1859}}\end{savequote}
+
+
+
+\hypertarget{final-notes-on-the-oxthesis-template-and-on-collaboration}{%
+\chapter{Final Notes on The OxThesis template and on collaboration}\label{final-notes-on-the-oxthesis-template-and-on-collaboration}}
+
+\minitoc 
+
+\hypertarget{beginning-chapters-with-quotes}{%
+\section{Beginning chapters with quotes}\label{beginning-chapters-with-quotes}}
+
+The OxThesis LaTeX template lets you inject some wittiness into your thesis by including a block of type \texttt{savequote} at the beginning of chapters.
+To do this, use the syntax \texttt{\textasciigrave{}\textasciigrave{}\textasciigrave{}\{block\ type=\textquotesingle{}savequote\textquotesingle{}\}}.\footnote{For more on custom block types, see the relevant section in \href{https://bookdown.org/yihui/bookdown/custom-blocks.html}{\emph{Authoring Books with R Markdown}}.}
+
+Add the reference for the quote with the chunk option \texttt{quote\_author="my\ author\ name"}.
+You will also want to add the chunk option \texttt{include=knitr::is\_latex\_output()} so that quotes are only included in PDF output.
+
+It's not possible to use markdown syntax inside chunk options, so if you want to e.g.~italicise a book name in the reference use a \href{https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html\#text-references}{`text reference'}: Create a named piece of text with `(ref:label-name) My text', then point to this in the chunk option with \texttt{quote\_author=\textquotesingle{}(ref:label-name)\textquotesingle{}}.
+
+\hypertarget{highlighting-corrections}{%
+\section{Highlighting corrections}\label{highlighting-corrections}}
+
+For when it comes time to do corrections, you may want to highlight changes made when you submit a post-viva, corrected copy to your examiners so they can quickly verify you've completed the task.
+You can do so like this:
+
+\hypertarget{short-inline-corrections}{%
+\subsection{Short, inline corrections}\label{short-inline-corrections}}
+
+Highlight \textbf{short, inline corrections} by wrapping them in a \texttt{\textless{}span\textgreater{}} tag with the class `correction'.
+In other words, if you do \texttt{\textless{}span\ class="correction"\textgreater{}like\ this\textless{}/span\textgreater{}}, the text between the span tags will \colorbox[HTML]{CCCCFF}{be highlighted in blue} in the output.
+
+\hypertarget{blocks-of-added-or-changed-material}{%
+\subsection{Blocks of added or changed material}\label{blocks-of-added-or-changed-material}}
+
+Highlight entire \textbf{blocks of added or changed material} by putting them in a block of type \texttt{correction}, using the syntax \texttt{\textasciigrave{}\textasciigrave{}\textasciigrave{}\{block\ type=\textquotesingle{}correction\textquotesingle{}\}}.\footnote{In the \textbf{.tex} file for PDF output, this will put the content between \texttt{\textbackslash{}begin\{correction\}} and \texttt{\textbackslash{}end\{correction\}}; in gitbook output it will be put between \texttt{\textless{}div\ class="correction"\textgreater{}} and \texttt{\textless{}/div\textgreater{}}.}
+Like so:
+
+\begin{correction}
+For larger chunks, like this paragraph or indeed entire figures, you can
+use the \texttt{correction} block type. This environment
+\textbf{highlights paragraph-sized and larger blocks} with the same blue
+colour.
+\end{correction}
+
+\hypertarget{stopping-corrections-from-being-highlighted-in-the-output}{%
+\subsection{Stopping corrections from being highlighted in the output}\label{stopping-corrections-from-being-highlighted-in-the-output}}
+
+For \textbf{PDF} output, go to \textbf{index.Rmd} and (i) set \texttt{corrections:\ false} under \texttt{params} in the YAML header (stops block of corrections from being highlighted), (ii) comment out \texttt{pandoc\_args:\ {[}"-\/-lua-filter=scripts\_and\_filters/correction\_filter.lua"{]}} (stops inline corrections from being highlighted).
+
+For \textbf{gitbook} output, go to \textbf{style.css} and comment out the styling for \texttt{.correction}.
+
+\hypertarget{diving-in-to-the-oxthesis-latex-template}{%
+\section{Diving in to the OxThesis LaTeX template}\label{diving-in-to-the-oxthesis-latex-template}}
+
+For LaTeX minded people, you can read through \textbf{templates/template.tex} to see which additional customisation options are available as well as \textbf{templates/ociamthesis.cls} which supplies the base class.
+For example, \textbf{template.tex} provides an option for master's degree submissions, which changes identifying information to candidate number and includes a word count.
+At the time of writing, you must set this directly in \textbf{template.tex} rather than from the YAML header in \textbf{index.Rmd}.
+
+\hypertarget{collaborative-writing}{%
+\section{Collaborative writing}\label{collaborative-writing}}
+
+Best practices for collaboration and change tracking when using R Markdown are still an open question.
+In the blog post \href{https://livefreeordichotomize.com/2018/09/14/one-year-to-dissertate/}{\textbf{One year to dissertate}} by Lucy D'Agostino, which I highly recommend, the author notes that she knits .Rmd files to a \texttt{word\_document}, then uses the \texttt{googledrive} R package to send this to Google Drive for comments / revisions from co-authors, then incorporates Google Drive suggestions \emph{by hand} into the .Rmd source files.
+This is a bit clunky, and there are ongoing discussions among the \emph{R Markdown} developers about what the best way is to handle collaborative writing (see \href{https://github.com/rstudio/rmarkdown/issues/1463}{issue \#1463} on GitHub, where \href{http://criticmarkup.com}{CriticMarkup} is among the suggestions).
+
+For now, this is an open question in the community of R Markdown users.
+I often knit to a format that can easily be imported to Google Docs for comments, then go over suggested revisions and manually incorporate them back in to the .Rmd source files.
+For articles, I sometimes upload a near-final draft to \href{https://www.overleaf.com/}{Overleaf}, then collaboratively make final edits to the \LaTeX~file there.
+I suspect some great solution will be developed in the not-to-distant future, probably by the RStudio team.
+
+\begin{savequote}
+Alles Gescheite ist schon gedacht worden.\\
+Man muss nur versuchen, es noch einmal zu denken.
+
+All intelligent thoughts have already been thought;\\
+what is necessary is only to try to think them again.
+\qauthor{--- Johann Wolfgang von Goethe \autocite{von_goethe_wilhelm_1829}}\end{savequote}
+
+
+
+\hypertarget{conclusion}{%
+\chapter*{Conclusion}\label{conclusion}}
+\addcontentsline{toc}{chapter}{Conclusion}
+
+If we don't want Conclusion to have a chapter number next to it, we can add the \texttt{\{-\}} attribute.
+
+\textbf{More info}
+
+And here's some other random info: the first paragraph after a chapter title or section head \emph{shouldn't be} indented, because indents are to tell the reader that you're starting a new paragraph. Since that's obvious after a chapter or section title, proper typesetting doesn't add an indent there.
+
+\startappendices
+
+\hypertarget{the-first-appendix}{%
+\chapter{The First Appendix}\label{the-first-appendix}}
+
+This first appendix includes an R chunk that was hidden in the document (using \texttt{echo\ =\ FALSE}) to help with readibility:
+
+\textbf{In 02-rmd-basics-code.Rmd}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(tidyverse)}
+\NormalTok{knitr}\OperatorTok{::}\KeywordTok{include_graphics}\NormalTok{(}\StringTok{"figures/chunk-parts.png"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{And here's another one from the same chapter, i.e.~Chapter \ref{code}:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{knitr}\OperatorTok{::}\KeywordTok{include_graphics}\NormalTok{(}\StringTok{"figures/beltcrest.png"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{the-second-appendix-for-fun}{%
+\chapter{The Second Appendix, for Fun}\label{the-second-appendix-for-fun}}
+
+
+%%%%% REFERENCES
+
+% JEM: Quote for the top of references (just like a chapter quote if you're using them).  Comment to skip.
+% \begin{savequote}[8cm]
+% The first kind of intellectual and artistic personality belongs to the hedgehogs, the second to the foxes \dots
+%   \qauthor{--- Sir Isaiah Berlin \cite{berlin_hedgehog_2013}}
+% \end{savequote}
+
+\setlength{\baselineskip}{0pt} % JEM: Single-space References
+
+{\renewcommand*\MakeUppercase[1]{#1}%
+\printbibliography[heading=bibintoc,title={\bibtitle}]}
+
+\end{document}

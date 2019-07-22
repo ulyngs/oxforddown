@@ -44,7 +44,7 @@ In other words, there is no need to indent basic text in the Rmd document (in fa
 ### Italics and bold
 - *Italics* are done like \*this\* or \_this\_
 - **Bold** is done like \*\*this\*\* or \_\_this\_\_
-- **_Bold and italics_** is done like \*\*\*this\*\*\*, \_\_\_this\_\_\_, or (the most transparent solution) \*\*\_this\_\*\*
+- **_Bold and italics_** is done like \*\*\*this\*\*\*, \_\_\_this\_\_\_, or (the most transparent solution, in my opinion) \*\*\_this\_\*\*
 
 ### Inline code
 - `Inline code` is created with backticks like `` `this` ``
@@ -59,7 +59,7 @@ Sub~2~ and super^2^ script is created like this\~2\~ and this\^2\^
 - To include an actual \*, \_ or \\, add another \\ in front of them: \\\*, \\\_, \\\\
 
 ### Endash (--), emdash (---)
-- -- and --- with \- \-\- and \-\-\-
+- -- and --- with \-\- and \-\-\-
 
 ### Blockquotes
 Do like this:
@@ -72,7 +72,7 @@ Do like this:
   - \#\# Second-level heading
   - \#\#\# Etc.
 
-In PDF output, a level-five heading will turn into a paragraph heading, i.e. `\paragraph{My level-five heading}`, which will appears as bold text on the same line as the subsequent paragraph.
+In PDF output, a level-five heading will turn into a paragraph heading, i.e. `\paragraph{My level-five heading}`, which appears as bold text on the same line as the subsequent paragraph.
 
 
 ### Lists
@@ -86,7 +86,7 @@ Ordered lists by starting a line with a number:
 1. Item 1
 4. Item 2
 
-Notice that you rcan mislabel the numbers and *Markdown* will still make the order right in the output.
+Notice that you can mislabel the numbers and *Markdown* will still make the order right in the output.
 
 To create a sublist, indent the values a bit (at least four spaces or a tab):
 
@@ -130,7 +130,7 @@ Therefore, this line starts its own paragraph.
 [^test-footnote]: This is a random test.
 
 ### Comments
-To write comments within your text that won't actually be included in the output, you use the same syntax as for writing comments in HTML. That is, \<!\-\- this will not be included in the output \-\->.
+To write comments within your text that won't actually be included in the output, use the same syntax as for writing comments in HTML. That is, \<!\-\- this will not be included in the output \-\->.
 
 <!-- It is super useful to use comments! -->
 
