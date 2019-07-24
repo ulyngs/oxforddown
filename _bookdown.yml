@@ -16,3 +16,7 @@ output_dir: "docs"
 # You can provide a link here if you want people to be able to suggest and submit changes
 # to the source .Rmd files on your github repo, cf. https://bookdown.org/yihui/bookdown/html.html
 edit: https://github.com/ulyngs/oxforddown/tree/master/%s
+
+
+# If this is set to true, then you don't have to manually delete the merged _main.Rmd file if something goes wrong when you try to build
+delete_merged_file: true
