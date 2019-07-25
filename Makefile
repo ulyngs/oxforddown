@@ -1,6 +1,6 @@
 pdf:
 	Rscript -e 'bookdown::render_book("index.Rmd", output_format = "bookdown::pdf_book")'
-	rm -f *.log *.mtc* *.maf *.aux *.bcf *.lof *.lot *.out *.toc front_matter/abbreviations.aux
+	rm -f *.log *.mtc* *.maf *.aux *.bcf *.lof *.lot *.out *.toc front-and-back-matter/abbreviations.aux
 	Rscript -e 'browseURL("docs/_main.pdf")'
 
 gitbook:
