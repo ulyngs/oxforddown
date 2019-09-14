@@ -19,7 +19,7 @@ The template uses the [bookdown](https://bookdown.org) R package together with t
 
 ## Examples of theses written with `oxforddown`
 
-- [Amy Orben](https://www.amyorben.com): [Teens, Screens and Wellbeing: An Improved Approach](https://www.amyorben.com/docs/thesis/index.html)
+- [Teens, Screens and Wellbeing: An Improved Approach](https://www.amyorben.com/docs/thesis/index.html) by [Amy Orben](https://www.amyorben.com)
 
 *NOTE: If you've used this template to write your thesis, drop me a line at ulrik.lyngs@cs.ox.ac.uk and I'll add a link showcasing it!*
 
