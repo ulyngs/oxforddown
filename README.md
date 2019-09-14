@@ -1,6 +1,10 @@
 # Oxforddown
 
-*NOTE: If you've used this template to write your thesis, drop me a line at ulrik.lyngs@cs.ox.ac.uk and I'll add a link showcasing it! :)*
+*NOTE: If you've used this template to write your thesis, drop me a line at ulrik.lyngs@cs.ox.ac.uk and I'll add a link showcasing it!*
+
+Examples: 
+
+- [Amy Orben](https://www.amyorben.com): [Teens, Screens and Wellbeing: An Improved Approach](https://www.amyorben.com/docs/thesis/index.html)
 
 
 A template for writing an Oxford University thesis in R Markdown.
