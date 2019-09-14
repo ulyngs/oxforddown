@@ -1,10 +1,3 @@
-Theses written with `oxforddown`:
-
-- [Amy Orben](https://www.amyorben.com): [Teens, Screens and Wellbeing: An Improved Approach](https://www.amyorben.com/docs/thesis/index.html)
-
-*NOTE: If you've used this template to write your thesis, drop me a line at ulrik.lyngs@cs.ox.ac.uk and I'll add a link showcasing it!*
-
-
 # Oxforddown
 A template for writing an Oxford University thesis in R Markdown.
 
@@ -23,6 +16,13 @@ See the video tutorials for how to use the template:
 For how to write your content with the R Markdown syntax, read through the sample content.
 
 The template uses the [bookdown](https://bookdown.org) R package together with the [OxThesis LaTeX template](https://github.com/mcmanigle/OxThesis), plus lots of inspiration from [thesisdown](https://github.com/ismayc/thesisdown).
+
+## Examples of theses written with `oxforddown`
+
+- [Amy Orben](https://www.amyorben.com): [Teens, Screens and Wellbeing: An Improved Approach](https://www.amyorben.com/docs/thesis/index.html)
+
+*NOTE: If you've used this template to write your thesis, drop me a line at ulrik.lyngs@cs.ox.ac.uk and I'll add a link showcasing it!*
+
 
 # Requirements
 - LaTeX - if you're lazy and got sufficient disc space, just download and install the MacTeX distribution from [tug.org/mactex/](http://www.tug.org/mactex/). If you're short on disc space, go for the BasicTeX distribution from the same site. 
