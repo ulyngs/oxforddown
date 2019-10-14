@@ -23,6 +23,18 @@ The template uses the [bookdown](https://bookdown.org) R package together with t
 
 *NOTE: If you've used this template to write your thesis, drop me a line at ulrik.lyngs@cs.ox.ac.uk and I'll add a link showcasing it!*
 
+## How to cite
+```bibtex
+@misc{lyngsOxforddown2019,
+  author = {Lyngs, Ulrik},
+  title = {oxforddown},
+  year = {2019},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  howpublished = {\url{https://github.com/ulyngs/oxforddown}},
+  doi = {10.5281/zenodo.3484682},
+}
+```
 
 # Requirements
 - LaTeX - if you're lazy and got sufficient disc space, just download and install the MacTeX distribution from [tug.org/mactex/](http://www.tug.org/mactex/). If you're short on disc space, go for the BasicTeX distribution from the same site. 
