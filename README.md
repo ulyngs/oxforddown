@@ -24,6 +24,8 @@ The template uses the [bookdown](https://bookdown.org) R package together with t
 *NOTE: If you've used this template to write your thesis, drop me a line at ulrik.lyngs@cs.ox.ac.uk and I'll add a link showcasing it!*
 
 ## How to cite
+[![DOI](https://zenodo.org/badge/159745024.svg)](https://zenodo.org/badge/latestdoi/159745024)
+
 ```bibtex
 @misc{lyngsOxforddown2019,
   author = {Lyngs, Ulrik},
