@@ -137,12 +137,19 @@ We might then write:\
 Which would output:\
 "In the `cars` dataset, we have `r num_car_observations` observations."
 
-
+<!--
 ### Referring to results computed in other languages than R
 ```{r, include=FALSE}
 # check if the reticulate package is installed
 if (!("reticulate" %in% installed.packages()))
   install.packages("reticulate", repos = "http://cran.rstudio.com")
+
+library(reticulate)
+# note: if you're getting an error along the lines of "Error in python_config(python_version, required_module, python_versions)"
+# then try 'use_python("your-python path")' where "your-python-path" is whatever comes up
+# if you type 'which python' into a terminal, e.g.:
+
+# use_python("/Users/ulyngs/opt/anaconda3/bin/python")
 ```
 
 [At the moment](https://stackoverflow.com/questions/47818461/is-there-a-way-in-knitr-to-evaluate-inline-code-chunks-of-other-languages), inline code only works with R, so syntax such as `` `python code here` `` is not valid.
@@ -162,3 +169,4 @@ py$my_number
 
 This means that inline, we can include results from python chunks with `` ``r ''`r py$variable` ``.
 For example, we can state that the value of `my_number` defined in the python chunk, is `r py$my_number`.
+-->
