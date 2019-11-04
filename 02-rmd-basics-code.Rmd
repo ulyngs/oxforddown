@@ -144,6 +144,8 @@ I've commented the below section out, to avoid compilation errors from the `reti
 
 If you need to use other langauges, have a look at the content I commented out by the end of the **02-rmd-basics-code.Rmd** file, which gives an example of using Python in your R Markdown file.
 
+
+
 ```{r, include=FALSE, eval=FALSE}
 # check if the reticulate package is installed
 if (!("reticulate" %in% installed.packages()))
@@ -154,7 +156,7 @@ library(reticulate)
 # then try 'use_python("your-python path")' where "your-python-path" is whatever comes up
 # if you type 'which python' into a terminal, e.g.:
 
-use_python("/Users/ulyngs/opt/anaconda3/bin/python")
+# use_python("/Users/ulyngs/opt/anaconda3/bin/python")
 ```
 
 <!--
@@ -162,19 +164,17 @@ use_python("/Users/ulyngs/opt/anaconda3/bin/python")
 However, you can use the [`reticulate`](https://rstudio.github.io/reticulate/articles/r_markdown.html) package to access variables from python chunks. Here's a Python code chunk:
 -->
 
-```{python, eval=FALSE}
+```{python, include=FALSE, eval=FALSE}
 my_number = 4 + 8
 print(my_number)
 ```
 
 <!-- The `reticulate` package allows **R** to access variables defined in python environments with the syntax `py$variable`: -->
 
-```{r, eval=FALSE}
-library(reticulate)
+```{r, include=FALSE, eval=FALSE}
 py$my_number
 ```
 
 <!--
 This means that inline, we can include results from python chunks with `` ``r ''`r py$variable` ``.
-For example, we can state that the value of `my_number` defined in the python chunk, is `r py$my_number`.
 -->
