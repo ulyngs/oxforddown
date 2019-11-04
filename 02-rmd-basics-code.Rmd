@@ -137,9 +137,13 @@ We might then write:\
 Which would output:\
 "In the `cars` dataset, we have `r num_car_observations` observations."
 
-<!--
+
 ### Referring to results computed in other languages than R
-```{r, include=FALSE}
+I've commented the below section out, to avoid compilation errors from the `reticulate` package being unable to find a python installation (after I installed MacOS Catalina, `reticulate` was unable to select a python version on my system, and I had to set it manually with `use_python`).
+
+If you need to use other langauges, have a look at the content I commented out by the end of the **02-rmd-basics-code.Rmd** file, which gives an example of using Python in your R Markdown file.
+
+```{r, include=FALSE, eval=FALSE}
 # check if the reticulate package is installed
 if (!("reticulate" %in% installed.packages()))
   install.packages("reticulate", repos = "http://cran.rstudio.com")
@@ -149,24 +153,27 @@ library(reticulate)
 # then try 'use_python("your-python path")' where "your-python-path" is whatever comes up
 # if you type 'which python' into a terminal, e.g.:
 
-# use_python("/Users/ulyngs/opt/anaconda3/bin/python")
+use_python("/Users/ulyngs/opt/anaconda3/bin/python")
 ```
 
+<!--
 [At the moment](https://stackoverflow.com/questions/47818461/is-there-a-way-in-knitr-to-evaluate-inline-code-chunks-of-other-languages), inline code only works with R, so syntax such as `` `python code here` `` is not valid.
 However, you can use the [`reticulate`](https://rstudio.github.io/reticulate/articles/r_markdown.html) package to access variables from python chunks. Here's a Python code chunk:
+-->
 
-```{python}
+```{python, eval=FALSE}
 my_number = 4 + 8
 print(my_number)
 ```
 
-The `reticulate` package allows **R** to access variables defined in python environments with the syntax `py$variable`:
+<!-- The `reticulate` package allows **R** to access variables defined in python environments with the syntax `py$variable`: -->
 
-```{r}
+```{r, eval=FALSE}
 library(reticulate)
 py$my_number
 ```
 
+<!--
 This means that inline, we can include results from python chunks with `` ``r ''`r py$variable` ``.
 For example, we can state that the value of `my_number` defined in the python chunk, is `r py$my_number`.
 -->
