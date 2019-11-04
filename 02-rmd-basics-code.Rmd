@@ -8,7 +8,7 @@ output:
   bookdown::pdf_document2:
     template: templates/brief_template.tex
 documentclass: book
-bibliography: references
+bibliography: references.bib
 ---
 
 # Adding code {#code}

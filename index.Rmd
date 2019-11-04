@@ -20,7 +20,7 @@ abbreviations: "front-and-back-matter/abbreviations" # path to .tex file with ab
 #######################
 ## bibliography path ##
 #######################
-bibliography: bibliography/example.bib
+bibliography: references.bib
 bibliography-heading-in-pdf: Works Cited
 
 #####################
