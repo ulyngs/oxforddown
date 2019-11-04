@@ -65,6 +65,7 @@ The template uses the [bookdown](https://bookdown.org) R package together with t
 ### Gitbook output
 - in the terminal tab (not the R console!), type 'make gitbook'
 - the set of HTML files for the gitbook are stored in the **docs/** folder, and the front page (docs/index.html) is opened in a browser
+- if you want to deploy your thesis as a gitbook on GitHub Pages, then make sure that there's a **.nojekyll** file in the **docs/** folder (otherwise GitHub does some voodoo that causes some paths not to work)
 
 ![](screenshots/build_gitbook.png)
 ![](screenshots/compiled_gitbook.png)
