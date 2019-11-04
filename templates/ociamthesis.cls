@@ -171,7 +171,7 @@
 	% To format the bibliography	
 
 
-\usepackage[colorlinks=false,pdfpagelabels]{hyperref} 
+%\usepackage[colorlinks=false,pdfpagelabels]{hyperref} 
 	% for linking between references, figures, TOC, etc in the pdf document
 
 \usepackage[nohints,tight]{minitoc} 

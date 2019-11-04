@@ -30,6 +30,7 @@ abstractseparate: true  # include front page w/ abstract for examination schools
 bib-humanities: true   #set to true if you want in-text references formatted as author-year
 draft: true # add as DRAFT mark in the footer?
 page-layout: nobind #'nobind' for PDF output (equal margins), 'twoside' for two-sided binding (mirror margins and blank pages), leave blank for one-sided binding (left margin > right margin)
+hidelinks: true #if false, the PDF output highlights clickable links with a colored border - you will probably want to set this to true for PDF version you wish to physically print
 toc-depth: 2 # depth of heading to include in table of contents
 lof: true # list of figures in front matter?
 lot: true # list of tables in front matter?
