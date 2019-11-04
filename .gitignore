@@ -3,3 +3,9 @@
 .RData
 .Ruserdata
 .DS_Store
+_main.bbl
+_main.blg
+_main.run.xml
+_todo.md
+*.html
+*.tex

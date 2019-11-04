@@ -5,6 +5,7 @@ output:
   bookdown::pdf_document2:
     template: templates/brief_template.tex
 documentclass: book
+bibliography: references.bib
 ---
 
 # Citations and cross-references {#cites-and-refs}

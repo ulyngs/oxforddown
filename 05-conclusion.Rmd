@@ -8,6 +8,7 @@ output:
   bookdown::pdf_document2:
     template: templates/brief_template.tex
 documentclass: book
+bibliography: references.bib
 ---
 
 ```{block type='savequote', include=knitr::opts_knit$get('rmarkdown.pandoc.to') == 'latex', quote_author='(ref:goethe-quote)'}

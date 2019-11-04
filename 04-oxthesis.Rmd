@@ -5,6 +5,7 @@ output:
   bookdown::word_document2: default
   bookdown::html_document2: default
 documentclass: book
+bibliography: references.bib
 ---
 
 ```{block type='savequote', include=knitr::is_latex_output(), quote_author='(ref:darwin-quote)'}
