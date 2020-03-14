@@ -99,6 +99,15 @@ By default, when you build the entire thesis, the auxillary files will be remove
 To clean up files generated when knitting individual chapters, type 'make clean-knits' in the terminal.
 
 # Limitations
+## Gotchas
+- don't use underscores (\_) in your YAML front matter or code chunk labels! (underscores have special meaning in LaTeX, so therefore you are likely to get an error, cf. https://yihui.org/en/2018/03/space-pain/)
+  - bad YAML: `bibliography: bib_final.bib`
+  - bad chunk label: `{r my_plot}`
+  - good YAML: `bibliography: bib-final.bib`
+  - good chunk label: `{r my-plot}`
+
+
+## Further plans
 - at the moment only PDF and HTML output have been properly implemented; I may improve on the Word output further down the line
 
 Enjoy!
