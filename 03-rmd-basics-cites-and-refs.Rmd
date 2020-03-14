@@ -1,7 +1,7 @@
 ---
 output:
-  bookdown::html_document2: default
-  bookdown::word_document2: default
+  #bookdown::html_document2: default
+  #bookdown::word_document2: default
   bookdown::pdf_document2:
     template: templates/brief_template.tex
 documentclass: book
@@ -154,8 +154,22 @@ Note that we need to escape the backslash with another backslash here to get the
 ### Shorten captions shown in the list of figures (PDF)
 You might want your list of figures (which follows the table of contents) to have shorter (or just different) figure descriptions than the actual figure captions.
 
-Do this using the chunk option `fig.scap` ('short caption'), for example `{r captain-image, fig.cap="My very long and descriptive (and potentially boring) caption that doesn't fit in the list of figures, but helps the reader understand what the figure communicates", fig.scap="My concise description for the list of figures"`
+Do this using the chunk option `fig.scap` ('short caption'), for example `{r captain-image, fig.cap="A very long and descriptive (and potentially boring) caption that doesn't fit in the list of figures, but helps the reader understand what the figure communicates.", fig.scap="A concise description for the list of figures"`
 
+
+### Shorten captions shown in the list of tables (PDF)
+You might want your list of tables (which follows the list of figures in your thesis front matter) to have shorter (or just different) table descriptions than the actual table captions.
+
+If you are using `knitr::kable` to generate a table, you can do this with the argument `caption.short`, e.g.:
+
+```r
+knitr::kable(mtcars,
+              caption = "A very long and descriptive (and potentially
+              boring) caption that doesn't fit in the list of figures,
+              but helps the reader understand what the figure 
+              communicates.",
+              caption.short = "A concise description for the list of tables")
+```
 
 ### Shorting the running header (PDF)
 You might want a chapter's running header (i.e. the header showing the title of the current chapter at the top of page) to be shorter (or just different) to the actual chapter title.
