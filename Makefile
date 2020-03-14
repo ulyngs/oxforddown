@@ -12,7 +12,7 @@ word:
 	Rscript -e 'browseURL("docs/_main.docx")'
 
 clean:
-	rm -f *.log *.mtc* *.maf *.aux
+	rm -f *.log *.mtc* *.maf *.aux *.bbl *.blg *.xml
 	
 clean-knits:
 	rm -f *.docx *.html *.pdf *.log *.maf *.mtc*
