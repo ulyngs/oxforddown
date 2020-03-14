@@ -8,7 +8,8 @@ documentclass: book
 bibliography: references.bib
 ---
 
-# Citations and cross-references {#cites-and-refs}
+# Citations and cross-references {#cites-and-refs} 
+\chaptermark{Cites and cross-refs}
 \minitoc <!-- this will include a mini table of contents-->
 
 ## Citations
@@ -147,3 +148,23 @@ One way to get around this is to use inline R code to insert the text, and use a
 - Inserts this (check this on both PDF and gitbook): `r ifelse(knitr::is_latex_output(), "Figure \\@ref(fig:cars-plot) on page \\pageref{fig:cars-plot}", "")`
 
 Note that we need to escape the backslash with another backslash here to get the correct output.
+
+
+## Customising your thesis' front matter 'n stuff
+### Shorten captions shown in the list of figures (PDF)
+You might want your list of figures (which follows the table of contents) to have shorter (or just different) figure descriptions than the actual figure captions.
+
+Do this using the chunk option `fig.scap` ('short caption'), for example `{r captain-image, fig.cap="My very long and descriptive (and potentially boring) caption that doesn't fit in the list of figures, but helps the reader understand what the figure communicates", fig.scap="My concise description for the list of figures"`
+
+
+### Shorting the running header (PDF)
+You might want a chapter's running header (i.e. the header showing the title of the current chapter at the top of page) to be shorter (or just different) to the actual chapter title.
+
+Do this by adding the latex command `\chaptermark{My shorter version}` after your chapter title.
+
+For example, this chapter's running header is simply 'Cites and cross-refs', because it begins like this:
+
+```markdown
+# Citations and cross-references {#cites-and-refs}
+\chaptermark{Cites and cross-refs}
+```
