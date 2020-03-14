@@ -107,7 +107,7 @@ To clean up files generated when knitting individual chapters, type 'make clean-
   - good chunk label: `{r my-plot}`
 
 
-## Further plans
+## Output formats
 - at the moment only PDF and HTML output have been properly implemented; I may improve on the Word output further down the line
 
 Enjoy!
