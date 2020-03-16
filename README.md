@@ -102,8 +102,8 @@ To clean up files generated when knitting individual chapters, type 'make clean-
 ## Gotchas
 - don't use underscores (\_) in your YAML front matter or code chunk labels! (underscores have special meaning in LaTeX, so therefore you are likely to get an error, cf. https://yihui.org/en/2018/03/space-pain/)
   - bad YAML: `bibliography: bib_final.bib`
-  - bad chunk label: `{r my_plot}`
   - good YAML: `bibliography: bib-final.bib`
+  - bad chunk label: `{r my_plot}`
   - good chunk label: `{r my-plot}`
 
 
