@@ -105,7 +105,7 @@ To clean up files generated when knitting individual chapters, type 'make clean-
   - good YAML: `bibliography: bib-final.bib`
   - bad chunk label: `{r my_plot}`
   - good chunk label: `{r my-plot}`
-
+- if you want to deploy the gitbook via GitHub pages, then the /docs folder must contain a file called **.nojekyll**
 
 ## Output formats
 - at the moment only PDF and HTML output have been properly implemented; I may improve on the Word output further down the line
