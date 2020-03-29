@@ -39,11 +39,11 @@ The template uses the [bookdown](https://bookdown.org) R package together with t
 ```
 
 # Requirements
-- LaTeX - if you're lazy and got sufficient disc space, just download and install the MacTeX distribution from [tug.org/mactex/](http://www.tug.org/mactex/). If you're short on disc space, go for the BasicTeX distribution from the same site. 
-  - (For unclear reasons, Yihui Xie's [TinyTeX](https://yihui.name/tinytex/) sometimes causes trouble! If you are unable to get the PDF output to work with TinyTex, try uninstalling it with tinytex::uninstall_tinytex(), then install the MacTeX LaTeX distribution and restart RStudio.)
+- LaTeX - download and install the MacTeX distribution from [tug.org/mactex/](http://www.tug.org/mactex/).
+  - (For unclear reasons, Yihui Xie's [TinyTeX](https://yihui.name/tinytex/) is causing trouble! If you are unable to get the PDF output to work, try uninstalling tinytex::uninstall_tinytex(), then install the MacTeX LaTeX distribution and restart RStudio.)
 - [R](https://cran.rstudio.com) and [RStudio version 1.2 or higher](https://www.rstudio.com/products/rstudio/download/#download)
   - (pandoc version 2 or higher - comes bundled with RStudio v1.2+)
-- The R packages `bookdown`, `tidyverse`and `kableExtra` (should be automatically installed for you if you don't already have them, when you build this project for the first time in RStudio)
+- The R packages `bookdown`, `tidyverse`, and `reticulate` (the other packages you need should be automatically installed when you build this project for the first time in RStudio)
 - (If on a Mac): Command line developer tools. You can install these by typing `xcode-select --install` in a terminal prompt
 
 # Example output
