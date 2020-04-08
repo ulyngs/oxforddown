@@ -94,6 +94,9 @@
 %UL 26 Mar 2019, enable strikethrough
 \usepackage[normalem]{ulem}
 
+%UL 15 Oct 2019, enable link highlighting to be turned off from YAML
+\usepackage[colorlinks=false,pdfpagelabels,hidelinks=true]{hyperref}
+
 %%%%% SELECT YOUR DRAFT OPTIONS
 % Three options going on here; use in any combination.  But remember to turn the first two off before
 % generating a PDF to send to the printer!
@@ -122,14 +125,14 @@
 % \newcommand*{\bibtitle}{Works Cited}
 
 %UL 3 Dec 2018: set this from YAML in index.Rmd
-\usepackage[style=authoryear, sorting=nyt, backend=biber, maxcitenames=2, useprefix, doi=false, isbn=false]{biblatex}
+\usepackage[style=authoryear, sorting=nyt, backend=biber, maxcitenames=2, useprefix, doi=true, isbn=false, uniquename=false]{biblatex}
 \newcommand*{\bibtitle}{Works Cited}
 
 % This makes the bibliography left-aligned (not 'justified') and slightly smaller font.
 \renewcommand*{\bibfont}{\raggedright\small}
 
 % Change this to the name of your .bib file (usually exported from a citation manager like Zotero or EndNote).
-\addbibresource{bibliography/example.bib}
+\addbibresource{references.bib}
 
 
 % Uncomment this if you want equation numbers per section (2.3.12), instead of per chapter (2.18):
@@ -597,6 +600,8 @@ Common chunk options include (see e.g. \href{https://bookdown.org/yihui/rmarkdow
   \texttt{include}: wheter to include anything from the from a code chunk in the output document
 \item
   \texttt{fig.cap}: figure caption
+\item
+  \texttt{fig.scap}: short figure caption, which will be used in the `List of Figures' in the PDF front matter
 \end{itemize}
 
 \textbf{IMPORTANT}: Do \emph{not} use underscoores in your chunk labels - if you do, you are likely to get an error in PDF output saying something like ``! Package caption Error: \textbackslash{}caption outside float''.
@@ -716,11 +721,11 @@ Table \ref{tab:cars-table} shows the first rows of that cars data - read in your
 \end{Highlighting}
 \end{Shaded}
 
-\begin{table}[t]
+\begin{table}
 
 \caption{\label{tab:cars-table}A knitr kable table}
 \centering
-\begin{tabular}{r|r}
+\begin{tabular}[t]{r|r}
 \hline
 speed & dist\\
 \hline
@@ -786,38 +791,14 @@ Which would output:\\
 \hypertarget{referring-to-results-computed-in-other-languages-than-r}{%
 \subsection{Referring to results computed in other languages than R}\label{referring-to-results-computed-in-other-languages-than-r}}
 
-\href{https://stackoverflow.com/questions/47818461/is-there-a-way-in-knitr-to-evaluate-inline-code-chunks-of-other-languages}{At the moment}, inline code only works with R, so syntax such as \texttt{\textasciigrave{}python\ code\ here\textasciigrave{}} is not valid.
-However, you can use the \href{https://rstudio.github.io/reticulate/articles/r_markdown.html}{\texttt{reticulate}} package to access variables from python chunks. Here's a Python code chunk:
+I've commented the below section out, to avoid compilation errors from the \texttt{reticulate} package being unable to find a python installation (after I installed MacOS Catalina, \texttt{reticulate} was unable to select a python version on my system, and I had to set it manually with \texttt{use\_python}).
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{my_number }\OperatorTok{=} \DecValTok{4} \OperatorTok{+} \DecValTok{8}
-\BuiltInTok{print}\NormalTok{(my_number)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## 12
-\end{verbatim}
-
-The \texttt{reticulate} package allows \textbf{R} to access variables defined in python environments with the syntax \texttt{py\$variable}:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{library}\NormalTok{(reticulate)}
-\NormalTok{py}\OperatorTok{$}\NormalTok{my_number}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] 12
-\end{verbatim}
-
-This means that inline, we can include results from python chunks with \texttt{\textasciigrave{}r\ py\$variable\textasciigrave{}}.
-For example, we can state that the value of \texttt{my\_number} defined in the python chunk, is 12.
+If you need to use other langauges, have a look at the content I commented out by the end of the \textbf{02-rmd-basics-code.Rmd} file, which gives an example of using Python in your R Markdown file.
 
 \hypertarget{cites-and-refs}{%
 \chapter{Citations and cross-references}\label{cites-and-refs}}
+
+\chaptermark{Cites and cross-refs}
 
 \minitoc 
 
@@ -1001,11 +982,11 @@ Let's include a table:
 \end{Highlighting}
 \end{Shaded}
 
-\begin{table}[t]
+\begin{table}
 
 \caption{\label{tab:cars-table2}Stopping cars}
 \centering
-\begin{tabular}{r|r}
+\begin{tabular}[t]{r|r}
 \hline
 speed & dist\\
 \hline
@@ -1060,6 +1041,50 @@ One way to get around this is to use inline R code to insert the text, and use a
 
 Note that we need to escape the backslash with another backslash here to get the correct output.
 
+\hypertarget{customising-your-thesis-front-matter-n-stuff}{%
+\section{Customising your thesis' front matter 'n stuff}\label{customising-your-thesis-front-matter-n-stuff}}
+
+\hypertarget{shorten-captions-shown-in-the-list-of-figures-pdf}{%
+\subsection{Shorten captions shown in the list of figures (PDF)}\label{shorten-captions-shown-in-the-list-of-figures-pdf}}
+
+You might want your list of figures (which follows the table of contents) to have shorter (or just different) figure descriptions than the actual figure captions.
+
+Do this using the chunk option \texttt{fig.scap} (`short caption'), for example \texttt{\{r\ captain-image,\ fig.cap="A\ very\ long\ and\ descriptive\ (and\ potentially\ boring)\ caption\ that\ doesn\textquotesingle{}t\ fit\ in\ the\ list\ of\ figures,\ but\ helps\ the\ reader\ understand\ what\ the\ figure\ communicates.",\ fig.scap="A\ concise\ description\ for\ the\ list\ of\ figures"}
+
+\hypertarget{shorten-captions-shown-in-the-list-of-tables-pdf}{%
+\subsection{Shorten captions shown in the list of tables (PDF)}\label{shorten-captions-shown-in-the-list-of-tables-pdf}}
+
+You might want your list of tables (which follows the list of figures in your thesis front matter) to have shorter (or just different) table descriptions than the actual table captions.
+
+If you are using \texttt{knitr::kable} to generate a table, you can do this with the argument \texttt{caption.short}, e.g.:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{knitr}\OperatorTok{::}\KeywordTok{kable}\NormalTok{(mtcars,}
+              \DataTypeTok{caption =} \StringTok{"A very long and descriptive (and potentially}
+\StringTok{              boring) caption that doesn't fit in the list of figures,}
+\StringTok{              but helps the reader understand what the figure }
+\StringTok{              communicates."}\NormalTok{,}
+              \DataTypeTok{caption.short =} \StringTok{"A concise description for the list of tables"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{shorting-the-running-header-pdf}{%
+\subsection{Shorting the running header (PDF)}\label{shorting-the-running-header-pdf}}
+
+You might want a chapter's running header (i.e.~the header showing the title of the current chapter at the top of page) to be shorter (or just different) to the actual chapter title.
+
+Do this by adding the latex command \texttt{\textbackslash{}chaptermark\{My\ shorter\ version\}} after your chapter title.
+
+For example, this chapter's running header is simply `Cites and cross-refs', because it begins like this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{# Citations and cross-references \{#cites-and-refs\}}
+\NormalTok{\textbackslash{}chaptermark\{Cites and cross-refs\}}
+\end{Highlighting}
+\end{Shaded}
+
 \begin{savequote}
 There is grandeur in this view of life, with its several powers, having
 been originally breathed into a few forms or into one; and that, whilst
@@ -1095,8 +1120,7 @@ You can do so like this:
 \hypertarget{short-inline-corrections}{%
 \subsection{Short, inline corrections}\label{short-inline-corrections}}
 
-Highlight \textbf{short, inline corrections} by wrapping them in a \texttt{\textless{}span\textgreater{}} tag with the class `correction'.
-In other words, if you do \texttt{\textless{}span\ class="correction"\textgreater{}like\ this\textless{}/span\textgreater{}}, the text between the span tags will \colorbox[HTML]{CCCCFF}{be highlighted in blue} in the output.
+Highlight \textbf{short, inline corrections} by doing \texttt{{[}like\ this{]}\{.correction\}} --- the text between the square brackets will then \colorbox[HTML]{CCCCFF}{be highlighted in blue} in the output.
 
 \hypertarget{blocks-of-added-or-changed-material}{%
 \subsection{Blocks of added or changed material}\label{blocks-of-added-or-changed-material}}
