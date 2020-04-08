@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
@@ -8,7 +8,7 @@
   <meta name="description" content="oxforddown:<br />
 An Oxford University Thesis<br />
 Template for R Markdown" />
-  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
   <meta property="og:title" content="B The Second Appendix, for Fun | oxforddown: An Oxford University Thesis Template for R Markdown" />
   <meta property="og:type" content="book" />
@@ -32,8 +32,8 @@ Template for R Markdown" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="the-first-appendix.html">
-<link rel="next" href="references.html">
+<link rel="prev" href="the-first-appendix.html"/>
+<link rel="next" href="references.html"/>
 <style type="text/css">
 p.abstract{
   text-align: center;
@@ -51,6 +51,9 @@ div.abstract{
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -183,6 +186,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2.3" data-path="cites-and-refs.html"><a href="cites-and-refs.html#table-references"><i class="fa fa-check"></i><b>3.2.3</b> Table references</a></li>
 <li class="chapter" data-level="3.2.4" data-path="cites-and-refs.html"><a href="cites-and-refs.html#including-page-numbers"><i class="fa fa-check"></i><b>3.2.4</b> Including page numbers</a></li>
 </ul></li>
+<li class="chapter" data-level="3.3" data-path="cites-and-refs.html"><a href="cites-and-refs.html#customising-your-thesis-front-matter-n-stuff"><i class="fa fa-check"></i><b>3.3</b> Customising your thesis’ front matter ’n stuff</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="cites-and-refs.html"><a href="cites-and-refs.html#shorten-captions-shown-in-the-list-of-figures-pdf"><i class="fa fa-check"></i><b>3.3.1</b> Shorten captions shown in the list of figures (PDF)</a></li>
+<li class="chapter" data-level="3.3.2" data-path="cites-and-refs.html"><a href="cites-and-refs.html#shorten-captions-shown-in-the-list-of-tables-pdf"><i class="fa fa-check"></i><b>3.3.2</b> Shorten captions shown in the list of tables (PDF)</a></li>
+<li class="chapter" data-level="3.3.3" data-path="cites-and-refs.html"><a href="cites-and-refs.html#shorting-the-running-header-pdf"><i class="fa fa-check"></i><b>3.3.3</b> Shorting the running header (PDF)</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="final-notes-on-the-oxthesis-template-and-on-collaboration.html"><a href="final-notes-on-the-oxthesis-template-and-on-collaboration.html"><i class="fa fa-check"></i><b>4</b> Final Notes on The OxThesis template and on collaboration</a><ul>
 <li class="chapter" data-level="4.1" data-path="final-notes-on-the-oxthesis-template-and-on-collaboration.html"><a href="final-notes-on-the-oxthesis-template-and-on-collaboration.html#beginning-chapters-with-quotes"><i class="fa fa-check"></i><b>4.1</b> Beginning chapters with quotes</a></li>
@@ -233,11 +241,13 @@ Template for R Markdown</a>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -245,7 +255,6 @@ gitbook.start({
 "github": false,
 "facebook": false,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
@@ -265,6 +274,10 @@ gitbook.start({
 "link": null,
 "text": null
 },
+"view": {
+"link": null,
+"text": null
+},
 "download": ["_main.pdf"],
 "toc": {
 "collapse": "subsection"
@@ -280,8 +293,9 @@ gitbook.start({
     script.type = "text/javascript";
     var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();

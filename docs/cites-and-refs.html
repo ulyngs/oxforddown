@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
@@ -8,7 +8,7 @@
   <meta name="description" content="oxforddown:<br />
 An Oxford University Thesis<br />
 Template for R Markdown" />
-  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
   <meta property="og:title" content="3 Citations and cross-references | oxforddown: An Oxford University Thesis Template for R Markdown" />
   <meta property="og:type" content="book" />
@@ -32,8 +32,8 @@ Template for R Markdown" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="code.html">
-<link rel="next" href="final-notes-on-the-oxthesis-template-and-on-collaboration.html">
+<link rel="prev" href="code.html"/>
+<link rel="next" href="final-notes-on-the-oxthesis-template-and-on-collaboration.html"/>
 <style type="text/css">
 p.abstract{
   text-align: center;
@@ -51,6 +51,9 @@ div.abstract{
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -183,6 +186,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2.3" data-path="cites-and-refs.html"><a href="cites-and-refs.html#table-references"><i class="fa fa-check"></i><b>3.2.3</b> Table references</a></li>
 <li class="chapter" data-level="3.2.4" data-path="cites-and-refs.html"><a href="cites-and-refs.html#including-page-numbers"><i class="fa fa-check"></i><b>3.2.4</b> Including page numbers</a></li>
 </ul></li>
+<li class="chapter" data-level="3.3" data-path="cites-and-refs.html"><a href="cites-and-refs.html#customising-your-thesis-front-matter-n-stuff"><i class="fa fa-check"></i><b>3.3</b> Customising your thesis’ front matter ’n stuff</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="cites-and-refs.html"><a href="cites-and-refs.html#shorten-captions-shown-in-the-list-of-figures-pdf"><i class="fa fa-check"></i><b>3.3.1</b> Shorten captions shown in the list of figures (PDF)</a></li>
+<li class="chapter" data-level="3.3.2" data-path="cites-and-refs.html"><a href="cites-and-refs.html#shorten-captions-shown-in-the-list-of-tables-pdf"><i class="fa fa-check"></i><b>3.3.2</b> Shorten captions shown in the list of tables (PDF)</a></li>
+<li class="chapter" data-level="3.3.3" data-path="cites-and-refs.html"><a href="cites-and-refs.html#shorting-the-running-header-pdf"><i class="fa fa-check"></i><b>3.3.3</b> Shorting the running header (PDF)</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="final-notes-on-the-oxthesis-template-and-on-collaboration.html"><a href="final-notes-on-the-oxthesis-template-and-on-collaboration.html"><i class="fa fa-check"></i><b>4</b> Final Notes on The OxThesis template and on collaboration</a><ul>
 <li class="chapter" data-level="4.1" data-path="final-notes-on-the-oxthesis-template-and-on-collaboration.html"><a href="final-notes-on-the-oxthesis-template-and-on-collaboration.html#beginning-chapters-with-quotes"><i class="fa fa-check"></i><b>4.1</b> Beginning chapters with quotes</a></li>
@@ -220,6 +228,7 @@ Template for R Markdown</a>
             <section class="normal" id="section-">
 <div id="cites-and-refs" class="section level1">
 <h1><span class="header-section-number">3</span> Citations and cross-references</h1>
+
 <p><!-- this will include a mini table of contents--></p>
 <div id="citations" class="section level2">
 <h2><span class="header-section-number">3.1</span> Citations</h2>
@@ -228,15 +237,15 @@ Then reference the path to this file in <strong>index.Rmd</strong>’s YAML head
 <p>Most reference managers can create a .bib file with you references automatically.
 However, the <strong>by far</strong> best reference manager to use with <em>R Markdown</em> is <a href="https://www.zotero.org">Zotero</a> with the <a href="https://retorque.re/zotero-better-bibtex/">Better BibTex plug-in</a>, because the <code>citr</code> plugin for RStudio (see below) can read references directly from your Zotero library!</p>
 <p>Here is an example of an entry in a <strong>.bib</strong> file:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bibtex"><code class="sourceCode bibtex"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="va">@article</span>{<span class="ot">Shea2014</span>,</a>
-<a class="sourceLine" id="cb12-2" data-line-number="2">  <span class="dt">author</span> =        {Shea, Nicholas and Boldt, Annika},</a>
-<a class="sourceLine" id="cb12-3" data-line-number="3">  <span class="dt">journal</span> =       {Trends in Cognitive Sciences},</a>
-<a class="sourceLine" id="cb12-4" data-line-number="4">  <span class="dt">pages</span> =         {186--193},</a>
-<a class="sourceLine" id="cb12-5" data-line-number="5">  <span class="dt">title</span> =         {{Supra-personal cognitive control}},</a>
-<a class="sourceLine" id="cb12-6" data-line-number="6">  <span class="dt">volume</span> =        {18},</a>
-<a class="sourceLine" id="cb12-7" data-line-number="7">  <span class="dt">year</span> =          {2014},</a>
-<a class="sourceLine" id="cb12-8" data-line-number="8">  <span class="dt">doi</span> =           {10.1016/j.tics.2014.01.006},</a>
-<a class="sourceLine" id="cb12-9" data-line-number="9">}</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bibtex"><code class="sourceCode bibtex"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="va">@article</span>{<span class="ot">Shea2014</span>,</a>
+<a class="sourceLine" id="cb8-2" data-line-number="2">  <span class="dt">author</span> =        {Shea, Nicholas and Boldt, Annika},</a>
+<a class="sourceLine" id="cb8-3" data-line-number="3">  <span class="dt">journal</span> =       {Trends in Cognitive Sciences},</a>
+<a class="sourceLine" id="cb8-4" data-line-number="4">  <span class="dt">pages</span> =         {186--193},</a>
+<a class="sourceLine" id="cb8-5" data-line-number="5">  <span class="dt">title</span> =         {{Supra-personal cognitive control}},</a>
+<a class="sourceLine" id="cb8-6" data-line-number="6">  <span class="dt">volume</span> =        {18},</a>
+<a class="sourceLine" id="cb8-7" data-line-number="7">  <span class="dt">year</span> =          {2014},</a>
+<a class="sourceLine" id="cb8-8" data-line-number="8">  <span class="dt">doi</span> =           {10.1016/j.tics.2014.01.006},</a>
+<a class="sourceLine" id="cb8-9" data-line-number="9">}</a></code></pre></div>
 <p>In this entry highlighed section, ‘Shea2014’ is the <strong>citation identifier</strong>.
 To default way to cite an entry in your text is with this syntax: <code>[@citation-identifier]</code>.</p>
 <p>So I might cite some things <span class="citation">(Shea et al. <a href="#ref-Shea2014">2014</a>; Lottridge et al. <a href="#ref-Lottridge2012">2012</a>)</span>.</p>
@@ -311,7 +320,7 @@ See <a href="cites-and-refs.html#cites-and-refs">our chapter title</a> for an ex
 <li><strong>GOTCHA</strong>: Figures and tables must have captions if you wish to cross-reference them.</li>
 </ul>
 <p>Let’s add an image:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;figures/captain.jpeg&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;figures/captain.jpeg&quot;</span>)</a></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:captain"></span>
 <img src="figures/captain.jpeg" alt="A marvel-lous meme" width="65%" />
 <p class="caption">
@@ -328,8 +337,8 @@ So Figure <a href="cites-and-refs.html#fig:captain">3.2</a> is <a href="cites-an
 <li>To refer to tables use the syntax <code>\@ref(tab:label)</code></li>
 </ul>
 <p>Let’s include a table:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(cars[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>,],</a>
-<a class="sourceLine" id="cb14-2" data-line-number="2">            <span class="dt">caption=</span><span class="st">&quot;Stopping cars&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(cars[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>,],</a>
+<a class="sourceLine" id="cb10-2" data-line-number="2">            <span class="dt">caption=</span><span class="st">&quot;Stopping cars&quot;</span>)</a></code></pre></div>
 <table>
 <caption><span id="tab:cars-table2">Table 3.1: </span>Stopping cars</caption>
 <thead>
@@ -383,9 +392,36 @@ LaTeX has a command for this, which looks like this: <code>\pageref{fig/tab:labe
 <li>Inserts this (check this on both PDF and gitbook):</li>
 </ul>
 <p>Note that we need to escape the backslash with another backslash here to get the correct output.</p>
-
-
 </div>
+</div>
+</div>
+<div id="customising-your-thesis-front-matter-n-stuff" class="section level2">
+<h2><span class="header-section-number">3.3</span> Customising your thesis’ front matter ’n stuff</h2>
+<div id="shorten-captions-shown-in-the-list-of-figures-pdf" class="section level3">
+<h3><span class="header-section-number">3.3.1</span> Shorten captions shown in the list of figures (PDF)</h3>
+<p>You might want your list of figures (which follows the table of contents) to have shorter (or just different) figure descriptions than the actual figure captions.</p>
+<p>Do this using the chunk option <code>fig.scap</code> (‘short caption’), for example <code>{r captain-image, fig.cap=&quot;A very long and descriptive (and potentially boring) caption that doesn't fit in the list of figures, but helps the reader understand what the figure communicates.&quot;, fig.scap=&quot;A concise description for the list of figures&quot;</code></p>
+</div>
+<div id="shorten-captions-shown-in-the-list-of-tables-pdf" class="section level3">
+<h3><span class="header-section-number">3.3.2</span> Shorten captions shown in the list of tables (PDF)</h3>
+<p>You might want your list of tables (which follows the list of figures in your thesis front matter) to have shorter (or just different) table descriptions than the actual table captions.</p>
+<p>If you are using <code>knitr::kable</code> to generate a table, you can do this with the argument <code>caption.short</code>, e.g.:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(mtcars,</a>
+<a class="sourceLine" id="cb11-2" data-line-number="2">              <span class="dt">caption =</span> <span class="st">&quot;A very long and descriptive (and potentially</span></a>
+<a class="sourceLine" id="cb11-3" data-line-number="3"><span class="st">              boring) caption that doesn&#39;t fit in the list of figures,</span></a>
+<a class="sourceLine" id="cb11-4" data-line-number="4"><span class="st">              but helps the reader understand what the figure </span></a>
+<a class="sourceLine" id="cb11-5" data-line-number="5"><span class="st">              communicates.&quot;</span>,</a>
+<a class="sourceLine" id="cb11-6" data-line-number="6">              <span class="dt">caption.short =</span> <span class="st">&quot;A concise description for the list of tables&quot;</span>)</a></code></pre></div>
+</div>
+<div id="shorting-the-running-header-pdf" class="section level3">
+<h3><span class="header-section-number">3.3.3</span> Shorting the running header (PDF)</h3>
+<p>You might want a chapter’s running header (i.e. the header showing the title of the current chapter at the top of page) to be shorter (or just different) to the actual chapter title.</p>
+<p>Do this by adding the latex command <code>\chaptermark{My shorter version}</code> after your chapter title.</p>
+<p>For example, this chapter’s running header is simply ‘Cites and cross-refs’, because it begins like this:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="fu"># Citations and cross-references {#cites-and-refs}</span></a>
+<a class="sourceLine" id="cb12-2" data-line-number="2">\chaptermark{Cites and cross-refs}</a></code></pre></div>
+
+
 </div>
 </div>
 </div>
@@ -418,11 +454,13 @@ LaTeX has a command for this, which looks like this: <code>\pageref{fig/tab:labe
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -430,7 +468,6 @@ gitbook.start({
 "github": false,
 "facebook": false,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
@@ -450,6 +487,10 @@ gitbook.start({
 "link": null,
 "text": null
 },
+"view": {
+"link": null,
+"text": null
+},
 "download": ["_main.pdf"],
 "toc": {
 "collapse": "subsection"
@@ -465,8 +506,9 @@ gitbook.start({
     script.type = "text/javascript";
     var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
