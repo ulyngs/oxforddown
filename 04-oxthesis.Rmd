@@ -32,8 +32,7 @@ For when it comes time to do corrections, you may want to highlight changes made
 You can do so like this:
 
 ### Short, inline corrections
-Highlight **short, inline corrections** by wrapping them in a `<span>` tag with the class 'correction'. 
-In other words, if you do `<span class="correction">like this</span>`, the text between the span tags will <span class="correction">be highlighted in blue</span> in the output.
+Highlight **short, inline corrections** by doing `[like this]{.correction}` --- the text between the square brackets will then [be highlighted in blue]{.correction} in the output.
 
 ### Blocks of added or changed material
 Highlight entire **blocks of added or changed material** by putting them in a block of type `correction`, using the syntax ```` ```{block type='correction'} ````.^[In the **.tex** file for PDF output, this will put the content between `\begin{correction}` and `\end{correction}`; in gitbook output it will be put between `<div class="correction">` and `</div>`.]
