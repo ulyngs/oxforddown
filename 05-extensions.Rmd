@@ -1,0 +1,177 @@
+---
+output:
+  bookdown::html_document2: default
+  bookdown::word_document2: default
+  bookdown::pdf_document2: 
+    template: templates/brief_template.tex
+documentclass: book
+bibliography: references.bib
+---
+  
+# Customizations and extensions
+
+This chapter describes a number of possible customizations to the `oxforddown` thesis. 
+
+## Embedding PDF documents as chapters
+
+Sometimes it is desirable to embed existing PDF documents into the thesis, for example when including an existing typeset publication as a chapter. One can insert image files in RMarkdown with `knitr::include_graphics`, but this may also cause odd behavior when used for this purpose. The following code can be used to insert an alphanumerically sorted sequence of **single-page** PDF files into the thesis. This requires splitting multi-page PDF files into multiple files ahead of time. It may also be desirable to remove margins from PDF files beforehand. Both of these can be done with Adobe Acrobat (paid version) and likely other software. This code only works with latex, and the chunk option of results='asis' must be used. 
+
+```{r, echo=T, eval=F, results='asis'}
+cat('\\newpage')
+
+DIRECTORY_WITH_PDFS <- "pdf_example"
+PDF_FILE_PATTERN <- "Mensh_Kording_2017_Part"
+
+pages <- list.files(file.path(DIRECTORY_WITH_PDFS),
+                    pattern=PDF_FILE_PATTERN,full.names = T)
+
+cat(paste0("\\begin{center} \\makebox[\\linewidth][c]{\\includegraphics[width=1.2\\linewidth]{", pages, "}} \\end{center} \\newpage \n"))
+```
+
+
+```{r, echo=F, results='asis', include=knitr::is_latex_output()}
+cat('\\newpage')
+
+DIRECTORY_WITH_PDFS <- "pdf_example"
+PDF_FILE_PATTERN <- "Mensh_Kording_2017_Part"
+
+pages <- list.files(file.path(DIRECTORY_WITH_PDFS),
+                    pattern=PDF_FILE_PATTERN,full.names = T)
+
+cat(paste0("\\begin{center} \\makebox[\\linewidth][c]{\\includegraphics[width=1.2\\linewidth]{", pages, "}} \\end{center} \\newpage \n"))
+```
+
+## Customizing referencing 
+
+### Using a .csl file with pandoc instead of biblatex
+
+The `oxforddown` package uses biblatex in latex for referencing. It is also possible to use pandec for referencing by providing a .csl file in the YAML header of **index.Rmd** (likely requiring commenting out the biblatex code in **template.Rmd**). This may be helpful for those who have a .csl file describing the referencing format for a particular journal. However, note that this approach does not support chapter bibliographies (see Section \@ref(biblatex-custom)).
+
+```YAML
+csl: ecology.csl
+```
+
+### Customizing biblatex and adding chapter bibliographies {#biblatex-custom}
+
+This section provides one example of customizing biblatex. Much of this code was combined from searches on Stack Exchange and other sources (e.g. [here](https://tex.stackexchange.com/questions/10682/suppress-in-biblatex)).
+
+In **template.tex**, one can replace the existing biblatex calls with the following to achieve referencing that looks like this: 
+
+(Charmantier and Gienapp 2014)
+
+Charmantier, A. and P. Gienapp (2014). Climate change and timing of avian breeding and migration: evolutionary versus plastic changes. Evolutionary Applications 7(1):15–28. doi: 10.1111/eva.12126.
+
+```latex
+\usepackage[backend=biber,
+    bibencoding=utf8,
+    refsection=chapter, % referencing by chapter
+    style=authoryear, 
+    firstinits=true,
+    isbn=false,
+    doi=true,
+    url=false,
+    eprint=false,
+    related=false,
+    dashed=false,
+    clearlang=true,
+    maxcitenames=2,
+    mincitenames=1,
+    maxbibnames=10,
+    abbreviate=false,
+    minbibnames=3,
+    uniquelist=minyear,
+    sortcites=true,
+    date=year
+]{biblatex}
+\AtEveryBibitem{%
+  \clearlist{language}%
+  \clearfield{note}
+}
+
+\DeclareFieldFormat{titlecase}{\MakeTitleCase{#1}}
+
+\newrobustcmd{\MakeTitleCase}[1]{%
+  \ifthenelse{\ifcurrentfield{booktitle}\OR\ifcurrentfield{booksubtitle}%
+    \OR\ifcurrentfield{maintitle}\OR\ifcurrentfield{mainsubtitle}%
+    \OR\ifcurrentfield{journaltitle}\OR\ifcurrentfield{journalsubtitle}%
+    \OR\ifcurrentfield{issuetitle}\OR\ifcurrentfield{issuesubtitle}%
+    \OR\ifentrytype{book}\OR\ifentrytype{mvbook}\OR\ifentrytype{bookinbook}%
+    \OR\ifentrytype{booklet}\OR\ifentrytype{suppbook}%
+    \OR\ifentrytype{collection}\OR\ifentrytype{mvcollection}%
+    \OR\ifentrytype{suppcollection}\OR\ifentrytype{manual}%
+    \OR\ifentrytype{periodical}\OR\ifentrytype{suppperiodical}%
+    \OR\ifentrytype{proceedings}\OR\ifentrytype{mvproceedings}%
+    \OR\ifentrytype{reference}\OR\ifentrytype{mvreference}%
+    \OR\ifentrytype{report}\OR\ifentrytype{thesis}}
+    {#1}
+    {\MakeSentenceCase{#1}}}
+    
+% \renewbibmacro{in:}{}
+% suppress "in" for articles
+% 
+\renewbibmacro{in:}{%
+  \ifentrytype{article}{}{\printtext{\bibstring{in}\intitlepunct}}}
+%-- no "quotes" around titles of chapters/article titles
+\DeclareFieldFormat[article, inbook, incollection, inproceedings, misc, thesis, unpublished]
+{title}{#1}
+%-- no punctuation after volume
+\DeclareFieldFormat[article]
+{volume}{{#1}}
+%-- puts number/issue between brackets
+\DeclareFieldFormat[article, inbook, incollection, inproceedings, misc, thesis, unpublished]
+{number}{\mkbibparens{#1}} 
+%-- and then for articles directly the pages w/o any "pages" or "pp." 
+\DeclareFieldFormat[article]
+{pages}{#1}
+%-- for some types replace "pages" by "p."
+\DeclareFieldFormat[inproceedings, incollection, inbook]
+{pages}{p. #1}
+%-- format 16(4):224--225 for articles
+\renewbibmacro*{volume+number+eid}{
+  \printfield{volume}%
+  \printfield{number}%
+  \printunit{\addcolon}
+}
+```
+
+If you would like chapter bibliographies, in addition insert the following code at the end of each chapter, and comment out the entire REFERENCES section at the end of template.tex.
+
+```latex
+\printbibliography[segment=\therefsection,heading=subbibliography]
+```
+
+## Customizing the page headers and footers
+
+The following code, when it replaces the existing correpsonding code block in **ociamthesis.cls**, puts chapter number and title centered in the header and page number in the footer, centered. This may be desirable particularly when inserting PDF chapters, as the margins of the PDF may not exactly align with the left and right margins of the page, demarcated by the existing header and footer text. In the following code block, the original code is commented out where replaced.
+
+```latex
+\usepackage{fancyhdr}
+\setlength{\headheight}{15pt}
+\fancyhf{} % clear the header and footers
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter. #1}{\thechapter. #1}}
+% \renewcommand{\chaptermark}[1]{\markboth{\thechapter. #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection. #1}}
+\renewcommand{\headrulewidth}{0pt}
+\fancyhead[CO]{\emph{\leftmark}}
+\fancyhead[CE]{\emph{\rightmark}}
+% \fancyhead[LO,RE]{}
+% \fancyhead[LE,RO]{}
+\fancyfoot[CO,CE]{\emph{\thepage}}
+
+\fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\emph{\thepage}}}
+
+% JEM fix header on cleared pages for openright
+\def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else
+   \hbox{}
+   % \fancyhead[RE,LO]{}
+   \fancyhead[CE,CO]{}
+   \newpage
+   \if@twocolumn\hbox{}\newpage
+   \fi
+   % \fancyhead[LO]{\emph{\leftmark}} 
+   % \fancyhead[RE]{\emph{\rightmark}} 
+   \fancyhead[CO]{\emph{\leftmark}} 
+   \fancyhead[CE]{\emph{\rightmark}} 
+   \fi\fi}
+```
