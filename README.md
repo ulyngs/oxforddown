@@ -1,6 +1,29 @@
+Table of Contents
+=================
+
+   * [Oxforddown](#oxforddown)
+      * [Tutorials and examples](#tutorials-and-examples)
+      * [Examples of theses written with oxforddown](#examples-of-theses-written-with-oxforddown)
+      * [How to cite](#how-to-cite)
+   * [Requirements](#requirements)
+   * [Example output](#example-output)
+   * [Usage](#usage)
+      * [Compiling your thesis](#compiling-your-thesis)
+         * [PDF output](#pdf-output)
+         * [Gitbook output](#gitbook-output)
+         * [Word output](#word-output)
+      * [Writing your thesis](#writing-your-thesis)
+      * [Knitting individual chapters](#knitting-individual-chapters)
+      * [Cleaning up generated auxiliary files](#cleaning-up-generated-auxiliary-files)
+   * [Customisations and extensions](#customisations-and-extensions)
+   * [Limitations](#limitations)
+      * [Gotchas](#gotchas)
+      * [Output formats](#output-formats)
+
 # Oxforddown
 A template for writing an Oxford University thesis in R Markdown.
 
+## Tutorials and examples
 See the video tutorials for how to use the template:
 - [Part 1: Building the entire thesis](https://www.youtube.com/watch?v=Yf1W1BBS9cU)
 - [Part 2: Building a single chapter](https://www.youtube.com/watch?v=-EJfCA3VA-I)
@@ -97,6 +120,10 @@ The output file is saved in the root folder.
 By default, when you build the entire thesis, the auxillary files will be removed (to adjust how this is done, edit **Makefile**).
 
 To clean up files generated when knitting individual chapters, type 'make clean-knits' in the terminal.
+
+# Customisations and extensions
+- for some of the common things you might want to do in your thesis, read through the sample content
+- for example, the newly added ['Customisations and extensions' chapter](https://ulyngs.github.io/oxforddown/customisations-and-extensions.html) (thanks @bmvandoren!) chapter adds tips on how to include PDF pages from a published typeset article in your thesis, and more!
 
 # Limitations
 ## Gotchas
