@@ -1161,6 +1161,194 @@ I often knit to a format that can easily be imported to Google Docs for comments
 For articles, I sometimes upload a near-final draft to \href{https://www.overleaf.com/}{Overleaf}, then collaboratively make final edits to the \LaTeX~file there.
 I suspect some great solution will be developed in the not-to-distant future, probably by the RStudio team.
 
+\hypertarget{customisations-and-extensions}{%
+\chapter{Customisations and extensions}\label{customisations-and-extensions}}
+
+This chapter describes a number of possible customizations to the \texttt{oxforddown} thesis.
+
+\hypertarget{embedding-pdf-documents-as-chapters}{%
+\section{Embedding PDF documents as chapters}\label{embedding-pdf-documents-as-chapters}}
+
+You may want to embed existing PDF documents into the thesis, for example if your department allows a `portfolio' style thesis and you need to include an existing typeset publication as a chapter.
+
+In gitbook output, you can simply use \texttt{knitr::include\_graphics} and it should include a scrollable (and downloadable) PDF.
+You will probably want to set the chunk options \texttt{out.width=\textquotesingle{}100\%\textquotesingle{}} and \texttt{out.height=\textquotesingle{}1000px\textquotesingle{}}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{knitr}\OperatorTok{::}\KeywordTok{include_graphics}\NormalTok{(}\StringTok{"pdf_example/Mensh_Kording_2017.pdf"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+In LaTeX output, however, this approach can cause odd behaviour.
+Therefore, when you build your thesis to PDF, split the pdf into pages (you can do this with the package \texttt{pdftools}) and then insert the appropriate LaTeX command, as shown below.
+\emph{Note that the chunk option \texttt{results=\textquotesingle{}asis\textquotesingle{}} must be used.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# install.packages(pdftools)}
+\CommentTok{# #split PDF in pages stored in pdf_example/split/}
+\CommentTok{# pdftools::pdf_split("pdf_example/Mensh_Kording_2017.pdf",}
+\CommentTok{# output = "pdf_example/split/")}
+
+\NormalTok{pages <-}\StringTok{ }\KeywordTok{list.files}\NormalTok{(}\StringTok{"pdf_example/split"}\NormalTok{, }\DataTypeTok{full.names =} \OtherTok{TRUE}\NormalTok{)}
+
+\CommentTok{# for each page, insert the latex command to insert it nicely}
+\KeywordTok{cat}\NormalTok{(}\KeywordTok{paste0}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{newpage }\CharTok{\textbackslash{}\textbackslash{}}\StringTok{begin\{center\}}
+\CharTok{\textbackslash{}\textbackslash{}}\StringTok{makebox[}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{linewidth][c]\{}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{includegraphics[width=1.2}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{linewidth]\{"}\NormalTok{,}
+\NormalTok{pages, }\StringTok{"\}\} }\CharTok{\textbackslash{}\textbackslash{}}\StringTok{end\{center\}"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\newpage \begin{center} \makebox[\linewidth][c]{\includegraphics[width=1.2\linewidth]{pdf_example/split/_000000001.pdf}} \end{center} \newpage \begin{center} \makebox[\linewidth][c]{\includegraphics[width=1.2\linewidth]{pdf_example/split/_000000002.pdf}} \end{center} \newpage \begin{center} \makebox[\linewidth][c]{\includegraphics[width=1.2\linewidth]{pdf_example/split/_000000003.pdf}} \end{center} \newpage \begin{center} \makebox[\linewidth][c]{\includegraphics[width=1.2\linewidth]{pdf_example/split/_000000004.pdf}} \end{center} \newpage \begin{center} \makebox[\linewidth][c]{\includegraphics[width=1.2\linewidth]{pdf_example/split/_000000005.pdf}} \end{center} \newpage \begin{center} \makebox[\linewidth][c]{\includegraphics[width=1.2\linewidth]{pdf_example/split/_000000006.pdf}} \end{center} \newpage \begin{center} \makebox[\linewidth][c]{\includegraphics[width=1.2\linewidth]{pdf_example/split/_000000007.pdf}} \end{center} \newpage \begin{center} \makebox[\linewidth][c]{\includegraphics[width=1.2\linewidth]{pdf_example/split/_000000008.pdf}} \end{center} \newpage \begin{center} \makebox[\linewidth][c]{\includegraphics[width=1.2\linewidth]{pdf_example/split/_000000009.pdf}} \end{center}
+
+\hypertarget{customizing-referencing}{%
+\section{Customizing referencing}\label{customizing-referencing}}
+
+\hypertarget{using-a-.csl-file-with-pandoc-instead-of-biblatex}{%
+\subsection{Using a .csl file with pandoc instead of biblatex}\label{using-a-.csl-file-with-pandoc-instead-of-biblatex}}
+
+The \texttt{oxforddown} package uses biblatex in latex for referencing. It is also possible to use pandec for referencing by providing a .csl file in the YAML header of \textbf{index.Rmd} (likely requiring commenting out the biblatex code in \textbf{template.Rmd}). This may be helpful for those who have a .csl file describing the referencing format for a particular journal. However, note that this approach does not support chapter bibliographies (see Section \ref{biblatex-custom}).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{csl:}\AttributeTok{ ecology.csl}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{biblatex-custom}{%
+\subsection{Customizing biblatex and adding chapter bibliographies}\label{biblatex-custom}}
+
+This section provides one example of customizing biblatex. Much of this code was combined from searches on Stack Exchange and other sources (e.g. \href{https://tex.stackexchange.com/questions/10682/suppress-in-biblatex}{here}).
+
+In \textbf{template.tex}, one can replace the existing biblatex calls with the following to achieve referencing that looks like this:
+
+(Charmantier and Gienapp 2014)
+
+Charmantier, A. and P. Gienapp (2014). Climate change and timing of avian breeding and migration: evolutionary versus plastic changes. Evolutionary Applications 7(1):15--28. doi: 10.1111/eva.12126.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{\textbackslash{}usepackage}\NormalTok{[backend=biber,}
+\NormalTok{    bibencoding=utf8,}
+\NormalTok{    refsection=chapter, }\CommentTok{% referencing by chapter}
+\NormalTok{    style=authoryear, }
+\NormalTok{    firstinits=true,}
+\NormalTok{    isbn=false,}
+\NormalTok{    doi=true,}
+\NormalTok{    url=false,}
+\NormalTok{    eprint=false,}
+\NormalTok{    related=false,}
+\NormalTok{    dashed=false,}
+\NormalTok{    clearlang=true,}
+\NormalTok{    maxcitenames=2,}
+\NormalTok{    mincitenames=1,}
+\NormalTok{    maxbibnames=10,}
+\NormalTok{    abbreviate=false,}
+\NormalTok{    minbibnames=3,}
+\NormalTok{    uniquelist=minyear,}
+\NormalTok{    sortcites=true,}
+\NormalTok{    date=year}
+\NormalTok{]\{}\ExtensionTok{biblatex}\NormalTok{\}}
+\FunctionTok{\textbackslash{}AtEveryBibitem}\NormalTok{\{}\CommentTok{%}
+  \FunctionTok{\textbackslash{}clearlist}\NormalTok{\{language\}}\CommentTok{%}
+  \FunctionTok{\textbackslash{}clearfield}\NormalTok{\{note\}}
+\NormalTok{\}}
+
+\FunctionTok{\textbackslash{}DeclareFieldFormat}\NormalTok{\{titlecase\}\{}\FunctionTok{\textbackslash{}MakeTitleCase}\NormalTok{\{#1\}\}}
+
+\FunctionTok{\textbackslash{}newrobustcmd}\NormalTok{\{}\FunctionTok{\textbackslash{}MakeTitleCase}\NormalTok{\}[1]\{}\CommentTok{%}
+  \FunctionTok{\textbackslash{}ifthenelse}\NormalTok{\{}\FunctionTok{\textbackslash{}ifcurrentfield}\NormalTok{\{booktitle\}}\FunctionTok{\textbackslash{}OR\textbackslash{}ifcurrentfield}\NormalTok{\{booksubtitle\}}\CommentTok{%}
+    \FunctionTok{\textbackslash{}OR\textbackslash{}ifcurrentfield}\NormalTok{\{maintitle\}}\FunctionTok{\textbackslash{}OR\textbackslash{}ifcurrentfield}\NormalTok{\{mainsubtitle\}}\CommentTok{%}
+    \FunctionTok{\textbackslash{}OR\textbackslash{}ifcurrentfield}\NormalTok{\{journaltitle\}}\FunctionTok{\textbackslash{}OR\textbackslash{}ifcurrentfield}\NormalTok{\{journalsubtitle\}}\CommentTok{%}
+    \FunctionTok{\textbackslash{}OR\textbackslash{}ifcurrentfield}\NormalTok{\{issuetitle\}}\FunctionTok{\textbackslash{}OR\textbackslash{}ifcurrentfield}\NormalTok{\{issuesubtitle\}}\CommentTok{%}
+    \FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{book\}}\FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{mvbook\}}\FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{bookinbook\}}\CommentTok{%}
+    \FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{booklet\}}\FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{suppbook\}}\CommentTok{%}
+    \FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{collection\}}\FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{mvcollection\}}\CommentTok{%}
+    \FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{suppcollection\}}\FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{manual\}}\CommentTok{%}
+    \FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{periodical\}}\FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{suppperiodical\}}\CommentTok{%}
+    \FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{proceedings\}}\FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{mvproceedings\}}\CommentTok{%}
+    \FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{reference\}}\FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{mvreference\}}\CommentTok{%}
+    \FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{report\}}\FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{thesis\}\}}
+\NormalTok{    \{#1\}}
+\NormalTok{    \{}\FunctionTok{\textbackslash{}MakeSentenceCase}\NormalTok{\{#1\}\}\}}
+    
+\CommentTok{% \textbackslash{}renewbibmacro\{in:\}\{\}}
+\CommentTok{% suppress "in" for articles}
+\CommentTok{% }
+\FunctionTok{\textbackslash{}renewbibmacro}\NormalTok{\{in:\}\{}\CommentTok{%}
+  \FunctionTok{\textbackslash{}ifentrytype}\NormalTok{\{article\}\{\}\{}\FunctionTok{\textbackslash{}printtext}\NormalTok{\{}\FunctionTok{\textbackslash{}bibstring}\NormalTok{\{in\}}\FunctionTok{\textbackslash{}intitlepunct}\NormalTok{\}\}\}}
+\CommentTok{%-- no "quotes" around titles of chapters/article titles}
+\FunctionTok{\textbackslash{}DeclareFieldFormat}\NormalTok{[article, inbook, incollection, inproceedings, misc, thesis, unpublished]}
+\NormalTok{\{title\}\{#1\}}
+\CommentTok{%-- no punctuation after volume}
+\FunctionTok{\textbackslash{}DeclareFieldFormat}\NormalTok{[article]}
+\NormalTok{\{volume\}\{\{#1\}\}}
+\CommentTok{%-- puts number/issue between brackets}
+\FunctionTok{\textbackslash{}DeclareFieldFormat}\NormalTok{[article, inbook, incollection, inproceedings, misc, thesis, unpublished]}
+\NormalTok{\{number\}\{}\FunctionTok{\textbackslash{}mkbibparens}\NormalTok{\{#1\}\} }
+\CommentTok{%-- and then for articles directly the pages w/o any "pages" or "pp." }
+\FunctionTok{\textbackslash{}DeclareFieldFormat}\NormalTok{[article]}
+\NormalTok{\{pages\}\{#1\}}
+\CommentTok{%-- for some types replace "pages" by "p."}
+\FunctionTok{\textbackslash{}DeclareFieldFormat}\NormalTok{[inproceedings, incollection, inbook]}
+\NormalTok{\{pages\}\{p. #1\}}
+\CommentTok{%-- format 16(4):224--225 for articles}
+\FunctionTok{\textbackslash{}renewbibmacro}\NormalTok{*\{volume+number+eid\}\{}
+  \FunctionTok{\textbackslash{}printfield}\NormalTok{\{volume\}}\CommentTok{%}
+  \FunctionTok{\textbackslash{}printfield}\NormalTok{\{number\}}\CommentTok{%}
+  \FunctionTok{\textbackslash{}printunit}\NormalTok{\{}\FunctionTok{\textbackslash{}addcolon}\NormalTok{\}}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+If you would like chapter bibliographies, in addition insert the following code at the end of each chapter, and comment out the entire REFERENCES section at the end of template.tex.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{\textbackslash{}printbibliography}\NormalTok{[segment=}\FunctionTok{\textbackslash{}therefsection}\NormalTok{,heading=subbibliography]}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{customizing-the-page-headers-and-footers}{%
+\section{Customizing the page headers and footers}\label{customizing-the-page-headers-and-footers}}
+
+The following code, when it replaces the existing correpsonding code block in \textbf{ociamthesis.cls}, puts chapter number and title centered in the header and page number in the footer, centered. This may be desirable particularly when inserting PDF chapters, as the margins of the PDF may not exactly align with the left and right margins of the page, demarcated by the existing header and footer text. In the following code block, the original code is commented out where replaced.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{\textbackslash{}usepackage}\NormalTok{\{}\ExtensionTok{fancyhdr}\NormalTok{\}}
+\FunctionTok{\textbackslash{}setlength}\NormalTok{\{}\FunctionTok{\textbackslash{}headheight}\NormalTok{\}\{15pt\}}
+\FunctionTok{\textbackslash{}fancyhf}\NormalTok{\{\} }\CommentTok{% clear the header and footers}
+\FunctionTok{\textbackslash{}pagestyle}\NormalTok{\{fancy\}}
+\FunctionTok{\textbackslash{}renewcommand}\NormalTok{\{}\ExtensionTok{\textbackslash{}chaptermark}\NormalTok{\}[1]\{}\FunctionTok{\textbackslash{}markboth}\NormalTok{\{}\FunctionTok{\textbackslash{}thechapter}\NormalTok{. #1\}\{}\FunctionTok{\textbackslash{}thechapter}\NormalTok{. #1\}\}}
+\CommentTok{% \textbackslash{}renewcommand\{\textbackslash{}chaptermark\}[1]\{\textbackslash{}markboth\{\textbackslash{}thechapter. #1\}\{\}\}}
+\FunctionTok{\textbackslash{}renewcommand}\NormalTok{\{}\ExtensionTok{\textbackslash{}sectionmark}\NormalTok{\}[1]\{}\FunctionTok{\textbackslash{}markright}\NormalTok{\{}\FunctionTok{\textbackslash{}thesection}\NormalTok{. #1\}\}}
+\FunctionTok{\textbackslash{}renewcommand}\NormalTok{\{}\ExtensionTok{\textbackslash{}headrulewidth}\NormalTok{\}\{0pt\}}
+\FunctionTok{\textbackslash{}fancyhead}\NormalTok{[CO]\{}\FunctionTok{\textbackslash{}emph}\NormalTok{\{}\FunctionTok{\textbackslash{}leftmark}\NormalTok{\}\}}
+\FunctionTok{\textbackslash{}fancyhead}\NormalTok{[CE]\{}\FunctionTok{\textbackslash{}emph}\NormalTok{\{}\FunctionTok{\textbackslash{}rightmark}\NormalTok{\}\}}
+\CommentTok{% \textbackslash{}fancyhead[LO,RE]\{\}}
+\CommentTok{% \textbackslash{}fancyhead[LE,RO]\{\}}
+\FunctionTok{\textbackslash{}fancyfoot}\NormalTok{[CO,CE]\{}\FunctionTok{\textbackslash{}emph}\NormalTok{\{}\FunctionTok{\textbackslash{}thepage}\NormalTok{\}\}}
+
+\FunctionTok{\textbackslash{}fancypagestyle}\NormalTok{\{plain\}\{}\FunctionTok{\textbackslash{}fancyhf}\NormalTok{\{\}}\FunctionTok{\textbackslash{}fancyfoot}\NormalTok{[C]\{}\FunctionTok{\textbackslash{}emph}\NormalTok{\{}\FunctionTok{\textbackslash{}thepage}\NormalTok{\}\}\}}
+
+\CommentTok{% JEM fix header on cleared pages for openright}
+\FunctionTok{\textbackslash{}def}\NormalTok{\textbackslash{}cleardoublepage\{\textbackslash{}clearpage\textbackslash{}if@twoside \textbackslash{}ifodd\textbackslash{}c@page\textbackslash{}else}
+\NormalTok{   \textbackslash{}hbox\{\}}
+   \CommentTok{% \textbackslash{}fancyhead[RE,LO]\{\}}
+\NormalTok{   \textbackslash{}fancyhead[CE,CO]\{\}}
+\NormalTok{   \textbackslash{}newpage}
+\NormalTok{   \textbackslash{}if@twocolumn\textbackslash{}hbox\{\}\textbackslash{}newpage}
+\NormalTok{   \textbackslash{}fi}
+   \CommentTok{% \textbackslash{}fancyhead[LO]\{\textbackslash{}emph\{\textbackslash{}leftmark\}\} }
+   \CommentTok{% \textbackslash{}fancyhead[RE]\{\textbackslash{}emph\{\textbackslash{}rightmark\}\} }
+\NormalTok{   \textbackslash{}fancyhead[CO]\{\textbackslash{}emph\{\textbackslash{}leftmark\}\} }
+\NormalTok{   \textbackslash{}fancyhead[CE]\{\textbackslash{}emph\{\textbackslash{}rightmark\}\} }
+\NormalTok{   \textbackslash{}fi\textbackslash{}fi\}}
+\end{Highlighting}
+\end{Shaded}
+
 \begin{savequote}
 Alles Gescheite ist schon gedacht worden.\\
 Man muss nur versuchen, es noch einmal zu denken.

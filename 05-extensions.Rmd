@@ -8,37 +8,37 @@ documentclass: book
 bibliography: references.bib
 ---
   
-# Customizations and extensions
+# Customisations and extensions
 
 This chapter describes a number of possible customizations to the `oxforddown` thesis. 
 
 ## Embedding PDF documents as chapters
 
-Sometimes it is desirable to embed existing PDF documents into the thesis, for example when including an existing typeset publication as a chapter. One can insert image files in RMarkdown with `knitr::include_graphics`, but this may also cause odd behavior when used for this purpose. The following code can be used to insert an alphanumerically sorted sequence of **single-page** PDF files into the thesis. This requires splitting multi-page PDF files into multiple files ahead of time. It may also be desirable to remove margins from PDF files beforehand. Both of these can be done with Adobe Acrobat (paid version) and likely other software. This code only works with latex, and the chunk option of results='asis' must be used. 
+You may want to embed existing PDF documents into the thesis, for example if your department allows a 'portfolio' style thesis and you need to include an existing typeset publication as a chapter. 
 
-```{r, echo=T, eval=F, results='asis'}
-cat('\\newpage')
+In gitbook output, you can simply use `knitr::include_graphics` and it should include a scrollable (and downloadable) PDF.
+You will probably want to set the chunk options `out.width='100%'` and `out.height='1000px'`:
 
-DIRECTORY_WITH_PDFS <- "pdf_example"
-PDF_FILE_PATTERN <- "Mensh_Kording_2017_Part"
-
-pages <- list.files(file.path(DIRECTORY_WITH_PDFS),
-                    pattern=PDF_FILE_PATTERN,full.names = T)
-
-cat(paste0("\\begin{center} \\makebox[\\linewidth][c]{\\includegraphics[width=1.2\\linewidth]{", pages, "}} \\end{center} \\newpage \n"))
+```{r, eval=knitr::is_html_output(), out.width='100%', out.height='1000px'}
+knitr::include_graphics("pdf_example/Mensh_Kording_2017.pdf")
 ```
 
+In LaTeX output, however, this approach can cause odd behaviour.
+Therefore, when you build your thesis to PDF, split the pdf into pages (you can do this with the package `pdftools`) and then insert the appropriate LaTeX command, as shown below.
+*Note that the chunk option `results='asis'` must be used.*
 
-```{r, echo=F, results='asis', include=knitr::is_latex_output()}
-cat('\\newpage')
+```{r, echo=TRUE, results='asis', eval=knitr::is_latex_output()}
+# install.packages(pdftools)
+# #split PDF in pages stored in pdf_example/split/
+# pdftools::pdf_split("pdf_example/Mensh_Kording_2017.pdf", 
+#          output = "pdf_example/split/")
 
-DIRECTORY_WITH_PDFS <- "pdf_example"
-PDF_FILE_PATTERN <- "Mensh_Kording_2017_Part"
+pages <- list.files("pdf_example/split", full.names = TRUE)
 
-pages <- list.files(file.path(DIRECTORY_WITH_PDFS),
-                    pattern=PDF_FILE_PATTERN,full.names = T)
+# for each page, insert the latex command to insert it nicely
+cat(paste0("\\newpage \\begin{center} \\makebox[\\linewidth][c]{\\includegraphics[width=1.2\\linewidth]{", 
+             pages, "}} \\end{center}"))
 
-cat(paste0("\\begin{center} \\makebox[\\linewidth][c]{\\includegraphics[width=1.2\\linewidth]{", pages, "}} \\end{center} \\newpage \n"))
 ```
 
 ## Customizing referencing 
