@@ -262,7 +262,10 @@ Therefore, when you build your thesis to PDF, split the pdf into pages (you can 
 <h2><span class="header-section-number">5.2</span> Customizing referencing</h2>
 <div id="using-a-.csl-file-with-pandoc-instead-of-biblatex" class="section level3">
 <h3><span class="header-section-number">5.2.1</span> Using a .csl file with pandoc instead of biblatex</h3>
-<p>The <code>oxforddown</code> package uses biblatex in latex for referencing. It is also possible to use pandec for referencing by providing a .csl file in the YAML header of <strong>index.Rmd</strong> (likely requiring commenting out the biblatex code in <strong>template.Rmd</strong>). This may be helpful for those who have a .csl file describing the referencing format for a particular journal. However, note that this approach does not support chapter bibliographies (see Section <a href="customisations-and-extensions.html#biblatex-custom">5.2.2</a>).</p>
+<p>The <code>oxforddown</code> package uses biblatex in latex for referencing.
+It is also possible to use pandoc for referencing by providing a .csl file in the YAML header of <strong>index.Rmd</strong> (likely requiring commenting out the biblatex code in <strong>template.Rmd</strong>).
+This may be helpful for those who have a .csl file describing the referencing format for a particular journal.
+However, note that this approach does not support chapter bibliographies (see Section <a href="customisations-and-extensions.html#biblatex-custom">5.2.2</a>).</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="fu">csl:</span><span class="at"> ecology.csl</span></a></code></pre></div>
 </div>
 <div id="biblatex-custom" class="section level3">

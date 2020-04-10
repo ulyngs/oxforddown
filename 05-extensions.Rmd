@@ -45,7 +45,10 @@ cat(paste0("\\newpage \\begin{center} \\makebox[\\linewidth][c]{\\includegraphic
 
 ### Using a .csl file with pandoc instead of biblatex
 
-The `oxforddown` package uses biblatex in latex for referencing. It is also possible to use pandec for referencing by providing a .csl file in the YAML header of **index.Rmd** (likely requiring commenting out the biblatex code in **template.Rmd**). This may be helpful for those who have a .csl file describing the referencing format for a particular journal. However, note that this approach does not support chapter bibliographies (see Section \@ref(biblatex-custom)).
+The `oxforddown` package uses biblatex in latex for referencing. 
+It is also possible to use pandoc for referencing by providing a .csl file in the YAML header of **index.Rmd** (likely requiring commenting out the biblatex code in **template.Rmd**). 
+This may be helpful for those who have a .csl file describing the referencing format for a particular journal. 
+However, note that this approach does not support chapter bibliographies (see Section \@ref(biblatex-custom)).
 
 ```YAML
 csl: ecology.csl
