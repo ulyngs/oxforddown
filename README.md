@@ -98,6 +98,10 @@ By default, when you build the entire thesis, the auxillary files will be remove
 
 To clean up files generated when knitting individual chapters, type 'make clean-knits' in the terminal.
 
+# Customisations and extensions
+- for some of the common things you might want to do in your thesis, read through the sample content
+- for example, the newly added ['Customisations and extensions' chapter](https://ulyngs.github.io/oxforddown/customisations-and-extensions.html) (thanks @bmvandoren!) chapter adds tips on how to include PDF pages from a published typeset article in your thesis, and more!
+
 # Limitations
 ## Gotchas
 - don't use underscores (\_) in your YAML front matter or code chunk labels! (underscores have special meaning in LaTeX, so therefore you are likely to get an error, cf. https://yihui.org/en/2018/03/space-pain/)
