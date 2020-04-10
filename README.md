@@ -1,3 +1,25 @@
+Table of Contents
+=================
+
+   * [Oxforddown](#oxforddown)
+      * [Tutorials and examples](#tutorials-and-examples)
+      * [Examples of theses written with oxforddown](#examples-of-theses-written-with-oxforddown)
+      * [How to cite](#how-to-cite)
+   * [Requirements](#requirements)
+   * [Example output](#example-output)
+   * [Usage](#usage)
+      * [Compiling your thesis](#compiling-your-thesis)
+         * [PDF output](#pdf-output)
+         * [Gitbook output](#gitbook-output)
+         * [Word output](#word-output)
+      * [Writing your thesis](#writing-your-thesis)
+      * [Knitting individual chapters](#knitting-individual-chapters)
+      * [Cleaning up generated auxiliary files](#cleaning-up-generated-auxiliary-files)
+   * [Customisations and extensions](#customisations-and-extensions)
+   * [Limitations](#limitations)
+      * [Gotchas](#gotchas)
+      * [Output formats](#output-formats)
+
 # Oxforddown
 A template for writing an Oxford University thesis in R Markdown.
 
