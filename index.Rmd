@@ -68,10 +68,12 @@ documentclass: book
 
 ```{r create_chunk_options, include=FALSE, eval=knitr::is_latex_output()}
 source('scripts_and_filters/create_chunk_options.R')
+source('scripts_and_filters/wrap_lines.R')
 ```
 <!--
 Include the create_chunk_options chunk above at the top of your index.Rmd file
 This will include code to create additional chunk options (e.g. for adding author references to savequotes)
+and to make sure lines in code soft wrap
 If you need to create your own additional chunk options, edit the file scripts/create_chunk_options.R
 -->
 
