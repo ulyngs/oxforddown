@@ -1,6 +1,7 @@
 # Oxforddown
 A template for writing an Oxford University thesis in R Markdown.
 
+## Tutorials and examples
 See the video tutorials for how to use the template:
 - [Part 1: Building the entire thesis](https://www.youtube.com/watch?v=Yf1W1BBS9cU)
 - [Part 2: Building a single chapter](https://www.youtube.com/watch?v=-EJfCA3VA-I)
