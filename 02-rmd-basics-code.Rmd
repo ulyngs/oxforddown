@@ -41,7 +41,7 @@ An R Markdown document usually begins with a chunk that is used to **load librar
 
 In your thesis, this will probably happen in **index.Rmd** and/or as opening chunks in each of your chapters.
 
-````markdown
+````
 `r ''````{r setup, include=FALSE}
 # don't show code unless we explicitly set echo = TRUE
 knitr::opts_chunk$set(echo = FALSE)
@@ -49,6 +49,7 @@ knitr::opts_chunk$set(echo = FALSE)
 library(tidyverse)
 ```
 ````
+
 
 ### Including images
 Code chunks are also used for including images, with `include_graphics` from the `knitr` package, as in Figure \@ref(fig:oxford-logo)
