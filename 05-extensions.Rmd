@@ -24,8 +24,9 @@ knitr::include_graphics("pdf_example/Mensh_Kording_2017.pdf")
 ```
 
 In LaTeX output, however, this approach can cause odd behaviour.
-Therefore, when you build your thesis to PDF, split the pdf into pages (you can do this with the package `pdftools`) and then insert the appropriate LaTeX command, as shown below.
+Therefore, when you build your thesis to PDF, split the PDF into an alphanumerically sorted sequence of **single-page** PDF files (you can do this automatically with the package `pdftools`) and then use the appropriate LaTeX command to insert them, as shown below.
 *Note that the chunk option `results='asis'` must be used.*
+You may also want to remove margins from the PDF files, which you can do with Adobe Acrobat (paid version) and likely other software.
 
 ```{r, echo=TRUE, results='asis', eval=knitr::is_latex_output()}
 # install.packages(pdftools)
@@ -33,20 +34,32 @@ Therefore, when you build your thesis to PDF, split the pdf into pages (you can 
 # pdftools::pdf_split("pdf_example/Mensh_Kording_2017.pdf", 
 #          output = "pdf_example/split/")
 
+# grab the pages
 pages <- list.files("pdf_example/split", full.names = TRUE)
 
-# for each page, insert the latex command to insert it nicely
-cat(paste0("\\newpage \\begin{center} \\makebox[\\linewidth][c]{\\includegraphics[width=1.2\\linewidth]{", 
-             pages, "}} \\end{center}"))
+# set how wide you want the inserted PDFs to be: 
+# 1.0 is 100 per cent of the oxforddown PDF page width;
+# you may want to make it a bit bigger
+pdf_width <- 1.2
+
+# add initial page break to place first pdf on a new page
+cat('\\newpage')
+
+# for each PDF page, insert it nicely and
+# end with a page break
+cat(stringr::str_c("\\begin{center} \\makebox[\\linewidth][c]{\\includegraphics[width=",
+           pdf_width,
+           "\\linewidth]{",
+           pages, 
+           "}} \\end{center} \\newpage"))
 
 ```
 
 ## Customizing referencing 
 
 ### Using a .csl file with pandoc instead of biblatex
-
 The `oxforddown` package uses biblatex in latex for referencing. 
-It is also possible to use pandoc for referencing by providing a .csl file in the YAML header of **index.Rmd** (likely requiring commenting out the biblatex code in **template.Rmd**). 
+It is also possible to use pandoc for referencing by providing a .csl file in the YAML header of **index.Rmd** (likely requiring commenting out the biblatex code in **templates/template.tex**). 
 This may be helpful for those who have a .csl file describing the referencing format for a particular journal. 
 However, note that this approach does not support chapter bibliographies (see Section \@ref(biblatex-custom)).
 
@@ -58,7 +71,7 @@ csl: ecology.csl
 
 This section provides one example of customizing biblatex. Much of this code was combined from searches on Stack Exchange and other sources (e.g. [here](https://tex.stackexchange.com/questions/10682/suppress-in-biblatex)).
 
-In **template.tex**, one can replace the existing biblatex calls with the following to achieve referencing that looks like this: 
+In **templates/template.tex**, one can replace the existing biblatex calls with the following to achieve referencing that looks like this: 
 
 (Charmantier and Gienapp 2014)
 
@@ -145,7 +158,9 @@ If you would like chapter bibliographies, in addition insert the following code 
 
 ## Customizing the page headers and footers
 
-The following code, when it replaces the existing correpsonding code block in **ociamthesis.cls**, puts chapter number and title centered in the header and page number in the footer, centered. This may be desirable particularly when inserting PDF chapters, as the margins of the PDF may not exactly align with the left and right margins of the page, demarcated by the existing header and footer text. In the following code block, the original code is commented out where replaced.
+The following code, when it replaces the existing correpsonding code block in **ociamthesis.cls**, puts chapter number and title centered in the header and page number in the footer, centered. 
+This may be desirable particularly when inserting PDF chapters, as the margins of the PDF may not exactly align with the left and right margins of the page, demarcated by the existing header and footer text. 
+In the following code block, the original code is commented out where replaced.
 
 ```latex
 \usepackage{fancyhdr}
