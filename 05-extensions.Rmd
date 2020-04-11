@@ -19,8 +19,8 @@ You may want to embed existing PDF documents into the thesis, for example if you
 In gitbook output, you can simply use `knitr::include_graphics` and it should include a scrollable (and downloadable) PDF.
 You will probably want to set the chunk options `out.width='100%'` and `out.height='1000px'`:
 
-```{r, eval=knitr::is_html_output(), out.width='100%', out.height='1000px'}
-knitr::include_graphics("pdf_example/Mensh_Kording_2017.pdf")
+```{r, eval=knitr::is_html_output(), out.width='100%', out.height='1000px', fig.cap="A PDF paper inserted in the gitbook with knitr::include_graphics"}
+knitr::include_graphics("figures/pdf_example/Mensh_Kording_2017.pdf")
 ```
 
 In LaTeX output, however, this approach can cause odd behaviour.
@@ -30,12 +30,12 @@ You may also want to remove margins from the PDF files, which you can do with Ad
 
 ```{r, echo=TRUE, results='asis', eval=knitr::is_latex_output()}
 # install.packages(pdftools)
-# #split PDF in pages stored in pdf_example/split/
-# pdftools::pdf_split("pdf_example/Mensh_Kording_2017.pdf", 
-#          output = "pdf_example/split/")
+# #split PDF in pages stored in figures/pdf_example/split/
+# pdftools::pdf_split("figures/pdf_example/Mensh_Kording_2017.pdf", 
+#          output = "figures/pdf_example/split/")
 
 # grab the pages
-pages <- list.files("pdf_example/split", full.names = TRUE)
+pages <- list.files("figures/pdf_example/split", full.names = TRUE)
 
 # set how wide you want the inserted PDFs to be: 
 # 1.0 is 100 per cent of the oxforddown PDF page width;

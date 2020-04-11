@@ -261,12 +261,12 @@ Figure 2.1: Code chunk syntax
 <h3><span class="header-section-number">2.1.1</span> Setup chunks</h3>
 <p>An R Markdown document usually begins with a chunk that is used to <strong>load libraries</strong>, and to <strong>set default chunk options</strong> with <code>knitr::opts_chunk$set</code>.</p>
 <p>In your thesis, this will probably happen in <strong>index.Rmd</strong> and/or as opening chunks in each of your chapters.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="bn">```{r setup, include=FALSE}</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="bn"># don&#39;t show code unless we explicitly set echo = TRUE</span></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="bn">knitr::opts_chunk$set(echo = FALSE)</span></a>
-<a class="sourceLine" id="cb2-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="bn">library(tidyverse)</span></a>
-<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="bn">```</span></a></code></pre></div>
+<pre><code>```{r setup, include=FALSE}
+# don&#39;t show code unless we explicitly set echo = TRUE
+knitr::opts_chunk$set(echo = FALSE)
+
+library(tidyverse)
+```</code></pre>
 </div>
 <div id="including-images" class="section level3">
 <h3><span class="header-section-number">2.1.2</span> Including images</h3>

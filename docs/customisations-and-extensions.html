@@ -242,19 +242,24 @@ Template for R Markdown</a>
 <p>You may want to embed existing PDF documents into the thesis, for example if your department allows a ‘portfolio’ style thesis and you need to include an existing typeset publication as a chapter.</p>
 <p>In gitbook output, you can simply use <code>knitr::include_graphics</code> and it should include a scrollable (and downloadable) PDF.
 You will probably want to set the chunk options <code>out.width='100%'</code> and <code>out.height='1000px'</code>:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;pdf_example/Mensh_Kording_2017.pdf&quot;</span>)</a></code></pre></div>
-<embed src="pdf_example/Mensh_Kording_2017.pdf" width="100%" height="1000px" type="application/pdf" />
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;figures/pdf_example/Mensh_Kording_2017.pdf&quot;</span>)</a></code></pre></div>
+<div class="figure"><span id="fig:unnamed-chunk-9"></span>
+<img src="figures/pdf_example/Mensh_Kording_2017.pdf" alt="A PDF paper inserted in the gitbook with knitr::include_graphics" width="100%" height="1000px" />
+<p class="caption">
+Figure 5.1: A PDF paper inserted in the gitbook with knitr::include_graphics
+</p>
+</div>
 <p>In LaTeX output, however, this approach can cause odd behaviour.
 Therefore, when you build your thesis to PDF, split the PDF into an alphanumerically sorted sequence of <strong>single-page</strong> PDF files (you can do this automatically with the package <code>pdftools</code>) and then use the appropriate LaTeX command to insert them, as shown below.
 <em>Note that the chunk option <code>results='asis'</code> must be used.</em>
 You may also want to remove margins from the PDF files, which you can do with Adobe Acrobat (paid version) and likely other software.</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="co"># install.packages(pdftools)</span></a>
-<a class="sourceLine" id="cb14-2" data-line-number="2"><span class="co"># #split PDF in pages stored in pdf_example/split/</span></a>
-<a class="sourceLine" id="cb14-3" data-line-number="3"><span class="co"># pdftools::pdf_split(&quot;pdf_example/Mensh_Kording_2017.pdf&quot;, </span></a>
-<a class="sourceLine" id="cb14-4" data-line-number="4"><span class="co">#          output = &quot;pdf_example/split/&quot;)</span></a>
+<a class="sourceLine" id="cb14-2" data-line-number="2"><span class="co"># #split PDF in pages stored in figures/pdf_example/split/</span></a>
+<a class="sourceLine" id="cb14-3" data-line-number="3"><span class="co"># pdftools::pdf_split(&quot;figures/pdf_example/Mensh_Kording_2017.pdf&quot;, </span></a>
+<a class="sourceLine" id="cb14-4" data-line-number="4"><span class="co">#          output = &quot;figures/pdf_example/split/&quot;)</span></a>
 <a class="sourceLine" id="cb14-5" data-line-number="5"></a>
 <a class="sourceLine" id="cb14-6" data-line-number="6"><span class="co"># grab the pages</span></a>
-<a class="sourceLine" id="cb14-7" data-line-number="7">pages &lt;-<span class="st"> </span><span class="kw">list.files</span>(<span class="st">&quot;pdf_example/split&quot;</span>, <span class="dt">full.names =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb14-7" data-line-number="7">pages &lt;-<span class="st"> </span><span class="kw">list.files</span>(<span class="st">&quot;figures/pdf_example/split&quot;</span>, <span class="dt">full.names =</span> <span class="ot">TRUE</span>)</a>
 <a class="sourceLine" id="cb14-8" data-line-number="8"></a>
 <a class="sourceLine" id="cb14-9" data-line-number="9"><span class="co"># set how wide you want the inserted PDFs to be: </span></a>
 <a class="sourceLine" id="cb14-10" data-line-number="10"><span class="co"># 1.0 is 100 per cent of the oxforddown PDF page width;</span></a>
