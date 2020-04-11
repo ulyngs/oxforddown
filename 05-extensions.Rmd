@@ -22,6 +22,7 @@ You will probably want to set the chunk options `out.width='100%'` and `out.heig
 ```{r, eval=knitr::is_html_output(), out.width='100%', out.height='1000px'}
 knitr::include_graphics("figures/pdf_example/Mensh_Kording_2017.pdf")
 ```
+<br>
 
 In LaTeX output, however, this approach can cause odd behaviour.
 Therefore, when you build your thesis to PDF, split the PDF into an alphanumerically sorted sequence of **single-page** PDF files (you can do this automatically with the package `pdftools`) and then use the appropriate LaTeX command to insert them, as shown below.
