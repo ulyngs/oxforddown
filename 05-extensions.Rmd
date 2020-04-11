@@ -19,7 +19,7 @@ You may want to embed existing PDF documents into the thesis, for example if you
 In gitbook output, you can simply use `knitr::include_graphics` and it should include a scrollable (and downloadable) PDF.
 You will probably want to set the chunk options `out.width='100%'` and `out.height='1000px'`:
 
-```{r, eval=knitr::is_html_output(), out.width='100%', out.height='1000px', fig.cap="A PDF paper inserted in the gitbook with knitr::include_graphics"}
+```{r, eval=knitr::is_html_output(), out.width='100%', out.height='1000px'}
 knitr::include_graphics("figures/pdf_example/Mensh_Kording_2017.pdf")
 ```
 
