@@ -245,25 +245,39 @@ You will probably want to set the chunk options <code>out.width='100%'</code> an
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;pdf_example/Mensh_Kording_2017.pdf&quot;</span>)</a></code></pre></div>
 <embed src="pdf_example/Mensh_Kording_2017.pdf" width="100%" height="1000px" type="application/pdf" />
 <p>In LaTeX output, however, this approach can cause odd behaviour.
-Therefore, when you build your thesis to PDF, split the pdf into pages (you can do this with the package <code>pdftools</code>) and then insert the appropriate LaTeX command, as shown below.
-<em>Note that the chunk option <code>results='asis'</code> must be used.</em></p>
+Therefore, when you build your thesis to PDF, split the PDF into an alphanumerically sorted sequence of <strong>single-page</strong> PDF files (you can do this automatically with the package <code>pdftools</code>) and then use the appropriate LaTeX command to insert them, as shown below.
+<em>Note that the chunk option <code>results='asis'</code> must be used.</em>
+You may also want to remove margins from the PDF files, which you can do with Adobe Acrobat (paid version) and likely other software.</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="co"># install.packages(pdftools)</span></a>
 <a class="sourceLine" id="cb14-2" data-line-number="2"><span class="co"># #split PDF in pages stored in pdf_example/split/</span></a>
 <a class="sourceLine" id="cb14-3" data-line-number="3"><span class="co"># pdftools::pdf_split(&quot;pdf_example/Mensh_Kording_2017.pdf&quot;, </span></a>
 <a class="sourceLine" id="cb14-4" data-line-number="4"><span class="co">#          output = &quot;pdf_example/split/&quot;)</span></a>
 <a class="sourceLine" id="cb14-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb14-6" data-line-number="6">pages &lt;-<span class="st"> </span><span class="kw">list.files</span>(<span class="st">&quot;pdf_example/split&quot;</span>, <span class="dt">full.names =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb14-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb14-8" data-line-number="8"><span class="co"># for each page, insert the latex command to insert it nicely</span></a>
-<a class="sourceLine" id="cb14-9" data-line-number="9"><span class="kw">cat</span>(<span class="kw">paste0</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">newpage </span><span class="ch">\\</span><span class="st">begin{center} </span><span class="ch">\\</span><span class="st">makebox[</span><span class="ch">\\</span><span class="st">linewidth][c]{</span><span class="ch">\\</span><span class="st">includegraphics[width=1.2</span><span class="ch">\\</span><span class="st">linewidth]{&quot;</span>, </a>
-<a class="sourceLine" id="cb14-10" data-line-number="10">             pages, <span class="st">&quot;}} </span><span class="ch">\\</span><span class="st">end{center}&quot;</span>))</a></code></pre></div>
+<a class="sourceLine" id="cb14-6" data-line-number="6"><span class="co"># grab the pages</span></a>
+<a class="sourceLine" id="cb14-7" data-line-number="7">pages &lt;-<span class="st"> </span><span class="kw">list.files</span>(<span class="st">&quot;pdf_example/split&quot;</span>, <span class="dt">full.names =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb14-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb14-9" data-line-number="9"><span class="co"># set how wide you want the inserted PDFs to be: </span></a>
+<a class="sourceLine" id="cb14-10" data-line-number="10"><span class="co"># 1.0 is 100 per cent of the oxforddown PDF page width;</span></a>
+<a class="sourceLine" id="cb14-11" data-line-number="11"><span class="co"># you may want to make it a bit bigger</span></a>
+<a class="sourceLine" id="cb14-12" data-line-number="12">pdf_width &lt;-<span class="st"> </span><span class="fl">1.2</span></a>
+<a class="sourceLine" id="cb14-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb14-14" data-line-number="14"><span class="co"># add initial page break to place first pdf on a new page</span></a>
+<a class="sourceLine" id="cb14-15" data-line-number="15"><span class="kw">cat</span>(<span class="st">&#39;</span><span class="ch">\\</span><span class="st">newpage&#39;</span>)</a>
+<a class="sourceLine" id="cb14-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb14-17" data-line-number="17"><span class="co"># for each PDF page, insert it nicely and</span></a>
+<a class="sourceLine" id="cb14-18" data-line-number="18"><span class="co"># end with a page break</span></a>
+<a class="sourceLine" id="cb14-19" data-line-number="19"><span class="kw">cat</span>(stringr<span class="op">::</span><span class="kw">str_c</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">begin{center} </span><span class="ch">\\</span><span class="st">makebox[</span><span class="ch">\\</span><span class="st">linewidth][c]{</span><span class="ch">\\</span><span class="st">includegraphics[width=&quot;</span>,</a>
+<a class="sourceLine" id="cb14-20" data-line-number="20">           pdf_width,</a>
+<a class="sourceLine" id="cb14-21" data-line-number="21">           <span class="st">&quot;</span><span class="ch">\\</span><span class="st">linewidth]{&quot;</span>,</a>
+<a class="sourceLine" id="cb14-22" data-line-number="22">           pages, </a>
+<a class="sourceLine" id="cb14-23" data-line-number="23">           <span class="st">&quot;}} </span><span class="ch">\\</span><span class="st">end{center} </span><span class="ch">\\</span><span class="st">newpage&quot;</span>))</a></code></pre></div>
 </div>
 <div id="customizing-referencing" class="section level2">
 <h2><span class="header-section-number">5.2</span> Customizing referencing</h2>
 <div id="using-a-.csl-file-with-pandoc-instead-of-biblatex" class="section level3">
 <h3><span class="header-section-number">5.2.1</span> Using a .csl file with pandoc instead of biblatex</h3>
 <p>The <code>oxforddown</code> package uses biblatex in latex for referencing.
-It is also possible to use pandoc for referencing by providing a .csl file in the YAML header of <strong>index.Rmd</strong> (likely requiring commenting out the biblatex code in <strong>template.Rmd</strong>).
+It is also possible to use pandoc for referencing by providing a .csl file in the YAML header of <strong>index.Rmd</strong> (likely requiring commenting out the biblatex code in <strong>templates/template.tex</strong>).
 This may be helpful for those who have a .csl file describing the referencing format for a particular journal.
 However, note that this approach does not support chapter bibliographies (see Section <a href="customisations-and-extensions.html#biblatex-custom">5.2.2</a>).</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="fu">csl:</span><span class="at"> ecology.csl</span></a></code></pre></div>
@@ -271,7 +285,7 @@ However, note that this approach does not support chapter bibliographies (see Se
 <div id="biblatex-custom" class="section level3">
 <h3><span class="header-section-number">5.2.2</span> Customizing biblatex and adding chapter bibliographies</h3>
 <p>This section provides one example of customizing biblatex. Much of this code was combined from searches on Stack Exchange and other sources (e.g. <a href="https://tex.stackexchange.com/questions/10682/suppress-in-biblatex">here</a>).</p>
-<p>In <strong>template.tex</strong>, one can replace the existing biblatex calls with the following to achieve referencing that looks like this:</p>
+<p>In <strong>templates/template.tex</strong>, one can replace the existing biblatex calls with the following to achieve referencing that looks like this:</p>
 <p>(Charmantier and Gienapp 2014)</p>
 <p>Charmantier, A. and P. Gienapp (2014). Climate change and timing of avian breeding and migration: evolutionary versus plastic changes. Evolutionary Applications 7(1):15–28. doi: 10.1111/eva.12126.</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode latex"><code class="sourceCode latex"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="bu">\usepackage</span>[backend=biber,</a>
@@ -350,7 +364,9 @@ However, note that this approach does not support chapter bibliographies (see Se
 </div>
 <div id="customizing-the-page-headers-and-footers" class="section level2">
 <h2><span class="header-section-number">5.3</span> Customizing the page headers and footers</h2>
-<p>The following code, when it replaces the existing correpsonding code block in <strong>ociamthesis.cls</strong>, puts chapter number and title centered in the header and page number in the footer, centered. This may be desirable particularly when inserting PDF chapters, as the margins of the PDF may not exactly align with the left and right margins of the page, demarcated by the existing header and footer text. In the following code block, the original code is commented out where replaced.</p>
+<p>The following code, when it replaces the existing correpsonding code block in <strong>ociamthesis.cls</strong>, puts chapter number and title centered in the header and page number in the footer, centered.
+This may be desirable particularly when inserting PDF chapters, as the margins of the PDF may not exactly align with the left and right margins of the page, demarcated by the existing header and footer text.
+In the following code block, the original code is commented out where replaced.</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode latex"><code class="sourceCode latex"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="bu">\usepackage</span>{<span class="ex">fancyhdr</span>}</a>
 <a class="sourceLine" id="cb18-2" data-line-number="2"><span class="fu">\setlength</span>{<span class="fu">\headheight</span>}{15pt}</a>
 <a class="sourceLine" id="cb18-3" data-line-number="3"><span class="fu">\fancyhf</span>{} <span class="co">% clear the header and footers</span></a>
