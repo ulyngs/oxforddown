@@ -613,16 +613,14 @@ An R Markdown document usually begins with a chunk that is used to \textbf{load 
 
 In your thesis, this will probably happen in \textbf{index.Rmd} and/or as opening chunks in each of your chapters.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\BaseNTok{```\{r setup, include=FALSE\}}
-\BaseNTok{# don't show code unless we explicitly set echo = TRUE}
-\BaseNTok{knitr::opts_chunk$set(echo = FALSE)}
+\begin{verbatim}
+```{r setup, include=FALSE}
+# don't show code unless we explicitly set echo = TRUE
+knitr::opts_chunk$set(echo = FALSE)
 
-\BaseNTok{library(tidyverse)}
-\BaseNTok{```}
-\end{Highlighting}
-\end{Shaded}
+library(tidyverse)
+```
+\end{verbatim}
 
 \hypertarget{including-images}{%
 \subsection{Including images}\label{including-images}}
@@ -1176,31 +1174,41 @@ You will probably want to set the chunk options \texttt{out.width=\textquotesing
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{knitr}\OperatorTok{::}\KeywordTok{include_graphics}\NormalTok{(}\StringTok{"pdf_example/Mensh_Kording_2017.pdf"}\NormalTok{)}
+\NormalTok{knitr}\OperatorTok{::}\KeywordTok{include_graphics}\NormalTok{(}\StringTok{"figures/pdf_example/Lyngs2020_FB.pdf"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 In LaTeX output, however, this approach can cause odd behaviour.
-Therefore, when you build your thesis to PDF, split the pdf into pages (you can do this with the package \texttt{pdftools}) and then insert the appropriate LaTeX command, as shown below.
+Therefore, when you build your thesis to PDF, split the PDF into an alphanumerically sorted sequence of \textbf{single-page} PDF files (you can do this automatically with the package \texttt{pdftools}). You can then use the appropriate LaTeX command to insert them, as shown below (for brevity, in the \texttt{oxforddown} sample content we're only including two pages from a published article)
 \emph{Note that the chunk option \texttt{results=\textquotesingle{}asis\textquotesingle{}} must be used.}
+You may also want to remove margins from the PDF files, which you can do with Adobe Acrobat (paid version) and likely other software.
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{# install.packages(pdftools)}
-\CommentTok{# #split PDF in pages stored in pdf_example/split/}
-\CommentTok{# pdftools::pdf_split("pdf_example/Mensh_Kording_2017.pdf",}
-\CommentTok{# output = "pdf_example/split/")}
+\CommentTok{#split PDF in pages stored in figures/pdf_example/split/}
+\CommentTok{#pdftools::pdf_split("figures/pdf_example/Lyngs2020_FB.pdf",}
+\CommentTok{# output = "figures/pdf_example/split/")}
 
-\NormalTok{pages <-}\StringTok{ }\KeywordTok{list.files}\NormalTok{(}\StringTok{"pdf_example/split"}\NormalTok{, }\DataTypeTok{full.names =} \OtherTok{TRUE}\NormalTok{)}
+\CommentTok{# grab the pages}
+\NormalTok{pages <-}\StringTok{ }\KeywordTok{list.files}\NormalTok{(}\StringTok{"figures/pdf_example/split"}\NormalTok{, }\DataTypeTok{full.names =} \OtherTok{TRUE}\NormalTok{)}
 
-\CommentTok{# for each page, insert the latex command to insert it nicely}
-\KeywordTok{cat}\NormalTok{(}\KeywordTok{paste0}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{newpage }\CharTok{\textbackslash{}\textbackslash{}}\StringTok{begin\{center\}}
-\CharTok{\textbackslash{}\textbackslash{}}\StringTok{makebox[}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{linewidth][c]\{}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{includegraphics[width=1.2}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{linewidth]\{"}\NormalTok{,}
-\NormalTok{pages, }\StringTok{"\}\} }\CharTok{\textbackslash{}\textbackslash{}}\StringTok{end\{center\}"}\NormalTok{))}
+\CommentTok{# set how wide you want the inserted PDFs to be:}
+\CommentTok{# 1.0 is 100 per cent of the oxforddown PDF page width;}
+\CommentTok{# you may want to make it a bit bigger}
+\NormalTok{pdf_width <-}\StringTok{ }\FloatTok{1.2}
+
+\CommentTok{# for each PDF page, insert it nicely and}
+\CommentTok{# end with a page break}
+\KeywordTok{cat}\NormalTok{(stringr}\OperatorTok{::}\KeywordTok{str_c}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{newpage }\CharTok{\textbackslash{}\textbackslash{}}\StringTok{begin\{center\}}
+\StringTok{    }\CharTok{\textbackslash{}\textbackslash{}}\StringTok{makebox[}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{linewidth][c]\{}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{includegraphics[width="}\NormalTok{, pdf_width,}
+    \StringTok{"}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{linewidth]\{"}\NormalTok{, pages, }\StringTok{"\}\} }\CharTok{\textbackslash{}\textbackslash{}}\StringTok{end\{center\}"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
-\newpage \begin{center} \makebox[\linewidth][c]{\includegraphics[width=1.2\linewidth]{pdf_example/split/_000000001.pdf}} \end{center} \newpage \begin{center} \makebox[\linewidth][c]{\includegraphics[width=1.2\linewidth]{pdf_example/split/_000000002.pdf}} \end{center} \newpage \begin{center} \makebox[\linewidth][c]{\includegraphics[width=1.2\linewidth]{pdf_example/split/_000000003.pdf}} \end{center} \newpage \begin{center} \makebox[\linewidth][c]{\includegraphics[width=1.2\linewidth]{pdf_example/split/_000000004.pdf}} \end{center} \newpage \begin{center} \makebox[\linewidth][c]{\includegraphics[width=1.2\linewidth]{pdf_example/split/_000000005.pdf}} \end{center} \newpage \begin{center} \makebox[\linewidth][c]{\includegraphics[width=1.2\linewidth]{pdf_example/split/_000000006.pdf}} \end{center} \newpage \begin{center} \makebox[\linewidth][c]{\includegraphics[width=1.2\linewidth]{pdf_example/split/_000000007.pdf}} \end{center} \newpage \begin{center} \makebox[\linewidth][c]{\includegraphics[width=1.2\linewidth]{pdf_example/split/_000000008.pdf}} \end{center} \newpage \begin{center} \makebox[\linewidth][c]{\includegraphics[width=1.2\linewidth]{pdf_example/split/_000000009.pdf}} \end{center}
+\newpage \begin{center} \makebox[\linewidth][c]{\includegraphics[width=1.2\linewidth]{figures/pdf_example/split/_000000000000001.pdf}} \end{center} \newpage \begin{center} \makebox[\linewidth][c]{\includegraphics[width=1.2\linewidth]{figures/pdf_example/split/_000000000000011.pdf}} \end{center}
+
+\newpage
 
 \hypertarget{customizing-referencing}{%
 \section{Customizing referencing}\label{customizing-referencing}}
@@ -1208,7 +1216,10 @@ Therefore, when you build your thesis to PDF, split the pdf into pages (you can 
 \hypertarget{using-a-.csl-file-with-pandoc-instead-of-biblatex}{%
 \subsection{Using a .csl file with pandoc instead of biblatex}\label{using-a-.csl-file-with-pandoc-instead-of-biblatex}}
 
-The \texttt{oxforddown} package uses biblatex in latex for referencing. It is also possible to use pandec for referencing by providing a .csl file in the YAML header of \textbf{index.Rmd} (likely requiring commenting out the biblatex code in \textbf{template.Rmd}). This may be helpful for those who have a .csl file describing the referencing format for a particular journal. However, note that this approach does not support chapter bibliographies (see Section \ref{biblatex-custom}).
+The \texttt{oxforddown} package uses biblatex in latex for referencing.
+It is also possible to use pandoc for referencing by providing a .csl file in the YAML header of \textbf{index.Rmd} (likely requiring commenting out the biblatex code in \textbf{templates/template.tex}).
+This may be helpful for those who have a .csl file describing the referencing format for a particular journal.
+However, note that this approach does not support chapter bibliographies (see Section \ref{biblatex-custom}).
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1221,7 +1232,7 @@ The \texttt{oxforddown} package uses biblatex in latex for referencing. It is al
 
 This section provides one example of customizing biblatex. Much of this code was combined from searches on Stack Exchange and other sources (e.g. \href{https://tex.stackexchange.com/questions/10682/suppress-in-biblatex}{here}).
 
-In \textbf{template.tex}, one can replace the existing biblatex calls with the following to achieve referencing that looks like this:
+In \textbf{templates/template.tex}, one can replace the existing biblatex calls with the following to achieve referencing that looks like this:
 
 (Charmantier and Gienapp 2014)
 
@@ -1313,7 +1324,9 @@ If you would like chapter bibliographies, in addition insert the following code 
 \hypertarget{customizing-the-page-headers-and-footers}{%
 \section{Customizing the page headers and footers}\label{customizing-the-page-headers-and-footers}}
 
-The following code, when it replaces the existing correpsonding code block in \textbf{ociamthesis.cls}, puts chapter number and title centered in the header and page number in the footer, centered. This may be desirable particularly when inserting PDF chapters, as the margins of the PDF may not exactly align with the left and right margins of the page, demarcated by the existing header and footer text. In the following code block, the original code is commented out where replaced.
+The following code, when it replaces the existing correpsonding code block in \textbf{ociamthesis.cls}, puts chapter number and title centered in the header and page number in the footer, centered.
+This may be desirable particularly when inserting PDF chapters, as the margins of the PDF may not exactly align with the left and right margins of the page, demarcated by the existing header and footer text.
+In the following code block, the original code is commented out where replaced.
 
 \begin{Shaded}
 \begin{Highlighting}[]

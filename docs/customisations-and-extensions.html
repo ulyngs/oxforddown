@@ -242,17 +242,17 @@ Template for R Markdown</a>
 <p>You may want to embed existing PDF documents into the thesis, for example if your department allows a ‘portfolio’ style thesis and you need to include an existing typeset publication as a chapter.</p>
 <p>In gitbook output, you can simply use <code>knitr::include_graphics</code> and it should include a scrollable (and downloadable) PDF.
 You will probably want to set the chunk options <code>out.width='100%'</code> and <code>out.height='1000px'</code>:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;figures/pdf_example/Mensh_Kording_2017.pdf&quot;</span>)</a></code></pre></div>
-<embed src="figures/pdf_example/Mensh_Kording_2017.pdf" width="100%" height="1000px" type="application/pdf" />
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;figures/pdf_example/Lyngs2020_FB.pdf&quot;</span>)</a></code></pre></div>
+<embed src="figures/pdf_example/Lyngs2020_FB.pdf" width="100%" height="1000px" type="application/pdf" />
 <p><br></p>
 <p>In LaTeX output, however, this approach can cause odd behaviour.
-Therefore, when you build your thesis to PDF, split the PDF into an alphanumerically sorted sequence of <strong>single-page</strong> PDF files (you can do this automatically with the package <code>pdftools</code>) and then use the appropriate LaTeX command to insert them, as shown below.
-<em>Note that the chunk option <code>results='asis'</code> must be used.</em>
+Therefore, when you build your thesis to PDF, split the PDF into an alphanumerically sorted sequence of <strong>single-page</strong> PDF files (you can do this automatically with the package <code>pdftools</code>). You can then use the appropriate LaTeX command to insert them, as shown below (for brevity, in the <code>oxforddown</code> PDF sample content we’re only including two pages)
+<em>Note that the chunk option <code>results='asis'</code> must be set.</em>
 You may also want to remove margins from the PDF files, which you can do with Adobe Acrobat (paid version) and likely other software.</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="co"># install.packages(pdftools)</span></a>
-<a class="sourceLine" id="cb14-2" data-line-number="2"><span class="co"># #split PDF in pages stored in figures/pdf_example/split/</span></a>
-<a class="sourceLine" id="cb14-3" data-line-number="3"><span class="co"># pdftools::pdf_split(&quot;figures/pdf_example/Mensh_Kording_2017.pdf&quot;, </span></a>
-<a class="sourceLine" id="cb14-4" data-line-number="4"><span class="co">#          output = &quot;figures/pdf_example/split/&quot;)</span></a>
+<a class="sourceLine" id="cb14-2" data-line-number="2"><span class="co">#split PDF in pages stored in figures/pdf_example/split/</span></a>
+<a class="sourceLine" id="cb14-3" data-line-number="3"><span class="co">#pdftools::pdf_split(&quot;figures/pdf_example/Lyngs2020_FB.pdf&quot;,</span></a>
+<a class="sourceLine" id="cb14-4" data-line-number="4"><span class="co">#        output = &quot;figures/pdf_example/split/&quot;)</span></a>
 <a class="sourceLine" id="cb14-5" data-line-number="5"></a>
 <a class="sourceLine" id="cb14-6" data-line-number="6"><span class="co"># grab the pages</span></a>
 <a class="sourceLine" id="cb14-7" data-line-number="7">pages &lt;-<span class="st"> </span><span class="kw">list.files</span>(<span class="st">&quot;figures/pdf_example/split&quot;</span>, <span class="dt">full.names =</span> <span class="ot">TRUE</span>)</a>
@@ -262,16 +262,11 @@ You may also want to remove margins from the PDF files, which you can do with Ad
 <a class="sourceLine" id="cb14-11" data-line-number="11"><span class="co"># you may want to make it a bit bigger</span></a>
 <a class="sourceLine" id="cb14-12" data-line-number="12">pdf_width &lt;-<span class="st"> </span><span class="fl">1.2</span></a>
 <a class="sourceLine" id="cb14-13" data-line-number="13"></a>
-<a class="sourceLine" id="cb14-14" data-line-number="14"><span class="co"># add initial page break to place first pdf on a new page</span></a>
-<a class="sourceLine" id="cb14-15" data-line-number="15"><span class="kw">cat</span>(<span class="st">&#39;</span><span class="ch">\\</span><span class="st">newpage&#39;</span>)</a>
-<a class="sourceLine" id="cb14-16" data-line-number="16"></a>
-<a class="sourceLine" id="cb14-17" data-line-number="17"><span class="co"># for each PDF page, insert it nicely and</span></a>
-<a class="sourceLine" id="cb14-18" data-line-number="18"><span class="co"># end with a page break</span></a>
-<a class="sourceLine" id="cb14-19" data-line-number="19"><span class="kw">cat</span>(stringr<span class="op">::</span><span class="kw">str_c</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">begin{center} </span><span class="ch">\\</span><span class="st">makebox[</span><span class="ch">\\</span><span class="st">linewidth][c]{</span><span class="ch">\\</span><span class="st">includegraphics[width=&quot;</span>,</a>
-<a class="sourceLine" id="cb14-20" data-line-number="20">           pdf_width,</a>
-<a class="sourceLine" id="cb14-21" data-line-number="21">           <span class="st">&quot;</span><span class="ch">\\</span><span class="st">linewidth]{&quot;</span>,</a>
-<a class="sourceLine" id="cb14-22" data-line-number="22">           pages, </a>
-<a class="sourceLine" id="cb14-23" data-line-number="23">           <span class="st">&quot;}} </span><span class="ch">\\</span><span class="st">end{center} </span><span class="ch">\\</span><span class="st">newpage&quot;</span>))</a></code></pre></div>
+<a class="sourceLine" id="cb14-14" data-line-number="14"><span class="co"># for each PDF page, insert it nicely and</span></a>
+<a class="sourceLine" id="cb14-15" data-line-number="15"><span class="co"># end with a page break</span></a>
+<a class="sourceLine" id="cb14-16" data-line-number="16"><span class="kw">cat</span>(stringr<span class="op">::</span><span class="kw">str_c</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">newpage </span><span class="ch">\\</span><span class="st">begin{center} </span><span class="ch">\\</span><span class="st">makebox[</span><span class="ch">\\</span><span class="st">linewidth][c]{</span><span class="ch">\\</span><span class="st">includegraphics[width=&quot;</span>, pdf_width, <span class="st">&quot;</span><span class="ch">\\</span><span class="st">linewidth]{&quot;</span>, pages, <span class="st">&quot;}} </span><span class="ch">\\</span><span class="st">end{center}&quot;</span>))</a></code></pre></div>
+<div style="page-break-after: always;"></div>
+<!-- you may need to ensure the next section starts on its own page -->
 </div>
 <div id="customizing-referencing" class="section level2">
 <h2><span class="header-section-number">5.2</span> Customizing referencing</h2>
