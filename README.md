@@ -111,9 +111,16 @@ To use this template to write your thesis, do the following:
 To knit an individual chapter without compiling the entire thesis:
 1. open the **.Rmd** file of a chapter
 2. add a YAML header specifying the output format(s) (e.g. `bookdown::word_document2` for a word document you might want to upload to Google Docs for feedback from collaborators)
-  - To output a single chapter to PDF, use `bookdown::pdf_documents2: template: templates/brief_template.tex` - this will format the chapter in the OxThesis style but without including the front matter (table of contents, abstract, etc)
+3. Click the `knit` button (the output file is then saved in the root folder)
 
-The output file is saved in the root folder.
+As shown in the sample chapters' YAML headers, to output a single chapter to PDF, use:
+
+```yaml
+output:
+  bookdown::pdf_document2:
+    template: templates/brief_template.tex
+```
+This will format the chapter in the OxThesis style but without including the front matter (table of contents, abstract, etc)
 
 ## Cleaning up generated auxiliary files
 By default, when you build the entire thesis, the auxillary files will be removed (to adjust how this is done, edit **Makefile**).
