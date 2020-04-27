@@ -73,7 +73,7 @@ The template uses the [bookdown](https://bookdown.org) R package together with t
 - Gitbook output: see [ulyngs.github.io/oxforddown/](https://ulyngs.github.io/oxforddown/)
 
 # Usage
-- clone the **ulyngs/oxforddown** repo or download it as a zip
+- download the **ulyngs/oxforddown** repo as a zip
 - open **oxforddown.Rproj** in RStudio
 
 ## Compiling your thesis
