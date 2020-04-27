@@ -31,8 +31,8 @@ You may also want to remove margins from the PDF files, which you can do with Ad
 
 ```{r, echo=TRUE, results='asis', eval=knitr::is_latex_output(), linewidth = 70}
 # install.packages(pdftools)
-#split PDF in pages stored in figures/pdf_example/split/
-#pdftools::pdf_split("figures/pdf_example/Lyngs2020_FB.pdf",
+# split PDF into pages stored in figures/pdf_example/split/
+# pdftools::pdf_split("figures/pdf_example/Lyngs2020_FB.pdf",
 #        output = "figures/pdf_example/split/")
 
 # grab the pages
@@ -48,8 +48,6 @@ pdf_width <- 1.2
 cat(stringr::str_c("\\newpage \\begin{center} \\makebox[\\linewidth][c]{\\includegraphics[width=", pdf_width, "\\linewidth]{", pages, "}} \\end{center}"))
 
 ```
-
-\newpage <!-- you may need to ensure the next section starts on its own page -->
 
 ## Customizing referencing 
 
