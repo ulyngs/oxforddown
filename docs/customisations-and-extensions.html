@@ -250,8 +250,8 @@ Therefore, when you build your thesis to PDF, split the PDF into an alphanumeric
 <em>Note that the chunk option <code>results='asis'</code> must be set.</em>
 You may also want to remove margins from the PDF files, which you can do with Adobe Acrobat (paid version) and likely other software.</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="co"># install.packages(pdftools)</span></a>
-<a class="sourceLine" id="cb14-2" data-line-number="2"><span class="co">#split PDF in pages stored in figures/pdf_example/split/</span></a>
-<a class="sourceLine" id="cb14-3" data-line-number="3"><span class="co">#pdftools::pdf_split(&quot;figures/pdf_example/Lyngs2020_FB.pdf&quot;,</span></a>
+<a class="sourceLine" id="cb14-2" data-line-number="2"><span class="co"># split PDF into pages stored in figures/pdf_example/split/</span></a>
+<a class="sourceLine" id="cb14-3" data-line-number="3"><span class="co"># pdftools::pdf_split(&quot;figures/pdf_example/Lyngs2020_FB.pdf&quot;,</span></a>
 <a class="sourceLine" id="cb14-4" data-line-number="4"><span class="co">#        output = &quot;figures/pdf_example/split/&quot;)</span></a>
 <a class="sourceLine" id="cb14-5" data-line-number="5"></a>
 <a class="sourceLine" id="cb14-6" data-line-number="6"><span class="co"># grab the pages</span></a>
@@ -265,8 +265,6 @@ You may also want to remove margins from the PDF files, which you can do with Ad
 <a class="sourceLine" id="cb14-14" data-line-number="14"><span class="co"># for each PDF page, insert it nicely and</span></a>
 <a class="sourceLine" id="cb14-15" data-line-number="15"><span class="co"># end with a page break</span></a>
 <a class="sourceLine" id="cb14-16" data-line-number="16"><span class="kw">cat</span>(stringr<span class="op">::</span><span class="kw">str_c</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">newpage </span><span class="ch">\\</span><span class="st">begin{center} </span><span class="ch">\\</span><span class="st">makebox[</span><span class="ch">\\</span><span class="st">linewidth][c]{</span><span class="ch">\\</span><span class="st">includegraphics[width=&quot;</span>, pdf_width, <span class="st">&quot;</span><span class="ch">\\</span><span class="st">linewidth]{&quot;</span>, pages, <span class="st">&quot;}} </span><span class="ch">\\</span><span class="st">end{center}&quot;</span>))</a></code></pre></div>
-<div style="page-break-after: always;"></div>
-<!-- you may need to ensure the next section starts on its own page -->
 </div>
 <div id="customizing-referencing" class="section level2">
 <h2><span class="header-section-number">5.2</span> Customizing referencing</h2>
