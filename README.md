@@ -52,7 +52,7 @@ The template uses the [bookdown](https://bookdown.org) R package together with t
 ```bibtex
 @misc{lyngsOxforddown2019,
   author = {Lyngs, Ulrik},
-  title = {oxforddown},
+  title = {oxforddown: An Oxford University Thesis Template for R Markdown},
   year = {2019},
   publisher = {GitHub},
   journal = {GitHub repository},
