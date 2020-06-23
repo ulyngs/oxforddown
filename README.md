@@ -63,7 +63,7 @@ The template uses the [bookdown](https://bookdown.org) R package together with t
 
 # Requirements
 - LaTeX - download and install the MacTeX distribution from [tug.org/mactex/](http://www.tug.org/mactex/) (please be aware that it's quite large - 4.1 gigs!)
-  - (Yihui Xie's [TinyTeX](https://yihui.name/tinytex/) is sometimes causing trouble with `oxforddown`! If you are normally using TinyTex for PDF output and can't get `oxforddown` to work, try installing the package 'cbfonts-fd' with `tinytex::tlmgr_install('cbfonts-fd')` (as per [this issue](https://github.com/ulyngs/oxforddown/issues/4#issuecomment-645474992)). If you are still stuck, try uninstalling with `tinytex::uninstall_tinytex()`, then install the MacTeX LaTeX distribution and restart RStudio.)
+  - (Yihui Xie's [TinyTeX](https://yihui.name/tinytex/) is sometimes causing trouble - if you normally use TinyTex and can't get `oxforddown` to work, try installing the package 'cbfonts-fd' with `tinytex::tlmgr_install('cbfonts-fd')` (as per [this issue](https://github.com/ulyngs/oxforddown/issues/4#issuecomment-645474992)). If you are still stuck, try uninstalling TinyTex with `tinytex::uninstall_tinytex()`, then install the MacTeX LaTeX distribution and restart RStudio.)
 - [R](https://cran.rstudio.com) and [RStudio version 1.2 or higher](https://www.rstudio.com/products/rstudio/download/#download)
 - The R packages `bookdown`, `tidyverse`, and `reticulate` (the other packages you need should be automatically installed when you build this project for the first time in RStudio)
 - (If on a Mac): Command line developer tools. You can install these by typing `xcode-select --install` in a terminal prompt
