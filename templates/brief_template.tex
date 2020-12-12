@@ -116,7 +116,9 @@ $endif$
 \renewcommand*{\bibfont}{\raggedright\small}
 
 % Change this to the name of your .bib file (usually exported from a citation manager like Zotero or EndNote).
+$for(bibliography)$
 \addbibresource{$bibliography$}
+$endfor$
 
 %%%%% YOUR OWN PERSONAL MACROS
 % This is a good place to dump your own LaTeX macros as they come up.
