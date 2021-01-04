@@ -11,6 +11,7 @@ Table of Contents
       * [Compiling your thesis](#compiling-your-thesis)
          * [PDF output](#pdf-output)
          * [Gitbook output](#gitbook-output)
+         * [BS4 output](#bs4-book-output)
          * [Word output](#word-output)
       * [Writing your thesis](#writing-your-thesis)
       * [Knitting individual chapters](#knitting-individual-chapters)
@@ -98,7 +99,7 @@ The template uses the [bookdown](https://bookdown.org) R package together with t
 ![](figures/screenshots/build_gitbook.png)
 ![](figures/screenshots/compiled_gitbook.png)
 
-### BS4 book output (NEW!)
+### BS4 book output
 - for this to work, you must install (1) the latest development version of bookdown (`remotes::install_github('rstudio/bookdown')`), (2) the `downlit` package (`install.packages("downlit")`), (3) the `bslib` package (not on CRAN yet; install with `remotes::install_github("rstudio/bslib")`)
 - in the terminal tab (not the R console!), type `make bs4book`
 - the set of HTML files for the gitbook are stored in the **docs/** folder, and the front page (docs/index.html) is opened in a browser
