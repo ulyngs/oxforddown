@@ -3,6 +3,11 @@ pdf:
 	rm -f *.log *.mtc* *.maf *.aux *.bcf *.lof *.lot *.out *.toc front-and-back-matter/abbreviations.aux
 	Rscript -e 'browseURL("docs/_main.pdf")'
 
+bs4book:
+	Rscript -e 'options(bookdown.render.file_scope = FALSE); bookdown::render_book("index.Rmd", output_format = "bookdown::bs4_book")'
+	touch "docs/.nojekyll"	
+	Rscript -e 'browseURL("docs/index.html")'
+
 gitbook:
 	Rscript -e 'options(bookdown.render.file_scope = FALSE); bookdown::render_book("index.Rmd", output_format = "bookdown::gitbook")'
 	Rscript -e 'browseURL("docs/index.html")'

@@ -212,9 +212,9 @@ Template for R Markdown}
 % Schools.  You can comment it out to generate a PDF for printing or whatnot.
 \begin{abstractseparate}
   This \emph{R Markdown} template is for writing an Oxford University thesis. The template is built using Yihui Xie's \texttt{bookdown} package, with heavy inspiration from Chester Ismay's \texttt{thesisdown} and the \texttt{OxThesis} \LaTeX~template (most recently adapted by John McManigle).
-  
+
   This template's sample content include illustrations of how to write a thesis in R Markdown, and largely follows the structure from \href{https://ulyngs.github.io/rmarkdown-workshop-2019/}{this R Markdown workshop}.
-  
+
   Congratulations for taking a step further into the lands of open, reproducible science by writing your thesis using a tool that allows you to transparently include tables and dynamically generated plots directly from the underlying data. Hip hooray!
 \end{abstractseparate}
 
@@ -234,17 +234,17 @@ Template for R Markdown}
 \begin{acknowledgements}
  	This is where you will normally thank your advisor, colleagues, family and friends, as well as funding and institutional support. In our case, we will give our praises to the people who developed the ideas and tools that allow us to push open science a little step forward by writing plain-text, transparent, and reproducible theses in R Markdown.
 
-We must be grateful to John Gruber for inventing the original version of Markdown, to John MacFarlane for creating Pandoc (\url{http://pandoc.org}) which converts Markdown to a large number of output formats, and to Yihui Xie for creating \texttt{knitr} which introduced R Markdown as a way of embedding code in Markdown documents, and \texttt{bookdown} which added tools for technical and longer-form writing.
+  We must be grateful to John Gruber for inventing the original version of Markdown, to John MacFarlane for creating Pandoc (\url{http://pandoc.org}) which converts Markdown to a large number of output formats, and to Yihui Xie for creating \texttt{knitr} which introduced R Markdown as a way of embedding code in Markdown documents, and \texttt{bookdown} which added tools for technical and longer-form writing.
 
-Special thanks to \href{http://chester.rbind.io}{Chester Ismay}, who created the \texttt{thesisdown} package that helped many a PhD student write their theses in R Markdown. And a very special tahnks to John McManigle, whose adaption of Sam Evans' adaptation of Keith Gillow's original maths template for writing an Oxford University DPhil thesis in \LaTeX~provided the template that I adapted for R Markdown.
+  Special thanks to \href{http://chester.rbind.io}{Chester Ismay}, who created the \texttt{thesisdown} package that helped many a PhD student write their theses in R Markdown. And a very special tahnks to John McManigle, whose adaption of Sam Evans' adaptation of Keith Gillow's original maths template for writing an Oxford University DPhil thesis in \LaTeX~provided the template that I adapted for R Markdown.
 
-Finally, profuse thanks to JJ Allaire, the founder and CEO of \href{http://rstudio.com}{RStudio}, and Hadley Wickham, the mastermind of the tidyverse without whom we'd all just given up and done data science in Python instead. Thanks for making data science easier, more accessible, and more fun for us all.
+  Finally, profuse thanks to JJ Allaire, the founder and CEO of \href{http://rstudio.com}{RStudio}, and Hadley Wickham, the mastermind of the tidyverse without whom we'd all just given up and done data science in Python instead. Thanks for making data science easier, more accessible, and more fun for us all.
 
-\begin{flushright}
-Ulrik Lyngs \\
-Linacre College, Oxford \\
-2 December 2018
-\end{flushright}
+  \begin{flushright}
+  Ulrik Lyngs \\
+  Linacre College, Oxford \\
+  2 December 2018
+  \end{flushright}
 \end{acknowledgements}
 
 
@@ -252,9 +252,9 @@ Linacre College, Oxford \\
 \begin{abstract}
 	This \emph{R Markdown} template is for writing an Oxford University thesis. The template is built using Yihui Xie's \texttt{bookdown} package, with heavy inspiration from Chester Ismay's \texttt{thesisdown} and the \texttt{OxThesis} \LaTeX~template (most recently adapted by John McManigle).
 
-This template's sample content include illustrations of how to write a thesis in R Markdown, and largely follows the structure from \href{https://ulyngs.github.io/rmarkdown-workshop-2019/}{this R Markdown workshop}.
+ This template's sample content include illustrations of how to write a thesis in R Markdown, and largely follows the structure from \href{https://ulyngs.github.io/rmarkdown-workshop-2019/}{this R Markdown workshop}.
 
-Congratulations for taking a step further into the lands of open, reproducible science by writing your thesis using a tool that allows you to transparently include tables and dynamically generated plots directly from the underlying data. Hip hooray!
+ Congratulations for taking a step further into the lands of open, reproducible science by writing your thesis using a tool that allows you to transparently include tables and dynamically generated plots directly from the underlying data. Hip hooray!
 \end{abstract}
 
 %%%%% MINI TABLES
@@ -291,8 +291,7 @@ Congratulations for taking a step further into the lands of open, reproducible s
 
 % all your chapters and appendices will appear here
 \hypertarget{introduction}{%
-\chapter*{Introduction}\label{introduction}}
-\addcontentsline{toc}{chapter}{Introduction}
+\chapter{Introduction}\label{introduction}}
 
 \adjustmtc
 
@@ -374,7 +373,7 @@ In other words, there is no need to indent basic text in the Rmd document (in fa
 \hypertarget{sub-and-superscript}{%
 \subsection{Sub and superscript}\label{sub-and-superscript}}
 
-Sub\textsubscript{2} and super\textsuperscript{2} script is created like this\textasciitilde{}2\textasciitilde{} and this\^{}2\^{}
+Sub\textsubscript{2} and super\textsuperscript{2} script is created like this\textasciitilde2\textasciitilde{} and this\^{}2\^{}
 
 \hypertarget{strikethrough}{%
 \subsection{Strikethrough}\label{strikethrough}}
@@ -382,7 +381,7 @@ Sub\textsubscript{2} and super\textsuperscript{2} script is created like this\te
 \begin{itemize}
 \tightlist
 \item
-  \sout{Strikethrough} is done \textasciitilde{}\textasciitilde{}like this\textasciitilde{}\textasciitilde{}
+  \sout{Strikethrough} is done \textasciitilde\textasciitilde like this\textasciitilde\textasciitilde{}
 \end{itemize}
 
 \hypertarget{escaping-aka-what-if-i-need-an-actual-asterisk}{%
@@ -391,7 +390,7 @@ Sub\textsubscript{2} and super\textsuperscript{2} script is created like this\te
 \begin{itemize}
 \tightlist
 \item
-  To include an actual *, \_ or \textbackslash{}, add another \textbackslash{} in front of them: \textbackslash{}*, \textbackslash{}\_, \textbackslash{}\textbackslash{}
+  To include an actual *, \_ or \textbackslash, add another \textbackslash{} in front of them: \textbackslash*, \textbackslash\_, \textbackslash\textbackslash{}
 \end{itemize}
 
 \hypertarget{endash-emdash}{%
@@ -418,7 +417,7 @@ Put a \textgreater{} in front of the line.
 \begin{itemize}
 \tightlist
 \item
-  are done with \#'s of increasing number, i.e.
+  are done with \#'s of increasing number, i.e.~
 
   \begin{itemize}
   \tightlist
@@ -431,7 +430,7 @@ Put a \textgreater{} in front of the line.
   \end{itemize}
 \end{itemize}
 
-In PDF output, a level-five heading will turn into a paragraph heading, i.e. \texttt{\textbackslash{}paragraph\{My\ level-five\ heading\}}, which appears as bold text on the same line as the subsequent paragraph.
+In PDF output, a level-five heading will turn into a paragraph heading, i.e.~\texttt{\textbackslash{}paragraph\{My\ level-five\ heading\}}, which appears as bold text on the same line as the subsequent paragraph.
 
 \hypertarget{lists}{%
 \subsection{Lists}\label{lists}}
@@ -527,16 +526,16 @@ Therefore, this line starts its own paragraph.
 \hypertarget{comments}{%
 \subsection{Comments}\label{comments}}
 
-To write comments within your text that won't actually be included in the output, use the same syntax as for writing comments in HTML. That is, \textless{}!-\/- this will not be included in the output -\/-\textgreater{}.
+To write comments within your text that won't actually be included in the output, use the same syntax as for writing comments in HTML. That is, \textless!-\/- this will not be included in the output -\/-\textgreater.
 
 \hypertarget{math}{%
 \subsection{Math}\label{math}}
 
 The syntax for writing math is stolen from LaTeX. To write a math expression that will be shown \textbf{inline}, enclose it in dollar signs.
-- This: \$A = \textbackslash{}pi*r\^{}\{2\}\$ Becomes: \(A = \pi*r^{2}\)
+- This: \$A = \textbackslash pi*r\^{}\{2\}\$ Becomes: \(A = \pi*r^{2}\)
 
 To write a math expression that will be shown in a block, enclose it in two dollar signs.\\
-This: \$\$A = \textbackslash{}pi*r\^{}\{2\}\$\$
+This: \$\$A = \textbackslash pi*r\^{}\{2\}\$\$
 
 Becomes:
 \[A = \pi*r^{2}\]
@@ -546,8 +545,8 @@ To create numbered equations, put them in an `equation' environment and give the
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{\textbackslash{}begin}\NormalTok{\{}\ExtensionTok{equation}\NormalTok{\}}\SpecialStringTok{ }
-\SpecialStringTok{  f}\SpecialCharTok{\textbackslash{}left}\SpecialStringTok{(k}\SpecialCharTok{\textbackslash{}right}\SpecialStringTok{) = }\SpecialCharTok{\textbackslash{}binom}\SpecialStringTok{\{n\}\{k\} p^k}\SpecialCharTok{\textbackslash{}left}\SpecialStringTok{(1-p}\SpecialCharTok{\textbackslash{}right}\SpecialStringTok{)^\{n-k\}}
-\SpecialStringTok{  (}\SpecialCharTok{\textbackslash{}#}\SpecialStringTok{eq:binom)}
+\SpecialStringTok{  f}\SpecialCharTok{\textbackslash{}left}\SpecialStringTok{(k}\SpecialCharTok{\textbackslash{}right}\SpecialStringTok{) = }\SpecialCharTok{\textbackslash{}binom}\SpecialStringTok{\{n\}\{k\} p\^{}k}\SpecialCharTok{\textbackslash{}left}\SpecialStringTok{(1{-}p}\SpecialCharTok{\textbackslash{}right}\SpecialStringTok{)\^{}\{n{-}k\}}
+\SpecialStringTok{  (}\SpecialCharTok{\textbackslash{}\#}\SpecialStringTok{eq:binom)}
 \KeywordTok{\textbackslash{}end}\NormalTok{\{}\ExtensionTok{equation}\NormalTok{\} }
 \end{Highlighting}
 \end{Shaded}
@@ -588,7 +587,7 @@ The syntax of a code chunk is shown in Figure \ref{fig:chunk-parts}.
 \includegraphics[width=1\linewidth]{figures/chunk-parts} \caption{Code chunk syntax}\label{fig:chunk-parts}
 \end{figure}
 
-Common chunk options include (see e.g. \href{https://bookdown.org/yihui/rmarkdown/r-code.html}{bookdown.org}):
+Common chunk options include (see e.g.~\href{https://bookdown.org/yihui/rmarkdown/r-code.html}{bookdown.org}):
 
 \begin{itemize}
 \tightlist
@@ -604,7 +603,7 @@ Common chunk options include (see e.g. \href{https://bookdown.org/yihui/rmarkdow
   \texttt{fig.scap}: short figure caption, which will be used in the `List of Figures' in the PDF front matter
 \end{itemize}
 
-\textbf{IMPORTANT}: Do \emph{not} use underscoores in your chunk labels - if you do, you are likely to get an error in PDF output saying something like ``! Package caption Error: \textbackslash{}caption outside float''.
+\textbf{IMPORTANT}: Do \emph{not} use underscoores in your chunk labels - if you do, you are likely to get an error in PDF output saying something like ``! Package caption Error: \textbackslash caption outside float''.
 
 \hypertarget{setup-chunks}{%
 \subsection{Setup chunks}\label{setup-chunks}}
@@ -629,7 +628,7 @@ Code chunks are also used for including images, with \texttt{include\_graphics} 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{knitr}\OperatorTok{::}\KeywordTok{include_graphics}\NormalTok{(}\StringTok{"figures/beltcrest.png"}\NormalTok{)}
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{include\_graphics}\NormalTok{(}\StringTok{"figures/beltcrest.png"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -662,10 +661,10 @@ The syntax is different for LaTeX and HTML, so for ease we might start by assign
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\ControlFlowTok{if}\NormalTok{ (knitr}\OperatorTok{::}\NormalTok{opts_knit}\OperatorTok{$}\KeywordTok{get}\NormalTok{(}\StringTok{'rmarkdown.pandoc.to'}\NormalTok{) }\OperatorTok{==}\StringTok{ 'latex'}\NormalTok{)\{}
-\NormalTok{  rotate180 <-}\StringTok{ "angle=180"}
+\ControlFlowTok{if}\NormalTok{ (knitr}\SpecialCharTok{::}\NormalTok{opts\_knit}\SpecialCharTok{$}\FunctionTok{get}\NormalTok{(}\StringTok{\textquotesingle{}rmarkdown.pandoc.to\textquotesingle{}}\NormalTok{) }\SpecialCharTok{==} \StringTok{\textquotesingle{}latex\textquotesingle{}}\NormalTok{)\{}
+\NormalTok{  rotate180 }\OtherTok{\textless{}{-}} \StringTok{"angle=180"}
 \NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
-\NormalTok{  rotate180 <-}\StringTok{ "style='transform:rotate(180deg);'"}
+\NormalTok{  rotate180 }\OtherTok{\textless{}{-}} \StringTok{"style=\textquotesingle{}transform:rotate(180deg);\textquotesingle{}"}
 \NormalTok{\}}
 \end{Highlighting}
 \end{Shaded}
@@ -689,10 +688,10 @@ You use ordinary code in R or other languages - Figure \ref{fig:cars-plot} shows
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{cars }\OperatorTok{%>%}\StringTok{ }
-\StringTok{  }\KeywordTok{ggplot}\NormalTok{() }\OperatorTok{+}
-\StringTok{    }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ speed, }\DataTypeTok{y =}\NormalTok{ dist) }\OperatorTok{+}
-\StringTok{    }\KeywordTok{geom_point}\NormalTok{()}
+\NormalTok{cars }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
+    \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ speed, }\AttributeTok{y =}\NormalTok{ dist) }\SpecialCharTok{+}
+    \FunctionTok{geom\_point}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
@@ -713,9 +712,9 @@ Table \ref{tab:cars-table} shows the first rows of that cars data - read in your
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{cars }\OperatorTok{%>%}\StringTok{ }
-\StringTok{  }\KeywordTok{head}\NormalTok{() }\OperatorTok{%>%}\StringTok{ }
-\StringTok{  }\NormalTok{knitr}\OperatorTok{::}\KeywordTok{kable}\NormalTok{(}\DataTypeTok{caption =} \StringTok{"A knitr kable table"}\NormalTok{)}
+\NormalTok{cars }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{head}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} 
+\NormalTok{  knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(}\AttributeTok{caption =} \StringTok{"A knitr kable table"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -776,7 +775,7 @@ For example, we might assign the number of rows in the \texttt{cars} dataset to 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{num_car_observations <-}\StringTok{ }\KeywordTok{nrow}\NormalTok{(cars)}
+\NormalTok{num\_car\_observations }\OtherTok{\textless{}{-}} \FunctionTok{nrow}\NormalTok{(cars)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -816,8 +815,8 @@ Here is an example of an entry in a \textbf{.bib} file:
 \VariableTok{@article}\NormalTok{\{}\OtherTok{Shea2014}\NormalTok{,}
   \DataTypeTok{author}\NormalTok{ =        \{Shea, Nicholas and Boldt, Annika\},}
   \DataTypeTok{journal}\NormalTok{ =       \{Trends in Cognitive Sciences\},}
-  \DataTypeTok{pages}\NormalTok{ =         \{186--193\},}
-  \DataTypeTok{title}\NormalTok{ =         \{\{Supra-personal cognitive control\}\},}
+  \DataTypeTok{pages}\NormalTok{ =         \{186{-}{-}193\},}
+  \DataTypeTok{title}\NormalTok{ =         \{\{Supra{-}personal cognitive control\}\},}
   \DataTypeTok{volume}\NormalTok{ =        \{18\},}
   \DataTypeTok{year}\NormalTok{ =          \{2014\},}
   \DataTypeTok{doi}\NormalTok{ =           \{10.1016/j.tics.2014.01.006\},}
@@ -828,7 +827,7 @@ Here is an example of an entry in a \textbf{.bib} file:
 In this entry highlighed section, `Shea2014' is the \textbf{citation identifier}.
 To default way to cite an entry in your text is with this syntax: \texttt{{[}@citation-identifier{]}}.
 
-So I might cite some things \autocites{Shea2014}{Lottridge2012}.
+So I might cite some things \autocite{Shea2014,Lottridge2012}.
 
 \hypertarget{pdf-output}{%
 \subsection{PDF output}\label{pdf-output}}
@@ -926,7 +925,7 @@ We can also use \textbf{hyperlink syntax} and add \# before the label, though th
 
 It is a very good idea to create \textbf{custom labels} for our sections. This is because the automatically assigned labels will change when we change the titles of the sections - to avoid this, we can create the labels ourselves and leave them untouched if we change the section titles.
 
-We create custom labels by adding \texttt{\{\#label\}} after a header, e.g. \texttt{\#\ My\ section\ \{\#my-label\}}.
+We create custom labels by adding \texttt{\{\#label\}} after a header, e.g.~\texttt{\#\ My\ section\ \{\#my-label\}}.
 See \protect\hyperlink{cites-and-refs}{our chapter title} for an example. That was section \ref{cites-and-refs}.
 
 \hypertarget{figure-image-and-plot-references}{%
@@ -944,7 +943,7 @@ Let's add an image:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{knitr}\OperatorTok{::}\KeywordTok{include_graphics}\NormalTok{(}\StringTok{"figures/captain.jpeg"}\NormalTok{)}
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{include\_graphics}\NormalTok{(}\StringTok{"figures/captain.jpeg"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -975,8 +974,8 @@ Let's include a table:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{knitr}\OperatorTok{::}\KeywordTok{kable}\NormalTok{(cars[}\DecValTok{1}\OperatorTok{:}\DecValTok{5}\NormalTok{,],}
-            \DataTypeTok{caption=}\StringTok{"Stopping cars"}\NormalTok{)}
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(cars[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{,],}
+            \AttributeTok{caption=}\StringTok{"Stopping cars"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1058,12 +1057,12 @@ If you are using \texttt{knitr::kable} to generate a table, you can do this with
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{knitr}\OperatorTok{::}\KeywordTok{kable}\NormalTok{(mtcars,}
-              \DataTypeTok{caption =} \StringTok{"A very long and descriptive (and potentially}
-\StringTok{              boring) caption that doesn't fit in the list of figures,}
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(mtcars,}
+              \AttributeTok{caption =} \StringTok{"A very long and descriptive (and potentially}
+\StringTok{              boring) caption that doesn\textquotesingle{}t fit in the list of figures,}
 \StringTok{              but helps the reader understand what the figure }
 \StringTok{              communicates."}\NormalTok{,}
-              \DataTypeTok{caption.short =} \StringTok{"A concise description for the list of tables"}\NormalTok{)}
+              \AttributeTok{caption.short =} \StringTok{"A concise description for the list of tables"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1078,8 +1077,8 @@ For example, this chapter's running header is simply `Cites and cross-refs', bec
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{# Citations and cross-references \{#cites-and-refs\}}
-\NormalTok{\textbackslash{}chaptermark\{Cites and cross-refs\}}
+\FunctionTok{\# Citations and cross{-}references \{\#cites{-}and{-}refs\}}
+\NormalTok{\textbackslash{}chaptermark\{Cites and cross{-}refs\}}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1174,41 +1173,39 @@ You will probably want to set the chunk options \texttt{out.width=\textquotesing
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{knitr}\OperatorTok{::}\KeywordTok{include_graphics}\NormalTok{(}\StringTok{"figures/pdf_example/Lyngs2020_FB.pdf"}\NormalTok{)}
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{include\_graphics}\NormalTok{(}\StringTok{"figures/pdf\_example/Lyngs2020\_FB.pdf"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 In LaTeX output, however, this approach can cause odd behaviour.
-Therefore, when you build your thesis to PDF, split the PDF into an alphanumerically sorted sequence of \textbf{single-page} PDF files (you can do this automatically with the package \texttt{pdftools}). You can then use the appropriate LaTeX command to insert them, as shown below (for brevity, in the \texttt{oxforddown} sample content we're only including two pages from a published article)
-\emph{Note that the chunk option \texttt{results=\textquotesingle{}asis\textquotesingle{}} must be used.}
+Therefore, when you build your thesis to PDF, split the PDF into an alphanumerically sorted sequence of \textbf{single-page} PDF files (you can do this automatically with the package \texttt{pdftools}). You can then use the appropriate LaTeX command to insert them, as shown below (for brevity, in the \texttt{oxforddown} PDF sample content we're only including two pages)
+\emph{Note that the chunk option \texttt{results=\textquotesingle{}asis\textquotesingle{}} must be set.}
 You may also want to remove margins from the PDF files, which you can do with Adobe Acrobat (paid version) and likely other software.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{# install.packages(pdftools)}
-\CommentTok{#split PDF in pages stored in figures/pdf_example/split/}
-\CommentTok{#pdftools::pdf_split("figures/pdf_example/Lyngs2020_FB.pdf",}
-\CommentTok{# output = "figures/pdf_example/split/")}
+\CommentTok{\# install.packages(pdftools)}
+\CommentTok{\# split PDF into pages stored in figures/pdf\_example/split/}
+\CommentTok{\# pdftools::pdf\_split("figures/pdf\_example/Lyngs2020\_FB.pdf",}
+\CommentTok{\# output = "figures/pdf\_example/split/")}
 
-\CommentTok{# grab the pages}
-\NormalTok{pages <-}\StringTok{ }\KeywordTok{list.files}\NormalTok{(}\StringTok{"figures/pdf_example/split"}\NormalTok{, }\DataTypeTok{full.names =} \OtherTok{TRUE}\NormalTok{)}
+\CommentTok{\# grab the pages}
+\NormalTok{pages }\OtherTok{\textless{}{-}} \FunctionTok{list.files}\NormalTok{(}\StringTok{"figures/pdf\_example/split"}\NormalTok{, }\AttributeTok{full.names =} \ConstantTok{TRUE}\NormalTok{)}
 
-\CommentTok{# set how wide you want the inserted PDFs to be:}
-\CommentTok{# 1.0 is 100 per cent of the oxforddown PDF page width;}
-\CommentTok{# you may want to make it a bit bigger}
-\NormalTok{pdf_width <-}\StringTok{ }\FloatTok{1.2}
+\CommentTok{\# set how wide you want the inserted PDFs to be:}
+\CommentTok{\# 1.0 is 100 per cent of the oxforddown PDF page width;}
+\CommentTok{\# you may want to make it a bit bigger}
+\NormalTok{pdf\_width }\OtherTok{\textless{}{-}} \FloatTok{1.2}
 
-\CommentTok{# for each PDF page, insert it nicely and}
-\CommentTok{# end with a page break}
-\KeywordTok{cat}\NormalTok{(stringr}\OperatorTok{::}\KeywordTok{str_c}\NormalTok{(}\StringTok{"}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{newpage }\CharTok{\textbackslash{}\textbackslash{}}\StringTok{begin\{center\}}
-\StringTok{    }\CharTok{\textbackslash{}\textbackslash{}}\StringTok{makebox[}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{linewidth][c]\{}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{includegraphics[width="}\NormalTok{, pdf_width,}
-    \StringTok{"}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{linewidth]\{"}\NormalTok{, pages, }\StringTok{"\}\} }\CharTok{\textbackslash{}\textbackslash{}}\StringTok{end\{center\}"}\NormalTok{))}
+\CommentTok{\# for each PDF page, insert it nicely and}
+\CommentTok{\# end with a page break}
+\FunctionTok{cat}\NormalTok{(stringr}\SpecialCharTok{::}\FunctionTok{str\_c}\NormalTok{(}\StringTok{"}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{newpage }\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{begin\{center\}}
+\StringTok{    }\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{makebox[}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{linewidth][c]\{}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{includegraphics[width="}\NormalTok{, pdf\_width,}
+    \StringTok{"}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{linewidth]\{"}\NormalTok{, pages, }\StringTok{"\}\} }\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{end\{center\}"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
 \newpage \begin{center} \makebox[\linewidth][c]{\includegraphics[width=1.2\linewidth]{figures/pdf_example/split/_000000000000001.pdf}} \end{center} \newpage \begin{center} \makebox[\linewidth][c]{\includegraphics[width=1.2\linewidth]{figures/pdf_example/split/_000000000000011.pdf}} \end{center}
-
-\newpage
 
 \hypertarget{customizing-referencing}{%
 \section{Customizing referencing}\label{customizing-referencing}}
@@ -1223,14 +1220,14 @@ However, note that this approach does not support chapter bibliographies (see Se
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{csl:}\AttributeTok{ ecology.csl}
+\FunctionTok{csl}\KeywordTok{:}\AttributeTok{ ecology.csl}
 \end{Highlighting}
 \end{Shaded}
 
 \hypertarget{biblatex-custom}{%
 \subsection{Customizing biblatex and adding chapter bibliographies}\label{biblatex-custom}}
 
-This section provides one example of customizing biblatex. Much of this code was combined from searches on Stack Exchange and other sources (e.g. \href{https://tex.stackexchange.com/questions/10682/suppress-in-biblatex}{here}).
+This section provides one example of customizing biblatex. Much of this code was combined from searches on Stack Exchange and other sources (e.g.~\href{https://tex.stackexchange.com/questions/10682/suppress-in-biblatex}{here}).
 
 In \textbf{templates/template.tex}, one can replace the existing biblatex calls with the following to achieve referencing that looks like this:
 
@@ -1242,7 +1239,7 @@ Charmantier, A. and P. Gienapp (2014). Climate change and timing of avian breedi
 \begin{Highlighting}[]
 \BuiltInTok{\textbackslash{}usepackage}\NormalTok{[backend=biber,}
 \NormalTok{    bibencoding=utf8,}
-\NormalTok{    refsection=chapter, }\CommentTok{% referencing by chapter}
+\NormalTok{    refsection=chapter, }\CommentTok{\% referencing by chapter}
 \NormalTok{    style=authoryear, }
 \NormalTok{    firstinits=true,}
 \NormalTok{    isbn=false,}
@@ -1261,53 +1258,53 @@ Charmantier, A. and P. Gienapp (2014). Climate change and timing of avian breedi
 \NormalTok{    sortcites=true,}
 \NormalTok{    date=year}
 \NormalTok{]\{}\ExtensionTok{biblatex}\NormalTok{\}}
-\FunctionTok{\textbackslash{}AtEveryBibitem}\NormalTok{\{}\CommentTok{%}
-  \FunctionTok{\textbackslash{}clearlist}\NormalTok{\{language\}}\CommentTok{%}
+\FunctionTok{\textbackslash{}AtEveryBibitem}\NormalTok{\{}\CommentTok{\%}
+  \FunctionTok{\textbackslash{}clearlist}\NormalTok{\{language\}}\CommentTok{\%}
   \FunctionTok{\textbackslash{}clearfield}\NormalTok{\{note\}}
 \NormalTok{\}}
 
-\FunctionTok{\textbackslash{}DeclareFieldFormat}\NormalTok{\{titlecase\}\{}\FunctionTok{\textbackslash{}MakeTitleCase}\NormalTok{\{#1\}\}}
+\FunctionTok{\textbackslash{}DeclareFieldFormat}\NormalTok{\{titlecase\}\{}\FunctionTok{\textbackslash{}MakeTitleCase}\NormalTok{\{\#1\}\}}
 
-\FunctionTok{\textbackslash{}newrobustcmd}\NormalTok{\{}\FunctionTok{\textbackslash{}MakeTitleCase}\NormalTok{\}[1]\{}\CommentTok{%}
-  \FunctionTok{\textbackslash{}ifthenelse}\NormalTok{\{}\FunctionTok{\textbackslash{}ifcurrentfield}\NormalTok{\{booktitle\}}\FunctionTok{\textbackslash{}OR\textbackslash{}ifcurrentfield}\NormalTok{\{booksubtitle\}}\CommentTok{%}
-    \FunctionTok{\textbackslash{}OR\textbackslash{}ifcurrentfield}\NormalTok{\{maintitle\}}\FunctionTok{\textbackslash{}OR\textbackslash{}ifcurrentfield}\NormalTok{\{mainsubtitle\}}\CommentTok{%}
-    \FunctionTok{\textbackslash{}OR\textbackslash{}ifcurrentfield}\NormalTok{\{journaltitle\}}\FunctionTok{\textbackslash{}OR\textbackslash{}ifcurrentfield}\NormalTok{\{journalsubtitle\}}\CommentTok{%}
-    \FunctionTok{\textbackslash{}OR\textbackslash{}ifcurrentfield}\NormalTok{\{issuetitle\}}\FunctionTok{\textbackslash{}OR\textbackslash{}ifcurrentfield}\NormalTok{\{issuesubtitle\}}\CommentTok{%}
-    \FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{book\}}\FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{mvbook\}}\FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{bookinbook\}}\CommentTok{%}
-    \FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{booklet\}}\FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{suppbook\}}\CommentTok{%}
-    \FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{collection\}}\FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{mvcollection\}}\CommentTok{%}
-    \FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{suppcollection\}}\FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{manual\}}\CommentTok{%}
-    \FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{periodical\}}\FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{suppperiodical\}}\CommentTok{%}
-    \FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{proceedings\}}\FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{mvproceedings\}}\CommentTok{%}
-    \FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{reference\}}\FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{mvreference\}}\CommentTok{%}
+\FunctionTok{\textbackslash{}newrobustcmd}\NormalTok{\{}\FunctionTok{\textbackslash{}MakeTitleCase}\NormalTok{\}[1]\{}\CommentTok{\%}
+  \FunctionTok{\textbackslash{}ifthenelse}\NormalTok{\{}\FunctionTok{\textbackslash{}ifcurrentfield}\NormalTok{\{booktitle\}}\FunctionTok{\textbackslash{}OR\textbackslash{}ifcurrentfield}\NormalTok{\{booksubtitle\}}\CommentTok{\%}
+    \FunctionTok{\textbackslash{}OR\textbackslash{}ifcurrentfield}\NormalTok{\{maintitle\}}\FunctionTok{\textbackslash{}OR\textbackslash{}ifcurrentfield}\NormalTok{\{mainsubtitle\}}\CommentTok{\%}
+    \FunctionTok{\textbackslash{}OR\textbackslash{}ifcurrentfield}\NormalTok{\{journaltitle\}}\FunctionTok{\textbackslash{}OR\textbackslash{}ifcurrentfield}\NormalTok{\{journalsubtitle\}}\CommentTok{\%}
+    \FunctionTok{\textbackslash{}OR\textbackslash{}ifcurrentfield}\NormalTok{\{issuetitle\}}\FunctionTok{\textbackslash{}OR\textbackslash{}ifcurrentfield}\NormalTok{\{issuesubtitle\}}\CommentTok{\%}
+    \FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{book\}}\FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{mvbook\}}\FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{bookinbook\}}\CommentTok{\%}
+    \FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{booklet\}}\FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{suppbook\}}\CommentTok{\%}
+    \FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{collection\}}\FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{mvcollection\}}\CommentTok{\%}
+    \FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{suppcollection\}}\FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{manual\}}\CommentTok{\%}
+    \FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{periodical\}}\FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{suppperiodical\}}\CommentTok{\%}
+    \FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{proceedings\}}\FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{mvproceedings\}}\CommentTok{\%}
+    \FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{reference\}}\FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{mvreference\}}\CommentTok{\%}
     \FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{report\}}\FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{thesis\}\}}
-\NormalTok{    \{#1\}}
-\NormalTok{    \{}\FunctionTok{\textbackslash{}MakeSentenceCase}\NormalTok{\{#1\}\}\}}
+\NormalTok{    \{\#1\}}
+\NormalTok{    \{}\FunctionTok{\textbackslash{}MakeSentenceCase}\NormalTok{\{\#1\}\}\}}
     
-\CommentTok{% \textbackslash{}renewbibmacro\{in:\}\{\}}
-\CommentTok{% suppress "in" for articles}
-\CommentTok{% }
-\FunctionTok{\textbackslash{}renewbibmacro}\NormalTok{\{in:\}\{}\CommentTok{%}
+\CommentTok{\% \textbackslash{}renewbibmacro\{in:\}\{\}}
+\CommentTok{\% suppress "in" for articles}
+\CommentTok{\% }
+\FunctionTok{\textbackslash{}renewbibmacro}\NormalTok{\{in:\}\{}\CommentTok{\%}
   \FunctionTok{\textbackslash{}ifentrytype}\NormalTok{\{article\}\{\}\{}\FunctionTok{\textbackslash{}printtext}\NormalTok{\{}\FunctionTok{\textbackslash{}bibstring}\NormalTok{\{in\}}\FunctionTok{\textbackslash{}intitlepunct}\NormalTok{\}\}\}}
-\CommentTok{%-- no "quotes" around titles of chapters/article titles}
+\CommentTok{\%{-}{-} no "quotes" around titles of chapters/article titles}
 \FunctionTok{\textbackslash{}DeclareFieldFormat}\NormalTok{[article, inbook, incollection, inproceedings, misc, thesis, unpublished]}
-\NormalTok{\{title\}\{#1\}}
-\CommentTok{%-- no punctuation after volume}
+\NormalTok{\{title\}\{\#1\}}
+\CommentTok{\%{-}{-} no punctuation after volume}
 \FunctionTok{\textbackslash{}DeclareFieldFormat}\NormalTok{[article]}
-\NormalTok{\{volume\}\{\{#1\}\}}
-\CommentTok{%-- puts number/issue between brackets}
+\NormalTok{\{volume\}\{\{\#1\}\}}
+\CommentTok{\%{-}{-} puts number/issue between brackets}
 \FunctionTok{\textbackslash{}DeclareFieldFormat}\NormalTok{[article, inbook, incollection, inproceedings, misc, thesis, unpublished]}
-\NormalTok{\{number\}\{}\FunctionTok{\textbackslash{}mkbibparens}\NormalTok{\{#1\}\} }
-\CommentTok{%-- and then for articles directly the pages w/o any "pages" or "pp." }
+\NormalTok{\{number\}\{}\FunctionTok{\textbackslash{}mkbibparens}\NormalTok{\{\#1\}\} }
+\CommentTok{\%{-}{-} and then for articles directly the pages w/o any "pages" or "pp." }
 \FunctionTok{\textbackslash{}DeclareFieldFormat}\NormalTok{[article]}
-\NormalTok{\{pages\}\{#1\}}
-\CommentTok{%-- for some types replace "pages" by "p."}
+\NormalTok{\{pages\}\{\#1\}}
+\CommentTok{\%{-}{-} for some types replace "pages" by "p."}
 \FunctionTok{\textbackslash{}DeclareFieldFormat}\NormalTok{[inproceedings, incollection, inbook]}
-\NormalTok{\{pages\}\{p. #1\}}
-\CommentTok{%-- format 16(4):224--225 for articles}
-\FunctionTok{\textbackslash{}renewbibmacro}\NormalTok{*\{volume+number+eid\}\{}
-  \FunctionTok{\textbackslash{}printfield}\NormalTok{\{volume\}}\CommentTok{%}
-  \FunctionTok{\textbackslash{}printfield}\NormalTok{\{number\}}\CommentTok{%}
+\NormalTok{\{pages\}\{p. \#1\}}
+\CommentTok{\%{-}{-} format 16(4):224{-}{-}225 for articles}
+\FunctionTok{\textbackslash{}renewbibmacro*}\NormalTok{\{volume+number+eid\}\{}
+  \FunctionTok{\textbackslash{}printfield}\NormalTok{\{volume\}}\CommentTok{\%}
+  \FunctionTok{\textbackslash{}printfield}\NormalTok{\{number\}}\CommentTok{\%}
   \FunctionTok{\textbackslash{}printunit}\NormalTok{\{}\FunctionTok{\textbackslash{}addcolon}\NormalTok{\}}
 \NormalTok{\}}
 \end{Highlighting}
@@ -1332,33 +1329,33 @@ In the following code block, the original code is commented out where replaced.
 \begin{Highlighting}[]
 \BuiltInTok{\textbackslash{}usepackage}\NormalTok{\{}\ExtensionTok{fancyhdr}\NormalTok{\}}
 \FunctionTok{\textbackslash{}setlength}\NormalTok{\{}\FunctionTok{\textbackslash{}headheight}\NormalTok{\}\{15pt\}}
-\FunctionTok{\textbackslash{}fancyhf}\NormalTok{\{\} }\CommentTok{% clear the header and footers}
+\FunctionTok{\textbackslash{}fancyhf}\NormalTok{\{\} }\CommentTok{\% clear the header and footers}
 \FunctionTok{\textbackslash{}pagestyle}\NormalTok{\{fancy\}}
-\FunctionTok{\textbackslash{}renewcommand}\NormalTok{\{}\ExtensionTok{\textbackslash{}chaptermark}\NormalTok{\}[1]\{}\FunctionTok{\textbackslash{}markboth}\NormalTok{\{}\FunctionTok{\textbackslash{}thechapter}\NormalTok{. #1\}\{}\FunctionTok{\textbackslash{}thechapter}\NormalTok{. #1\}\}}
-\CommentTok{% \textbackslash{}renewcommand\{\textbackslash{}chaptermark\}[1]\{\textbackslash{}markboth\{\textbackslash{}thechapter. #1\}\{\}\}}
-\FunctionTok{\textbackslash{}renewcommand}\NormalTok{\{}\ExtensionTok{\textbackslash{}sectionmark}\NormalTok{\}[1]\{}\FunctionTok{\textbackslash{}markright}\NormalTok{\{}\FunctionTok{\textbackslash{}thesection}\NormalTok{. #1\}\}}
+\FunctionTok{\textbackslash{}renewcommand}\NormalTok{\{}\ExtensionTok{\textbackslash{}chaptermark}\NormalTok{\}[1]\{}\FunctionTok{\textbackslash{}markboth}\NormalTok{\{}\FunctionTok{\textbackslash{}thechapter}\NormalTok{. \#1\}\{}\FunctionTok{\textbackslash{}thechapter}\NormalTok{. \#1\}\}}
+\CommentTok{\% \textbackslash{}renewcommand\{\textbackslash{}chaptermark\}[1]\{\textbackslash{}markboth\{\textbackslash{}thechapter. \#1\}\{\}\}}
+\FunctionTok{\textbackslash{}renewcommand}\NormalTok{\{}\ExtensionTok{\textbackslash{}sectionmark}\NormalTok{\}[1]\{}\FunctionTok{\textbackslash{}markright}\NormalTok{\{}\FunctionTok{\textbackslash{}thesection}\NormalTok{. \#1\}\}}
 \FunctionTok{\textbackslash{}renewcommand}\NormalTok{\{}\ExtensionTok{\textbackslash{}headrulewidth}\NormalTok{\}\{0pt\}}
 \FunctionTok{\textbackslash{}fancyhead}\NormalTok{[CO]\{}\FunctionTok{\textbackslash{}emph}\NormalTok{\{}\FunctionTok{\textbackslash{}leftmark}\NormalTok{\}\}}
 \FunctionTok{\textbackslash{}fancyhead}\NormalTok{[CE]\{}\FunctionTok{\textbackslash{}emph}\NormalTok{\{}\FunctionTok{\textbackslash{}rightmark}\NormalTok{\}\}}
-\CommentTok{% \textbackslash{}fancyhead[LO,RE]\{\}}
-\CommentTok{% \textbackslash{}fancyhead[LE,RO]\{\}}
+\CommentTok{\% \textbackslash{}fancyhead[LO,RE]\{\}}
+\CommentTok{\% \textbackslash{}fancyhead[LE,RO]\{\}}
 \FunctionTok{\textbackslash{}fancyfoot}\NormalTok{[CO,CE]\{}\FunctionTok{\textbackslash{}emph}\NormalTok{\{}\FunctionTok{\textbackslash{}thepage}\NormalTok{\}\}}
 
 \FunctionTok{\textbackslash{}fancypagestyle}\NormalTok{\{plain\}\{}\FunctionTok{\textbackslash{}fancyhf}\NormalTok{\{\}}\FunctionTok{\textbackslash{}fancyfoot}\NormalTok{[C]\{}\FunctionTok{\textbackslash{}emph}\NormalTok{\{}\FunctionTok{\textbackslash{}thepage}\NormalTok{\}\}\}}
 
-\CommentTok{% JEM fix header on cleared pages for openright}
-\FunctionTok{\textbackslash{}def}\NormalTok{\textbackslash{}cleardoublepage\{\textbackslash{}clearpage\textbackslash{}if@twoside \textbackslash{}ifodd\textbackslash{}c@page\textbackslash{}else}
-\NormalTok{   \textbackslash{}hbox\{\}}
-   \CommentTok{% \textbackslash{}fancyhead[RE,LO]\{\}}
-\NormalTok{   \textbackslash{}fancyhead[CE,CO]\{\}}
-\NormalTok{   \textbackslash{}newpage}
-\NormalTok{   \textbackslash{}if@twocolumn\textbackslash{}hbox\{\}\textbackslash{}newpage}
-\NormalTok{   \textbackslash{}fi}
-   \CommentTok{% \textbackslash{}fancyhead[LO]\{\textbackslash{}emph\{\textbackslash{}leftmark\}\} }
-   \CommentTok{% \textbackslash{}fancyhead[RE]\{\textbackslash{}emph\{\textbackslash{}rightmark\}\} }
-\NormalTok{   \textbackslash{}fancyhead[CO]\{\textbackslash{}emph\{\textbackslash{}leftmark\}\} }
-\NormalTok{   \textbackslash{}fancyhead[CE]\{\textbackslash{}emph\{\textbackslash{}rightmark\}\} }
-\NormalTok{   \textbackslash{}fi\textbackslash{}fi\}}
+\CommentTok{\% JEM fix header on cleared pages for openright}
+\FunctionTok{\textbackslash{}def\textbackslash{}cleardoublepage}\NormalTok{\{}\FunctionTok{\textbackslash{}clearpage\textbackslash{}if@twoside} \FunctionTok{\textbackslash{}ifodd\textbackslash{}c@page\textbackslash{}else}
+   \FunctionTok{\textbackslash{}hbox}\NormalTok{\{\}}
+   \CommentTok{\% \textbackslash{}fancyhead[RE,LO]\{\}}
+   \FunctionTok{\textbackslash{}fancyhead}\NormalTok{[CE,CO]\{\}}
+   \FunctionTok{\textbackslash{}newpage}
+   \FunctionTok{\textbackslash{}if@twocolumn\textbackslash{}hbox}\NormalTok{\{\}}\FunctionTok{\textbackslash{}newpage}
+   \FunctionTok{\textbackslash{}fi}
+   \CommentTok{\% \textbackslash{}fancyhead[LO]\{\textbackslash{}emph\{\textbackslash{}leftmark\}\} }
+   \CommentTok{\% \textbackslash{}fancyhead[RE]\{\textbackslash{}emph\{\textbackslash{}rightmark\}\} }
+   \FunctionTok{\textbackslash{}fancyhead}\NormalTok{[CO]\{}\FunctionTok{\textbackslash{}emph}\NormalTok{\{}\FunctionTok{\textbackslash{}leftmark}\NormalTok{\}\} }
+   \FunctionTok{\textbackslash{}fancyhead}\NormalTok{[CE]\{}\FunctionTok{\textbackslash{}emph}\NormalTok{\{}\FunctionTok{\textbackslash{}rightmark}\NormalTok{\}\} }
+   \FunctionTok{\textbackslash{}fi\textbackslash{}fi}\NormalTok{\}}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1393,8 +1390,8 @@ This first appendix includes an R chunk that was hidden in the document (using \
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{library}\NormalTok{(tidyverse)}
-\NormalTok{knitr}\OperatorTok{::}\KeywordTok{include_graphics}\NormalTok{(}\StringTok{"figures/chunk-parts.png"}\NormalTok{)}
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{include\_graphics}\NormalTok{(}\StringTok{"figures/chunk{-}parts.png"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1402,7 +1399,7 @@ This first appendix includes an R chunk that was hidden in the document (using \
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{knitr}\OperatorTok{::}\KeywordTok{include_graphics}\NormalTok{(}\StringTok{"figures/beltcrest.png"}\NormalTok{)}
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{include\_graphics}\NormalTok{(}\StringTok{"figures/beltcrest.png"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 

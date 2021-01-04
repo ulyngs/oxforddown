@@ -1,0 +1,64 @@
+:root {
+  --theme-color1: #6D1919;
+  --theme-color2: #7F423D;
+}
+
+a {
+  color: var(--theme-color1);
+}
+
+.sidebar-book a,
+.sidebar-chapter a {
+  color: darkgray;
+}
+
+.sidebar-book:hover a,
+.sidebar-chapter:hover a {
+  color: var(--theme-color1);
+}
+
+h1 a[title] {
+  color: var(--theme-color2);
+}
+
+.container-fluid > .row {
+  margin-top: 1.8em;
+}
+
+
+.sidebar-book,
+.sidebar-chapter {
+  position: relative;
+  overflow-y: visible;
+  max-height: none;
+}
+
+#main-nav,
+#toc {
+  position: sticky;
+  top: 1.8em;
+}
+
+/* references */
+.csl-entry {
+  margin-bottom: 1em;
+}
+
+
+/* footer */
+.bg-primary {
+  background-color: var(--theme-color2) !important;
+}
+
+
+.thesis-cover p {
+  text-align: center;
+}
+.thesis-cover img {
+  width: 95%;
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+}
+
+.byline {
+  margin-top: 2em;
+}
