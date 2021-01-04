@@ -107,7 +107,7 @@ The Word output has no template behind it, and many things do not work (e.g. ima
 ## Writing your thesis
 To use this template to write your thesis, do the following:
 - update the YAML header (the stuff at the top between '---') in **index.Rmd** with your name, college, etc.
-- write the individual chapters as **.Rmd** files in the root folder - **the introduction chapter *must* be named _00-introduction.Rmd**.
+- write the individual chapters as **.Rmd** files in the root folder.
 - write the front matter (abstract, acknowledgements, abbreviations) and back matter (appendices) by adjusting the **.Rmd** files in the **front-and-back-matter/** folder
 - for abbreviations, change **front-and-back-matter/abbreviations.tex** to fit your needs (follow the LaTeX syntax in there)
 

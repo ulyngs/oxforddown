@@ -11,13 +11,10 @@ documentclass: book
 #bibliography: references.bib
 ---
 
-# Introduction {-}
+# Introduction
 
-\adjustmtc 
+\adjustmtc
 <!-- For PDF output, we must include this LaTeX command after unnumbered headings, otherwise the numbers in the mini table of contents will be incorrect -->
-
-<!-- this adds an image in gitbook output --> 
-<img src="figures/cover.png" width="315" height="445" alt="Cover image" align="right" style="margin: 0 1em 0 1em" />
 
 Welcome to the *R Markdown* Oxford University thesis template. 
 This sample content is adapted from [`thesisdown`](https://github.com/ismayc/thesisdown) and the formatting of PDF output is adapted from the [OxThesis LaTeX template](https://github.com/mcmanigle/OxThesis). 

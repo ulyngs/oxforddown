@@ -1,0 +1,27 @@
+# Welcome {-}
+
+::: {.row}
+:::::: {.col-sm-6}
+Welcome to the `bs4` output from the [`oxforddown`](https://github.com/ulyngs/oxforddown) thesis template for [R Markdown](https://rmarkdown.rstudio.com). 
+To view/download the PDF output, [click here](_main.pdf) (or click the cover image).
+Enjoy!
+
+::::::::: {.byline}
+Ulrik Lyngs \
+4 January 2021
+:::::::::
+::::::
+
+:::::: {.col-sm-6 .thesis-cover}
+<a href="_main.pdf" target="_blank"><img src="figures/cover.png" alt="Download PDF" class="img-fluid"/></a> 
+::::::
+:::
+
+## Abstract {-}
+```{r abstract, child=here::here('front-and-back-matter/_abstract.Rmd')}
+```
+
+
+## Acknowledgments {-}
+```{r acknowledgments, child=here::here('front-and-back-matter/_acknowledgements.Rmd')}
+```

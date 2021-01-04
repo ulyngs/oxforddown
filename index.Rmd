@@ -51,6 +51,11 @@ output:
     keep_tex: true
     citation_package: biblatex  
     pandoc_args: ["--lua-filter=scripts_and_filters/correction_filter.lua"] #remove filter to stop applying blue background to inline corrections
+  bookdown::bs4_book: 
+    css: templates/bs4_style.css
+    theme:
+      primary: "#6D1919"
+    repo: https://github.com/ulyngs/oxforddown
   bookdown::gitbook:
     css: templates/style.css
     config:
@@ -62,7 +67,6 @@ output:
     toc: true   
 link-citations: true
 documentclass: book
-
 ---
 
 
@@ -77,6 +81,6 @@ and to make sure lines in code soft wrap
 If you need to create your own additional chunk options, edit the file scripts/create_chunk_options.R
 -->
 
-
-```{r introduction, child = '_00-introduction.Rmd'}
+<!-- This chunk includes the front page content in HTML output -->
+```{r ebook-welcome, child = 'front-and-back-matter/_00-welcome-ebook.Rmd', eval=knitr::is_html_output()}
 ```
