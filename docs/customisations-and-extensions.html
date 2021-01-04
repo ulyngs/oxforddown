@@ -189,38 +189,8 @@ However, note that this approach does not support chapter bibliographies (see Se
 <h2>
 <span class="header-section-number">6.3</span> Customizing the page headers and footers<a class="anchor" aria-label="anchor" href="#customizing-the-page-headers-and-footers"><i class="fas fa-link"></i></a>
 </h2>
-<p>The following code, when it replaces the existing correpsonding code block in <strong>templates/template.tex</strong>, puts chapter number and title centered in the header and page number in the footer, centered.
-This may be desirable particularly when inserting PDF chapters, as the margins of the PDF may not exactly align with the left and right margins of the page, demarcated by the existing header and footer text.
-In the following code block, the original code is commented out where replaced.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb18-1"><a href="customisations-and-extensions.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>{<span class="ex">fancyhdr</span>}</span>
-<span id="cb18-2"><a href="customisations-and-extensions.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">\setlength</span>{<span class="fu">\headheight</span>}{15pt}</span>
-<span id="cb18-3"><a href="customisations-and-extensions.html#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">\fancyhf</span>{} <span class="co">% clear the header and footers</span></span>
-<span id="cb18-4"><a href="customisations-and-extensions.html#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="fu">\pagestyle</span>{fancy}</span>
-<span id="cb18-5"><a href="customisations-and-extensions.html#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">\renewcommand</span>{<span class="ex">\chaptermark</span>}[1]{<span class="fu">\markboth</span>{<span class="fu">\thechapter</span>. #1}{<span class="fu">\thechapter</span>. #1}}</span>
-<span id="cb18-6"><a href="customisations-and-extensions.html#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="co">% \renewcommand{\chaptermark}[1]{\markboth{\thechapter. #1}{}}</span></span>
-<span id="cb18-7"><a href="customisations-and-extensions.html#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="fu">\renewcommand</span>{<span class="ex">\sectionmark</span>}[1]{<span class="fu">\markright</span>{<span class="fu">\thesection</span>. #1}}</span>
-<span id="cb18-8"><a href="customisations-and-extensions.html#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="fu">\renewcommand</span>{<span class="ex">\headrulewidth</span>}{0pt}</span>
-<span id="cb18-9"><a href="customisations-and-extensions.html#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="fu">\fancyhead</span>[CO]{<span class="fu">\emph</span>{<span class="fu">\leftmark</span>}}</span>
-<span id="cb18-10"><a href="customisations-and-extensions.html#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="fu">\fancyhead</span>[CE]{<span class="fu">\emph</span>{<span class="fu">\rightmark</span>}}</span>
-<span id="cb18-11"><a href="customisations-and-extensions.html#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="co">% \fancyhead[LO,RE]{}</span></span>
-<span id="cb18-12"><a href="customisations-and-extensions.html#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="co">% \fancyhead[LE,RO]{}</span></span>
-<span id="cb18-13"><a href="customisations-and-extensions.html#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="fu">\fancyfoot</span>[CO,CE]{<span class="fu">\emph</span>{<span class="fu">\thepage</span>}}</span>
-<span id="cb18-14"><a href="customisations-and-extensions.html#cb18-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-15"><a href="customisations-and-extensions.html#cb18-15" aria-hidden="true" tabindex="-1"></a><span class="fu">\fancypagestyle</span>{plain}{<span class="fu">\fancyhf</span>{}<span class="fu">\fancyfoot</span>[C]{<span class="fu">\emph</span>{<span class="fu">\thepage</span>}}}</span>
-<span id="cb18-16"><a href="customisations-and-extensions.html#cb18-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-17"><a href="customisations-and-extensions.html#cb18-17" aria-hidden="true" tabindex="-1"></a><span class="co">% JEM fix header on cleared pages for openright</span></span>
-<span id="cb18-18"><a href="customisations-and-extensions.html#cb18-18" aria-hidden="true" tabindex="-1"></a><span class="fu">\def\cleardoublepage</span>{<span class="fu">\clearpage\if@twoside</span> <span class="fu">\ifodd\c@page\else</span></span>
-<span id="cb18-19"><a href="customisations-and-extensions.html#cb18-19" aria-hidden="true" tabindex="-1"></a>   <span class="fu">\hbox</span>{}</span>
-<span id="cb18-20"><a href="customisations-and-extensions.html#cb18-20" aria-hidden="true" tabindex="-1"></a>   <span class="co">% \fancyhead[RE,LO]{}</span></span>
-<span id="cb18-21"><a href="customisations-and-extensions.html#cb18-21" aria-hidden="true" tabindex="-1"></a>   <span class="fu">\fancyhead</span>[CE,CO]{}</span>
-<span id="cb18-22"><a href="customisations-and-extensions.html#cb18-22" aria-hidden="true" tabindex="-1"></a>   <span class="fu">\newpage</span></span>
-<span id="cb18-23"><a href="customisations-and-extensions.html#cb18-23" aria-hidden="true" tabindex="-1"></a>   <span class="fu">\if@twocolumn\hbox</span>{}<span class="fu">\newpage</span></span>
-<span id="cb18-24"><a href="customisations-and-extensions.html#cb18-24" aria-hidden="true" tabindex="-1"></a>   <span class="fu">\fi</span></span>
-<span id="cb18-25"><a href="customisations-and-extensions.html#cb18-25" aria-hidden="true" tabindex="-1"></a>   <span class="co">% \fancyhead[LO]{\emph{\leftmark}} </span></span>
-<span id="cb18-26"><a href="customisations-and-extensions.html#cb18-26" aria-hidden="true" tabindex="-1"></a>   <span class="co">% \fancyhead[RE]{\emph{\rightmark}} </span></span>
-<span id="cb18-27"><a href="customisations-and-extensions.html#cb18-27" aria-hidden="true" tabindex="-1"></a>   <span class="fu">\fancyhead</span>[CO]{<span class="fu">\emph</span>{<span class="fu">\leftmark</span>}} </span>
-<span id="cb18-28"><a href="customisations-and-extensions.html#cb18-28" aria-hidden="true" tabindex="-1"></a>   <span class="fu">\fancyhead</span>[CE]{<span class="fu">\emph</span>{<span class="fu">\rightmark</span>}} </span>
-<span id="cb18-29"><a href="customisations-and-extensions.html#cb18-29" aria-hidden="true" tabindex="-1"></a>   <span class="fu">\fi\fi</span>}</span></code></pre></div>
+<p>This can now be done directly in <strong>index.Rmd</strong>’s YAML header.
+If you are a LaTeX expert and you need further customisation that what’s currently provided, you can tweak the relevant sections of <strong>templates/template.tex</strong> - the relevant code is beneath the line that begins <code>\usepackage{fancyhdr}</code>.</p>
 
 
 </div>
