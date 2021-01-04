@@ -153,7 +153,7 @@ If you would like chapter bibliographies, in addition insert the following code 
 
 ## Customizing the page headers and footers
 
-The following code, when it replaces the existing correpsonding code block in **ociamthesis.cls**, puts chapter number and title centered in the header and page number in the footer, centered. 
+The following code, when it replaces the existing correpsonding code block in **templates/template.tex**, puts chapter number and title centered in the header and page number in the footer, centered. 
 This may be desirable particularly when inserting PDF chapters, as the margins of the PDF may not exactly align with the left and right margins of the page, demarcated by the existing header and footer text. 
 In the following code block, the original code is commented out where replaced.
 
