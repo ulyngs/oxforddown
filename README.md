@@ -26,8 +26,9 @@ A template for writing an Oxford University thesis in R Markdown.
 
 ## NEWS!
 - Jan 4 2020: 
-  - Added the great-looking BS4 output from the development version of `bookdown`
-  - _The introduction chapter no longer needs to be named **\_introduction.Rmd**_
+  - Added the great-looking BS4 book output from the development version of `bookdown`
+  - Introduction chapter no longer needs to be named **\_introduction.Rmd**
+  - Added ability to control location of page numbers and running headers from **index.Rmd**
 
 ## Tutorials
 See the video tutorials for how to use the template:
