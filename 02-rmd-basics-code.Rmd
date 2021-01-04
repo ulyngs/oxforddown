@@ -69,7 +69,7 @@ You can use the chunk option `out.extra` to rotate images.
 The syntax is different for LaTeX and HTML, so for ease we might start by assigning the right string to a variable that depends on the format you're outputting to:
 
 ```{r}
-if (knitr::opts_knit$get('rmarkdown.pandoc.to') == 'latex'){
+if (knitr::is_latex_output()){
   rotate180 <- "angle=180"
 } else {
   rotate180 <- "style='transform:rotate(180deg);'"

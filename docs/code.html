@@ -123,7 +123,7 @@ Figure 3.2: Oxford logo
 <p>You can use the chunk option <code>out.extra</code> to rotate images.</p>
 <p>The syntax is different for LaTeX and HTML, so for ease we might start by assigning the right string to a variable that depends on the format you’re outputting to:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="fu">knitr</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/knitr/man/opts_knit.html">opts_knit</a></span><span class="op">$</span><span class="fu">get</span><span class="op">(</span><span class="st">'rmarkdown.pandoc.to'</span><span class="op">)</span> <span class="op">==</span> <span class="st">'latex'</span><span class="op">)</span><span class="op">{</span>
+<code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/output_type.html">is_latex_output</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">{</span>
   <span class="va">rotate180</span> <span class="op">&lt;-</span> <span class="st">"angle=180"</span>
 <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span>
   <span class="va">rotate180</span> <span class="op">&lt;-</span> <span class="st">"style='transform:rotate(180deg);'"</span>
