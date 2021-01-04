@@ -26,11 +26,28 @@ bibliography-heading-in-pdf: Works Cited
 #####################
 ## PDF formatting  ##
 #####################
+
+### page layout & headers and footers ###
+page-layout: nobind #'nobind' for PDF output (equal margins), 'twoside' for two-sided binding (mirror margins and blank pages), leave blank for one-sided binding (left margin > right margin)
+
+ordinary-page-number-foot-or-head: foot #'foot' puts page number in footer, 'head' in header
+ordinary-page-number-position: C  #C = center, R = right, L = left. If page layour is 'twoside', O = odd pages and E = even pages. E.g. RO,LE puts the page number to the right on odd pages and left on even pages
+chapter-page-number-foot-or-head: foot #you may want it to be different on the chapter pages
+chapter-page-number-position: C
+
+running-header: true #indicate current chapter/section in header?
+running-header-foot-or-head: head
+running-header-position-leftmark: LO #marks the chapter. If layout is 'nobind', only this is used.
+running-header-position-rightmark: RE  #marks the section.
+
+draft-mark: false # add a DRAFT mark in the footer?
+draft-mark-foot-or-head: foot
+draft-mark-position: C
+
+### other stuff ###
 abstractseparate: true  # include front page w/ abstract for examination schools?
 bib-humanities: true   #set to true if you want in-text references formatted as author-year
 doi-in-bibliography: true #set to true if you want DOI's to be shown in the bibliography
-draft: true # add as DRAFT mark in the footer?
-page-layout: nobind #'nobind' for PDF output (equal margins), 'twoside' for two-sided binding (mirror margins and blank pages), leave blank for one-sided binding (left margin > right margin)
 hidelinks: true #if false, the PDF output highlights clickable links with a colored border - you will probably want to set this to true for PDF version you wish to physically print
 toc-depth: 2 # depth of heading to include in table of contents
 lof: true # list of figures in front matter?

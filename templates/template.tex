@@ -69,36 +69,31 @@ $endif$
 \renewcommand{\sectionmark}[1]{\markright{\thesection. #1}} 
 \renewcommand{\headrulewidth}{0pt}
 
-% UL the below sets where the page numbers are placed.
-% If you want to always have the page number in the bottom center, then
-% comment out the first three lines, and remove the comment on the fourth
-\fancyhead[LO]{\emph{\leftmark}} 
-\fancyhead[RE]{\emph{\rightmark}} 
-\fancyhead[RO,LE]{\emph{\thepage}}
-%\fancyfoot[C]{\emph{\thepage}}
+$if(running-header)$
+\fancy$running-header-foot-or-head$[$running-header-position-leftmark$]{\emph{\leftmark}} 
+\fancy$running-header-foot-or-head$[$running-header-position-rightmark$]{\emph{\rightmark}} 
+$endif$
+\fancy$ordinary-page-number-foot-or-head$[$ordinary-page-number-position$]{\emph{\thepage}}
 
-% UL on pages with chapter titles, this places the page number center bottom on pages with chapter titles
-\fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\emph{\thepage}}}
+% UL page number position 
+\fancypagestyle{plain}{\fancyhf{}\fancy$chapter-page-number-foot-or-head$[$chapter-page-number-position$]{\emph{\thepage}}}
 
 % JEM fix header on cleared pages for openright
 \def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else
    \hbox{}
-   \fancyhead[RE,LO]{}
+   \fancy$ordinary-page-number-foot-or-head$[$ordinary-page-number-position$]{}
    \newpage
    \if@twocolumn\hbox{}\newpage
    \fi
-   \fancyhead[LO]{\emph{\leftmark}} 
-   \fancyhead[RE]{\emph{\rightmark}} 
+   \fancy$running-header-foot-or-head$[$running-header-position-leftmark$]{\emph{\leftmark}} 
+   \fancy$running-header-foot-or-head$[$running-header-position-rightmark$]{\emph{\rightmark}} 
    \fi\fi}
 
 
 %%%%% SELECT YOUR DRAFT OPTIONS
-% Three options going on here; use in any combination.  But remember to turn the first two off before
-% generating a PDF to send to the printer!
-
 % This adds a "DRAFT" footer to every normal page.  (The first page of each chapter is not a "normal" page.)
-$if(draft)$
-\fancyfoot[C]{\emph{DRAFT Printed on \today}}
+$if(draft-mark)$
+\fancy$draft-mark-foot-or-head$[$draft-mark-position$]{\emph{DRAFT Printed on \today}}
 $endif$
 
 % This highlights (in blue) corrections marked with (for words) \mccorrect{blah} or (for whole
