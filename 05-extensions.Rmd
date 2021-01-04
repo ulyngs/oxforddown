@@ -153,38 +153,5 @@ If you would like chapter bibliographies, in addition insert the following code 
 
 ## Customizing the page headers and footers
 
-The following code, when it replaces the existing correpsonding code block in **templates/template.tex**, puts chapter number and title centered in the header and page number in the footer, centered. 
-This may be desirable particularly when inserting PDF chapters, as the margins of the PDF may not exactly align with the left and right margins of the page, demarcated by the existing header and footer text. 
-In the following code block, the original code is commented out where replaced.
-
-```latex
-\usepackage{fancyhdr}
-\setlength{\headheight}{15pt}
-\fancyhf{} % clear the header and footers
-\pagestyle{fancy}
-\renewcommand{\chaptermark}[1]{\markboth{\thechapter. #1}{\thechapter. #1}}
-% \renewcommand{\chaptermark}[1]{\markboth{\thechapter. #1}{}}
-\renewcommand{\sectionmark}[1]{\markright{\thesection. #1}}
-\renewcommand{\headrulewidth}{0pt}
-\fancyhead[CO]{\emph{\leftmark}}
-\fancyhead[CE]{\emph{\rightmark}}
-% \fancyhead[LO,RE]{}
-% \fancyhead[LE,RO]{}
-\fancyfoot[CO,CE]{\emph{\thepage}}
-
-\fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\emph{\thepage}}}
-
-% JEM fix header on cleared pages for openright
-\def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else
-   \hbox{}
-   % \fancyhead[RE,LO]{}
-   \fancyhead[CE,CO]{}
-   \newpage
-   \if@twocolumn\hbox{}\newpage
-   \fi
-   % \fancyhead[LO]{\emph{\leftmark}} 
-   % \fancyhead[RE]{\emph{\rightmark}} 
-   \fancyhead[CO]{\emph{\leftmark}} 
-   \fancyhead[CE]{\emph{\rightmark}} 
-   \fi\fi}
-```
+This can now be done directly in **index.Rmd**'s YAML header.
+If you are a LaTeX expert and you need further customisation that what's currently provided, you can tweak the relevant sections of **templates/template.tex** - the relevant code is beneath the line that begins `\usepackage{fancyhdr}`.
