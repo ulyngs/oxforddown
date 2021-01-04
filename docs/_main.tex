@@ -97,12 +97,36 @@
 %UL 15 Oct 2019, enable link highlighting to be turned off from YAML
 \usepackage[colorlinks=false,pdfpagelabels,hidelinks=true]{hyperref}
 
-%%%%% SELECT YOUR DRAFT OPTIONS
-% Three options going on here; use in any combination.  But remember to turn the first two off before
-% generating a PDF to send to the printer!
+%%%%%%% PAGE HEADERS AND FOOTERS %%%%%%%%%
+\usepackage{fancyhdr}
+\setlength{\headheight}{15pt}
+\fancyhf{} % clear the header and footers
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter. #1}{\thechapter. #1}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection. #1}} 
+\renewcommand{\headrulewidth}{0pt}
 
+\fancyhead[LO]{\emph{\leftmark}} 
+\fancyhead[RE]{\emph{\rightmark}} 
+\fancyfoot[C]{\emph{\thepage}}
+
+% UL page number position 
+\fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\emph{\thepage}}}
+
+% JEM fix header on cleared pages for openright
+\def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else
+   \hbox{}
+   \fancyfoot[C]{}
+   \newpage
+   \if@twocolumn\hbox{}\newpage
+   \fi
+   \fancyhead[LO]{\emph{\leftmark}} 
+   \fancyhead[RE]{\emph{\rightmark}} 
+   \fi\fi}
+
+
+%%%%% SELECT YOUR DRAFT OPTIONS
 % This adds a "DRAFT" footer to every normal page.  (The first page of each chapter is not a "normal" page.)
-\fancyfoot[C]{\emph{DRAFT Printed on \today}}
 
 % This highlights (in blue) corrections marked with (for words) \mccorrect{blah} or (for whole
 % paragraphs) \begin{mccorrection} . . . \end{mccorrection}.  This can be useful for sending a PDF of
@@ -661,7 +685,7 @@ The syntax is different for LaTeX and HTML, so for ease we might start by assign
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\ControlFlowTok{if}\NormalTok{ (knitr}\SpecialCharTok{::}\NormalTok{opts\_knit}\SpecialCharTok{$}\FunctionTok{get}\NormalTok{(}\StringTok{\textquotesingle{}rmarkdown.pandoc.to\textquotesingle{}}\NormalTok{) }\SpecialCharTok{==} \StringTok{\textquotesingle{}latex\textquotesingle{}}\NormalTok{)\{}
+\ControlFlowTok{if}\NormalTok{ (knitr}\SpecialCharTok{::}\FunctionTok{is\_latex\_output}\NormalTok{())\{}
 \NormalTok{  rotate180 }\OtherTok{\textless{}{-}} \StringTok{"angle=180"}
 \NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
 \NormalTok{  rotate180 }\OtherTok{\textless{}{-}} \StringTok{"style=\textquotesingle{}transform:rotate(180deg);\textquotesingle{}"}
@@ -1321,43 +1345,8 @@ If you would like chapter bibliographies, in addition insert the following code 
 \hypertarget{customizing-the-page-headers-and-footers}{%
 \section{Customizing the page headers and footers}\label{customizing-the-page-headers-and-footers}}
 
-The following code, when it replaces the existing correpsonding code block in \textbf{ociamthesis.cls}, puts chapter number and title centered in the header and page number in the footer, centered.
-This may be desirable particularly when inserting PDF chapters, as the margins of the PDF may not exactly align with the left and right margins of the page, demarcated by the existing header and footer text.
-In the following code block, the original code is commented out where replaced.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\BuiltInTok{\textbackslash{}usepackage}\NormalTok{\{}\ExtensionTok{fancyhdr}\NormalTok{\}}
-\FunctionTok{\textbackslash{}setlength}\NormalTok{\{}\FunctionTok{\textbackslash{}headheight}\NormalTok{\}\{15pt\}}
-\FunctionTok{\textbackslash{}fancyhf}\NormalTok{\{\} }\CommentTok{\% clear the header and footers}
-\FunctionTok{\textbackslash{}pagestyle}\NormalTok{\{fancy\}}
-\FunctionTok{\textbackslash{}renewcommand}\NormalTok{\{}\ExtensionTok{\textbackslash{}chaptermark}\NormalTok{\}[1]\{}\FunctionTok{\textbackslash{}markboth}\NormalTok{\{}\FunctionTok{\textbackslash{}thechapter}\NormalTok{. \#1\}\{}\FunctionTok{\textbackslash{}thechapter}\NormalTok{. \#1\}\}}
-\CommentTok{\% \textbackslash{}renewcommand\{\textbackslash{}chaptermark\}[1]\{\textbackslash{}markboth\{\textbackslash{}thechapter. \#1\}\{\}\}}
-\FunctionTok{\textbackslash{}renewcommand}\NormalTok{\{}\ExtensionTok{\textbackslash{}sectionmark}\NormalTok{\}[1]\{}\FunctionTok{\textbackslash{}markright}\NormalTok{\{}\FunctionTok{\textbackslash{}thesection}\NormalTok{. \#1\}\}}
-\FunctionTok{\textbackslash{}renewcommand}\NormalTok{\{}\ExtensionTok{\textbackslash{}headrulewidth}\NormalTok{\}\{0pt\}}
-\FunctionTok{\textbackslash{}fancyhead}\NormalTok{[CO]\{}\FunctionTok{\textbackslash{}emph}\NormalTok{\{}\FunctionTok{\textbackslash{}leftmark}\NormalTok{\}\}}
-\FunctionTok{\textbackslash{}fancyhead}\NormalTok{[CE]\{}\FunctionTok{\textbackslash{}emph}\NormalTok{\{}\FunctionTok{\textbackslash{}rightmark}\NormalTok{\}\}}
-\CommentTok{\% \textbackslash{}fancyhead[LO,RE]\{\}}
-\CommentTok{\% \textbackslash{}fancyhead[LE,RO]\{\}}
-\FunctionTok{\textbackslash{}fancyfoot}\NormalTok{[CO,CE]\{}\FunctionTok{\textbackslash{}emph}\NormalTok{\{}\FunctionTok{\textbackslash{}thepage}\NormalTok{\}\}}
-
-\FunctionTok{\textbackslash{}fancypagestyle}\NormalTok{\{plain\}\{}\FunctionTok{\textbackslash{}fancyhf}\NormalTok{\{\}}\FunctionTok{\textbackslash{}fancyfoot}\NormalTok{[C]\{}\FunctionTok{\textbackslash{}emph}\NormalTok{\{}\FunctionTok{\textbackslash{}thepage}\NormalTok{\}\}\}}
-
-\CommentTok{\% JEM fix header on cleared pages for openright}
-\FunctionTok{\textbackslash{}def\textbackslash{}cleardoublepage}\NormalTok{\{}\FunctionTok{\textbackslash{}clearpage\textbackslash{}if@twoside} \FunctionTok{\textbackslash{}ifodd\textbackslash{}c@page\textbackslash{}else}
-   \FunctionTok{\textbackslash{}hbox}\NormalTok{\{\}}
-   \CommentTok{\% \textbackslash{}fancyhead[RE,LO]\{\}}
-   \FunctionTok{\textbackslash{}fancyhead}\NormalTok{[CE,CO]\{\}}
-   \FunctionTok{\textbackslash{}newpage}
-   \FunctionTok{\textbackslash{}if@twocolumn\textbackslash{}hbox}\NormalTok{\{\}}\FunctionTok{\textbackslash{}newpage}
-   \FunctionTok{\textbackslash{}fi}
-   \CommentTok{\% \textbackslash{}fancyhead[LO]\{\textbackslash{}emph\{\textbackslash{}leftmark\}\} }
-   \CommentTok{\% \textbackslash{}fancyhead[RE]\{\textbackslash{}emph\{\textbackslash{}rightmark\}\} }
-   \FunctionTok{\textbackslash{}fancyhead}\NormalTok{[CO]\{}\FunctionTok{\textbackslash{}emph}\NormalTok{\{}\FunctionTok{\textbackslash{}leftmark}\NormalTok{\}\} }
-   \FunctionTok{\textbackslash{}fancyhead}\NormalTok{[CE]\{}\FunctionTok{\textbackslash{}emph}\NormalTok{\{}\FunctionTok{\textbackslash{}rightmark}\NormalTok{\}\} }
-   \FunctionTok{\textbackslash{}fi\textbackslash{}fi}\NormalTok{\}}
-\end{Highlighting}
-\end{Shaded}
+This can now be done directly in \textbf{index.Rmd}'s YAML header.
+If you are a LaTeX expert and you need further customisation that what's currently provided, you can tweak the relevant sections of \textbf{templates/template.tex} - the relevant code is beneath the line that begins \texttt{\textbackslash{}usepackage\{fancyhdr\}}.
 
 \begin{savequote}
 Alles Gescheite ist schon gedacht worden.\\
