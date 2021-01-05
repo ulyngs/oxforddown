@@ -5,11 +5,12 @@ pdf:
 
 bs4book:
 	Rscript -e 'options(bookdown.render.file_scope = FALSE); bookdown::render_book("index.Rmd", output_format = "bookdown::bs4_book")'
-	touch "docs/.nojekyll"	
+	touch "docs/.nojekyll"
 	Rscript -e 'browseURL("docs/index.html")'
 
 gitbook:
 	Rscript -e 'options(bookdown.render.file_scope = FALSE); bookdown::render_book("index.Rmd", output_format = "bookdown::gitbook")'
+	touch "docs/.nojekyll"
 	Rscript -e 'browseURL("docs/index.html")'
 
 word:
