@@ -5,6 +5,28 @@
 % format for PDF output (ie equal margins, no extra blank pages):
 \documentclass[a4paper,nobind]{templates/ociamthesis}
 
+% UL 5 January 2021 - add packages used by kableExtra
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage[colorlinks=false,pdfpagelabels,hidelinks=$hidelinks$]{hyperref}
+\usepackage{float}
+
+
+%UL set section header spacing
+\usepackage{titlesec}
+% 
+\titlespacing\subsubsection{0pt}{24pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+
 % UL 30 Nov 2018 pandoc puts lists in 'tightlist' command when no space between bullet points in Rmd file
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
@@ -54,11 +76,11 @@
 %UL 2 Dec 2018 add a bit of white space before and after code blocks
 \renewenvironment{Shaded}
 {
-  \vspace{4pt}%
+  \vspace{10pt}%
   \begin{snugshade}%
 }{%
   \end{snugshade}%
-  \vspace{4pt}%
+  \vspace{8pt}%
 }
 %UL 2 Dec 2018 reduce whitespace around verbatim environments
 \usepackage{etoolbox}
