@@ -29,7 +29,7 @@ A template for writing an Oxford University thesis in R Markdown.
   - Added the great-looking BS4 book output from the development version of `bookdown`
   - Introduction chapter should no longer be named **\_introduction.Rmd**
   - Added ability to control location of page numbers and running headers from **index.Rmd**
-  - Added section on positioning images where they are located in text, with `fig.pos = 'H'`
+  - Added section on how to position images where they are located in text, with `fig.pos = 'H'`
   - Added chapter on handling tables in PDF output
 - Upcoming in next version
   - Guidance on how to include chapters that pull in Rmd content from elsewhere (i.e. including a paper you're writing in another R Project folder on your computer as a chapter in your thesis)
