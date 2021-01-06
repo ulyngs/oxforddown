@@ -4,12 +4,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>2 R Markdown Basics: The Markdown syntax | oxforddown: An Oxford University Thesis Template for R Markdown</title>
+<title>1 R Markdown Basics: The Markdown syntax | oxforddown: An Oxford University Thesis Template for R Markdown</title>
 <meta name="author" content="Author Name">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6.4/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.3.9000/tabs.js"></script><script src="libs/bs3compat-0.2.3.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS --><link rel="stylesheet" href="templates/bs4_style.css">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS --><link rel="stylesheet" href="templates/bs4_style.css">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -34,10 +35,11 @@ Template for R Markdown</p></a>
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Welcome</a></li>
-<li><a class="" href="introduction.html"><span class="header-section-number">1</span> Introduction</a></li>
-<li><a class="active" href="rmd-basics.html"><span class="header-section-number">2</span> R Markdown Basics: The Markdown syntax</a></li>
-<li><a class="" href="code.html"><span class="header-section-number">3</span> Adding code</a></li>
-<li><a class="" href="cites-and-refs.html"><span class="header-section-number">4</span> Citations and cross-references</a></li>
+<li><a class="" href="introduction.html">Introduction</a></li>
+<li><a class="active" href="rmd-basics.html"><span class="header-section-number">1</span> R Markdown Basics: The Markdown syntax</a></li>
+<li><a class="" href="code.html"><span class="header-section-number">2</span> Adding code</a></li>
+<li><a class="" href="cites-and-refs.html"><span class="header-section-number">3</span> Citations and cross-references</a></li>
+<li><a class="" href="tables.html"><span class="header-section-number">4</span> Tables</a></li>
 <li><a class="" href="final-notes-on-the-oxthesis-template-and-on-collaboration.html"><span class="header-section-number">5</span> Final Notes on The OxThesis template and on collaboration</a></li>
 <li><a class="" href="customisations-and-extensions.html"><span class="header-section-number">6</span> Customisations and extensions</a></li>
 <li><a class="" href="conclusion.html">Conclusion</a></li>
@@ -52,9 +54,9 @@ Template for R Markdown</p></a>
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="rmd-basics" class="section level1" number="2">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="rmd-basics" class="section level1" number="1">
 <h1>
-<span class="header-section-number">2</span> R Markdown Basics: The Markdown syntax<a class="anchor" aria-label="anchor" href="#rmd-basics"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1</span> R Markdown Basics: The Markdown syntax<a class="anchor" aria-label="anchor" href="#rmd-basics"><i class="fas fa-link"></i></a>
 </h1>
 <p><!-- this will include a mini table of contents--></p>
 <!--
@@ -67,13 +69,13 @@ The {#rmd-basics} text after the chapter declaration will allow us to link throu
 While whitespace largely is ignored, it does at times give <em>Markdown</em> signals as to how to proceed.
 As a habit, try to keep everything left aligned whenever possible, especially as you type a new paragraph.
 In other words, there is no need to indent basic text in the Rmd document (in fact, it might cause your text to do funny things if you do).</p>
-<div id="markdown-basic-syntax" class="section level2" number="2.1">
+<div id="markdown-basic-syntax" class="section level2" number="1.1">
 <h2>
-<span class="header-section-number">2.1</span> Markdown basic syntax<a class="anchor" aria-label="anchor" href="#markdown-basic-syntax"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.1</span> Markdown basic syntax<a class="anchor" aria-label="anchor" href="#markdown-basic-syntax"><i class="fas fa-link"></i></a>
 </h2>
-<div id="italics-and-bold" class="section level3" number="2.1.1">
+<div id="italics-and-bold" class="section level3" number="1.1.1">
 <h3>
-<span class="header-section-number">2.1.1</span> Italics and bold<a class="anchor" aria-label="anchor" href="#italics-and-bold"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.1.1</span> Italics and bold<a class="anchor" aria-label="anchor" href="#italics-and-bold"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
 <li>
@@ -84,9 +86,9 @@ In other words, there is no need to indent basic text in the Rmd document (in fa
 <strong><em>Bold and italics</em></strong> is done like ***this***, ___this___, or (the most transparent solution, in my opinion) **_this_**</li>
 </ul>
 </div>
-<div id="inline-code" class="section level3" number="2.1.2">
+<div id="inline-code" class="section level3" number="1.1.2">
 <h3>
-<span class="header-section-number">2.1.2</span> Inline code<a class="anchor" aria-label="anchor" href="#inline-code"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.1.2</span> Inline code<a class="anchor" aria-label="anchor" href="#inline-code"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
 <li>
@@ -94,49 +96,49 @@ In other words, there is no need to indent basic text in the Rmd document (in fa
 </li>
 </ul>
 </div>
-<div id="sub-and-superscript" class="section level3" number="2.1.3">
+<div id="sub-and-superscript" class="section level3" number="1.1.3">
 <h3>
-<span class="header-section-number">2.1.3</span> Sub and superscript<a class="anchor" aria-label="anchor" href="#sub-and-superscript"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.1.3</span> Sub and superscript<a class="anchor" aria-label="anchor" href="#sub-and-superscript"><i class="fas fa-link"></i></a>
 </h3>
 <p>Sub<sub>2</sub> and super<sup>2</sup> script is created like this~2~ and this^2^</p>
 </div>
-<div id="strikethrough" class="section level3" number="2.1.4">
+<div id="strikethrough" class="section level3" number="1.1.4">
 <h3>
-<span class="header-section-number">2.1.4</span> Strikethrough<a class="anchor" aria-label="anchor" href="#strikethrough"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.1.4</span> Strikethrough<a class="anchor" aria-label="anchor" href="#strikethrough"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
 <li>
 <del>Strikethrough</del> is done ~~like this~~</li>
 </ul>
 </div>
-<div id="escaping-aka-what-if-i-need-an-actual-asterisk" class="section level3" number="2.1.5">
+<div id="escaping-aka-what-if-i-need-an-actual-asterisk" class="section level3" number="1.1.5">
 <h3>
-<span class="header-section-number">2.1.5</span> ‘Escaping’ (aka “What if I need an actual asterisk?”)<a class="anchor" aria-label="anchor" href="#escaping-aka-what-if-i-need-an-actual-asterisk"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.1.5</span> ‘Escaping’ (aka “What if I need an actual asterisk?”)<a class="anchor" aria-label="anchor" href="#escaping-aka-what-if-i-need-an-actual-asterisk"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
 <li>To include an actual *, _ or \, add another \ in front of them: \*, \_, \\</li>
 </ul>
 </div>
-<div id="endash-emdash" class="section level3" number="2.1.6">
+<div id="endash-emdash" class="section level3" number="1.1.6">
 <h3>
-<span class="header-section-number">2.1.6</span> Endash (–), emdash (—)<a class="anchor" aria-label="anchor" href="#endash-emdash"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.1.6</span> Endash (–), emdash (—)<a class="anchor" aria-label="anchor" href="#endash-emdash"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
 <li>– and — with -- and ---</li>
 </ul>
 </div>
-<div id="blockquotes" class="section level3" number="2.1.7">
+<div id="blockquotes" class="section level3" number="1.1.7">
 <h3>
-<span class="header-section-number">2.1.7</span> Blockquotes<a class="anchor" aria-label="anchor" href="#blockquotes"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.1.7</span> Blockquotes<a class="anchor" aria-label="anchor" href="#blockquotes"><i class="fas fa-link"></i></a>
 </h3>
 <p>Do like this:</p>
 <blockquote>
 <p>Put a &gt; in front of the line.</p>
 </blockquote>
 </div>
-<div id="headings" class="section level3" number="2.1.8">
+<div id="headings" class="section level3" number="1.1.8">
 <h3>
-<span class="header-section-number">2.1.8</span> Headings<a class="anchor" aria-label="anchor" href="#headings"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.1.8</span> Headings<a class="anchor" aria-label="anchor" href="#headings"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
 <li>are done with #’s of increasing number, i.e. 
@@ -149,9 +151,9 @@ In other words, there is no need to indent basic text in the Rmd document (in fa
 </ul>
 <p>In PDF output, a level-five heading will turn into a paragraph heading, i.e. <code>\paragraph{My level-five heading}</code>, which appears as bold text on the same line as the subsequent paragraph.</p>
 </div>
-<div id="lists" class="section level3" number="2.1.9">
+<div id="lists" class="section level3" number="1.1.9">
 <h3>
-<span class="header-section-number">2.1.9</span> Lists<a class="anchor" aria-label="anchor" href="#lists"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.1.9</span> Lists<a class="anchor" aria-label="anchor" href="#lists"><i class="fas fa-link"></i></a>
 </h3>
 <p>Unordered list by starting a line with an * or a -:</p>
 <ul>
@@ -176,9 +178,9 @@ In other words, there is no need to indent basic text in the Rmd document (in fa
 </li>
 </ol>
 </div>
-<div id="line-breaks" class="section level3" number="2.1.10">
+<div id="line-breaks" class="section level3" number="1.1.10">
 <h3>
-<span class="header-section-number">2.1.10</span> Line breaks<a class="anchor" aria-label="anchor" href="#line-breaks"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.1.10</span> Line breaks<a class="anchor" aria-label="anchor" href="#line-breaks"><i class="fas fa-link"></i></a>
 </h3>
 <p>The official <em>Markdown</em> way to create line breaks is by ending a line with more than two spaces.</p>
 <p>Roses are red.
@@ -193,9 +195,9 @@ Violets are blue.</p>
 <p>To create a new paragraph, you put a blank line.</p>
 <p>Therefore, this line starts its own paragraph.</p>
 </div>
-<div id="hyperlinks" class="section level3" number="2.1.11">
+<div id="hyperlinks" class="section level3" number="1.1.11">
 <h3>
-<span class="header-section-number">2.1.11</span> Hyperlinks<a class="anchor" aria-label="anchor" href="#hyperlinks"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.1.11</span> Hyperlinks<a class="anchor" aria-label="anchor" href="#hyperlinks"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
 <li>
@@ -203,9 +205,9 @@ Violets are blue.</p>
 </li>
 </ul>
 </div>
-<div id="footnotes" class="section level3" number="2.1.12">
+<div id="footnotes" class="section level3" number="1.1.12">
 <h3>
-<span class="header-section-number">2.1.12</span> Footnotes<a class="anchor" aria-label="anchor" href="#footnotes"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.1.12</span> Footnotes<a class="anchor" aria-label="anchor" href="#footnotes"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
 <li>Are created<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;my footnote text&lt;/p&gt;"><sup>1</sup></a> by writing either ^[my footnote text] for supplying the footnote content inline, or something like <code>[^a-random-footnote-label]</code> and supplying the text elsewhere in the format shown below:<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;This is a random test.&lt;/p&gt;"><sup>2</sup></a>
@@ -213,16 +215,16 @@ Violets are blue.</p>
 </ul>
 <p><code>[^a-random-footnote-label]: This is a random test.</code></p>
 </div>
-<div id="comments" class="section level3" number="2.1.13">
+<div id="comments" class="section level3" number="1.1.13">
 <h3>
-<span class="header-section-number">2.1.13</span> Comments<a class="anchor" aria-label="anchor" href="#comments"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.1.13</span> Comments<a class="anchor" aria-label="anchor" href="#comments"><i class="fas fa-link"></i></a>
 </h3>
 <p>To write comments within your text that won’t actually be included in the output, use the same syntax as for writing comments in HTML. That is, &lt;!-- this will not be included in the output --&gt;.</p>
 <!-- It is super useful to use comments! -->
 </div>
-<div id="math" class="section level3" number="2.1.14">
+<div id="math" class="section level3" number="1.1.14">
 <h3>
-<span class="header-section-number">2.1.14</span> Math<a class="anchor" aria-label="anchor" href="#math"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.1.14</span> Math<a class="anchor" aria-label="anchor" href="#math"><i class="fas fa-link"></i></a>
 </h3>
 <p>The syntax for writing math is stolen from LaTeX. To write a math expression that will be shown <strong>inline</strong>, enclose it in dollar signs.
 - This: $A = \pi*r^{2}$ Becomes: <span class="math inline">\(A = \pi*r^{2}\)</span></p>
@@ -238,14 +240,14 @@ This: <span>$</span>$A = \pi*r^{2}$$</p>
 <p>Becomes:
 <span class="math display" id="eq:binom">\[\begin{equation}
 f\left(k\right)=\binom{n}{k}p^k\left(1-p\right)^{n-k}
-\tag{2.1}
+\tag{1.1}
 \end{equation}\]</span></p>
 <p>For more (e.g. how to theorems), see e.g. the documentation on <a href="https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html#equations">bookdown.org</a></p>
 </div>
 </div>
-<div id="additional-resources" class="section level2" number="2.2">
+<div id="additional-resources" class="section level2" number="1.2">
 <h2>
-<span class="header-section-number">2.2</span> Additional resources<a class="anchor" aria-label="anchor" href="#additional-resources"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.2</span> Additional resources<a class="anchor" aria-label="anchor" href="#additional-resources"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li><p><em>R Markdown: The Definitive Guide</em> - <a href="https://bookdown.org/yihui/rmarkdown/" class="uri">https://bookdown.org/yihui/rmarkdown/</a></p></li>
@@ -255,31 +257,31 @@ f\left(k\right)=\binom{n}{k}p^k\left(1-p\right)^{n-k}
 </div>
 
   <div class="chapter-nav">
-<div class="prev"><a href="introduction.html"><span class="header-section-number">1</span> Introduction</a></div>
-<div class="next"><a href="code.html"><span class="header-section-number">3</span> Adding code</a></div>
+<div class="prev"><a href="introduction.html">Introduction</a></div>
+<div class="next"><a href="code.html"><span class="header-section-number">2</span> Adding code</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#rmd-basics"><span class="header-section-number">2</span> R Markdown Basics: The Markdown syntax</a></li>
+<li><a class="nav-link" href="#rmd-basics"><span class="header-section-number">1</span> R Markdown Basics: The Markdown syntax</a></li>
 <li>
-<a class="nav-link" href="#markdown-basic-syntax"><span class="header-section-number">2.1</span> Markdown basic syntax</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#italics-and-bold"><span class="header-section-number">2.1.1</span> Italics and bold</a></li>
-<li><a class="nav-link" href="#inline-code"><span class="header-section-number">2.1.2</span> Inline code</a></li>
-<li><a class="nav-link" href="#sub-and-superscript"><span class="header-section-number">2.1.3</span> Sub and superscript</a></li>
-<li><a class="nav-link" href="#strikethrough"><span class="header-section-number">2.1.4</span> Strikethrough</a></li>
-<li><a class="nav-link" href="#escaping-aka-what-if-i-need-an-actual-asterisk"><span class="header-section-number">2.1.5</span> ‘Escaping’ (aka “What if I need an actual asterisk?”)</a></li>
-<li><a class="nav-link" href="#endash-emdash"><span class="header-section-number">2.1.6</span> Endash (–), emdash (—)</a></li>
-<li><a class="nav-link" href="#blockquotes"><span class="header-section-number">2.1.7</span> Blockquotes</a></li>
-<li><a class="nav-link" href="#headings"><span class="header-section-number">2.1.8</span> Headings</a></li>
-<li><a class="nav-link" href="#lists"><span class="header-section-number">2.1.9</span> Lists</a></li>
-<li><a class="nav-link" href="#line-breaks"><span class="header-section-number">2.1.10</span> Line breaks</a></li>
-<li><a class="nav-link" href="#hyperlinks"><span class="header-section-number">2.1.11</span> Hyperlinks</a></li>
-<li><a class="nav-link" href="#footnotes"><span class="header-section-number">2.1.12</span> Footnotes</a></li>
-<li><a class="nav-link" href="#comments"><span class="header-section-number">2.1.13</span> Comments</a></li>
-<li><a class="nav-link" href="#math"><span class="header-section-number">2.1.14</span> Math</a></li>
+<a class="nav-link" href="#markdown-basic-syntax"><span class="header-section-number">1.1</span> Markdown basic syntax</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#italics-and-bold"><span class="header-section-number">1.1.1</span> Italics and bold</a></li>
+<li><a class="nav-link" href="#inline-code"><span class="header-section-number">1.1.2</span> Inline code</a></li>
+<li><a class="nav-link" href="#sub-and-superscript"><span class="header-section-number">1.1.3</span> Sub and superscript</a></li>
+<li><a class="nav-link" href="#strikethrough"><span class="header-section-number">1.1.4</span> Strikethrough</a></li>
+<li><a class="nav-link" href="#escaping-aka-what-if-i-need-an-actual-asterisk"><span class="header-section-number">1.1.5</span> ‘Escaping’ (aka “What if I need an actual asterisk?”)</a></li>
+<li><a class="nav-link" href="#endash-emdash"><span class="header-section-number">1.1.6</span> Endash (–), emdash (—)</a></li>
+<li><a class="nav-link" href="#blockquotes"><span class="header-section-number">1.1.7</span> Blockquotes</a></li>
+<li><a class="nav-link" href="#headings"><span class="header-section-number">1.1.8</span> Headings</a></li>
+<li><a class="nav-link" href="#lists"><span class="header-section-number">1.1.9</span> Lists</a></li>
+<li><a class="nav-link" href="#line-breaks"><span class="header-section-number">1.1.10</span> Line breaks</a></li>
+<li><a class="nav-link" href="#hyperlinks"><span class="header-section-number">1.1.11</span> Hyperlinks</a></li>
+<li><a class="nav-link" href="#footnotes"><span class="header-section-number">1.1.12</span> Footnotes</a></li>
+<li><a class="nav-link" href="#comments"><span class="header-section-number">1.1.13</span> Comments</a></li>
+<li><a class="nav-link" href="#math"><span class="header-section-number">1.1.14</span> Math</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#additional-resources"><span class="header-section-number">2.2</span> Additional resources</a></li>
+<li><a class="nav-link" href="#additional-resources"><span class="header-section-number">1.2</span> Additional resources</a></li>
 </ul>
 
       <div class="book-extra">

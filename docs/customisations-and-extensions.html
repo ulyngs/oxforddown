@@ -9,7 +9,8 @@
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6.4/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.3.9000/tabs.js"></script><script src="libs/bs3compat-0.2.3.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS --><link rel="stylesheet" href="templates/bs4_style.css">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS --><link rel="stylesheet" href="templates/bs4_style.css">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -34,10 +35,11 @@ Template for R Markdown</p></a>
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Welcome</a></li>
-<li><a class="" href="introduction.html"><span class="header-section-number">1</span> Introduction</a></li>
-<li><a class="" href="rmd-basics.html"><span class="header-section-number">2</span> R Markdown Basics: The Markdown syntax</a></li>
-<li><a class="" href="code.html"><span class="header-section-number">3</span> Adding code</a></li>
-<li><a class="" href="cites-and-refs.html"><span class="header-section-number">4</span> Citations and cross-references</a></li>
+<li><a class="" href="introduction.html">Introduction</a></li>
+<li><a class="" href="rmd-basics.html"><span class="header-section-number">1</span> R Markdown Basics: The Markdown syntax</a></li>
+<li><a class="" href="code.html"><span class="header-section-number">2</span> Adding code</a></li>
+<li><a class="" href="cites-and-refs.html"><span class="header-section-number">3</span> Citations and cross-references</a></li>
+<li><a class="" href="tables.html"><span class="header-section-number">4</span> Tables</a></li>
 <li><a class="" href="final-notes-on-the-oxthesis-template-and-on-collaboration.html"><span class="header-section-number">5</span> Final Notes on The OxThesis template and on collaboration</a></li>
 <li><a class="active" href="customisations-and-extensions.html"><span class="header-section-number">6</span> Customisations and extensions</a></li>
 <li><a class="" href="conclusion.html">Conclusion</a></li>
@@ -64,14 +66,14 @@ Template for R Markdown</p></a>
 <p>You may want to embed existing PDF documents into the thesis, for example if your department allows a ‘portfolio’ style thesis and you need to include an existing typeset publication as a chapter.</p>
 <p>In gitbook output, you can simply use <code><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">knitr::include_graphics</a></code> and it should include a scrollable (and downloadable) PDF.
 You will probably want to set the chunk options <code>out.width='100%'</code> and <code>out.height='1000px'</code>:</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">include_graphics</a></span><span class="op">(</span><span class="st">"figures/pdf_example/Lyngs2020_FB.pdf"</span><span class="op">)</span></code></pre></div>
 <embed src="figures/pdf_example/Lyngs2020_FB.pdf" width="100%" height="1000px" type="application/pdf"></embed><p><br></p>
 <p>In LaTeX output, however, this approach can cause odd behaviour.
 Therefore, when you build your thesis to PDF, split the PDF into an alphanumerically sorted sequence of <strong>single-page</strong> PDF files (you can do this automatically with the package <code>pdftools</code>). You can then use the appropriate LaTeX command to insert them, as shown below (for brevity, in the <code>oxforddown</code> PDF sample content we’re only including two pages)
 <em>Note that the chunk option <code>results='asis'</code> must be set.</em>
 You may also want to remove margins from the PDF files, which you can do with Adobe Acrobat (paid version) and likely other software.</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># install.packages(pdftools)</span>
 <span class="co"># split PDF into pages stored in figures/pdf_example/split/</span>
 <span class="co"># pdftools::pdf_split("figures/pdf_example/Lyngs2020_FB.pdf",</span>
@@ -101,7 +103,7 @@ You may also want to remove margins from the PDF files, which you can do with Ad
 It is also possible to use pandoc for referencing by providing a .csl file in the YAML header of <strong>index.Rmd</strong> (likely requiring commenting out the biblatex code in <strong>templates/template.tex</strong>).
 This may be helpful for those who have a .csl file describing the referencing format for a particular journal.
 However, note that this approach does not support chapter bibliographies (see Section <a href="customisations-and-extensions.html#biblatex-custom">6.2.2</a>).</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb15-1"><a href="customisations-and-extensions.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">csl</span><span class="kw">:</span><span class="at"> ecology.csl</span></span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb25-1"><a href="customisations-and-extensions.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">csl</span><span class="kw">:</span><span class="at"> ecology.csl</span></span></code></pre></div>
 </div>
 <div id="biblatex-custom" class="section level3" number="6.2.2">
 <h3>
@@ -111,78 +113,78 @@ However, note that this approach does not support chapter bibliographies (see Se
 <p>In <strong>templates/template.tex</strong>, one can replace the existing biblatex calls with the following to achieve referencing that looks like this:</p>
 <p>(Charmantier and Gienapp 2014)</p>
 <p>Charmantier, A. and P. Gienapp (2014). Climate change and timing of avian breeding and migration: evolutionary versus plastic changes. Evolutionary Applications 7(1):15–28. doi: 10.1111/eva.12126.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb16-1"><a href="customisations-and-extensions.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>[backend=biber,</span>
-<span id="cb16-2"><a href="customisations-and-extensions.html#cb16-2" aria-hidden="true" tabindex="-1"></a>    bibencoding=utf8,</span>
-<span id="cb16-3"><a href="customisations-and-extensions.html#cb16-3" aria-hidden="true" tabindex="-1"></a>    refsection=chapter, <span class="co">% referencing by chapter</span></span>
-<span id="cb16-4"><a href="customisations-and-extensions.html#cb16-4" aria-hidden="true" tabindex="-1"></a>    style=authoryear, </span>
-<span id="cb16-5"><a href="customisations-and-extensions.html#cb16-5" aria-hidden="true" tabindex="-1"></a>    firstinits=true,</span>
-<span id="cb16-6"><a href="customisations-and-extensions.html#cb16-6" aria-hidden="true" tabindex="-1"></a>    isbn=false,</span>
-<span id="cb16-7"><a href="customisations-and-extensions.html#cb16-7" aria-hidden="true" tabindex="-1"></a>    doi=true,</span>
-<span id="cb16-8"><a href="customisations-and-extensions.html#cb16-8" aria-hidden="true" tabindex="-1"></a>    url=false,</span>
-<span id="cb16-9"><a href="customisations-and-extensions.html#cb16-9" aria-hidden="true" tabindex="-1"></a>    eprint=false,</span>
-<span id="cb16-10"><a href="customisations-and-extensions.html#cb16-10" aria-hidden="true" tabindex="-1"></a>    related=false,</span>
-<span id="cb16-11"><a href="customisations-and-extensions.html#cb16-11" aria-hidden="true" tabindex="-1"></a>    dashed=false,</span>
-<span id="cb16-12"><a href="customisations-and-extensions.html#cb16-12" aria-hidden="true" tabindex="-1"></a>    clearlang=true,</span>
-<span id="cb16-13"><a href="customisations-and-extensions.html#cb16-13" aria-hidden="true" tabindex="-1"></a>    maxcitenames=2,</span>
-<span id="cb16-14"><a href="customisations-and-extensions.html#cb16-14" aria-hidden="true" tabindex="-1"></a>    mincitenames=1,</span>
-<span id="cb16-15"><a href="customisations-and-extensions.html#cb16-15" aria-hidden="true" tabindex="-1"></a>    maxbibnames=10,</span>
-<span id="cb16-16"><a href="customisations-and-extensions.html#cb16-16" aria-hidden="true" tabindex="-1"></a>    abbreviate=false,</span>
-<span id="cb16-17"><a href="customisations-and-extensions.html#cb16-17" aria-hidden="true" tabindex="-1"></a>    minbibnames=3,</span>
-<span id="cb16-18"><a href="customisations-and-extensions.html#cb16-18" aria-hidden="true" tabindex="-1"></a>    uniquelist=minyear,</span>
-<span id="cb16-19"><a href="customisations-and-extensions.html#cb16-19" aria-hidden="true" tabindex="-1"></a>    sortcites=true,</span>
-<span id="cb16-20"><a href="customisations-and-extensions.html#cb16-20" aria-hidden="true" tabindex="-1"></a>    date=year</span>
-<span id="cb16-21"><a href="customisations-and-extensions.html#cb16-21" aria-hidden="true" tabindex="-1"></a>]{<span class="ex">biblatex</span>}</span>
-<span id="cb16-22"><a href="customisations-and-extensions.html#cb16-22" aria-hidden="true" tabindex="-1"></a><span class="fu">\AtEveryBibitem</span>{<span class="co">%</span></span>
-<span id="cb16-23"><a href="customisations-and-extensions.html#cb16-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">\clearlist</span>{language}<span class="co">%</span></span>
-<span id="cb16-24"><a href="customisations-and-extensions.html#cb16-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">\clearfield</span>{note}</span>
-<span id="cb16-25"><a href="customisations-and-extensions.html#cb16-25" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb16-26"><a href="customisations-and-extensions.html#cb16-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-27"><a href="customisations-and-extensions.html#cb16-27" aria-hidden="true" tabindex="-1"></a><span class="fu">\DeclareFieldFormat</span>{titlecase}{<span class="fu">\MakeTitleCase</span>{#1}}</span>
-<span id="cb16-28"><a href="customisations-and-extensions.html#cb16-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-29"><a href="customisations-and-extensions.html#cb16-29" aria-hidden="true" tabindex="-1"></a><span class="fu">\newrobustcmd</span>{<span class="fu">\MakeTitleCase</span>}[1]{<span class="co">%</span></span>
-<span id="cb16-30"><a href="customisations-and-extensions.html#cb16-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">\ifthenelse</span>{<span class="fu">\ifcurrentfield</span>{booktitle}<span class="fu">\OR\ifcurrentfield</span>{booksubtitle}<span class="co">%</span></span>
-<span id="cb16-31"><a href="customisations-and-extensions.html#cb16-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\OR\ifcurrentfield</span>{maintitle}<span class="fu">\OR\ifcurrentfield</span>{mainsubtitle}<span class="co">%</span></span>
-<span id="cb16-32"><a href="customisations-and-extensions.html#cb16-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\OR\ifcurrentfield</span>{journaltitle}<span class="fu">\OR\ifcurrentfield</span>{journalsubtitle}<span class="co">%</span></span>
-<span id="cb16-33"><a href="customisations-and-extensions.html#cb16-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\OR\ifcurrentfield</span>{issuetitle}<span class="fu">\OR\ifcurrentfield</span>{issuesubtitle}<span class="co">%</span></span>
-<span id="cb16-34"><a href="customisations-and-extensions.html#cb16-34" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\OR\ifentrytype</span>{book}<span class="fu">\OR\ifentrytype</span>{mvbook}<span class="fu">\OR\ifentrytype</span>{bookinbook}<span class="co">%</span></span>
-<span id="cb16-35"><a href="customisations-and-extensions.html#cb16-35" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\OR\ifentrytype</span>{booklet}<span class="fu">\OR\ifentrytype</span>{suppbook}<span class="co">%</span></span>
-<span id="cb16-36"><a href="customisations-and-extensions.html#cb16-36" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\OR\ifentrytype</span>{collection}<span class="fu">\OR\ifentrytype</span>{mvcollection}<span class="co">%</span></span>
-<span id="cb16-37"><a href="customisations-and-extensions.html#cb16-37" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\OR\ifentrytype</span>{suppcollection}<span class="fu">\OR\ifentrytype</span>{manual}<span class="co">%</span></span>
-<span id="cb16-38"><a href="customisations-and-extensions.html#cb16-38" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\OR\ifentrytype</span>{periodical}<span class="fu">\OR\ifentrytype</span>{suppperiodical}<span class="co">%</span></span>
-<span id="cb16-39"><a href="customisations-and-extensions.html#cb16-39" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\OR\ifentrytype</span>{proceedings}<span class="fu">\OR\ifentrytype</span>{mvproceedings}<span class="co">%</span></span>
-<span id="cb16-40"><a href="customisations-and-extensions.html#cb16-40" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\OR\ifentrytype</span>{reference}<span class="fu">\OR\ifentrytype</span>{mvreference}<span class="co">%</span></span>
-<span id="cb16-41"><a href="customisations-and-extensions.html#cb16-41" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\OR\ifentrytype</span>{report}<span class="fu">\OR\ifentrytype</span>{thesis}}</span>
-<span id="cb16-42"><a href="customisations-and-extensions.html#cb16-42" aria-hidden="true" tabindex="-1"></a>    {#1}</span>
-<span id="cb16-43"><a href="customisations-and-extensions.html#cb16-43" aria-hidden="true" tabindex="-1"></a>    {<span class="fu">\MakeSentenceCase</span>{#1}}}</span>
-<span id="cb16-44"><a href="customisations-and-extensions.html#cb16-44" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb16-45"><a href="customisations-and-extensions.html#cb16-45" aria-hidden="true" tabindex="-1"></a><span class="co">% \renewbibmacro{in:}{}</span></span>
-<span id="cb16-46"><a href="customisations-and-extensions.html#cb16-46" aria-hidden="true" tabindex="-1"></a><span class="co">% suppress "in" for articles</span></span>
-<span id="cb16-47"><a href="customisations-and-extensions.html#cb16-47" aria-hidden="true" tabindex="-1"></a><span class="co">% </span></span>
-<span id="cb16-48"><a href="customisations-and-extensions.html#cb16-48" aria-hidden="true" tabindex="-1"></a><span class="fu">\renewbibmacro</span>{in:}{<span class="co">%</span></span>
-<span id="cb16-49"><a href="customisations-and-extensions.html#cb16-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">\ifentrytype</span>{article}{}{<span class="fu">\printtext</span>{<span class="fu">\bibstring</span>{in}<span class="fu">\intitlepunct</span>}}}</span>
-<span id="cb16-50"><a href="customisations-and-extensions.html#cb16-50" aria-hidden="true" tabindex="-1"></a><span class="co">%-- no "quotes" around titles of chapters/article titles</span></span>
-<span id="cb16-51"><a href="customisations-and-extensions.html#cb16-51" aria-hidden="true" tabindex="-1"></a><span class="fu">\DeclareFieldFormat</span>[article, inbook, incollection, inproceedings, misc, thesis, unpublished]</span>
-<span id="cb16-52"><a href="customisations-and-extensions.html#cb16-52" aria-hidden="true" tabindex="-1"></a>{title}{#1}</span>
-<span id="cb16-53"><a href="customisations-and-extensions.html#cb16-53" aria-hidden="true" tabindex="-1"></a><span class="co">%-- no punctuation after volume</span></span>
-<span id="cb16-54"><a href="customisations-and-extensions.html#cb16-54" aria-hidden="true" tabindex="-1"></a><span class="fu">\DeclareFieldFormat</span>[article]</span>
-<span id="cb16-55"><a href="customisations-and-extensions.html#cb16-55" aria-hidden="true" tabindex="-1"></a>{volume}{{#1}}</span>
-<span id="cb16-56"><a href="customisations-and-extensions.html#cb16-56" aria-hidden="true" tabindex="-1"></a><span class="co">%-- puts number/issue between brackets</span></span>
-<span id="cb16-57"><a href="customisations-and-extensions.html#cb16-57" aria-hidden="true" tabindex="-1"></a><span class="fu">\DeclareFieldFormat</span>[article, inbook, incollection, inproceedings, misc, thesis, unpublished]</span>
-<span id="cb16-58"><a href="customisations-and-extensions.html#cb16-58" aria-hidden="true" tabindex="-1"></a>{number}{<span class="fu">\mkbibparens</span>{#1}} </span>
-<span id="cb16-59"><a href="customisations-and-extensions.html#cb16-59" aria-hidden="true" tabindex="-1"></a><span class="co">%-- and then for articles directly the pages w/o any "pages" or "pp." </span></span>
-<span id="cb16-60"><a href="customisations-and-extensions.html#cb16-60" aria-hidden="true" tabindex="-1"></a><span class="fu">\DeclareFieldFormat</span>[article]</span>
-<span id="cb16-61"><a href="customisations-and-extensions.html#cb16-61" aria-hidden="true" tabindex="-1"></a>{pages}{#1}</span>
-<span id="cb16-62"><a href="customisations-and-extensions.html#cb16-62" aria-hidden="true" tabindex="-1"></a><span class="co">%-- for some types replace "pages" by "p."</span></span>
-<span id="cb16-63"><a href="customisations-and-extensions.html#cb16-63" aria-hidden="true" tabindex="-1"></a><span class="fu">\DeclareFieldFormat</span>[inproceedings, incollection, inbook]</span>
-<span id="cb16-64"><a href="customisations-and-extensions.html#cb16-64" aria-hidden="true" tabindex="-1"></a>{pages}{p. #1}</span>
-<span id="cb16-65"><a href="customisations-and-extensions.html#cb16-65" aria-hidden="true" tabindex="-1"></a><span class="co">%-- format 16(4):224--225 for articles</span></span>
-<span id="cb16-66"><a href="customisations-and-extensions.html#cb16-66" aria-hidden="true" tabindex="-1"></a><span class="fu">\renewbibmacro*</span>{volume+number+eid}{</span>
-<span id="cb16-67"><a href="customisations-and-extensions.html#cb16-67" aria-hidden="true" tabindex="-1"></a>  <span class="fu">\printfield</span>{volume}<span class="co">%</span></span>
-<span id="cb16-68"><a href="customisations-and-extensions.html#cb16-68" aria-hidden="true" tabindex="-1"></a>  <span class="fu">\printfield</span>{number}<span class="co">%</span></span>
-<span id="cb16-69"><a href="customisations-and-extensions.html#cb16-69" aria-hidden="true" tabindex="-1"></a>  <span class="fu">\printunit</span>{<span class="fu">\addcolon</span>}</span>
-<span id="cb16-70"><a href="customisations-and-extensions.html#cb16-70" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb26-1"><a href="customisations-and-extensions.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>[backend=biber,</span>
+<span id="cb26-2"><a href="customisations-and-extensions.html#cb26-2" aria-hidden="true" tabindex="-1"></a>    bibencoding=utf8,</span>
+<span id="cb26-3"><a href="customisations-and-extensions.html#cb26-3" aria-hidden="true" tabindex="-1"></a>    refsection=chapter, <span class="co">% referencing by chapter</span></span>
+<span id="cb26-4"><a href="customisations-and-extensions.html#cb26-4" aria-hidden="true" tabindex="-1"></a>    style=authoryear, </span>
+<span id="cb26-5"><a href="customisations-and-extensions.html#cb26-5" aria-hidden="true" tabindex="-1"></a>    firstinits=true,</span>
+<span id="cb26-6"><a href="customisations-and-extensions.html#cb26-6" aria-hidden="true" tabindex="-1"></a>    isbn=false,</span>
+<span id="cb26-7"><a href="customisations-and-extensions.html#cb26-7" aria-hidden="true" tabindex="-1"></a>    doi=true,</span>
+<span id="cb26-8"><a href="customisations-and-extensions.html#cb26-8" aria-hidden="true" tabindex="-1"></a>    url=false,</span>
+<span id="cb26-9"><a href="customisations-and-extensions.html#cb26-9" aria-hidden="true" tabindex="-1"></a>    eprint=false,</span>
+<span id="cb26-10"><a href="customisations-and-extensions.html#cb26-10" aria-hidden="true" tabindex="-1"></a>    related=false,</span>
+<span id="cb26-11"><a href="customisations-and-extensions.html#cb26-11" aria-hidden="true" tabindex="-1"></a>    dashed=false,</span>
+<span id="cb26-12"><a href="customisations-and-extensions.html#cb26-12" aria-hidden="true" tabindex="-1"></a>    clearlang=true,</span>
+<span id="cb26-13"><a href="customisations-and-extensions.html#cb26-13" aria-hidden="true" tabindex="-1"></a>    maxcitenames=2,</span>
+<span id="cb26-14"><a href="customisations-and-extensions.html#cb26-14" aria-hidden="true" tabindex="-1"></a>    mincitenames=1,</span>
+<span id="cb26-15"><a href="customisations-and-extensions.html#cb26-15" aria-hidden="true" tabindex="-1"></a>    maxbibnames=10,</span>
+<span id="cb26-16"><a href="customisations-and-extensions.html#cb26-16" aria-hidden="true" tabindex="-1"></a>    abbreviate=false,</span>
+<span id="cb26-17"><a href="customisations-and-extensions.html#cb26-17" aria-hidden="true" tabindex="-1"></a>    minbibnames=3,</span>
+<span id="cb26-18"><a href="customisations-and-extensions.html#cb26-18" aria-hidden="true" tabindex="-1"></a>    uniquelist=minyear,</span>
+<span id="cb26-19"><a href="customisations-and-extensions.html#cb26-19" aria-hidden="true" tabindex="-1"></a>    sortcites=true,</span>
+<span id="cb26-20"><a href="customisations-and-extensions.html#cb26-20" aria-hidden="true" tabindex="-1"></a>    date=year</span>
+<span id="cb26-21"><a href="customisations-and-extensions.html#cb26-21" aria-hidden="true" tabindex="-1"></a>]{<span class="ex">biblatex</span>}</span>
+<span id="cb26-22"><a href="customisations-and-extensions.html#cb26-22" aria-hidden="true" tabindex="-1"></a><span class="fu">\AtEveryBibitem</span>{<span class="co">%</span></span>
+<span id="cb26-23"><a href="customisations-and-extensions.html#cb26-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">\clearlist</span>{language}<span class="co">%</span></span>
+<span id="cb26-24"><a href="customisations-and-extensions.html#cb26-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">\clearfield</span>{note}</span>
+<span id="cb26-25"><a href="customisations-and-extensions.html#cb26-25" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb26-26"><a href="customisations-and-extensions.html#cb26-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-27"><a href="customisations-and-extensions.html#cb26-27" aria-hidden="true" tabindex="-1"></a><span class="fu">\DeclareFieldFormat</span>{titlecase}{<span class="fu">\MakeTitleCase</span>{#1}}</span>
+<span id="cb26-28"><a href="customisations-and-extensions.html#cb26-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-29"><a href="customisations-and-extensions.html#cb26-29" aria-hidden="true" tabindex="-1"></a><span class="fu">\newrobustcmd</span>{<span class="fu">\MakeTitleCase</span>}[1]{<span class="co">%</span></span>
+<span id="cb26-30"><a href="customisations-and-extensions.html#cb26-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">\ifthenelse</span>{<span class="fu">\ifcurrentfield</span>{booktitle}<span class="fu">\OR\ifcurrentfield</span>{booksubtitle}<span class="co">%</span></span>
+<span id="cb26-31"><a href="customisations-and-extensions.html#cb26-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\OR\ifcurrentfield</span>{maintitle}<span class="fu">\OR\ifcurrentfield</span>{mainsubtitle}<span class="co">%</span></span>
+<span id="cb26-32"><a href="customisations-and-extensions.html#cb26-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\OR\ifcurrentfield</span>{journaltitle}<span class="fu">\OR\ifcurrentfield</span>{journalsubtitle}<span class="co">%</span></span>
+<span id="cb26-33"><a href="customisations-and-extensions.html#cb26-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\OR\ifcurrentfield</span>{issuetitle}<span class="fu">\OR\ifcurrentfield</span>{issuesubtitle}<span class="co">%</span></span>
+<span id="cb26-34"><a href="customisations-and-extensions.html#cb26-34" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\OR\ifentrytype</span>{book}<span class="fu">\OR\ifentrytype</span>{mvbook}<span class="fu">\OR\ifentrytype</span>{bookinbook}<span class="co">%</span></span>
+<span id="cb26-35"><a href="customisations-and-extensions.html#cb26-35" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\OR\ifentrytype</span>{booklet}<span class="fu">\OR\ifentrytype</span>{suppbook}<span class="co">%</span></span>
+<span id="cb26-36"><a href="customisations-and-extensions.html#cb26-36" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\OR\ifentrytype</span>{collection}<span class="fu">\OR\ifentrytype</span>{mvcollection}<span class="co">%</span></span>
+<span id="cb26-37"><a href="customisations-and-extensions.html#cb26-37" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\OR\ifentrytype</span>{suppcollection}<span class="fu">\OR\ifentrytype</span>{manual}<span class="co">%</span></span>
+<span id="cb26-38"><a href="customisations-and-extensions.html#cb26-38" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\OR\ifentrytype</span>{periodical}<span class="fu">\OR\ifentrytype</span>{suppperiodical}<span class="co">%</span></span>
+<span id="cb26-39"><a href="customisations-and-extensions.html#cb26-39" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\OR\ifentrytype</span>{proceedings}<span class="fu">\OR\ifentrytype</span>{mvproceedings}<span class="co">%</span></span>
+<span id="cb26-40"><a href="customisations-and-extensions.html#cb26-40" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\OR\ifentrytype</span>{reference}<span class="fu">\OR\ifentrytype</span>{mvreference}<span class="co">%</span></span>
+<span id="cb26-41"><a href="customisations-and-extensions.html#cb26-41" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\OR\ifentrytype</span>{report}<span class="fu">\OR\ifentrytype</span>{thesis}}</span>
+<span id="cb26-42"><a href="customisations-and-extensions.html#cb26-42" aria-hidden="true" tabindex="-1"></a>    {#1}</span>
+<span id="cb26-43"><a href="customisations-and-extensions.html#cb26-43" aria-hidden="true" tabindex="-1"></a>    {<span class="fu">\MakeSentenceCase</span>{#1}}}</span>
+<span id="cb26-44"><a href="customisations-and-extensions.html#cb26-44" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb26-45"><a href="customisations-and-extensions.html#cb26-45" aria-hidden="true" tabindex="-1"></a><span class="co">% \renewbibmacro{in:}{}</span></span>
+<span id="cb26-46"><a href="customisations-and-extensions.html#cb26-46" aria-hidden="true" tabindex="-1"></a><span class="co">% suppress "in" for articles</span></span>
+<span id="cb26-47"><a href="customisations-and-extensions.html#cb26-47" aria-hidden="true" tabindex="-1"></a><span class="co">% </span></span>
+<span id="cb26-48"><a href="customisations-and-extensions.html#cb26-48" aria-hidden="true" tabindex="-1"></a><span class="fu">\renewbibmacro</span>{in:}{<span class="co">%</span></span>
+<span id="cb26-49"><a href="customisations-and-extensions.html#cb26-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">\ifentrytype</span>{article}{}{<span class="fu">\printtext</span>{<span class="fu">\bibstring</span>{in}<span class="fu">\intitlepunct</span>}}}</span>
+<span id="cb26-50"><a href="customisations-and-extensions.html#cb26-50" aria-hidden="true" tabindex="-1"></a><span class="co">%-- no "quotes" around titles of chapters/article titles</span></span>
+<span id="cb26-51"><a href="customisations-and-extensions.html#cb26-51" aria-hidden="true" tabindex="-1"></a><span class="fu">\DeclareFieldFormat</span>[article, inbook, incollection, inproceedings, misc, thesis, unpublished]</span>
+<span id="cb26-52"><a href="customisations-and-extensions.html#cb26-52" aria-hidden="true" tabindex="-1"></a>{title}{#1}</span>
+<span id="cb26-53"><a href="customisations-and-extensions.html#cb26-53" aria-hidden="true" tabindex="-1"></a><span class="co">%-- no punctuation after volume</span></span>
+<span id="cb26-54"><a href="customisations-and-extensions.html#cb26-54" aria-hidden="true" tabindex="-1"></a><span class="fu">\DeclareFieldFormat</span>[article]</span>
+<span id="cb26-55"><a href="customisations-and-extensions.html#cb26-55" aria-hidden="true" tabindex="-1"></a>{volume}{{#1}}</span>
+<span id="cb26-56"><a href="customisations-and-extensions.html#cb26-56" aria-hidden="true" tabindex="-1"></a><span class="co">%-- puts number/issue between brackets</span></span>
+<span id="cb26-57"><a href="customisations-and-extensions.html#cb26-57" aria-hidden="true" tabindex="-1"></a><span class="fu">\DeclareFieldFormat</span>[article, inbook, incollection, inproceedings, misc, thesis, unpublished]</span>
+<span id="cb26-58"><a href="customisations-and-extensions.html#cb26-58" aria-hidden="true" tabindex="-1"></a>{number}{<span class="fu">\mkbibparens</span>{#1}} </span>
+<span id="cb26-59"><a href="customisations-and-extensions.html#cb26-59" aria-hidden="true" tabindex="-1"></a><span class="co">%-- and then for articles directly the pages w/o any "pages" or "pp." </span></span>
+<span id="cb26-60"><a href="customisations-and-extensions.html#cb26-60" aria-hidden="true" tabindex="-1"></a><span class="fu">\DeclareFieldFormat</span>[article]</span>
+<span id="cb26-61"><a href="customisations-and-extensions.html#cb26-61" aria-hidden="true" tabindex="-1"></a>{pages}{#1}</span>
+<span id="cb26-62"><a href="customisations-and-extensions.html#cb26-62" aria-hidden="true" tabindex="-1"></a><span class="co">%-- for some types replace "pages" by "p."</span></span>
+<span id="cb26-63"><a href="customisations-and-extensions.html#cb26-63" aria-hidden="true" tabindex="-1"></a><span class="fu">\DeclareFieldFormat</span>[inproceedings, incollection, inbook]</span>
+<span id="cb26-64"><a href="customisations-and-extensions.html#cb26-64" aria-hidden="true" tabindex="-1"></a>{pages}{p. #1}</span>
+<span id="cb26-65"><a href="customisations-and-extensions.html#cb26-65" aria-hidden="true" tabindex="-1"></a><span class="co">%-- format 16(4):224--225 for articles</span></span>
+<span id="cb26-66"><a href="customisations-and-extensions.html#cb26-66" aria-hidden="true" tabindex="-1"></a><span class="fu">\renewbibmacro*</span>{volume+number+eid}{</span>
+<span id="cb26-67"><a href="customisations-and-extensions.html#cb26-67" aria-hidden="true" tabindex="-1"></a>  <span class="fu">\printfield</span>{volume}<span class="co">%</span></span>
+<span id="cb26-68"><a href="customisations-and-extensions.html#cb26-68" aria-hidden="true" tabindex="-1"></a>  <span class="fu">\printfield</span>{number}<span class="co">%</span></span>
+<span id="cb26-69"><a href="customisations-and-extensions.html#cb26-69" aria-hidden="true" tabindex="-1"></a>  <span class="fu">\printunit</span>{<span class="fu">\addcolon</span>}</span>
+<span id="cb26-70"><a href="customisations-and-extensions.html#cb26-70" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>If you would like chapter bibliographies, in addition insert the following code at the end of each chapter, and comment out the entire REFERENCES section at the end of template.tex.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb17-1"><a href="customisations-and-extensions.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\printbibliography</span>[segment=<span class="fu">\therefsection</span>,heading=subbibliography]</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb27-1"><a href="customisations-and-extensions.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\printbibliography</span>[segment=<span class="fu">\therefsection</span>,heading=subbibliography]</span></code></pre></div>
 </div>
 </div>
 <div id="customizing-the-page-headers-and-footers" class="section level2" number="6.3">
@@ -214,8 +216,8 @@ If you are a LaTeX expert and you need further customisation that what’s curre
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/ulyngs/oxforddown/blob/master/05-extensions.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/ulyngs/oxforddown/edit/master/05-extensions.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/ulyngs/oxforddown/blob/master/06-extensions.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/ulyngs/oxforddown/edit/master/06-extensions.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>

@@ -4,12 +4,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>1 Introduction | oxforddown: An Oxford University Thesis Template for R Markdown</title>
+<title>Introduction | oxforddown: An Oxford University Thesis Template for R Markdown</title>
 <meta name="author" content="Author Name">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6.4/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.3.9000/tabs.js"></script><script src="libs/bs3compat-0.2.3.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS --><link rel="stylesheet" href="templates/bs4_style.css">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS --><link rel="stylesheet" href="templates/bs4_style.css">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -34,10 +35,11 @@ Template for R Markdown</p></a>
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Welcome</a></li>
-<li><a class="active" href="introduction.html"><span class="header-section-number">1</span> Introduction</a></li>
-<li><a class="" href="rmd-basics.html"><span class="header-section-number">2</span> R Markdown Basics: The Markdown syntax</a></li>
-<li><a class="" href="code.html"><span class="header-section-number">3</span> Adding code</a></li>
-<li><a class="" href="cites-and-refs.html"><span class="header-section-number">4</span> Citations and cross-references</a></li>
+<li><a class="active" href="introduction.html">Introduction</a></li>
+<li><a class="" href="rmd-basics.html"><span class="header-section-number">1</span> R Markdown Basics: The Markdown syntax</a></li>
+<li><a class="" href="code.html"><span class="header-section-number">2</span> Adding code</a></li>
+<li><a class="" href="cites-and-refs.html"><span class="header-section-number">3</span> Citations and cross-references</a></li>
+<li><a class="" href="tables.html"><span class="header-section-number">4</span> Tables</a></li>
 <li><a class="" href="final-notes-on-the-oxthesis-template-and-on-collaboration.html"><span class="header-section-number">5</span> Final Notes on The OxThesis template and on collaboration</a></li>
 <li><a class="" href="customisations-and-extensions.html"><span class="header-section-number">6</span> Customisations and extensions</a></li>
 <li><a class="" href="conclusion.html">Conclusion</a></li>
@@ -52,11 +54,10 @@ Template for R Markdown</p></a>
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="introduction" class="section level1" number="1">
-<h1>
-<span class="header-section-number">1</span> Introduction<a class="anchor" aria-label="anchor" href="#introduction"><i class="fas fa-link"></i></a>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="introduction" class="section level1 unnumbered">
+<h1>Introduction<a class="anchor" aria-label="anchor" href="#introduction"><i class="fas fa-link"></i></a>
 </h1>
-<!-- For PDF output, we must include this LaTeX command after unnumbered headings, otherwise the numbers in the mini table of contents will be incorrect -->
+<!-- For PDF output, include these two LaTeX commands after unnumbered chapter headings, otherwise the mini table of contents and the running header will show the previous chapter -->
 <p>Welcome to the <em>R Markdown</em> Oxford University thesis template.
 This sample content is adapted from <a href="https://github.com/ismayc/thesisdown"><code>thesisdown</code></a> and the formatting of PDF output is adapted from the <a href="https://github.com/mcmanigle/OxThesis">OxThesis LaTeX template</a>.
 Hopefully, writing your thesis in R Markdown will provide a nicer interface to the OxThesis template if you haven’t used TeX or LaTeX before.
@@ -93,11 +94,11 @@ iii) You can't use markdown syntax inside chunk options, so if you want to e.g. 
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="index.html">Welcome</a></div>
-<div class="next"><a href="rmd-basics.html"><span class="header-section-number">2</span> R Markdown Basics: The Markdown syntax</a></div>
+<div class="next"><a href="rmd-basics.html"><span class="header-section-number">1</span> R Markdown Basics: The Markdown syntax</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#introduction"><span class="header-section-number">1</span> Introduction</a></li>
+<li><a class="nav-link" href="#introduction">Introduction</a></li>
 <li><a class="nav-link" href="#why-use-it">Why use it?</a></li>
 <li><a class="nav-link" href="#who-should-use-it">Who should use it?</a></li>
 </ul>
