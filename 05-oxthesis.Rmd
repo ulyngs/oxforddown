@@ -17,6 +17,18 @@ There is grandeur in this view of life, with its several powers, having been ori
 # Final Notes on The OxThesis template and on collaboration
 \minitoc <!-- this will include a mini table of contents-->
 
+## Unnumbered chapters
+To make chapters unnumbered (this is normally only relevant to the Introduction and/or the Conclusion), follow the chapter header with `{-}`, e.g. `# Introduction {-}`.
+
+When you do this, you must also follow the heading with these two latex commands:
+```latex
+\adjustmtc
+\markboth{The Name of Your Unnumbered Chapter}{}
+```
+
+Otherwise the chapter's mini table of contents and the running header will show the previous chapter.
+
+
 ## Beginning chapters with quotes
 The OxThesis LaTeX template lets you inject some wittiness into your thesis by including a block of type `savequote` at the beginning of chapters. 
 To do this, use the syntax ```` ```{block type='savequote'} ````.^[For more on custom block types, see the relevant section in [_Authoring Books with R Markdown_](https://bookdown.org/yihui/bookdown/custom-blocks.html).]
