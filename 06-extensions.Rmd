@@ -11,7 +11,25 @@ bibliography: references.bib
   
 # Customisations and extensions
 
-This chapter describes a number of possible customizations to the `oxforddown` thesis. 
+This chapter describes a number of additional tips and tricks as well as possible customizations to the `oxforddown` thesis. 
+
+## Apply custom font color and highlighting to text
+The lua filter that adds the functionality to highlight corrections adds two more tricks:
+you can apply your own choice of colour to highlight text, or to change the font color of some text.
+The syntax is as follows:
+
+> Here's `[some text in green highlighting]{highlight="green"}` \
+> Becomes: Here's [some text in green highlighting]{highlight="green"}.
+
+> `[Here's some text with red font]{color="red"}` \
+> Becomes: [Here's some text with red font]{color="red"}
+
+> Finally --- never, ever actually do this -- `[here's some text with green highlighting and red font]{highlight="green" color="red"}` \
+> Becomes: [here's some text with green highlighting and red font]{highlight="green" color="red"}
+
+The file **scripts_and_filters/colour_and_highlight.lua** implements this, if you want to fiddle around with it.
+It works with both PDF and HTML output.
+
 
 ## Embedding PDF documents as chapters
 
