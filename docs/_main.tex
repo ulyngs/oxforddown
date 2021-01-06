@@ -116,6 +116,21 @@
 %UL 26 Mar 2019, enable strikethrough
 \usepackage[normalem]{ulem}
 
+%UL use soul package for correction highlighting
+\usepackage{soul}
+\usepackage{xcolor}
+\newcommand{\ctext}[3][RGB]{%
+  \begingroup
+  \definecolor{hlcolor}{#1}{#2}\sethlcolor{hlcolor}%
+  \hl{#3}%
+  \endgroup
+}
+\soulregister\ref7
+\soulregister\cite7
+\soulregister\autocite7
+\soulregister\textcite7
+\soulregister\pageref7
+
 %%%%%%% PAGE HEADERS AND FOOTERS %%%%%%%%%
 \usepackage{fancyhdr}
 \setlength{\headheight}{15pt}
@@ -168,7 +183,7 @@
 % \newcommand*{\bibtitle}{Works Cited}
 
 %UL 3 Dec 2018: set this from YAML in index.Rmd
-\usepackage[style=numeric-comp, sorting=none, backend=biber, doi=true, isbn=false]{biblatex}
+\usepackage[style=authoryear, sorting=nyt, backend=biber, maxcitenames=2, useprefix, doi=true, isbn=false, uniquename=false]{biblatex}
 \newcommand*{\bibtitle}{Works Cited}
 
 % This makes the bibliography left-aligned (not 'justified') and slightly smaller font.
@@ -1154,6 +1169,8 @@ For example, this chapter's running header is simply `Cites and cross-refs', bec
 Dealing with tables in LaTeX can be painful.
 This section explains the main tricks you need to make the pain go away.
 
+(Note: if you are looking at the ebook version, you will not see much difference in this section, as it is only relevant for PDF output!)
+
 \hypertarget{making-your-table-pretty}{%
 \subsection{Making your table pretty}\label{making-your-table-pretty}}
 
@@ -1162,6 +1179,9 @@ This makes your table look a million times better:
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(knitr)}
+\FunctionTok{library}\NormalTok{(tidyverse)}
+
 \FunctionTok{head}\NormalTok{(mtcars) }\SpecialCharTok{\%\textgreater{}\%} 
   \FunctionTok{kable}\NormalTok{(}\AttributeTok{booktabs =} \ConstantTok{TRUE}\NormalTok{)}
 \end{Highlighting}
@@ -1848,7 +1868,19 @@ You can do so like this:
 \hypertarget{short-inline-corrections}{%
 \subsection{Short, inline corrections}\label{short-inline-corrections}}
 
-Highlight \textbf{short, inline corrections} by doing \texttt{{[}like\ this{]}\{.correction\}} --- the text between the square brackets will then \colorbox[HTML]{CCCCFF}{be highlighted in blue} in the output.
+Highlight \textbf{short, inline corrections} by doing \texttt{{[}like\ this{]}\{.correction\}} --- the text between the square brackets will then \ctext[HTML]{CCCCFF}{be highlighted in blue} in the output.
+
+This should work, also with \ctext[HTML]{CCCCFF}{cross references (do you remember chapter \ref{rmd-basics}?)} or even \ctext[HTML]{CCCCFF}{citations \autocite{Shea2014}}.
+
+However, pandoc might get confused by citations and cross-references.
+In particular, it might get confused by \autocite[this][]{Shea2014}\{.correction\}
+
+If all else fails in such cases, use LaTeX syntax directly (this has the drawback of not showing up in HTML output, but you probably only care about correction highlighting in the PDF version for your examiners anyway!):
+
+\begin{quote}
+\texttt{It\ doesn\textquotesingle{}t\ get\ confused\ by\ \textbackslash{}ctext{[}HTML{]}\{CCCCFF\}\{this\ \textbackslash{}textcite\{Shea2014\}\}}~\\
+Becomes: It doesn't get confused by \ctext[HTML]{CCCCFF}{this \textcite{Shea2014}}.
+\end{quote}
 
 \hypertarget{blocks-of-added-or-changed-material}{%
 \subsection{Blocks of added or changed material}\label{blocks-of-added-or-changed-material}}
