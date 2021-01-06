@@ -4,6 +4,7 @@ output:
   #bookdown::word_document2: default
   bookdown::pdf_document2:
     template: templates/brief_template.tex
+    citation_package: biblatex
 documentclass: book
 bibliography: references.bib
 ---
@@ -21,8 +22,9 @@ This section explains the main tricks you need to make the pain go away.
 When you use `kable` to create tables, you will almost certainly want to set the option `booktabs = TRUE`.
 This makes your table look a million times better:
 
-```{r}
+```{r, message=FALSE}
 library(knitr)
+library(tidyverse)
 
 head(mtcars) %>% 
   kable(booktabs = TRUE)

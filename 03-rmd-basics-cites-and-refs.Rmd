@@ -4,6 +4,8 @@ output:
   #bookdown::word_document2: default
   bookdown::pdf_document2:
     template: templates/brief_template.tex
+    citation_package: biblatex
+bib-humanities: true
 documentclass: book
 bibliography: references.bib
 ---
