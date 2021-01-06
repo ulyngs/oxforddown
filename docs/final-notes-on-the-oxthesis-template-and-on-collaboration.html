@@ -90,6 +90,14 @@ You can do so like this:</p>
 <span class="header-section-number">5.3.1</span> Short, inline corrections<a class="anchor" aria-label="anchor" href="#short-inline-corrections"><i class="fas fa-link"></i></a>
 </h3>
 <p>Highlight <strong>short, inline corrections</strong> by doing <code>[like this]{.correction}</code> — the text between the square brackets will then <span class="correction">be highlighted in blue</span> in the output.</p>
+<p>This should work, also with <span class="correction">cross references (do you remember chapter <a href="rmd-basics.html#rmd-basics">1</a>?)</span> or even <span class="correction">citations <span class="citation">(<a href="references.html#ref-Shea2014" role="doc-biblioref">Shea et al. 2014</a>)</span></span>.</p>
+<p>However, pandoc might get confused by citations and cross-references.
+In particular, it might get confused by <span class="citation">(this <a href="references.html#ref-Shea2014" role="doc-biblioref">Shea et al. 2014</a>)</span>{.correction}</p>
+<p>If all else fails in such cases, use LaTeX syntax directly (this has the drawback of not showing up in HTML output, but you probably only care about correction highlighting in the PDF version for your examiners anyway!):</p>
+<blockquote>
+<p><code>It doesn't get confused by \ctext[HTML]{CCCCFF}{this \textcite{Shea2014}}</code><br>
+Becomes: It doesn’t get confused by .</p>
+</blockquote>
 </div>
 <div id="blocks-of-added-or-changed-material" class="section level3" number="5.3.2">
 <h3>
