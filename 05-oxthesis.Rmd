@@ -15,7 +15,7 @@ There is grandeur in this view of life, with its several powers, having been ori
 ```
 (ref:darwin-quote) --- Charles Darwin [@Darwin1859]
 
-# Final Notes on The OxThesis template and on collaboration
+# Notes on The OxThesis template and on collaboration
 \minitoc <!-- this will include a mini table of contents-->
 
 ## Unnumbered chapters
@@ -52,10 +52,11 @@ This should work, also with [cross references (do you remember chapter \@ref(rmd
 However, pandoc might get confused by citations and cross-references.
 In particular, it might get confused by [this @Shea2014]{.correction}
 
-If all else fails in such cases, use LaTeX syntax directly (this has the drawback of not showing up in HTML output, but you probably only care about correction highlighting in the PDF version for your examiners anyway!): 
+In such cases, you could just use LaTeX syntax directly (this has the drawback of not showing up in HTML output, but you probably only care about correction highlighting in the PDF version for your examiners anyway!).
+The correction highlighting is supplied by the [soul](https://ctan.org/pkg/soul) package, so you would do like this:
 
-> `It doesn't get confused by \ctext[HTML]{CCCCFF}{this \textcite{Shea2014}}` \
-> Becomes: It doesn't get confused by \ctext[HTML]{CCCCFF}{this \textcite{Shea2014}}.
+> `It doesn't get confused by \hl{this \textcite{Shea2014}}` \
+> Becomes: It doesn't get confused by \hl{this \textcite{Shea2014}}.
 
 
 ### Blocks of added or changed material
