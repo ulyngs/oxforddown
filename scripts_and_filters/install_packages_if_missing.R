@@ -1,4 +1,4 @@
-required_packages <- c("rmarkdown", "bookdown", "knitr", "kableExtra", "tidyverse", "reticulate")
+required_packages <- c("rmarkdown", "bookdown", "knitr", "kableExtra", "tidyverse", "reticulate", "here")
 
 for (package in required_packages) {
   print(paste0("checking for install of ", package))
