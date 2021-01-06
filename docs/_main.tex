@@ -1929,26 +1929,26 @@ I suspect some great solution will be developed in the not-to-distant future, pr
 
 This chapter describes a number of additional tips and tricks as well as possible customizations to the \texttt{oxforddown} thesis.
 
-\hypertarget{applying-custom-font-color-and-highlighting-to-text}{%
-\section{Applying custom font color and highlighting to text}\label{applying-custom-font-color-and-highlighting-to-text}}
+\hypertarget{apply-custom-font-color-and-highlighting-to-text}{%
+\section{Apply custom font color and highlighting to text}\label{apply-custom-font-color-and-highlighting-to-text}}
 
 The lua filter that adds the functionality to highlight corrections adds two more tricks:
 you can apply your own choice of colour to highlight text, or to change the font color of some text.
 The syntax is as follows:
 
 \begin{quote}
-Here's \texttt{{[}some\ text\ in\ green\ highlighting{]}\{highlight="green"\}}\\
-Becomes: Here's \sethlcolor{green}\hl{some text in green highlighting}\sethlcolor{correctioncolor}.
+Here's \texttt{{[}some\ text\ in\ pink\ highlighting{]}\{highlight="pink"\}}\\
+Becomes: Here's \sethlcolor{pink}\hl{some text in pink highlighting}\sethlcolor{correctioncolor}.
 \end{quote}
 
 \begin{quote}
-\texttt{{[}Here\textquotesingle{}s\ some\ text\ with\ red\ font{]}\{color="red"\}}~\\
-Becomes: \textcolor{red}{Here's some text with red font}
+\texttt{{[}Here\textquotesingle{}s\ some\ text\ with\ blue\ font{]}\{color="blue"\}}~\\
+Becomes: \textcolor{blue}{Here's some text with blue font}
 \end{quote}
 
 \begin{quote}
-Finally --- never, ever actually do this -- \texttt{{[}here\textquotesingle{}s\ some\ text\ with\ green\ highlighting\ and\ red\ font{]}\{highlight="green"\ color="red"\}}\\
-Becomes: \textcolor{red}{\sethlcolor{green}\hl{here's some text with green highlighting and red font}\sethlcolor{correctioncolor}}
+Finally --- never, ever actually do this -- \texttt{{[}here\textquotesingle{}s\ some\ text\ with\ white\ highlighting\ and\ yellow\ font{]}\{highlight="black"\ color="yellow"\}}\\
+Becomes: \textcolor{yellow}{\sethlcolor{black}\hl{here's some text with black highlighting and yellow font}\sethlcolor{correctioncolor}}
 \end{quote}
 
 The file \textbf{scripts\_and\_filters/colour\_and\_highlight.lua} implements this, if you want to fiddle around with it.

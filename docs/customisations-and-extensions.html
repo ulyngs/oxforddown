@@ -67,16 +67,16 @@ Template for R Markdown</p></a>
 you can apply your own choice of colour to highlight text, or to change the font color of some text.
 The syntax is as follows:</p>
 <blockquote>
-<p>Here’s <code>[some text in green highlighting]{highlight="green"}</code><br>
-Becomes: Here’s <span style="background-color: green;">some text in green highlighting</span>.</p>
+<p>Here’s <code>[some text in pink highlighting]{highlight="pink"}</code><br>
+Becomes: Here’s <span style="background-color: pink;">some text in pink highlighting</span>.</p>
 </blockquote>
 <blockquote>
-<p><code>[Here's some text with red font]{color="red"}</code><br>
-Becomes: <span style=" color: red;">Here’s some text with red font</span></p>
+<p><code>[Here's some text with blue font]{color="blue"}</code><br>
+Becomes: <span style=" color: blue;">Here’s some text with blue font</span></p>
 </blockquote>
 <blockquote>
-<p>Finally — never, ever actually do this – <code>[here's some text with green highlighting and red font]{highlight="green" color="red"}</code><br>
-Becomes: <span style="background-color: green; color: red;">here’s some text with green highlighting and red font</span></p>
+<p>Finally — never, ever actually do this – <code>[here's some text with white highlighting and yellow font]{highlight="black" color="yellow"}</code><br>
+Becomes: <span style="background-color: black; color: yellow;">here’s some text with black highlighting and yellow font</span></p>
 </blockquote>
 <p>The file <strong>scripts_and_filters/colour_and_highlight.lua</strong> implements this, if you want to fiddle around with it.
 It works with both PDF and HTML output.</p>
