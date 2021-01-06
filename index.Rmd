@@ -44,17 +44,21 @@ draft-mark: false # add a DRAFT mark in the footer?
 draft-mark-foot-or-head: foot
 draft-mark-position: C
 
+### code block spacing ###
+space-before-code-block: 10pt
+space-after-code-block: 8pt
+
 ### other stuff ###
 abstractseparate: true  # include front page w/ abstract for examination schools?
-bib-humanities: true   #set to true if you want in-text references formatted as author-year
-doi-in-bibliography: true #set to true if you want DOI's to be shown in the bibliography
-hidelinks: true #if false, the PDF output highlights clickable links with a colored border - you will probably want to set this to true for PDF version you wish to physically print
+bib-humanities: true   # true to format references as author-year - false as numbers
+doi-in-bibliography: true # true to show DOI's in the bibliography
+hidelinks: true # false to highlight clickable links with a colored border
 toc-depth: 2 # depth of heading to include in table of contents
-lof: true # list of figures in front matter?
-lot: true # list of tables in front matter?
-mini-toc: true  # mini-table of contents at start of each chapter? (this just prepares it; you must also add \minitoc after the chapter titles)
-mini-lot: false  # mini-list of tables by start of each chapter?
-mini-lof: false  # mini-list of figures by start of each chapter?
+lof: true # include list of figures in front matter?
+lot: true # include list of tables in front matter?
+mini-toc: true  # include mini-table of contents at start of each chapter? (this just prepares it; you must also add \minitoc after the chapter titles)
+mini-lot: false  # include mini-list of tables by start of each chapter?
+mini-lof: false  # include mini-list of figures by start of each chapter?
 
 params:
   corrections: true # set false to stop applying blue background to blocks of corrections

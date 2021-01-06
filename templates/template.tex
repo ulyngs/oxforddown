@@ -46,7 +46,7 @@
 \usepackage{float}
 
 
-%UL add the option of setting section header spacing
+%UL set section header spacing
 \usepackage{titlesec}
 % 
 \titlespacing\subsubsection{0pt}{24pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
@@ -62,11 +62,11 @@ $highlighting-macros$
 %UL set white space before and after code blocks
 \renewenvironment{Shaded}
 {
-  \vspace{10pt}%
+  \vspace{$space-before-code-block$}%
   \begin{snugshade}%
 }{%
   \end{snugshade}%
-  \vspace{8pt}%
+  \vspace{$space-after-code-block$}%
 }
 $endif$
 
