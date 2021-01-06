@@ -29,6 +29,27 @@
 %UL 2 Dec 2018: pass this in from YAML
 \documentclass[a4paper, $if(page-layout)$$page-layout$$endif$]{templates/ociamthesis}
 
+% UL 5 January 2021 - add packages used by kableExtra
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage[colorlinks=false,pdfpagelabels,hidelinks=$hidelinks$]{hyperref}
+\usepackage{float}
+
+
+%UL add the option of setting section header spacing
+\usepackage{titlesec}
+% 
+\titlespacing\subsubsection{0pt}{24pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
 
 % UL 30 Nov 2018 pandoc puts lists in 'tightlist' command when no space between bullet points in Rmd file
 \providecommand{\tightlist}{%
@@ -37,18 +58,19 @@
 % UL 1 Dec 2018, fix to include code in shaded environments
 $if(highlighting-macros)$
 $highlighting-macros$
-%UL 2 Dec 2018 add a bit of white space before and after code blocks
+
+%UL set white space before and after code blocks
 \renewenvironment{Shaded}
 {
-  \vspace{4pt}%
+  \vspace{10pt}%
   \begin{snugshade}%
 }{%
   \end{snugshade}%
-  \vspace{4pt}%
+  \vspace{8pt}%
 }
 $endif$
 
-%UL 2 Dec 2018 reduce whitespace around verbatim environments
+%UL set whitespace around verbatim environments
 \usepackage{etoolbox}
 \makeatletter
 \preto{\@verbatim}{\topsep=0pt \partopsep=0pt }
@@ -56,9 +78,6 @@ $endif$
 
 %UL 26 Mar 2019, enable strikethrough
 \usepackage[normalem]{ulem}
-
-%UL 15 Oct 2019, enable link highlighting to be turned off from YAML
-\usepackage[colorlinks=false,pdfpagelabels,hidelinks=$hidelinks$]{hyperref}
 
 %%%%%%% PAGE HEADERS AND FOOTERS %%%%%%%%%
 \usepackage{fancyhdr}
