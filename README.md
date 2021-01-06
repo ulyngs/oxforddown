@@ -133,9 +133,9 @@ output:
 documentclass: book
 bibliography: references.bib
 ```
-The template **brief_template.tex** will format the chapter in the OxThesis style but without including the front matter (table of contents, abstract, etc).
+**brief_template.tex** formats the chapter in the OxThesis style but without including the front matter (table of contents, abstract, etc).
 
-(Note that if you do not tell R Markdown to use BibLaTeX with the YAML option `citation_package: biblatex`, you will get the error "! LaTeX Error: Environment CSLReferences undefined.")
+(Also, if you do not set the option `citation_package: biblatex`, which tell R Markdown to use BibLaTeX, you will get the error "! LaTeX Error: Environment CSLReferences undefined.")
 
 ## Cleaning up generated auxiliary files
 By default, when you build the entire thesis, the auxillary files will be removed (to adjust how this is done, edit **Makefile**).
