@@ -108,5 +108,5 @@ If you need to create your own additional chunk options, edit the file scripts/c
 -->
 
 <!-- This chunk includes the front page content in HTML output -->
-```{r ebook-welcome, child = 'front-and-back-matter/_00-welcome-ebook.Rmd', eval=knitr::is_html_output()}
+```{r ebook-welcome, child = 'front-and-back-matter/_welcome-ebook.Rmd', eval=knitr::is_html_output()}
 ```
