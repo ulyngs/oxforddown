@@ -58,7 +58,7 @@ making-your-table-pretty
 if-your-table-is-too-wide
 if-your-table-is-too-long
 max-power
-final-notes-on-the-oxthesis-template-and-on-collaboration
+notes-on-the-oxthesis-template-and-on-collaboration
 unnumbered-chapters
 beginning-chapters-with-quotes
 highlighting-corrections
@@ -68,6 +68,7 @@ stopping-corrections-from-being-highlighted-in-the-output
 diving-in-to-the-oxthesis-latex-template
 collaborative-writing
 customisations-and-extensions
+apply-custom-font-color-and-highlighting-to-text
 embedding-pdf-documents-as-chapters
 customizing-referencing
 using-a-.csl-file-with-pandoc-instead-of-biblatex

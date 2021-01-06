@@ -117,8 +117,10 @@
 \usepackage[normalem]{ulem}
 
 %UL use soul package for correction highlighting
-\usepackage{soul}
+\usepackage{color, soul}
 \usepackage{xcolor}
+\definecolor{correctioncolor}{HTML}{CCCCFF}
+\sethlcolor{correctioncolor}
 \newcommand{\ctext}[3][RGB]{%
   \begingroup
   \definecolor{hlcolor}{#1}{#2}\sethlcolor{hlcolor}%
@@ -1827,8 +1829,8 @@ wonderful have been, and are being, evolved.
 
 
 
-\hypertarget{final-notes-on-the-oxthesis-template-and-on-collaboration}{%
-\chapter{Final Notes on The OxThesis template and on collaboration}\label{final-notes-on-the-oxthesis-template-and-on-collaboration}}
+\hypertarget{notes-on-the-oxthesis-template-and-on-collaboration}{%
+\chapter{Notes on The OxThesis template and on collaboration}\label{notes-on-the-oxthesis-template-and-on-collaboration}}
 
 \minitoc 
 
@@ -1868,18 +1870,19 @@ You can do so like this:
 \hypertarget{short-inline-corrections}{%
 \subsection{Short, inline corrections}\label{short-inline-corrections}}
 
-Highlight \textbf{short, inline corrections} by doing \texttt{{[}like\ this{]}\{.correction\}} --- the text between the square brackets will then \ctext[HTML]{CCCCFF}{be highlighted in blue} in the output.
+Highlight \textbf{short, inline corrections} by doing \texttt{{[}like\ this{]}\{.correction\}} --- the text between the square brackets will then \hl{be highlighted in blue} in the output.
 
-This should work, also with \ctext[HTML]{CCCCFF}{cross references (do you remember chapter \ref{rmd-basics}?)} or even \ctext[HTML]{CCCCFF}{citations \autocite{Shea2014}}.
+This should work, also with \hl{cross references (do you remember chapter \ref{rmd-basics}?)} or even \hl{citations \autocite{Shea2014}}.
 
 However, pandoc might get confused by citations and cross-references.
 In particular, it might get confused by \autocite[this][]{Shea2014}\{.correction\}
 
-If all else fails in such cases, use LaTeX syntax directly (this has the drawback of not showing up in HTML output, but you probably only care about correction highlighting in the PDF version for your examiners anyway!):
+In such cases, you could just use LaTeX syntax directly (this has the drawback of not showing up in HTML output, but you probably only care about correction highlighting in the PDF version for your examiners anyway!).
+The correction highlighting is supplied by the \href{https://ctan.org/pkg/soul}{soul} package, so you would do like this:
 
 \begin{quote}
-\texttt{It\ doesn\textquotesingle{}t\ get\ confused\ by\ \textbackslash{}ctext{[}HTML{]}\{CCCCFF\}\{this\ \textbackslash{}textcite\{Shea2014\}\}}~\\
-Becomes: It doesn't get confused by \ctext[HTML]{CCCCFF}{this \textcite{Shea2014}}.
+\texttt{It\ doesn\textquotesingle{}t\ get\ confused\ by\ \textbackslash{}hl\{this\ \textbackslash{}textcite\{Shea2014\}\}}~\\
+Becomes: It doesn't get confused by \hl{this \textcite{Shea2014}}.
 \end{quote}
 
 \hypertarget{blocks-of-added-or-changed-material}{%
@@ -1924,7 +1927,32 @@ I suspect some great solution will be developed in the not-to-distant future, pr
 \hypertarget{customisations-and-extensions}{%
 \chapter{Customisations and extensions}\label{customisations-and-extensions}}
 
-This chapter describes a number of possible customizations to the \texttt{oxforddown} thesis.
+This chapter describes a number of additional tips and tricks as well as possible customizations to the \texttt{oxforddown} thesis.
+
+\hypertarget{applying-custom-font-color-and-highlighting-to-text}{%
+\section{Applying custom font color and highlighting to text}\label{applying-custom-font-color-and-highlighting-to-text}}
+
+The lua filter that adds the functionality to highlight corrections adds two more tricks:
+you can apply your own choice of colour to highlight text, or to change the font color of some text.
+The syntax is as follows:
+
+\begin{quote}
+Here's \texttt{{[}some\ text\ in\ green\ highlighting{]}\{highlight="green"\}}\\
+Becomes: Here's \sethlcolor{green}\hl{some text in green highlighting}\sethlcolor{correctioncolor}.
+\end{quote}
+
+\begin{quote}
+\texttt{{[}Here\textquotesingle{}s\ some\ text\ with\ red\ font{]}\{color="red"\}}~\\
+Becomes: \textcolor{red}{Here's some text with red font}
+\end{quote}
+
+\begin{quote}
+Finally --- never, ever actually do this -- \texttt{{[}here\textquotesingle{}s\ some\ text\ with\ green\ highlighting\ and\ red\ font{]}\{highlight="green"\ color="red"\}}\\
+Becomes: \textcolor{red}{\sethlcolor{green}\hl{here's some text with green highlighting and red font}\sethlcolor{correctioncolor}}
+\end{quote}
+
+The file \textbf{scripts\_and\_filters/colour\_and\_highlight.lua} implements this, if you want to fiddle around with it.
+It works with both PDF and HTML output.
 
 \hypertarget{embedding-pdf-documents-as-chapters}{%
 \section{Embedding PDF documents as chapters}\label{embedding-pdf-documents-as-chapters}}
