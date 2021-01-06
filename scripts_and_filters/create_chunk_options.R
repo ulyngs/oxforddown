@@ -1,17 +1,3 @@
-# check for basic packages required
-if (!("bookdown" %in% installed.packages()))
-  install.packages("knitr", repos = "http://cran.rstudio.com")
-
-# check if the right packages are installed to create the chunk options
-if (!("knitr" %in% installed.packages()))
-  install.packages("knitr", repos = "http://cran.rstudio.com")
-
-if (!("kableExtra" %in% installed.packages()))
-  install.packages("kableExtra", repos = "http://cran.rstudio.com")
-
-library(kableExtra)
-
-
 ##### add chunk options for PDF output ####
 # for guidance on how to create your own chunk options see
 # https://ulyngs.github.io/blog/posts/2019-02-01-how-to-create-your-own-chunk-options-in-r-markdown/

@@ -31,7 +31,7 @@ bibliography-heading-in-pdf: Works Cited
 page-layout: nobind #'nobind' for PDF output (equal margins), 'twoside' for two-sided binding (mirror margins and blank pages), leave blank for one-sided binding (left margin > right margin)
 
 ordinary-page-number-foot-or-head: foot #'foot' puts page number in footer, 'head' in header
-ordinary-page-number-position: C  #C = center, R = right, L = left. If page layour is 'twoside', O = odd pages and E = even pages. E.g. RO,LE puts the page number to the right on odd pages and left on even pages
+ordinary-page-number-position: C  #C = center, R = right, L = left. If page layout is 'twoside', then O = odd pages and E = even pages. E.g. RO,LE puts the page number to the right on odd pages and left on even pages
 chapter-page-number-foot-or-head: foot #you may want it to be different on the chapter pages
 chapter-page-number-position: C
 
@@ -87,10 +87,15 @@ documentclass: book
 ---
 
 
+```{r install_packages, include=FALSE}
+source('scripts_and_filters/install_packages_if_missing.R')
+```
+
 ```{r create_chunk_options, include=FALSE, eval=knitr::is_latex_output()}
 source('scripts_and_filters/create_chunk_options.R')
 source('scripts_and_filters/wrap_lines.R')
 ```
+
 <!--
 Include the create_chunk_options chunk above at the top of your index.Rmd file
 This will include code to create additional chunk options (e.g. for adding author references to savequotes)
