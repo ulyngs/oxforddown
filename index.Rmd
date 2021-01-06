@@ -71,12 +71,13 @@ output:
     template: templates/template.tex
     keep_tex: true
     citation_package: biblatex  
-    pandoc_args: ["--lua-filter=scripts_and_filters/correction_filter.lua"] #remove filter to stop applying blue background to inline corrections
+    pandoc_args: "--lua-filter=scripts_and_filters/colour_and_highlight.lua"
   bookdown::bs4_book: 
     css: templates/bs4_style.css
     theme:
       primary: "#6D1919"
     repo: https://github.com/ulyngs/oxforddown
+    pandoc_args: "--lua-filter=scripts_and_filters/colour_and_highlight.lua"
   bookdown::gitbook:
     css: templates/style.css
     config:

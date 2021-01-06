@@ -80,8 +80,10 @@ $endif$
 \usepackage[normalem]{ulem}
 
 %UL use soul package for correction highlighting
-\usepackage{soul}
+\usepackage{color, soul}
 \usepackage{xcolor}
+\definecolor{correctioncolor}{HTML}{CCCCFF}
+\sethlcolor{correctioncolor}
 \newcommand{\ctext}[3][RGB]{%
   \begingroup
   \definecolor{hlcolor}{#1}{#2}\sethlcolor{hlcolor}%
