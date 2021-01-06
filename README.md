@@ -24,18 +24,11 @@ Table of Contents
 # Oxforddown
 A template for writing an Oxford University thesis in R Markdown.
 
-## NEWS!
-- Jan 6 2020: 
-  - Added the great-looking BS4 book output from the development version of `bookdown`
-  - Introduction chapter should no longer be named **\_introduction.Rmd**
-  - Added ability to control location of page numbers and running headers from **index.Rmd**
-  - Added section on how to position images where they are located in text, with `fig.pos = 'H'`
-  - Added chapter on handling tables in PDF output
-- Upcoming in next version
-  - Guidance on how to include chapters that pull in Rmd content from elsewhere (i.e. including a paper you're writing in another R Project folder on your computer as a chapter in your thesis)
-
 ## Tutorials
+NOTE: as per v2.0, the introduction chapter no longer needs to be named \_introduction.Rmd! Apart from this, the videos should still be correct!
+
 See the video tutorials for how to use the template:
+
 - [Part 1: Building the entire thesis](https://www.youtube.com/watch?v=Yf1W1BBS9cU)
 - [Part 2: Building a single chapter](https://www.youtube.com/watch?v=-EJfCA3VA-I)
 - [Part 3: Understanding the file structure](https://www.youtube.com/watch?v=jafgJobOgpc)
@@ -136,8 +129,13 @@ As shown in the sample chapters' YAML headers, to output a single chapter to PDF
 output:
   bookdown::pdf_document2:
     template: templates/brief_template.tex
+    citation_package: biblatex
+documentclass: book
+bibliography: references.bib
 ```
-This will format the chapter in the OxThesis style but without including the front matter (table of contents, abstract, etc)
+**brief_template.tex** formats the chapter in the OxThesis style but without including the front matter (table of contents, abstract, etc).
+
+(Also, if you do not set the option `citation_package: biblatex`, which tell R Markdown to use BibLaTeX, you will get the error "! LaTeX Error: Environment CSLReferences undefined.")
 
 ## Cleaning up generated auxiliary files
 By default, when you build the entire thesis, the auxillary files will be removed (to adjust how this is done, edit **Makefile**).
