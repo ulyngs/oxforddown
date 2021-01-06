@@ -79,6 +79,21 @@ $endif$
 %UL 26 Mar 2019, enable strikethrough
 \usepackage[normalem]{ulem}
 
+%UL use soul package for correction highlighting
+\usepackage{soul}
+\usepackage{xcolor}
+\newcommand{\ctext}[3][RGB]{%
+  \begingroup
+  \definecolor{hlcolor}{#1}{#2}\sethlcolor{hlcolor}%
+  \hl{#3}%
+  \endgroup
+}
+\soulregister\ref7
+\soulregister\cite7
+\soulregister\autocite7
+\soulregister\textcite7
+\soulregister\pageref7
+
 %%%%%%% PAGE HEADERS AND FOOTERS %%%%%%%%%
 \usepackage{fancyhdr}
 \setlength{\headheight}{15pt}

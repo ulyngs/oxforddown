@@ -91,6 +91,21 @@
 %UL 28 Mar 2019, enable strikethrough
 \usepackage[normalem]{ulem}
 
+%UL use soul package for correction highlighting
+\usepackage{soul}
+\usepackage{xcolor}
+\newcommand{\ctext}[3][RGB]{%
+  \begingroup
+  \definecolor{hlcolor}{#1}{#2}\sethlcolor{hlcolor}%
+  \hl{#3}%
+  \endgroup
+}
+\soulregister\ref7
+\soulregister\cite7
+\soulregister\autocite7
+\soulregister\textcite7
+\soulregister\pageref7
+
 %UL 3 Nov 2019, avoid mysterious error from not having hyperref included
 \usepackage{hyperref}
 
