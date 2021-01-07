@@ -30,7 +30,6 @@ code
 code-chunks
 setup-chunks
 including-images
-control-figure-placement
 including-plots
 including-tables
 control-positioning

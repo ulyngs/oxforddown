@@ -63,8 +63,6 @@ Useful chunk options for figures include:
 - `out.width` (use with a percentage) for setting the image size 
 - if you've got an image that gets waaay to big in your output, it will be constrained to the page width by setting `out.width = "100%"`
 
-#### Control figure placement
-
 
 #### Figure rotation {-}
 You can use the chunk option `out.extra` to rotate images.
