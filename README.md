@@ -86,7 +86,7 @@ Examples of actual theses written with `oxforddown`:
   1. type 'make pdf' in the terminal (not the R console!) *or*
   2. click 'Build All' on the 'Build' tab *or*
   3. run `bookdown::render_book("index.Rmd", output_format = "bookdown::pdf_book")` in the R console
-- the compiled PDF is saved as **docs/\_main.pdf**, and the PDF is opened
+- the compiled PDF is saved as **docs/\_main.pdf**, and (for option 1 & 2) the PDF is opened
 
 ![](figures/screenshots/compiled_pdf.png)
 
@@ -106,11 +106,13 @@ Examples of actual theses written with `oxforddown`:
 - options
   1. in the terminal tab, type `make bs4book` *or*
   2. run `bookdown::render_book("index.Rmd", output_format = "bookdown::gitbook")` in the R console
-- the set of HTML files are stored in the **docs/** folder, and the front page (docs/index.html) is opened in a browser
+- the set of HTML files are stored in the **docs/** folder, and (for option 1) the front page (docs/index.html) is opened in a browser
 
 #### Word output
-- in the terminal tab (not the R console!), type 'make word'
-- the compiled MS Word document is saved as **docs/\_main.docx** and opened
+- options
+ 1. in the terminal tab, type 'make word'
+ 2. run `bookdown::render_book("index.Rmd", output_format = "bookdown::word_document2")` in the R console
+- the compiled MS Word document is saved as **docs/\_main.docx** and (for option 1) opened
 
 The Word output has no template behind it, and many things do not work (e.g. image rotation, highlighting corrections). **I encourage pull requests that optimise the Word output, e.g. by using tools from the [`officer`](https://github.com/davidgohel/officer) package.**
 
