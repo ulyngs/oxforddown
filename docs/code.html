@@ -43,6 +43,7 @@ Template for R Markdown</p></a>
 <li><a class="" href="tables.html"><span class="header-section-number">4</span> Tables</a></li>
 <li><a class="" href="notes-on-the-oxthesis-template-and-on-collaboration.html"><span class="header-section-number">5</span> Notes on The OxThesis template and on collaboration</a></li>
 <li><a class="" href="customisations-and-extensions.html"><span class="header-section-number">6</span> Customisations and extensions</a></li>
+<li><a class="" href="troubleshotting.html"><span class="header-section-number">7</span> Troubleshotting</a></li>
 <li><a class="" href="conclusion.html">Conclusion</a></li>
 <li class="book-part">Appendix</li>
 <li><a class="" href="the-first-appendix.html"><span class="header-section-number">A</span> The First Appendix</a></li>
@@ -276,16 +277,7 @@ For example, we might assign the number of rows in the <code>cars</code> dataset
 <h3>
 <span class="header-section-number">2.2.1</span> Referring to results computed in other languages than R<a class="anchor" aria-label="anchor" href="#referring-to-results-computed-in-other-languages-than-r"><i class="fas fa-link"></i></a>
 </h3>
-<p>I’ve commented the below section out, to avoid compilation errors from the <code>reticulate</code> package being unable to find a python installation (after I installed MacOS Catalina, <code>reticulate</code> was unable to select a python version on my system, and I had to set it manually with <code>use_python</code>).</p>
-<p>If you need to use other langauges, have a look at the content I commented out by the end of the <strong>02-rmd-basics-code.Rmd</strong> file, which gives an example of using Python in your R Markdown file.</p>
-<!--
-[At the moment](https://stackoverflow.com/questions/47818461/is-there-a-way-in-knitr-to-evaluate-inline-code-chunks-of-other-languages), inline code only works with R, so syntax such as `` `python code here` `` is not valid.
-However, you can use the [`reticulate`](https://rstudio.github.io/reticulate/articles/r_markdown.html) package to access variables from python chunks. Here's a Python code chunk:
--->
-<!-- The `reticulate` package allows **R** to access variables defined in python environments with the syntax `py$variable`: -->
-<!--
-This means that inline, we can include results from python chunks with `` `r py$variable` ``.
--->
+<p>If you want to use other languages than R, such as Python, Julia C++, or SQL, see <a href="https://bookdown.org/yihui/rmarkdown-cookbook/other-languages.html">the relevant section in the <em>R Markdown Cookbook</em></a></p>
 
 </div>
 </div>
