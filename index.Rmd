@@ -96,6 +96,7 @@ output:
     toc: true   
 link-citations: true
 documentclass: book
+always_allow_html: true #this allows html stuff in word (.docx) output
 ---
 
 

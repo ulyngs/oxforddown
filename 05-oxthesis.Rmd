@@ -40,7 +40,7 @@ You will also want to add the chunk option `include=knitr::is_latex_output()` so
 It's not possible to use markdown syntax inside chunk options, so if you want to e.g. italicise a book name in the reference use a ['text reference'](https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html#text-references): Create a named piece of text with '(ref:label-name) My text', then point to this in the chunk option with `quote_author='(ref:label-name)'`.
 
 
-## Highlighting corrections
+## Highlighting corrections (HTML & LaTeX only)
 For when it comes time to do corrections, you may want to highlight changes made when you submit a post-viva, corrected copy to your examiners so they can quickly verify you've completed the task. 
 You can do so like this:
 
@@ -62,9 +62,11 @@ This has the drawback of corrections then not showing up in HTML output at all, 
 Highlight entire **blocks of added or changed material** by putting them in a block of type `correction`, using the syntax ```` ```{block type='correction'} ````.^[In the **.tex** file for PDF output, this will put the content between `\begin{correction}` and `\end{correction}`; in gitbook output it will be put between `<div class="correction">` and `</div>`.]
 Like so:
 
-```{block type='correction'}
+```{block type='correction', include=knitr::is_latex_output() | knitr::is_html_output()}
 For larger chunks, like this paragraph or indeed entire figures, you can use the `correction` block type. This environment **highlights paragraph-sized and larger blocks** with the same blue colour.
 ```
+
+Note that correction blocks cannot be included in word output.
 
 ### Stopping corrections from being highlighted
 To turn off correction highlighting, go to the YAML header of **index.Rmd**, then:
