@@ -1,8 +1,5 @@
-Table of Contents
+Contents
 =================
-
-- [Examples](#examples)
-- [How to cite](#how-to-cite)
 - [Requirements](#requirements)
 - [How to use](#how-to-use)
   * [Writing your thesis](#writing-your-thesis)
@@ -22,7 +19,6 @@ Table of Contents
 # Oxforddown
 A template for writing an Oxford University thesis in R Markdown.
 
-## Examples
 - Sample PDF output: [**docs/_main.pdf**](https://github.com/ulyngs/oxforddown/blob/master/docs/_main.pdf)
 - Sample BS4 book output: [ulyngs.github.io/oxforddown/](https://ulyngs.github.io/oxforddown/)
 
