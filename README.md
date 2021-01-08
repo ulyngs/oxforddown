@@ -53,14 +53,14 @@ Examples of actual theses written with `oxforddown`:
   - Command line developer tools. You can install these by typing `xcode-select --install` in a terminal prompt
 - *If on Windows*
   - GNU make. This can be tricky to install: \
-    The more painful route (which I made work after hours): 
+    The more painful route: 
     - (i) download the minGW installer from https://sourceforge.net/projects/mingw/, 
     - (ii) open the MinGW Installation Manager, check the box next to mingw32-base and select 'Mark for installation'
     - (iii) click 'Installation' then 'Apply changes'
     - (iv) make a copy of the file 'mingw32-make.exe' which you will probably find in the folder **C:\MinGW\bin\**, and name it **make.exe**
     - (v) include this in your environment variables, by opening a terminal / command prompt and typing `set PATH=C:\MinGW\bin;%PATH%`
 
-    The (supposedly) less painful route (which I haven't tried):
+    The (supposedly) less painful route:
     - (i) install the package manager chocolatey from [here](https://chocolatey.org/install)
     - (ii) open a command prompt and type `choco install make`
 
