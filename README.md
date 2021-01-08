@@ -52,19 +52,17 @@ Examples of actual theses written with `oxforddown`:
 - *If on Mac*
   - Command line developer tools. You can install these by typing `xcode-select --install` in a terminal prompt
 - *If on Windows*
-  - If you want to build by clicking the 'Build all' button, then you need GNU make. This can be tricky to install: \
-    The route of least pain:
-    - don't use `make` at all and build the thesis with the explicit command `bookdown::render_book("index.Rmd", output_format = "bookdown::pdf_book")`
-  
-- *If on Windows*
-    The painful route: 
+  - The 'Build all' button is set up to use a program called [`make`](https://thomasleeper.com/2016/09/make-make-make-again/) to build the pdf output and automatically clean up all the weird files LaTeX generates in the process. 
+  - `make` can be tricky to install on Windows, so the route of least pain on Windows is to build the thesis with the explicit command `bookdown::render_book("index.Rmd", output_format = "bookdown::pdf_book")` in the R console.
+  - If you *do* want to install 'make', here's how:
+    Option 1 (quite painful): 
     - (i) download the minGW installer from https://sourceforge.net/projects/mingw/, 
     - (ii) open the MinGW Installation Manager, check the box next to mingw32-base and select 'Mark for installation'
     - (iii) click 'Installation' then 'Apply changes'
     - (iv) make a copy of the file 'mingw32-make.exe' which you will probably find in the folder **C:\MinGW\bin\**, and name it **make.exe**
     - (v) include this in your environment variables, by opening a terminal / command prompt and typing `set PATH=C:\MinGW\bin;%PATH%`
 
-    The (supposedly) less painful route:
+    Option 2 (supposedly less painful):
     - (i) install the package manager chocolatey from [here](https://chocolatey.org/install)
     - (ii) open a command prompt and type `choco install make`
 
