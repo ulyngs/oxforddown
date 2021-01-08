@@ -45,7 +45,7 @@ Examples of actual theses written with `oxforddown`:
 
 ## Requirements
 - LaTeX 
-  - Option 1 (recommended): download and install the MacTeX distribution from [tug.org/mactex/](http://www.tug.org/mactex/) (please be aware that it's quite large, at 4.1gb)
+  - Option 1 (recommended): download and install the MacTeX distribution from [tug.org/mactex/](http://www.tug.org/mactex/) (~4 gigs)
   - Option 2: install Yihui Xie's [TinyTeX](https://yihui.name/tinytex/). You need to manually install the LaTeX package 'cbfonts-fd' with `tinytex::tlmgr_install('cbfonts-fd')` (#11) - the other necessary LaTeX packages will be automatically install for you by TinyTeX.
 - [R](https://cran.rstudio.com) and [RStudio version 1.2 or higher](https://www.rstudio.com/products/rstudio/download/#download)
 - The R packages `rmarkdown`, `bookdown`, `tidyverse`, `kableExtra`, and `here`
