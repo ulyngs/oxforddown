@@ -5,7 +5,7 @@ pdf:
 
 bs4book:
 	Rscript -e 'options(bookdown.render.file_scope = FALSE); bookdown::render_book("index.Rmd", output_format = "bookdown::bs4_book")'
-	Rscript -e 'file.create(here::here("docs", ".nojekyll")'
+	Rscript -e 'file.create(here::here("docs", ".nojekyll"))'
 	Rscript -e 'browseURL(here::here("docs", "index.html"))'
 
 gitbook:
@@ -18,9 +18,9 @@ word:
 	Rscript -e 'browseURL(here::here("docs", "_main.docx"))'
 
 clean:
-	Rscript -e 'file.remove(list.files(pattern = "*.(log|mtc|maf|aux|bbl|blg|xml)")
+	Rscript -e 'file.remove(list.files(pattern = "*.(log|mtc|maf|aux|bbl|blg|xml)"))'
 	
 clean-knits:
-	Rscript -e 'file.remove(list.files(pattern = "*.(docx|html|pdf|log|maf|mtc|tex|toc|out|lof|lot|bcf|aux)")
+	Rscript -e 'file.remove(list.files(pattern = "*.(docx|html|pdf|log|maf|mtc|tex|toc|out|lof|lot|bcf|aux)"))'
 	Rscript -e 'unlink(list.files(pattern = "*_(files|cache)"), recursive = TRUE)'
 
