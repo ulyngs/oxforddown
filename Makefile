@@ -10,7 +10,7 @@ bs4book:
 
 gitbook:
 	Rscript -e 'options(bookdown.render.file_scope = FALSE); bookdown::render_book("index.Rmd", output_format = "bookdown::gitbook")'
-	Rscript -e 'file.create(here::here("docs", ".nojekyll")'
+	Rscript -e 'file.create(here::here("docs", ".nojekyll"))'
 	Rscript -e 'browseURL(here::here("docs", "index.html"))'
 
 word:
