@@ -23,36 +23,32 @@ abbreviations: "front-and-back-matter/abbreviations" # path to .tex file with ab
 bibliography: references.bib
 bibliography-heading-in-pdf: Works Cited
 
-#####################
-## PDF formatting  ##
-#####################
+########################
+## PDF layout options ###
+#########################
+## correction highlighting (##
+corrections: true
 
-### page layout & headers and footers ###
+## binding / margins ##
 page-layout: nobind #'nobind' for PDF output (equal margins), 'twoside' for two-sided binding (mirror margins and blank pages), leave blank for one-sided binding (left margin > right margin)
 
+## position of page numbers ##
 ordinary-page-number-foot-or-head: foot #'foot' puts page number in footer, 'head' in header
-ordinary-page-number-position: C  #C = center, R = right, L = left. If page layout is 'twoside', then O = odd pages and E = even pages. E.g. RO,LE puts the page number to the right on odd pages and left on even pages
+ordinary-page-number-position: C  #C = center, R = right, L = left. If page layout is 'twoside', O = odd pages and E = even pages. E.g. RO,LE puts the page number to the right on odd pages and left on even pages
 chapter-page-number-foot-or-head: foot #you may want it to be different on the chapter pages
 chapter-page-number-position: C
 
+## position of running header ##
 running-header: true #indicate current chapter/section in header?
 running-header-foot-or-head: head
 running-header-position-leftmark: LO #marks the chapter. If layout is 'nobind', only this is used.
 running-header-position-rightmark: RE  #marks the section.
 
-draft-mark: false # add a DRAFT mark in the footer?
-draft-mark-foot-or-head: foot
+draft-mark: false # add a DRAFT mark?
+draft-mark-foot-or-head: foot ##'foot' = in footer, 'head' = in header
 draft-mark-position: C
 
-### code block spacing ###
-space-before-code-block: 10pt
-space-after-code-block: 8pt
-
-### other stuff ###
-abstractseparate: true  # include front page w/ abstract for examination schools?
-bib-humanities: true   # true to format references as author-year - false as numbers
-doi-in-bibliography: true # true to show DOI's in the bibliography
-hidelinks: true # false to highlight clickable links with a colored border
+## tables of content ##
 toc-depth: 2 # depth of heading to include in table of contents
 lof: true # include list of figures in front matter?
 lot: true # include list of tables in front matter?
@@ -60,8 +56,17 @@ mini-toc: true  # include mini-table of contents at start of each chapter? (this
 mini-lot: false  # include mini-list of tables by start of each chapter?
 mini-lof: false  # include mini-list of figures by start of each chapter?
 
-params:
-  corrections: true # set false to stop applying blue background to blocks of corrections
+## bibliography style ##
+bib-humanities: true   # true to format references as author-year - false as numbers
+doi-in-bibliography: true # true to show DOI's in the bibliography
+
+## code block spacing ##
+space-before-code-block: 10pt
+space-after-code-block: 8pt
+
+### other stuff ###
+abstractseparate: true  # include front page w/ abstract for examination schools?
+hidelinks: true # false to highlight clickable links with a colored border
 
 #####################
 ## output options  ##
@@ -73,7 +78,9 @@ output:
     citation_package: biblatex  
     pandoc_args: "--lua-filter=scripts_and_filters/colour_and_highlight.lua"
   bookdown::bs4_book: 
-    css: templates/bs4_style.css
+    css: 
+      - templates/bs4_style.css
+      - templates/corrections.css # remove to stop highlighting corrections
     theme:
       primary: "#6D1919"
     repo: https://github.com/ulyngs/oxforddown

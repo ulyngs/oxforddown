@@ -1,3 +1,11 @@
+local correction_activated = true
+
+Meta = function(m)
+  if m['corrections'] ~= nil then 
+    correction_activated = m['corrections']
+  end
+end
+
 Span = function (el)
   -- store the attributes for color and highlight
   color = el.attributes['color']
@@ -10,7 +18,7 @@ Span = function (el)
   
   if FORMAT:match 'latex' then
     -- use \hl to highlight stuff that ends in {.correction}
-    if el.classes[1] == "correction" then
+    if correction_activated and el.classes[1] == "correction" then
       table.insert(
         el.content, 1, 
         pandoc.RawInline('latex', '\\hl{')
@@ -80,6 +88,9 @@ Span = function (el)
     return el
   end
   
-  
-  
 end
+
+return {
+  { Meta = Meta },
+  { Span = Span }
+}
