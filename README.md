@@ -54,7 +54,8 @@ Examples of actual theses written with `oxforddown`:
 - *If on Windows*
   - The 'Build all' button is set up to use a program called [`make`](https://thomasleeper.com/2016/09/make-make-make-again/) to build the pdf output and automatically clean up all the weird files LaTeX generates in the process. 
   - `make` can be tricky to install on Windows, so the route of least pain on Windows is to build the thesis with the explicit command `bookdown::render_book("index.Rmd", output_format = "bookdown::pdf_book")` in the R console.
-  - If you *do* want to install 'make', here's how:
+  
+  If you still want to use 'make', here's how: \
     Option 1 (quite painful): 
     - (i) download the minGW installer from https://sourceforge.net/projects/mingw/, 
     - (ii) open the MinGW Installation Manager, check the box next to mingw32-base and select 'Mark for installation'
