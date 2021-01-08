@@ -66,7 +66,7 @@ Like so:
 For larger chunks, like this paragraph or indeed entire figures, you can use the `correction` block type. This environment **highlights paragraph-sized and larger blocks** with the same blue colour.
 ```
 
-Note that correction blocks cannot be included in word output.
+*Note that correction blocks cannot be included in word output.*
 
 ### Stopping corrections from being highlighted
 To turn off correction highlighting, go to the YAML header of **index.Rmd**, then:

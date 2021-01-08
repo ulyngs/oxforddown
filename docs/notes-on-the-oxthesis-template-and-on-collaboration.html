@@ -43,6 +43,7 @@ Template for R Markdown</p></a>
 <li><a class="" href="tables.html"><span class="header-section-number">4</span> Tables</a></li>
 <li><a class="active" href="notes-on-the-oxthesis-template-and-on-collaboration.html"><span class="header-section-number">5</span> Notes on The OxThesis template and on collaboration</a></li>
 <li><a class="" href="customisations-and-extensions.html"><span class="header-section-number">6</span> Customisations and extensions</a></li>
+<li><a class="" href="troubleshotting.html"><span class="header-section-number">7</span> Troubleshotting</a></li>
 <li><a class="" href="conclusion.html">Conclusion</a></li>
 <li class="book-part">Appendix</li>
 <li><a class="" href="the-first-appendix.html"><span class="header-section-number">A</span> The First Appendix</a></li>
@@ -80,9 +81,9 @@ To do this, use the syntax <code>```{block type='savequote'}</code>.<a class="fo
 You will also want to add the chunk option <code>include=knitr::is_latex_output()</code> so that quotes are only included in PDF output.</p>
 <p>It’s not possible to use markdown syntax inside chunk options, so if you want to e.g. italicise a book name in the reference use a <a href="https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html#text-references">‘text reference’</a>: Create a named piece of text with ‘(ref:label-name) My text,’ then point to this in the chunk option with <code>quote_author='(ref:label-name)'</code>.</p>
 </div>
-<div id="highlighting-corrections" class="section level2" number="5.3">
+<div id="highlighting-corrections-html-latex-only" class="section level2" number="5.3">
 <h2>
-<span class="header-section-number">5.3</span> Highlighting corrections<a class="anchor" aria-label="anchor" href="#highlighting-corrections"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.3</span> Highlighting corrections (HTML &amp; LaTeX only)<a class="anchor" aria-label="anchor" href="#highlighting-corrections-html-latex-only"><i class="fas fa-link"></i></a>
 </h2>
 <p>For when it comes time to do corrections, you may want to highlight changes made when you submit a post-viva, corrected copy to your examiners so they can quickly verify you’ve completed the task.
 You can do so like this:</p>
@@ -113,6 +114,7 @@ Like so:</p>
 For larger chunks, like this paragraph or indeed entire figures, you can use the <code>correction</code> block type. This environment <strong>highlights paragraph-sized and larger blocks</strong> with the same blue colour.
 </p>
 </div>
+<p><em>Note that correction blocks cannot be included in word output.</em></p>
 </div>
 <div id="stopping-corrections-from-being-highlighted" class="section level3" number="5.3.3">
 <h3>
@@ -160,7 +162,7 @@ I suspect some great solution will be developed in the not-to-distant future, pr
 <li><a class="nav-link" href="#unnumbered-chapters"><span class="header-section-number">5.1</span> Unnumbered chapters</a></li>
 <li><a class="nav-link" href="#beginning-chapters-with-quotes"><span class="header-section-number">5.2</span> Beginning chapters with quotes</a></li>
 <li>
-<a class="nav-link" href="#highlighting-corrections"><span class="header-section-number">5.3</span> Highlighting corrections</a><ul class="nav navbar-nav">
+<a class="nav-link" href="#highlighting-corrections-html-latex-only"><span class="header-section-number">5.3</span> Highlighting corrections (HTML &amp; LaTeX only)</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#short-inline-corrections"><span class="header-section-number">5.3.1</span> Short, inline corrections</a></li>
 <li><a class="nav-link" href="#blocks-of-added-or-changed-material"><span class="header-section-number">5.3.2</span> Blocks of added or changed material</a></li>
 <li><a class="nav-link" href="#stopping-corrections-from-being-highlighted"><span class="header-section-number">5.3.3</span> Stopping corrections from being highlighted</a></li>
