@@ -90,16 +90,17 @@ You can do so like this:</p>
 <h3>
 <span class="header-section-number">5.3.1</span> Short, inline corrections<a class="anchor" aria-label="anchor" href="#short-inline-corrections"><i class="fas fa-link"></i></a>
 </h3>
-<p>Highlight <strong>short, inline corrections</strong> by doing <code>[like this]{.correction}</code> — the text between the square brackets will then <span class="correction">be highlighted in blue</span> in the output.</p>
-<p>This should work, also with <span class="correction">cross references (do you remember chapter <a href="rmd-basics.html#rmd-basics">1</a>?)</span> or even <span class="correction">citations <span class="citation">(<a href="references.html#ref-Shea2014" role="doc-biblioref">Shea et al. 2014</a>)</span></span>.</p>
+<p>Highlight <strong>short, inline corrections</strong> by doing <code>[like this]{.correction}</code> — the text between the square brackets will then <span class="correction">be highlighted in blue</span> in the output.
+This should work, also with <span class="correction">cross references (do you remember chapter <a href="rmd-basics.html#rmd-basics">1</a>?)</span> or even <span class="correction">citations <span class="citation">(<a href="references.html#ref-Shea2014" role="doc-biblioref">Shea et al. 2014</a>)</span></span>.</p>
 <p>However, pandoc might get confused by citations and cross-references.
-In particular, it might get confused by <span class="citation">(this <a href="references.html#ref-Shea2014" role="doc-biblioref">Shea et al. 2014</a>)</span>{.correction}</p>
-<p>In such cases, you could just use LaTeX syntax directly (this has the drawback of not showing up in HTML output, but you probably only care about correction highlighting in the PDF version for your examiners anyway!).
-The correction highlighting is supplied by the <a href="https://ctan.org/pkg/soul">soul</a> package, so you would do like this:</p>
+In particular, it might get confused by <span class="citation">(this <a href="references.html#ref-Shea2014" role="doc-biblioref">Shea et al. 2014</a>)</span>{.correction}
+In such cases, you could use LaTeX syntax directly.
+The correction highlighting is supplied by the <a href="https://ctan.org/pkg/soul">soul</a> package, so you can do like this:</p>
 <blockquote>
 <p><code>It doesn't get confused by \hl{this \textcite{Shea2014}}</code><br>
 Becomes: It doesn’t get confused by .</p>
 </blockquote>
+<p>This has the drawback of corrections then not showing up in HTML output at all, but you may only care about correction highlighting in the PDF for your examiners anyway!</p>
 </div>
 <div id="blocks-of-added-or-changed-material" class="section level3" number="5.3.2">
 <h3>
@@ -113,12 +114,17 @@ For larger chunks, like this paragraph or indeed entire figures, you can use the
 </p>
 </div>
 </div>
-<div id="stopping-corrections-from-being-highlighted-in-the-output" class="section level3" number="5.3.3">
+<div id="stopping-corrections-from-being-highlighted" class="section level3" number="5.3.3">
 <h3>
-<span class="header-section-number">5.3.3</span> Stopping corrections from being highlighted in the output<a class="anchor" aria-label="anchor" href="#stopping-corrections-from-being-highlighted-in-the-output"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.3.3</span> Stopping corrections from being highlighted<a class="anchor" aria-label="anchor" href="#stopping-corrections-from-being-highlighted"><i class="fas fa-link"></i></a>
 </h3>
-<p>For <strong>PDF</strong> output, go to <strong>index.Rmd</strong> and (i) set <code>corrections: false</code> under <code>params</code> in the YAML header (stops block of corrections from being highlighted), (ii) comment out <code>pandoc_args: ["--lua-filter=scripts_and_filters/correction_filter.lua"]</code> (stops inline corrections from being highlighted).</p>
-<p>For <strong>gitbook</strong> output, go to <strong>style.css</strong> and comment out the styling for <code>.correction</code>.</p>
+<p>To turn off correction highlighting, go to the YAML header of <strong>index.Rmd</strong>, then:</p>
+<ul>
+<li>PDF output: set <code>corrections: false</code><br>
+</li>
+<li>HTML output: remove or comment out <code>- templates/corrections.css</code>
+</li>
+</ul>
 </div>
 </div>
 <div id="diving-in-to-the-oxthesis-latex-template" class="section level2" number="5.4">
@@ -157,7 +163,7 @@ I suspect some great solution will be developed in the not-to-distant future, pr
 <a class="nav-link" href="#highlighting-corrections"><span class="header-section-number">5.3</span> Highlighting corrections</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#short-inline-corrections"><span class="header-section-number">5.3.1</span> Short, inline corrections</a></li>
 <li><a class="nav-link" href="#blocks-of-added-or-changed-material"><span class="header-section-number">5.3.2</span> Blocks of added or changed material</a></li>
-<li><a class="nav-link" href="#stopping-corrections-from-being-highlighted-in-the-output"><span class="header-section-number">5.3.3</span> Stopping corrections from being highlighted in the output</a></li>
+<li><a class="nav-link" href="#stopping-corrections-from-being-highlighted"><span class="header-section-number">5.3.3</span> Stopping corrections from being highlighted</a></li>
 </ul>
 </li>
 <li><a class="nav-link" href="#diving-in-to-the-oxthesis-latex-template"><span class="header-section-number">5.4</span> Diving in to the OxThesis LaTeX template</a></li>
