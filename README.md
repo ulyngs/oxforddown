@@ -82,7 +82,6 @@ Examples of actual theses written with `oxforddown`:
 - type 'make pdf' in the terminal (not the R console!) - or, alternatively, click 'Build All' on the 'Build' tab
 - the compiled PDF is saved as **docs/\_main.pdf**, and the PDF is opened
 
-![](figures/screenshots/build_all.png)
 ![](figures/screenshots/compiled_pdf.png)
 
 #### Gitbook output
