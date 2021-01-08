@@ -1,27 +1,26 @@
 pdf:
 	Rscript -e 'options(bookdown.render.file_scope = FALSE); bookdown::render_book("index.Rmd", output_format = "bookdown::pdf_book")'
-	rm -f *.log *.mtc* *.maf *.aux *.bcf *.lof *.lot *.out *.toc front-and-back-matter/abbreviations.aux
-	Rscript -e 'browseURL("docs/_main.pdf")'
+	Rscript -e 'file.remove(list.files(pattern = "*.(log|mtc|maf|aux|bcf|lof|lot|out|toc)"), here::here("front-and-back-matter", "abbreviations.aux"))'
+	Rscript -e 'browseURL(here::here("docs", "_main.pdf"))'
 
 bs4book:
 	Rscript -e 'options(bookdown.render.file_scope = FALSE); bookdown::render_book("index.Rmd", output_format = "bookdown::bs4_book")'
-	touch "docs/.nojekyll"
-	Rscript -e 'browseURL("docs/index.html")'
+	Rscript -e 'file.create(here::here("docs", ".nojekyll")'
+	Rscript -e 'browseURL(here::here("docs", "index.html"))'
 
 gitbook:
 	Rscript -e 'options(bookdown.render.file_scope = FALSE); bookdown::render_book("index.Rmd", output_format = "bookdown::gitbook")'
-	touch "docs/.nojekyll"
-	Rscript -e 'browseURL("docs/index.html")'
+	Rscript -e 'file.create(here::here("docs", ".nojekyll")'
+	Rscript -e 'browseURL(here::here("docs", "index.html"))'
 
 word:
 	Rscript -e 'options(bookdown.render.file_scope = FALSE); bookdown::render_book("index.Rmd", output_format = "bookdown::word_document2")'
-	Rscript -e 'browseURL("docs/_main.docx")'
+	Rscript -e 'browseURL(here::here("docs", "_main.docx"))'
 
 clean:
-	rm -f *.log *.mtc* *.maf *.aux *.bbl *.blg *.xml
+	Rscript -e 'file.remove(list.files(pattern = "*.(log|mtc|maf|aux|bbl|blg|xml)")
 	
 clean-knits:
-	rm -f *.docx *.html *.pdf *.log *.maf *.mtc* *.tex *.toc *.out *.lof *.lot *.bcf *.aux
-	rm -R *_files
-	rm -R *_cache
+	Rscript -e 'file.remove(list.files(pattern = "*.(docx|html|pdf|log|maf|mtc|tex|toc|out|lof|lot|bcf|aux)")
+	Rscript -e 'unlink(list.files(pattern = "*_(files|cache)"), recursive = TRUE)'
 
