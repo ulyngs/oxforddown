@@ -1,0 +1,6 @@
+.correction {
+  background-color: #CCCCFF; /* #FFFFFF if corrections should not be highlighted */
+  border-radius: 4px;
+  padding-right: 4px;
+  padding-left: 4px;
+}
