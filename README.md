@@ -95,7 +95,7 @@ Examples of actual theses written with `oxforddown`:
 #### BS4 book output
 - for this to work, you must install (1) the latest development version of bookdown (`remotes::install_github('rstudio/bookdown')`), (2) the `downlit` package (`install.packages("downlit")`), (3) the `bslib` package (not on CRAN yet; install with `remotes::install_github("rstudio/bslib")`)
 - in the terminal tab (not the R console!), type `make bs4book`
-- the set of HTML files for the gitbook are stored in the **docs/** folder, and the front page (docs/index.html) is opened in a browser
+- the set of HTML files are stored in the **docs/** folder, and the front page (docs/index.html) is opened in a browser
 
 #### Word output
 - in the terminal tab (not the R console!), type 'make word'
