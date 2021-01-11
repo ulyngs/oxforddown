@@ -49,7 +49,7 @@ draft-mark-foot-or-head: foot ##'foot' = in footer, 'head' = in header
 draft-mark-position: C
 
 ## tables of content ##
-toc-depth: 2 # depth of heading to include in table of contents
+toc-depth: 1 # depth of heading to include in table of contents
 lof: true # include list of figures in front matter?
 lot: true # include list of tables in front matter?
 mini-toc: true  # include mini-table of contents at start of each chapter? (this just prepares it; you must also add \minitoc after the chapter titles)
