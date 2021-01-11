@@ -75,13 +75,6 @@
 
 
 %
-% CRESTS
-%
-
-\def\crest{{\includegraphics{figures/beltcrest.pdf}}}
-
-
-%
 % Define text area of page and margin offsets
 %
 
@@ -174,6 +167,7 @@
 
 
 %define title page layout
+\newcommand{\university}{University of Oxford}
 
 \renewcommand{\maketitle}{%
 \begin{alwayssingle}\null
@@ -205,7 +199,7 @@
 {\large \vspace*{1ex}
     {{\@college} \par}
 \vspace*{1ex}
-    {University of Oxford \par}
+    {\university \par}
 \vspace*{20mm}
     {{\submittedtext} \par}
 \vspace*{1ex}

@@ -8,6 +8,9 @@ title: |
   Template for R Markdown
 author: Author Name
 college: Your College
+university: University of Oxford
+university-logo: figures/beltcrest.pdf
+submitted-text: A thesis submitted for the degree of
 degree: Doctor of Philosophy
 degreedate: Michaelmas 2018
 abstract: |
@@ -26,11 +29,15 @@ bibliography-heading-in-pdf: Works Cited
 ########################
 ## PDF layout options ###
 #########################
-## correction highlighting (##
+# if you want to use an alternative title page, you can provide a path to a 
+# .tex file here and it will override the default Oxford one
+# alternative-title-page: front-and-back-matter/alt-title-page-example.tex
+
+## correction highlighting
 corrections: true
 
 ## binding / margins ##
-page-layout: nobind #'nobind' for PDF output (equal margins), 'twoside' for two-sided binding (mirror margins and blank pages), leave blank for one-sided binding (left margin > right margin)
+page-layout: nobind #'nobind' for equal margins (PDF output), 'twoside' for two-sided binding (mirror margins and blank pages), leave blank for one-sided binding (left margin > right margin)
 
 ## position of page numbers ##
 ordinary-page-number-foot-or-head: foot #'foot' puts page number in footer, 'head' in header

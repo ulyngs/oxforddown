@@ -225,6 +225,13 @@ $endfor$
 % it's less claustrophobic
 \setlength{\parskip}{2pt plus 1pt}
 
+%
+% Oxford University logo on title page
+%
+\def\crest{{\includegraphics{$university-logo$}}}
+\renewcommand{\university}{$university$}
+\renewcommand{\submittedtext}{$submitted-text$}
+
 
 % Leave this line alone; it gets things started for the real document.
 \setlength{\baselineskip}{\textbaselineskip}
@@ -256,7 +263,11 @@ $endif$
 \begin{romanpages}
 
 % Title page is created here
+$if(alternative-title-page)$
+\input{$alternative-title-page$}
+$else$
 \maketitle
+$endif$
 
 %%%%% DEDICATION -- If you'd like one, un-comment the following.
 $if(dedication)$
