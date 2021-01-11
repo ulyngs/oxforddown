@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>B The Second Appendix, for Fun | oxforddown: An Oxford University Thesis Template for R Markdown</title>
+<title>5 Troubleshooting | oxforddown: An Oxford University Thesis Template for R Markdown</title>
 <meta name="author" content="Author Name">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6.4/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
@@ -41,11 +41,11 @@ Template for R Markdown</p></a>
 <li><a class="" href="cites-and-refs.html"><span class="header-section-number">2</span> Citations, cross-references, and collaboration</a></li>
 <li><a class="" href="tables.html"><span class="header-section-number">3</span> Tables</a></li>
 <li><a class="" href="customisations-and-extensions.html"><span class="header-section-number">4</span> Customisations and extensions</a></li>
-<li><a class="" href="troubleshooting.html"><span class="header-section-number">5</span> Troubleshooting</a></li>
+<li><a class="active" href="troubleshooting.html"><span class="header-section-number">5</span> Troubleshooting</a></li>
 <li><a class="" href="conclusion.html">Conclusion</a></li>
 <li class="book-part">Appendix</li>
 <li><a class="" href="the-first-appendix.html"><span class="header-section-number">A</span> The First Appendix</a></li>
-<li><a class="active" href="the-second-appendix-for-fun.html"><span class="header-section-number">B</span> The Second Appendix, for Fun</a></li>
+<li><a class="" href="the-second-appendix-for-fun.html"><span class="header-section-number">B</span> The Second Appendix, for Fun</a></li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
 
@@ -54,23 +54,38 @@ Template for R Markdown</p></a>
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="the-second-appendix-for-fun" class="section level1" number="7">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="troubleshooting" class="section level1" number="5">
 <h1>
-<span class="header-section-number">B</span> The Second Appendix, for Fun<a class="anchor" aria-label="anchor" href="#the-second-appendix-for-fun"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5</span> Troubleshooting<a class="anchor" aria-label="anchor" href="#troubleshooting"><i class="fas fa-link"></i></a>
 </h1>
+<p>This chapter describes common errors you may run into, and how to fix them.</p>
+<div id="error-failed-to-build-the-bibliography-via-biber" class="section level2" number="5.1">
+<h2>
+<span class="header-section-number">5.1</span> Error: Failed to build the bibliography via biber<a class="anchor" aria-label="anchor" href="#error-failed-to-build-the-bibliography-via-biber"><i class="fas fa-link"></i></a>
+</h2>
+<p>This can happen if you’ve had a failed build, perhaps in relation to RStudio shutting down abruptly.</p>
+<p>Things to try:
+- type <code>make clean-knits</code> in the terminal tab, then try recompiling
+- restart your computer (yes, really - this solved the problem for me, when I got this error after RStudio was abruptly shut down in the middle of a PDF build)
+- check your LaTeX installation</p>
+
 
 </div>
+</div>
   <div class="chapter-nav">
-<div class="prev"><a href="the-first-appendix.html"><span class="header-section-number">A</span> The First Appendix</a></div>
-<div class="next"><a href="references.html">References</a></div>
+<div class="prev"><a href="customisations-and-extensions.html"><span class="header-section-number">4</span> Customisations and extensions</a></div>
+<div class="next"><a href="conclusion.html">Conclusion</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav"><li><a class="nav-link" href="#the-second-appendix-for-fun"><span class="header-section-number">B</span> The Second Appendix, for Fun</a></li></ul>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#troubleshooting"><span class="header-section-number">5</span> Troubleshooting</a></li>
+<li><a class="nav-link" href="#error-failed-to-build-the-bibliography-via-biber"><span class="header-section-number">5.1</span> Error: Failed to build the bibliography via biber</a></li>
+</ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/ulyngs/oxforddown/blob/master/front-and-back-matter/98-appendices.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/ulyngs/oxforddown/edit/master/front-and-back-matter/98-appendices.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/ulyngs/oxforddown/blob/master/06-troubleshooting.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/ulyngs/oxforddown/edit/master/06-troubleshooting.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>

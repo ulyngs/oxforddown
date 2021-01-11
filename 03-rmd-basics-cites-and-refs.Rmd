@@ -10,8 +10,8 @@ documentclass: book
 bibliography: references.bib
 ---
 
-# Citations and cross-references {#cites-and-refs} 
-\chaptermark{Cites and cross-refs}
+# Citations, cross-references, and collaboration {#cites-and-refs} 
+\chaptermark{Citations and cross-refs}
 \minitoc <!-- this will include a mini table of contents-->
 
 ## Citations
@@ -152,35 +152,20 @@ One way to get around this is to use inline R code to insert the text, and use a
 Note that we need to escape the backslash with another backslash here to get the correct output.
 
 
-## Customising your thesis' front matter 'n stuff
-### Shorten captions shown in the list of figures (PDF)
-You might want your list of figures (which follows the table of contents) to have shorter (or just different) figure descriptions than the actual figure captions.
+## Collaborative writing
 
-Do this using the chunk option `fig.scap` ('short caption'), for example `{r captain-image, fig.cap="A very long and descriptive (and potentially boring) caption that doesn't fit in the list of figures, but helps the reader understand what the figure communicates.", fig.scap="A concise description for the list of figures"`
+Best practices for collaboration and change tracking when using R Markdown are still an open question. 
+In the blog post [**One year to dissertate**](https://livefreeordichotomize.com/2018/09/14/one-year-to-dissertate/) by Lucy D'Agostino, which I highly recommend, the author notes that she knits .Rmd files to a word document, then uses the `googledrive` R package to send this to Google Drive for comments / revisions from co-authors, then incorporates Google Drive suggestions *by hand* into the .Rmd source files. 
+This is a bit clunky, and there are ongoing discussions among the _R Markdown_ developers about what the best way is to handle collaborative writing (see [issue #1463](https://github.com/rstudio/rmarkdown/issues/1463) on GitHub, where [CriticMarkup](http://criticmarkup.com) is among the suggestions).
+
+For now, this is an open question in the community of R Markdown users. 
+I often knit to a format that can easily be imported to Google Docs for comments, then go over suggested revisions and manually incorporate them back in to the .Rmd source files. 
+For articles, I sometimes upload a near-final draft to [Overleaf](https://www.overleaf.com/), then collaboratively make final edits to the LaTeX file there. 
+I suspect some great solution will be developed in the not-to-distant future, probably by the RStudio team.
 
 
-### Shorten captions shown in the list of tables (PDF)
-You might want your list of tables (which follows the list of figures in your thesis front matter) to have shorter (or just different) table descriptions than the actual table captions.
+## Additional resources
 
-If you are using `knitr::kable` to generate a table, you can do this with the argument `caption.short`, e.g.:
+- *R Markdown: The Definitive Guide* - <https://bookdown.org/yihui/rmarkdown/>
 
-```r
-knitr::kable(mtcars,
-              caption = "A very long and descriptive (and potentially
-              boring) caption that doesn't fit in the list of figures,
-              but helps the reader understand what the figure 
-              communicates.",
-              caption.short = "A concise description for the list of tables")
-```
-
-### Shorting the running header (PDF)
-You might want a chapter's running header (i.e. the header showing the title of the current chapter at the top of page) to be shorter (or just different) to the actual chapter title.
-
-Do this by adding the latex command `\chaptermark{My shorter version}` after your chapter title.
-
-For example, this chapter's running header is simply 'Cites and cross-refs', because it begins like this:
-
-```markdown
-# Citations and cross-references {#cites-and-refs}
-\chaptermark{Cites and cross-refs}
-```
+- *R for Data Science* - <https://r4ds.had.co.nz>

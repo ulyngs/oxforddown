@@ -26,7 +26,7 @@ ii) include=knitr::opts_knit$get('rmarkdown.pandoc.to') == 'latex' means that th
 iii) You can't use markdown syntax inside chunk options, so if you want to e.g. italicise a book name in the quote reference use a 'text reference': Create a named piece of text with '(ref:label-name) My text', then link to this in the chunk option with quote_author='(ref:label-name)'
 -->
 
-# R Markdown Basics: The Markdown syntax {#rmd-basics}
+# R Markdown basics {#rmd-basics}
 \minitoc <!-- this will include a mini table of contents-->
 
 <!--
@@ -166,8 +166,137 @@ For more (e.g. how to theorems), see e.g. the documentation on [bookdown.org](ht
 
 
 
-## Additional resources
+## Adding code {#code}
 
-- *R Markdown: The Definitive Guide* - <https://bookdown.org/yihui/rmarkdown/>
+The magic of R Markdown is that we can add code within our document to make it dynamic.
 
-- *R for Data Science* - <https://r4ds.had.co.nz>
+We do this either as *code chunks* (generally used for loading libraries and data, performing calculations, and adding images, plots, and tables), or *inline code* (generally used for dynamically reporting results within our text).
+
+### Code chunks
+The syntax of a code chunk is shown in Figure \@ref(fig:chunk-parts).
+
+```{r chunk-parts, echo=FALSE, fig.cap="Code chunk syntax", out.width="100%", message=FALSE}
+library(tidyverse)
+knitr::include_graphics("figures/chunk-parts.png")
+```
+
+Common chunk options include (see e.g. [bookdown.org](https://bookdown.org/yihui/rmarkdown/r-code.html)):
+
+- `echo`: whether or not to display code in knitted output
+- `eval`: whether or to to run the code in the chunk when knitting
+- `include`: wheter to include anything from the from a code chunk in the output document
+- `fig.cap`: figure caption
+- `fig.scap`: short figure caption, which will be used in the 'List of Figures' in the PDF front matter
+
+**IMPORTANT**: Do *not* use underscoores in your chunk labels - if you do, you are likely to get an error in PDF output saying something like "! Package caption Error: \\caption outside float".
+
+#### Setup chunks
+An R Markdown document usually begins with a chunk that is used to **load libraries**, and to **set default chunk options** with `knitr::opts_chunk$set`.
+
+In your thesis, this will probably happen in **index.Rmd** and/or as opening chunks in each of your chapters.
+
+````
+`r ''````{r setup, include=FALSE}
+# don't show code unless we explicitly set echo = TRUE
+knitr::opts_chunk$set(echo = FALSE)
+
+library(tidyverse)
+```
+````
+
+#### Including images
+Code chunks are also used for including images, with `include_graphics` from the `knitr` package, as in Figure \@ref(fig:oxford-logo)
+
+```{r oxford-logo, fig.cap="Oxford logo", out.width='50%', fig.align='center'}
+knitr::include_graphics("figures/beltcrest.png")
+```
+
+Useful chunk options for figures include:
+
+- `out.width` (use with a percentage) for setting the image size 
+- if you've got an image that gets waaay to big in your output, it will be constrained to the page width by setting `out.width = "100%"`
+
+
+##### Figure rotation {-}
+You can use the chunk option `out.extra` to rotate images.
+
+The syntax is different for LaTeX and HTML, so for ease we might start by assigning the right string to a variable that depends on the format you're outputting to:
+
+```{r}
+if (knitr::is_latex_output()){
+  rotate180 <- "angle=180"
+} else {
+  rotate180 <- "style='transform:rotate(180deg);'"
+}
+```
+
+Then you can reference that variable as the value of `out.extra` to rotate images, as in Figure \@ref(fig:oxford-logo-rotated).
+
+```{r oxford-logo-rotated, out.extra=rotate180, fig.cap="Oxford logo, rotated", out.width='50%', fig.align='center', echo=FALSE}
+knitr::include_graphics("figures/beltcrest.png")
+```
+
+
+#### Including plots
+Similarly, code chunks are used for including dynamically generated plots.
+You use ordinary code in R or other languages - Figure \@ref(fig:cars-plot) shows a plot of the `cars` dataset of stopping distances for cars at various speeds (this dataset is built in to **R**).
+
+```{r cars-plot, fig.cap = "A ggplot of car stuff"}
+cars %>% 
+  ggplot() +
+    aes(x = speed, y = dist) +
+    geom_point()
+```
+
+Under the hood, plots are included in your document in the same way as images - when you build the book or knit a chapter, the plot is automatically generated from your code, saved as an image, then included into the output document.
+
+#### Including tables
+Tables are usually included with the `kable` function from the `knitr` package.
+
+Table \@ref(tab:cars-table) shows the first rows of that cars data - read in your own data, then use this approach to automatically generate tables.
+
+```{r cars-table}
+cars %>% 
+  head() %>% 
+  knitr::kable(caption = "A knitr kable table")
+```
+
+- Gotcha: when using [`kable`](https://www.rdocumentation.org/packages/knitr/versions/1.21/topics/kable), captions  are set inside the `kable` function
+- The `kable` package is often used with the [`kableExtra`](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html) package
+
+#### Control positioning
+One thing that may be annoying is the way *R Markdown* handles "floats" like tables and figures.
+In your PDF output, LaTeX will try to find the best place to put your object based on the text around it and until you're really, truly done writing you should just leave it where it lies.
+
+In general, you should allow LaTeX to do this, but if you really *really* need a figure to be positioned where you put in the document, then you can make LaTeX attempt to do this with the chunk option `fig.pos="H"`, as in Figure \@ref(fig:oxford-logo-controlled):
+
+```{r oxford-logo-controlled, fig.cap="An Oxford logo that LaTeX will try to place at this position in the text", out.width='50%', fig.align='center', fig.pos="H"}
+knitr::include_graphics("figures/beltcrest.png")
+```
+
+As anyone who has tried to manually play around with the placement of figures in a Word document knows, this can have lots of side effects with extra spacing on other pages, etc.
+Therefore, it is not generally a good idea to do this - only do it when you really need to ensure that an image follows directly under text where you refer to it (in this document, I needed to do this for Figure \@ref(fig:latex-font-sizing) in section \@ref(max-power)).
+For more details, read the relevant section of the [R Markdown Cookbook]https://bookdown.org/yihui/rmarkdown-cookbook/figure-placement.html).
+
+
+### Inline code
+'Inline code' simply means inclusion of code inside text. 
+The syntax for doing this is `` ``r ''`r R_CODE` ``
+For example, `` ``r ''`r 4 + 4` `` will output `r 4 + 4` in your text.
+
+You will usually use this in parts of your thesis where you report results - read in data or results in a code chunk, store things you want to report in a variable, then insert the value of that variable in your text.
+For example, we might assign the number of rows in the `cars` dataset to a variable:
+
+```{r}
+num_car_observations <- nrow(cars)
+```
+
+We might then write:\
+"In the `cars` dataset, we have `` ``r ''`r num_car_observations` `` observations."
+
+Which would output:\
+"In the `cars` dataset, we have `r num_car_observations` observations."
+
+
+#### Referring to results computed in other languages than R
+If you want to use other languages than R, such as Python, Julia C++, or SQL, see [the relevant section in the *R Markdown Cookbook*](https://bookdown.org/yihui/rmarkdown-cookbook/other-languages.html) 

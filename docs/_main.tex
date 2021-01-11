@@ -264,7 +264,7 @@ Template for R Markdown}
 % The level that gets a number:
 \setcounter{secnumdepth}{2}
 % The level that shows up in the ToC:
-\setcounter{tocdepth}{2}
+\setcounter{tocdepth}{1}
 
 
 %%%%% ABSTRACT SEPARATE
@@ -394,7 +394,7 @@ have it, simply because it is pain\ldots{}
 
 
 \hypertarget{rmd-basics}{%
-\chapter{R Markdown Basics: The Markdown syntax}\label{rmd-basics}}
+\chapter{R Markdown basics}\label{rmd-basics}}
 
 \minitoc 
 
@@ -621,27 +621,15 @@ f\left(k\right)=\binom{n}{k}p^k\left(1-p\right)^{n-k}
 
 For more (e.g.~how to theorems), see e.g.~the documentation on \href{https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html\#equations}{bookdown.org}
 
-\hypertarget{additional-resources}{%
-\section{Additional resources}\label{additional-resources}}
-
-\begin{itemize}
-\item
-  \emph{R Markdown: The Definitive Guide} - \url{https://bookdown.org/yihui/rmarkdown/}
-\item
-  \emph{R for Data Science} - \url{https://r4ds.had.co.nz}
-\end{itemize}
-
 \hypertarget{code}{%
-\chapter{Adding code}\label{code}}
-
-\minitoc 
+\section{Adding code}\label{code}}
 
 The magic of R Markdown is that we can add code within our document to make it dynamic.
 
 We do this either as \emph{code chunks} (generally used for loading libraries and data, performing calculations, and adding images, plots, and tables), or \emph{inline code} (generally used for dynamically reporting results within our text).
 
 \hypertarget{code-chunks}{%
-\section{Code chunks}\label{code-chunks}}
+\subsection{Code chunks}\label{code-chunks}}
 
 The syntax of a code chunk is shown in Figure \ref{fig:chunk-parts}.
 
@@ -668,7 +656,7 @@ Common chunk options include (see e.g.~\href{https://bookdown.org/yihui/rmarkdow
 \textbf{IMPORTANT}: Do \emph{not} use underscoores in your chunk labels - if you do, you are likely to get an error in PDF output saying something like ``! Package caption Error: \textbackslash caption outside float''.
 
 \hypertarget{setup-chunks}{%
-\subsection{Setup chunks}\label{setup-chunks}}
+\subsubsection{Setup chunks}\label{setup-chunks}}
 
 An R Markdown document usually begins with a chunk that is used to \textbf{load libraries}, and to \textbf{set default chunk options} with \texttt{knitr::opts\_chunk\$set}.
 
@@ -684,7 +672,7 @@ library(tidyverse)
 \end{verbatim}
 
 \hypertarget{including-images}{%
-\subsection{Including images}\label{including-images}}
+\subsubsection{Including images}\label{including-images}}
 
 Code chunks are also used for including images, with \texttt{include\_graphics} from the \texttt{knitr} package, as in Figure \ref{fig:oxford-logo}
 
@@ -714,8 +702,8 @@ Useful chunk options for figures include:
 \end{itemize}
 
 \hypertarget{figure-rotation}{%
-\subsubsection*{Figure rotation}\label{figure-rotation}}
-\addcontentsline{toc}{subsubsection}{Figure rotation}
+\paragraph*{Figure rotation}\label{figure-rotation}}
+\addcontentsline{toc}{paragraph}{Figure rotation}
 
 You can use the chunk option \texttt{out.extra} to rotate images.
 
@@ -743,7 +731,7 @@ Then you can reference that variable as the value of \texttt{out.extra} to rotat
 \end{figure}
 
 \hypertarget{including-plots}{%
-\subsection{Including plots}\label{including-plots}}
+\subsubsection{Including plots}\label{including-plots}}
 
 Similarly, code chunks are used for including dynamically generated plots.
 You use ordinary code in R or other languages - Figure \ref{fig:cars-plot} shows a plot of the \texttt{cars} dataset of stopping distances for cars at various speeds (this dataset is built in to \textbf{R}).
@@ -766,7 +754,7 @@ You use ordinary code in R or other languages - Figure \ref{fig:cars-plot} shows
 Under the hood, plots are included in your document in the same way as images - when you build the book or knit a chapter, the plot is automatically generated from your code, saved as an image, then included into the output document.
 
 \hypertarget{including-tables}{%
-\subsection{Including tables}\label{including-tables}}
+\subsubsection{Including tables}\label{including-tables}}
 
 Tables are usually included with the \texttt{kable} function from the \texttt{knitr} package.
 
@@ -812,7 +800,7 @@ speed & dist\\
 \end{itemize}
 
 \hypertarget{control-positioning}{%
-\subsection{Control positioning}\label{control-positioning}}
+\subsubsection{Control positioning}\label{control-positioning}}
 
 One thing that may be annoying is the way \emph{R Markdown} handles ``floats'' like tables and figures.
 In your PDF output, LaTeX will try to find the best place to put your object based on the text around it and until you're really, truly done writing you should just leave it where it lies.
@@ -839,7 +827,7 @@ Therefore, it is not generally a good idea to do this - only do it when you real
 For more details, read the relevant section of the {[}R Markdown Cookbook{]}\url{https://bookdown.org/yihui/rmarkdown-cookbook/figure-placement.html}).
 
 \hypertarget{inline-code-1}{%
-\section{Inline code}\label{inline-code-1}}
+\subsection{Inline code}\label{inline-code-1}}
 
 `Inline code' simply means inclusion of code inside text.
 The syntax for doing this is \texttt{\textasciigrave{}r\ R\_CODE\textasciigrave{}}
@@ -861,16 +849,14 @@ Which would output:\\
 ``In the \texttt{cars} dataset, we have 50 observations.''
 
 \hypertarget{referring-to-results-computed-in-other-languages-than-r}{%
-\subsection{Referring to results computed in other languages than R}\label{referring-to-results-computed-in-other-languages-than-r}}
+\subsubsection{Referring to results computed in other languages than R}\label{referring-to-results-computed-in-other-languages-than-r}}
 
-I've commented the below section out, to avoid compilation errors from the \texttt{reticulate} package being unable to find a python installation (after I installed MacOS Catalina, \texttt{reticulate} was unable to select a python version on my system, and I had to set it manually with \texttt{use\_python}).
-
-If you need to use other langauges, have a look at the content I commented out by the end of the \textbf{02-rmd-basics-code.Rmd} file, which gives an example of using Python in your R Markdown file.
+If you want to use other languages than R, such as Python, Julia C++, or SQL, see \href{https://bookdown.org/yihui/rmarkdown-cookbook/other-languages.html}{the relevant section in the \emph{R Markdown Cookbook}}
 
 \hypertarget{cites-and-refs}{%
-\chapter{Citations and cross-references}\label{cites-and-refs}}
+\chapter{Citations, cross-references, and collaboration}\label{cites-and-refs}}
 
-\chaptermark{Cites and cross-refs}
+\chaptermark{Citations and cross-refs}
 
 \minitoc 
 
@@ -1113,49 +1099,27 @@ One way to get around this is to use inline R code to insert the text, and use a
 
 Note that we need to escape the backslash with another backslash here to get the correct output.
 
-\hypertarget{customising-your-thesis-front-matter-n-stuff}{%
-\section{Customising your thesis' front matter 'n stuff}\label{customising-your-thesis-front-matter-n-stuff}}
+\hypertarget{collaborative-writing}{%
+\section{Collaborative writing}\label{collaborative-writing}}
 
-\hypertarget{shorten-captions-shown-in-the-list-of-figures-pdf}{%
-\subsection{Shorten captions shown in the list of figures (PDF)}\label{shorten-captions-shown-in-the-list-of-figures-pdf}}
+Best practices for collaboration and change tracking when using R Markdown are still an open question.
+In the blog post \href{https://livefreeordichotomize.com/2018/09/14/one-year-to-dissertate/}{\textbf{One year to dissertate}} by Lucy D'Agostino, which I highly recommend, the author notes that she knits .Rmd files to a word document, then uses the \texttt{googledrive} R package to send this to Google Drive for comments / revisions from co-authors, then incorporates Google Drive suggestions \emph{by hand} into the .Rmd source files.
+This is a bit clunky, and there are ongoing discussions among the \emph{R Markdown} developers about what the best way is to handle collaborative writing (see \href{https://github.com/rstudio/rmarkdown/issues/1463}{issue \#1463} on GitHub, where \href{http://criticmarkup.com}{CriticMarkup} is among the suggestions).
 
-You might want your list of figures (which follows the table of contents) to have shorter (or just different) figure descriptions than the actual figure captions.
+For now, this is an open question in the community of R Markdown users.
+I often knit to a format that can easily be imported to Google Docs for comments, then go over suggested revisions and manually incorporate them back in to the .Rmd source files.
+For articles, I sometimes upload a near-final draft to \href{https://www.overleaf.com/}{Overleaf}, then collaboratively make final edits to the LaTeX file there.
+I suspect some great solution will be developed in the not-to-distant future, probably by the RStudio team.
 
-Do this using the chunk option \texttt{fig.scap} (`short caption'), for example \texttt{\{r\ captain-image,\ fig.cap="A\ very\ long\ and\ descriptive\ (and\ potentially\ boring)\ caption\ that\ doesn\textquotesingle{}t\ fit\ in\ the\ list\ of\ figures,\ but\ helps\ the\ reader\ understand\ what\ the\ figure\ communicates.",\ fig.scap="A\ concise\ description\ for\ the\ list\ of\ figures"}
+\hypertarget{additional-resources}{%
+\section{Additional resources}\label{additional-resources}}
 
-\hypertarget{shorten-captions-shown-in-the-list-of-tables-pdf}{%
-\subsection{Shorten captions shown in the list of tables (PDF)}\label{shorten-captions-shown-in-the-list-of-tables-pdf}}
-
-You might want your list of tables (which follows the list of figures in your thesis front matter) to have shorter (or just different) table descriptions than the actual table captions.
-
-If you are using \texttt{knitr::kable} to generate a table, you can do this with the argument \texttt{caption.short}, e.g.:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(mtcars,}
-              \AttributeTok{caption =} \StringTok{"A very long and descriptive (and potentially}
-\StringTok{              boring) caption that doesn\textquotesingle{}t fit in the list of figures,}
-\StringTok{              but helps the reader understand what the figure }
-\StringTok{              communicates."}\NormalTok{,}
-              \AttributeTok{caption.short =} \StringTok{"A concise description for the list of tables"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\hypertarget{shorting-the-running-header-pdf}{%
-\subsection{Shorting the running header (PDF)}\label{shorting-the-running-header-pdf}}
-
-You might want a chapter's running header (i.e.~the header showing the title of the current chapter at the top of page) to be shorter (or just different) to the actual chapter title.
-
-Do this by adding the latex command \texttt{\textbackslash{}chaptermark\{My\ shorter\ version\}} after your chapter title.
-
-For example, this chapter's running header is simply `Cites and cross-refs', because it begins like this:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{\# Citations and cross{-}references \{\#cites{-}and{-}refs\}}
-\NormalTok{\textbackslash{}chaptermark\{Cites and cross{-}refs\}}
-\end{Highlighting}
-\end{Shaded}
+\begin{itemize}
+\item
+  \emph{R Markdown: The Definitive Guide} - \url{https://bookdown.org/yihui/rmarkdown/}
+\item
+  \emph{R for Data Science} - \url{https://r4ds.had.co.nz}
+\end{itemize}
 
 \hypertarget{tables}{%
 \chapter{Tables}\label{tables}}
@@ -1826,15 +1790,61 @@ wonderful have been, and are being, evolved.
 
 
 
-\hypertarget{notes-on-the-oxthesis-template-and-on-collaboration}{%
-\chapter{Notes on The OxThesis template and on collaboration}\label{notes-on-the-oxthesis-template-and-on-collaboration}}
+\hypertarget{customisations-and-extensions}{%
+\chapter{Customisations and extensions}\label{customisations-and-extensions}}
 
 \minitoc 
+
+This chapter describes a number of additional tips and tricks as well as possible customizations to the \texttt{oxforddown} thesis.
+
+\hypertarget{front-matter}{%
+\section{Front matter}\label{front-matter}}
+
+\hypertarget{shorten-captions-shown-in-the-list-of-figures-pdf}{%
+\subsection{Shorten captions shown in the list of figures (PDF)}\label{shorten-captions-shown-in-the-list-of-figures-pdf}}
+
+You might want your list of figures (which follows the table of contents) to have shorter (or just different) figure descriptions than the actual figure captions.
+
+Do this using the chunk option \texttt{fig.scap} (`short caption'), for example \texttt{\{r\ captain-image,\ fig.cap="A\ very\ long\ and\ descriptive\ (and\ potentially\ boring)\ caption\ that\ doesn\textquotesingle{}t\ fit\ in\ the\ list\ of\ figures,\ but\ helps\ the\ reader\ understand\ what\ the\ figure\ communicates.",\ fig.scap="A\ concise\ description\ for\ the\ list\ of\ figures"}
+
+\hypertarget{shorten-captions-shown-in-the-list-of-tables-pdf}{%
+\subsection{Shorten captions shown in the list of tables (PDF)}\label{shorten-captions-shown-in-the-list-of-tables-pdf}}
+
+You might want your list of tables (which follows the list of figures in your thesis front matter) to have shorter (or just different) table descriptions than the actual table captions.
+
+If you are using \texttt{knitr::kable} to generate a table, you can do this with the argument \texttt{caption.short}, e.g.:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(mtcars,}
+              \AttributeTok{caption =} \StringTok{"A very long and descriptive (and potentially}
+\StringTok{              boring) caption that doesn\textquotesingle{}t fit in the list of figures,}
+\StringTok{              but helps the reader understand what the figure }
+\StringTok{              communicates."}\NormalTok{,}
+              \AttributeTok{caption.short =} \StringTok{"A concise description for the list of tables"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{shorten-running-header-pdf}{%
+\section{Shorten running header (PDF)}\label{shorten-running-header-pdf}}
+
+You might want a chapter's running header (i.e.~the header showing the title of the current chapter at the top of page) to be shorter (or just different) to the actual chapter title.
+
+Do this by adding the latex command \texttt{\textbackslash{}chaptermark\{My\ shorter\ version\}} after your chapter title.
+
+For example, chapter \ref{cites-and-refs}`s running header is simply 'Cites and cross-refs', because it begins like this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{\# Citations, cross{-}references, and collaboration \{\#cites{-}and{-}refs\} }
+\NormalTok{\textbackslash{}chaptermark\{Cites and cross{-}refs\}}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{unnumbered-chapters}{%
 \section{Unnumbered chapters}\label{unnumbered-chapters}}
 
-To make chapters unnumbered (this is normally only relevant to the Introduction and/or the Conclusion), follow the chapter header with \texttt{\{-\}}, e.g.~\texttt{\#\ Introduction\ \{-\}}.
+To make chapters unnumbered (normally only relevant to the Introduction and/or the Conclusion), follow the chapter header with \texttt{\{-\}}, e.g.~\texttt{\#\ Introduction\ \{-\}}.
 
 When you do this, you must also follow the heading with these two latex commands:
 
@@ -1847,8 +1857,8 @@ When you do this, you must also follow the heading with these two latex commands
 
 Otherwise the chapter's mini table of contents and the running header will show the previous chapter.
 
-\hypertarget{beginning-chapters-with-quotes}{%
-\section{Beginning chapters with quotes}\label{beginning-chapters-with-quotes}}
+\hypertarget{beginning-chapters-with-quotes-pdf}{%
+\section{Beginning chapters with quotes (PDF)}\label{beginning-chapters-with-quotes-pdf}}
 
 The OxThesis LaTeX template lets you inject some wittiness into your thesis by including a block of type \texttt{savequote} at the beginning of chapters.
 To do this, use the syntax \texttt{\textasciigrave{}\textasciigrave{}\textasciigrave{}\{block\ type=\textquotesingle{}savequote\textquotesingle{}\}}.\footnote{For more on custom block types, see the relevant section in \href{https://bookdown.org/yihui/bookdown/custom-blocks.html}{\emph{Authoring Books with R Markdown}}.}
@@ -1858,8 +1868,8 @@ You will also want to add the chunk option \texttt{include=knitr::is\_latex\_out
 
 It's not possible to use markdown syntax inside chunk options, so if you want to e.g.~italicise a book name in the reference use a \href{https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html\#text-references}{`text reference'}: Create a named piece of text with `(ref:label-name) My text', then point to this in the chunk option with \texttt{quote\_author=\textquotesingle{}(ref:label-name)\textquotesingle{}}.
 
-\hypertarget{highlighting-corrections}{%
-\section{Highlighting corrections}\label{highlighting-corrections}}
+\hypertarget{highlighting-corrections-html-pdf}{%
+\section{Highlighting corrections (HTML \& PDF)}\label{highlighting-corrections-html-pdf}}
 
 For when it comes time to do corrections, you may want to highlight changes made when you submit a post-viva, corrected copy to your examiners so they can quickly verify you've completed the task.
 You can do so like this:
@@ -1868,19 +1878,19 @@ You can do so like this:
 \subsection{Short, inline corrections}\label{short-inline-corrections}}
 
 Highlight \textbf{short, inline corrections} by doing \texttt{{[}like\ this{]}\{.correction\}} --- the text between the square brackets will then \hl{be highlighted in blue} in the output.
-
 This should work, also with \hl{cross references (do you remember chapter \ref{rmd-basics}?)} or even \hl{citations \autocite{Shea2014}}.
 
 However, pandoc might get confused by citations and cross-references.
 In particular, it might get confused by \autocite[this][]{Shea2014}\{.correction\}
-
-In such cases, you could just use LaTeX syntax directly (this has the drawback of not showing up in HTML output, but you probably only care about correction highlighting in the PDF version for your examiners anyway!).
-The correction highlighting is supplied by the \href{https://ctan.org/pkg/soul}{soul} package, so you would do like this:
+In such cases, you could use LaTeX syntax directly.
+The correction highlighting is supplied by the \href{https://ctan.org/pkg/soul}{soul} package, so you can do like this:
 
 \begin{quote}
 \texttt{It\ doesn\textquotesingle{}t\ get\ confused\ by\ \textbackslash{}hl\{this\ \textbackslash{}textcite\{Shea2014\}\}}~\\
 Becomes: It doesn't get confused by \hl{this \textcite{Shea2014}}.
 \end{quote}
+
+This has the drawback of corrections then not showing up in HTML output at all, but you may only care about correction highlighting in the PDF for your examiners anyway!
 
 \hypertarget{blocks-of-added-or-changed-material}{%
 \subsection{Blocks of added or changed material}\label{blocks-of-added-or-changed-material}}
@@ -1895,42 +1905,26 @@ use the \texttt{correction} block type. This environment
 colour.
 \end{correction}
 
-\hypertarget{stopping-corrections-from-being-highlighted-in-the-output}{%
-\subsection{Stopping corrections from being highlighted in the output}\label{stopping-corrections-from-being-highlighted-in-the-output}}
+\emph{Note that correction blocks cannot be included in word output.}
 
-For \textbf{PDF} output, go to \textbf{index.Rmd} and (i) set \texttt{corrections:\ false} under \texttt{params} in the YAML header (stops block of corrections from being highlighted), (ii) comment out \texttt{pandoc\_args:\ {[}"-\/-lua-filter=scripts\_and\_filters/correction\_filter.lua"{]}} (stops inline corrections from being highlighted).
+\hypertarget{stopping-corrections-from-being-highlighted}{%
+\subsection{Stopping corrections from being highlighted}\label{stopping-corrections-from-being-highlighted}}
 
-For \textbf{gitbook} output, go to \textbf{style.css} and comment out the styling for \texttt{.correction}.
+To turn off correction highlighting, go to the YAML header of \textbf{index.Rmd}, then:
 
-\hypertarget{diving-in-to-the-oxthesis-latex-template}{%
-\section{Diving in to the OxThesis LaTeX template}\label{diving-in-to-the-oxthesis-latex-template}}
+\begin{itemize}
+\tightlist
+\item
+  PDF output: set \texttt{corrections:\ false}\\
+\item
+  HTML output: remove or comment out \texttt{-\ templates/corrections.css}
+\end{itemize}
 
-For LaTeX minded people, you can read through \textbf{templates/template.tex} to see which additional customisation options are available as well as \textbf{templates/ociamthesis.cls} which supplies the base class.
-For example, \textbf{template.tex} provides an option for master's degree submissions, which changes identifying information to candidate number and includes a word count.
-At the time of writing, you must set this directly in \textbf{template.tex} rather than from the YAML header in \textbf{index.Rmd}.
-
-\hypertarget{collaborative-writing}{%
-\section{Collaborative writing}\label{collaborative-writing}}
-
-Best practices for collaboration and change tracking when using R Markdown are still an open question.
-In the blog post \href{https://livefreeordichotomize.com/2018/09/14/one-year-to-dissertate/}{\textbf{One year to dissertate}} by Lucy D'Agostino, which I highly recommend, the author notes that she knits .Rmd files to a \texttt{word\_document}, then uses the \texttt{googledrive} R package to send this to Google Drive for comments / revisions from co-authors, then incorporates Google Drive suggestions \emph{by hand} into the .Rmd source files.
-This is a bit clunky, and there are ongoing discussions among the \emph{R Markdown} developers about what the best way is to handle collaborative writing (see \href{https://github.com/rstudio/rmarkdown/issues/1463}{issue \#1463} on GitHub, where \href{http://criticmarkup.com}{CriticMarkup} is among the suggestions).
-
-For now, this is an open question in the community of R Markdown users.
-I often knit to a format that can easily be imported to Google Docs for comments, then go over suggested revisions and manually incorporate them back in to the .Rmd source files.
-For articles, I sometimes upload a near-final draft to \href{https://www.overleaf.com/}{Overleaf}, then collaboratively make final edits to the \LaTeX~file there.
-I suspect some great solution will be developed in the not-to-distant future, probably by the RStudio team.
-
-\hypertarget{customisations-and-extensions}{%
-\chapter{Customisations and extensions}\label{customisations-and-extensions}}
-
-This chapter describes a number of additional tips and tricks as well as possible customizations to the \texttt{oxforddown} thesis.
-
-\hypertarget{apply-custom-font-color-and-highlighting-to-text}{%
-\section{Apply custom font color and highlighting to text}\label{apply-custom-font-color-and-highlighting-to-text}}
+\hypertarget{apply-custom-font-color-and-highlighting-to-text-html-pdf}{%
+\section{Apply custom font color and highlighting to text (HTML \& PDF)}\label{apply-custom-font-color-and-highlighting-to-text-html-pdf}}
 
 The lua filter that adds the functionality to highlight corrections adds two more tricks:
-you can apply your own choice of colour to highlight text, or to change the font color of some text.
+you can apply your own choice of colour to highlight text, or change the font color.
 The syntax is as follows:
 
 \begin{quote}
@@ -1944,7 +1938,7 @@ Becomes: \textcolor{blue}{Here's some text with blue font}
 \end{quote}
 
 \begin{quote}
-Finally --- never, ever actually do this -- \texttt{{[}here\textquotesingle{}s\ some\ text\ with\ white\ highlighting\ and\ yellow\ font{]}\{highlight="black"\ color="yellow"\}}\\
+Finally --- never, ever actually do this -- \texttt{{[}here\textquotesingle{}s\ some\ text\ with\ black\ highlighting\ and\ yellow\ font{]}\{highlight="black"\ color="yellow"\}}\\
 Becomes: \textcolor{yellow}{\sethlcolor{black}\hl{here's some text with black highlighting and yellow font}\sethlcolor{correctioncolor}}
 \end{quote}
 
@@ -2001,7 +1995,7 @@ You may also want to remove margins from the PDF files, which you can do with Ad
 \hypertarget{using-a-.csl-file-with-pandoc-instead-of-biblatex}{%
 \subsection{Using a .csl file with pandoc instead of biblatex}\label{using-a-.csl-file-with-pandoc-instead-of-biblatex}}
 
-The \texttt{oxforddown} package uses biblatex in latex for referencing.
+The \texttt{oxforddown} package uses biblatex in LaTeX for referencing.
 It is also possible to use pandoc for referencing by providing a .csl file in the YAML header of \textbf{index.Rmd} (likely requiring commenting out the biblatex code in \textbf{templates/template.tex}).
 This may be helpful for those who have a .csl file describing the referencing format for a particular journal.
 However, note that this approach does not support chapter bibliographies (see Section \ref{biblatex-custom}).
@@ -2106,11 +2100,33 @@ If you would like chapter bibliographies, in addition insert the following code 
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{customizing-the-page-headers-and-footers}{%
-\section{Customizing the page headers and footers}\label{customizing-the-page-headers-and-footers}}
+\hypertarget{customizing-the-page-headers-and-footers-pdf}{%
+\section{Customizing the page headers and footers (PDF)}\label{customizing-the-page-headers-and-footers-pdf}}
 
 This can now be done directly in \textbf{index.Rmd}'s YAML header.
-If you are a LaTeX expert and you need further customisation that what's currently provided, you can tweak the relevant sections of \textbf{templates/template.tex} - the relevant code is beneath the line that begins \texttt{\textbackslash{}usepackage\{fancyhdr\}}.
+If you are a LaTeX expert and need further customisation that what's currently provided, you can tweak the relevant sections of \textbf{templates/template.tex} - the relevant code is beneath the line that begins \texttt{\textbackslash{}usepackage\{fancyhdr\}}.
+
+\hypertarget{diving-in-to-the-oxthesis-latex-template-pdf}{%
+\section{Diving in to the OxThesis LaTeX template (PDF)}\label{diving-in-to-the-oxthesis-latex-template-pdf}}
+
+For LaTeX minded people, you can read through \textbf{templates/template.tex} to see which additional customisation options are available as well as \textbf{templates/ociamthesis.cls} which supplies the base class.
+For example, \textbf{template.tex} provides an option for master's degree submissions, which changes identifying information to candidate number and includes a word count.
+At the time of writing, you must set this directly in \textbf{template.tex} rather than from the YAML header in \textbf{index.Rmd}.
+
+\hypertarget{troubleshooting}{%
+\chapter{Troubleshooting}\label{troubleshooting}}
+
+This chapter describes common errors you may run into, and how to fix them.
+
+\hypertarget{error-failed-to-build-the-bibliography-via-biber}{%
+\section{Error: Failed to build the bibliography via biber}\label{error-failed-to-build-the-bibliography-via-biber}}
+
+This can happen if you've had a failed build, perhaps in relation to RStudio shutting down abruptly.
+
+Things to try:
+- type \texttt{make\ clean-knits} in the terminal tab, then try recompiling
+- restart your computer (yes, really - this solved the problem for me, when I got this error after RStudio was abruptly shut down in the middle of a PDF build)
+- check your LaTeX installation
 
 \begin{savequote}
 Alles Gescheite ist schon gedacht worden.\\

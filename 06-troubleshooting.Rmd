@@ -1,0 +1,22 @@
+---
+output:
+  #bookdown::html_document2: default
+  #bookdown::word_document2: default
+  bookdown::pdf_document2: 
+    template: templates/brief_template.tex
+    citation_package: biblatex
+documentclass: book
+bibliography: references.bib
+---
+  
+# Troubleshooting
+
+This chapter describes common errors you may run into, and how to fix them.
+
+## Error: Failed to build the bibliography via biber
+This can happen if you've had a failed build, perhaps in relation to RStudio shutting down abruptly.
+
+Things to try:
+- type `make clean-knits` in the terminal tab, then try recompiling
+- restart your computer (yes, really - this solved the problem for me, when I got this error after RStudio was abruptly shut down in the middle of a PDF build)
+- check your LaTeX installation

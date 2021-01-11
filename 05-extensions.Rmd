@@ -1,0 +1,278 @@
+---
+output:
+  #bookdown::html_document2: default
+  #bookdown::word_document2: default
+  bookdown::pdf_document2: 
+    template: templates/brief_template.tex
+    citation_package: biblatex
+documentclass: book
+bibliography: references.bib
+---
+
+```{block type='savequote', include=knitr::is_latex_output(), quote_author='(ref:darwin-quote)'}
+There is grandeur in this view of life, with its several powers, having been originally breathed into a few forms or into one; and that, whilst this planet has gone cycling on according to the fixed law of gravity, from so simple a beginning endless forms most beautiful and most wonderful have been, and are being, evolved.
+
+```
+(ref:darwin-quote) --- Charles Darwin [@Darwin1859]
+  
+# Customisations and extensions
+\minitoc <!-- this will include a mini table of contents-->
+
+This chapter describes a number of additional tips and tricks as well as possible customizations to the `oxforddown` thesis.
+
+## Front matter
+### Shorten captions shown in the list of figures (PDF)
+You might want your list of figures (which follows the table of contents) to have shorter (or just different) figure descriptions than the actual figure captions.
+
+Do this using the chunk option `fig.scap` ('short caption'), for example `{r captain-image, fig.cap="A very long and descriptive (and potentially boring) caption that doesn't fit in the list of figures, but helps the reader understand what the figure communicates.", fig.scap="A concise description for the list of figures"`
+
+
+### Shorten captions shown in the list of tables (PDF)
+You might want your list of tables (which follows the list of figures in your thesis front matter) to have shorter (or just different) table descriptions than the actual table captions.
+
+If you are using `knitr::kable` to generate a table, you can do this with the argument `caption.short`, e.g.:
+
+```r
+knitr::kable(mtcars,
+              caption = "A very long and descriptive (and potentially
+              boring) caption that doesn't fit in the list of figures,
+              but helps the reader understand what the figure 
+              communicates.",
+              caption.short = "A concise description for the list of tables")
+```
+
+## Shorten running header (PDF)
+You might want a chapter's running header (i.e. the header showing the title of the current chapter at the top of page) to be shorter (or just different) to the actual chapter title.
+
+Do this by adding the latex command `\chaptermark{My shorter version}` after your chapter title.
+
+For example, chapter \@ref(cites-and-refs)'s running header is simply 'Cites and cross-refs', because it begins like this:
+
+```markdown
+# Citations, cross-references, and collaboration {#cites-and-refs} 
+\chaptermark{Cites and cross-refs}
+```
+
+## Unnumbered chapters
+To make chapters unnumbered (normally only relevant to the Introduction and/or the Conclusion), follow the chapter header with `{-}`, e.g. `# Introduction {-}`.
+
+When you do this, you must also follow the heading with these two latex commands:
+```latex
+\adjustmtc
+\markboth{The Name of Your Unnumbered Chapter}{}
+```
+
+Otherwise the chapter's mini table of contents and the running header will show the previous chapter.
+
+
+## Beginning chapters with quotes (PDF)
+The OxThesis LaTeX template lets you inject some wittiness into your thesis by including a block of type `savequote` at the beginning of chapters. 
+To do this, use the syntax ```` ```{block type='savequote'} ````.^[For more on custom block types, see the relevant section in [_Authoring Books with R Markdown_](https://bookdown.org/yihui/bookdown/custom-blocks.html).]
+
+Add the reference for the quote with the chunk option `quote_author="my author name"`. 
+You will also want to add the chunk option `include=knitr::is_latex_output()` so that quotes are only included in PDF output.
+
+It's not possible to use markdown syntax inside chunk options, so if you want to e.g. italicise a book name in the reference use a ['text reference'](https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html#text-references): Create a named piece of text with '(ref:label-name) My text', then point to this in the chunk option with `quote_author='(ref:label-name)'`.
+
+
+## Highlighting corrections (HTML & PDF)
+For when it comes time to do corrections, you may want to highlight changes made when you submit a post-viva, corrected copy to your examiners so they can quickly verify you've completed the task. 
+You can do so like this:
+
+### Short, inline corrections
+Highlight **short, inline corrections** by doing `[like this]{.correction}` --- the text between the square brackets will then [be highlighted in blue]{.correction} in the output.
+This should work, also with [cross references (do you remember chapter \@ref(rmd-basics)?)]{.correction} or even [citations [@Shea2014]]{.correction}.
+
+However, pandoc might get confused by citations and cross-references.
+In particular, it might get confused by [this @Shea2014]{.correction}
+In such cases, you could use LaTeX syntax directly. 
+The correction highlighting is supplied by the [soul](https://ctan.org/pkg/soul) package, so you can do like this:
+
+> `It doesn't get confused by \hl{this \textcite{Shea2014}}` \
+> Becomes: It doesn't get confused by \hl{this \textcite{Shea2014}}.
+
+This has the drawback of corrections then not showing up in HTML output at all, but you may only care about correction highlighting in the PDF for your examiners anyway!
+
+### Blocks of added or changed material
+Highlight entire **blocks of added or changed material** by putting them in a block of type `correction`, using the syntax ```` ```{block type='correction'} ````.^[In the **.tex** file for PDF output, this will put the content between `\begin{correction}` and `\end{correction}`; in gitbook output it will be put between `<div class="correction">` and `</div>`.]
+Like so:
+
+```{block type='correction', include=knitr::is_latex_output() | knitr::is_html_output()}
+For larger chunks, like this paragraph or indeed entire figures, you can use the `correction` block type. This environment **highlights paragraph-sized and larger blocks** with the same blue colour.
+```
+
+*Note that correction blocks cannot be included in word output.*
+
+### Stopping corrections from being highlighted
+To turn off correction highlighting, go to the YAML header of **index.Rmd**, then:
+
+- PDF output: set `corrections: false` \
+- HTML output: remove or comment out `- templates/corrections.css`
+
+
+## Apply custom font color and highlighting to text (HTML & PDF)
+The lua filter that adds the functionality to highlight corrections adds two more tricks:
+you can apply your own choice of colour to highlight text, or change the font color.
+The syntax is as follows:
+
+> Here's `[some text in pink highlighting]{highlight="pink"}` \
+> Becomes: Here's [some text in pink highlighting]{highlight="pink"}.
+
+> `[Here's some text with blue font]{color="blue"}` \
+> Becomes: [Here's some text with blue font]{color="blue"}
+
+> Finally --- never, ever actually do this -- `[here's some text with black highlighting and yellow font]{highlight="black" color="yellow"}` \
+> Becomes: [here's some text with black highlighting and yellow font]{highlight="black" color="yellow"}
+
+The file **scripts_and_filters/colour_and_highlight.lua** implements this, if you want to fiddle around with it.
+It works with both PDF and HTML output.
+
+
+## Embedding PDF documents as chapters
+
+You may want to embed existing PDF documents into the thesis, for example if your department allows a 'portfolio' style thesis and you need to include an existing typeset publication as a chapter. 
+
+In gitbook output, you can simply use `knitr::include_graphics` and it should include a scrollable (and downloadable) PDF.
+You will probably want to set the chunk options `out.width='100%'` and `out.height='1000px'`:
+
+```{r, eval=knitr::is_html_output(), out.width='100%', out.height='1000px'}
+knitr::include_graphics("figures/pdf_example/Lyngs2020_FB.pdf")
+```
+<br>
+
+In LaTeX output, however, this approach can cause odd behaviour.
+Therefore, when you build your thesis to PDF, split the PDF into an alphanumerically sorted sequence of **single-page** PDF files (you can do this automatically with the package `pdftools`). You can then use the appropriate LaTeX command to insert them, as shown below (for brevity, in the `oxforddown` PDF sample content we're only including two pages)
+*Note that the chunk option `results='asis'` must be set.*
+You may also want to remove margins from the PDF files, which you can do with Adobe Acrobat (paid version) and likely other software.
+
+```{r, echo=TRUE, results='asis', eval=knitr::is_latex_output(), linewidth = 70}
+# install.packages(pdftools)
+# split PDF into pages stored in figures/pdf_example/split/
+# pdftools::pdf_split("figures/pdf_example/Lyngs2020_FB.pdf",
+#        output = "figures/pdf_example/split/")
+
+# grab the pages
+pages <- list.files("figures/pdf_example/split", full.names = TRUE)
+
+# set how wide you want the inserted PDFs to be: 
+# 1.0 is 100 per cent of the oxforddown PDF page width;
+# you may want to make it a bit bigger
+pdf_width <- 1.2
+
+# for each PDF page, insert it nicely and
+# end with a page break
+cat(stringr::str_c("\\newpage \\begin{center} \\makebox[\\linewidth][c]{\\includegraphics[width=", pdf_width, "\\linewidth]{", pages, "}} \\end{center}"))
+
+```
+
+## Customizing referencing 
+
+### Using a .csl file with pandoc instead of biblatex
+The `oxforddown` package uses biblatex in LaTeX for referencing. 
+It is also possible to use pandoc for referencing by providing a .csl file in the YAML header of **index.Rmd** (likely requiring commenting out the biblatex code in **templates/template.tex**). 
+This may be helpful for those who have a .csl file describing the referencing format for a particular journal. 
+However, note that this approach does not support chapter bibliographies (see Section \@ref(biblatex-custom)).
+
+```YAML
+csl: ecology.csl
+```
+
+### Customizing biblatex and adding chapter bibliographies {#biblatex-custom}
+
+This section provides one example of customizing biblatex. Much of this code was combined from searches on Stack Exchange and other sources (e.g. [here](https://tex.stackexchange.com/questions/10682/suppress-in-biblatex)).
+
+In **templates/template.tex**, one can replace the existing biblatex calls with the following to achieve referencing that looks like this: 
+
+(Charmantier and Gienapp 2014)
+
+Charmantier, A. and P. Gienapp (2014). Climate change and timing of avian breeding and migration: evolutionary versus plastic changes. Evolutionary Applications 7(1):15–28. doi: 10.1111/eva.12126.
+
+
+```latex
+\usepackage[backend=biber,
+    bibencoding=utf8,
+    refsection=chapter, % referencing by chapter
+    style=authoryear, 
+    firstinits=true,
+    isbn=false,
+    doi=true,
+    url=false,
+    eprint=false,
+    related=false,
+    dashed=false,
+    clearlang=true,
+    maxcitenames=2,
+    mincitenames=1,
+    maxbibnames=10,
+    abbreviate=false,
+    minbibnames=3,
+    uniquelist=minyear,
+    sortcites=true,
+    date=year
+]{biblatex}
+\AtEveryBibitem{%
+  \clearlist{language}%
+  \clearfield{note}
+}
+
+\DeclareFieldFormat{titlecase}{\MakeTitleCase{#1}}
+
+\newrobustcmd{\MakeTitleCase}[1]{%
+  \ifthenelse{\ifcurrentfield{booktitle}\OR\ifcurrentfield{booksubtitle}%
+    \OR\ifcurrentfield{maintitle}\OR\ifcurrentfield{mainsubtitle}%
+    \OR\ifcurrentfield{journaltitle}\OR\ifcurrentfield{journalsubtitle}%
+    \OR\ifcurrentfield{issuetitle}\OR\ifcurrentfield{issuesubtitle}%
+    \OR\ifentrytype{book}\OR\ifentrytype{mvbook}\OR\ifentrytype{bookinbook}%
+    \OR\ifentrytype{booklet}\OR\ifentrytype{suppbook}%
+    \OR\ifentrytype{collection}\OR\ifentrytype{mvcollection}%
+    \OR\ifentrytype{suppcollection}\OR\ifentrytype{manual}%
+    \OR\ifentrytype{periodical}\OR\ifentrytype{suppperiodical}%
+    \OR\ifentrytype{proceedings}\OR\ifentrytype{mvproceedings}%
+    \OR\ifentrytype{reference}\OR\ifentrytype{mvreference}%
+    \OR\ifentrytype{report}\OR\ifentrytype{thesis}}
+    {#1}
+    {\MakeSentenceCase{#1}}}
+    
+% \renewbibmacro{in:}{}
+% suppress "in" for articles
+% 
+\renewbibmacro{in:}{%
+  \ifentrytype{article}{}{\printtext{\bibstring{in}\intitlepunct}}}
+%-- no "quotes" around titles of chapters/article titles
+\DeclareFieldFormat[article, inbook, incollection, inproceedings, misc, thesis, unpublished]
+{title}{#1}
+%-- no punctuation after volume
+\DeclareFieldFormat[article]
+{volume}{{#1}}
+%-- puts number/issue between brackets
+\DeclareFieldFormat[article, inbook, incollection, inproceedings, misc, thesis, unpublished]
+{number}{\mkbibparens{#1}} 
+%-- and then for articles directly the pages w/o any "pages" or "pp." 
+\DeclareFieldFormat[article]
+{pages}{#1}
+%-- for some types replace "pages" by "p."
+\DeclareFieldFormat[inproceedings, incollection, inbook]
+{pages}{p. #1}
+%-- format 16(4):224--225 for articles
+\renewbibmacro*{volume+number+eid}{
+  \printfield{volume}%
+  \printfield{number}%
+  \printunit{\addcolon}
+}
+```
+
+If you would like chapter bibliographies, in addition insert the following code at the end of each chapter, and comment out the entire REFERENCES section at the end of template.tex.
+
+```latex
+\printbibliography[segment=\therefsection,heading=subbibliography]
+```
+
+## Customizing the page headers and footers (PDF)
+
+This can now be done directly in **index.Rmd**'s YAML header.
+If you are a LaTeX expert and need further customisation that what's currently provided, you can tweak the relevant sections of **templates/template.tex** - the relevant code is beneath the line that begins `\usepackage{fancyhdr}`.
+
+## Diving in to the OxThesis LaTeX template (PDF)
+For LaTeX minded people, you can read through **templates/template.tex** to see which additional customisation options are available as well as **templates/ociamthesis.cls** which supplies the base class.
+For example, **template.tex** provides an option for master's degree submissions, which changes identifying information to candidate number and includes a word count. 
+At the time of writing, you must set this directly in **template.tex** rather than from the YAML header in **index.Rmd**.
