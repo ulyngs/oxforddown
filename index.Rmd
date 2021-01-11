@@ -29,11 +29,18 @@ bibliography-heading-in-pdf: Works Cited
 ########################
 ## PDF layout options ###
 #########################
-# if you want to use an alternative title page, you can provide a path to a 
+## submitting a master's thesis ##
+# set masters-submission: true for an alternative, anonymous title page with 
+# candidate number and word count
+masters-submission: false
+candidate-number: 123456
+word-count: 10,052
+
+# if you want to use a different title page altogether, provide a path to a 
 # .tex file here and it will override the default Oxford one
 # alternative-title-page: front-and-back-matter/alt-title-page-example.tex
 
-## correction highlighting
+## correction highlighting ##
 corrections: true
 
 ## binding / margins ##
@@ -55,8 +62,11 @@ draft-mark: false # add a DRAFT mark?
 draft-mark-foot-or-head: foot ##'foot' = in footer, 'head' = in header
 draft-mark-position: C
 
+## section numbering ##
+section-numbering-depth: 2 # to which depth should headings be numbered?
+
 ## tables of content ##
-toc-depth: 1 # depth of heading to include in table of contents
+toc-depth: 1 # to which depth should headings be included in table of contents?
 lof: true # include list of figures in front matter?
 lot: true # include list of tables in front matter?
 mini-toc: true  # include mini-table of contents at start of each chapter? (this just prepares it; you must also add \minitoc after the chapter titles)
@@ -91,7 +101,8 @@ output:
     theme:
       primary: "#6D1919"
     repo: https://github.com/ulyngs/oxforddown
-    pandoc_args: "--lua-filter=scripts_and_filters/colour_and_highlight.lua"
+    #pandoc_args: "--lua-filter=scripts_and_filters/colour_and_highlight.lua"
+    pandoc_args: !expr rmdfiltr::add_wordcount_filter(rmdfiltr::add_citeproc_filter(args = NULL))
   bookdown::gitbook:
     css: templates/style.css
     config:

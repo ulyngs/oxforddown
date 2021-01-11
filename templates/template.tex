@@ -184,9 +184,11 @@ $endfor$
 
 % Master's candidates who require the alternate title page (with candidate number and word count)
 % must also un-comment and complete the following three lines:
-%\masterssubmissiontrue
-%\candidateno{933516}
-%\wordcount{28,815}
+$if(masters-submission)$
+\masterssubmissiontrue
+\candidateno{$candidate-number$}
+\wordcount{$word-count$}
+$endif$
 
 % Uncomment the following line if your degree also includes exams (eg most masters):
 %\renewcommand{\submittedtext}{Submitted in partial completion of the}
@@ -244,7 +246,7 @@ $endfor$
 % do.  Throughout, 0 = chapter; 1 = section; 2 = subsection; 3 = subsubsection, 4 = paragraph...
 
 % The level that gets a number:
-\setcounter{secnumdepth}{2}
+\setcounter{secnumdepth}{$section-numbering-depth$}
 % The level that shows up in the ToC:
 \setcounter{tocdepth}{$toc-depth$}
 
