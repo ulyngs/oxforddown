@@ -69,10 +69,11 @@ Do like this:
 > Put a \> in front of the line.
 
 ### Headings
-- are done with \#'s of increasing number, i.e. 
-  - \# First-level heading
-  - \#\# Second-level heading
-  - \#\#\# Etc.
+Section headers are created with \#'s of increasing number, i.e. 
+  
+- \# First-level heading
+- \#\# Second-level heading
+- \#\#\# Etc.
 
 In PDF output, a level-five heading will turn into a paragraph heading, i.e. `\paragraph{My level-five heading}`, which appears as bold text on the same line as the subsequent paragraph.
 
