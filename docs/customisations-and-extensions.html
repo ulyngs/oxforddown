@@ -59,6 +59,7 @@ Template for R Markdown</p></a>
 <span class="header-section-number">4</span> Customisations and extensions<a class="anchor" aria-label="anchor" href="#customisations-and-extensions"><i class="fas fa-link"></i></a>
 </h1>
 <p><!-- this will include a mini table of contents--></p>
+<!-- LaTeX normally does not indent the first line after a heading - however, it does so after the mini table of contents. You can manually tell it not to with \noindent -->
 <p>This chapter describes a number of additional tips and tricks as well as possible customizations to the <code>oxforddown</code> thesis.</p>
 <div id="front-matter" class="section level2" number="4.1">
 <h2>
@@ -173,15 +174,15 @@ you can apply your own choice of colour to highlight text, or change the font co
 The syntax is as follows:</p>
 <blockquote>
 <p>Here’s <code>[some text in pink highlighting]{highlight="pink"}</code><br>
-Becomes: Here’s <span style="background-color: pink;">some text in pink highlighting</span>.</p>
+Becomes: Here’s <span highlight="pink">some text in pink highlighting</span>.</p>
 </blockquote>
 <blockquote>
 <p><code>[Here's some text with blue font]{color="blue"}</code><br>
-Becomes: <span style=" color: blue;">Here’s some text with blue font</span></p>
+Becomes: <span color="blue">Here’s some text with blue font</span></p>
 </blockquote>
 <blockquote>
 <p>Finally — never, ever actually do this – <code>[here's some text with black highlighting and yellow font]{highlight="black" color="yellow"}</code><br>
-Becomes: <span style="background-color: black; color: yellow;">here’s some text with black highlighting and yellow font</span></p>
+Becomes: <span highlight="black" color="yellow">here’s some text with black highlighting and yellow font</span></p>
 </blockquote>
 <p>The file <strong>scripts_and_filters/colour_and_highlight.lua</strong> implements this, if you want to fiddle around with it.
 It works with both PDF and HTML output.</p>
@@ -319,7 +320,7 @@ However, note that this approach does not support chapter bibliographies (see Se
 <span class="header-section-number">4.9</span> Customizing the page headers and footers (PDF)<a class="anchor" aria-label="anchor" href="#customizing-the-page-headers-and-footers-pdf"><i class="fas fa-link"></i></a>
 </h2>
 <p>This can now be done directly in <strong>index.Rmd</strong>’s YAML header.
-If you are a LaTeX expert and you need further customisation that what’s currently provided, you can tweak the relevant sections of <strong>templates/template.tex</strong> - the relevant code is beneath the line that begins <code>\usepackage{fancyhdr}</code>.</p>
+If you are a LaTeX expert and need further customisation that what’s currently provided, you can tweak the relevant sections of <strong>templates/template.tex</strong> - the relevant code is beneath the line that begins <code>\usepackage{fancyhdr}</code>.</p>
 </div>
 <div id="diving-in-to-the-oxthesis-latex-template-pdf" class="section level2" number="4.10">
 <h2>
@@ -328,7 +329,30 @@ If you are a LaTeX expert and you need further customisation that what’s curre
 <p>For LaTeX minded people, you can read through <strong>templates/template.tex</strong> to see which additional customisation options are available as well as <strong>templates/ociamthesis.cls</strong> which supplies the base class.
 For example, <strong>template.tex</strong> provides an option for master’s degree submissions, which changes identifying information to candidate number and includes a word count.
 At the time of writing, you must set this directly in <strong>template.tex</strong> rather than from the YAML header in <strong>index.Rmd</strong>.</p>
+</div>
+<div id="customising-to-a-different-university" class="section level2" number="4.11">
+<h2>
+<span class="header-section-number">4.11</span> Customising to a different university<a class="anchor" aria-label="anchor" href="#customising-to-a-different-university"><i class="fas fa-link"></i></a>
+</h2>
+<div id="the-minimal-route" class="section level3" number="4.11.1">
+<h3>
+<span class="header-section-number">4.11.1</span> The minimal route<a class="anchor" aria-label="anchor" href="#the-minimal-route"><i class="fas fa-link"></i></a>
+</h3>
+<p>If the front matter in the OxThesis LaTeX template is suitable to your university, customising <code>oxforddown</code> to your needs could be as simple as putting the name of your institution and the path to your university’s logo in <strong>index.Rmd</strong>:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb28-1"><a href="customisations-and-extensions.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">university</span><span class="kw">:</span><span class="at"> University of You</span></span>
+<span id="cb28-2"><a href="customisations-and-extensions.html#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">university-logo</span><span class="kw">:</span><span class="at"> figures/your-logo-here.pdf</span></span></code></pre></div>
+</div>
+<div id="replacing-the-entire-title-page-with-your-required-content" class="section level3" number="4.11.2">
+<h3>
+<span class="header-section-number">4.11.2</span> Replacing the entire title page with your required content<a class="anchor" aria-label="anchor" href="#replacing-the-entire-title-page-with-your-required-content"><i class="fas fa-link"></i></a>
+</h3>
+<p>If you have a <strong>.tex</strong> file with some required front matter from your university that you want to replace the OxThesis template’s title page altogether, you can provide a filepath to this file in <strong>index.Rmd</strong>.
+<code>oxforddown</code>’s sample content includes and example of this — if you use the YAML below, your front matter will look like this:</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb29-1"><a href="customisations-and-extensions.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">alternative-title-page</span><span class="kw">:</span><span class="at"> front-and-back-matter/alt-title-page-example.tex</span></span></code></pre></div>
+<embed src="figures/alt_frontmatter_example/alt-frontmatter-example.pdf" width="100%" height="1000px" type="application/pdf"></embed><p>
+     </p>
 
+</div>
 </div>
 </div>
 
@@ -365,6 +389,12 @@ At the time of writing, you must set this directly in <strong>template.tex</stro
 </li>
 <li><a class="nav-link" href="#customizing-the-page-headers-and-footers-pdf"><span class="header-section-number">4.9</span> Customizing the page headers and footers (PDF)</a></li>
 <li><a class="nav-link" href="#diving-in-to-the-oxthesis-latex-template-pdf"><span class="header-section-number">4.10</span> Diving in to the OxThesis LaTeX template (PDF)</a></li>
+<li>
+<a class="nav-link" href="#customising-to-a-different-university"><span class="header-section-number">4.11</span> Customising to a different university</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#the-minimal-route"><span class="header-section-number">4.11.1</span> The minimal route</a></li>
+<li><a class="nav-link" href="#replacing-the-entire-title-page-with-your-required-content"><span class="header-section-number">4.11.2</span> Replacing the entire title page with your required content</a></li>
+</ul>
+</li>
 </ul>
 
       <div class="book-extra">
