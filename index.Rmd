@@ -105,8 +105,7 @@ output:
     theme:
       primary: "#6D1919"
     repo: https://github.com/ulyngs/oxforddown
-    #pandoc_args: "--lua-filter=scripts_and_filters/colour_and_highlight.lua"
-    pandoc_args: !expr rmdfiltr::add_wordcount_filter(rmdfiltr::add_citeproc_filter(args = NULL))
+    pandoc_args: "--lua-filter=scripts_and_filters/colour_and_highlight.lua"
   bookdown::gitbook:
     css: templates/style.css
     config:
