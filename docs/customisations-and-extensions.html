@@ -174,15 +174,15 @@ you can apply your own choice of colour to highlight text, or change the font co
 The syntax is as follows:</p>
 <blockquote>
 <p>Here’s <code>[some text in pink highlighting]{highlight="pink"}</code><br>
-Becomes: Here’s <span highlight="pink">some text in pink highlighting</span>.</p>
+Becomes: Here’s <span style="background-color: pink;">some text in pink highlighting</span>.</p>
 </blockquote>
 <blockquote>
 <p><code>[Here's some text with blue font]{color="blue"}</code><br>
-Becomes: <span color="blue">Here’s some text with blue font</span></p>
+Becomes: <span style=" color: blue;">Here’s some text with blue font</span></p>
 </blockquote>
 <blockquote>
 <p>Finally — never, ever actually do this – <code>[here's some text with black highlighting and yellow font]{highlight="black" color="yellow"}</code><br>
-Becomes: <span highlight="black" color="yellow">here’s some text with black highlighting and yellow font</span></p>
+Becomes: <span style="background-color: black; color: yellow;">here’s some text with black highlighting and yellow font</span></p>
 </blockquote>
 <p>The file <strong>scripts_and_filters/colour_and_highlight.lua</strong> implements this, if you want to fiddle around with it.
 It works with both PDF and HTML output.</p>
@@ -195,20 +195,20 @@ It works with both PDF and HTML output.</p>
 <p>In gitbook output, you can simply use <code><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">knitr::include_graphics</a></code> and it should include a scrollable (and downloadable) PDF.
 You will probably want to set the chunk options <code>out.width='100%'</code> and <code>out.height='1000px'</code>:</p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">include_graphics</a></span><span class="op">(</span><span class="st">"figures/pdf_example/Lyngs2020_FB.pdf"</span><span class="op">)</span></code></pre></div>
-<embed src="figures/pdf_example/Lyngs2020_FB.pdf" width="100%" height="1000px" type="application/pdf"></embed><p><br></p>
+<code class="sourceCode R"><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">include_graphics</a></span><span class="op">(</span><span class="st">"figures/sample-content/pdf_embed_example/Lyngs2020_FB.pdf"</span><span class="op">)</span></code></pre></div>
+<embed src="figures/sample-content/pdf_embed_example/Lyngs2020_FB.pdf" width="100%" height="1000px" type="application/pdf"></embed><p><br></p>
 <p>In LaTeX output, however, this approach can cause odd behaviour.
 Therefore, when you build your thesis to PDF, split the PDF into an alphanumerically sorted sequence of <strong>single-page</strong> PDF files (you can do this automatically with the package <code>pdftools</code>). You can then use the appropriate LaTeX command to insert them, as shown below (for brevity, in the <code>oxforddown</code> PDF sample content we’re only including two pages)
 <em>Note that the chunk option <code>results='asis'</code> must be set.</em>
 You may also want to remove margins from the PDF files, which you can do with Adobe Acrobat (paid version) and likely other software.</p>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># install.packages(pdftools)</span>
-<span class="co"># split PDF into pages stored in figures/pdf_example/split/</span>
-<span class="co"># pdftools::pdf_split("figures/pdf_example/Lyngs2020_FB.pdf",</span>
-<span class="co">#        output = "figures/pdf_example/split/")</span>
+<span class="co"># split PDF into pages stored in figures/sample-content/pdf_embed_example/split/</span>
+<span class="co"># pdftools::pdf_split("figures/sample-content/pdf_embed_example/Lyngs2020_FB.pdf",</span>
+<span class="co">#        output = "figures/sample-content/pdf_embed_example/split/")</span>
 
 <span class="co"># grab the pages</span>
-<span class="va">pages</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.files.html">list.files</a></span><span class="op">(</span><span class="st">"figures/pdf_example/split"</span>, full.names <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="va">pages</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.files.html">list.files</a></span><span class="op">(</span><span class="st">"figures/sample-content/pdf_embed_example/split"</span>, full.names <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 
 <span class="co"># set how wide you want the inserted PDFs to be: </span>
 <span class="co"># 1.0 is 100 per cent of the oxforddown PDF page width;</span>
@@ -349,7 +349,7 @@ At the time of writing, you must set this directly in <strong>template.tex</stro
 <p>If you have a <strong>.tex</strong> file with some required front matter from your university that you want to replace the OxThesis template’s title page altogether, you can provide a filepath to this file in <strong>index.Rmd</strong>.
 <code>oxforddown</code>’s sample content includes and example of this — if you use the YAML below, your front matter will look like this:</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb29-1"><a href="customisations-and-extensions.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">alternative-title-page</span><span class="kw">:</span><span class="at"> front-and-back-matter/alt-title-page-example.tex</span></span></code></pre></div>
-<embed src="figures/alt_frontmatter_example/alt-frontmatter-example.pdf" width="100%" height="1000px" type="application/pdf"></embed><p>
+<embed src="figures/sample-content/alt_frontmatter_example/alt-frontmatter-example.pdf" width="100%" height="1000px" type="application/pdf"></embed><p>
      </p>
 
 </div>

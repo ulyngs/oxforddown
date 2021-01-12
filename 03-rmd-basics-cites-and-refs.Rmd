@@ -78,7 +78,7 @@ You can install this add-in by typing `install.packages("citr")` in the R Consol
 if (knitr::opts_knit$get('rmarkdown.pandoc.to') == 'html'){
   knitr::include_graphics("https://raw.githubusercontent.com/crsh/citr/master/tools/images/addin_demo.gif")
 } else {
-  knitr::include_graphics("figures/citr.png")
+  knitr::include_graphics("figures/sample-content/citr.png")
 }
 ```
 
@@ -109,7 +109,7 @@ See [our chapter title](#cites-and-refs) for an example. That was section \@ref(
 
 Let's add an image:
 ```{r captain, fig.align='center', fig.cap="A marvel-lous meme", out.width="65%"}
-knitr::include_graphics("figures/captain.jpeg")
+knitr::include_graphics("figures/sample-content/captain.jpeg")
 ```
 
 We refer to this image with `\@ref(fig:captain)`.

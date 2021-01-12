@@ -258,7 +258,7 @@ f\left(k\right)=\binom{n}{k}p^k\left(1-p\right)^{n-k}
 <p>The syntax of a code chunk is shown in Figure <a href="rmd-basics.html#fig:chunk-parts">1.1</a>.</p>
 <div class="figure">
 <span id="fig:chunk-parts"></span>
-<img src="figures/chunk-parts.png" alt="Code chunk syntax" width="100%"><p class="caption">
+<img src="figures/sample-content/chunk-parts.png" alt="Code chunk syntax" width="100%"><p class="caption">
 Figure 1.1: Code chunk syntax
 </p>
 </div>
@@ -269,7 +269,7 @@ Figure 1.1: Code chunk syntax
 <li>
 <code>eval</code>: whether or to to run the code in the chunk when knitting</li>
 <li>
-<code>include</code>: wheter to include anything from the from a code chunk in the output document</li>
+<code>include</code>: whether to include anything from the from a code chunk in the output document</li>
 <li>
 <code>fig.cap</code>: figure caption</li>
 <li>
@@ -295,10 +295,10 @@ library(tidyverse)
 </h4>
 <p>Code chunks are also used for including images, with <code>include_graphics</code> from the <code>knitr</code> package, as in Figure <a href="rmd-basics.html#fig:oxford-logo">1.2</a></p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">include_graphics</a></span><span class="op">(</span><span class="st">"figures/beltcrest.png"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">include_graphics</a></span><span class="op">(</span><span class="st">"figures/sample-content/beltcrest.png"</span><span class="op">)</span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span id="fig:oxford-logo"></span>
-<img src="figures/beltcrest.png" alt="Oxford logo" width="50%"><p class="caption">
+<img src="figures/sample-content/beltcrest.png" alt="Oxford logo" width="50%"><p class="caption">
 Figure 1.2: Oxford logo
 </p>
 </div>
@@ -323,7 +323,7 @@ Figure 1.2: Oxford logo
 <p>Then you can reference that variable as the value of <code>out.extra</code> to rotate images, as in Figure <a href="rmd-basics.html#fig:oxford-logo-rotated">1.3</a>.</p>
 <div class="figure" style="text-align: center">
 <span id="fig:oxford-logo-rotated"></span>
-<img src="figures/beltcrest.png" alt="Oxford logo, rotated" width="50%" style="transform:rotate(180deg);"><p class="caption">
+<img src="figures/sample-content/beltcrest.png" alt="Oxford logo, rotated" width="50%" style="transform:rotate(180deg);"><p class="caption">
 Figure 1.3: Oxford logo, rotated
 </p>
 </div>
@@ -434,10 +434,10 @@ dist
 In your PDF output, LaTeX will try to find the best place to put your object based on the text around it and until you’re really, truly done writing you should just leave it where it lies.</p>
 <p>In general, you should allow LaTeX to do this, but if you really <em>really</em> need a figure to be positioned where you put in the document, then you can make LaTeX attempt to do this with the chunk option <code>fig.pos="H"</code>, as in Figure <a href="rmd-basics.html#fig:oxford-logo-controlled">1.5</a>:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">include_graphics</a></span><span class="op">(</span><span class="st">"figures/beltcrest.png"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">include_graphics</a></span><span class="op">(</span><span class="st">"figures/sample-content/beltcrest.png"</span><span class="op">)</span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span id="fig:oxford-logo-controlled"></span>
-<img src="figures/beltcrest.png" alt="An Oxford logo that LaTeX will try to place at this position in the text" width="50%"><p class="caption">
+<img src="figures/sample-content/beltcrest.png" alt="An Oxford logo that LaTeX will try to place at this position in the text" width="50%"><p class="caption">
 Figure 1.5: An Oxford logo that LaTeX will try to place at this position in the text
 </p>
 </div>
@@ -508,8 +508,8 @@ For example, we might assign the number of rows in the <code>cars</code> dataset
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/ulyngs/oxforddown/blob/master/01-rmd-basics-markdown.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/ulyngs/oxforddown/edit/master/01-rmd-basics-markdown.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/ulyngs/oxforddown/blob/master/02-rmd-basics-markdown.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/ulyngs/oxforddown/edit/master/02-rmd-basics-markdown.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>

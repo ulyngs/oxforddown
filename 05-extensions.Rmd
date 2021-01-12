@@ -138,7 +138,7 @@ In gitbook output, you can simply use `knitr::include_graphics` and it should in
 You will probably want to set the chunk options `out.width='100%'` and `out.height='1000px'`:
 
 ```{r, eval=knitr::is_html_output(), out.width='100%', out.height='1000px'}
-knitr::include_graphics("figures/pdf_example/Lyngs2020_FB.pdf")
+knitr::include_graphics("figures/sample-content/pdf_embed_example/Lyngs2020_FB.pdf")
 ```
 <br>
 
@@ -149,12 +149,12 @@ You may also want to remove margins from the PDF files, which you can do with Ad
 
 ```{r, echo=TRUE, results='asis', eval=knitr::is_latex_output(), linewidth = 70}
 # install.packages(pdftools)
-# split PDF into pages stored in figures/pdf_example/split/
-# pdftools::pdf_split("figures/pdf_example/Lyngs2020_FB.pdf",
-#        output = "figures/pdf_example/split/")
+# split PDF into pages stored in figures/sample-content/pdf_embed_example/split/
+# pdftools::pdf_split("figures/sample-content/pdf_embed_example/Lyngs2020_FB.pdf",
+#        output = "figures/sample-content/pdf_embed_example/split/")
 
 # grab the pages
-pages <- list.files("figures/pdf_example/split", full.names = TRUE)
+pages <- list.files("figures/sample-content/pdf_embed_example/split", full.names = TRUE)
 
 # set how wide you want the inserted PDFs to be: 
 # 1.0 is 100 per cent of the oxforddown PDF page width;
@@ -298,13 +298,13 @@ alternative-title-page: front-and-back-matter/alt-title-page-example.tex
 ````
 
 ```{r, echo=FALSE, eval=knitr::is_html_output(), out.width='100%', out.height='1000px'}
-knitr::include_graphics("figures/alt_frontmatter_example/alt-frontmatter-example.pdf")
+knitr::include_graphics("figures/sample-content/alt_frontmatter_example/alt-frontmatter-example.pdf")
 ```
 
 \noindent
 ```{r, echo=FALSE, out.width='100%', out.height='1000px', results='asis', eval=knitr::is_latex_output}
 # grab the pages
-pages <- list.files("figures/alt_frontmatter_example/split", full.names = TRUE)
+pages <- list.files("figures/sample-content/alt_frontmatter_example/split", full.names = TRUE)
 
 pdf_width <- 0.32
 

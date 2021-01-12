@@ -177,14 +177,14 @@ The syntax of a code chunk is shown in Figure \@ref(fig:chunk-parts).
 
 ```{r chunk-parts, echo=FALSE, fig.cap="Code chunk syntax", out.width="100%", message=FALSE, fig.pos='H'}
 library(tidyverse)
-knitr::include_graphics("figures/chunk-parts.png")
+knitr::include_graphics("figures/sample-content/chunk-parts.png")
 ```
 
 Common chunk options include (see e.g. [bookdown.org](https://bookdown.org/yihui/rmarkdown/r-code.html)):
 
 - `echo`: whether or not to display code in knitted output
 - `eval`: whether or to to run the code in the chunk when knitting
-- `include`: wheter to include anything from the from a code chunk in the output document
+- `include`: whether to include anything from the from a code chunk in the output document
 - `fig.cap`: figure caption
 - `fig.scap`: short figure caption, which will be used in the 'List of Figures' in the PDF front matter
 
@@ -208,7 +208,7 @@ library(tidyverse)
 Code chunks are also used for including images, with `include_graphics` from the `knitr` package, as in Figure \@ref(fig:oxford-logo)
 
 ```{r oxford-logo, fig.cap="Oxford logo", out.width='50%', fig.align='center'}
-knitr::include_graphics("figures/beltcrest.png")
+knitr::include_graphics("figures/sample-content/beltcrest.png")
 ```
 
 Useful chunk options for figures include:
@@ -233,7 +233,7 @@ if (knitr::is_latex_output()){
 Then you can reference that variable as the value of `out.extra` to rotate images, as in Figure \@ref(fig:oxford-logo-rotated).
 
 ```{r oxford-logo-rotated, out.extra=rotate180, fig.cap="Oxford logo, rotated", out.width='50%', fig.align='center', echo=FALSE}
-knitr::include_graphics("figures/beltcrest.png")
+knitr::include_graphics("figures/sample-content/beltcrest.png")
 ```
 
 
@@ -271,7 +271,7 @@ In your PDF output, LaTeX will try to find the best place to put your object bas
 In general, you should allow LaTeX to do this, but if you really *really* need a figure to be positioned where you put in the document, then you can make LaTeX attempt to do this with the chunk option `fig.pos="H"`, as in Figure \@ref(fig:oxford-logo-controlled):
 
 ```{r oxford-logo-controlled, fig.cap="An Oxford logo that LaTeX will try to place at this position in the text", out.width='50%', fig.align='center', fig.pos="H"}
-knitr::include_graphics("figures/beltcrest.png")
+knitr::include_graphics("figures/sample-content/beltcrest.png")
 ```
 
 As anyone who has tried to manually play around with the placement of figures in a Word document knows, this can have lots of side effects with extra spacing on other pages, etc.

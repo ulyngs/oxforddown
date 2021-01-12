@@ -13,7 +13,7 @@ Ulrik Lyngs \
 ::::::
 
 :::::: {.col-sm-6 .thesis-cover}
-<a href="_main.pdf" target="_blank"><img src="figures/cover.png" alt="Download PDF" class="img-fluid"/></a> 
+<a href="_main.pdf" target="_blank"><img src="templates/cover.png" alt="Download PDF" class="img-fluid"/></a> 
 ::::::
 :::
 

@@ -101,7 +101,7 @@ Let us consider how we would do this for the example of adjusting the font size 
 Latex has a bunch of standard commands that set an approximate font size, as shown below in Figure \@ref(fig:latex-font-sizing).
 
 ```{r latex-font-sizing, echo=FALSE, out.width='50%', fig.cap="Font sizes in LaTeX", fig.pos="H", fig.align='center'}
-knitr::include_graphics(here::here("figures", "latex_font_sizes.png"))
+knitr::include_graphics("figures/sample-content/latex_font_sizes.png")
 ```
 
 You could use these to manually adjust the font size in your longtable in two steps:
