@@ -29,20 +29,19 @@ iii) You can't use markdown syntax inside chunk options, so if you want to e.g. 
 # R Markdown basics {#rmd-basics}
 \minitoc <!-- this will include a mini table of contents-->
 
-<!--
-The {#rmd-basics} text after the chapter declaration will allow us to link throughout the document back to the beginning of this chapter. Reference labels will automatically be generated if you don't specify them, as the lowercase title with spaces replaced by hypens (e.g. r-markdown-basics). Look for the reference to this label at the beginning of the next chapter.
--->
-
-Here is a brief introduction to using *R Markdown*. 
+<!-- LaTeX normally does not indent the first line after a heading - however, it does so after the mini table of contents. You can manually tell it not to with \noindent -->
+\noindent Here is a brief introduction to using *R Markdown*. 
 *Markdown* is a simple formatting syntax for authoring HTML, PDF, and MS Word documents and much, much more. 
 *R Markdown* provides the flexibility of *Markdown* with the implementation of **R** input and output.  For more details on using *R Markdown* see <http://rmarkdown.rstudio.com>.
 
-Be careful with your spacing in *Markdown* documents. 
-While whitespace largely is ignored, it does at times give *Markdown* signals as to how to proceed. 
+
+## Basic markdown syntax
+### Whitespace
+Be careful with your spacing. 
+While whitespace largely is ignored, it does at times give markdown signals as to how to proceed. 
 As a habit, try to keep everything left aligned whenever possible, especially as you type a new paragraph. 
 In other words, there is no need to indent basic text in the Rmd document (in fact, it might cause your text to do funny things if you do).
 
-## Markdown basic syntax
 ### Italics and bold
 - *Italics* are done like \*this\* or \_this\_
 - **Bold** is done like \*\*this\*\* or \_\_this\_\_
@@ -84,12 +83,12 @@ Unordered list by starting a line with an \* or a \-:
 * Item 1
 * Item 2
 
-Ordered lists by starting a line with a number:
+Ordered lists by starting a line with a number.
+Notice that you can mislabel the numbers and *Markdown* will still make the order right in the output:
 
 1. Item 1
 4. Item 2
 
-Notice that you can mislabel the numbers and *Markdown* will still make the order right in the output.
 
 To create a sublist, indent the values a bit (at least four spaces or a tab):
 
@@ -176,7 +175,7 @@ We do this either as *code chunks* (generally used for loading libraries and dat
 ### Code chunks
 The syntax of a code chunk is shown in Figure \@ref(fig:chunk-parts).
 
-```{r chunk-parts, echo=FALSE, fig.cap="Code chunk syntax", out.width="100%", message=FALSE}
+```{r chunk-parts, echo=FALSE, fig.cap="Code chunk syntax", out.width="100%", message=FALSE, fig.pos='H'}
 library(tidyverse)
 knitr::include_graphics("figures/chunk-parts.png")
 ```
@@ -191,7 +190,7 @@ Common chunk options include (see e.g. [bookdown.org](https://bookdown.org/yihui
 
 **IMPORTANT**: Do *not* use underscoores in your chunk labels - if you do, you are likely to get an error in PDF output saying something like "! Package caption Error: \\caption outside float".
 
-#### Setup chunks
+#### Setup chunks - setup, images, plots
 An R Markdown document usually begins with a chunk that is used to **load libraries**, and to **set default chunk options** with `knitr::opts_chunk$set`.
 
 In your thesis, this will probably happen in **index.Rmd** and/or as opening chunks in each of your chapters.

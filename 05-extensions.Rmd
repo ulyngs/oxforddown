@@ -18,7 +18,9 @@ There is grandeur in this view of life, with its several powers, having been ori
 # Customisations and extensions
 \minitoc <!-- this will include a mini table of contents-->
 
-This chapter describes a number of additional tips and tricks as well as possible customizations to the `oxforddown` thesis.
+<!-- LaTeX normally does not indent the first line after a heading - however, it does so after the mini table of contents. You can manually tell it not to with \noindent -->
+
+\noindent This chapter describes a number of additional tips and tricks as well as possible customizations to the `oxforddown` thesis.
 
 ## Front matter
 ### Shorten captions shown in the list of figures (PDF)
