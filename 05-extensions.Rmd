@@ -278,3 +278,35 @@ If you are a LaTeX expert and need further customisation that what's currently p
 For LaTeX minded people, you can read through **templates/template.tex** to see which additional customisation options are available as well as **templates/ociamthesis.cls** which supplies the base class.
 For example, **template.tex** provides an option for master's degree submissions, which changes identifying information to candidate number and includes a word count. 
 At the time of writing, you must set this directly in **template.tex** rather than from the YAML header in **index.Rmd**.
+
+
+## Customising to a different university
+### The minimal route
+If the front matter in the OxThesis LaTeX template is suitable to your university, customising `oxforddown` to your needs could be as simple as putting the name of your institution and the path to your university's logo in **index.Rmd**:
+
+```yaml
+university: University of You
+university-logo: figures/your-logo-here.pdf
+```
+
+### Replacing the entire title page with your required content
+If you have a **.tex** file with some required front matter from your university that you want to replace the OxThesis template's title page altogether, you can provide a filepath to this file in **index.Rmd**.
+`oxforddown`'s sample content includes and example of this --- if you use the YAML below, your front matter will look like this:
+
+```yaml
+alternative-title-page: front-and-back-matter/alt-title-page-example.tex
+````
+
+```{r, echo=FALSE, eval=knitr::is_html_output(), out.width='100%', out.height='1000px'}
+knitr::include_graphics("figures/alt_frontmatter_example/alt-frontmatter-example.pdf")
+```
+
+\noindent
+```{r, echo=FALSE, out.width='100%', out.height='1000px', results='asis', eval=knitr::is_latex_output}
+# grab the pages
+pages <- list.files("figures/alt_frontmatter_example/split", full.names = TRUE)
+
+pdf_width <- 0.32
+
+cat(stringr::str_c("\\fbox{\\includegraphics[width=", pdf_width, "\\linewidth]{", pages, "}}"))
+```
