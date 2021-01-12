@@ -109,10 +109,10 @@ $if(running-header)$
 \fancy$running-header-foot-or-head$[$running-header-position-leftmark$]{\emph{\leftmark}} 
 \fancy$running-header-foot-or-head$[$running-header-position-rightmark$]{\emph{\rightmark}} 
 $endif$
-\fancy$ordinary-page-number-foot-or-head$[$ordinary-page-number-position$]{\emph{\thepage}}
 
 % UL page number position 
-\fancypagestyle{plain}{\fancyhf{}\fancy$chapter-page-number-foot-or-head$[$chapter-page-number-position$]{\emph{\thepage}}}
+\fancy$ordinary-page-number-foot-or-head$[$ordinary-page-number-position$]{\emph{\thepage}} %regular pages
+\fancypagestyle{plain}{\fancyhf{}\fancy$chapter-page-number-foot-or-head$[$chapter-page-number-position$]{\emph{\thepage}}} %chapter pages
 
 % JEM fix header on cleared pages for openright
 \def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else
