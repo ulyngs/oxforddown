@@ -109,8 +109,8 @@ Examples of actual theses written with `oxforddown`:
 
 #### Word output
 - options
- 1. in the terminal tab, type 'make word'
- 2. run `bookdown::render_book("index.Rmd", output_format = "bookdown::word_document2")` in the R console
+  1. in the terminal tab, type 'make word'
+  2. run `bookdown::render_book("index.Rmd", output_format = "bookdown::word_document2")` in the R console
 - the compiled MS Word document is saved as **docs/\_main.docx** and (for option 1) opened
 
 The Word output has no template behind it, and many things do not work (e.g. image rotation, highlighting corrections). **I encourage pull requests that optimise the Word output, e.g. by using tools from the [`officer`](https://github.com/davidgohel/officer) package.**
