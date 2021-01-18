@@ -118,6 +118,11 @@ output:
 link-citations: true
 documentclass: book
 always_allow_html: true #this allows html stuff in word (.docx) output
+knit: (function(input, ...) {bookdown::render_book(input, output_format = "bookdown::pdf_book")})
+# you can clean up the files LaTeX generates by running file.remove(list.files(pattern = "*.(log|mtc|maf|aux|bbl|blg|xml)")) in the R console
+#knit: (function(input, ...) {bookdown::render_book(input, output_format = "bookdown::bs4_book")})
+#knit: (function(input, ...) {bookdown::render_book(input, output_format = "bookdown::gitbook")})
+#knit: (function(input, ...) {bookdown::render_book(input, output_format = "bookdown::word_document2")})
 ---
 
 
