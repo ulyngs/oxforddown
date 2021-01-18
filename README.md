@@ -84,7 +84,8 @@ Examples of actual theses written with `oxforddown`:
 #### PDF output
 - options
   1. *using `make`*: type 'make pdf' in the terminal (not the R console!) *or* click 'Build All' on the 'Build' tab
-  2. knit the **index.Rmd** file or run `bookdown::render_book("index.Rmd", output_format = "bookdown::pdf_book")` in the R console
+  2. knit the **index.Rmd** file *or* 
+  3. run `bookdown::render_book("index.Rmd", output_format = "bookdown::pdf_book")` in the R console
 - the compiled PDF is saved as **docs/\_main.pdf**, and (for option 1 & 2) the PDF is opened
 
 ![](figures/sample-content/screenshots/compiled_pdf.png)
