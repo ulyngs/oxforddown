@@ -25,6 +25,10 @@ what is necessary is only to try to think them again.
 # Conclusion {-}
 If we don't want Conclusion to have a chapter number next to it, we can add the `{-}` attribute.
 
-**More info**
+## More info {-}
+And here's some other random info: 
+the first paragraph after a chapter title or section head _shouldn't be_ indented, because indents are to tell the reader that you're starting a new paragraph. 
+Since that's obvious after a chapter or section title, proper typesetting doesn't add an indent there.
 
-And here's some other random info: the first paragraph after a chapter title or section head _shouldn't be_ indented, because indents are to tell the reader that you're starting a new paragraph. Since that's obvious after a chapter or section title, proper typesetting doesn't add an indent there.
+This paragraph, by contrast, *will* be indented as it should because it is not the first one after the 'More info' heading.
+All hail LaTeX. (If you're reading the HTML version, you won't see any indentation - have a look at the PDF version to understand what in the earth this section is babbling on about).
