@@ -144,10 +144,10 @@
 
 \fancyhead[LO]{\emph{\leftmark}} 
 \fancyhead[RE]{\emph{\rightmark}} 
-\fancyfoot[C]{\emph{\thepage}}
 
 % UL page number position 
-\fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\emph{\thepage}}}
+\fancyfoot[C]{\emph{\thepage}} %regular pages
+\fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\emph{\thepage}}} %chapter pages
 
 % JEM fix header on cleared pages for openright
 \def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else
@@ -209,9 +209,6 @@ Template for R Markdown}
 
 % Master's candidates who require the alternate title page (with candidate number and word count)
 % must also un-comment and complete the following three lines:
-%\masterssubmissiontrue
-%\candidateno{933516}
-%\wordcount{28,815}
 
 % Uncomment the following line if your degree also includes exams (eg most masters):
 %\renewcommand{\submittedtext}{Submitted in partial completion of the}
@@ -249,6 +246,13 @@ Template for R Markdown}
 % UL: You can set the general paragraph spacing here - I've set it to 2pt (was 0) so
 % it's less claustrophobic
 \setlength{\parskip}{2pt plus 1pt}
+
+%
+% Oxford University logo on title page
+%
+\def\crest{{\includegraphics{templates/beltcrest.pdf}}}
+\renewcommand{\university}{University of Oxford}
+\renewcommand{\submittedtext}{A thesis submitted for the degree of}
 
 
 % Leave this line alone; it gets things started for the real document.
@@ -398,17 +402,20 @@ have it, simply because it is pain\ldots{}
 
 \minitoc 
 
-Here is a brief introduction to using \emph{R Markdown}.
+\noindent Here is a brief introduction to using \emph{R Markdown}.
 \emph{Markdown} is a simple formatting syntax for authoring HTML, PDF, and MS Word documents and much, much more.
 \emph{R Markdown} provides the flexibility of \emph{Markdown} with the implementation of \textbf{R} input and output. For more details on using \emph{R Markdown} see \url{http://rmarkdown.rstudio.com}.
 
-Be careful with your spacing in \emph{Markdown} documents.
-While whitespace largely is ignored, it does at times give \emph{Markdown} signals as to how to proceed.
+\hypertarget{basic-markdown-syntax}{%
+\section{Basic markdown syntax}\label{basic-markdown-syntax}}
+
+\hypertarget{whitespace}{%
+\subsection{Whitespace}\label{whitespace}}
+
+Be careful with your spacing.
+While whitespace largely is ignored, it does at times give markdown signals as to how to proceed.
 As a habit, try to keep everything left aligned whenever possible, especially as you type a new paragraph.
 In other words, there is no need to indent basic text in the Rmd document (in fact, it might cause your text to do funny things if you do).
-
-\hypertarget{markdown-basic-syntax}{%
-\section{Markdown basic syntax}\label{markdown-basic-syntax}}
 
 \hypertarget{italics-and-bold}{%
 \subsection{Italics and bold}\label{italics-and-bold}}
@@ -476,20 +483,16 @@ Put a \textgreater{} in front of the line.
 \hypertarget{headings}{%
 \subsection{Headings}\label{headings}}
 
+Section headers are created with \#'s of increasing number, i.e.~
+
 \begin{itemize}
 \tightlist
 \item
-  are done with \#'s of increasing number, i.e.~
-
-  \begin{itemize}
-  \tightlist
-  \item
-    \# First-level heading
-  \item
-    \#\# Second-level heading
-  \item
-    \#\#\# Etc.
-  \end{itemize}
+  \# First-level heading
+\item
+  \#\# Second-level heading
+\item
+  \#\#\# Etc.
 \end{itemize}
 
 In PDF output, a level-five heading will turn into a paragraph heading, i.e.~\texttt{\textbackslash{}paragraph\{My\ level-five\ heading\}}, which appears as bold text on the same line as the subsequent paragraph.
@@ -507,7 +510,8 @@ Unordered list by starting a line with an * or a -:
   Item 2
 \end{itemize}
 
-Ordered lists by starting a line with a number:
+Ordered lists by starting a line with a number.
+Notice that you can mislabel the numbers and \emph{Markdown} will still make the order right in the output:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -517,8 +521,6 @@ Ordered lists by starting a line with a number:
 \item
   Item 2
 \end{enumerate}
-
-Notice that you can mislabel the numbers and \emph{Markdown} will still make the order right in the output.
 
 To create a sublist, indent the values a bit (at least four spaces or a tab):
 
@@ -633,8 +635,8 @@ We do this either as \emph{code chunks} (generally used for loading libraries an
 
 The syntax of a code chunk is shown in Figure \ref{fig:chunk-parts}.
 
-\begin{figure}
-\includegraphics[width=1\linewidth]{figures/chunk-parts} \caption{Code chunk syntax}\label{fig:chunk-parts}
+\begin{figure}[H]
+\includegraphics[width=1\linewidth]{figures/sample-content/chunk-parts} \caption{Code chunk syntax}\label{fig:chunk-parts}
 \end{figure}
 
 Common chunk options include (see e.g.~\href{https://bookdown.org/yihui/rmarkdown/r-code.html}{bookdown.org}):
@@ -646,7 +648,7 @@ Common chunk options include (see e.g.~\href{https://bookdown.org/yihui/rmarkdow
 \item
   \texttt{eval}: whether or to to run the code in the chunk when knitting
 \item
-  \texttt{include}: wheter to include anything from the from a code chunk in the output document
+  \texttt{include}: whether to include anything from the from a code chunk in the output document
 \item
   \texttt{fig.cap}: figure caption
 \item
@@ -655,8 +657,8 @@ Common chunk options include (see e.g.~\href{https://bookdown.org/yihui/rmarkdow
 
 \textbf{IMPORTANT}: Do \emph{not} use underscoores in your chunk labels - if you do, you are likely to get an error in PDF output saying something like ``! Package caption Error: \textbackslash caption outside float''.
 
-\hypertarget{setup-chunks}{%
-\subsubsection{Setup chunks}\label{setup-chunks}}
+\hypertarget{setup-chunks---setup-images-plots}{%
+\subsubsection{Setup chunks - setup, images, plots}\label{setup-chunks---setup-images-plots}}
 
 An R Markdown document usually begins with a chunk that is used to \textbf{load libraries}, and to \textbf{set default chunk options} with \texttt{knitr::opts\_chunk\$set}.
 
@@ -678,13 +680,13 @@ Code chunks are also used for including images, with \texttt{include\_graphics} 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{include\_graphics}\NormalTok{(}\StringTok{"figures/beltcrest.png"}\NormalTok{)}
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{include\_graphics}\NormalTok{(}\StringTok{"figures/sample{-}content/beltcrest.png"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.5\linewidth]{figures/beltcrest} 
+{\centering \includegraphics[width=0.5\linewidth]{figures/sample-content/beltcrest} 
 
 }
 
@@ -723,7 +725,7 @@ Then you can reference that variable as the value of \texttt{out.extra} to rotat
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.5\linewidth,angle=180]{figures/beltcrest} 
+{\centering \includegraphics[width=0.5\linewidth,angle=180]{figures/sample-content/beltcrest} 
 
 }
 
@@ -809,13 +811,13 @@ In general, you should allow LaTeX to do this, but if you really \emph{really} n
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{include\_graphics}\NormalTok{(}\StringTok{"figures/beltcrest.png"}\NormalTok{)}
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{include\_graphics}\NormalTok{(}\StringTok{"figures/sample{-}content/beltcrest.png"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=0.5\linewidth]{figures/beltcrest} 
+{\centering \includegraphics[width=0.5\linewidth]{figures/sample-content/beltcrest} 
 
 }
 
@@ -950,7 +952,7 @@ You can install this add-in by typing \texttt{install.packages("citr")} in the R
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.8\linewidth]{figures/citr} 
+{\centering \includegraphics[width=0.8\linewidth]{figures/sample-content/citr} 
 
 }
 
@@ -1004,13 +1006,13 @@ Let's add an image:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{include\_graphics}\NormalTok{(}\StringTok{"figures/captain.jpeg"}\NormalTok{)}
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{include\_graphics}\NormalTok{(}\StringTok{"figures/sample{-}content/captain.jpeg"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.65\linewidth]{figures/captain} 
+{\centering \includegraphics[width=0.65\linewidth]{figures/sample-content/captain} 
 
 }
 
@@ -1651,7 +1653,7 @@ Latex has a bunch of standard commands that set an approximate font size, as sho
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=0.5\linewidth]{/Users/ulriklyngs/Library/Mobile Documents/com~apple~CloudDocs/Work/stored-oxford-dphil-stuff/UL DPhil at SOCIAM/Thesis/formatting_considerations/oxforddown/figures/latex_font_sizes} 
+{\centering \includegraphics[width=0.5\linewidth]{figures/sample-content/latex_font_sizes} 
 
 }
 
@@ -1795,7 +1797,7 @@ wonderful have been, and are being, evolved.
 
 \minitoc 
 
-This chapter describes a number of additional tips and tricks as well as possible customizations to the \texttt{oxforddown} thesis.
+\noindent This chapter describes a number of additional tips and tricks as well as possible customizations to the \texttt{oxforddown} thesis.
 
 \hypertarget{front-matter}{%
 \section{Front matter}\label{front-matter}}
@@ -1955,24 +1957,27 @@ You will probably want to set the chunk options \texttt{out.width=\textquotesing
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{include\_graphics}\NormalTok{(}\StringTok{"figures/pdf\_example/Lyngs2020\_FB.pdf"}\NormalTok{)}
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{include\_graphics}\NormalTok{(}\StringTok{"figures/sample{-}content/pdf\_embed\_example/Lyngs2020\_FB.pdf"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 In LaTeX output, however, this approach can cause odd behaviour.
-Therefore, when you build your thesis to PDF, split the PDF into an alphanumerically sorted sequence of \textbf{single-page} PDF files (you can do this automatically with the package \texttt{pdftools}). You can then use the appropriate LaTeX command to insert them, as shown below (for brevity, in the \texttt{oxforddown} PDF sample content we're only including two pages)
+Therefore, when you build your thesis to PDF, split the PDF into an alphanumerically sorted sequence of \textbf{single-page} PDF files (you can do this automatically with the package \texttt{pdftools}). You can then use the appropriate LaTeX command to insert them, as shown below (for brevity, in the \texttt{oxforddown} PDF sample content we're only including two pages).
 \emph{Note that the chunk option \texttt{results=\textquotesingle{}asis\textquotesingle{}} must be set.}
 You may also want to remove margins from the PDF files, which you can do with Adobe Acrobat (paid version) and likely other software.
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# install.packages(pdftools)}
-\CommentTok{\# split PDF into pages stored in figures/pdf\_example/split/}
-\CommentTok{\# pdftools::pdf\_split("figures/pdf\_example/Lyngs2020\_FB.pdf",}
-\CommentTok{\# output = "figures/pdf\_example/split/")}
+\CommentTok{\# split PDF into pages stored in}
+\NormalTok{    figures}\SpecialCharTok{/}\NormalTok{sample}\SpecialCharTok{{-}}\NormalTok{content}\SpecialCharTok{/}\NormalTok{pdf\_embed\_example}\SpecialCharTok{/}\NormalTok{split}\SpecialCharTok{/}
+\CommentTok{\#}
+\NormalTok{    pdftools}\SpecialCharTok{::}\FunctionTok{pdf\_split}\NormalTok{(}\StringTok{"figures/sample{-}content/pdf\_embed\_example/Lyngs2020\_FB.pdf"}\NormalTok{,}
+\CommentTok{\# output = "figures/sample{-}content/pdf\_embed\_example/split/")}
 
 \CommentTok{\# grab the pages}
-\NormalTok{pages }\OtherTok{\textless{}{-}} \FunctionTok{list.files}\NormalTok{(}\StringTok{"figures/pdf\_example/split"}\NormalTok{, }\AttributeTok{full.names =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{pages }\OtherTok{\textless{}{-}} \FunctionTok{list.files}\NormalTok{(}\StringTok{"figures/sample{-}content/pdf\_embed\_example/split"}\NormalTok{,}
+    \AttributeTok{full.names =} \ConstantTok{TRUE}\NormalTok{)}
 
 \CommentTok{\# set how wide you want the inserted PDFs to be:}
 \CommentTok{\# 1.0 is 100 per cent of the oxforddown PDF page width;}
@@ -1987,7 +1992,7 @@ You may also want to remove margins from the PDF files, which you can do with Ad
 \end{Highlighting}
 \end{Shaded}
 
-\newpage \begin{center} \makebox[\linewidth][c]{\includegraphics[width=1.2\linewidth]{figures/pdf_example/split/_000000000000001.pdf}} \end{center} \newpage \begin{center} \makebox[\linewidth][c]{\includegraphics[width=1.2\linewidth]{figures/pdf_example/split/_000000000000011.pdf}} \end{center}
+\newpage \begin{center} \makebox[\linewidth][c]{\includegraphics[width=1.2\linewidth]{figures/sample-content/pdf_embed_example/split/_000000000000001.pdf}} \end{center} \newpage \begin{center} \makebox[\linewidth][c]{\includegraphics[width=1.2\linewidth]{figures/sample-content/pdf_embed_example/split/_000000000000011.pdf}} \end{center}
 
 \hypertarget{customizing-referencing}{%
 \section{Customizing referencing}\label{customizing-referencing}}
@@ -2113,6 +2118,36 @@ For LaTeX minded people, you can read through \textbf{templates/template.tex} to
 For example, \textbf{template.tex} provides an option for master's degree submissions, which changes identifying information to candidate number and includes a word count.
 At the time of writing, you must set this directly in \textbf{template.tex} rather than from the YAML header in \textbf{index.Rmd}.
 
+\hypertarget{customising-to-a-different-university}{%
+\section{Customising to a different university}\label{customising-to-a-different-university}}
+
+\hypertarget{the-minimal-route}{%
+\subsection{The minimal route}\label{the-minimal-route}}
+
+If the front matter in the OxThesis LaTeX template is suitable to your university, customising \texttt{oxforddown} to your needs could be as simple as putting the name of your institution and the path to your university's logo in \textbf{index.Rmd}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{university}\KeywordTok{:}\AttributeTok{ University of You}
+\FunctionTok{university{-}logo}\KeywordTok{:}\AttributeTok{ figures/your{-}logo{-}here.pdf}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{replacing-the-entire-title-page-with-your-required-content}{%
+\subsection{Replacing the entire title page with your required content}\label{replacing-the-entire-title-page-with-your-required-content}}
+
+If you have a \textbf{.tex} file with some required front matter from your university that you want to replace the OxThesis template's title page altogether, you can provide a filepath to this file in \textbf{index.Rmd}.
+\texttt{oxforddown}'s sample content includes and example of this --- if you use the YAML below, your front matter will look like this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{alternative{-}title{-}page}\KeywordTok{:}\AttributeTok{ front{-}and{-}back{-}matter/alt{-}title{-}page{-}example.tex}
+\end{Highlighting}
+\end{Shaded}
+
+\noindent
+\fbox{\includegraphics[width=0.32\linewidth]{figures/sample-content/alt_frontmatter_example/split/_000001.pdf}} \fbox{\includegraphics[width=0.32\linewidth]{figures/sample-content/alt_frontmatter_example/split/_000002.pdf}} \fbox{\includegraphics[width=0.32\linewidth]{figures/sample-content/alt_frontmatter_example/split/_000003.pdf}} \fbox{\includegraphics[width=0.32\linewidth]{figures/sample-content/alt_frontmatter_example/split/_000004.pdf}} \fbox{\includegraphics[width=0.32\linewidth]{figures/sample-content/alt_frontmatter_example/split/_000005.pdf}} \fbox{\includegraphics[width=0.32\linewidth]{figures/sample-content/alt_frontmatter_example/split/_000006.pdf}}
+
 \hypertarget{troubleshooting}{%
 \chapter{Troubleshooting}\label{troubleshooting}}
 
@@ -2144,9 +2179,16 @@ what is necessary is only to try to think them again.
 
 If we don't want Conclusion to have a chapter number next to it, we can add the \texttt{\{-\}} attribute.
 
-\textbf{More info}
+\hypertarget{more-info}{%
+\section*{More info}\label{more-info}}
+\addcontentsline{toc}{section}{More info}
 
-And here's some other random info: the first paragraph after a chapter title or section head \emph{shouldn't be} indented, because indents are to tell the reader that you're starting a new paragraph. Since that's obvious after a chapter or section title, proper typesetting doesn't add an indent there.
+And here's some other random info:
+the first paragraph after a chapter title or section head \emph{shouldn't be} indented, because indents are to tell the reader that you're starting a new paragraph.
+Since that's obvious after a chapter or section title, proper typesetting doesn't add an indent there.
+
+This paragraph, by contrast, \emph{will} be indented as it should because it is not the first one after the `More info' heading.
+All hail LaTeX. (If you're reading the HTML version, you won't see any indentation - have a look at the PDF version to understand what in the earth this section is babbling on about).
 
 \startappendices
 
@@ -2160,7 +2202,7 @@ This first appendix includes an R chunk that was hidden in the document (using \
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(tidyverse)}
-\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{include\_graphics}\NormalTok{(}\StringTok{"figures/chunk{-}parts.png"}\NormalTok{)}
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{include\_graphics}\NormalTok{(}\StringTok{"figures/sample{-}content/chunk{-}parts.png"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2168,7 +2210,7 @@ This first appendix includes an R chunk that was hidden in the document (using \
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{include\_graphics}\NormalTok{(}\StringTok{"figures/beltcrest.png"}\NormalTok{)}
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{include\_graphics}\NormalTok{(}\StringTok{"figures/sample{-}content/beltcrest.png"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
