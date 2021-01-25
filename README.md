@@ -79,7 +79,7 @@ For how to write your content with the R Markdown syntax, read through the sampl
     - (i) download the minGW installer from https://sourceforge.net/projects/mingw/, 
     - (ii) open the MinGW Installation Manager, check the box next to mingw32-base and select 'Mark for installation'
     - (iii) click 'Installation' then 'Apply changes'
-    - (iv) make a copy of the file 'mingw32-make.exe' which you will probably find in the folder **C:\MinGW\bin\**, and name it **make.exe**
+    - (iv) make a copy of the file 'mingw32-make.exe' which you will probably find in the folder **C:\MinGW\bin\\**, and name it **make.exe**
     - (v) include this in your environment variables, by opening a terminal / command prompt and typing `set PATH=C:\MinGW\bin;%PATH%`
 
     Option 2 (supposedly less painful):
