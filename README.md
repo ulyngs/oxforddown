@@ -44,7 +44,7 @@ Examples of actual theses written with `oxforddown`:
 ```
 
 ## Video tutorials
-NOTE: as per v2.0, the introduction chapter no longer needs to be named \_introduction.Rmd! Apart from this, the videos should still be correct!
+NOTE: as per v2.0, the introduction chapter no longer needs to be named \_introduction.Rmd! Apart from this, the videos should still be mostly right!
 
 See the video tutorials for how to use the template:
 
