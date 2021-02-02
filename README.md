@@ -1,6 +1,7 @@
 Contents
 =================
 - [Requirements](#requirements)
+- [Video tutorials](#video-tutorials)
 - [How to use](#how-to-use)
   * [Writing your thesis](#writing-your-thesis)
   * [Building your entire thesis](#building-your-entire-thesis)
@@ -10,14 +11,13 @@ Contents
     + [Word output](#word-output)
   * [Building a single chapter](#building-a-single-chapter)
   * [Cleaning up generated auxiliary files](#cleaning-up-generated-auxiliary-files)
-  * [Video tutorials](#video-tutorials)
 - [Customisations and extensions](#customisations-and-extensions)
 - [Limitations](#limitations)
   * [Gotchas](#gotchas)
   * [Output formats](#output-formats)
 
 # Oxforddown
-A template for writing an Oxford University thesis in R Markdown.
+A template for writing an Oxford University thesis in R Markdown. The template uses the [bookdown](https://bookdown.org) R package together with the [OxThesis LaTeX template](https://github.com/mcmanigle/OxThesis), plus lots of inspiration from [thesisdown](https://github.com/ismayc/thesisdown).
 
 - Sample PDF output: [**docs/_main.pdf**](https://github.com/ulyngs/oxforddown/blob/master/docs/_main.pdf)
 - Sample BS4 book output: [ulyngs.github.io/oxforddown/](https://ulyngs.github.io/oxforddown/)
@@ -43,6 +43,25 @@ Examples of actual theses written with `oxforddown`:
 }
 ```
 
+## Video tutorials
+NOTE: as per v2.0, the introduction chapter no longer needs to be named \_introduction.Rmd! Apart from this, the videos should still be mostly right!
+
+See the video tutorials for how to use the template:
+
+- [Part 1: Building the entire thesis](https://www.youtube.com/watch?v=Yf1W1BBS9cU)
+- [Part 2: Building a single chapter](https://www.youtube.com/watch?v=-EJfCA3VA-I)
+- [Part 3: Understanding the file structure](https://www.youtube.com/watch?v=jafgJobOgpc)
+- [Part 4: A walk-through example of creating your thesis](https://www.youtube.com/watch?v=uWpinaVSZ6Q)
+- [Part 5: The content included in index.Rmd (or: why the introduction chapter is special)](https://www.youtube.com/watch?v=FPlwCj5ZH8M)
+- [Part 6: Adjusting the order of chapters](https://www.youtube.com/watch?v=-0M3TuDnu7Y)
+- [Part 7: \_bookdown.yml: Adjusting build settings](https://www.youtube.com/watch?v=jXYfC8RXTvg)
+- [Part 8: Makefile: Adjusting build settings](https://www.youtube.com/watch?v=L6mV8z32RfE)
+- [Part 9: The LaTeX templates](https://www.youtube.com/watch?v=o2fd_O1On7g)
+
+
+For how to write your content with the R Markdown syntax, read through the sample content.
+
+
 ## Requirements
 - LaTeX 
   - Option 1 (recommended): download and install the MacTeX distribution from [tug.org/mactex/](http://www.tug.org/mactex/) (~4 gigs)
@@ -60,7 +79,7 @@ Examples of actual theses written with `oxforddown`:
     - (i) download the minGW installer from https://sourceforge.net/projects/mingw/, 
     - (ii) open the MinGW Installation Manager, check the box next to mingw32-base and select 'Mark for installation'
     - (iii) click 'Installation' then 'Apply changes'
-    - (iv) make a copy of the file 'mingw32-make.exe' which you will probably find in the folder **C:\MinGW\bin\**, and name it **make.exe**
+    - (iv) make a copy of the file 'mingw32-make.exe' which you will probably find in the folder **C:\MinGW\bin\\**, and name it **make.exe**
     - (v) include this in your environment variables, by opening a terminal / command prompt and typing `set PATH=C:\MinGW\bin;%PATH%`
 
     Option 2 (supposedly less painful):
@@ -140,26 +159,6 @@ When you build to PDF via `make`, the auxillary files will be automatically be r
 To clean them up manually, run `file.remove(list.files(pattern = "*.(log|mtc|maf|aux|bcf|lof|lot|out|toc)"), here::here("front-and-back-matter", "abbreviations.aux"))` in the R console.
 
 To clean up files generated when knitting individual chapters, type 'make clean-knits' in the terminal. Or, if you're on Windows without `make` available, run the command `file.remove(list.files(pattern = "*.(log|mtc|maf|aux|bcf|lof|lot|out|toc)"), here::here("front-and-back-matter", "abbreviations.aux"))`.
-
-### Video tutorials
-NOTE: as per v2.0, the introduction chapter no longer needs to be named \_introduction.Rmd! Apart from this, the videos should still be correct!
-
-See the video tutorials for how to use the template:
-
-- [Part 1: Building the entire thesis](https://www.youtube.com/watch?v=Yf1W1BBS9cU)
-- [Part 2: Building a single chapter](https://www.youtube.com/watch?v=-EJfCA3VA-I)
-- [Part 3: Understanding the file structure](https://www.youtube.com/watch?v=jafgJobOgpc)
-- [Part 4: A walk-through example of creating your thesis](https://www.youtube.com/watch?v=uWpinaVSZ6Q)
-- [Part 5: The content included in index.Rmd (or: why the introduction chapter is special)](https://www.youtube.com/watch?v=FPlwCj5ZH8M)
-- [Part 6: Adjusting the order of chapters](https://www.youtube.com/watch?v=-0M3TuDnu7Y)
-- [Part 7: \_bookdown.yml: Adjusting build settings](https://www.youtube.com/watch?v=jXYfC8RXTvg)
-- [Part 8: Makefile: Adjusting build settings](https://www.youtube.com/watch?v=L6mV8z32RfE)
-- [Part 9: The LaTeX templates](https://www.youtube.com/watch?v=o2fd_O1On7g)
-
-
-For how to write your content with the R Markdown syntax, read through the sample content.
-
-The template uses the [bookdown](https://bookdown.org) R package together with the [OxThesis LaTeX template](https://github.com/mcmanigle/OxThesis), plus lots of inspiration from [thesisdown](https://github.com/ismayc/thesisdown).
 
 
 ## Customisations and extensions
