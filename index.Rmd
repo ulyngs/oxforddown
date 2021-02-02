@@ -118,14 +118,13 @@ output:
 link-citations: true
 documentclass: book
 always_allow_html: true #this allows html stuff in word (.docx) output
+# The lines below make the 'knit' button render the whole thesis to PDF, HTML, or Word
+# When outputting to PDF, you can clean up the files LaTeX generates by running 
+# 'file.remove(list.files(pattern = "*.(log|mtc|maf|aux|bbl|blg|xml)"))' in the R console
 knit: (function(input, ...) {bookdown::render_book(input, output_format = "bookdown::pdf_book")})
-# You can comment out the knit line above and replace it with one of the below to make the knit
-# button output the full thesis to HTML or Word
 #knit: (function(input, ...) {bookdown::render_book(input, output_format = "bookdown::bs4_book")})
 #knit: (function(input, ...) {bookdown::render_book(input, output_format = "bookdown::gitbook")})
 #knit: (function(input, ...) {bookdown::render_book(input, output_format = "bookdown::word_document2")})
-# When outputting to PDF, you can clean up the files LaTeX generates by running 
-# 'file.remove(list.files(pattern = "*.(log|mtc|maf|aux|bbl|blg|xml)"))' in the R console
 ---
 
 
