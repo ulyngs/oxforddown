@@ -64,7 +64,9 @@ For how to write your content with the R Markdown syntax, read through the sampl
 
 ## Requirements
 - LaTeX 
-  - Option 1 (recommended): download and install the MacTeX distribution from [tug.org/mactex/](http://www.tug.org/mactex/) (~4 gigs)
+  - Option 1 (recommended): 
+    - Mac: download and install MacTeX from [tug.org/mactex/](http://www.tug.org/mactex/) (~4 gigs)
+    - Windows: download and install Miktex from [miktex.org](https://miktex.org)
   - Option 2: install [TinyTeX](https://yihui.name/tinytex/). Afterwards, manually install the LaTeX package 'cbfonts-fd' with `tinytex::tlmgr_install('cbfonts-fd')` (#11) - the other necessary LaTeX packages will be automatically installed for you by TinyTeX when you build to PDF for the first time.
 - [R](https://cran.rstudio.com) and [RStudio version 1.2 or higher](https://www.rstudio.com/products/rstudio/download/#download)
 - The R packages `rmarkdown`, `bookdown`, `tidyverse`, `kableExtra`, and `here`
