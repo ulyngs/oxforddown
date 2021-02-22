@@ -41,9 +41,8 @@ Template for R Markdown</p></a>
 <li><a class="" href="cites-and-refs.html"><span class="header-section-number">2</span> Citations, cross-references, and collaboration</a></li>
 <li><a class="" href="tables.html"><span class="header-section-number">3</span> Tables</a></li>
 <li><a class="active" href="customisations-and-extensions.html"><span class="header-section-number">4</span> Customisations and extensions</a></li>
-<li><a class="" href="example-including-an-external-chapter.html"><span class="header-section-number">5</span> Example: Including an external chapter</a></li>
-<li><a class="" href="troubleshooting.html"><span class="header-section-number">6</span> Troubleshooting</a></li>
-<li><a class="" href="conclusion-1.html">Conclusion</a></li>
+<li><a class="" href="troubleshooting.html"><span class="header-section-number">5</span> Troubleshooting</a></li>
+<li><a class="" href="conclusion.html">Conclusion</a></li>
 <li class="book-part">Appendix</li>
 <li><a class="" href="the-first-appendix.html"><span class="header-section-number">A</span> The First Appendix</a></li>
 <li><a class="" href="the-second-appendix-for-fun.html"><span class="header-section-number">B</span> The Second Appendix, for Fun</a></li>
@@ -285,6 +284,12 @@ In <strong>my_paper.Rmd</strong>, create a parameter called <code>other_path</co
 But here, set it to where the <strong>paper_to_include/</strong> folder is relative to your thesis folder:</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb29-1"><a href="customisations-and-extensions.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">params</span><span class="kw">:</span></span>
 <span id="cb29-2"><a href="customisations-and-extensions.html#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">other_path</span><span class="kw">:</span><span class="at"> </span><span class="st">"../paper_to_include/"</span></span></code></pre></div>
+<div id="note-on-html-output" class="section level4" number="4.8.3.1">
+<h4>
+<span class="header-section-number">4.8.3.1</span> Note on HTML output<a class="anchor" aria-label="anchor" href="#note-on-html-output"><i class="fas fa-link"></i></a>
+</h4>
+<p>Note that if you want to host an HTML version on your thesis online, you will need to include graphics in the content that you host online - the internet obviously won’t be able to see filepaths that are just referring to stuff in another folder on your computer!</p>
+</div>
 </div>
 <div id="step-3-make-sure-header-levels-are-correct" class="section level3" number="4.8.4">
 <h3>
@@ -312,9 +317,9 @@ Then in <strong>paper_to_include/</strong> create a <a href="https://bookdown.or
 <span id="cb31-8"><a href="customisations-and-extensions.html#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
 <p>Now, your header levels will be correct both when you knit the paper on its own and when its included in your thesis.</p>
 </div>
-<div id="make-sure-figure-widths-are-correct" class="section level3" number="4.8.5">
+<div id="step-4.-make-sure-figure-widths-are-correct" class="section level3" number="4.8.5">
 <h3>
-<span class="header-section-number">4.8.5</span> 4. Make sure figure widths are correct<a class="anchor" aria-label="anchor" href="#make-sure-figure-widths-are-correct"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.8.5</span> Step 4. Make sure figure widths are correct<a class="anchor" aria-label="anchor" href="#step-4.-make-sure-figure-widths-are-correct"><i class="fas fa-link"></i></a>
 </h3>
 <p>It might be that your figure widths when knitting your paper on its own, and when including it in your thesis, need to be different.
 You can again use parameters to set figure widths.</p>
@@ -332,12 +337,6 @@ In <strong>paper_to_include/my_paper.Rmd</strong>, first add a parameter we coul
 <p>Then, make sure use that parameter to set the output width when you include figures in <strong>paper_to_include/my_paper.Rmd</strong>:</p>
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">include_graphics</a></span><span class="op">(</span><span class="fu">str_c</span><span class="op">(</span><span class="va">params</span><span class="op">$</span><span class="va">other_path</span>, <span class="st">"figures/cat.jpg"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<div class="figure">
-<span id="fig:unnamed-chunk-16"></span>
-<img src="../paper_to_include/figures/cat.jpg" alt="A very funny cat" width="100%"><p class="caption">
-Figure 4.1: A very funny cat
-</p>
-</div>
 <p>Finally, create the parameter <code>out_width</code> in your thesis’ <strong>index.Rmd</strong> file:</p>
 <div class="sourceCode" id="cb34"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb34-1"><a href="customisations-and-extensions.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">params</span><span class="kw">:</span></span>
 <span id="cb34-2"><a href="customisations-and-extensions.html#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">other_path</span><span class="kw">:</span><span class="at"> </span><span class="st">"../paper_to_include/"</span></span>
@@ -484,7 +483,7 @@ At the time of writing, you must set this directly in <strong>template.tex</stro
 
   <div class="chapter-nav">
 <div class="prev"><a href="tables.html"><span class="header-section-number">3</span> Tables</a></div>
-<div class="next"><a href="example-including-an-external-chapter.html"><span class="header-section-number">5</span> Example: Including an external chapter</a></div>
+<div class="next"><a href="troubleshooting.html"><span class="header-section-number">5</span> Troubleshooting</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
@@ -513,7 +512,7 @@ At the time of writing, you must set this directly in <strong>template.tex</stro
 <li><a class="nav-link" href="#step-1-include-paper-as-a-child-document"><span class="header-section-number">4.8.2</span> Step 1: Include paper as a child document</a></li>
 <li><a class="nav-link" href="#step-2-make-file-paths-compatible"><span class="header-section-number">4.8.3</span> Step 2: Make file paths compatible</a></li>
 <li><a class="nav-link" href="#step-3-make-sure-header-levels-are-correct"><span class="header-section-number">4.8.4</span> Step 3: Make sure header levels are correct</a></li>
-<li><a class="nav-link" href="#make-sure-figure-widths-are-correct"><span class="header-section-number">4.8.5</span> 4. Make sure figure widths are correct</a></li>
+<li><a class="nav-link" href="#step-4.-make-sure-figure-widths-are-correct"><span class="header-section-number">4.8.5</span> Step 4. Make sure figure widths are correct</a></li>
 </ul>
 </li>
 <li>

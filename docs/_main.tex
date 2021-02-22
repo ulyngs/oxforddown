@@ -2091,6 +2091,11 @@ But here, set it to where the \textbf{paper\_to\_include/} folder is relative to
 \end{Highlighting}
 \end{Shaded}
 
+\hypertarget{note-on-html-output}{%
+\subsubsection{Note on HTML output}\label{note-on-html-output}}
+
+Note that if you want to host an HTML version on your thesis online, you will need to include graphics in the content that you host online - the internet obviously won't be able to see filepaths that are just referring to stuff in another folder on your computer!
+
 \hypertarget{step-3-make-sure-header-levels-are-correct}{%
 \subsection{Step 3: Make sure header levels are correct}\label{step-3-make-sure-header-levels-are-correct}}
 
@@ -2129,8 +2134,8 @@ In the YAML header of \textbf{paper\_to\_include/my\_paper.Rmd}, use this filter
 
 Now, your header levels will be correct both when you knit the paper on its own and when its included in your thesis.
 
-\hypertarget{make-sure-figure-widths-are-correct}{%
-\subsection{4. Make sure figure widths are correct}\label{make-sure-figure-widths-are-correct}}
+\hypertarget{step-4.-make-sure-figure-widths-are-correct}{%
+\subsection{Step 4. Make sure figure widths are correct}\label{step-4.-make-sure-figure-widths-are-correct}}
 
 It might be that your figure widths when knitting your paper on its own, and when including it in your thesis, need to be different.
 You can again use parameters to set figure widths.
@@ -2159,10 +2164,6 @@ Then, make sure use that parameter to set the output width when you include figu
 \FunctionTok{include\_graphics}\NormalTok{(}\FunctionTok{str\_c}\NormalTok{(params}\SpecialCharTok{$}\NormalTok{other\_path, }\StringTok{"figures/cat.jpg"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{figure}
-\includegraphics[width=1\linewidth]{../paper_to_include/figures/cat} \caption{A very funny cat}\label{fig:unnamed-chunk-16}
-\end{figure}
 
 Finally, create the parameter \texttt{out\_width} in your thesis' \textbf{index.Rmd} file:
 
@@ -2330,59 +2331,6 @@ If you have a \textbf{.tex} file with some required front matter from your unive
 \noindent
 \fbox{\includegraphics[width=0.32\linewidth]{figures/sample-content/alt_frontmatter_example/split/_000001.pdf}} \fbox{\includegraphics[width=0.32\linewidth]{figures/sample-content/alt_frontmatter_example/split/_000002.pdf}} \fbox{\includegraphics[width=0.32\linewidth]{figures/sample-content/alt_frontmatter_example/split/_000003.pdf}} \fbox{\includegraphics[width=0.32\linewidth]{figures/sample-content/alt_frontmatter_example/split/_000004.pdf}} \fbox{\includegraphics[width=0.32\linewidth]{figures/sample-content/alt_frontmatter_example/split/_000005.pdf}} \fbox{\includegraphics[width=0.32\linewidth]{figures/sample-content/alt_frontmatter_example/split/_000006.pdf}}
 
-\hypertarget{example-including-an-external-chapter}{%
-\chapter{Example: Including an external chapter}\label{example-including-an-external-chapter}}
-
-\minitoc 
-
-\hypertarget{introduction-1}{%
-\section{Introduction}\label{introduction-1}}
-
-Many people think that there is a relationship between a cat's height and how much salt it consumes.
-
-\hypertarget{methods}{%
-\section{Methods}\label{methods}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{include\_graphics}\NormalTok{(}\FunctionTok{str\_c}\NormalTok{(params}\SpecialCharTok{$}\NormalTok{other\_path, }\StringTok{"figures/cat.jpg"}\NormalTok{))}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{figure}
-\includegraphics[width=1\linewidth]{../paper_to_include/figures/cat} \caption{A very funny cat}\label{fig:unnamed-chunk-24}
-\end{figure}
-
-This cat came up with all of the methods for this paper.
-
-\hypertarget{results}{%
-\section{Results}\label{results}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{cat\_data }\SpecialCharTok{\%\textgreater{}\%} 
-  \FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
-    \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(cat\_height, cat\_salt\_eating)) }\SpecialCharTok{+}
-    \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Cat height"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Daily amount of salt consumed"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{figure}
-\centering
-\includegraphics{_main_files/figure-latex/unnamed-chunk-25-1.pdf}
-\caption{\label{fig:unnamed-chunk-25}Cat height by cat salt eating}
-\end{figure}
-
-\hypertarget{discussion}{%
-\section{Discussion}\label{discussion}}
-
-There's some uncertainty in our data, but we've clearly got a cat-salt problem here.
-
-\hypertarget{conclusion}{%
-\section{Conclusion}\label{conclusion}}
-
-This changes everything.
-
 \hypertarget{troubleshooting}{%
 \chapter{Troubleshooting}\label{troubleshooting}}
 
@@ -2434,8 +2382,8 @@ what is necessary is only to try to think them again.
 
 
 
-\hypertarget{conclusion-1}{%
-\chapter*{Conclusion}\label{conclusion-1}}
+\hypertarget{conclusion}{%
+\chapter*{Conclusion}\label{conclusion}}
 \addcontentsline{toc}{chapter}{Conclusion}
 
 If we don't want Conclusion to have a chapter number next to it, we can add the \texttt{\{-\}} attribute.
