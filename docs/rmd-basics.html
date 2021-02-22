@@ -247,14 +247,10 @@ f\left(k\right)=\binom{n}{k}p^k\left(1-p\right)^{n-k}
 </div>
 <div id="code" class="section level2" number="1.2">
 <h2>
-<span class="header-section-number">1.2</span> Adding code<a class="anchor" aria-label="anchor" href="#code"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.2</span> Executable code chunks<a class="anchor" aria-label="anchor" href="#code"><i class="fas fa-link"></i></a>
 </h2>
-<p>The magic of R Markdown is that we can add code within our document to make it dynamic.</p>
+<p>The magic of R Markdown is that we can add executable code within our document to make it dynamic.</p>
 <p>We do this either as <em>code chunks</em> (generally used for loading libraries and data, performing calculations, and adding images, plots, and tables), or <em>inline code</em> (generally used for dynamically reporting results within our text).</p>
-<div id="code-chunks" class="section level3" number="1.2.1">
-<h3>
-<span class="header-section-number">1.2.1</span> Code chunks<a class="anchor" aria-label="anchor" href="#code-chunks"><i class="fas fa-link"></i></a>
-</h3>
 <p>The syntax of a code chunk is shown in Figure <a href="rmd-basics.html#fig:chunk-parts">1.1</a>.</p>
 <div class="figure">
 <span id="fig:chunk-parts"></span>
@@ -276,10 +272,10 @@ Figure 1.1: Code chunk syntax
 <code>fig.scap</code>: short figure caption, which will be used in the ‘List of Figures’ in the PDF front matter</li>
 </ul>
 <p><strong>IMPORTANT</strong>: Do <em>not</em> use underscoores in your chunk labels - if you do, you are likely to get an error in PDF output saying something like “! Package caption Error: \caption outside float.”</p>
-<div id="setup-chunks---setup-images-plots" class="section level4" number="1.2.1.1">
-<h4>
-<span class="header-section-number">1.2.1.1</span> Setup chunks - setup, images, plots<a class="anchor" aria-label="anchor" href="#setup-chunks---setup-images-plots"><i class="fas fa-link"></i></a>
-</h4>
+<div id="setup-chunks---setup-images-plots" class="section level3" number="1.2.1">
+<h3>
+<span class="header-section-number">1.2.1</span> Setup chunks - setup, images, plots<a class="anchor" aria-label="anchor" href="#setup-chunks---setup-images-plots"><i class="fas fa-link"></i></a>
+</h3>
 <p>An R Markdown document usually begins with a chunk that is used to <strong>load libraries</strong>, and to <strong>set default chunk options</strong> with <code>knitr::opts_chunk$set</code>.</p>
 <p>In your thesis, this will probably happen in <strong>index.Rmd</strong> and/or as opening chunks in each of your chapters.</p>
 <pre><code>```{r setup, include=FALSE}
@@ -289,10 +285,10 @@ knitr::opts_chunk$set(echo = FALSE)
 library(tidyverse)
 ```</code></pre>
 </div>
-<div id="including-images" class="section level4" number="1.2.1.2">
-<h4>
-<span class="header-section-number">1.2.1.2</span> Including images<a class="anchor" aria-label="anchor" href="#including-images"><i class="fas fa-link"></i></a>
-</h4>
+<div id="including-images" class="section level3" number="1.2.2">
+<h3>
+<span class="header-section-number">1.2.2</span> Including images<a class="anchor" aria-label="anchor" href="#including-images"><i class="fas fa-link"></i></a>
+</h3>
 <p>Code chunks are also used for including images, with <code>include_graphics</code> from the <code>knitr</code> package, as in Figure <a href="rmd-basics.html#fig:oxford-logo">1.2</a></p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">include_graphics</a></span><span class="op">(</span><span class="st">"figures/sample-content/beltcrest.png"</span><span class="op">)</span></code></pre></div>
@@ -309,9 +305,9 @@ Figure 1.2: Oxford logo
 <li>if you’ve got an image that gets waaay to big in your output, it will be constrained to the page width by setting <code>out.width = "100%"</code>
 </li>
 </ul>
-<div id="figure-rotation" class="section level5 unnumbered">
-<h5>Figure rotation<a class="anchor" aria-label="anchor" href="#figure-rotation"><i class="fas fa-link"></i></a>
-</h5>
+<div id="figure-rotation" class="section level4 unnumbered">
+<h4>Figure rotation<a class="anchor" aria-label="anchor" href="#figure-rotation"><i class="fas fa-link"></i></a>
+</h4>
 <p>You can use the chunk option <code>out.extra</code> to rotate images.</p>
 <p>The syntax is different for LaTeX and HTML, so for ease we might start by assigning the right string to a variable that depends on the format you’re outputting to:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
@@ -329,10 +325,10 @@ Figure 1.3: Oxford logo, rotated
 </div>
 </div>
 </div>
-<div id="including-plots" class="section level4" number="1.2.1.3">
-<h4>
-<span class="header-section-number">1.2.1.3</span> Including plots<a class="anchor" aria-label="anchor" href="#including-plots"><i class="fas fa-link"></i></a>
-</h4>
+<div id="including-plots" class="section level3" number="1.2.3">
+<h3>
+<span class="header-section-number">1.2.3</span> Including plots<a class="anchor" aria-label="anchor" href="#including-plots"><i class="fas fa-link"></i></a>
+</h3>
 <p>Similarly, code chunks are used for including dynamically generated plots.
 You use ordinary code in R or other languages - Figure <a href="rmd-basics.html#fig:cars-plot">1.4</a> shows a plot of the <code>cars</code> dataset of stopping distances for cars at various speeds (this dataset is built in to <strong>R</strong>).</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
@@ -348,10 +344,10 @@ Figure 1.4: A ggplot of car stuff
 </div>
 <p>Under the hood, plots are included in your document in the same way as images - when you build the book or knit a chapter, the plot is automatically generated from your code, saved as an image, then included into the output document.</p>
 </div>
-<div id="including-tables" class="section level4" number="1.2.1.4">
-<h4>
-<span class="header-section-number">1.2.1.4</span> Including tables<a class="anchor" aria-label="anchor" href="#including-tables"><i class="fas fa-link"></i></a>
-</h4>
+<div id="including-tables" class="section level3" number="1.2.4">
+<h3>
+<span class="header-section-number">1.2.4</span> Including tables<a class="anchor" aria-label="anchor" href="#including-tables"><i class="fas fa-link"></i></a>
+</h3>
 <p>Tables are usually included with the <code>kable</code> function from the <code>knitr</code> package.</p>
 <p>Table <a href="rmd-basics.html#tab:cars-table">1.1</a> shows the first rows of that cars data - read in your own data, then use this approach to automatically generate tables.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
@@ -426,10 +422,10 @@ dist
 <li>The <code>kable</code> package is often used with the <a href="https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html"><code>kableExtra</code></a> package</li>
 </ul>
 </div>
-<div id="control-positioning" class="section level4" number="1.2.1.5">
-<h4>
-<span class="header-section-number">1.2.1.5</span> Control positioning<a class="anchor" aria-label="anchor" href="#control-positioning"><i class="fas fa-link"></i></a>
-</h4>
+<div id="control-positioning" class="section level3" number="1.2.5">
+<h3>
+<span class="header-section-number">1.2.5</span> Control positioning<a class="anchor" aria-label="anchor" href="#control-positioning"><i class="fas fa-link"></i></a>
+</h3>
 <p>One thing that may be annoying is the way <em>R Markdown</em> handles “floats” like tables and figures.
 In your PDF output, LaTeX will try to find the best place to put your object based on the text around it and until you’re really, truly done writing you should just leave it where it lies.</p>
 <p>In general, you should allow LaTeX to do this, but if you really <em>really</em> need a figure to be positioned where you put in the document, then you can make LaTeX attempt to do this with the chunk option <code>fig.pos="H"</code>, as in Figure <a href="rmd-basics.html#fig:oxford-logo-controlled">1.5</a>:</p>
@@ -446,10 +442,10 @@ Therefore, it is not generally a good idea to do this - only do it when you real
 For more details, read the relevant section of the [R Markdown Cookbook]<a href="https://bookdown.org/yihui/rmarkdown-cookbook/figure-placement.html" class="uri">https://bookdown.org/yihui/rmarkdown-cookbook/figure-placement.html</a>).</p>
 </div>
 </div>
-<div id="inline-code-1" class="section level3" number="1.2.2">
-<h3>
-<span class="header-section-number">1.2.2</span> Inline code<a class="anchor" aria-label="anchor" href="#inline-code-1"><i class="fas fa-link"></i></a>
-</h3>
+<div id="executable-inline-code" class="section level2" number="1.3">
+<h2>
+<span class="header-section-number">1.3</span> Executable inline code<a class="anchor" aria-label="anchor" href="#executable-inline-code"><i class="fas fa-link"></i></a>
+</h2>
 <p>‘Inline code’ simply means inclusion of code inside text.
 The syntax for doing this is <code>`r R_CODE`</code>
 For example, <code>`r 4 + 4`</code> will output 8 in your text.</p>
@@ -461,14 +457,13 @@ For example, we might assign the number of rows in the <code>cars</code> dataset
 “In the <code>cars</code> dataset, we have <code>`r num_car_observations`</code> observations.”</p>
 <p>Which would output:<br>
 “In the <code>cars</code> dataset, we have 50 observations.”</p>
-<div id="referring-to-results-computed-in-other-languages-than-r" class="section level4" number="1.2.2.1">
-<h4>
-<span class="header-section-number">1.2.2.1</span> Referring to results computed in other languages than R<a class="anchor" aria-label="anchor" href="#referring-to-results-computed-in-other-languages-than-r"><i class="fas fa-link"></i></a>
-</h4>
-<p>If you want to use other languages than R, such as Python, Julia C++, or SQL, see <a href="https://bookdown.org/yihui/rmarkdown-cookbook/other-languages.html">the relevant section in the <em>R Markdown Cookbook</em></a></p>
+</div>
+<div id="executable-code-in-other-languages-than-r" class="section level2" number="1.4">
+<h2>
+<span class="header-section-number">1.4</span> Executable code in other languages than R<a class="anchor" aria-label="anchor" href="#executable-code-in-other-languages-than-r"><i class="fas fa-link"></i></a>
+</h2>
+<p>If you want to use other languages than R, such as Python, Julia C++, or SQL, see <a href="https://bookdown.org/yihui/rmarkdown-cookbook/other-languages.html">the relevant section of the <em>R Markdown Cookbook</em></a></p>
 
-</div>
-</div>
 </div>
 </div>
 
@@ -499,11 +494,16 @@ For example, we might assign the number of rows in the <code>cars</code> dataset
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#code"><span class="header-section-number">1.2</span> Adding code</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#code-chunks"><span class="header-section-number">1.2.1</span> Code chunks</a></li>
-<li><a class="nav-link" href="#inline-code-1"><span class="header-section-number">1.2.2</span> Inline code</a></li>
+<a class="nav-link" href="#code"><span class="header-section-number">1.2</span> Executable code chunks</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#setup-chunks---setup-images-plots"><span class="header-section-number">1.2.1</span> Setup chunks - setup, images, plots</a></li>
+<li><a class="nav-link" href="#including-images"><span class="header-section-number">1.2.2</span> Including images</a></li>
+<li><a class="nav-link" href="#including-plots"><span class="header-section-number">1.2.3</span> Including plots</a></li>
+<li><a class="nav-link" href="#including-tables"><span class="header-section-number">1.2.4</span> Including tables</a></li>
+<li><a class="nav-link" href="#control-positioning"><span class="header-section-number">1.2.5</span> Control positioning</a></li>
 </ul>
 </li>
+<li><a class="nav-link" href="#executable-inline-code"><span class="header-section-number">1.3</span> Executable inline code</a></li>
+<li><a class="nav-link" href="#executable-code-in-other-languages-than-r"><span class="header-section-number">1.4</span> Executable code in other languages than R</a></li>
 </ul>
 
       <div class="book-extra">
