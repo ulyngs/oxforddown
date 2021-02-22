@@ -130,7 +130,7 @@ The file **scripts_and_filters/colour_and_highlight.lua** implements this, if yo
 It works with both PDF and HTML output.
 
 
-## Embedding PDF documents as chapters
+## Including another paper in your thesis - embedding a PDF document {#embed-pdf}
 
 You may want to embed existing PDF documents into the thesis, for example if your department allows a 'portfolio' style thesis and you need to include an existing typeset publication as a chapter. 
 
@@ -166,6 +166,149 @@ pdf_width <- 1.2
 cat(stringr::str_c("\\newpage \\begin{center} \\makebox[\\linewidth][c]{\\includegraphics[width=", pdf_width, "\\linewidth]{", pages, "}} \\end{center}"))
 
 ```
+
+
+## Including another paper in your thesis - include an R Markdown child document {#embed-rmd}
+
+Sometimes you want to include another paper you are currently writing as a chapter in your thesis.
+Above \@ref(embed-pdf), we described the simplest way to do this: include the other paper as a pdf.
+However, in some cases you instead want to include the R Markdown source from this paper, and have it compiled within your thesis.
+This is a little bit more tricky, because you need to keep careful track of your file paths, but it is possible by [including the paper as a child document](https://bookdown.org/yihui/rmarkdown-cookbook/child-document.html).
+There are four main steps: 
+
+1. Include the paper as a child document
+1. Make file paths compatible with knitting the article on its own, as well as when it's include in your thesis
+1. Make header levels correct
+1. Make figure widths correct
+
+### An example paper in another folder
+Take this simple example (files for this are in [this GitHub repository](https://github.com/ulyngs/oxforddown-external-article)):
+
+```markdown 
+|--paper_to_include
+|  |--my_paper.Rmd
+|  |--data
+|  |  |--cat_salt.csv
+|  |--figures
+|  |  |--cat.jpg
+|
+|--thesis
+```
+
+As the chart suggests, you have another folder, **paper_to_include/** living in the same containing folder as your thesis folder.
+In the **paper_to_include** folder, the file **my_paper.Rmd** is where you write the paper.
+In **my_paper.Rmd**, you read in a CSV file found in the subfolder **data/cats.csv**, and also an image from the subfolder **figures/cat.jpg**.
+
+### Step 1: Include paper as a child document
+In your thesis folder, create an Rmd file for the chapter where you want to include another paper. 
+Add one or more code chunks that include R Markdown files from that paper as child documents:
+
+````markdown
+# Including an external chapter 
+
+`r ''````{r child = "../paper_to_include/my_paper.Rmd"}
+```
+````
+
+
+### Step 2: Make file paths compatible
+Use [parameters](https://rmarkdown.rstudio.com/lesson-6.html) to adjust the file path of images based on values you set in the YAML header of an R Markdown file.
+In **my_paper.Rmd**, create a parameter called `other_path` and set it to an empty string:
+
+```yaml
+---
+title: "A fabulous article in a different folder"
+params:
+  other_path: ""
+---
+```
+
+In **my_paper.Rmd**, put this at the start of the filepath when you read in data or include images:
+
+```r
+library(tidyverse)
+library(knitr)
+
+cat_data <- read_csv(str_c(params$other_path, "data/cats.csv"))
+include_graphics(str_c(params$other_path, "figures/cat.jpg"))
+```
+
+Finally, in your thesis folder's **index.Rmd** file, also create the parameter `other_path`.
+But here, set it to where the **paper_to_include/** folder is relative to your thesis folder:
+
+```yaml
+params:
+  other_path: "../paper_to_include/"
+```
+
+### Step 3: Make sure header levels are correct
+Unless the paper you want to include is also written as a book, your header levels are probably going to be off.
+That is, the level 1 headers (\# Some header) you use for main sections in the other paper turns into chaper titles when included in your thesis.
+
+To avoid this, first _increment all heading levels by one in **paper_to_include/my_paper.Rmd**_ (\# Some header -> \#\# Some header).
+Then in **paper_to_include/** create a [lua filter](https://bookdown.org/yihui/rmarkdown-cookbook/lua-filters.html#lua-filters) that decrements header levels by one: Create a text file, save it as **reduce_header_level.lua**, and give it the content below.
+
+```lua
+function Header(el)
+  if (el.level <= 1) then
+    error("I don't know how to decrease the level of h1")
+  end
+  el.level = el.level - 1
+  return el
+end
+```
+
+In the YAML header of **paper_to_include/my_paper.Rmd**, use this filter:
+
+```yaml
+---
+title: "A fabulous article in a different folder"
+params:
+  other_path: ""
+output:
+  pdf_document: 
+    pandoc_args: ["--lua-filter=reduce_header_level.lua"]
+---
+```
+
+Now, your header levels will be correct both when you knit the paper on its own and when its included in your thesis.
+
+### 4. Make sure figure widths are correct
+It might be that your figure widths when knitting your paper on its own, and when including it in your thesis, need to be different.
+You can again use parameters to set figure widths.
+
+Imagine you want figure width to be 80% of the page width when knitting your paper on its own, but 100% in your thesis.
+In **paper_to_include/my_paper.Rmd**, first add a parameter we could call `out_width` and set it to the string "80%":
+
+```yaml
+---
+title: "A fabulous article in a different folder"
+params:
+  other_path: ""
+  out_width: "80%"
+output:
+  pdf_document: 
+    pandoc_args: ["--lua-filter=reduce_header_level.lua"]
+---
+```
+
+Then, make sure use that parameter to set the output width when you include figures in **paper_to_include/my_paper.Rmd**:
+
+```{r, out.width=params$out_width, fig.cap="A very funny cat"}
+include_graphics(str_c(params$other_path, "figures/cat.jpg"))
+```
+
+Finally, create the parameter `out_width` in your thesis' **index.Rmd** file:
+
+```yaml
+params:
+  other_path: "../paper_to_include/"
+  out_width: "80%"
+```
+
+Now, the output width of your figure will be 80% when knitting your paper on its own, and 100% when knitting it as child document of your thesis.
+
+
 
 ## Customizing referencing 
 

@@ -1,0 +1,19 @@
+---
+output:
+  #bookdown::html_document2: default
+  #bookdown::word_document2: default
+  bookdown::pdf_document2: 
+    template: templates/brief_template.tex
+    citation_package: biblatex
+documentclass: book
+bibliography: references.bib
+---
+
+# Example: Including an external chapter
+\minitoc <!-- this will include a mini table of contents-->
+
+<!-- LaTeX normally does not indent the first line after a heading - however, it does so after the mini table of contents. You can manually tell it not to with \noindent -->
+
+```{r child = "../paper_to_include/my_paper.Rmd"}
+```
+

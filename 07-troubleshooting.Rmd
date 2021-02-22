@@ -22,3 +22,10 @@ Try doing this:
 2. then restart your computer 
 
 This solved the problem for me, when I suddenly ran into this error after RStudio was abruptly shut down during a PDF build.
+
+## TODO: the thing about icloud drive
+- and how symlinks can help
+
+
+## TODO: Add the thing about bibliography paths
+- remove them in the individual chapter bibliography so that it doesn't override what is in index.Rmd

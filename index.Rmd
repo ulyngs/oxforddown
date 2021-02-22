@@ -88,6 +88,9 @@ frontmatter-linespacing: 17pt plus1pt minus1pt #spacing in roman-numbered pages 
 ### other stuff ###
 abstractseparate: true  # include front page w/ abstract for examination schools?
 hidelinks: true # false to highlight clickable links with a colored border
+params:
+  other_path: "../paper_to_include/"
+  out_width: "100%"
 
 #####################
 ## output options  ##
