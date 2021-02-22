@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Welcome | oxforddown: An Oxford University Thesis Template for R Markdown</title>
+<title>5 Example: Including an external chapter | oxforddown: An Oxford University Thesis Template for R Markdown</title>
 <meta name="author" content="Author Name">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.6.6/header-attrs.js"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
@@ -35,13 +35,13 @@ Template for R Markdown</p></a>
 
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
-<li><a class="active" href="index.html">Welcome</a></li>
+<li><a class="" href="index.html">Welcome</a></li>
 <li><a class="" href="introduction.html">Introduction</a></li>
 <li><a class="" href="rmd-basics.html"><span class="header-section-number">1</span> R Markdown basics</a></li>
 <li><a class="" href="cites-and-refs.html"><span class="header-section-number">2</span> Citations, cross-references, and collaboration</a></li>
 <li><a class="" href="tables.html"><span class="header-section-number">3</span> Tables</a></li>
 <li><a class="" href="customisations-and-extensions.html"><span class="header-section-number">4</span> Customisations and extensions</a></li>
-<li><a class="" href="example-including-an-external-chapter.html"><span class="header-section-number">5</span> Example: Including an external chapter</a></li>
+<li><a class="active" href="example-including-an-external-chapter.html"><span class="header-section-number">5</span> Example: Including an external chapter</a></li>
 <li><a class="" href="troubleshooting.html"><span class="header-section-number">6</span> Troubleshooting</a></li>
 <li><a class="" href="conclusion-1.html">Conclusion</a></li>
 <li class="book-part">Appendix</li>
@@ -55,55 +55,80 @@ Template for R Markdown</p></a>
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><!--bookdown:title:end--><!--bookdown:title:start--><div id="welcome" class="section level1 unnumbered">
-<h1>Welcome<a class="anchor" aria-label="anchor" href="#welcome"><i class="fas fa-link"></i></a>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="example-including-an-external-chapter" class="section level1" number="5">
+<h1>
+<span class="header-section-number">5</span> Example: Including an external chapter<a class="anchor" aria-label="anchor" href="#example-including-an-external-chapter"><i class="fas fa-link"></i></a>
 </h1>
-<div class="row">
-<div class="col-sm-6">
-<p>Welcome to the <code>bs4</code> output from the <a href="https://github.com/ulyngs/oxforddown"><code>oxforddown</code></a> thesis template for <a href="https://rmarkdown.rstudio.com">R Markdown</a>.
-To view/download the PDF output, <a href="_main.pdf">click here</a> (or click the cover image).
-Enjoy!</p>
-<div class="byline">
-<p>Ulrik Lyngs<br>
-4 January 2021</p>
-</div>
-</div>
-<div class="col-sm-6 thesis-cover">
-<p><a href="_main.pdf" target="_blank"><img src="templates/cover.png" alt="Download PDF" class="img-fluid"></a></p>
-</div>
-</div>
-<div id="abstract" class="section level2 unnumbered">
-<h2>Abstract<a class="anchor" aria-label="anchor" href="#abstract"><i class="fas fa-link"></i></a>
+<p><!-- this will include a mini table of contents--></p>
+<!-- LaTeX normally does not indent the first line after a heading - however, it does so after the mini table of contents. You can manually tell it not to with \noindent -->
+<div id="introduction-1" class="section level2" number="5.1">
+<h2>
+<span class="header-section-number">5.1</span> Introduction<a class="anchor" aria-label="anchor" href="#introduction-1"><i class="fas fa-link"></i></a>
 </h2>
-<p>This <em>R Markdown</em> template is for writing an Oxford University thesis. The template is built using Yihui Xie’s <code>bookdown</code> package, with heavy inspiration from Chester Ismay’s <code>thesisdown</code> and the <code>OxThesis</code>  template (most recently adapted by John McManigle).</p>
-<p>This template’s sample content include illustrations of how to write a thesis in R Markdown, and largely follows the structure from <a href="https://ulyngs.github.io/rmarkdown-workshop-2019/">this R Markdown workshop</a>.</p>
-<p>Congratulations for taking a step further into the lands of open, reproducible science by writing your thesis using a tool that allows you to transparently include tables and dynamically generated plots directly from the underlying data. Hip hooray!</p>
+<p>Many people think that there is a relationship between a cat’s height and how much salt it consumes.</p>
 </div>
-<div id="acknowledgments" class="section level2 unnumbered">
-<h2>Acknowledgments<a class="anchor" aria-label="anchor" href="#acknowledgments"><i class="fas fa-link"></i></a>
+<div id="methods" class="section level2" number="5.2">
+<h2>
+<span class="header-section-number">5.2</span> Methods<a class="anchor" aria-label="anchor" href="#methods"><i class="fas fa-link"></i></a>
 </h2>
-<p>This is where you will normally thank your advisor, colleagues, family and friends, as well as funding and institutional support. In our case, we will give our praises to the people who developed the ideas and tools that allow us to push open science a little step forward by writing plain-text, transparent, and reproducible theses in R Markdown.</p>
-<p>We must be grateful to John Gruber for inventing the original version of Markdown, to John MacFarlane for creating Pandoc (<a href="http://pandoc.org" class="uri">http://pandoc.org</a>) which converts Markdown to a large number of output formats, and to Yihui Xie for creating <code>knitr</code> which introduced R Markdown as a way of embedding code in Markdown documents, and <code>bookdown</code> which added tools for technical and longer-form writing.</p>
-<p>Special thanks to <a href="http://chester.rbind.io">Chester Ismay</a>, who created the <code>thesisdown</code> package that helped many a PhD student write their theses in R Markdown. And a very special thanks to John McManigle, whose adaption of Sam Evans’ adaptation of Keith Gillow’s original maths template for writing an Oxford University DPhil thesis in LaTeX provided the template that I in turn adapted for R Markdown.</p>
-<p>Finally, profuse thanks to JJ Allaire, the founder and CEO of <a href="http://rstudio.com">RStudio</a>, and Hadley Wickham, the mastermind of the tidyverse without whom we’d all just given up and done data science in Python instead. Thanks for making data science easier, more accessible, and more fun for us all.</p>
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">include_graphics</a></span><span class="op">(</span><span class="fu">str_c</span><span class="op">(</span><span class="va">params</span><span class="op">$</span><span class="va">other_path</span>, <span class="st">"figures/cat.jpg"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="figure">
+<span id="fig:unnamed-chunk-24"></span>
+<img src="../paper_to_include/figures/cat.jpg" alt="A very funny cat" width="100%"><p class="caption">
+Figure 5.1: A very funny cat
+</p>
+</div>
+<p>This cat came up with all of the methods for this paper.</p>
+</div>
+<div id="results" class="section level2" number="5.3">
+<h2>
+<span class="header-section-number">5.3</span> Results<a class="anchor" aria-label="anchor" href="#results"><i class="fas fa-link"></i></a>
+</h2>
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">cat_data</span> <span class="op">%&gt;%</span> 
+  <span class="fu">ggplot</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu">geom_point</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span><span class="va">cat_height</span>, <span class="va">cat_salt_eating</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu">labs</span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Cat height"</span>, y <span class="op">=</span> <span class="st">"Daily amount of salt consumed"</span><span class="op">)</span></code></pre></div>
+<div class="figure">
+<span id="fig:unnamed-chunk-25"></span>
+<img src="_main_files/figure-html/unnamed-chunk-25-1.png" alt="Cat height by cat salt eating" width="672"><p class="caption">
+Figure 5.2: Cat height by cat salt eating
+</p>
+</div>
+</div>
+<div id="discussion" class="section level2" number="5.4">
+<h2>
+<span class="header-section-number">5.4</span> Discussion<a class="anchor" aria-label="anchor" href="#discussion"><i class="fas fa-link"></i></a>
+</h2>
+<p>There’s some uncertainty in our data, but we’ve clearly got a cat-salt problem here.</p>
+</div>
+<div id="conclusion" class="section level2" number="5.5">
+<h2>
+<span class="header-section-number">5.5</span> Conclusion<a class="anchor" aria-label="anchor" href="#conclusion"><i class="fas fa-link"></i></a>
+</h2>
+<p>This changes everything.</p>
 
 </div>
 </div>
   <div class="chapter-nav">
-<div class="empty"></div>
-<div class="next"><a href="introduction.html">Introduction</a></div>
+<div class="prev"><a href="customisations-and-extensions.html"><span class="header-section-number">4</span> Customisations and extensions</a></div>
+<div class="next"><a href="troubleshooting.html"><span class="header-section-number">6</span> Troubleshooting</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#welcome">Welcome</a></li>
-<li><a class="nav-link" href="#abstract">Abstract</a></li>
-<li><a class="nav-link" href="#acknowledgments">Acknowledgments</a></li>
+<li><a class="nav-link" href="#example-including-an-external-chapter"><span class="header-section-number">5</span> Example: Including an external chapter</a></li>
+<li><a class="nav-link" href="#introduction-1"><span class="header-section-number">5.1</span> Introduction</a></li>
+<li><a class="nav-link" href="#methods"><span class="header-section-number">5.2</span> Methods</a></li>
+<li><a class="nav-link" href="#results"><span class="header-section-number">5.3</span> Results</a></li>
+<li><a class="nav-link" href="#discussion"><span class="header-section-number">5.4</span> Discussion</a></li>
+<li><a class="nav-link" href="#conclusion"><span class="header-section-number">5.5</span> Conclusion</a></li>
 </ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/ulyngs/oxforddown/blob/master/index.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/ulyngs/oxforddown/edit/master/index.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/ulyngs/oxforddown/blob/master/06-external_chapter_example.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/ulyngs/oxforddown/edit/master/06-external_chapter_example.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>

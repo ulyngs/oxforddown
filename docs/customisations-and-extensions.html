@@ -41,8 +41,9 @@ Template for R Markdown</p></a>
 <li><a class="" href="cites-and-refs.html"><span class="header-section-number">2</span> Citations, cross-references, and collaboration</a></li>
 <li><a class="" href="tables.html"><span class="header-section-number">3</span> Tables</a></li>
 <li><a class="active" href="customisations-and-extensions.html"><span class="header-section-number">4</span> Customisations and extensions</a></li>
-<li><a class="" href="troubleshooting.html"><span class="header-section-number">5</span> Troubleshooting</a></li>
-<li><a class="" href="conclusion.html">Conclusion</a></li>
+<li><a class="" href="example-including-an-external-chapter.html"><span class="header-section-number">5</span> Example: Including an external chapter</a></li>
+<li><a class="" href="troubleshooting.html"><span class="header-section-number">6</span> Troubleshooting</a></li>
+<li><a class="" href="conclusion-1.html">Conclusion</a></li>
 <li class="book-part">Appendix</li>
 <li><a class="" href="the-first-appendix.html"><span class="header-section-number">A</span> The First Appendix</a></li>
 <li><a class="" href="the-second-appendix-for-fun.html"><span class="header-section-number">B</span> The Second Appendix, for Fun</a></li>
@@ -187,9 +188,9 @@ Becomes: <span style="background-color: black; color: yellow;">here’s some tex
 <p>The file <strong>scripts_and_filters/colour_and_highlight.lua</strong> implements this, if you want to fiddle around with it.
 It works with both PDF and HTML output.</p>
 </div>
-<div id="embedding-pdf-documents-as-chapters" class="section level2" number="4.7">
+<div id="embed-pdf" class="section level2" number="4.7">
 <h2>
-<span class="header-section-number">4.7</span> Embedding PDF documents as chapters<a class="anchor" aria-label="anchor" href="#embedding-pdf-documents-as-chapters"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.7</span> Including another paper in your thesis - embedding a PDF document<a class="anchor" aria-label="anchor" href="#embed-pdf"><i class="fas fa-link"></i></a>
 </h2>
 <p>You may want to embed existing PDF documents into the thesis, for example if your department allows a ‘portfolio’ style thesis and you need to include an existing typeset publication as a chapter.</p>
 <p>In gitbook output, you can simply use <code><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">knitr::include_graphics</a></code> and it should include a scrollable (and downloadable) PDF.
@@ -219,136 +220,261 @@ You may also want to remove margins from the PDF files, which you can do with Ad
 <span class="co"># end with a page break</span>
 <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c</a></span><span class="op">(</span><span class="st">"\\newpage \\begin{center} \\makebox[\\linewidth][c]{\\includegraphics[width="</span>, <span class="va">pdf_width</span>, <span class="st">"\\linewidth]{"</span>, <span class="va">pages</span>, <span class="st">"}} \\end{center}"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="customizing-referencing" class="section level2" number="4.8">
+<div id="embed-rmd" class="section level2" number="4.8">
 <h2>
-<span class="header-section-number">4.8</span> Customizing referencing<a class="anchor" aria-label="anchor" href="#customizing-referencing"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.8</span> Including another paper in your thesis - include an R Markdown child document<a class="anchor" aria-label="anchor" href="#embed-rmd"><i class="fas fa-link"></i></a>
 </h2>
-<div id="using-a-.csl-file-with-pandoc-instead-of-biblatex" class="section level3" number="4.8.1">
+<p>Sometimes you want to include another paper you are currently writing as a chapter in your thesis.
+Above <a href="customisations-and-extensions.html#embed-pdf">4.7</a>, we described the simplest way to do this: include the other paper as a pdf.
+However, in some cases you instead want to include the R Markdown source from this paper, and have it compiled within your thesis.
+This is a little bit more tricky, because you need to keep careful track of your file paths, but it is possible by <a href="https://bookdown.org/yihui/rmarkdown-cookbook/child-document.html">including the paper as a child document</a>.
+There are four main steps:</p>
+<ol style="list-style-type: decimal">
+<li>Include the paper as a child document</li>
+<li>Make file paths compatible with knitting the article on its own, as well as when it’s include in your thesis</li>
+<li>Make header levels correct</li>
+<li>Make figure widths correct</li>
+</ol>
+<div id="an-example-paper-in-another-folder" class="section level3" number="4.8.1">
 <h3>
-<span class="header-section-number">4.8.1</span> Using a .csl file with pandoc instead of biblatex<a class="anchor" aria-label="anchor" href="#using-a-.csl-file-with-pandoc-instead-of-biblatex"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.8.1</span> An example paper in another folder<a class="anchor" aria-label="anchor" href="#an-example-paper-in-another-folder"><i class="fas fa-link"></i></a>
+</h3>
+<p>Take this simple example (files for this are in <a href="https://github.com/ulyngs/oxforddown-external-article">this GitHub repository</a>):</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb25-1"><a href="customisations-and-extensions.html#cb25-1" aria-hidden="true" tabindex="-1"></a>|--paper_to_include</span>
+<span id="cb25-2"><a href="customisations-and-extensions.html#cb25-2" aria-hidden="true" tabindex="-1"></a>|  |--my_paper.Rmd</span>
+<span id="cb25-3"><a href="customisations-and-extensions.html#cb25-3" aria-hidden="true" tabindex="-1"></a>|  |--data</span>
+<span id="cb25-4"><a href="customisations-and-extensions.html#cb25-4" aria-hidden="true" tabindex="-1"></a>|  |  |--cat_salt.csv</span>
+<span id="cb25-5"><a href="customisations-and-extensions.html#cb25-5" aria-hidden="true" tabindex="-1"></a>|  |--figures</span>
+<span id="cb25-6"><a href="customisations-and-extensions.html#cb25-6" aria-hidden="true" tabindex="-1"></a>|  |  |--cat.jpg</span>
+<span id="cb25-7"><a href="customisations-and-extensions.html#cb25-7" aria-hidden="true" tabindex="-1"></a>|</span>
+<span id="cb25-8"><a href="customisations-and-extensions.html#cb25-8" aria-hidden="true" tabindex="-1"></a>|--thesis</span></code></pre></div>
+<p>As the chart suggests, you have another folder, <strong>paper_to_include/</strong> living in the same containing folder as your thesis folder.
+In the <strong>paper_to_include</strong> folder, the file <strong>my_paper.Rmd</strong> is where you write the paper.
+In <strong>my_paper.Rmd</strong>, you read in a CSV file found in the subfolder <strong>data/cats.csv</strong>, and also an image from the subfolder <strong>figures/cat.jpg</strong>.</p>
+</div>
+<div id="step-1-include-paper-as-a-child-document" class="section level3" number="4.8.2">
+<h3>
+<span class="header-section-number">4.8.2</span> Step 1: Include paper as a child document<a class="anchor" aria-label="anchor" href="#step-1-include-paper-as-a-child-document"><i class="fas fa-link"></i></a>
+</h3>
+<p>In your thesis folder, create an Rmd file for the chapter where you want to include another paper.
+Add one or more code chunks that include R Markdown files from that paper as child documents:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb26-1"><a href="customisations-and-extensions.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Including an external chapter </span></span>
+<span id="cb26-2"><a href="customisations-and-extensions.html#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="customisations-and-extensions.html#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="in">```{r child = "../paper_to_include/my_paper.Rmd"}</span></span>
+<span id="cb26-4"><a href="customisations-and-extensions.html#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+</div>
+<div id="step-2-make-file-paths-compatible" class="section level3" number="4.8.3">
+<h3>
+<span class="header-section-number">4.8.3</span> Step 2: Make file paths compatible<a class="anchor" aria-label="anchor" href="#step-2-make-file-paths-compatible"><i class="fas fa-link"></i></a>
+</h3>
+<p>Use <a href="https://rmarkdown.rstudio.com/lesson-6.html">parameters</a> to adjust the file path of images based on values you set in the YAML header of an R Markdown file.
+In <strong>my_paper.Rmd</strong>, create a parameter called <code>other_path</code> and set it to an empty string:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb27-1"><a href="customisations-and-extensions.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb27-2"><a href="customisations-and-extensions.html#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"A fabulous article in a different folder"</span></span>
+<span id="cb27-3"><a href="customisations-and-extensions.html#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">params</span><span class="kw">:</span></span>
+<span id="cb27-4"><a href="customisations-and-extensions.html#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">other_path</span><span class="kw">:</span><span class="at"> </span><span class="st">""</span></span>
+<span id="cb27-5"><a href="customisations-and-extensions.html#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
+<p>In <strong>my_paper.Rmd</strong>, put this at the start of the filepath when you read in data or include images:</p>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://yihui.org/knitr/">knitr</a></span><span class="op">)</span>
+
+<span class="va">cat_data</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="fu">str_c</span><span class="op">(</span><span class="va">params</span><span class="op">$</span><span class="va">other_path</span>, <span class="st">"data/cats.csv"</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">include_graphics</a></span><span class="op">(</span><span class="fu">str_c</span><span class="op">(</span><span class="va">params</span><span class="op">$</span><span class="va">other_path</span>, <span class="st">"figures/cat.jpg"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<p>Finally, in your thesis folder’s <strong>index.Rmd</strong> file, also create the parameter <code>other_path</code>.
+But here, set it to where the <strong>paper_to_include/</strong> folder is relative to your thesis folder:</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb29-1"><a href="customisations-and-extensions.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">params</span><span class="kw">:</span></span>
+<span id="cb29-2"><a href="customisations-and-extensions.html#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">other_path</span><span class="kw">:</span><span class="at"> </span><span class="st">"../paper_to_include/"</span></span></code></pre></div>
+</div>
+<div id="step-3-make-sure-header-levels-are-correct" class="section level3" number="4.8.4">
+<h3>
+<span class="header-section-number">4.8.4</span> Step 3: Make sure header levels are correct<a class="anchor" aria-label="anchor" href="#step-3-make-sure-header-levels-are-correct"><i class="fas fa-link"></i></a>
+</h3>
+<p>Unless the paper you want to include is also written as a book, your header levels are probably going to be off.
+That is, the level 1 headers (# Some header) you use for main sections in the other paper turns into chaper titles when included in your thesis.</p>
+<p>To avoid this, first <em>increment all heading levels by one in <strong>paper_to_include/my_paper.Rmd</strong></em> (# Some header -&gt; ## Some header).
+Then in <strong>paper_to_include/</strong> create a <a href="https://bookdown.org/yihui/rmarkdown-cookbook/lua-filters.html#lua-filters">lua filter</a> that decrements header levels by one: Create a text file, save it as <strong>reduce_header_level.lua</strong>, and give it the content below.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode lua"><code class="sourceCode lua"><span id="cb30-1"><a href="customisations-and-extensions.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> Header<span class="op">(</span>el<span class="op">)</span></span>
+<span id="cb30-2"><a href="customisations-and-extensions.html#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="op">(</span>el<span class="op">.</span>level <span class="op">&lt;=</span> <span class="dv">1</span><span class="op">)</span> <span class="cf">then</span></span>
+<span id="cb30-3"><a href="customisations-and-extensions.html#cb30-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">error</span><span class="op">(</span><span class="st">"I don't know how to decrease the level of h1"</span><span class="op">)</span></span>
+<span id="cb30-4"><a href="customisations-and-extensions.html#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
+<span id="cb30-5"><a href="customisations-and-extensions.html#cb30-5" aria-hidden="true" tabindex="-1"></a>  el<span class="op">.</span>level <span class="op">=</span> el<span class="op">.</span>level <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb30-6"><a href="customisations-and-extensions.html#cb30-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> el</span>
+<span id="cb30-7"><a href="customisations-and-extensions.html#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div>
+<p>In the YAML header of <strong>paper_to_include/my_paper.Rmd</strong>, use this filter:</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb31-1"><a href="customisations-and-extensions.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb31-2"><a href="customisations-and-extensions.html#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"A fabulous article in a different folder"</span></span>
+<span id="cb31-3"><a href="customisations-and-extensions.html#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">params</span><span class="kw">:</span></span>
+<span id="cb31-4"><a href="customisations-and-extensions.html#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">other_path</span><span class="kw">:</span><span class="at"> </span><span class="st">""</span></span>
+<span id="cb31-5"><a href="customisations-and-extensions.html#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
+<span id="cb31-6"><a href="customisations-and-extensions.html#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">pdf_document</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb31-7"><a href="customisations-and-extensions.html#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">pandoc_args</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">"--lua-filter=reduce_header_level.lua"</span><span class="kw">]</span></span>
+<span id="cb31-8"><a href="customisations-and-extensions.html#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
+<p>Now, your header levels will be correct both when you knit the paper on its own and when its included in your thesis.</p>
+</div>
+<div id="make-sure-figure-widths-are-correct" class="section level3" number="4.8.5">
+<h3>
+<span class="header-section-number">4.8.5</span> 4. Make sure figure widths are correct<a class="anchor" aria-label="anchor" href="#make-sure-figure-widths-are-correct"><i class="fas fa-link"></i></a>
+</h3>
+<p>It might be that your figure widths when knitting your paper on its own, and when including it in your thesis, need to be different.
+You can again use parameters to set figure widths.</p>
+<p>Imagine you want figure width to be 80% of the page width when knitting your paper on its own, but 100% in your thesis.
+In <strong>paper_to_include/my_paper.Rmd</strong>, first add a parameter we could call <code>out_width</code> and set it to the string “80%”:</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb32-1"><a href="customisations-and-extensions.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb32-2"><a href="customisations-and-extensions.html#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"A fabulous article in a different folder"</span></span>
+<span id="cb32-3"><a href="customisations-and-extensions.html#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="fu">params</span><span class="kw">:</span></span>
+<span id="cb32-4"><a href="customisations-and-extensions.html#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">other_path</span><span class="kw">:</span><span class="at"> </span><span class="st">""</span></span>
+<span id="cb32-5"><a href="customisations-and-extensions.html#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">out_width</span><span class="kw">:</span><span class="at"> </span><span class="st">"80%"</span></span>
+<span id="cb32-6"><a href="customisations-and-extensions.html#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
+<span id="cb32-7"><a href="customisations-and-extensions.html#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">pdf_document</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb32-8"><a href="customisations-and-extensions.html#cb32-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">pandoc_args</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">"--lua-filter=reduce_header_level.lua"</span><span class="kw">]</span></span>
+<span id="cb32-9"><a href="customisations-and-extensions.html#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
+<p>Then, make sure use that parameter to set the output width when you include figures in <strong>paper_to_include/my_paper.Rmd</strong>:</p>
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">include_graphics</a></span><span class="op">(</span><span class="fu">str_c</span><span class="op">(</span><span class="va">params</span><span class="op">$</span><span class="va">other_path</span>, <span class="st">"figures/cat.jpg"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="figure">
+<span id="fig:unnamed-chunk-16"></span>
+<img src="../paper_to_include/figures/cat.jpg" alt="A very funny cat" width="100%"><p class="caption">
+Figure 4.1: A very funny cat
+</p>
+</div>
+<p>Finally, create the parameter <code>out_width</code> in your thesis’ <strong>index.Rmd</strong> file:</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb34-1"><a href="customisations-and-extensions.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">params</span><span class="kw">:</span></span>
+<span id="cb34-2"><a href="customisations-and-extensions.html#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">other_path</span><span class="kw">:</span><span class="at"> </span><span class="st">"../paper_to_include/"</span></span>
+<span id="cb34-3"><a href="customisations-and-extensions.html#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">out_width</span><span class="kw">:</span><span class="at"> </span><span class="st">"80%"</span></span></code></pre></div>
+<p>Now, the output width of your figure will be 80% when knitting your paper on its own, and 100% when knitting it as child document of your thesis.</p>
+</div>
+</div>
+<div id="customizing-referencing" class="section level2" number="4.9">
+<h2>
+<span class="header-section-number">4.9</span> Customizing referencing<a class="anchor" aria-label="anchor" href="#customizing-referencing"><i class="fas fa-link"></i></a>
+</h2>
+<div id="using-a-.csl-file-with-pandoc-instead-of-biblatex" class="section level3" number="4.9.1">
+<h3>
+<span class="header-section-number">4.9.1</span> Using a .csl file with pandoc instead of biblatex<a class="anchor" aria-label="anchor" href="#using-a-.csl-file-with-pandoc-instead-of-biblatex"><i class="fas fa-link"></i></a>
 </h3>
 <p>The <code>oxforddown</code> package uses biblatex in LaTeX for referencing.
 It is also possible to use pandoc for referencing by providing a .csl file in the YAML header of <strong>index.Rmd</strong> (likely requiring commenting out the biblatex code in <strong>templates/template.tex</strong>).
 This may be helpful for those who have a .csl file describing the referencing format for a particular journal.
-However, note that this approach does not support chapter bibliographies (see Section <a href="customisations-and-extensions.html#biblatex-custom">4.8.2</a>).</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb25-1"><a href="customisations-and-extensions.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">csl</span><span class="kw">:</span><span class="at"> ecology.csl</span></span></code></pre></div>
+However, note that this approach does not support chapter bibliographies (see Section <a href="customisations-and-extensions.html#biblatex-custom">4.9.2</a>).</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb35-1"><a href="customisations-and-extensions.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">csl</span><span class="kw">:</span><span class="at"> ecology.csl</span></span></code></pre></div>
 </div>
-<div id="biblatex-custom" class="section level3" number="4.8.2">
+<div id="biblatex-custom" class="section level3" number="4.9.2">
 <h3>
-<span class="header-section-number">4.8.2</span> Customizing biblatex and adding chapter bibliographies<a class="anchor" aria-label="anchor" href="#biblatex-custom"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.9.2</span> Customizing biblatex and adding chapter bibliographies<a class="anchor" aria-label="anchor" href="#biblatex-custom"><i class="fas fa-link"></i></a>
 </h3>
 <p>This section provides one example of customizing biblatex. Much of this code was combined from searches on Stack Exchange and other sources (e.g. <a href="https://tex.stackexchange.com/questions/10682/suppress-in-biblatex">here</a>).</p>
 <p>In <strong>templates/template.tex</strong>, one can replace the existing biblatex calls with the following to achieve referencing that looks like this:</p>
 <p>(Charmantier and Gienapp 2014)</p>
 <p>Charmantier, A. and P. Gienapp (2014). Climate change and timing of avian breeding and migration: evolutionary versus plastic changes. Evolutionary Applications 7(1):15–28. doi: 10.1111/eva.12126.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb26-1"><a href="customisations-and-extensions.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>[backend=biber,</span>
-<span id="cb26-2"><a href="customisations-and-extensions.html#cb26-2" aria-hidden="true" tabindex="-1"></a>    bibencoding=utf8,</span>
-<span id="cb26-3"><a href="customisations-and-extensions.html#cb26-3" aria-hidden="true" tabindex="-1"></a>    refsection=chapter, <span class="co">% referencing by chapter</span></span>
-<span id="cb26-4"><a href="customisations-and-extensions.html#cb26-4" aria-hidden="true" tabindex="-1"></a>    style=authoryear, </span>
-<span id="cb26-5"><a href="customisations-and-extensions.html#cb26-5" aria-hidden="true" tabindex="-1"></a>    firstinits=true,</span>
-<span id="cb26-6"><a href="customisations-and-extensions.html#cb26-6" aria-hidden="true" tabindex="-1"></a>    isbn=false,</span>
-<span id="cb26-7"><a href="customisations-and-extensions.html#cb26-7" aria-hidden="true" tabindex="-1"></a>    doi=true,</span>
-<span id="cb26-8"><a href="customisations-and-extensions.html#cb26-8" aria-hidden="true" tabindex="-1"></a>    url=false,</span>
-<span id="cb26-9"><a href="customisations-and-extensions.html#cb26-9" aria-hidden="true" tabindex="-1"></a>    eprint=false,</span>
-<span id="cb26-10"><a href="customisations-and-extensions.html#cb26-10" aria-hidden="true" tabindex="-1"></a>    related=false,</span>
-<span id="cb26-11"><a href="customisations-and-extensions.html#cb26-11" aria-hidden="true" tabindex="-1"></a>    dashed=false,</span>
-<span id="cb26-12"><a href="customisations-and-extensions.html#cb26-12" aria-hidden="true" tabindex="-1"></a>    clearlang=true,</span>
-<span id="cb26-13"><a href="customisations-and-extensions.html#cb26-13" aria-hidden="true" tabindex="-1"></a>    maxcitenames=2,</span>
-<span id="cb26-14"><a href="customisations-and-extensions.html#cb26-14" aria-hidden="true" tabindex="-1"></a>    mincitenames=1,</span>
-<span id="cb26-15"><a href="customisations-and-extensions.html#cb26-15" aria-hidden="true" tabindex="-1"></a>    maxbibnames=10,</span>
-<span id="cb26-16"><a href="customisations-and-extensions.html#cb26-16" aria-hidden="true" tabindex="-1"></a>    abbreviate=false,</span>
-<span id="cb26-17"><a href="customisations-and-extensions.html#cb26-17" aria-hidden="true" tabindex="-1"></a>    minbibnames=3,</span>
-<span id="cb26-18"><a href="customisations-and-extensions.html#cb26-18" aria-hidden="true" tabindex="-1"></a>    uniquelist=minyear,</span>
-<span id="cb26-19"><a href="customisations-and-extensions.html#cb26-19" aria-hidden="true" tabindex="-1"></a>    sortcites=true,</span>
-<span id="cb26-20"><a href="customisations-and-extensions.html#cb26-20" aria-hidden="true" tabindex="-1"></a>    date=year</span>
-<span id="cb26-21"><a href="customisations-and-extensions.html#cb26-21" aria-hidden="true" tabindex="-1"></a>]{<span class="ex">biblatex</span>}</span>
-<span id="cb26-22"><a href="customisations-and-extensions.html#cb26-22" aria-hidden="true" tabindex="-1"></a><span class="fu">\AtEveryBibitem</span>{<span class="co">%</span></span>
-<span id="cb26-23"><a href="customisations-and-extensions.html#cb26-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">\clearlist</span>{language}<span class="co">%</span></span>
-<span id="cb26-24"><a href="customisations-and-extensions.html#cb26-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">\clearfield</span>{note}</span>
-<span id="cb26-25"><a href="customisations-and-extensions.html#cb26-25" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb26-26"><a href="customisations-and-extensions.html#cb26-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-27"><a href="customisations-and-extensions.html#cb26-27" aria-hidden="true" tabindex="-1"></a><span class="fu">\DeclareFieldFormat</span>{titlecase}{<span class="fu">\MakeTitleCase</span>{#1}}</span>
-<span id="cb26-28"><a href="customisations-and-extensions.html#cb26-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-29"><a href="customisations-and-extensions.html#cb26-29" aria-hidden="true" tabindex="-1"></a><span class="fu">\newrobustcmd</span>{<span class="fu">\MakeTitleCase</span>}[1]{<span class="co">%</span></span>
-<span id="cb26-30"><a href="customisations-and-extensions.html#cb26-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">\ifthenelse</span>{<span class="fu">\ifcurrentfield</span>{booktitle}<span class="fu">\OR\ifcurrentfield</span>{booksubtitle}<span class="co">%</span></span>
-<span id="cb26-31"><a href="customisations-and-extensions.html#cb26-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\OR\ifcurrentfield</span>{maintitle}<span class="fu">\OR\ifcurrentfield</span>{mainsubtitle}<span class="co">%</span></span>
-<span id="cb26-32"><a href="customisations-and-extensions.html#cb26-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\OR\ifcurrentfield</span>{journaltitle}<span class="fu">\OR\ifcurrentfield</span>{journalsubtitle}<span class="co">%</span></span>
-<span id="cb26-33"><a href="customisations-and-extensions.html#cb26-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\OR\ifcurrentfield</span>{issuetitle}<span class="fu">\OR\ifcurrentfield</span>{issuesubtitle}<span class="co">%</span></span>
-<span id="cb26-34"><a href="customisations-and-extensions.html#cb26-34" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\OR\ifentrytype</span>{book}<span class="fu">\OR\ifentrytype</span>{mvbook}<span class="fu">\OR\ifentrytype</span>{bookinbook}<span class="co">%</span></span>
-<span id="cb26-35"><a href="customisations-and-extensions.html#cb26-35" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\OR\ifentrytype</span>{booklet}<span class="fu">\OR\ifentrytype</span>{suppbook}<span class="co">%</span></span>
-<span id="cb26-36"><a href="customisations-and-extensions.html#cb26-36" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\OR\ifentrytype</span>{collection}<span class="fu">\OR\ifentrytype</span>{mvcollection}<span class="co">%</span></span>
-<span id="cb26-37"><a href="customisations-and-extensions.html#cb26-37" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\OR\ifentrytype</span>{suppcollection}<span class="fu">\OR\ifentrytype</span>{manual}<span class="co">%</span></span>
-<span id="cb26-38"><a href="customisations-and-extensions.html#cb26-38" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\OR\ifentrytype</span>{periodical}<span class="fu">\OR\ifentrytype</span>{suppperiodical}<span class="co">%</span></span>
-<span id="cb26-39"><a href="customisations-and-extensions.html#cb26-39" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\OR\ifentrytype</span>{proceedings}<span class="fu">\OR\ifentrytype</span>{mvproceedings}<span class="co">%</span></span>
-<span id="cb26-40"><a href="customisations-and-extensions.html#cb26-40" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\OR\ifentrytype</span>{reference}<span class="fu">\OR\ifentrytype</span>{mvreference}<span class="co">%</span></span>
-<span id="cb26-41"><a href="customisations-and-extensions.html#cb26-41" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\OR\ifentrytype</span>{report}<span class="fu">\OR\ifentrytype</span>{thesis}}</span>
-<span id="cb26-42"><a href="customisations-and-extensions.html#cb26-42" aria-hidden="true" tabindex="-1"></a>    {#1}</span>
-<span id="cb26-43"><a href="customisations-and-extensions.html#cb26-43" aria-hidden="true" tabindex="-1"></a>    {<span class="fu">\MakeSentenceCase</span>{#1}}}</span>
-<span id="cb26-44"><a href="customisations-and-extensions.html#cb26-44" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb26-45"><a href="customisations-and-extensions.html#cb26-45" aria-hidden="true" tabindex="-1"></a><span class="co">% \renewbibmacro{in:}{}</span></span>
-<span id="cb26-46"><a href="customisations-and-extensions.html#cb26-46" aria-hidden="true" tabindex="-1"></a><span class="co">% suppress "in" for articles</span></span>
-<span id="cb26-47"><a href="customisations-and-extensions.html#cb26-47" aria-hidden="true" tabindex="-1"></a><span class="co">% </span></span>
-<span id="cb26-48"><a href="customisations-and-extensions.html#cb26-48" aria-hidden="true" tabindex="-1"></a><span class="fu">\renewbibmacro</span>{in:}{<span class="co">%</span></span>
-<span id="cb26-49"><a href="customisations-and-extensions.html#cb26-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">\ifentrytype</span>{article}{}{<span class="fu">\printtext</span>{<span class="fu">\bibstring</span>{in}<span class="fu">\intitlepunct</span>}}}</span>
-<span id="cb26-50"><a href="customisations-and-extensions.html#cb26-50" aria-hidden="true" tabindex="-1"></a><span class="co">%-- no "quotes" around titles of chapters/article titles</span></span>
-<span id="cb26-51"><a href="customisations-and-extensions.html#cb26-51" aria-hidden="true" tabindex="-1"></a><span class="fu">\DeclareFieldFormat</span>[article, inbook, incollection, inproceedings, misc, thesis, unpublished]</span>
-<span id="cb26-52"><a href="customisations-and-extensions.html#cb26-52" aria-hidden="true" tabindex="-1"></a>{title}{#1}</span>
-<span id="cb26-53"><a href="customisations-and-extensions.html#cb26-53" aria-hidden="true" tabindex="-1"></a><span class="co">%-- no punctuation after volume</span></span>
-<span id="cb26-54"><a href="customisations-and-extensions.html#cb26-54" aria-hidden="true" tabindex="-1"></a><span class="fu">\DeclareFieldFormat</span>[article]</span>
-<span id="cb26-55"><a href="customisations-and-extensions.html#cb26-55" aria-hidden="true" tabindex="-1"></a>{volume}{{#1}}</span>
-<span id="cb26-56"><a href="customisations-and-extensions.html#cb26-56" aria-hidden="true" tabindex="-1"></a><span class="co">%-- puts number/issue between brackets</span></span>
-<span id="cb26-57"><a href="customisations-and-extensions.html#cb26-57" aria-hidden="true" tabindex="-1"></a><span class="fu">\DeclareFieldFormat</span>[article, inbook, incollection, inproceedings, misc, thesis, unpublished]</span>
-<span id="cb26-58"><a href="customisations-and-extensions.html#cb26-58" aria-hidden="true" tabindex="-1"></a>{number}{<span class="fu">\mkbibparens</span>{#1}} </span>
-<span id="cb26-59"><a href="customisations-and-extensions.html#cb26-59" aria-hidden="true" tabindex="-1"></a><span class="co">%-- and then for articles directly the pages w/o any "pages" or "pp." </span></span>
-<span id="cb26-60"><a href="customisations-and-extensions.html#cb26-60" aria-hidden="true" tabindex="-1"></a><span class="fu">\DeclareFieldFormat</span>[article]</span>
-<span id="cb26-61"><a href="customisations-and-extensions.html#cb26-61" aria-hidden="true" tabindex="-1"></a>{pages}{#1}</span>
-<span id="cb26-62"><a href="customisations-and-extensions.html#cb26-62" aria-hidden="true" tabindex="-1"></a><span class="co">%-- for some types replace "pages" by "p."</span></span>
-<span id="cb26-63"><a href="customisations-and-extensions.html#cb26-63" aria-hidden="true" tabindex="-1"></a><span class="fu">\DeclareFieldFormat</span>[inproceedings, incollection, inbook]</span>
-<span id="cb26-64"><a href="customisations-and-extensions.html#cb26-64" aria-hidden="true" tabindex="-1"></a>{pages}{p. #1}</span>
-<span id="cb26-65"><a href="customisations-and-extensions.html#cb26-65" aria-hidden="true" tabindex="-1"></a><span class="co">%-- format 16(4):224--225 for articles</span></span>
-<span id="cb26-66"><a href="customisations-and-extensions.html#cb26-66" aria-hidden="true" tabindex="-1"></a><span class="fu">\renewbibmacro*</span>{volume+number+eid}{</span>
-<span id="cb26-67"><a href="customisations-and-extensions.html#cb26-67" aria-hidden="true" tabindex="-1"></a>  <span class="fu">\printfield</span>{volume}<span class="co">%</span></span>
-<span id="cb26-68"><a href="customisations-and-extensions.html#cb26-68" aria-hidden="true" tabindex="-1"></a>  <span class="fu">\printfield</span>{number}<span class="co">%</span></span>
-<span id="cb26-69"><a href="customisations-and-extensions.html#cb26-69" aria-hidden="true" tabindex="-1"></a>  <span class="fu">\printunit</span>{<span class="fu">\addcolon</span>}</span>
-<span id="cb26-70"><a href="customisations-and-extensions.html#cb26-70" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb36-1"><a href="customisations-and-extensions.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>[backend=biber,</span>
+<span id="cb36-2"><a href="customisations-and-extensions.html#cb36-2" aria-hidden="true" tabindex="-1"></a>    bibencoding=utf8,</span>
+<span id="cb36-3"><a href="customisations-and-extensions.html#cb36-3" aria-hidden="true" tabindex="-1"></a>    refsection=chapter, <span class="co">% referencing by chapter</span></span>
+<span id="cb36-4"><a href="customisations-and-extensions.html#cb36-4" aria-hidden="true" tabindex="-1"></a>    style=authoryear, </span>
+<span id="cb36-5"><a href="customisations-and-extensions.html#cb36-5" aria-hidden="true" tabindex="-1"></a>    firstinits=true,</span>
+<span id="cb36-6"><a href="customisations-and-extensions.html#cb36-6" aria-hidden="true" tabindex="-1"></a>    isbn=false,</span>
+<span id="cb36-7"><a href="customisations-and-extensions.html#cb36-7" aria-hidden="true" tabindex="-1"></a>    doi=true,</span>
+<span id="cb36-8"><a href="customisations-and-extensions.html#cb36-8" aria-hidden="true" tabindex="-1"></a>    url=false,</span>
+<span id="cb36-9"><a href="customisations-and-extensions.html#cb36-9" aria-hidden="true" tabindex="-1"></a>    eprint=false,</span>
+<span id="cb36-10"><a href="customisations-and-extensions.html#cb36-10" aria-hidden="true" tabindex="-1"></a>    related=false,</span>
+<span id="cb36-11"><a href="customisations-and-extensions.html#cb36-11" aria-hidden="true" tabindex="-1"></a>    dashed=false,</span>
+<span id="cb36-12"><a href="customisations-and-extensions.html#cb36-12" aria-hidden="true" tabindex="-1"></a>    clearlang=true,</span>
+<span id="cb36-13"><a href="customisations-and-extensions.html#cb36-13" aria-hidden="true" tabindex="-1"></a>    maxcitenames=2,</span>
+<span id="cb36-14"><a href="customisations-and-extensions.html#cb36-14" aria-hidden="true" tabindex="-1"></a>    mincitenames=1,</span>
+<span id="cb36-15"><a href="customisations-and-extensions.html#cb36-15" aria-hidden="true" tabindex="-1"></a>    maxbibnames=10,</span>
+<span id="cb36-16"><a href="customisations-and-extensions.html#cb36-16" aria-hidden="true" tabindex="-1"></a>    abbreviate=false,</span>
+<span id="cb36-17"><a href="customisations-and-extensions.html#cb36-17" aria-hidden="true" tabindex="-1"></a>    minbibnames=3,</span>
+<span id="cb36-18"><a href="customisations-and-extensions.html#cb36-18" aria-hidden="true" tabindex="-1"></a>    uniquelist=minyear,</span>
+<span id="cb36-19"><a href="customisations-and-extensions.html#cb36-19" aria-hidden="true" tabindex="-1"></a>    sortcites=true,</span>
+<span id="cb36-20"><a href="customisations-and-extensions.html#cb36-20" aria-hidden="true" tabindex="-1"></a>    date=year</span>
+<span id="cb36-21"><a href="customisations-and-extensions.html#cb36-21" aria-hidden="true" tabindex="-1"></a>]{<span class="ex">biblatex</span>}</span>
+<span id="cb36-22"><a href="customisations-and-extensions.html#cb36-22" aria-hidden="true" tabindex="-1"></a><span class="fu">\AtEveryBibitem</span>{<span class="co">%</span></span>
+<span id="cb36-23"><a href="customisations-and-extensions.html#cb36-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">\clearlist</span>{language}<span class="co">%</span></span>
+<span id="cb36-24"><a href="customisations-and-extensions.html#cb36-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">\clearfield</span>{note}</span>
+<span id="cb36-25"><a href="customisations-and-extensions.html#cb36-25" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb36-26"><a href="customisations-and-extensions.html#cb36-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-27"><a href="customisations-and-extensions.html#cb36-27" aria-hidden="true" tabindex="-1"></a><span class="fu">\DeclareFieldFormat</span>{titlecase}{<span class="fu">\MakeTitleCase</span>{#1}}</span>
+<span id="cb36-28"><a href="customisations-and-extensions.html#cb36-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-29"><a href="customisations-and-extensions.html#cb36-29" aria-hidden="true" tabindex="-1"></a><span class="fu">\newrobustcmd</span>{<span class="fu">\MakeTitleCase</span>}[1]{<span class="co">%</span></span>
+<span id="cb36-30"><a href="customisations-and-extensions.html#cb36-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">\ifthenelse</span>{<span class="fu">\ifcurrentfield</span>{booktitle}<span class="fu">\OR\ifcurrentfield</span>{booksubtitle}<span class="co">%</span></span>
+<span id="cb36-31"><a href="customisations-and-extensions.html#cb36-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\OR\ifcurrentfield</span>{maintitle}<span class="fu">\OR\ifcurrentfield</span>{mainsubtitle}<span class="co">%</span></span>
+<span id="cb36-32"><a href="customisations-and-extensions.html#cb36-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\OR\ifcurrentfield</span>{journaltitle}<span class="fu">\OR\ifcurrentfield</span>{journalsubtitle}<span class="co">%</span></span>
+<span id="cb36-33"><a href="customisations-and-extensions.html#cb36-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\OR\ifcurrentfield</span>{issuetitle}<span class="fu">\OR\ifcurrentfield</span>{issuesubtitle}<span class="co">%</span></span>
+<span id="cb36-34"><a href="customisations-and-extensions.html#cb36-34" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\OR\ifentrytype</span>{book}<span class="fu">\OR\ifentrytype</span>{mvbook}<span class="fu">\OR\ifentrytype</span>{bookinbook}<span class="co">%</span></span>
+<span id="cb36-35"><a href="customisations-and-extensions.html#cb36-35" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\OR\ifentrytype</span>{booklet}<span class="fu">\OR\ifentrytype</span>{suppbook}<span class="co">%</span></span>
+<span id="cb36-36"><a href="customisations-and-extensions.html#cb36-36" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\OR\ifentrytype</span>{collection}<span class="fu">\OR\ifentrytype</span>{mvcollection}<span class="co">%</span></span>
+<span id="cb36-37"><a href="customisations-and-extensions.html#cb36-37" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\OR\ifentrytype</span>{suppcollection}<span class="fu">\OR\ifentrytype</span>{manual}<span class="co">%</span></span>
+<span id="cb36-38"><a href="customisations-and-extensions.html#cb36-38" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\OR\ifentrytype</span>{periodical}<span class="fu">\OR\ifentrytype</span>{suppperiodical}<span class="co">%</span></span>
+<span id="cb36-39"><a href="customisations-and-extensions.html#cb36-39" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\OR\ifentrytype</span>{proceedings}<span class="fu">\OR\ifentrytype</span>{mvproceedings}<span class="co">%</span></span>
+<span id="cb36-40"><a href="customisations-and-extensions.html#cb36-40" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\OR\ifentrytype</span>{reference}<span class="fu">\OR\ifentrytype</span>{mvreference}<span class="co">%</span></span>
+<span id="cb36-41"><a href="customisations-and-extensions.html#cb36-41" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\OR\ifentrytype</span>{report}<span class="fu">\OR\ifentrytype</span>{thesis}}</span>
+<span id="cb36-42"><a href="customisations-and-extensions.html#cb36-42" aria-hidden="true" tabindex="-1"></a>    {#1}</span>
+<span id="cb36-43"><a href="customisations-and-extensions.html#cb36-43" aria-hidden="true" tabindex="-1"></a>    {<span class="fu">\MakeSentenceCase</span>{#1}}}</span>
+<span id="cb36-44"><a href="customisations-and-extensions.html#cb36-44" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb36-45"><a href="customisations-and-extensions.html#cb36-45" aria-hidden="true" tabindex="-1"></a><span class="co">% \renewbibmacro{in:}{}</span></span>
+<span id="cb36-46"><a href="customisations-and-extensions.html#cb36-46" aria-hidden="true" tabindex="-1"></a><span class="co">% suppress "in" for articles</span></span>
+<span id="cb36-47"><a href="customisations-and-extensions.html#cb36-47" aria-hidden="true" tabindex="-1"></a><span class="co">% </span></span>
+<span id="cb36-48"><a href="customisations-and-extensions.html#cb36-48" aria-hidden="true" tabindex="-1"></a><span class="fu">\renewbibmacro</span>{in:}{<span class="co">%</span></span>
+<span id="cb36-49"><a href="customisations-and-extensions.html#cb36-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">\ifentrytype</span>{article}{}{<span class="fu">\printtext</span>{<span class="fu">\bibstring</span>{in}<span class="fu">\intitlepunct</span>}}}</span>
+<span id="cb36-50"><a href="customisations-and-extensions.html#cb36-50" aria-hidden="true" tabindex="-1"></a><span class="co">%-- no "quotes" around titles of chapters/article titles</span></span>
+<span id="cb36-51"><a href="customisations-and-extensions.html#cb36-51" aria-hidden="true" tabindex="-1"></a><span class="fu">\DeclareFieldFormat</span>[article, inbook, incollection, inproceedings, misc, thesis, unpublished]</span>
+<span id="cb36-52"><a href="customisations-and-extensions.html#cb36-52" aria-hidden="true" tabindex="-1"></a>{title}{#1}</span>
+<span id="cb36-53"><a href="customisations-and-extensions.html#cb36-53" aria-hidden="true" tabindex="-1"></a><span class="co">%-- no punctuation after volume</span></span>
+<span id="cb36-54"><a href="customisations-and-extensions.html#cb36-54" aria-hidden="true" tabindex="-1"></a><span class="fu">\DeclareFieldFormat</span>[article]</span>
+<span id="cb36-55"><a href="customisations-and-extensions.html#cb36-55" aria-hidden="true" tabindex="-1"></a>{volume}{{#1}}</span>
+<span id="cb36-56"><a href="customisations-and-extensions.html#cb36-56" aria-hidden="true" tabindex="-1"></a><span class="co">%-- puts number/issue between brackets</span></span>
+<span id="cb36-57"><a href="customisations-and-extensions.html#cb36-57" aria-hidden="true" tabindex="-1"></a><span class="fu">\DeclareFieldFormat</span>[article, inbook, incollection, inproceedings, misc, thesis, unpublished]</span>
+<span id="cb36-58"><a href="customisations-and-extensions.html#cb36-58" aria-hidden="true" tabindex="-1"></a>{number}{<span class="fu">\mkbibparens</span>{#1}} </span>
+<span id="cb36-59"><a href="customisations-and-extensions.html#cb36-59" aria-hidden="true" tabindex="-1"></a><span class="co">%-- and then for articles directly the pages w/o any "pages" or "pp." </span></span>
+<span id="cb36-60"><a href="customisations-and-extensions.html#cb36-60" aria-hidden="true" tabindex="-1"></a><span class="fu">\DeclareFieldFormat</span>[article]</span>
+<span id="cb36-61"><a href="customisations-and-extensions.html#cb36-61" aria-hidden="true" tabindex="-1"></a>{pages}{#1}</span>
+<span id="cb36-62"><a href="customisations-and-extensions.html#cb36-62" aria-hidden="true" tabindex="-1"></a><span class="co">%-- for some types replace "pages" by "p."</span></span>
+<span id="cb36-63"><a href="customisations-and-extensions.html#cb36-63" aria-hidden="true" tabindex="-1"></a><span class="fu">\DeclareFieldFormat</span>[inproceedings, incollection, inbook]</span>
+<span id="cb36-64"><a href="customisations-and-extensions.html#cb36-64" aria-hidden="true" tabindex="-1"></a>{pages}{p. #1}</span>
+<span id="cb36-65"><a href="customisations-and-extensions.html#cb36-65" aria-hidden="true" tabindex="-1"></a><span class="co">%-- format 16(4):224--225 for articles</span></span>
+<span id="cb36-66"><a href="customisations-and-extensions.html#cb36-66" aria-hidden="true" tabindex="-1"></a><span class="fu">\renewbibmacro*</span>{volume+number+eid}{</span>
+<span id="cb36-67"><a href="customisations-and-extensions.html#cb36-67" aria-hidden="true" tabindex="-1"></a>  <span class="fu">\printfield</span>{volume}<span class="co">%</span></span>
+<span id="cb36-68"><a href="customisations-and-extensions.html#cb36-68" aria-hidden="true" tabindex="-1"></a>  <span class="fu">\printfield</span>{number}<span class="co">%</span></span>
+<span id="cb36-69"><a href="customisations-and-extensions.html#cb36-69" aria-hidden="true" tabindex="-1"></a>  <span class="fu">\printunit</span>{<span class="fu">\addcolon</span>}</span>
+<span id="cb36-70"><a href="customisations-and-extensions.html#cb36-70" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>If you would like chapter bibliographies, in addition insert the following code at the end of each chapter, and comment out the entire REFERENCES section at the end of template.tex.</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb27-1"><a href="customisations-and-extensions.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\printbibliography</span>[segment=<span class="fu">\therefsection</span>,heading=subbibliography]</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb37-1"><a href="customisations-and-extensions.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\printbibliography</span>[segment=<span class="fu">\therefsection</span>,heading=subbibliography]</span></code></pre></div>
 </div>
 </div>
-<div id="customizing-the-page-headers-and-footers-pdf" class="section level2" number="4.9">
+<div id="customizing-the-page-headers-and-footers-pdf" class="section level2" number="4.10">
 <h2>
-<span class="header-section-number">4.9</span> Customizing the page headers and footers (PDF)<a class="anchor" aria-label="anchor" href="#customizing-the-page-headers-and-footers-pdf"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.10</span> Customizing the page headers and footers (PDF)<a class="anchor" aria-label="anchor" href="#customizing-the-page-headers-and-footers-pdf"><i class="fas fa-link"></i></a>
 </h2>
 <p>This can now be done directly in <strong>index.Rmd</strong>’s YAML header.
 If you are a LaTeX expert and need further customisation that what’s currently provided, you can tweak the relevant sections of <strong>templates/template.tex</strong> - the relevant code is beneath the line that begins <code>\usepackage{fancyhdr}</code>.</p>
 </div>
-<div id="diving-in-to-the-oxthesis-latex-template-pdf" class="section level2" number="4.10">
+<div id="diving-in-to-the-oxthesis-latex-template-pdf" class="section level2" number="4.11">
 <h2>
-<span class="header-section-number">4.10</span> Diving in to the OxThesis LaTeX template (PDF)<a class="anchor" aria-label="anchor" href="#diving-in-to-the-oxthesis-latex-template-pdf"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.11</span> Diving in to the OxThesis LaTeX template (PDF)<a class="anchor" aria-label="anchor" href="#diving-in-to-the-oxthesis-latex-template-pdf"><i class="fas fa-link"></i></a>
 </h2>
 <p>For LaTeX minded people, you can read through <strong>templates/template.tex</strong> to see which additional customisation options are available as well as <strong>templates/ociamthesis.cls</strong> which supplies the base class.
 For example, <strong>template.tex</strong> provides an option for master’s degree submissions, which changes identifying information to candidate number and includes a word count.
 At the time of writing, you must set this directly in <strong>template.tex</strong> rather than from the YAML header in <strong>index.Rmd</strong>.</p>
 </div>
-<div id="customising-to-a-different-university" class="section level2" number="4.11">
+<div id="customising-to-a-different-university" class="section level2" number="4.12">
 <h2>
-<span class="header-section-number">4.11</span> Customising to a different university<a class="anchor" aria-label="anchor" href="#customising-to-a-different-university"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.12</span> Customising to a different university<a class="anchor" aria-label="anchor" href="#customising-to-a-different-university"><i class="fas fa-link"></i></a>
 </h2>
-<div id="the-minimal-route" class="section level3" number="4.11.1">
+<div id="the-minimal-route" class="section level3" number="4.12.1">
 <h3>
-<span class="header-section-number">4.11.1</span> The minimal route<a class="anchor" aria-label="anchor" href="#the-minimal-route"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.12.1</span> The minimal route<a class="anchor" aria-label="anchor" href="#the-minimal-route"><i class="fas fa-link"></i></a>
 </h3>
 <p>If the front matter in the OxThesis LaTeX template is suitable to your university, customising <code>oxforddown</code> to your needs could be as simple as putting the name of your institution and the path to your university’s logo in <strong>index.Rmd</strong>:</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb28-1"><a href="customisations-and-extensions.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">university</span><span class="kw">:</span><span class="at"> University of You</span></span>
-<span id="cb28-2"><a href="customisations-and-extensions.html#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">university-logo</span><span class="kw">:</span><span class="at"> figures/your-logo-here.pdf</span></span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb38-1"><a href="customisations-and-extensions.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">university</span><span class="kw">:</span><span class="at"> University of You</span></span>
+<span id="cb38-2"><a href="customisations-and-extensions.html#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">university-logo</span><span class="kw">:</span><span class="at"> figures/your-logo-here.pdf</span></span></code></pre></div>
 </div>
-<div id="replacing-the-entire-title-page-with-your-required-content" class="section level3" number="4.11.2">
+<div id="replacing-the-entire-title-page-with-your-required-content" class="section level3" number="4.12.2">
 <h3>
-<span class="header-section-number">4.11.2</span> Replacing the entire title page with your required content<a class="anchor" aria-label="anchor" href="#replacing-the-entire-title-page-with-your-required-content"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.12.2</span> Replacing the entire title page with your required content<a class="anchor" aria-label="anchor" href="#replacing-the-entire-title-page-with-your-required-content"><i class="fas fa-link"></i></a>
 </h3>
 <p>If you have a <strong>.tex</strong> file with some required front matter from your university that you want to replace the OxThesis template’s title page altogether, you can provide a filepath to this file in <strong>index.Rmd</strong>.
 <code>oxforddown</code>’s sample content includes and example of this — if you use the YAML below, your front matter will look like this:</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb29-1"><a href="customisations-and-extensions.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">alternative-title-page</span><span class="kw">:</span><span class="at"> front-and-back-matter/alt-title-page-example.tex</span></span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb39-1"><a href="customisations-and-extensions.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">alternative-title-page</span><span class="kw">:</span><span class="at"> front-and-back-matter/alt-title-page-example.tex</span></span></code></pre></div>
 <embed src="figures/sample-content/alt_frontmatter_example/alt-frontmatter-example.pdf" width="100%" height="1000px" type="application/pdf"></embed><p>
      </p>
 
@@ -358,7 +484,7 @@ At the time of writing, you must set this directly in <strong>template.tex</stro
 
   <div class="chapter-nav">
 <div class="prev"><a href="tables.html"><span class="header-section-number">3</span> Tables</a></div>
-<div class="next"><a href="troubleshooting.html"><span class="header-section-number">5</span> Troubleshooting</a></div>
+<div class="next"><a href="example-including-an-external-chapter.html"><span class="header-section-number">5</span> Example: Including an external chapter</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
@@ -380,19 +506,28 @@ At the time of writing, you must set this directly in <strong>template.tex</stro
 </ul>
 </li>
 <li><a class="nav-link" href="#apply-custom-font-color-and-highlighting-to-text-html-pdf"><span class="header-section-number">4.6</span> Apply custom font color and highlighting to text (HTML &amp; PDF)</a></li>
-<li><a class="nav-link" href="#embedding-pdf-documents-as-chapters"><span class="header-section-number">4.7</span> Embedding PDF documents as chapters</a></li>
+<li><a class="nav-link" href="#embed-pdf"><span class="header-section-number">4.7</span> Including another paper in your thesis - embedding a PDF document</a></li>
 <li>
-<a class="nav-link" href="#customizing-referencing"><span class="header-section-number">4.8</span> Customizing referencing</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#using-a-.csl-file-with-pandoc-instead-of-biblatex"><span class="header-section-number">4.8.1</span> Using a .csl file with pandoc instead of biblatex</a></li>
-<li><a class="nav-link" href="#biblatex-custom"><span class="header-section-number">4.8.2</span> Customizing biblatex and adding chapter bibliographies</a></li>
+<a class="nav-link" href="#embed-rmd"><span class="header-section-number">4.8</span> Including another paper in your thesis - include an R Markdown child document</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#an-example-paper-in-another-folder"><span class="header-section-number">4.8.1</span> An example paper in another folder</a></li>
+<li><a class="nav-link" href="#step-1-include-paper-as-a-child-document"><span class="header-section-number">4.8.2</span> Step 1: Include paper as a child document</a></li>
+<li><a class="nav-link" href="#step-2-make-file-paths-compatible"><span class="header-section-number">4.8.3</span> Step 2: Make file paths compatible</a></li>
+<li><a class="nav-link" href="#step-3-make-sure-header-levels-are-correct"><span class="header-section-number">4.8.4</span> Step 3: Make sure header levels are correct</a></li>
+<li><a class="nav-link" href="#make-sure-figure-widths-are-correct"><span class="header-section-number">4.8.5</span> 4. Make sure figure widths are correct</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#customizing-the-page-headers-and-footers-pdf"><span class="header-section-number">4.9</span> Customizing the page headers and footers (PDF)</a></li>
-<li><a class="nav-link" href="#diving-in-to-the-oxthesis-latex-template-pdf"><span class="header-section-number">4.10</span> Diving in to the OxThesis LaTeX template (PDF)</a></li>
 <li>
-<a class="nav-link" href="#customising-to-a-different-university"><span class="header-section-number">4.11</span> Customising to a different university</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#the-minimal-route"><span class="header-section-number">4.11.1</span> The minimal route</a></li>
-<li><a class="nav-link" href="#replacing-the-entire-title-page-with-your-required-content"><span class="header-section-number">4.11.2</span> Replacing the entire title page with your required content</a></li>
+<a class="nav-link" href="#customizing-referencing"><span class="header-section-number">4.9</span> Customizing referencing</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#using-a-.csl-file-with-pandoc-instead-of-biblatex"><span class="header-section-number">4.9.1</span> Using a .csl file with pandoc instead of biblatex</a></li>
+<li><a class="nav-link" href="#biblatex-custom"><span class="header-section-number">4.9.2</span> Customizing biblatex and adding chapter bibliographies</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#customizing-the-page-headers-and-footers-pdf"><span class="header-section-number">4.10</span> Customizing the page headers and footers (PDF)</a></li>
+<li><a class="nav-link" href="#diving-in-to-the-oxthesis-latex-template-pdf"><span class="header-section-number">4.11</span> Diving in to the OxThesis LaTeX template (PDF)</a></li>
+<li>
+<a class="nav-link" href="#customising-to-a-different-university"><span class="header-section-number">4.12</span> Customising to a different university</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#the-minimal-route"><span class="header-section-number">4.12.1</span> The minimal route</a></li>
+<li><a class="nav-link" href="#replacing-the-entire-title-page-with-your-required-content"><span class="header-section-number">4.12.2</span> Replacing the entire title page with your required content</a></li>
 </ul>
 </li>
 </ul>

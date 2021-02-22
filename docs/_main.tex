@@ -1947,8 +1947,8 @@ Becomes: \textcolor{yellow}{\sethlcolor{black}\hl{here's some text with black hi
 The file \textbf{scripts\_and\_filters/colour\_and\_highlight.lua} implements this, if you want to fiddle around with it.
 It works with both PDF and HTML output.
 
-\hypertarget{embedding-pdf-documents-as-chapters}{%
-\section{Embedding PDF documents as chapters}\label{embedding-pdf-documents-as-chapters}}
+\hypertarget{embed-pdf}{%
+\section{Including another paper in your thesis - embedding a PDF document}\label{embed-pdf}}
 
 You may want to embed existing PDF documents into the thesis, for example if your department allows a `portfolio' style thesis and you need to include an existing typeset publication as a chapter.
 
@@ -1993,6 +1993,188 @@ You may also want to remove margins from the PDF files, which you can do with Ad
 \end{Shaded}
 
 \newpage \begin{center} \makebox[\linewidth][c]{\includegraphics[width=1.2\linewidth]{figures/sample-content/pdf_embed_example/split/_000000000000001.pdf}} \end{center} \newpage \begin{center} \makebox[\linewidth][c]{\includegraphics[width=1.2\linewidth]{figures/sample-content/pdf_embed_example/split/_000000000000011.pdf}} \end{center}
+
+\hypertarget{embed-rmd}{%
+\section{Including another paper in your thesis - include an R Markdown child document}\label{embed-rmd}}
+
+Sometimes you want to include another paper you are currently writing as a chapter in your thesis.
+Above \ref{embed-pdf}, we described the simplest way to do this: include the other paper as a pdf.
+However, in some cases you instead want to include the R Markdown source from this paper, and have it compiled within your thesis.
+This is a little bit more tricky, because you need to keep careful track of your file paths, but it is possible by \href{https://bookdown.org/yihui/rmarkdown-cookbook/child-document.html}{including the paper as a child document}.
+There are four main steps:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Include the paper as a child document
+\item
+  Make file paths compatible with knitting the article on its own, as well as when it's include in your thesis
+\item
+  Make header levels correct
+\item
+  Make figure widths correct
+\end{enumerate}
+
+\hypertarget{an-example-paper-in-another-folder}{%
+\subsection{An example paper in another folder}\label{an-example-paper-in-another-folder}}
+
+Take this simple example (files for this are in \href{https://github.com/ulyngs/oxforddown-external-article}{this GitHub repository}):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{|{-}{-}paper\_to\_include}
+\NormalTok{|  |{-}{-}my\_paper.Rmd}
+\NormalTok{|  |{-}{-}data}
+\NormalTok{|  |  |{-}{-}cat\_salt.csv}
+\NormalTok{|  |{-}{-}figures}
+\NormalTok{|  |  |{-}{-}cat.jpg}
+\NormalTok{|}
+\NormalTok{|{-}{-}thesis}
+\end{Highlighting}
+\end{Shaded}
+
+As the chart suggests, you have another folder, \textbf{paper\_to\_include/} living in the same containing folder as your thesis folder.
+In the \textbf{paper\_to\_include} folder, the file \textbf{my\_paper.Rmd} is where you write the paper.
+In \textbf{my\_paper.Rmd}, you read in a CSV file found in the subfolder \textbf{data/cats.csv}, and also an image from the subfolder \textbf{figures/cat.jpg}.
+
+\hypertarget{step-1-include-paper-as-a-child-document}{%
+\subsection{Step 1: Include paper as a child document}\label{step-1-include-paper-as-a-child-document}}
+
+In your thesis folder, create an Rmd file for the chapter where you want to include another paper.
+Add one or more code chunks that include R Markdown files from that paper as child documents:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{\# Including an external chapter }
+
+\InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}\{r child = "../paper\_to\_include/my\_paper.Rmd"\}}
+\InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{step-2-make-file-paths-compatible}{%
+\subsection{Step 2: Make file paths compatible}\label{step-2-make-file-paths-compatible}}
+
+Use \href{https://rmarkdown.rstudio.com/lesson-6.html}{parameters} to adjust the file path of images based on values you set in the YAML header of an R Markdown file.
+In \textbf{my\_paper.Rmd}, create a parameter called \texttt{other\_path} and set it to an empty string:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{{-}{-}{-}}
+\FunctionTok{title}\KeywordTok{:}\AttributeTok{ }\StringTok{"A fabulous article in a different folder"}
+\FunctionTok{params}\KeywordTok{:}
+\AttributeTok{  }\FunctionTok{other\_path}\KeywordTok{:}\AttributeTok{ }\StringTok{""}
+\PreprocessorTok{{-}{-}{-}}
+\end{Highlighting}
+\end{Shaded}
+
+In \textbf{my\_paper.Rmd}, put this at the start of the filepath when you read in data or include images:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(knitr)}
+
+\NormalTok{cat\_data }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\FunctionTok{str\_c}\NormalTok{(params}\SpecialCharTok{$}\NormalTok{other\_path, }\StringTok{"data/cats.csv"}\NormalTok{))}
+\FunctionTok{include\_graphics}\NormalTok{(}\FunctionTok{str\_c}\NormalTok{(params}\SpecialCharTok{$}\NormalTok{other\_path, }\StringTok{"figures/cat.jpg"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+Finally, in your thesis folder's \textbf{index.Rmd} file, also create the parameter \texttt{other\_path}.
+But here, set it to where the \textbf{paper\_to\_include/} folder is relative to your thesis folder:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{params}\KeywordTok{:}
+\AttributeTok{  }\FunctionTok{other\_path}\KeywordTok{:}\AttributeTok{ }\StringTok{"../paper\_to\_include/"}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{step-3-make-sure-header-levels-are-correct}{%
+\subsection{Step 3: Make sure header levels are correct}\label{step-3-make-sure-header-levels-are-correct}}
+
+Unless the paper you want to include is also written as a book, your header levels are probably going to be off.
+That is, the level 1 headers (\# Some header) you use for main sections in the other paper turns into chaper titles when included in your thesis.
+
+To avoid this, first \emph{increment all heading levels by one in \textbf{paper\_to\_include/my\_paper.Rmd}} (\# Some header -\textgreater{} \#\# Some header).
+Then in \textbf{paper\_to\_include/} create a \href{https://bookdown.org/yihui/rmarkdown-cookbook/lua-filters.html\#lua-filters}{lua filter} that decrements header levels by one: Create a text file, save it as \textbf{reduce\_header\_level.lua}, and give it the content below.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{function}\NormalTok{ Header}\OperatorTok{(}\NormalTok{el}\OperatorTok{)}
+  \ControlFlowTok{if} \OperatorTok{(}\NormalTok{el}\OperatorTok{.}\NormalTok{level }\OperatorTok{\textless{}=} \DecValTok{1}\OperatorTok{)} \ControlFlowTok{then}
+    \FunctionTok{error}\OperatorTok{(}\StringTok{"I don\textquotesingle{}t know how to decrease the level of h1"}\OperatorTok{)}
+  \ControlFlowTok{end}
+\NormalTok{  el}\OperatorTok{.}\NormalTok{level }\OperatorTok{=}\NormalTok{ el}\OperatorTok{.}\NormalTok{level }\OperatorTok{{-}} \DecValTok{1}
+  \ControlFlowTok{return}\NormalTok{ el}
+\KeywordTok{end}
+\end{Highlighting}
+\end{Shaded}
+
+In the YAML header of \textbf{paper\_to\_include/my\_paper.Rmd}, use this filter:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{{-}{-}{-}}
+\FunctionTok{title}\KeywordTok{:}\AttributeTok{ }\StringTok{"A fabulous article in a different folder"}
+\FunctionTok{params}\KeywordTok{:}
+\AttributeTok{  }\FunctionTok{other\_path}\KeywordTok{:}\AttributeTok{ }\StringTok{""}
+\FunctionTok{output}\KeywordTok{:}
+\AttributeTok{  }\FunctionTok{pdf\_document}\KeywordTok{:}\AttributeTok{ }
+\AttributeTok{    }\FunctionTok{pandoc\_args}\KeywordTok{:}\AttributeTok{ }\KeywordTok{[}\StringTok{"{-}{-}lua{-}filter=reduce\_header\_level.lua"}\KeywordTok{]}
+\PreprocessorTok{{-}{-}{-}}
+\end{Highlighting}
+\end{Shaded}
+
+Now, your header levels will be correct both when you knit the paper on its own and when its included in your thesis.
+
+\hypertarget{make-sure-figure-widths-are-correct}{%
+\subsection{4. Make sure figure widths are correct}\label{make-sure-figure-widths-are-correct}}
+
+It might be that your figure widths when knitting your paper on its own, and when including it in your thesis, need to be different.
+You can again use parameters to set figure widths.
+
+Imagine you want figure width to be 80\% of the page width when knitting your paper on its own, but 100\% in your thesis.
+In \textbf{paper\_to\_include/my\_paper.Rmd}, first add a parameter we could call \texttt{out\_width} and set it to the string ``80\%'':
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{{-}{-}{-}}
+\FunctionTok{title}\KeywordTok{:}\AttributeTok{ }\StringTok{"A fabulous article in a different folder"}
+\FunctionTok{params}\KeywordTok{:}
+\AttributeTok{  }\FunctionTok{other\_path}\KeywordTok{:}\AttributeTok{ }\StringTok{""}
+\AttributeTok{  }\FunctionTok{out\_width}\KeywordTok{:}\AttributeTok{ }\StringTok{"80\%"}
+\FunctionTok{output}\KeywordTok{:}
+\AttributeTok{  }\FunctionTok{pdf\_document}\KeywordTok{:}\AttributeTok{ }
+\AttributeTok{    }\FunctionTok{pandoc\_args}\KeywordTok{:}\AttributeTok{ }\KeywordTok{[}\StringTok{"{-}{-}lua{-}filter=reduce\_header\_level.lua"}\KeywordTok{]}
+\PreprocessorTok{{-}{-}{-}}
+\end{Highlighting}
+\end{Shaded}
+
+Then, make sure use that parameter to set the output width when you include figures in \textbf{paper\_to\_include/my\_paper.Rmd}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{include\_graphics}\NormalTok{(}\FunctionTok{str\_c}\NormalTok{(params}\SpecialCharTok{$}\NormalTok{other\_path, }\StringTok{"figures/cat.jpg"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{../paper_to_include/figures/cat} \caption{A very funny cat}\label{fig:unnamed-chunk-16}
+\end{figure}
+
+Finally, create the parameter \texttt{out\_width} in your thesis' \textbf{index.Rmd} file:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{params}\KeywordTok{:}
+\AttributeTok{  }\FunctionTok{other\_path}\KeywordTok{:}\AttributeTok{ }\StringTok{"../paper\_to\_include/"}
+\AttributeTok{  }\FunctionTok{out\_width}\KeywordTok{:}\AttributeTok{ }\StringTok{"80\%"}
+\end{Highlighting}
+\end{Shaded}
+
+Now, the output width of your figure will be 80\% when knitting your paper on its own, and 100\% when knitting it as child document of your thesis.
 
 \hypertarget{customizing-referencing}{%
 \section{Customizing referencing}\label{customizing-referencing}}
@@ -2148,6 +2330,59 @@ If you have a \textbf{.tex} file with some required front matter from your unive
 \noindent
 \fbox{\includegraphics[width=0.32\linewidth]{figures/sample-content/alt_frontmatter_example/split/_000001.pdf}} \fbox{\includegraphics[width=0.32\linewidth]{figures/sample-content/alt_frontmatter_example/split/_000002.pdf}} \fbox{\includegraphics[width=0.32\linewidth]{figures/sample-content/alt_frontmatter_example/split/_000003.pdf}} \fbox{\includegraphics[width=0.32\linewidth]{figures/sample-content/alt_frontmatter_example/split/_000004.pdf}} \fbox{\includegraphics[width=0.32\linewidth]{figures/sample-content/alt_frontmatter_example/split/_000005.pdf}} \fbox{\includegraphics[width=0.32\linewidth]{figures/sample-content/alt_frontmatter_example/split/_000006.pdf}}
 
+\hypertarget{example-including-an-external-chapter}{%
+\chapter{Example: Including an external chapter}\label{example-including-an-external-chapter}}
+
+\minitoc 
+
+\hypertarget{introduction-1}{%
+\section{Introduction}\label{introduction-1}}
+
+Many people think that there is a relationship between a cat's height and how much salt it consumes.
+
+\hypertarget{methods}{%
+\section{Methods}\label{methods}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{include\_graphics}\NormalTok{(}\FunctionTok{str\_c}\NormalTok{(params}\SpecialCharTok{$}\NormalTok{other\_path, }\StringTok{"figures/cat.jpg"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\includegraphics[width=1\linewidth]{../paper_to_include/figures/cat} \caption{A very funny cat}\label{fig:unnamed-chunk-24}
+\end{figure}
+
+This cat came up with all of the methods for this paper.
+
+\hypertarget{results}{%
+\section{Results}\label{results}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cat\_data }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{ggplot}\NormalTok{() }\SpecialCharTok{+}
+    \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(cat\_height, cat\_salt\_eating)) }\SpecialCharTok{+}
+    \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Cat height"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Daily amount of salt consumed"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{_main_files/figure-latex/unnamed-chunk-25-1.pdf}
+\caption{\label{fig:unnamed-chunk-25}Cat height by cat salt eating}
+\end{figure}
+
+\hypertarget{discussion}{%
+\section{Discussion}\label{discussion}}
+
+There's some uncertainty in our data, but we've clearly got a cat-salt problem here.
+
+\hypertarget{conclusion}{%
+\section{Conclusion}\label{conclusion}}
+
+This changes everything.
+
 \hypertarget{troubleshooting}{%
 \chapter{Troubleshooting}\label{troubleshooting}}
 
@@ -2158,10 +2393,36 @@ This chapter describes common errors you may run into, and how to fix them.
 
 This can happen if you've had a failed build, perhaps in relation to RStudio shutting down abruptly.
 
-Things to try:
-- type \texttt{make\ clean-knits} in the terminal tab, then try recompiling
-- restart your computer (yes, really - this solved the problem for me, when I got this error after RStudio was abruptly shut down in the middle of a PDF build)
-- check your LaTeX installation
+Try doing this:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  type \texttt{make\ clean-knits} in the terminal tab (or run \texttt{file.remove(list.files(pattern\ =\ "*.(log\textbar{}mtc\textbar{}maf\textbar{}aux\textbar{}bbl\textbar{}blg\textbar{}xml)"))} in the R console) to clean up files generated by LaTeX during a build
+\item
+  then restart your computer
+\end{enumerate}
+
+This solved the problem for me, when I suddenly ran into this error after RStudio was abruptly shut down during a PDF build.
+
+\hypertarget{todo-the-thing-about-icloud-drive}{%
+\section{TODO: the thing about icloud drive}\label{todo-the-thing-about-icloud-drive}}
+
+\begin{itemize}
+\tightlist
+\item
+  and how symlinks can help
+\end{itemize}
+
+\hypertarget{todo-add-the-thing-about-bibliography-paths}{%
+\section{TODO: Add the thing about bibliography paths}\label{todo-add-the-thing-about-bibliography-paths}}
+
+\begin{itemize}
+\tightlist
+\item
+  remove them in the individual chapter bibliography so that it doesn't override what is in index.Rmd
+\end{itemize}
 
 \begin{savequote}
 Alles Gescheite ist schon gedacht worden.\\
@@ -2173,8 +2434,8 @@ what is necessary is only to try to think them again.
 
 
 
-\hypertarget{conclusion}{%
-\chapter*{Conclusion}\label{conclusion}}
+\hypertarget{conclusion-1}{%
+\chapter*{Conclusion}\label{conclusion-1}}
 \addcontentsline{toc}{chapter}{Conclusion}
 
 If we don't want Conclusion to have a chapter number next to it, we can add the \texttt{\{-\}} attribute.
