@@ -130,7 +130,7 @@ The file **scripts_and_filters/colour_and_highlight.lua** implements this, if yo
 It works with both PDF and HTML output.
 
 
-## Including another paper in your thesis - embedding a PDF document {#embed-pdf}
+## Including another paper in your thesis - embed a PDF document {#embed-pdf}
 
 You may want to embed existing PDF documents into the thesis, for example if your department allows a 'portfolio' style thesis and you need to include an existing typeset publication as a chapter. 
 
@@ -168,7 +168,7 @@ cat(stringr::str_c("\\newpage \\begin{center} \\makebox[\\linewidth][c]{\\includ
 ```
 
 
-## Including another paper in your thesis - include an R Markdown child document {#embed-rmd}
+## Including another paper in your thesis - R Markdown child document {#embed-rmd}
 
 Sometimes you want to include another paper you are currently writing as a chapter in your thesis.
 Above \@ref(embed-pdf), we described the simplest way to do this: include the other paper as a pdf.
