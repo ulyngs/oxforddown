@@ -241,6 +241,10 @@ params:
   other_path: "../paper_to_include/"
 ```
 
+#### Note on HTML output
+Note that if you want to host an HTML version on your thesis online, you will need to include graphics in the content that you host online - the internet obviously won't be able to see filepaths that are just referring to stuff in another folder on your computer!
+
+
 ### Step 3: Make sure header levels are correct
 Unless the paper you want to include is also written as a book, your header levels are probably going to be off.
 That is, the level 1 headers (\# Some header) you use for main sections in the other paper turns into chaper titles when included in your thesis.
@@ -294,7 +298,7 @@ output:
 
 Then, make sure use that parameter to set the output width when you include figures in **paper_to_include/my_paper.Rmd**:
 
-```{r, out.width=params$out_width, fig.cap="A very funny cat"}
+```{r, out.width=params$out_width, fig.cap="A very funny cat", eval=FALSE}
 include_graphics(str_c(params$other_path, "figures/cat.jpg"))
 ```
 
