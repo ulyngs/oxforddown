@@ -64,8 +64,13 @@ For how to write your content with the R Markdown syntax, read through the sampl
 
 ## Requirements
 - LaTeX 
-  - Option 1 (recommended): download and install the MacTeX distribution from [tug.org/mactex/](http://www.tug.org/mactex/) (~4 gigs)
-  - Option 2: install [TinyTeX](https://yihui.name/tinytex/). Afterwards, manually install the LaTeX package 'cbfonts-fd' with `tinytex::tlmgr_install('cbfonts-fd')` (#11) - the other necessary LaTeX packages will be automatically installed for you by TinyTeX when you build to PDF for the first time.
+  - Option 1 (recommended): 
+    - Mac: download and install MacTeX from [tug.org/mactex/](http://www.tug.org/mactex/) (~4 gigs)
+    - Windows: download and install MikTex from [miktex.org](https://miktex.org)
+  - Option 2 (not recommended): 
+    - install [TinyTeX](https://yihui.name/tinytex/), a minimal LaTeX installation intended for use with R Markdown.
+    - manually install the LaTeX package 'cbfonts-fd' by running `tinytex::tlmgr_install('cbfonts-fd')` in an R console - TinyTeX will automatically install other necessary LaTeX packages for you when you build to PDF for the first time
+    - *the reason I do not recommend this option is because several `oxforddown` users (#11) (including myself) have found that some necessary packages (e.g. for writing Greek symbols) are not installed by TinyTeX for reasons that are not clear*
 - [R](https://cran.rstudio.com) and [RStudio version 1.2 or higher](https://www.rstudio.com/products/rstudio/download/#download)
 - The R packages `rmarkdown`, `bookdown`, `tidyverse`, `kableExtra`, and `here`
 - *If on Mac*
