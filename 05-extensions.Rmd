@@ -277,7 +277,7 @@ output:
 
 Now, your header levels will be correct both when you knit the paper on its own and when its included in your thesis.
 
-### 4. Make sure figure widths are correct
+### Step 4. Make sure figure widths are correct
 It might be that your figure widths when knitting your paper on its own, and when including it in your thesis, need to be different.
 You can again use parameters to set figure widths.
 
