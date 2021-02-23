@@ -91,6 +91,7 @@ hidelinks: true # false to highlight clickable links with a colored border
 params:
   other_path: "../paper_to_include/"
   out_width: "100%"
+includelineno: true # include line numbers in PDF
 
 #####################
 ## output options  ##
