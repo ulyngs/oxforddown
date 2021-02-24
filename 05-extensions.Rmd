@@ -83,17 +83,17 @@ You can do so like this:
 
 ### Short, inline corrections
 Highlight **short, inline corrections** by doing `[like this]{.correction}` --- the text between the square brackets will then [be highlighted in blue]{.correction} in the output.
-This should work, also with [cross references (do you remember chapter \@ref(rmd-basics)?)]{.correction} or even [citations [@Shea2014]]{.correction}.
 
-However, pandoc might get confused by citations and cross-references.
-In particular, it might get confused by [this @Shea2014]{.correction}
-In such cases, you could use LaTeX syntax directly. 
-The correction highlighting is supplied by the [soul](https://ctan.org/pkg/soul) package, so you can do like this:
+Note that pandoc might get confused by citations and cross-references inside inline corrections.
+In particular, it might get confused by `"[what @Shea2014 said]{.correction}"` which becomes [what @Shea2014 said]{.correction}
+In such cases, you can use LaTeX syntax directly. 
+The correction highlighting uses the [soul](https://ctan.org/pkg/soul) package, so you can do like this:
 
-> `It doesn't get confused by \hl{this \textcite{Shea2014}}` \
-> Becomes: It doesn't get confused by \hl{this \textcite{Shea2014}}.
+- If using biblatex for references, use `"\hl{what \textcite{Shea2014} said}`
+- If using natbib for references, use `"\hl{what \cite{Shea2014} said}`
 
-This has the drawback of corrections then not showing up in HTML output at all, but you may only care about correction highlighting in the PDF for your examiners anyway!
+Using raw LaTeX has the drawback of corrections then not showing up in HTML output at all, but you might only care about correction highlighting in the PDF for your examiners anyway!
+
 
 ### Blocks of added or changed material
 Highlight entire **blocks of added or changed material** by putting them in a block of type `correction`, using the syntax ```` ```{block type='correction'} ````.^[In the **.tex** file for PDF output, this will put the content between `\begin{correction}` and `\end{correction}`; in gitbook output it will be put between `<div class="correction">` and `</div>`.]
