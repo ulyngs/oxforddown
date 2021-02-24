@@ -127,17 +127,18 @@ You can do so like this:</p>
 <h3>
 <span class="header-section-number">4.5.1</span> Short, inline corrections<a class="anchor" aria-label="anchor" href="#short-inline-corrections"><i class="fas fa-link"></i></a>
 </h3>
-<p>Highlight <strong>short, inline corrections</strong> by doing <code>[like this]{.correction}</code> — the text between the square brackets will then <span class="correction">be highlighted in blue</span> in the output.
-This should work, also with <span class="correction">cross references (do you remember chapter <a href="rmd-basics.html#rmd-basics">1</a>?)</span> or even <span class="correction">citations <span class="citation">(<a href="references.html#ref-Shea2014" role="doc-biblioref">Shea et al. 2014</a>)</span></span>.</p>
-<p>However, pandoc might get confused by citations and cross-references.
-In particular, it might get confused by <span class="citation">(this <a href="references.html#ref-Shea2014" role="doc-biblioref">Shea et al. 2014</a>)</span>{.correction}
-In such cases, you could use LaTeX syntax directly.
-The correction highlighting is supplied by the <a href="https://ctan.org/pkg/soul">soul</a> package, so you can do like this:</p>
-<blockquote>
-<p><code>It doesn't get confused by \hl{this \textcite{Shea2014}}</code><br>
-Becomes: It doesn’t get confused by .</p>
-</blockquote>
-<p>This has the drawback of corrections then not showing up in HTML output at all, but you may only care about correction highlighting in the PDF for your examiners anyway!</p>
+<p>Highlight <strong>short, inline corrections</strong> by doing <code>[like this]{.correction}</code> — the text between the square brackets will then <span class="correction">be highlighted in blue</span> in the output.</p>
+<p>Note that pandoc might get confused by citations and cross-references inside inline corrections.
+In particular, it might get confused by <code>"[what @Shea2014 said]{.correction}"</code> which becomes <span class="citation">(what <a href="references.html#ref-Shea2014" role="doc-biblioref">Shea et al. 2014</a> said)</span>{.correction}
+In such cases, you can use LaTeX syntax directly.
+The correction highlighting uses the <a href="https://ctan.org/pkg/soul">soul</a> package, so you can do like this:</p>
+<ul>
+<li>If using biblatex for references, use <code>"\hl{what \textcite{Shea2014} said}</code>
+</li>
+<li>If using natbib for references, use <code>"\hl{what \cite{Shea2014} said}</code>
+</li>
+</ul>
+<p>Using raw LaTeX has the drawback of corrections then not showing up in HTML output at all, but you might only care about correction highlighting in the PDF for your examiners anyway!</p>
 </div>
 <div id="blocks-of-added-or-changed-material" class="section level3" number="4.5.2">
 <h3>
@@ -335,8 +336,9 @@ In <strong>paper_to_include/my_paper.Rmd</strong>, first add a parameter we coul
 <span id="cb32-8"><a href="customisations-and-extensions.html#cb32-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">pandoc_args</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">"--lua-filter=reduce_header_level.lua"</span><span class="kw">]</span></span>
 <span id="cb32-9"><a href="customisations-and-extensions.html#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
 <p>Then, make sure use that parameter to set the output width when you include figures in <strong>paper_to_include/my_paper.Rmd</strong>:</p>
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">include_graphics</a></span><span class="op">(</span><span class="fu">str_c</span><span class="op">(</span><span class="va">params</span><span class="op">$</span><span class="va">other_path</span>, <span class="st">"figures/cat.jpg"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb33-1"><a href="customisations-and-extensions.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, out.width=params$out_width, fig.cap="A very funny cat"}</span></span>
+<span id="cb33-2"><a href="customisations-and-extensions.html#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="in">include_graphics(str_c(params$other_path, "figures/cat.jpg"))</span></span>
+<span id="cb33-3"><a href="customisations-and-extensions.html#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>Finally, create the parameter <code>out_width</code> in your thesis’ <strong>index.Rmd</strong> file:</p>
 <div class="sourceCode" id="cb34"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb34-1"><a href="customisations-and-extensions.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">params</span><span class="kw">:</span></span>
 <span id="cb34-2"><a href="customisations-and-extensions.html#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">other_path</span><span class="kw">:</span><span class="at"> </span><span class="st">"../paper_to_include/"</span></span>
