@@ -105,9 +105,9 @@ natbib-bibliography-style: ACM-Reference-Format #or plainnat or some .bst file y
 #####################
 output:
   bookdown::pdf_book:
+    citation_package: biblatex
     template: templates/template.tex
     keep_tex: true
-    citation_package: biblatex
     pandoc_args: "--lua-filter=scripts_and_filters/colour_and_highlight.lua"
   bookdown::bs4_book: 
     css: 
