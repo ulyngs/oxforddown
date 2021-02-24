@@ -24,7 +24,6 @@ abbreviations: "front-and-back-matter/abbreviations" # path to .tex file with ab
 ## bibliography path ##
 #######################
 bibliography: references.bib
-bibliography-heading-in-pdf: Works Cited
 
 ########################
 ## PDF layout options ###
@@ -73,9 +72,6 @@ mini-toc: true  # include mini-table of contents at start of each chapter? (this
 mini-lot: false  # include mini-list of tables by start of each chapter?
 mini-lof: false  # include mini-list of figures by start of each chapter?
 
-## bibliography style ##
-bib-latex-options: "style=authoryear, sorting=nyt, backend=biber, maxcitenames=2, useprefix, doi=true, isbn=false, uniquename=false" #for science, you might want style=numeric-comp, sorting=none for numerical in-text citation with references in order of appearance
-
 ## code block spacing ##
 space-before-code-block: 10pt
 space-after-code-block: 8pt
@@ -91,14 +87,30 @@ params:
   other_path: "../paper_to_include/"
   out_width: "100%"
 
+### citation and bibliography style ###
+bibliography-heading-in-pdf: Works Cited
+
+# biblatex options #
+# unless you run into 'biber' error messages, use natbib as it lets you customise your bibliography directly
+use-biblatex: true
+bib-latex-options: "style=authoryear, sorting=nyt, backend=biber, maxcitenames=2, useprefix, doi=true, isbn=false, uniquename=false" #for science, you might want style=numeric-comp, sorting=none for numerical in-text citation with references in order of appearance
+
+# natbib options #
+# natbib runs into fewer errors than biblatex, but to customise your bibliography you need to fiddle with .bst files
+use-natbib: false # to use natbib, set this to true, and change "output:bookdown::pdf_book:citation_package:" to "natbib"
+natbib-citation-style: authoryear #for science, you might want numbers,square
+natbib-bibliography-style: ACM-Reference-Format #or plainnat or some .bst file you download
+
+
+
 #####################
 ## output options  ##
 #####################
 output:
-  "bookdown::pdf_book":
+  bookdown::pdf_book:
     template: templates/template.tex
     keep_tex: true
-    citation_package: biblatex  
+    citation_package: biblatex
     pandoc_args: "--lua-filter=scripts_and_filters/colour_and_highlight.lua"
   bookdown::bs4_book: 
     css: 

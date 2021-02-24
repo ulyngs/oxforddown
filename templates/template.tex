@@ -141,22 +141,31 @@ $endif$
 
 %%%%% BIBLIOGRAPHY SETUP
 % Note that your bibliography will require some tweaking depending on your department, preferred format, etc.
-% The options included below are just very basic "sciencey" and "humanitiesey" options to get started.
 % If you've not used LaTeX before, I recommend reading a little about biblatex/biber and getting started with it.
 % If you're already a LaTeX pro and are used to natbib or something, modify as necessary.
 % Either way, you'll have to choose and configure an appropriate bibliography format...
 
-%UL 24 Feb 2021: set options from YAML in index.Rmd
+
+$if(use-biblatex)$
 \usepackage[$bib-latex-options$]{biblatex}
 \newcommand*{\bibtitle}{$bibliography-heading-in-pdf$}
 
-% This makes the bibliography left-aligned (not 'justified') and slightly smaller font.
-\renewcommand*{\bibfont}{\raggedright\small}
-
-% Change this to the name of your .bib file (usually exported from a citation manager like Zotero or EndNote).
 $for(bibliography)$
 \addbibresource{$bibliography$}
 $endfor$
+$endif$
+
+$if(use-natbib)$
+\usepackage{natbib}
+\setcitestyle{$natbib-citation-style$}
+\bibliographystyle{$natbib-bibliography-style$}
+\addto\captionsenglish{%
+  \renewcommand{\bibname}{$bibliography-heading-in-pdf$}
+}
+$endif$
+
+% This makes the bibliography left-aligned (not 'justified') and slightly smaller font.
+\renewcommand*{\bibfont}{\raggedright\small}
 
 
 % Uncomment this if you want equation numbers per section (2.3.12), instead of per chapter (2.18):
@@ -336,11 +345,15 @@ $body$
 %   \qauthor{--- Sir Isaiah Berlin \cite{berlin_hedgehog_2013}}
 % \end{savequote}
 
+$if(use-biblatex)$
 \setlength{\baselineskip}{0pt} % JEM: Single-space References
 
 {\renewcommand*\MakeUppercase[1]{#1}%
 \printbibliography[heading=bibintoc,title={\bibtitle}]}
+$endif$
 
-
+$if(use-natbib)$
+\bibliography{$bibliography$}
+$endif$
 
 \end{document}
