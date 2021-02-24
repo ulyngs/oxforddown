@@ -74,8 +74,7 @@ mini-lot: false  # include mini-list of tables by start of each chapter?
 mini-lof: false  # include mini-list of figures by start of each chapter?
 
 ## bibliography style ##
-bib-humanities: true   # true to format references as author-year - false as numbers
-doi-in-bibliography: true # true to show DOI's in the bibliography
+bib-latex-options: "style=authoryear, sorting=nyt, backend=biber, maxcitenames=2, useprefix, doi=true, isbn=false, uniquename=false" #for science, you might want style=numeric-comp, sorting=none for numerical in-text citation with references in order of appearance
 
 ## code block spacing ##
 space-before-code-block: 10pt
@@ -96,7 +95,7 @@ params:
 ## output options  ##
 #####################
 output:
-  bookdown::pdf_book:
+  "bookdown::pdf_book":
     template: templates/template.tex
     keep_tex: true
     citation_package: biblatex  
