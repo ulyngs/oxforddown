@@ -298,9 +298,11 @@ output:
 
 Then, make sure use that parameter to set the output width when you include figures in **paper_to_include/my_paper.Rmd**:
 
-```{r, out.width=params$out_width, fig.cap="A very funny cat", eval=FALSE}
+````markdown
+`r ''````{r, out.width=params$out_width, fig.cap="A very funny cat"}
 include_graphics(str_c(params$other_path, "figures/cat.jpg"))
 ```
+````
 
 Finally, create the parameter `out_width` in your thesis' **index.Rmd** file:
 
