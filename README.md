@@ -135,9 +135,9 @@ For how to write your content with the R Markdown syntax, read through the sampl
 - options
   - in the terminal tab, type 'make word'
   - run `bookdown::render_book("index.Rmd", output_format = "bookdown::word_document2")` in the R console
-- the compiled MS Word document is saved as **docs/\_main.docx** and (for option 1) opened
+- the compiled MS Word document is saved as **docs/\_main.docx**
 
-The Word output has no template behind it, and many things do not work (e.g. image rotation, highlighting corrections). **I encourage pull requests that optimise the Word output, e.g. by using tools from the [`officer`](https://github.com/davidgohel/officer) package.**
+The Word output has no templates behind it, and many things do not work (e.g. image rotation, highlighting corrections). **I encourage pull requests that optimise the Word output, e.g. by using tools from the [`officer`](https://github.com/davidgohel/officer) package.**
 
 ### Building a single chapter
 To knit an individual chapter without compiling the entire thesis:
