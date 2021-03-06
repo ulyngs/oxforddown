@@ -110,7 +110,7 @@ For how to write your content with the R Markdown syntax, read through the sampl
   - *using `make`*: type 'make pdf' in the terminal (not the R console!) *or* click 'Build All' on the 'Build' tab
   - knit the **index.Rmd** file *or* 
   - run `bookdown::render_book("index.Rmd", output_format = "bookdown::pdf_book")` in the R console
-- the compiled PDF is saved as **docs/\_main.pdf**, and (for option 1 & 2) the PDF is opened
+- the compiled PDF is saved as **docs/\_main.pdf**
 
 ![](figures/sample-content/screenshots/compiled_pdf.png)
 
