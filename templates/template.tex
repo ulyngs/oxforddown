@@ -139,6 +139,12 @@ $if(corrections)$
 \correctionstrue
 $endif$
 
+% IP feb 2021: option to include line numbers in PDF
+$if(includeline-num)$
+\usepackage{lineno}
+\linenumbers
+$endif$
+
 %%%%% BIBLIOGRAPHY SETUP
 % Note that your bibliography will require some tweaking depending on your department, preferred format, etc.
 % If you've not used LaTeX before, I recommend reading a little about biblatex/biber and getting started with it.
