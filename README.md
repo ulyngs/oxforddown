@@ -63,16 +63,21 @@ For how to write your content with the R Markdown syntax, read through the sampl
 
 
 ## Requirements
-- LaTeX 
-  - Option 1 (recommended): 
-    - Mac: download and install MacTeX from [tug.org/mactex/](http://www.tug.org/mactex/) (~4 gigs)
-    - Windows: download and install MikTex from [miktex.org](https://miktex.org)
-  - Option 2 (not recommended): 
-    - install [TinyTeX](https://yihui.name/tinytex/), a minimal LaTeX installation intended for use with R Markdown.
-    - manually install the LaTeX package 'cbfonts-fd' by running `tinytex::tlmgr_install('cbfonts-fd')` in an R console - TinyTeX will automatically install other necessary LaTeX packages for you when you build to PDF for the first time
-    - *the reason I do not recommend this option is because several `oxforddown` users (#11) (including myself) have found that some necessary packages (e.g. for writing Greek symbols) are not installed by TinyTeX for reasons that are not clear*
 - [R](https://cran.rstudio.com) and [RStudio version 1.2 or higher](https://www.rstudio.com/products/rstudio/download/#download)
 - The R packages `rmarkdown`, `bookdown`, `tidyverse`, `kableExtra`, and `here`
+- a LaTeX installation 
+  - Option 1: [TinyTeX](https://yihui.name/tinytex/) (a minimal LaTeX installation intended for use with R Markdown)
+    - the development version of TinyTex is [currently required](https://github.com/ulyngs/oxforddown/issues/4). Install from R with
+
+    ```r
+    remotes::install_github('yihui/tinytex')
+    tinytex::install_tinytex()
+    ```
+ 
+    - When you knit to PDF for the first time, TinyTex will install all missing LaTeX packages required by `oxforddown` ([details here](https://github.com/ulyngs/oxforddown/issues/20)), which may take a while
+  - Option 2: ordinary LaTeX distribution
+    - Mac: download and install MacTeX from [tug.org/mactex/](http://www.tug.org/mactex/) (~4 gigs)
+    - Windows: download and install MikTex from [miktex.org](https://miktex.org)
 - *If on Mac*
   - Command line developer tools. You can install these by typing `xcode-select --install` in a terminal prompt
 - *If on Windows*
