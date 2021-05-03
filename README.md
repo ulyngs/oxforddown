@@ -74,8 +74,7 @@ For how to write your content with the R Markdown syntax, read through the sampl
     tinytex::install_tinytex()
     ```
  
-    - When you knit to PDF for the first time, TinyTex will install all missing LaTeX packages required by `oxforddown` ([details here](https://github.com/ulyngs/oxforddown/issues/20)), which may take a while
-    - the diskspace taken up by TinyTex with the required LaTeX packages installed is about 280 Mb
+    - When you knit to PDF for the first time, TinyTex will install all missing LaTeX packages required by `oxforddown` ([details here](https://github.com/ulyngs/oxforddown/issues/20)), which may take a while (diskspace taken up by TinyTex with the required packages installed is about 280 Mb)
   - Option 2: ordinary LaTeX distribution
     - Mac: download and install MacTeX from [tug.org/mactex/](http://www.tug.org/mactex/) (~4 gigs)
     - Windows: download and install MikTex from [miktex.org](https://miktex.org)
