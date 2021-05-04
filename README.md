@@ -145,9 +145,9 @@ For how to write your content with the R Markdown syntax, read through the sampl
 ![](figures/sample-content/screenshots/compiled_gitbook.png)
 
 #### BS4 book output
-- you must install the `downlit` and `bslib` R packages (which you can do with `install.packages`)
+- the bs4 book output requires the `downlit` and `bslib` R packages (you can install them with `install.packages`)
 - options
-  - Option 1, *using `make`: in the terminal tab, type `make bs4book`
+  - Option 1, *using `make`*: in the terminal tab, type `make bs4book`
   - Option 2, *using an explicit R command*: run `bookdown::render_book("index.Rmd", output_format = "bookdown::gitbook")` in the R console
 - the set of HTML files are stored in the **docs/** folder, and (for option 1) the front page (docs/index.html) is opened in a browser
 
