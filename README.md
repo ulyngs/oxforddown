@@ -66,7 +66,7 @@ For how to write your content with the R Markdown syntax, read through the sampl
 - [R](https://cran.rstudio.com) and [RStudio version 1.2 or higher](https://www.rstudio.com/products/rstudio/download/#download)
 - The R packages `rmarkdown`, `bookdown`, `tidyverse`, `kableExtra`, and `here`
 - a LaTeX installation 
-  - Option 1: [TinyTeX](https://yihui.name/tinytex/) (a minimal LaTeX installation intended for use with R Markdown)
+  - Option 1: Use [TinyTeX](https://yihui.name/tinytex/) (a minimal LaTeX installation intended for use with R Markdown)
     - the development version of TinyTex is [currently required](https://github.com/ulyngs/oxforddown/issues/4). Install from R with
 
     ```r
@@ -74,8 +74,23 @@ For how to write your content with the R Markdown syntax, read through the sampl
     tinytex::install_tinytex()
     ```
  
-    - When you knit to PDF for the first time, TinyTex will install all missing LaTeX packages required by `oxforddown` ([details here](https://github.com/ulyngs/oxforddown/issues/20)), which may take a while (diskspace taken up by TinyTex with the required packages installed is about 280 Mb)
-  - Option 2: ordinary LaTeX distribution
+    - Then install the LaTeX packages used by `oxforddown` with (diskspace taken up by TinyTex with the required packages installed is about 280 Mb)
+
+   ```r
+   missing_packages <- c(
+     "appendix", "babel-english", "babel-greek", "babel-latin", 
+     "biber", "biblatex", "caption", "cbfonts-fd", "colortbl", "csquotes", 
+     "enumitem", "environ", "eso-pic", "fancyhdr", "greek-fontenc", 
+     "grfext", "hyphen-greek", "hyphen-latin", "lineno", "logreq", 
+     "makecell", "microtype", "minitoc", "multirow", "notoccite", 
+     "oberdiek", "pdflscape", "pdfpages", "quotchap", "soul", "tabu", 
+     "threeparttable", "threeparttablex", "titlesec", "tocbibind", 
+     "trimspaces", "ulem", "units", "utopia", "varwidth", "wrapfig"
+     )
+   tinytex::tlmgr_install(missing_packages)
+   ```
+
+  - Option 2: Use an ordinary LaTeX distribution
     - Mac: download and install MacTeX from [tug.org/mactex/](http://www.tug.org/mactex/) (~4 gigs)
     - Windows: download and install MikTex from [miktex.org](https://miktex.org)
 - *If on Mac*
