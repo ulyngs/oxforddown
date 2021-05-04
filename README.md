@@ -145,7 +145,7 @@ For how to write your content with the R Markdown syntax, read through the sampl
 ![](figures/sample-content/screenshots/compiled_gitbook.png)
 
 #### BS4 book output
-- for this to work, you must install (1) the latest development version of bookdown (`remotes::install_github('rstudio/bookdown')`), (2) the `downlit` package (`install.packages("downlit")`), (3) the `bslib` package (not on CRAN yet; install with `remotes::install_github("rstudio/bslib")`)
+- you must install the `downlit` and `bslib` R packages (which you can do with `install.packages`)
 - options
   - Option 1, *using `make`: in the terminal tab, type `make bs4book`
   - Option 2, *using an explicit R command*: run `bookdown::render_book("index.Rmd", output_format = "bookdown::gitbook")` in the R console
