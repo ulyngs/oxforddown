@@ -74,7 +74,7 @@ For how to write your content with the R Markdown syntax, read through the sampl
     tinytex::install_tinytex()
     ```
  
-    - Then install the LaTeX packages used by `oxforddown` with (diskspace taken up by TinyTex with the required packages installed is about 280 Mb)
+    - Then install the LaTeX packages used by `oxforddown` (diskspace taken up by TinyTex with the required packages installed is about 280 Mb)
 
     ```r
     missing_packages <- c(
