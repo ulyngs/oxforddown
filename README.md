@@ -76,19 +76,19 @@ For how to write your content with the R Markdown syntax, read through the sampl
  
     - Then install the LaTeX packages used by `oxforddown` with (diskspace taken up by TinyTex with the required packages installed is about 280 Mb)
 
-   ```r
-   missing_packages <- c(
-     "appendix", "babel-english", "babel-greek", "babel-latin", 
-     "biber", "biblatex", "caption", "cbfonts-fd", "colortbl", "csquotes", 
-     "enumitem", "environ", "eso-pic", "fancyhdr", "greek-fontenc", 
-     "grfext", "hyphen-greek", "hyphen-latin", "lineno", "logreq", 
-     "makecell", "microtype", "minitoc", "multirow", "notoccite", 
-     "oberdiek", "pdflscape", "pdfpages", "quotchap", "soul", "tabu", 
-     "threeparttable", "threeparttablex", "titlesec", "tocbibind", 
-     "trimspaces", "ulem", "units", "utopia", "varwidth", "wrapfig"
-     )
-   tinytex::tlmgr_install(missing_packages)
-   ```
+    ```r
+    missing_packages <- c(
+      "appendix", "babel-english", "babel-greek", "babel-latin", 
+      "biber", "biblatex", "caption", "cbfonts-fd", "colortbl", "csquotes", 
+      "enumitem", "environ", "eso-pic", "fancyhdr", "greek-fontenc", 
+      "grfext", "hyphen-greek", "hyphen-latin", "lineno", "logreq", 
+      "makecell", "microtype", "minitoc", "multirow", "notoccite", 
+      "oberdiek", "pdflscape", "pdfpages", "quotchap", "soul", "tabu", 
+      "threeparttable", "threeparttablex", "titlesec", "tocbibind", 
+      "trimspaces", "ulem", "units", "utopia", "varwidth", "wrapfig"
+      )
+    tinytex::tlmgr_install(missing_packages)
+    ```
 
   - Option 2: Use an ordinary LaTeX distribution
     - Mac: download and install MacTeX from [tug.org/mactex/](http://www.tug.org/mactex/) (~4 gigs)
