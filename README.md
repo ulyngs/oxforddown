@@ -153,7 +153,7 @@ For how to write your content with the R Markdown syntax, read through the sampl
 
 #### Word output
 - options
-  - Option 1, *using `make`: in the terminal tab, type 'make word'
+  - Option 1, *using `make`*: in the terminal tab, type 'make word'
   - Option 2, *using an explicit R command*: run `bookdown::render_book("index.Rmd", output_format = "bookdown::word_document2")` in the R console
 - the compiled MS Word document is saved as **docs/\_main.docx**
 
