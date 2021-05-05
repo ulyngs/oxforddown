@@ -189,7 +189,7 @@ To clean up files generated when knitting individual chapters, type 'make clean-
 
 ## Customisations and extensions
 - for some of the common things you might want to do in your thesis, read through the sample content
-- for example, the newly added ['Customisations and extensions' chapter](https://ulyngs.github.io/oxforddown/customisations-and-extensions.html) (thanks @bmvandoren!) adds tips on how to include PDF pages from a published typeset article in your thesis, and more!
+- for example, the ['Customisations and extensions' chapter](https://ulyngs.github.io/oxforddown/customisations-and-extensions.html) (thanks @bmvandoren!) adds tips on how to include PDF pages from a published typeset article in your thesis, and more!
 
 ## Limitations
 ### Gotchas
