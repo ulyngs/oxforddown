@@ -5,21 +5,8 @@
 % format for PDF output (ie equal margins, no extra blank pages):
 \documentclass[a4paper,nobind]{templates/ociamthesis}
 
-% UL 5 January 2021 - add packages used by kableExtra
-\usepackage{booktabs}
-\usepackage{longtable}
-\usepackage{array}
-\usepackage{multirow}
-\usepackage{wrapfig}
-\usepackage{colortbl}
-\usepackage{pdflscape}
-\usepackage{tabu}
-\usepackage{threeparttable}
-\usepackage{threeparttablex}
-\usepackage[normalem]{ulem}
-\usepackage{makecell}
-\usepackage[colorlinks=false,pdfpagelabels,hidelinks=$hidelinks$]{hyperref}
-\usepackage{float}
+% add hyperref package with links hidden %
+\usepackage[colorlinks=false,pdfpagelabels,hidelinks]{hyperref}
 
 
 %UL set section header spacing
@@ -106,8 +93,10 @@
 \soulregister\textcite7
 \soulregister\pageref7
 
-%UL 3 Nov 2019, avoid mysterious error from not having hyperref included
-\usepackage{hyperref}
+% add any user-chosen things for the preamble here %
+$for(header-includes)$
+$header-includes$
+$endfor$
 
 %%%%% SELECT YOUR DRAFT OPTIONS
 % Three options going on here; use in any combination.  But remember to turn the first two off before

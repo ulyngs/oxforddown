@@ -29,22 +29,8 @@
 %UL 2 Dec 2018: pass this in from YAML
 \documentclass[a4paper, $if(page-layout)$$page-layout$$endif$]{templates/ociamthesis}
 
-% UL 5 January 2021 - add packages used by kableExtra
-\usepackage{booktabs}
-\usepackage{longtable}
-\usepackage{array}
-\usepackage{multirow}
-\usepackage{wrapfig}
-\usepackage{colortbl}
-\usepackage{pdflscape}
-\usepackage{tabu}
-\usepackage{threeparttable}
-\usepackage{threeparttablex}
-\usepackage[normalem]{ulem}
-\usepackage{makecell}
+% add hyperref package with options from YAML %
 \usepackage[colorlinks=false,pdfpagelabels$if(hidelinks)$,hidelinks$endif$]{hyperref}
-\usepackage{float}
-
 
 %UL set section header spacing
 \usepackage{titlesec}
@@ -95,6 +81,12 @@ $endif$
 \soulregister\autocite7
 \soulregister\textcite7
 \soulregister\pageref7
+
+% add any user-chosen things for the preamble here %
+$for(header-includes)$
+$header-includes$
+$endfor$
+
 
 %%%%%%% PAGE HEADERS AND FOOTERS %%%%%%%%%
 \usepackage{fancyhdr}
