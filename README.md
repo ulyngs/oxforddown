@@ -175,7 +175,7 @@ To knit an individual chapter without compiling the entire thesis:
 
 1. open the **.Rmd** file of a chapter
 2. add a YAML header specifying the output format(s) (e.g. `bookdown::word_document2` for a word document you might want to upload to Google Docs for feedback from collaborators)
-3. Click the `knit` button (the output file is then saved in the root folder)
+3. click the `knit` button (the output file is then saved in the root folder)
 
 As shown in the sample chapters' YAML headers, to output a single chapter to PDF, use e.g.:
 
