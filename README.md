@@ -118,7 +118,7 @@ For how to write your content with the R Markdown syntax, read through the sampl
 ### Building your entire thesis
 - You build the entire thesis by opening **index.Rmd** and clicking the 'knit' button.
 - The generated thesis files are saved in the **docs/** folder
-- To choose between output formats, go to the end of the YAML header and uncomment the knit function that you want (make sure the other options are commented out, otherwise you'll get an error).
+- To choose between output formats, uncomment the knit function that you want (make sure the other options are commented out, otherwise you'll get an error - you find the knit functions at the top of **index.Rmd**).
 - If you want to customise the build function, edit **scripts_and_filters/knit-functions.R**
 
 #### PDF output
