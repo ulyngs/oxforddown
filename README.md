@@ -1,3 +1,6 @@
+## NOTE Major change: To build the thesis, you now simply knit **index.Rmd** - see details below.
+
+
 Contents
 =================
 - [Requirements](#requirements)
