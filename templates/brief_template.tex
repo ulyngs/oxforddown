@@ -8,6 +8,8 @@
 % add hyperref package with links hidden %
 \usepackage[colorlinks=false,pdfpagelabels,hidelinks]{hyperref}
 
+% add float package to allow manual control of figure positioning %
+\usepackage{float}
 
 %UL set section header spacing
 \usepackage{titlesec}
@@ -93,7 +95,8 @@
 \soulregister\textcite7
 \soulregister\pageref7
 
-% add any user-chosen things for the preamble here %
+% user-included things with header_includes or in_header will appear here
+% kableExtra packages will appear here if you use library(kableExtra)
 $for(header-includes)$
 $header-includes$
 $endfor$
