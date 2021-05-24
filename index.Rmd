@@ -134,15 +134,15 @@ always_allow_html: true #this allows html stuff in word (.docx) output
 # The lines below make the 'knit' button render the whole thesis to either PDF, HTML, or Word
 # Uncomment one you need, and comment out the others! :)
 ## KNIT PDF ##
-# knit: (function(input, ...) {
-#     source("scripts_and_filters/knit-functions.R");
-#     knit_pdf(input, ...)
-#   })
-## KNIT BS4 BOOK ##
 knit: (function(input, ...) {
     source("scripts_and_filters/knit-functions.R");
-    knit_bs4book(input, ...)
+    knit_pdf(input, ...)
   })
+## KNIT BS4 BOOK ##
+# knit: (function(input, ...) {
+#     source("scripts_and_filters/knit-functions.R");
+#     knit_bs4book(input, ...)
+#   })
 ## KNIT GITBOOK ##
 # knit: (function(input, ...) {
 #     source("scripts_and_filters/knit-functions.R");
