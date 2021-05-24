@@ -1,5 +1,31 @@
 ---
 #####################
+##  output format  ##
+#####################
+# The lines below make the 'knit' button render the whole thesis to either PDF, HTML, or Word
+# Uncomment the one you need, and comment out the others! :)
+## PDF ##
+knit: (function(input, ...) {
+    source("scripts_and_filters/knit-functions.R");
+    knit_pdf(input, ...)
+  })
+## BS4 BOOK ##
+# knit: (function(input, ...) {
+#     source("scripts_and_filters/knit-functions.R");
+#     knit_bs4book(input, ...)
+#   })
+## GITBOOK ##
+# knit: (function(input, ...) {
+#     source("scripts_and_filters/knit-functions.R");
+#     knit_gitbook(input, ...)
+#   })
+## WORD ##
+# knit: (function(input, ...) {
+#     source("scripts_and_filters/knit-functions.R");
+#     knit_word(input, ...)
+#   })
+
+#####################
 ## thesis metadata ##
 #####################
 title: |
@@ -100,9 +126,8 @@ natbib-citation-style: authoryear #for science, you might want numbers,square
 natbib-bibliography-style: ACM-Reference-Format #or plainnat or some .bst file you download
 
 
-
 #####################
-## output options  ##
+## output details  ##
 #####################
 output:
   bookdown::pdf_book:
@@ -130,29 +155,6 @@ output:
 link-citations: true
 documentclass: book
 always_allow_html: true #this allows html stuff in word (.docx) output
-
-# The lines below make the 'knit' button render the whole thesis to either PDF, HTML, or Word
-# Uncomment one you need, and comment out the others! :)
-## KNIT PDF ##
-knit: (function(input, ...) {
-    source("scripts_and_filters/knit-functions.R");
-    knit_pdf(input, ...)
-  })
-## KNIT BS4 BOOK ##
-# knit: (function(input, ...) {
-#     source("scripts_and_filters/knit-functions.R");
-#     knit_bs4book(input, ...)
-#   })
-## KNIT GITBOOK ##
-# knit: (function(input, ...) {
-#     source("scripts_and_filters/knit-functions.R");
-#     knit_gitbook(input, ...)
-#   })
-## KNIT WORD ##
-# knit: (function(input, ...) {
-#     source("scripts_and_filters/knit-functions.R");
-#     knit_word(input, ...)
-#   })
 ---
 
 
