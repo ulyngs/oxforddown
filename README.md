@@ -22,8 +22,8 @@ Contents
 # Oxforddown
 A template for writing an Oxford University thesis in R Markdown. The template uses the [bookdown](https://bookdown.org) R package together with the [OxThesis LaTeX template](https://github.com/mcmanigle/OxThesis), plus lots of inspiration from [thesisdown](https://github.com/ismayc/thesisdown).
 
-- Sample PDF output: [**docs/_main.pdf**](https://github.com/ulyngs/oxforddown/blob/master/docs/_main.pdf)
-- Sample BS4 book output: [ulyngs.github.io/oxforddown/](https://ulyngs.github.io/oxforddown/)
+- [Sample PDF output](https://github.com/ulyngs/oxforddown/blob/master/docs/_main.pdf)
+- [Sample BS4 book output](https://ulyngs.github.io/oxforddown/)
 
 Examples of theses written with `oxforddown`:
 - [Ulysses in Cyberspace: Examining the Effectiveness of Design Patterns for Digital Self-Control](https://ulyngs.github.io/phd-thesis/) by [Ulrik Lyngs](https://ulriklyngs.com)
