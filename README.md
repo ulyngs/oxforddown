@@ -48,11 +48,11 @@ Examples of theses written with `oxforddown`:
 ```
 
 ## Video tutorials
-NOTE as per v3.0:
-1) the knit button is used to compile the entire thesis (the `Makefile` has been retired)
-2) as before, the introduction chapter no longer needs to be named \_introduction.Rmd, and 
+NOTE:
+1) as per v3.0, building the entire thesis is done by knitting **index.Rmd**
+2) as per v2.0, the introduction chapter no longer needs to be named \_introduction.Rmd
 
-I will update the videos soon to reflect these changes. However, they should still be somewhat informative:
+Keeping these changes in mind, the videos should still be informative:
 
 - [Part 1: Building the entire thesis](https://www.youtube.com/watch?v=Yf1W1BBS9cU)
 - [Part 2: Building a single chapter](https://www.youtube.com/watch?v=-EJfCA3VA-I)
