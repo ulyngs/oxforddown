@@ -22,12 +22,13 @@ Contents
 # Oxforddown
 A template for writing an Oxford University thesis in R Markdown. The template uses the [bookdown](https://bookdown.org) R package together with the [OxThesis LaTeX template](https://github.com/mcmanigle/OxThesis), plus lots of inspiration from [thesisdown](https://github.com/ismayc/thesisdown).
 
-- Sample PDF output: [**docs/_main.pdf**](https://github.com/ulyngs/oxforddown/blob/master/docs/_main.pdf)
-- Sample BS4 book output: [ulyngs.github.io/oxforddown/](https://ulyngs.github.io/oxforddown/)
+- [Sample PDF output](https://github.com/ulyngs/oxforddown/blob/master/docs/_main.pdf)
+- [Sample BS4 book output](https://ulyngs.github.io/oxforddown/)
 
 Examples of theses written with `oxforddown`:
 - [Ulysses in Cyberspace: Examining the Effectiveness of Design Patterns for Digital Self-Control](https://ulyngs.github.io/phd-thesis/) by [Ulrik Lyngs](https://ulriklyngs.com)
 - [Teens, Screens and Wellbeing: An Improved Approach](https://www.amyorben.com/docs/thesis/index.html) by [Amy Orben](https://www.amyorben.com)
+- [Interpreting Neural Language Models for Linguistic Complexity Assessment](https://gsarti.com/thesis/introduction.html) by [Gabriele Sarti](https://gsarti.com)
 
 *NOTE: If you've used this template to write your thesis, drop me a line at ulrik.lyngs@cs.ox.ac.uk and I'll add a link showcasing it!*
 
@@ -47,9 +48,11 @@ Examples of theses written with `oxforddown`:
 ```
 
 ## Video tutorials
-NOTE: as per v3.0, 1) the introduction chapter no longer needs to be named \_introduction.Rmd, and 2) the knit button is used to compile the entire thesis (the `Makefile` has been retired).
+NOTE:
+1) as per v3.0, building the entire thesis is done by knitting **index.Rmd**
+2) as per v2.0, the introduction chapter no longer needs to be named \_introduction.Rmd
 
-I will update the videos soon to reflect the changes. However, they should still be informative:
+Keeping these changes in mind, the videos should still be informative:
 
 - [Part 1: Building the entire thesis](https://www.youtube.com/watch?v=Yf1W1BBS9cU)
 - [Part 2: Building a single chapter](https://www.youtube.com/watch?v=-EJfCA3VA-I)
@@ -115,6 +118,7 @@ For how to write your content with the R Markdown syntax, read through the sampl
 ### Building your entire thesis
 - You build the entire thesis by opening **index.Rmd** and clicking the 'knit' button.
 - The generated thesis files are saved in the **docs/** folder
+<<<<<<< HEAD
 - To choose between output formats, go to the top of the YAML header and edit the line `thesis_formats <- "pdf";` to the format(s) you want (options are "pdf", "bs4", "gitbook", and "word")
 - You can build to multiple formats simultaneously with, e.g., `thesis_formats <- c("pdf", "bs4", "word")`
 - If you want to customise the build function, edit **scripts_and_filters/knit-functions.R**
@@ -130,18 +134,16 @@ knit: (function(input, ...) {
 
 
 #### BS4 book output (HTML)
-- NOTE: the [bs4 book output](https://pkgs.rstudio.com/bookdown/reference/bs4_book.html) requires the `downlit` and `bslib` R packages (install them with `install.packages`)
-
 ```yaml
 knit: (function(input, ...) {
     thesis_formats <- "bs4";
     ...
 ```
 
-(Note that to deploy a BS4 book on GitHub Pages, there must be a **.nojekyll** file in the **docs/** folder, otherwise GitHub does some voodoo that causes some filepaths not to work. This file is generated automatically for you when you knit.)
+- NOTE: the [bs4 book output](https://pkgs.rstudio.com/bookdown/reference/bs4_book.html) requires the `downlit` and `bslib` R packages (install them with `install.packages`)
+- Note also that to deploy a BS4 book on GitHub Pages, there must be a **.nojekyll** file in the **docs/** folder, otherwise GitHub does some voodoo that causes some filepaths not to work. This file is generated automatically for you when you knit.
 
 #### Gitbook output (HTML)
-Uncomment this section (the one with a `knit_gitbook` function call):
 
 ```yaml
 knit: (function(input, ...) {
@@ -149,9 +151,8 @@ knit: (function(input, ...) {
     ...
 ```
 
-(Note that to deploy a gitbook on GitHub Pages, there must be a **.nojekyll** file in the **docs/** folder, otherwise GitHub does some voodoo that causes some filepaths not to work. This file is generated automatically for you when you knit.)
+- Note that to deploy a gitbook on GitHub Pages, there must be a **.nojekyll** file in the **docs/** folder, otherwise GitHub does some voodoo that causes some filepaths not to work. This file is generated automatically by `oxforddown`s knitting function when you knit.
 
-![](figures/sample-content/screenshots/compiled_gitbook.png)
 
 #### Word output
 ```yaml
@@ -167,7 +168,7 @@ To knit an individual chapter without compiling the entire thesis:
 
 1. open the **.Rmd** file of a chapter
 2. add a YAML header specifying the output format(s) (e.g. `bookdown::word_document2` for a word document you might want to upload to Google Docs for feedback from collaborators)
-3. Click the `knit` button (the output file is then saved in the root folder)
+3. click the `knit` button (the output file is then saved in the root folder)
 
 As shown in the sample chapters' YAML headers, to output a single chapter to PDF, use e.g.:
 
