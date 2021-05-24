@@ -131,9 +131,6 @@ knit: (function(input, ...) {
   })
 ```
 
-![](figures/sample-content/screenshots/compiled_pdf.png)
-
-
 #### BS4 book output
 - the bs4 book output requires the `downlit` and `bslib` R packages (install them with `install.packages`)
 
@@ -160,7 +157,6 @@ knit: (function(input, ...) {
 
 (Note that to deploy a gitbook on GitHub Pages, there must be a **.nojekyll** file in the **docs/** folder, otherwise GitHub does some voodoo that causes some filepaths not to work. This file is generated automatically for you when you knit.)
 
-![](figures/sample-content/screenshots/compiled_gitbook.png)
 
 #### Word output
 Uncomment this section (the one with a `knit_gitbook` function call):
