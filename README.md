@@ -118,8 +118,7 @@ For how to write your content with the R Markdown syntax, read through the sampl
 ### Building your entire thesis
 - You build the entire thesis by opening **index.Rmd** and clicking the 'knit' button.
 - The generated thesis files are saved in the **docs/** folder
-<<<<<<< HEAD
-- To choose between output formats, go to the top of the YAML header and edit the line `thesis_formats <- "pdf";` to the format(s) you want (options are "pdf", "bs4", "gitbook", and "word")
+- To choose between output formats, go to the top of the YAML header and edit the line `thesis_formats <- "pdf";` to the format(s) you want (the options are "pdf", "bs4", "gitbook", and "word")
 - You can build to multiple formats simultaneously with, e.g., `thesis_formats <- c("pdf", "bs4", "word")`
 - If you want to customise the build function, edit **scripts_and_filters/knit-functions.R**
 
@@ -141,7 +140,7 @@ knit: (function(input, ...) {
 ```
 
 - NOTE: the [bs4 book output](https://pkgs.rstudio.com/bookdown/reference/bs4_book.html) requires the `downlit` and `bslib` R packages (install them with `install.packages`)
-- Note also that to deploy a BS4 book on GitHub Pages, there must be a **.nojekyll** file in the **docs/** folder, otherwise GitHub does some voodoo that causes some filepaths not to work. This file is generated automatically for you when you knit.
+- Note also that to deploy a BS4 book on GitHub Pages, there must be a **.nojekyll** file in the **docs/** folder, otherwise GitHub does some voodoo that causes some filepaths not to work. This file is generated automatically by `oxforddown`s knitting function.
 
 #### Gitbook output (HTML)
 
@@ -151,7 +150,7 @@ knit: (function(input, ...) {
     ...
 ```
 
-- Note that to deploy a gitbook on GitHub Pages, there must be a **.nojekyll** file in the **docs/** folder, otherwise GitHub does some voodoo that causes some filepaths not to work. This file is generated automatically by `oxforddown`s knitting function when you knit.
+- Note that to deploy a gitbook on GitHub Pages, there must be a **.nojekyll** file in the **docs/** folder, otherwise GitHub does some voodoo that causes some filepaths not to work. This file is generated automatically by `oxforddown`s knitting function.
 
 
 #### Word output
@@ -161,7 +160,7 @@ knit: (function(input, ...) {
     ...
 ```
 
-Note that the Word output has no templates behind it, and many things do not work (e.g. image rotation, highlighting corrections). **I encourage pull requests that optimise the Word output, e.g. by using tools from the [`officer`](https://github.com/davidgohel/officer) package.**
+- Note that the Word output has no templates behind it, and many things do not work (e.g. image rotation, highlighting corrections). **I encourage pull requests that optimise the Word output, e.g. by using tools from the [`officer`](https://github.com/davidgohel/officer) package.**
 
 ### Building a single chapter
 To knit an individual chapter without compiling the entire thesis:
