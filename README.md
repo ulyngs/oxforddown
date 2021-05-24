@@ -115,44 +115,38 @@ For how to write your content with the R Markdown syntax, read through the sampl
 ### Building your entire thesis
 - You build the entire thesis by opening **index.Rmd** and clicking the 'knit' button.
 - The generated thesis files are saved in the **docs/** folder
-- To choose between output formats, go to the end of the YAML header and uncomment the knit function that you want (make sure the other options are commented out, otherwise you'll get an error).
+- To choose between output formats, go to the top of the YAML header and edit the line `thesis_formats <- "pdf";` to the format(s) you want (options are "pdf", "bs4", "gitbook", and "word")
+- You can build to multiple formats simultaneously with, e.g., `thesis_formats <- c("pdf", "bs4", "word")`
 - If you want to customise the build function, edit **scripts_and_filters/knit-functions.R**
 
 #### PDF output
-Make sure this section (with a `knit_pdf` function call) is uncommented:
-
 ```yaml
 knit: (function(input, ...) {
-    source("scripts_and_filters/knit-functions.R");
-    knit_pdf(input, ...)
-  })
+    thesis_formats <- "pdf";
+    ...
 ```
 
 ![](figures/sample-content/screenshots/compiled_pdf.png)
 
 
-#### BS4 book output
-- the bs4 book output requires the `downlit` and `bslib` R packages (install them with `install.packages`)
-
-Uncomment this section (the one with a `knit_bs4book` function call):
+#### BS4 book output (HTML)
+- NOTE: the [bs4 book output](https://pkgs.rstudio.com/bookdown/reference/bs4_book.html) requires the `downlit` and `bslib` R packages (install them with `install.packages`)
 
 ```yaml
 knit: (function(input, ...) {
-    source("scripts_and_filters/knit-functions.R");
-    knit_gitbook(input, ...)
-  })
+    thesis_formats <- "bs4";
+    ...
 ```
 
 (Note that to deploy a BS4 book on GitHub Pages, there must be a **.nojekyll** file in the **docs/** folder, otherwise GitHub does some voodoo that causes some filepaths not to work. This file is generated automatically for you when you knit.)
 
-#### Gitbook output
+#### Gitbook output (HTML)
 Uncomment this section (the one with a `knit_gitbook` function call):
 
 ```yaml
 knit: (function(input, ...) {
-    source("scripts_and_filters/knit-functions.R");
-    knit_gitbook(input, ...)
-  })
+    thesis_formats <- "gitbook";
+    ...
 ```
 
 (Note that to deploy a gitbook on GitHub Pages, there must be a **.nojekyll** file in the **docs/** folder, otherwise GitHub does some voodoo that causes some filepaths not to work. This file is generated automatically for you when you knit.)
@@ -160,13 +154,10 @@ knit: (function(input, ...) {
 ![](figures/sample-content/screenshots/compiled_gitbook.png)
 
 #### Word output
-Uncomment this section (the one with a `knit_gitbook` function call):
-
 ```yaml
 knit: (function(input, ...) {
-    source("scripts_and_filters/knit-functions.R");
-    knit_word(input, ...)
-  })
+    thesis_formats <- "word";
+    ...
 ```
 
 Note that the Word output has no templates behind it, and many things do not work (e.g. image rotation, highlighting corrections). **I encourage pull requests that optimise the Word output, e.g. by using tools from the [`officer`](https://github.com/davidgohel/officer) package.**

@@ -2,28 +2,16 @@
 #####################
 ##  output format  ##
 #####################
-# The lines below make the 'knit' button render the whole thesis to either PDF, HTML, or Word
-# Uncomment the one you need, and comment out the others! :)
-## PDF ##
+# The lines below makes the 'knit' button build the entire thesis 
+# Edit the line 'thesis_formats <- "pdf"' to the formats you want
+# The format options are: 'pdf', 'bs4', 'gitbook', 'word'
+# E.g. you can build both pdf and html with 'thesis_formats <- c("pdf", "bs4")'
 knit: (function(input, ...) {
+    thesis_formats <- "pdf";
+    
     source("scripts_and_filters/knit-functions.R");
-    knit_pdf(input, ...)
+    knit_thesis(input, thesis_formats, ...)
   })
-## BS4 BOOK ##
-# knit: (function(input, ...) {
-#     source("scripts_and_filters/knit-functions.R");
-#     knit_bs4book(input, ...)
-#   })
-## GITBOOK ##
-# knit: (function(input, ...) {
-#     source("scripts_and_filters/knit-functions.R");
-#     knit_gitbook(input, ...)
-#   })
-## WORD ##
-# knit: (function(input, ...) {
-#     source("scripts_and_filters/knit-functions.R");
-#     knit_word(input, ...)
-#   })
 
 #####################
 ## thesis metadata ##
