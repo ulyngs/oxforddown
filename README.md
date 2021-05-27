@@ -49,7 +49,7 @@ Examples of theses written with `oxforddown`:
 
 ## Video tutorials
 NOTE:
-1) as per v3.0, building the entire thesis is done by knitting **index.Rmd**
+1) as per v3.0, building the entire thesis is done by knitting **index.Rmd**, and the Makefile is replaced by **scripts_and_filters/knit-functions.R**
 2) as per v2.0, the introduction chapter no longer needs to be named \_introduction.Rmd
 
 Keeping these changes in mind, the videos should still be informative:
