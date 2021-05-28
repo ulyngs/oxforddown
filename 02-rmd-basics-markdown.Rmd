@@ -273,7 +273,7 @@ knitr::include_graphics("figures/sample-content/beltcrest.png")
 
 As anyone who has tried to manually play around with the placement of figures in a Word document knows, this can have lots of side effects with extra spacing on other pages, etc.
 Therefore, it is not generally a good idea to do this - only do it when you really need to ensure that an image follows directly under text where you refer to it (in this document, I needed to do this for Figure \@ref(fig:latex-font-sizing) in section \@ref(max-power)).
-For more details, read the relevant section of the [R Markdown Cookbook]https://bookdown.org/yihui/rmarkdown-cookbook/figure-placement.html).
+For more details, read the relevant section of the [R Markdown Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/figure-placement.html).
 
 
 ## Executable inline code
