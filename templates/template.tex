@@ -6,64 +6,38 @@
 % Originally by Keith A. Gillow (gillow@maths.ox.ac.uk), 1997
 % Modified by Sam Evans (sam@samuelevansresearch.org), 2007
 % Modified by John McManigle (john@oxfordechoes.com), 2015
-% Modified by Ulrik Lyngs (ulrik.lyngs@cs.ox.ac.uk), 2018, for use with R Markdown
+% Modified by Ulrik Lyngs (ulrik.lyngs@cs.ox.ac.uk), 2018-, for use with R Markdown
 %
 % Ulrik Lyngs, 25 Nov 2018: Following John McManigle, broad permissions are granted to use, modify, and distribute this software
 % as specified in the MIT License included in this distribution's LICENSE file.
 %
-% John tried to comment this file extensively, so read through it to see how to use the various options.  Remember
-% that in LaTeX, any line starting with a % is NOT executed.  Several places below, you have a choice of which line to use
+% John commented this file extensively, so read through to see how to use the various options.  Remember that in LaTeX,
+% any line starting with a % is NOT executed.  Several places below, you have a choice of which line to use
 % out of multiple options (eg draft vs final, for PDF vs for binding, etc.)  When you pick one, add a % to the beginning of
 % the lines you don't want.
 
 
-%%%%% CHOOSE PAGE LAYOUT
+%%%%% PAGE LAYOUT
 % The most common choices should be below.  You can also do other things, like replacing "a4paper" with "letterpaper", etc.
 
-% This one will format for two-sided binding (ie left and right pages have mirror margins; blank pages inserted where needed):
+% This one formats for two-sided binding (ie left and right pages have mirror margins; blank pages inserted where needed):
 %\documentclass[a4paper,twoside]{templates/ociamthesis}
-% This one will format for one-sided binding (ie left margin > right margin; no extra blank pages):
+% This one formats for one-sided binding (ie left margin > right margin; no extra blank pages):
 %\documentclass[a4paper]{ociamthesis}
-% This one will format for PDF output (ie equal margins, no extra blank pages):
+% This one formats for PDF output (ie equal margins, no extra blank pages):
 %\documentclass[a4paper,nobind]{templates/ociamthesis}
-%UL 2 Dec 2018: pass this in from YAML
+
+% As you can see from the uncommented line below, oxforddown template uses the a4paper size, 
+% and passes in the binding option from the YAML header in index.Rmd:
 \documentclass[a4paper, $if(page-layout)$$page-layout$$endif$]{templates/ociamthesis}
 
+
+%%%%% ADDING LATEX PACKAGES
 % add hyperref package with options from YAML %
 \usepackage[colorlinks=false,pdfpagelabels$if(hidelinks)$,hidelinks$endif$]{hyperref}
 
 % add float package to allow manual control of figure positioning %
 \usepackage{float}
-
-%UL set section header spacing
-\usepackage{titlesec}
-% 
-\titlespacing\subsubsection{0pt}{24pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
-
-% UL 30 Nov 2018 pandoc puts lists in 'tightlist' command when no space between bullet points in Rmd file
-\providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
- 
-% UL 1 Dec 2018, fix to include code in shaded environments
-$if(highlighting-macros)$
-$highlighting-macros$
-
-%UL set white space before and after code blocks
-\renewenvironment{Shaded}
-{
-  \vspace{$space-before-code-block$}%
-  \begin{snugshade}%
-}{%
-  \end{snugshade}%
-  \vspace{$space-after-code-block$}%
-}
-$endif$
-
-%UL set whitespace around verbatim environments
-\usepackage{etoolbox}
-\makeatletter
-\preto{\@verbatim}{\topsep=0pt \partopsep=0pt }
-\makeatother
 
 %UL 26 Mar 2019, enable strikethrough
 \usepackage[normalem]{ulem}
@@ -85,11 +59,46 @@ $endif$
 \soulregister\textcite7
 \soulregister\pageref7
 
-% user-included things with header_includes or in_header will appear here
+%%%%% FIXING / ADDING THINGS THAT'S SPECIAL TO R MARKDOWN'S USE OF LATEX TEMPLATES
+% pandoc puts lists in 'tightlist' command when no space between bullet points in Rmd file,
+% so we add this command to the template
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+ 
+% UL 1 Dec 2018, fix to include code in shaded environments
+$if(highlighting-macros)$
+$highlighting-macros$
+
+%UL set white space before and after code blocks
+\renewenvironment{Shaded}
+{
+  \vspace{$space-before-code-block$}%
+  \begin{snugshade}%
+}{%
+  \end{snugshade}%
+  \vspace{$space-after-code-block$}%
+}
+$endif$
+
+% User-included things with header_includes or in_header will appear here
 % kableExtra packages will appear here if you use library(kableExtra)
 $for(header-includes)$
 $header-includes$
 $endfor$
+
+
+%UL set section header spacing
+\usepackage{titlesec}
+% 
+\titlespacing\subsubsection{0pt}{24pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+
+
+%UL set whitespace around verbatim environments
+\usepackage{etoolbox}
+\makeatletter
+\preto{\@verbatim}{\topsep=0pt \partopsep=0pt }
+\makeatother
+
 
 
 %%%%%%% PAGE HEADERS AND FOOTERS %%%%%%%%%
@@ -128,6 +137,12 @@ $if(draft-mark)$
 \fancy$draft-mark-foot-or-head$[$draft-mark-position$]{\emph{DRAFT Printed on \today}}
 $endif$
 
+% IP feb 2021: option to include line numbers in PDF
+$if(includeline-num)$
+\usepackage{lineno}
+\linenumbers
+$endif$
+
 % This highlights (in blue) corrections marked with (for words) \mccorrect{blah} or (for whole
 % paragraphs) \begin{mccorrection} . . . \end{mccorrection}.  This can be useful for sending a PDF of
 % your corrected thesis to your examiners for review.  Turn it off, and the blue disappears.
@@ -135,11 +150,6 @@ $if(corrections)$
 \correctionstrue
 $endif$
 
-% IP feb 2021: option to include line numbers in PDF
-$if(includeline-num)$
-\usepackage{lineno}
-\linenumbers
-$endif$
 
 %%%%% BIBLIOGRAPHY SETUP
 % Note that your bibliography will require some tweaking depending on your department, preferred format, etc.
