@@ -49,7 +49,7 @@ Examples of theses written with `oxforddown`:
 
 ## Video tutorials
 NOTE:
-1) as per v3.0, building the entire thesis is done by knitting **index.Rmd**
+1) as per v3.0, building the entire thesis is done by knitting **index.Rmd**, and the Makefile is replaced by **scripts_and_filters/knit-functions.R**
 2) as per v2.0, the introduction chapter no longer needs to be named \_introduction.Rmd
 
 Keeping these changes in mind, the videos should still be informative:
@@ -116,9 +116,9 @@ For how to write your content with the R Markdown syntax, read through the sampl
 **.Rmd** files you don't want included in the body text must be given file names that begin with an underscore (e.g. **front-and-back-matter/\_abstract.Rmd** and **front-and-back-matter/\_acknowledgements.Rmd**). (Alternatively, specify manually in **\_bookdown.yml** which files should be merged into the body text.)
 
 ### Building your entire thesis
-- You build the entire thesis by opening **index.Rmd** and clicking the 'knit' button.
+- Build the entire thesis by opening **index.Rmd** and clicking the 'knit' button.
 - The generated thesis files are saved in the **docs/** folder
-- To choose between output formats, go to the top of the YAML header and edit the line `thesis_formats <- "pdf";` to the format(s) you want (the options are "pdf", "bs4", "gitbook", and "word")
+- To choose output formats, go to the top of **index.Rmd**'s YAML header and edit the line `thesis_formats <- "pdf";` to the format(s) you want (options are "pdf", "bs4", "gitbook", and "word")
 - You can build to multiple formats simultaneously with, e.g., `thesis_formats <- c("pdf", "bs4", "word")`
 - If you want to customise the build function, edit **scripts_and_filters/knit-functions.R**
 
