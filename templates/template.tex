@@ -34,7 +34,38 @@
 
 %%%%% ADDING LATEX PACKAGES
 % add hyperref package with options from YAML %
-\usepackage[colorlinks=false,pdfpagelabels$if(hidelinks)$,hidelinks$endif$]{hyperref}
+\usepackage[pdfpagelabels]{hyperref}
+% change the default coloring of links to something sensible
+\usepackage{xcolor}
+
+$if(linkcolor-rgb)$
+\definecolor{mylinkcolor}{RGB}{$linkcolor-rgb$}
+$endif$
+$if(urlcolor-rgb)$
+\definecolor{myurlcolor}{RGB}{$urlcolor-rgb$}
+$endif$
+$if(citecolor-rgb)$
+\definecolor{mycitecolor}{RGB}{$citecolor-rgb$}
+$endif$
+
+$if(colored-not-bordered-links)$
+\hypersetup{
+  hidelinks,
+  colorlinks,
+  linkcolor=$if(linkcolor-rgb)$mylinkcolor$else$.$endif$,
+  urlcolor=$if(urlcolor-rgb)$myurlcolor$else$.$endif$,
+  citecolor=$if(citecolor-rgb)$mycitecolor$else$.$endif$
+}
+
+$else$
+\hypersetup{
+  colorlinks=false,
+  linkbordercolor=$if(linkcolor-rgb)$mylinkcolor$else$.$endif$,
+  urlbordercolor=$if(urlcolor-rgb)$myurlcolor$else$.$endif$,
+  citebordercolor=$if(citecolor-rgb)$mycitecolor$else$.$endif$
+}
+$endif$
+
 
 % add float package to allow manual control of figure positioning %
 \usepackage{float}
@@ -44,7 +75,6 @@
 
 % use soul package for correction highlighting
 \usepackage{color, soul}
-\usepackage{xcolor}
 \definecolor{correctioncolor}{HTML}{CCCCFF}
 \sethlcolor{correctioncolor}
 \newcommand{\ctext}[3][RGB]{%

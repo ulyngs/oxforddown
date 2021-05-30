@@ -77,6 +77,18 @@ natbib-bibliography-style: ACM-Reference-Format #or plainnat or some .bst file y
 ### correction highlighting ###
 corrections: true
 
+### link highlighting ###
+colored-not-bordered-links: true # true = highlight text of links - false = highlight links with border
+
+# Set the link text/bord coloring here, in RGB. 
+# Comment out a variable to just use whatever the text's existing color is. 
+# If you wish NOT to highlight links, set colored-not-bordered-links: true, 
+# and comment out the colors below
+urlcolor-rgb: "0,0,139"
+citecolor-rgb: "0,33,71"
+# linkcolor-rgb: "0,33,71"  # coloring normal links looks a bit excessive, as it highlights also all links in the table of contents
+
+
 ### binding / margins ###
 page-layout: nobind #'nobind' for equal margins (PDF output), 'twoside' for two-sided binding (mirror margins and blank pages), leave blank for one-sided binding (left margin > right margin)
 
@@ -119,7 +131,6 @@ frontmatter-linespacing: 17pt plus1pt minus1pt #spacing in roman-numbered pages 
 
 ### other stuff ###
 abstractseparate: false  # include front page w/ abstract for examination schools?
-hidelinks: true # false to highlight clickable links with a colored border
 includeline-num: false #show line numbering in PDF?
 
 
