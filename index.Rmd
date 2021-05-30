@@ -44,7 +44,7 @@ bibliography: references.bib
 ########################
 ## PDF layout options ###
 #########################
-## submitting a master's thesis ##
+### submitting a master's thesis ###
 # set masters-submission: true for an alternative, anonymous title page with 
 # candidate number and word count
 masters-submission: false
@@ -55,55 +55,9 @@ word-count: "10,052"
 # .tex file here and it will override the default Oxford one
 # alternative-title-page: templates/alt-title-page-example.tex
 
-## abbreviations ##
+### abbreviations ###
 abbreviations-width: 3.2cm
 abbreviations-heading: List of Abbreviations
-
-## correction highlighting ##
-corrections: true
-
-## binding / margins ##
-page-layout: nobind #'nobind' for equal margins (PDF output), 'twoside' for two-sided binding (mirror margins and blank pages), leave blank for one-sided binding (left margin > right margin)
-
-## position of page numbers ##
-ordinary-page-number-foot-or-head: foot #'foot' puts page number in footer, 'head' in header
-ordinary-page-number-position: C  #C = center, R = right, L = left. If page layout is 'twoside', O = odd pages and E = even pages. E.g. RO,LE puts the page number to the right on odd pages and left on even pages
-chapter-page-number-foot-or-head: foot #you may want it to be different on the chapter pages
-chapter-page-number-position: C
-
-## position of running header ##
-running-header: true #indicate current chapter/section in header?
-running-header-foot-or-head: head
-running-header-position-leftmark: LO #marks the chapter. If layout is 'nobind', only this is used.
-running-header-position-rightmark: RE  #marks the section.
-
-draft-mark: false # add a DRAFT mark?
-draft-mark-foot-or-head: foot ##'foot' = in footer, 'head' = in header
-draft-mark-position: C
-
-## section numbering ##
-section-numbering-depth: 2 # to which depth should headings be numbered?
-
-## tables of content ##
-toc-depth: 1 # to which depth should headings be included in table of contents?
-lof: true # include list of figures in front matter?
-lot: true # include list of tables in front matter?
-mini-toc: true  # include mini-table of contents at start of each chapter? (this just prepares it; you must also add \minitoc after the chapter titles)
-mini-lot: false  # include mini-list of tables by start of each chapter?
-mini-lof: false  # include mini-list of figures by start of each chapter?
-
-## code block spacing ##
-space-before-code-block: 10pt
-space-after-code-block: 8pt
-
-## linespacing ##
-linespacing: 22pt plus2pt # 22pt is official for submission & library copies
-frontmatter-linespacing: 17pt plus1pt minus1pt #spacing in roman-numbered pages (acknowledgments, table of contents, etc.)
-
-### other stuff ###
-abstractseparate: true  # include front page w/ abstract for examination schools?
-hidelinks: true # false to highlight clickable links with a colored border
-includeline-num: false #show line numbering in PDF?
 
 
 ### citation and bibliography style ###
@@ -119,6 +73,55 @@ bib-latex-options: "style=authoryear, sorting=nyt, backend=biber, maxcitenames=2
 use-natbib: false # to use natbib, set this to true, and change "output:bookdown::pdf_book:citation_package:" to "natbib"
 natbib-citation-style: authoryear #for science, you might want numbers,square
 natbib-bibliography-style: ACM-Reference-Format #or plainnat or some .bst file you download
+
+### correction highlighting ###
+corrections: true
+
+### binding / margins ###
+page-layout: nobind #'nobind' for equal margins (PDF output), 'twoside' for two-sided binding (mirror margins and blank pages), leave blank for one-sided binding (left margin > right margin)
+
+### position of page numbers ###
+ordinary-page-number-foot-or-head: foot #'foot' puts page number in footer, 'head' in header
+ordinary-page-number-position: C  #C = center, R = right, L = left. If page layout is 'twoside', O = odd pages and E = even pages. E.g. RO,LE puts the page number to the right on odd pages and left on even pages
+chapter-page-number-foot-or-head: foot #you may want it to be different on the chapter pages
+chapter-page-number-position: C
+
+### position of running header ###
+running-header: true #indicate current chapter/section in header?
+running-header-foot-or-head: head
+running-header-position-leftmark: LO #marks the chapter. If layout is 'nobind', only this is used.
+running-header-position-rightmark: RE  #marks the section.
+
+
+### draft mark ###
+draft-mark: false # add a DRAFT mark?
+draft-mark-foot-or-head: foot ##'foot' = in footer, 'head' = in header
+draft-mark-position: C
+
+### section numbering ###
+section-numbering-depth: 2 # to which depth should headings be numbered?
+
+### tables of content ###
+toc-depth: 1 # to which depth should headings be included in table of contents?
+lof: true # include list of figures in front matter?
+lot: true # include list of tables in front matter?
+mini-toc: true  # include mini-table of contents at start of each chapter? (this just prepares it; you must also add \minitoc after the chapter titles)
+mini-lot: false  # include mini-list of tables by start of each chapter?
+mini-lof: false  # include mini-list of figures by start of each chapter?
+
+### code block spacing ###
+space-before-code-block: 10pt
+space-after-code-block: 8pt
+
+### linespacing ###
+linespacing: 22pt plus2pt # 22pt is official for submission & library copies
+frontmatter-linespacing: 17pt plus1pt minus1pt #spacing in roman-numbered pages (acknowledgments, table of contents, etc.)
+
+### other stuff ###
+abstractseparate: true  # include front page w/ abstract for examination schools?
+hidelinks: true # false to highlight clickable links with a colored border
+includeline-num: false #show line numbering in PDF?
+
 
 #####################
 ## output details  ##
