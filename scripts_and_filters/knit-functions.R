@@ -22,4 +22,7 @@ knit_thesis <- function(input, output_format = "pdf", ...){
   if ("word" %in% output_format){
     bookdown::render_book(input, output_format = "bookdown::word_document2")
   }
+  
+  # remove the _bookdown_files folder after the build
+  unlink("_bookdown_files", recursive = TRUE)
 }
