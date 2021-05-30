@@ -33,7 +33,8 @@ abstract: |
 acknowledgements: |
   `r paste(readLines("front-and-back-matter/_acknowledgements.Rmd"), collapse = '\n  ')`
 dedication: For Yihui Xie
-abbreviations: "front-and-back-matter/abbreviations" # path to .tex file with abbreviations
+abbreviations: |
+  `r paste(readLines("front-and-back-matter/_abbreviations.Rmd"), collapse = '\n  ')`
 
 #######################
 ## bibliography path ##
@@ -53,6 +54,10 @@ word-count: "10,052"
 # if you want to use a different title page altogether, provide a path to a 
 # .tex file here and it will override the default Oxford one
 # alternative-title-page: templates/alt-title-page-example.tex
+
+## abbreviations ##
+abbreviations-width: 3.2cm
+abbreviations-heading: List of Abbreviations
 
 ## correction highlighting ##
 corrections: true
@@ -99,6 +104,7 @@ frontmatter-linespacing: 17pt plus1pt minus1pt #spacing in roman-numbered pages 
 abstractseparate: true  # include front page w/ abstract for examination schools?
 hidelinks: true # false to highlight clickable links with a colored border
 includeline-num: false #show line numbering in PDF?
+
 
 ### citation and bibliography style ###
 bibliography-heading-in-pdf: Works Cited

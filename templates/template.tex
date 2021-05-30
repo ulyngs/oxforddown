@@ -335,7 +335,14 @@ $endif$
 % formatted.  The template can handle any kind of list though, so this might be a good place for a
 % glossary, etc.
 $if(abbreviations)$
-\include{$abbreviations$}
+% First parameter can be changed eg to "Glossary" or something.
+% Second parameter is the max length of bold terms.
+\begin{mclistof}{$abbreviations-heading$}{$abbreviations-width$}
+
+$abbreviations$
+
+\end{mclistof} 
+
 $endif$
 
 % The Roman pages, like the Roman Empire, must come to its inevitable close.

@@ -2,7 +2,7 @@ knit_thesis <- function(input, output_format = "pdf", ...){
   if ("pdf" %in% output_format){
     bookdown::render_book(input, output_format = "bookdown::pdf_book")
     
-    file.remove(list.files(pattern = "*.(log|mtc|maf|aux|bcf|lof|lot|out|toc)"), here::here("front-and-back-matter", "abbreviations.aux"))
+    file.remove(list.files(pattern = "*.(log|mtc|maf|aux|bcf|lof|lot|out|toc)"))
   }
   
   if ("bs4" %in% output_format){

@@ -1,0 +1,6 @@
+\item[1-D, 2-D] One- or two-dimensional, referring **in this thesis** to spatial dimensions in an image.
+
+\item[Otter] One of the finest of water mammals.
+
+\item[Hedgehog] Quite a nice prickly friend.
+
