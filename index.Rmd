@@ -24,6 +24,7 @@ author: Author Name
 college: Your College
 university: University of Oxford
 university-logo: templates/beltcrest.pdf
+university-logo-width: 5cm
 submitted-text: A thesis submitted for the degree of
 degree: Doctor of Philosophy
 degreedate: Michaelmas 2018

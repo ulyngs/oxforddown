@@ -39,10 +39,10 @@
 % add float package to allow manual control of figure positioning %
 \usepackage{float}
 
-%UL 26 Mar 2019, enable strikethrough
+% enable strikethrough
 \usepackage[normalem]{ulem}
 
-%UL use soul package for correction highlighting
+% use soul package for correction highlighting
 \usepackage{color, soul}
 \usepackage{xcolor}
 \definecolor{correctioncolor}{HTML}{CCCCFF}
@@ -238,7 +238,7 @@ $endif$
 %
 % Oxford University logo on title page
 %
-\def\crest{{\includegraphics{$university-logo$}}}
+\def\crest{{\includegraphics[width=$university-logo-width$]{$university-logo$}}}
 \renewcommand{\university}{$university$}
 \renewcommand{\submittedtext}{$submitted-text$}
 
