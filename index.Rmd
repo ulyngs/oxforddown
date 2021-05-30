@@ -51,7 +51,7 @@ word-count: "10,052"
 
 # if you want to use a different title page altogether, provide a path to a 
 # .tex file here and it will override the default Oxford one
-# alternative-title-page: front-and-back-matter/alt-title-page-example.tex
+# alternative-title-page: templates/alt-title-page-example.tex
 
 ## correction highlighting ##
 corrections: true
