@@ -72,7 +72,7 @@ bib-latex-options: "style=authoryear, sorting=nyt, backend=biber, maxcitenames=2
 # natbib runs into fewer errors than biblatex, but to customise your bibliography you need to fiddle with .bst files
 use-natbib: false # to use natbib, set this to true, and change "output:bookdown::pdf_book:citation_package:" to "natbib"
 natbib-citation-style: authoryear #for science, you might want numbers,square
-natbib-bibliography-style: templates/ACM-Reference-Format.bst #"plainnat", unsrtnat, or some .bst file you download
+natbib-bibliography-style: templates/ACM-Reference-Format.bst #e.g. "plainnat", unsrtnat, or path to a .bst file
 
 ### correction highlighting ###
 corrections: true
