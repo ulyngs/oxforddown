@@ -52,7 +52,7 @@ NOTE:
 1) as per v3.0, you build the entire thesis by knitting **index.Rmd** - the Makefile has been replaced by **scripts_and_filters/knit-functions.R**
 2) as per v2.0, the introduction chapter no longer needs to be named \_introduction.Rmd
 
-I have not yet had time to update all tutorial videos - I've marked below which ones have yet to be updated (but may still be informative), and crossed out the ones that are now just wrong:
+I am in the process of updating the tutorial videos to v3 - I've marked below which ones are yet to be updated (they are still informative), and crossed out the ones that are now longer useful:
 
 - [Part 1: Building the entire thesis](https://youtu.be/LBHxcuCMjnk)
 - [Part 2: Building a single chapter](https://youtu.be/8vcO252Us6g)
