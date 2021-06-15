@@ -52,7 +52,7 @@ NOTE:
 1) as per v3.0, you build the entire thesis by knitting **index.Rmd** - the Makefile has been replaced by **scripts_and_filters/knit-functions.R**
 2) as per v2.0, the introduction chapter no longer needs to be named \_introduction.Rmd
 
-Keeping these changes in mind, the videos should still be informative:
+I have not yet had time to update all tutorial videos - I've marked below which ones have yet to be updated, and crossed out the ones that are now just wrong:
 
 - [Part 1: Building the entire thesis](https://youtu.be/LBHxcuCMjnk)
 - [Part 2: Building a single chapter](https://youtu.be/8vcO252Us6g)
@@ -62,7 +62,7 @@ Keeping these changes in mind, the videos should still be informative:
 - [(NOT UPDATED) Part 6: Adjusting the order of chapters](https://www.youtube.com/watch?v=-0M3TuDnu7Y)
 - [(NOT UPDATED) Part 7: \_bookdown.yml: Adjusting build settings](https://www.youtube.com/watch?v=jXYfC8RXTvg)
 - [~~Part 8: Makefile: Adjusting build settings~~](https://www.youtube.com/watch?v=L6mV8z32RfE)
-- [Part 9: The LaTeX templates](https://www.youtube.com/watch?v=o2fd_O1On7g)
+- [(NOT UPDATED) Part 9: The LaTeX templates](https://www.youtube.com/watch?v=o2fd_O1On7g)
 
 
 For how to write your content with the R Markdown syntax, read through the sample content.
