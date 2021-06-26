@@ -39,7 +39,7 @@ abbreviations: |
 #######################
 ## bibliography path ##
 #######################
-bibliography: references.bib
+bibliography: [bibliography/references.bib, bibliography/additional-references.bib]
 
 ########################
 ## PDF layout options ###
