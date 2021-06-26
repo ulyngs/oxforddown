@@ -3,28 +3,18 @@
 # Contents
 
 -   [Requirements](#requirements)
-
 -   [Video tutorials](#video-tutorials)
-
 -   [How to use](#how-to-use)
-
     -   [Writing your thesis](#writing-your-thesis)
-
     -   [Building your entire thesis](#building-your-entire-thesis)
-
         -   [PDF output](#pdf-output)
         -   [Gitbook output](#gitbook-output)
         -   [BS4 book output](#bs4-book-output)
         -   [Word output](#word-output)
-
     -   [Building a single chapter](#building-a-single-chapter)
-
     -   [Cleaning up generated auxiliary files](#cleaning-up-generated-auxiliary-files)
-
 -   [Customisations and extensions](#customisations-and-extensions)
-
 -   [Limitations](#limitations)
-
     -   [Gotchas](#gotchas)
     -   [Output formats](#output-formats)
 
