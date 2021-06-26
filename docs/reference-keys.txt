@@ -11,6 +11,12 @@ tab:cars-table2
 fig:latex-font-sizing
 how-to-use
 how-oxforddown-is-structured
+index.rmd-metadata-and-layout-options
+other-.rmd-files-in-root-folder-thesis-chapters
+front-and-back-matter
+bookdown.yml-build-options
+scripts-and-filters
+templates
 building-your-entire-thesis
 pdf-output
 bs4-book-output-html

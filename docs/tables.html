@@ -73,7 +73,7 @@ This section explains the main tricks you need to make the pain go away.</p>
 </h3>
 <p>When you use <code>kable</code> to create tables, you will almost certainly want to set the option <code>booktabs = TRUE</code>.
 This makes your table look a million times better:</p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://yihui.org/knitr/">knitr</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
 
@@ -349,7 +349,7 @@ Valiant
 </tbody>
 </table></div>
 <p>Compare this to the default style, which looks terrible:</p>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="inline-table"><table class="table table-sm">
@@ -628,7 +628,7 @@ Valiant
 </h3>
 <p>You might find that your table expands into the margins of the page, like the tables above.
 Fix this with the <code>kable_styling</code> function from the <a href="https://haozhu233.github.io/kableExtra/"><code>kableExtra</code></a> package:</p>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://haozhu233.github.io/kableExtra/">kableExtra</a></span><span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span> <span class="op">%&gt;%</span> 
@@ -910,7 +910,7 @@ Valiant
 <span class="header-section-number">4.1.3</span> If your table is too long<a class="anchor" aria-label="anchor" href="#if-your-table-is-too-long"><i class="fas fa-link"></i></a>
 </h3>
 <p>If your table is too long to fit on a single page, set <code>longtable = TRUE</code> in the <code>kable</code> function to split the table across multiple pages.</p>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">a_long_table</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="va">mtcars</span><span class="op">)</span>
 
 <span class="va">a_long_table</span> <span class="op">%&gt;%</span> 
@@ -2806,7 +2806,7 @@ Volvo 142E1
 </table></div>
 <p>When you do this, you’ll probably want to make the header repeat on new pages.
 Do this with the <code>kable_styling</code> function from <code>kableExtra</code>:</p>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">a_long_table</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span>booktabs <span class="op">=</span> <span class="cn">TRUE</span>, longtable <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kable_styling.html">kable_styling</a></span><span class="op">(</span>latex_options <span class="op">=</span> <span class="st">"repeat_header"</span><span class="op">)</span></code></pre></div>
@@ -5286,7 +5286,7 @@ Volvo 142E1
 <p>Unfortunately, we cannot use the <code>scale_down</code> option with a <code>longtable</code>.
 So if a <code>longtable</code> is too wide, you can either manually adjust the font size, or show the table in landscape layout.
 To adjust the font size, use kableExtra’s <code>font_size</code> option:</p>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">a_long_table</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span>booktabs <span class="op">=</span> <span class="cn">TRUE</span>, longtable <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kable_styling.html">kable_styling</a></span><span class="op">(</span>font_size <span class="op">=</span> <span class="fl">9</span>, latex_options <span class="op">=</span> <span class="st">"repeat_header"</span><span class="op">)</span></code></pre></div>
@@ -7764,7 +7764,7 @@ Volvo 142E1
 </tbody>
 </table></div>
 <p>To put the table in landscape mode, use kableExtra’s <code>landscape</code> function:</p>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">a_long_table</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span>booktabs <span class="op">=</span> <span class="cn">TRUE</span>, longtable <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kable_styling.html">kable_styling</a></span><span class="op">(</span>latex_options <span class="op">=</span> <span class="st">"repeat_header"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
@@ -10262,7 +10262,7 @@ Figure 4.1: Font sizes in LaTeX
 </li>
 <li>Add the attributes that make R Markdown understand that the table is a table (it seems R drops these when we do the string replacement)</li>
 </ol>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">our_adjusted_table</span> <span class="op">&lt;-</span> <span class="va">a_long_table</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span>booktabs <span class="op">=</span> <span class="cn">TRUE</span>, longtable <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kable_styling.html">kable_styling</a></span><span class="op">(</span>latex_options <span class="op">=</span> <span class="st">"repeat_header"</span><span class="op">)</span> <span class="op">%&gt;%</span> 

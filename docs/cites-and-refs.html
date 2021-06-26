@@ -69,15 +69,15 @@ Then reference the path to this file in <strong>index.Rmd</strong>’s YAML head
 <p>Most reference managers can create a .bib file with you references automatically.
 However, the <strong>by far</strong> best reference manager to use with <em>R Markdown</em> is <a href="https://www.zotero.org">Zotero</a> with the <a href="https://retorque.re/zotero-better-bibtex/">Better BibTex plug-in</a>, because the <code>citr</code> plugin for RStudio (see below) can read references directly from your Zotero library!</p>
 <p>Here is an example of an entry in a <strong>.bib</strong> file:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode bibtex"><code class="sourceCode bibtex"><span id="cb15-1"><a href="cites-and-refs.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="va">@article</span>{<span class="ot">Shea2014</span>,</span>
-<span id="cb15-2"><a href="cites-and-refs.html#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">author</span> =        {Shea, Nicholas and Boldt, Annika},</span>
-<span id="cb15-3"><a href="cites-and-refs.html#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">journal</span> =       {Trends in Cognitive Sciences},</span>
-<span id="cb15-4"><a href="cites-and-refs.html#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">pages</span> =         {186--193},</span>
-<span id="cb15-5"><a href="cites-and-refs.html#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span> =         {{Supra-personal cognitive control}},</span>
-<span id="cb15-6"><a href="cites-and-refs.html#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">volume</span> =        {18},</span>
-<span id="cb15-7"><a href="cites-and-refs.html#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">year</span> =          {2014},</span>
-<span id="cb15-8"><a href="cites-and-refs.html#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">doi</span> =           {10.1016/j.tics.2014.01.006},</span>
-<span id="cb15-9"><a href="cites-and-refs.html#cb15-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bibtex"><code class="sourceCode bibtex"><span id="cb18-1"><a href="cites-and-refs.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="va">@article</span>{<span class="ot">Shea2014</span>,</span>
+<span id="cb18-2"><a href="cites-and-refs.html#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">author</span> =        {Shea, Nicholas and Boldt, Annika},</span>
+<span id="cb18-3"><a href="cites-and-refs.html#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">journal</span> =       {Trends in Cognitive Sciences},</span>
+<span id="cb18-4"><a href="cites-and-refs.html#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">pages</span> =         {186--193},</span>
+<span id="cb18-5"><a href="cites-and-refs.html#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span> =         {{Supra-personal cognitive control}},</span>
+<span id="cb18-6"><a href="cites-and-refs.html#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">volume</span> =        {18},</span>
+<span id="cb18-7"><a href="cites-and-refs.html#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">year</span> =          {2014},</span>
+<span id="cb18-8"><a href="cites-and-refs.html#cb18-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">doi</span> =           {10.1016/j.tics.2014.01.006},</span>
+<span id="cb18-9"><a href="cites-and-refs.html#cb18-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>In this entry highlighed section, ‘Shea2014’ is the <strong>citation identifier</strong>.
 To default way to cite an entry in your text is with this syntax: <code>[@citation-identifier]</code>.</p>
 <p>So I might cite some things <span class="citation">(<a href="references.html#ref-Shea2014" role="doc-biblioref">Shea et al. 2014</a>; <a href="references.html#ref-Lottridge2012" role="doc-biblioref">Lottridge et al. 2012</a>)</span>.</p>
@@ -175,7 +175,7 @@ See <a href="cites-and-refs.html#cites-and-refs">our chapter title</a> for an ex
 <strong>GOTCHA</strong>: Figures and tables must have captions if you wish to cross-reference them.</li>
 </ul>
 <p>Let’s add an image:</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">include_graphics</a></span><span class="op">(</span><span class="st">"figures/sample-content/captain.jpeg"</span><span class="op">)</span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span id="fig:captain"></span>
@@ -196,7 +196,7 @@ So Figure <a href="cites-and-refs.html#fig:captain">3.2</a> is <a href="cites-an
 </li>
 </ul>
 <p>Let’s include a table:</p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="va">cars</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>,<span class="op">]</span>,
             caption<span class="op">=</span><span class="st">"Stopping cars"</span><span class="op">)</span></code></pre></div>
 <div class="inline-table"><table class="table table-sm">

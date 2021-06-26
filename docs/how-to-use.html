@@ -88,24 +88,65 @@ Template for R Markdown</p></a>
 +-- templates
 |   +-- template.tex
 |   ...</code></pre>
-<ul>
-<li>
-<p><strong>index.Rmd</strong>: metadata and thesis layout options</p>
-<ul>
-<li><p>set your thesis’ basic metadata (e.g., title, author name)</p></li>
-<li><p>adjust filepaths to your bibliography (one or more <strong>.bib</strong> files), as well as abstract, acknowledgements, and abbreviations</p></li>
-<li><p>customise build options (e.g., in PDF output, where should page numbers be positioned? what should the heading for the bibliography section say? In HTML output, what CSS files should be used for styling?)</p></li>
-</ul>
-</li>
-<li>
-<p>other <strong>.Rmd</strong> files in the root directory: thesis chapters</p>
+<div id="index.rmd-metadata-and-layout-options" class="section level3" number="1.1.1">
+<h3>
+<span class="header-section-number">1.1.1</span> index.Rmd: <strong>metadata and layout options</strong><a class="anchor" aria-label="anchor" href="#index.rmd-metadata-and-layout-options"><i class="fas fa-link"></i></a>
+</h3>
+<p>In index.Rmd, set your thesis’ basic metadata (e.g., title, author name)</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb2-1"><a href="how-to-use.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb2-2"><a href="how-to-use.html#cb2-2" aria-hidden="true" tabindex="-1"></a>  `oxforddown`: \</span>
+<span id="cb2-3"><a href="how-to-use.html#cb2-3" aria-hidden="true" tabindex="-1"></a>  An Oxford University Thesis \</span>
+<span id="cb2-4"><a href="how-to-use.html#cb2-4" aria-hidden="true" tabindex="-1"></a>  Template for R Markdown</span>
+<span id="cb2-5"><a href="how-to-use.html#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> Author Name</span></span>
+<span id="cb2-6"><a href="how-to-use.html#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">college</span><span class="kw">:</span><span class="at"> Your College</span></span></code></pre></div>
+<p>Also set filepath(s) to your abstract, acknowledgements, abbreviations, and bibliography (one or more <strong>.bib</strong> files):</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb3-1"><a href="how-to-use.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">abstract</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb3-2"><a href="how-to-use.html#cb3-2" aria-hidden="true" tabindex="-1"></a>  `r paste(readLines("front-and-back-matter/_abstract.Rmd"), collapse = '\n  ')`</span>
+<span id="cb3-3"><a href="how-to-use.html#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">acknowledgements</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb3-4"><a href="how-to-use.html#cb3-4" aria-hidden="true" tabindex="-1"></a>  `r paste(readLines("front-and-back-matter/_acknowledgements.Rmd"), collapse = '\n  ')`</span>
+<span id="cb3-5"><a href="how-to-use.html#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">dedication</span><span class="kw">:</span><span class="at"> For Yihui Xie</span></span>
+<span id="cb3-6"><a href="how-to-use.html#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">abbreviations</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb3-7"><a href="how-to-use.html#cb3-7" aria-hidden="true" tabindex="-1"></a>  `r paste(readLines("front-and-back-matter/_abbreviations.Rmd"), collapse = '\n  ')`</span>
+<span id="cb3-8"><a href="how-to-use.html#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="how-to-use.html#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">#######################</span></span>
+<span id="cb3-10"><a href="how-to-use.html#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co">## bibliography path ##</span></span>
+<span id="cb3-11"><a href="how-to-use.html#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">#######################</span></span>
+<span id="cb3-12"><a href="how-to-use.html#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="fu">bibliography</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">bibliography/references.bib</span><span class="kw">,</span><span class="at"> bibliography/additional-references.bib</span><span class="kw">]</span></span></code></pre></div>
+<p>Finally, <strong>index.Rmd</strong> is also where you customise layout options.
+For example, in PDF output what should the heading for the bibliography section say?
+How should page numbers be positioned?
+Should line numbers be shown?
+In HTML output, what CSS files should be used for styling?</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb4-1"><a href="how-to-use.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">### citation and bibliography style </span><span class="al">###</span></span>
+<span id="cb4-2"><a href="how-to-use.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">bibliography-heading-in-pdf</span><span class="kw">:</span><span class="at"> Works Cited</span></span>
+<span id="cb4-3"><a href="how-to-use.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">...</span></span>
+<span id="cb4-4"><a href="how-to-use.html#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="how-to-use.html#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">### position of page numbers ###</span></span>
+<span id="cb4-6"><a href="how-to-use.html#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">ordinary-page-number-foot-or-head: foot #'foot' puts page number in footer, 'head' in header</span></span>
+<span id="cb4-7"><a href="how-to-use.html#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">ordinary-page-number-position: C</span></span>
+<span id="cb4-8"><a href="how-to-use.html#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">...</span></span>
+<span id="cb4-9"><a href="how-to-use.html#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="how-to-use.html#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co">includeline-num: false #show line numbering in PDF?</span></span>
+<span id="cb4-11"><a href="how-to-use.html#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co">...</span></span>
+<span id="cb4-12"><a href="how-to-use.html#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="how-to-use.html#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co">  bookdown::bs4_book: </span></span>
+<span id="cb4-14"><a href="how-to-use.html#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co">    css: </span></span>
+<span id="cb4-15"><a href="how-to-use.html#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co">      - templates/bs4_style.css</span></span>
+<span id="cb4-16"><a href="how-to-use.html#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co">      - templates/corrections.css # remove to stop highlighting corrections</span></span></code></pre></div>
+</div>
+<div id="other-.rmd-files-in-root-folder-thesis-chapters" class="section level3" number="1.1.2">
+<h3>
+<span class="header-section-number">1.1.2</span> other <strong>.Rmd</strong> files in root folder: thesis chapters<a class="anchor" aria-label="anchor" href="#other-.rmd-files-in-root-folder-thesis-chapters"><i class="fas fa-link"></i></a>
+</h3>
 <ul>
 <li><p>each chapter of your thesis should have its own <strong>.Rmd</strong> file in the root directory</p></li>
 <li><p>when you knit <strong>index.Rmd</strong>, these chapters are merged together in alphabetical order, based on their filenames</p></li>
 </ul>
-</li>
-<li>
-<p><strong>front-and-back-matter/</strong>: abstract, acknowledgements, abbreviations, appendices…</p>
+</div>
+<div id="front-and-back-matter" class="section level3" number="1.1.3">
+<h3>
+<span class="header-section-number">1.1.3</span> <strong>front-and-back-matter/</strong><a class="anchor" aria-label="anchor" href="#front-and-back-matter"><i class="fas fa-link"></i></a>
+</h3>
 <ul>
 <li><p>this folder holds the front and back matter of your thesis</p></li>
 <li><p>it has <strong>.Rmd</strong> files for your abstract, acknowledgements, abbreviations, and a welcome note that is included in HTML output.
@@ -114,33 +155,37 @@ This means they will not automatically be merged into the thesis – they are ex
 <li><p><strong>98-appendices</strong> and <strong>99-references.Rmd</strong> are automatically merged into thesis, however - therefore their file names start with a high number, so that they will be included by the very end (merging is done alphabetically)</p></li>
 <li><p><strong>99-references.Rmd</strong> sole purpose is to set the heading for the references section in HTML and Word output</p></li>
 </ul>
-</li>
-<li><p><strong>docs/</strong>: where your thesis’ output are saved</p></li>
-<li>
-<p><strong>_bookdown.yml</strong>: build options</p>
+</div>
+<div id="bookdown.yml-build-options" class="section level3" number="1.1.4">
+<h3>
+<span class="header-section-number">1.1.4</span> <strong>_bookdown.yml</strong>: build options<a class="anchor" aria-label="anchor" href="#bookdown.yml-build-options"><i class="fas fa-link"></i></a>
+</h3>
 <ul>
 <li><p>Set output directory for your thesis files (<strong>docs/</strong> is the default, as it makes it easy to publish HTML output on GitHub pages)</p></li>
 <li><p>Should R Markdown automatically merge <strong>.Rmd</strong> files in alphabetical order?
 Alternatively, specify explicitly which files should be included.</p></li>
 </ul>
-</li>
-<li>
-<p><strong>scripts-and-filters</strong></p>
+</div>
+<div id="scripts-and-filters" class="section level3" number="1.1.5">
+<h3>
+<span class="header-section-number">1.1.5</span> <strong>scripts-and-filters</strong><a class="anchor" aria-label="anchor" href="#scripts-and-filters"><i class="fas fa-link"></i></a>
+</h3>
 <ul>
 <li><p><strong>knit-function.R</strong> has the functions that are used when you build the entire thesis by knitting <strong>index.Rmd</strong></p></li>
 <li><p><strong>create_chunk_options.R</strong> lets you include cute quotes at the start of a chapter in PDF output</p></li>
 <li><p><strong>colour_and_highlight.lua</strong> lets you color text or apply background color to text</p></li>
 </ul>
-</li>
-<li>
-<p><strong>templates</strong></p>
+</div>
+<div id="templates" class="section level3" number="1.1.6">
+<h3>
+<span class="header-section-number">1.1.6</span> <strong>templates</strong><a class="anchor" aria-label="anchor" href="#templates"><i class="fas fa-link"></i></a>
+</h3>
 <ul>
 <li><p><strong>template.tex</strong> is the LaTeX template used to build the entire thesis to PDF in the OxThesis layout (relies on <strong>ociamthesis.cls</strong>)</p></li>
 <li><p><strong>brief-template.tex</strong> is the LaTeX template used to build a single chapter to PDF in the OxThesis layout (relies on <strong>ociamthesis.cls</strong>)</p></li>
 <li><p><strong>beltcrest.pdf</strong>: the oxford logo used on the front page of the PDF output</p></li>
 </ul>
-</li>
-</ul>
+</div>
 </div>
 <div id="building-your-entire-thesis" class="section level2" number="1.2">
 <h2>
@@ -159,9 +204,9 @@ Alternatively, specify explicitly which files should be included.</p></li>
 <h4>
 <span class="header-section-number">1.2.0.1</span> PDF output<a class="anchor" aria-label="anchor" href="#pdf-output"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb2"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb2-1"><a href="how-to-use.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">knit</span><span class="kw">:</span><span class="at"> (function(input, ...) {</span></span>
-<span id="cb2-2"><a href="how-to-use.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="at">    thesis_formats &lt;- "pdf";</span></span>
-<span id="cb2-3"><a href="how-to-use.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="at">    ...</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb5-1"><a href="how-to-use.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">knit</span><span class="kw">:</span><span class="at"> (function(input, ...) {</span></span>
+<span id="cb5-2"><a href="how-to-use.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="at">    thesis_formats &lt;- "pdf";</span></span>
+<span id="cb5-3"><a href="how-to-use.html#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="at">    ...</span></span></code></pre></div>
 <p>When you build the entire thesis to PDF, Latex generates a whole bunch of auxillary files - these are automatically removed after the build process end by the custom knit function that is used when you knit <strong>index.Rmd</strong>.</p>
 <p>To change how this removal is done, edit <strong>scripts_and_filters/knit-functions.R</strong>.
 The line <code><a href="https://rdrr.io/r/base/files.html">file.remove(list.files(pattern = "*\\.(log|mtc\\d*|maf|aux|bcf|lof|lot|out|toc)$"))</a></code> within <code>if ("pdf" %in% output_format){</code> is the one that removes files after PDF output is generated.</p>
@@ -170,9 +215,9 @@ The line <code><a href="https://rdrr.io/r/base/files.html">file.remove(list.file
 <h4>
 <span class="header-section-number">1.2.0.2</span> BS4 book output (HTML)<a class="anchor" aria-label="anchor" href="#bs4-book-output-html"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb3"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb3-1"><a href="how-to-use.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">knit</span><span class="kw">:</span><span class="at"> (function(input, ...) {</span></span>
-<span id="cb3-2"><a href="how-to-use.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="at">    thesis_formats &lt;- "bs4";</span></span>
-<span id="cb3-3"><a href="how-to-use.html#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="at">    ...</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb6-1"><a href="how-to-use.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">knit</span><span class="kw">:</span><span class="at"> (function(input, ...) {</span></span>
+<span id="cb6-2"><a href="how-to-use.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="at">    thesis_formats &lt;- "bs4";</span></span>
+<span id="cb6-3"><a href="how-to-use.html#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="at">    ...</span></span></code></pre></div>
 <ul>
 <li>NOTE: the <a href="https://pkgs.rstudio.com/bookdown/reference/bs4_book.html">bs4 book output</a> requires the <code>downlit</code> and <code>bslib</code> R packages (install them with <code>install.packages</code>)</li>
 <li>Note also that to deploy a BS4 book on GitHub Pages, there must be a <strong>.nojekyll</strong> file in the <strong>docs/</strong> folder, otherwise GitHub does some voodoo that causes some filepaths not to work. This file is generated automatically by <code>oxforddown</code>s knitting function.</li>
@@ -182,9 +227,9 @@ The line <code><a href="https://rdrr.io/r/base/files.html">file.remove(list.file
 <h4>
 <span class="header-section-number">1.2.0.3</span> Gitbook output (HTML)<a class="anchor" aria-label="anchor" href="#gitbook-output-html"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb4"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb4-1"><a href="how-to-use.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">knit</span><span class="kw">:</span><span class="at"> (function(input, ...) {</span></span>
-<span id="cb4-2"><a href="how-to-use.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="at">    thesis_formats &lt;- "gitbook";</span></span>
-<span id="cb4-3"><a href="how-to-use.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="at">    ...</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb7-1"><a href="how-to-use.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">knit</span><span class="kw">:</span><span class="at"> (function(input, ...) {</span></span>
+<span id="cb7-2"><a href="how-to-use.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="at">    thesis_formats &lt;- "gitbook";</span></span>
+<span id="cb7-3"><a href="how-to-use.html#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="at">    ...</span></span></code></pre></div>
 <ul>
 <li>Note that to deploy a gitbook on GitHub Pages, there must be a <strong>.nojekyll</strong> file in the <strong>docs/</strong> folder, otherwise GitHub does some voodoo that causes some filepaths not to work. This file is generated automatically by <code>oxforddown</code>s knitting function.</li>
 </ul>
@@ -193,9 +238,9 @@ The line <code><a href="https://rdrr.io/r/base/files.html">file.remove(list.file
 <h4>
 <span class="header-section-number">1.2.0.4</span> Word output<a class="anchor" aria-label="anchor" href="#word-output"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb5"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb5-1"><a href="how-to-use.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">knit</span><span class="kw">:</span><span class="at"> (function(input, ...) {</span></span>
-<span id="cb5-2"><a href="how-to-use.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="at">    thesis_formats &lt;- "word";</span></span>
-<span id="cb5-3"><a href="how-to-use.html#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="at">    ...</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb8-1"><a href="how-to-use.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">knit</span><span class="kw">:</span><span class="at"> (function(input, ...) {</span></span>
+<span id="cb8-2"><a href="how-to-use.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="at">    thesis_formats &lt;- "word";</span></span>
+<span id="cb8-3"><a href="how-to-use.html#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="at">    ...</span></span></code></pre></div>
 <ul>
 <li>Note that the Word output has no templates behind it, and many things do not work (e.g. image rotation, highlighting corrections). <strong>I encourage pull requests that optimise the Word output, e.g. by using tools from the <a href="https://github.com/davidgohel/officer"><code>officer</code></a> package.</strong>
 </li>
@@ -213,12 +258,12 @@ The line <code><a href="https://rdrr.io/r/base/files.html">file.remove(list.file
 <li>click the <code>knit</code> button (the output file is then saved in the root folder)</li>
 </ol>
 <p>As shown in the sample chapters’ YAML headers, to output a single chapter to PDF, use e.g.:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb6-1"><a href="how-to-use.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
-<span id="cb6-2"><a href="how-to-use.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="at">  bookdown:</span><span class="fu">:pdf_document2</span><span class="kw">:</span></span>
-<span id="cb6-3"><a href="how-to-use.html#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">template</span><span class="kw">:</span><span class="at"> templates/brief_template.tex</span></span>
-<span id="cb6-4"><a href="how-to-use.html#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">citation_package</span><span class="kw">:</span><span class="at"> biblatex</span></span>
-<span id="cb6-5"><a href="how-to-use.html#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">documentclass</span><span class="kw">:</span><span class="at"> book</span></span>
-<span id="cb6-6"><a href="how-to-use.html#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">bibliography</span><span class="kw">:</span><span class="at"> references.bib</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb9-1"><a href="how-to-use.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
+<span id="cb9-2"><a href="how-to-use.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="at">  bookdown:</span><span class="fu">:pdf_document2</span><span class="kw">:</span></span>
+<span id="cb9-3"><a href="how-to-use.html#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">template</span><span class="kw">:</span><span class="at"> templates/brief_template.tex</span></span>
+<span id="cb9-4"><a href="how-to-use.html#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">citation_package</span><span class="kw">:</span><span class="at"> biblatex</span></span>
+<span id="cb9-5"><a href="how-to-use.html#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">documentclass</span><span class="kw">:</span><span class="at"> book</span></span>
+<span id="cb9-6"><a href="how-to-use.html#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="fu">bibliography</span><span class="kw">:</span><span class="at"> references.bib</span></span></code></pre></div>
 <p>The file <strong>templates/brief_template.tex</strong> formats the chapter in the OxThesis style but without including the front matter (table of contents, abstract, etc).</p>
 
 
@@ -237,7 +282,16 @@ iii) You can't use markdown syntax inside chunk options, so if you want to e.g. 
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#how-to-use"><span class="header-section-number">1</span> How to use</a></li>
-<li><a class="nav-link" href="#how-oxforddown-is-structured"><span class="header-section-number">1.1</span> How oxforddown is structured</a></li>
+<li>
+<a class="nav-link" href="#how-oxforddown-is-structured"><span class="header-section-number">1.1</span> How oxforddown is structured</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#index.rmd-metadata-and-layout-options"><span class="header-section-number">1.1.1</span> index.Rmd: metadata and layout options</a></li>
+<li><a class="nav-link" href="#other-.rmd-files-in-root-folder-thesis-chapters"><span class="header-section-number">1.1.2</span> other .Rmd files in root folder: thesis chapters</a></li>
+<li><a class="nav-link" href="#front-and-back-matter"><span class="header-section-number">1.1.3</span> front-and-back-matter/</a></li>
+<li><a class="nav-link" href="#bookdown.yml-build-options"><span class="header-section-number">1.1.4</span> _bookdown.yml: build options</a></li>
+<li><a class="nav-link" href="#scripts-and-filters"><span class="header-section-number">1.1.5</span> scripts-and-filters</a></li>
+<li><a class="nav-link" href="#templates"><span class="header-section-number">1.1.6</span> templates</a></li>
+</ul>
+</li>
 <li><a class="nav-link" href="#building-your-entire-thesis"><span class="header-section-number">1.2</span> Building your entire thesis</a></li>
 <li><a class="nav-link" href="#building-a-single-chapter"><span class="header-section-number">1.3</span> Building a single chapter</a></li>
 </ul>
