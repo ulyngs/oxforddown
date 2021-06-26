@@ -1,22 +1,23 @@
-# You can be lazy and just let bookdown search for the .Rmd files to merge into your thesis.
-# For this to work, make sure to start any acknowledgements and/or abstract Rmd files with 
-# an underscore, e.g. _abstract.Rmd. 
-# Otherwise bookdown will start to merge the abstract in to the body text which almost 
-# certainly isn't what you want
-
-# If you specify a sub directory with rmd_subdir, then bookdown will search through this
-# folder too
-rmd_subdir: ["front-and-back-matter"]
-
-# Alternatively, you can comment out rmd_subdir and specify manually what files to include with rmd_files
-#rmd_files: ["index.Rmd", "01-rmd-basics-markdown.Rmd", "02-rmd-basics-code.Rmd", "03-rmd-basics-cites-and-refs.Rmd", "04-oxthesis.Rmd", "05-conclusion.Rmd", "front-and-back-matter/98-appendices.Rmd", "front-and-back-matter/99-references.Rmd"]
-  
+# this sets the directory that your output gets stored in
+# Putting it in a 'docs' folder is convenient if you want to publish HTML
+# output with GitHub Pages 
 output_dir: "docs"
 
-# You can provide a link here if you want people to be able to suggest and submit changes
-# to the source .Rmd files on your github repo, cf. https://bookdown.org/yihui/bookdown/html.html
-edit: https://github.com/ulyngs/oxforddown/tree/master/%s
-
-
-# If this is set to true, then you don't have to manually delete the merged _main.Rmd file if something goes wrong when you try to build
+# If the below is set to true, you don't have to manually delete the merged 
+# _main.Rmd file if something goes wrong when you try to build
 delete_merged_file: true
+
+# By default, bookdown will automatically merge .Rmd files in the root folder
+# into your thesis. If you specify a sub directory with rmd_subdir, bookdown
+# searches through this folder too. .Rmd files you don't want automatically
+# included, should start with an underscore, e.g. _abstract.Rmd (otherwise 
+# bookdown would merge the abstract into the body text)
+rmd_subdir: ["front-and-back-matter"]
+
+# You can override bookdown's automatic merging of files, and explicitly
+# specify files to include with "rmd_files" like this:
+#rmd_files: ["index.Rmd", "01-rmd-basics-markdown.Rmd", "02-rmd-basics-code.Rmd", "03-rmd-basics-cites-and-refs.Rmd", "04-oxthesis.Rmd", "05-conclusion.Rmd", "front-and-back-matter/98-appendices.Rmd", "front-and-back-matter/99-references.Rmd"]
+
+# If you want people to be able to suggest and submit changes to the source .Rmd
+# files on your github repo, do it like so (https://bookdown.org/yihui/bookdown/html.html)
+edit: https://github.com/ulyngs/oxforddown/tree/master/%s
