@@ -9,6 +9,14 @@ fig:citr
 fig:captain
 tab:cars-table2
 fig:latex-font-sizing
+how-to-use
+how-oxforddown-is-structured
+building-your-entire-thesis
+pdf-output
+bs4-book-output-html
+gitbook-output-html
+word-output
+building-a-single-chapter
 rmd-basics
 basic-markdown-syntax
 whitespace
@@ -36,7 +44,7 @@ executable-inline-code
 executable-code-in-other-languages-than-r
 cites-and-refs
 citations
-pdf-output
+pdf-output-1
 gitbook-output
 insert-references-easily-with-the-citr-add-in
 cross-referencing

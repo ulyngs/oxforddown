@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>5 Troubleshooting | oxforddown: An Oxford University Thesis Template for R Markdown</title>
+<title>6 Troubleshooting | oxforddown: An Oxford University Thesis Template for R Markdown</title>
 <meta name="author" content="Author Name">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.8/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
@@ -37,11 +37,12 @@ Template for R Markdown</p></a>
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Welcome</a></li>
 <li><a class="" href="introduction.html">Introduction</a></li>
-<li><a class="" href="rmd-basics.html"><span class="header-section-number">1</span> R Markdown basics</a></li>
-<li><a class="" href="cites-and-refs.html"><span class="header-section-number">2</span> Citations, cross-references, and collaboration</a></li>
-<li><a class="" href="tables.html"><span class="header-section-number">3</span> Tables</a></li>
-<li><a class="" href="customisations-and-extensions.html"><span class="header-section-number">4</span> Customisations and extensions</a></li>
-<li><a class="active" href="troubleshooting.html"><span class="header-section-number">5</span> Troubleshooting</a></li>
+<li><a class="" href="how-to-use.html"><span class="header-section-number">1</span> How to use</a></li>
+<li><a class="" href="rmd-basics.html"><span class="header-section-number">2</span> R Markdown basics</a></li>
+<li><a class="" href="cites-and-refs.html"><span class="header-section-number">3</span> Citations, cross-references, and collaboration</a></li>
+<li><a class="" href="tables.html"><span class="header-section-number">4</span> Tables</a></li>
+<li><a class="" href="customisations-and-extensions.html"><span class="header-section-number">5</span> Customisations and extensions</a></li>
+<li><a class="active" href="troubleshooting.html"><span class="header-section-number">6</span> Troubleshooting</a></li>
 <li><a class="" href="conclusion.html">Conclusion</a></li>
 <li class="book-part">Appendix</li>
 <li><a class="" href="the-first-appendix.html"><span class="header-section-number">A</span> The First Appendix</a></li>
@@ -54,14 +55,14 @@ Template for R Markdown</p></a>
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="troubleshooting" class="section level1" number="5">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="troubleshooting" class="section level1" number="6">
 <h1>
-<span class="header-section-number">5</span> Troubleshooting<a class="anchor" aria-label="anchor" href="#troubleshooting"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6</span> Troubleshooting<a class="anchor" aria-label="anchor" href="#troubleshooting"><i class="fas fa-link"></i></a>
 </h1>
 <p>This chapter describes common errors you may run into, and how to fix them.</p>
-<div id="error-failed-to-build-the-bibliography-via-biber" class="section level2" number="5.1">
+<div id="error-failed-to-build-the-bibliography-via-biber" class="section level2" number="6.1">
 <h2>
-<span class="header-section-number">5.1</span> Error: Failed to build the bibliography via biber<a class="anchor" aria-label="anchor" href="#error-failed-to-build-the-bibliography-via-biber"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.1</span> Error: Failed to build the bibliography via biber<a class="anchor" aria-label="anchor" href="#error-failed-to-build-the-bibliography-via-biber"><i class="fas fa-link"></i></a>
 </h2>
 <p>This can happen if you’ve had a failed build, perhaps in relation to RStudio shutting down abruptly.</p>
 <p>Try doing this:</p>
@@ -76,21 +77,21 @@ To do this, go to <strong>index.Rmd</strong> and</p>
 </li>
 <li>set <code>citation_package: natbib</code> under</li>
 </ol>
-<div class="sourceCode" id="cb40"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb40-1"><a href="troubleshooting.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
-<span id="cb40-2"><a href="troubleshooting.html#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="at">  bookdown:</span><span class="fu">:pdf_book</span><span class="kw">:</span></span>
-<span id="cb40-3"><a href="troubleshooting.html#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">citation_package</span><span class="kw">:</span><span class="at"> natbib</span></span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb46-1"><a href="troubleshooting.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
+<span id="cb46-2"><a href="troubleshooting.html#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="at">  bookdown:</span><span class="fu">:pdf_book</span><span class="kw">:</span></span>
+<span id="cb46-3"><a href="troubleshooting.html#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">citation_package</span><span class="kw">:</span><span class="at"> natbib</span></span></code></pre></div>
 
 
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="customisations-and-extensions.html"><span class="header-section-number">4</span> Customisations and extensions</a></div>
+<div class="prev"><a href="customisations-and-extensions.html"><span class="header-section-number">5</span> Customisations and extensions</a></div>
 <div class="next"><a href="conclusion.html">Conclusion</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#troubleshooting"><span class="header-section-number">5</span> Troubleshooting</a></li>
-<li><a class="nav-link" href="#error-failed-to-build-the-bibliography-via-biber"><span class="header-section-number">5.1</span> Error: Failed to build the bibliography via biber</a></li>
+<li><a class="nav-link" href="#troubleshooting"><span class="header-section-number">6</span> Troubleshooting</a></li>
+<li><a class="nav-link" href="#error-failed-to-build-the-bibliography-via-biber"><span class="header-section-number">6.1</span> Error: Failed to build the bibliography via biber</a></li>
 </ul>
 
       <div class="book-extra">

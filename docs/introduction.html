@@ -37,11 +37,12 @@ Template for R Markdown</p></a>
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html">Welcome</a></li>
 <li><a class="active" href="introduction.html">Introduction</a></li>
-<li><a class="" href="rmd-basics.html"><span class="header-section-number">1</span> R Markdown basics</a></li>
-<li><a class="" href="cites-and-refs.html"><span class="header-section-number">2</span> Citations, cross-references, and collaboration</a></li>
-<li><a class="" href="tables.html"><span class="header-section-number">3</span> Tables</a></li>
-<li><a class="" href="customisations-and-extensions.html"><span class="header-section-number">4</span> Customisations and extensions</a></li>
-<li><a class="" href="troubleshooting.html"><span class="header-section-number">5</span> Troubleshooting</a></li>
+<li><a class="" href="how-to-use.html"><span class="header-section-number">1</span> How to use</a></li>
+<li><a class="" href="rmd-basics.html"><span class="header-section-number">2</span> R Markdown basics</a></li>
+<li><a class="" href="cites-and-refs.html"><span class="header-section-number">3</span> Citations, cross-references, and collaboration</a></li>
+<li><a class="" href="tables.html"><span class="header-section-number">4</span> Tables</a></li>
+<li><a class="" href="customisations-and-extensions.html"><span class="header-section-number">5</span> Customisations and extensions</a></li>
+<li><a class="" href="troubleshooting.html"><span class="header-section-number">6</span> Troubleshooting</a></li>
 <li><a class="" href="conclusion.html">Conclusion</a></li>
 <li class="book-part">Appendix</li>
 <li><a class="" href="the-first-appendix.html"><span class="header-section-number">A</span> The First Appendix</a></li>
@@ -58,13 +59,12 @@ Template for R Markdown</p></a>
 <h1>Introduction<a class="anchor" aria-label="anchor" href="#introduction"><i class="fas fa-link"></i></a>
 </h1>
 <!-- For PDF output, include these two LaTeX commands after unnumbered chapter headings, otherwise the mini table of contents and the running header will show the previous chapter -->
-<p>Welcome to the <em>R Markdown</em> Oxford University thesis template.
-This sample content is adapted from <a href="https://github.com/ismayc/thesisdown"><code>thesisdown</code></a> and the formatting of PDF output is adapted from the <a href="https://github.com/mcmanigle/OxThesis">OxThesis LaTeX template</a>.
-Hopefully, writing your thesis in R Markdown will provide a nicer interface to the OxThesis template if you haven’t used TeX or LaTeX before.
-More importantly, using <em>R Markdown</em> allows you to embed chunks of code directly into your thesis and generate plots and tables directly from the underlying data, avoiding copy-paste steps.
-This will get you into the habit of doing reproducible research, which benefits you long-term as a researcher, but also will greatly help anyone that is trying to reproduce or build upon your results down the road.</p>
-<p>Using LaTeX together with <em>Markdown</em> is more consistent than the output of a word processor, much less prone to corruption or crashing, and the resulting file is smaller than a Word file.
-While you may never have had problems using Word in the past, your thesis is likely going to be about twice as large and complex as anything you’ve written before, taxing Word’s capabilities.</p>
+<p>Welcome to <code>oxforddown</code> <span class="citation">(<a href="references.html#ref-lyngsOxforddown2019" role="doc-biblioref">Lyngs 2019</a>)</span>, a thesis template for R Markdown that I created when writing <a href="https://ulyngs.github.io/phd-thesis/">my own PhD thesis</a> at the University of Oxford.
+This template allows you to write in R Markdown, while formatting the PDF output with the beautiful and time-tested <a href="https://github.com/mcmanigle/OxThesis">OxThesis LaTeX template</a>.
+The sample content is partly adapted from <a href="https://github.com/ismayc/thesisdown"><code>thesisdown</code></a> .</p>
+<p>Hopefully, writing your thesis in R Markdown will provide a nicer interface to the OxThesis template if you haven’t used TeX or LaTeX before.
+More importantly, <em>R Markdown</em> allows you to embed chunks of code within your thesis and generate plots and tables directly from the underlying data, avoiding copy-paste steps.
+This gets you into the habit of doing reproducible research, which will benefit you long-term as a researcher, and also help anyone that is trying to reproduce or build upon your results down the road.</p>
 <div id="why-use-it" class="section level2 unnumbered">
 <h2>Why use it?<a class="anchor" aria-label="anchor" href="#why-use-it"><i class="fas fa-link"></i></a>
 </h2>
@@ -73,9 +73,8 @@ Packages have been written in <strong>R</strong> to work directly with LaTeX to 
 In addition to creating a user friendly interface to LaTeX, <em>R Markdown</em> allows you to read in your data, analyze it and to visualize it using <strong>R</strong>, <strong>Python</strong> or other languages, and provide documentation and commentary on the results of your project.<br>
 Further, it allows for results of code output to be passed inline to the commentary of your results.
 You’ll see more on this later, focusing on <strong>R</strong>. If you are more into <strong>Python</strong> or something else, you can still use <em>R Markdown</em> - see <a href="https://bookdown.org/yihui/rmarkdown/language-engines.html">‘Other language engines’</a> in Yihui Xie’s <a href="https://bookdown.org/yihui/rmarkdown/language-engines.html"><em>R Markdown: The Definitive Guide</em></a>.</p>
-<!-- 
-Having your code and commentary all together in one place has a plethora of benefits!
--->
+<p>Using LaTeX together with <em>Markdown</em> is more consistent than the output of a word processor, much less prone to corruption or crashing, and the resulting file is smaller than a Word file.
+While you may never have had problems using Word in the past, your thesis is likely going to be about twice as large and complex as anything you’ve written before, taxing Word’s capabilities.</p>
 </div>
 <div id="who-should-use-it" class="section level2 unnumbered">
 <h2>Who should use it?<a class="anchor" aria-label="anchor" href="#who-should-use-it"><i class="fas fa-link"></i></a>
@@ -83,18 +82,11 @@ Having your code and commentary all together in one place has a plethora of bene
 <p>Anyone who needs to use data analysis, math, tables, a lot of figures, complex cross-references, or who just cares about reproducibility in research can benefit from using <em>R Markdown</em>.
 If you are working in ‘softer’ fields, the user-friendly nature of the <em>Markdown</em> syntax and its ability to keep track of and easily include figures, automatically generate a table of contents, index, references, table of figures, etc. should still make it of great benefit to your thesis project.</p>
 
-
-<!-- 
-Notes for adding an opening quote in PDF output:
-i) add the reference for the quote with the chunk option quote_author="my author name",
-ii) include=knitr::opts_knit$get('rmarkdown.pandoc.to') == 'latex' means that these quotes are only included when output is latex (in HTML output, it would appear by the end of the previous page)
-iii) You can't use markdown syntax inside chunk options, so if you want to e.g. italicise a book name in the quote reference use a 'text reference': Create a named piece of text with '(ref:label-name) My text', then link to this in the chunk option with quote_author='(ref:label-name)'
--->
 </div>
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="index.html">Welcome</a></div>
-<div class="next"><a href="rmd-basics.html"><span class="header-section-number">1</span> R Markdown basics</a></div>
+<div class="next"><a href="how-to-use.html"><span class="header-section-number">1</span> How to use</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
@@ -105,8 +97,8 @@ iii) You can't use markdown syntax inside chunk options, so if you want to e.g. 
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/ulyngs/oxforddown/blob/master/01-introduction.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/ulyngs/oxforddown/edit/master/01-introduction.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/ulyngs/oxforddown/blob/master/00-introduction.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/ulyngs/oxforddown/edit/master/00-introduction.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>
