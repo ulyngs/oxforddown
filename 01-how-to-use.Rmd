@@ -25,12 +25,9 @@ documentclass: book
     |   ...
     +-- 07-conclusion.Rmd
     +-- front-and-back-matter
-    |   +-- _abbreviations.Rmd
     |   +-- _abstract.Rmd
-    |   +-- _acknowledgements.Rmd
-    |   +-- _welcome-ebook.Rmd
     |   +-- 98-appendices.Rmd
-    |   +-- 99-references.Rmd
+    |   ...
     +-- bibliography
     |   +-- references.bib
     |   ...
@@ -38,8 +35,6 @@ documentclass: book
     |   ...
     +-- docs
     |   +-- _main.pdf
-    |   +-- _main.docx
-    |   +-- index.html
     |   ...
     +-- scripts_and_filters
     |   +-- knit-functions.R
