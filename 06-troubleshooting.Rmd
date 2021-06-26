@@ -6,7 +6,7 @@ output:
     template: templates/brief_template.tex
     citation_package: biblatex
 documentclass: book
-bibliography: references.bib
+#bibliography: [bibliography/references.bib, bibliography/additional-references.bib]
 ---
   
 # Troubleshooting

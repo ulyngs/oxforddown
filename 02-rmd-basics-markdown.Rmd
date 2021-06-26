@@ -9,7 +9,7 @@ output:
   bookdown::html_document2: default
   bookdown::word_document2: default
 documentclass: book
-bibliography: references.bib
+#bibliography: [bibliography/references.bib, bibliography/additional-references.bib]
 ---
 
 ```{block type='savequote', quote_author='(ref:cicero-quote)', include=knitr::is_latex_output()}

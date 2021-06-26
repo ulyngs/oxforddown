@@ -7,7 +7,7 @@ output:
     citation_package: biblatex
 bib-humanities: true
 documentclass: book
-bibliography: references.bib
+#bibliography: [bibliography/references.bib, bibliography/additional-references.bib]
 ---
 
 # Citations, cross-references, and collaboration {#cites-and-refs} 
