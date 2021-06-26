@@ -1,4 +1,4 @@
-## NOTE Major change: To build the thesis, you now simply knit **index.Rmd** - see details below.
+# NOTE Major change: To build the thesis, you now simply knit **index.Rmd** - see details below.
 
 # Contents
 
@@ -113,19 +113,18 @@ For how to use R Markdown syntax, read the sample content's dedicated chapter on
 
 ### Video tutorials
 
-NOTE: 1) as per v3.0, you build the entire thesis by knitting **index.Rmd** - the Makefile has been replaced by **scripts_and_filters/knit-functions.R** 2) as per v2.0, the introduction chapter no longer needs to be named \_introduction.Rmd
+I am in the process of updating the tutorial videos to v3 - I've marked below which ones are yet to be updated (they are still informative), and crossed out the ones that are now longer useful:
 
-Keeping these changes in mind, the videos should still be informative:
+- [Part 1: Building the entire thesis](https://youtu.be/LBHxcuCMjnk)
+- [Part 2: Building a single chapter](https://youtu.be/8vcO252Us6g)
+- [(NOT UPDATED) Part 3: Understanding the file structure](https://www.youtube.com/watch?v=jafgJobOgpc)
+- [(NOT UPDATED) Part 4: A walk-through example of creating your thesis](https://www.youtube.com/watch?v=uWpinaVSZ6Q)
+- [~~Part 5: The content included in index.Rmd (or: why the introduction chapter is special)~~](https://www.youtube.com/watch?v=FPlwCj5ZH8M)
+- [(NOT UPDATED) Part 6: Adjusting the order of chapters](https://www.youtube.com/watch?v=-0M3TuDnu7Y)
+- [(NOT UPDATED) Part 7: \_bookdown.yml: Adjusting build settings](https://www.youtube.com/watch?v=jXYfC8RXTvg)
+- [~~Part 8: Makefile: Adjusting build settings~~](https://www.youtube.com/watch?v=L6mV8z32RfE)
+- [(NOT UPDATED) Part 9: The LaTeX templates](https://www.youtube.com/watch?v=o2fd_O1On7g)
 
--   [Part 1: Building the entire thesis](https://www.youtube.com/watch?v=Yf1W1BBS9cU)
--   [Part 2: Building a single chapter](https://www.youtube.com/watch?v=-EJfCA3VA-I)
--   [Part 3: Understanding the file structure](https://www.youtube.com/watch?v=jafgJobOgpc)
--   [Part 4: A walk-through example of creating your thesis](https://www.youtube.com/watch?v=uWpinaVSZ6Q)
--   [Part 5: The content included in index.Rmd (or: why the introduction chapter is special)](https://www.youtube.com/watch?v=FPlwCj5ZH8M)
--   [Part 6: Adjusting the order of chapters](https://www.youtube.com/watch?v=-0M3TuDnu7Y)
--   [Part 7: \_bookdown.yml: Adjusting build settings](https://www.youtube.com/watch?v=jXYfC8RXTvg)
--   [Part 8: Makefile: Adjusting build settings](https://www.youtube.com/watch?v=L6mV8z32RfE)
--   [Part 9: The LaTeX templates](https://www.youtube.com/watch?v=o2fd_O1On7g)
 
 ### Writing your thesis
 
