@@ -277,6 +277,8 @@ output:
 
 Now, your header levels will be correct both when you knit the paper on its own and when its included in your thesis.
 
+NOTE: There might be no need to use a lua filter to shift heading - it seems you could simply use `pandoc_args: ["--shift-heading-level-by=-1"]` (see https://pandoc.org/MANUAL.html#reader-options)
+
 ### Step 4. Make sure figure widths are correct
 It might be that your figure widths when knitting your paper on its own, and when including it in your thesis, need to be different.
 You can again use parameters to set figure widths.
