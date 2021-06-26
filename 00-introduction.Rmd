@@ -1,0 +1,44 @@
+---
+#########################################
+# options for knitting a single chapter #
+#########################################
+output:
+  bookdown::pdf_document2:
+    template: templates/brief_template.tex
+    citation_package: biblatex
+  bookdown::html_document2: default
+  bookdown::word_document2: default
+documentclass: book
+#bibliography: [bibliography/references.bib, bibliography/additional-references.bib]
+---
+
+# Introduction {.unnumbered}
+
+```{=tex}
+\adjustmtc
+\markboth{Introduction}{}
+```
+<!-- For PDF output, include these two LaTeX commands after unnumbered chapter headings, otherwise the mini table of contents and the running header will show the previous chapter -->
+
+Welcome to `oxforddown` [@lyngsOxforddown2019], a thesis template for R Markdown that I created when writing [my own PhD thesis](https://ulyngs.github.io/phd-thesis/) at the University of Oxford.
+This template allows you to write in R Markdown, while formatting the PDF output with the beautiful and time-tested [OxThesis LaTeX template](https://github.com/mcmanigle/OxThesis).
+The sample content is partly adapted from [`thesisdown`](https://github.com/ismayc/thesisdown) .
+
+Hopefully, writing your thesis in R Markdown will provide a nicer interface to the OxThesis template if you haven't used TeX or LaTeX before.
+More importantly, *R Markdown* allows you to embed chunks of code within your thesis and generate plots and tables directly from the underlying data, avoiding copy-paste steps.
+This gets you into the habit of doing reproducible research, which will benefit you long-term as a researcher, and also help anyone that is trying to reproduce or build upon your results down the road.
+
+## Why use it? {.unnumbered}
+
+*R Markdown* creates a simple and straightforward way to interface with the beauty of LaTeX.
+Packages have been written in **R** to work directly with LaTeX to produce nicely formatting tables and paragraphs.
+In addition to creating a user friendly interface to LaTeX, *R Markdown* allows you to read in your data, analyze it and to visualize it using **R**, **Python** or other languages, and provide documentation and commentary on the results of your project.\
+Further, it allows for results of code output to be passed inline to the commentary of your results.
+You'll see more on this later, focusing on **R**. If you are more into **Python** or something else, you can still use *R Markdown* - see ['Other language engines'](https://bookdown.org/yihui/rmarkdown/language-engines.html) in Yihui Xie's [*R Markdown: The Definitive Guide*](https://bookdown.org/yihui/rmarkdown/language-engines.html).
+
+Using LaTeX together with *Markdown* is more consistent than the output of a word processor, much less prone to corruption or crashing, and the resulting file is smaller than a Word file. 
+While you may never have had problems using Word in the past, your thesis is likely going to be about twice as large and complex as anything you've written before, taxing Word's capabilities.
+
+## Who should use it? {-}
+Anyone who needs to use data analysis, math, tables, a lot of figures, complex cross-references, or who just cares about reproducibility in research can benefit from using *R Markdown*. 
+If you are working in 'softer' fields, the user-friendly nature of the *Markdown* syntax and its ability to keep track of and easily include figures, automatically generate a table of contents, index, references, table of figures, etc. should still make it of great benefit to your thesis project.
