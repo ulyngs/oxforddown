@@ -18,81 +18,129 @@ documentclass: book
 
 ## How `oxforddown` is structured
 
-    .
-    +-- index.Rmd
-    +-- _bookdown.yml
-    +-- 00-introduction.Rmd
-    |   ...
-    +-- 07-conclusion.Rmd
-    +-- front-and-back-matter
-    |   +-- _abstract.Rmd
-    |   +-- 98-appendices.Rmd
-    |   ...
-    +-- bibliography
-    |   +-- references.bib
-    |   ...
-    +-- figures
-    |   ...
-    +-- docs
-    |   +-- _main.pdf
-    |   ...
-    +-- scripts_and_filters
-    |   +-- knit-functions.R
-    |   ...
-    +-- templates
-    |   +-- template.tex
-    |   ...
+```markdown
+.
++-- index.Rmd
++-- _bookdown.yml
++-- 00-introduction.Rmd
+|   ...
++-- 07-conclusion.Rmd
++-- front-and-back-matter
+|   +-- _abstract.Rmd
+|   +-- 98-appendices.Rmd
+|   ...
++-- bibliography
+|   +-- references.bib
+|   ...
++-- figures
+|   ...
++-- docs
+|   +-- _main.pdf
+|   ...
++-- scripts_and_filters
+|   +-- knit-functions.R
+|   ...
++-- templates
+|   +-- template.tex
+|   ...
+```
 
--   **index.Rmd**: metadata and thesis layout options
+### index.Rmd: **metadata and layout options**
 
-    -   set your thesis' basic metadata (e.g., title, author name)
+In index.Rmd, set your thesis' basic metadata (e.g., title, author name)
 
-    -   adjust filepaths to your bibliography (one or more **.bib** files), as well as abstract, acknowledgements, and abbreviations
+```{yaml}
+title: |
+  `oxforddown`: \
+  An Oxford University Thesis \
+  Template for R Markdown
+author: Author Name
+college: Your College
+```
 
-    -   customise build options (e.g., in PDF output, where should page numbers be positioned? what should the heading for the bibliography section say? In HTML output, what CSS files should be used for styling?)
+Also set filepath(s) to your abstract, acknowledgements, abbreviations, and bibliography (one or more **.bib** files):
 
--   other **.Rmd** files in the root directory: thesis chapters
+```{yaml}
+abstract: |
+  `r paste(readLines("front-and-back-matter/_abstract.Rmd"), collapse = '\n  ')`
+acknowledgements: |
+  `r paste(readLines("front-and-back-matter/_acknowledgements.Rmd"), collapse = '\n  ')`
+dedication: For Yihui Xie
+abbreviations: |
+  `r paste(readLines("front-and-back-matter/_abbreviations.Rmd"), collapse = '\n  ')`
 
-    -   each chapter of your thesis should have its own **.Rmd** file in the root directory
+#######################
+## bibliography path ##
+#######################
+bibliography: [bibliography/references.bib, bibliography/additional-references.bib]
+```
 
-    -   when you knit **index.Rmd**, these chapters are merged together in alphabetical order, based on their filenames
 
--   **front-and-back-matter/**: abstract, acknowledgements, abbreviations, appendices...
+Finally, **index.Rmd** is also where you customise layout options.
+For example, in PDF output what should the heading for the bibliography section say?
+How should page numbers be positioned?
+Should line numbers be shown?
+In HTML output, what CSS files should be used for styling?
 
-    -   this folder holds the front and back matter of your thesis
+```{yaml}
+### citation and bibliography style ###
+bibliography-heading-in-pdf: Works Cited
+...
 
-    -   it has **.Rmd** files for your abstract, acknowledgements, abbreviations, and a welcome note that is included in HTML output.
-        Note how these files start with an underscore (e.g. **\_abstract.Rmd**).
-        This means they will not automatically be merged into the thesis -- they are explicitly included in **index.Rmd**
+### position of page numbers ###
+ordinary-page-number-foot-or-head: foot #'foot' puts page number in footer, 'head' in header
+ordinary-page-number-position: C
+...
 
-    -   **98-appendices** and **99-references.Rmd** are automatically merged into thesis, however - therefore their file names start with a high number, so that they will be included by the very end (merging is done alphabetically)
+includeline-num: false #show line numbering in PDF?
+...
 
-    -   **99-references.Rmd** sole purpose is to set the heading for the references section in HTML and Word output
+  bookdown::bs4_book: 
+    css: 
+      - templates/bs4_style.css
+      - templates/corrections.css # remove to stop highlighting corrections
+```
 
--   **docs/**: where your thesis' output are saved
+### other **.Rmd** files in root folder: thesis chapters
 
--   **\_bookdown.yml**: build options
+-   each chapter of your thesis should have its own **.Rmd** file in the root directory
 
-    -   Set output directory for your thesis files (**docs/** is the default, as it makes it easy to publish HTML output on GitHub pages)
+-   when you knit **index.Rmd**, these chapters are merged together in alphabetical order, based on their filenames
 
-    -   Should R Markdown automatically merge **.Rmd** files in alphabetical order?
-        Alternatively, specify explicitly which files should be included.
+### **front-and-back-matter/**
 
--   **scripts-and-filters**
+-   this folder holds the front and back matter of your thesis
 
-    -   **knit-function.R** has the functions that are used when you build the entire thesis by knitting **index.Rmd**
+-   it has **.Rmd** files for your abstract, acknowledgements, abbreviations, and a welcome note that is included in HTML output.
+    Note how these files start with an underscore (e.g. **\_abstract.Rmd**).
+    This means they will not automatically be merged into the thesis -- they are explicitly included in **index.Rmd**
 
-    -   **create_chunk_options.R** lets you include cute quotes at the start of a chapter in PDF output
+-   **98-appendices** and **99-references.Rmd** are automatically merged into thesis, however - therefore their file names start with a high number, so that they will be included by the very end (merging is done alphabetically)
 
-    -   **colour_and_highlight.lua** lets you color text or apply background color to text
+-   **99-references.Rmd** sole purpose is to set the heading for the references section in HTML and Word output
 
--   **templates**
+### **\_bookdown.yml**: build options
 
-    -   **template.tex** is the LaTeX template used to build the entire thesis to PDF in the OxThesis layout (relies on **ociamthesis.cls**)
+-   Set output directory for your thesis files (**docs/** is the default, as it makes it easy to publish HTML output on GitHub pages)
 
-    -   **brief-template.tex** is the LaTeX template used to build a single chapter to PDF in the OxThesis layout (relies on **ociamthesis.cls**)
+-   Should R Markdown automatically merge **.Rmd** files in alphabetical order?
+    Alternatively, specify explicitly which files should be included.
 
-    -   **beltcrest.pdf**: the oxford logo used on the front page of the PDF output
+### **scripts-and-filters**
+
+-   **knit-function.R** has the functions that are used when you build the entire thesis by knitting **index.Rmd**
+
+-   **create_chunk_options.R** lets you include cute quotes at the start of a chapter in PDF output
+
+-   **colour_and_highlight.lua** lets you color text or apply background color to text
+
+### **templates**
+
+-   **template.tex** is the LaTeX template used to build the entire thesis to PDF in the OxThesis layout (relies on **ociamthesis.cls**)
+
+-   **brief-template.tex** is the LaTeX template used to build a single chapter to PDF in the OxThesis layout (relies on **ociamthesis.cls**)
+
+-   **beltcrest.pdf**: the oxford logo used on the front page of the PDF output
 
 ## Building your entire thesis
 
