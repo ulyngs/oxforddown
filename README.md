@@ -109,13 +109,13 @@ I am in the process of updating the tutorial videos to v3 - I've marked below wh
 
 - [Part 1: Building the entire thesis](https://youtu.be/LBHxcuCMjnk)
 - [Part 2: Building a single chapter](https://youtu.be/8vcO252Us6g)
-- [(NOT UPDATED) Part 3: Understanding the file structure](https://www.youtube.com/watch?v=jafgJobOgpc)
-- [(NOT UPDATED) Part 4: A walk-through example of creating your thesis](https://www.youtube.com/watch?v=uWpinaVSZ6Q)
+- [(*old but informative*) Part 3: Understanding the file structure](https://www.youtube.com/watch?v=jafgJobOgpc)
+- [(*old but informative*) Part 4: A walk-through example of creating your thesis](https://www.youtube.com/watch?v=uWpinaVSZ6Q)
 - [~~Part 5: The content included in index.Rmd (or: why the introduction chapter is special)~~](https://www.youtube.com/watch?v=FPlwCj5ZH8M)
-- [(NOT UPDATED) Part 6: Adjusting the order of chapters](https://www.youtube.com/watch?v=-0M3TuDnu7Y)
-- [(NOT UPDATED) Part 7: \_bookdown.yml: Adjusting build settings](https://www.youtube.com/watch?v=jXYfC8RXTvg)
+- [(*old but informative*) Part 6: Adjusting the order of chapters](https://www.youtube.com/watch?v=-0M3TuDnu7Y)
+- [(*old but informative*) Part 7: \_bookdown.yml: Adjusting build settings](https://www.youtube.com/watch?v=jXYfC8RXTvg)
 - [~~Part 8: Makefile: Adjusting build settings~~](https://www.youtube.com/watch?v=L6mV8z32RfE)
-- [(NOT UPDATED) Part 9: The LaTeX templates](https://www.youtube.com/watch?v=o2fd_O1On7g)
+- [(*old but informative*) Part 9: The LaTeX templates](https://www.youtube.com/watch?v=o2fd_O1On7g)
 
 
 ### Writing your thesis
