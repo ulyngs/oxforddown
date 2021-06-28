@@ -3,8 +3,8 @@
 # Contents
 
 -   [Requirements](#requirements)
--   [Video tutorials](#video-tutorials)
 -   [How to use](#how-to-use)
+    -   [Video tutorials](#video-tutorials)
     -   [Writing your thesis](#writing-your-thesis)
     -   [Building your entire thesis](#building-your-entire-thesis)
         -   [PDF output](#pdf-output)
