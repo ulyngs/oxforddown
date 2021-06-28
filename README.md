@@ -4,6 +4,7 @@
 
 -   [Requirements](#requirements)
 -   [How to use](#how-to-use)
+    -   [How-to chapters](#how-to-chapters)
     -   [Video tutorials](#video-tutorials)
     -   [Writing your thesis](#writing-your-thesis)
     -   [Building your entire thesis](#building-your-entire-thesis)
@@ -97,6 +98,7 @@ Examples of theses written with `oxforddown`:
 -   download the **ulyngs/oxforddown** repo as a zip
 -   open **oxforddown.Rproj** in RStudio
 
+### How-to chapters
 Read the ['How to use' chapter](https://ulyngs.github.io/oxforddown/how-to-use.html) in the sample content to understand the structure of `oxforddown`.
 
 For how to use R Markdown syntax, read the sample content's dedicated chapter on this, or see [*R Markdown: The Definitive Guide*](https://bookdown.org/yihui/rmarkdown/)and the [*R Markdown Cookbook*](https://bookdown.org/yihui/rmarkdown-cookbook/).
