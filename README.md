@@ -125,7 +125,6 @@ I am in the process of updating the tutorial videos to v3 - I've marked below wh
 -   update the YAML header (the stuff at the top between '---') in **index.Rmd** with your name, college, etc.
 -   write the individual chapters as **.Rmd** files in the root folder
 -   write the front matter (abstract, acknowledgements, abbreviations) and back matter (appendices) by adjusting the **.Rmd** files in the **front-and-back-matter/** folder
--   for abbreviations, change **front-and-back-matter/abbreviations.tex** to fit your needs (follow the LaTeX syntax in there)
 
 **.Rmd** files you don't want included in the body text must be given file names that begin with an underscore (e.g. **front-and-back-matter/\_abstract.Rmd** and **front-and-back-matter/\_acknowledgements.Rmd**).
 (Alternatively, specify manually in **\_bookdown.yml** which files should be merged into the body text.)
