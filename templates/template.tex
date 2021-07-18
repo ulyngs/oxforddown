@@ -52,6 +52,7 @@ $if(colored-not-bordered-links)$
 \hypersetup{
   hidelinks,
   colorlinks,
+  linktocpage=$if(link-toc-page)$$link-toc-page$$else$true$endif$,
   linkcolor=$if(linkcolor-rgb)$mylinkcolor$else$.$endif$,
   urlcolor=$if(urlcolor-rgb)$myurlcolor$else$.$endif$,
   citecolor=$if(citecolor-rgb)$mycitecolor$else$.$endif$
@@ -60,6 +61,7 @@ $if(colored-not-bordered-links)$
 $else$
 \hypersetup{
   colorlinks=false,
+  linktocpage=$if(link-toc-page)$$link-toc-page$$else$true$endif$,
   linkbordercolor=$if(linkcolor-rgb)$mylinkcolor$else$.$endif$,
   urlbordercolor=$if(urlcolor-rgb)$myurlcolor$else$.$endif$,
   citebordercolor=$if(citecolor-rgb)$mycitecolor$else$.$endif$
