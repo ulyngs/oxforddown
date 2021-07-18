@@ -86,8 +86,11 @@ colored-not-bordered-links: true # true = highlight text of links - false = high
 # and comment out the colors below
 urlcolor-rgb: "0,0,139"
 citecolor-rgb: "0,33,71"
-# linkcolor-rgb: "0,33,71"  # coloring normal links looks a bit excessive, as it highlights also all links in the table of contents
+linkcolor-rgb: "0,33,71"
 
+# Make page number, not text, be link in TOC, LOF, and LOT. Otherwise, link
+# highlighting may look a bit excessive.
+link-toc-page: true
 
 ### binding / margins ###
 page-layout: nobind #'nobind' for equal margins (PDF output), 'twoside' for two-sided binding (mirror margins and blank pages), leave blank for one-sided binding (left margin > right margin)
