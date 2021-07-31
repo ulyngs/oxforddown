@@ -204,6 +204,8 @@ bibliography: references.bib
 
 The file **templates/brief_template.tex** formats the chapter in the OxThesis style but without including the front matter (table of contents, abstract, etc).
 
+**NOTE:** The bibliography path in your individual chapters' YAML headers needs to be identical to the one in **index.Rmd** - otherwise your individual chapters' bibliography path may override the path in **index.Rmd** and cause trouble when you knit the entire thesis.
+
 ## Customisations and extensions
 
 -   for some common things you might want to do in your thesis, read through the sample content
