@@ -107,7 +107,7 @@ See also the general, official resources [*R Markdown: The Definitive Guide*](ht
 
 ### Video tutorials
 
-I am in the process of updating the tutorial videos to v3 - I've marked below which ones are yet to be updated (they are still informative), and crossed out the ones that are now longer useful:
+I am in the process of updating the tutorial videos to v3 - I've noted below which have yet to be updated, but are still informative, and struck out those that no longer apply:
 
 - [Part 1: Building the entire thesis](https://youtu.be/LBHxcuCMjnk)
 - [Part 2: Building a single chapter](https://youtu.be/8vcO252Us6g)
