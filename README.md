@@ -3,28 +3,19 @@
 # Contents
 
 -   [Requirements](#requirements)
-
--   [Video tutorials](#video-tutorials)
-
 -   [How to use](#how-to-use)
-
+    -   [How-to chapters](#how-to-chapters)
+    -   [Video tutorials](#video-tutorials)
     -   [Writing your thesis](#writing-your-thesis)
-
     -   [Building your entire thesis](#building-your-entire-thesis)
-
         -   [PDF output](#pdf-output)
         -   [Gitbook output](#gitbook-output)
         -   [BS4 book output](#bs4-book-output)
         -   [Word output](#word-output)
-
     -   [Building a single chapter](#building-a-single-chapter)
-
     -   [Cleaning up generated auxiliary files](#cleaning-up-generated-auxiliary-files)
-
 -   [Customisations and extensions](#customisations-and-extensions)
-
 -   [Limitations](#limitations)
-
     -   [Gotchas](#gotchas)
     -   [Output formats](#output-formats)
 
@@ -107,23 +98,26 @@ Examples of theses written with `oxforddown`:
 -   download the **ulyngs/oxforddown** repo as a zip
 -   open **oxforddown.Rproj** in RStudio
 
-Read the ['How to use' chapter](https://ulyngs.github.io/oxforddown/how-to-use.html) in the sample content to understand the structure of `oxforddown`.
+### How-to chapters
+Read the ['How to use' chapter](https://ulyngs.github.io/oxforddown/how-to-use.html) to understand the structure of `oxforddown` and how to do the basic things like building your thesis.
 
-For how to use R Markdown syntax, read the sample content's dedicated chapter on this, or see [*R Markdown: The Definitive Guide*](https://bookdown.org/yihui/rmarkdown/)and the [*R Markdown Cookbook*](https://bookdown.org/yihui/rmarkdown-cookbook/).
+For how to use R Markdown syntax in general and in `oxforddown` in particular, read the dedicated chapters on this ([R Markdown basics](https://ulyngs.github.io/oxforddown/rmd-basics.html), [Citations, cross-references, and collaboration](https://ulyngs.github.io/oxforddown/cites-and-refs.html), and [Tables](https://ulyngs.github.io/oxforddown/tables.html)).
+
+See also the general, official resources [*R Markdown: The Definitive Guide*](https://bookdown.org/yihui/rmarkdown/) and the [*R Markdown Cookbook*](https://bookdown.org/yihui/rmarkdown-cookbook/).
 
 ### Video tutorials
 
-I am in the process of updating the tutorial videos to v3 - I've marked below which ones are yet to be updated (they are still informative), and crossed out the ones that are now longer useful:
+I am in the process of updating the tutorial videos to v3 - I've noted below which have yet to be updated, but are still informative, and struck out those that no longer apply:
 
 - [Part 1: Building the entire thesis](https://youtu.be/LBHxcuCMjnk)
 - [Part 2: Building a single chapter](https://youtu.be/8vcO252Us6g)
-- [(NOT UPDATED) Part 3: Understanding the file structure](https://www.youtube.com/watch?v=jafgJobOgpc)
-- [(NOT UPDATED) Part 4: A walk-through example of creating your thesis](https://www.youtube.com/watch?v=uWpinaVSZ6Q)
+- [(*old but informative*) Part 3: Understanding the file structure](https://www.youtube.com/watch?v=jafgJobOgpc)
+- [(*old but informative*) Part 4: A walk-through example of creating your thesis](https://www.youtube.com/watch?v=uWpinaVSZ6Q)
 - [~~Part 5: The content included in index.Rmd (or: why the introduction chapter is special)~~](https://www.youtube.com/watch?v=FPlwCj5ZH8M)
-- [(NOT UPDATED) Part 6: Adjusting the order of chapters](https://www.youtube.com/watch?v=-0M3TuDnu7Y)
-- [(NOT UPDATED) Part 7: \_bookdown.yml: Adjusting build settings](https://www.youtube.com/watch?v=jXYfC8RXTvg)
+- [(*old but informative*) Part 6: Adjusting the order of chapters](https://www.youtube.com/watch?v=-0M3TuDnu7Y)
+- [(*old but informative*) Part 7: \_bookdown.yml: Adjusting build settings](https://www.youtube.com/watch?v=jXYfC8RXTvg)
 - [~~Part 8: Makefile: Adjusting build settings~~](https://www.youtube.com/watch?v=L6mV8z32RfE)
-- [(NOT UPDATED) Part 9: The LaTeX templates](https://www.youtube.com/watch?v=o2fd_O1On7g)
+- [(*old but informative*) Part 9: The LaTeX templates](https://www.youtube.com/watch?v=o2fd_O1On7g)
 
 
 ### Writing your thesis
@@ -131,7 +125,6 @@ I am in the process of updating the tutorial videos to v3 - I've marked below wh
 -   update the YAML header (the stuff at the top between '---') in **index.Rmd** with your name, college, etc.
 -   write the individual chapters as **.Rmd** files in the root folder
 -   write the front matter (abstract, acknowledgements, abbreviations) and back matter (appendices) by adjusting the **.Rmd** files in the **front-and-back-matter/** folder
--   for abbreviations, change **front-and-back-matter/abbreviations.tex** to fit your needs (follow the LaTeX syntax in there)
 
 **.Rmd** files you don't want included in the body text must be given file names that begin with an underscore (e.g. **front-and-back-matter/\_abstract.Rmd** and **front-and-back-matter/\_acknowledgements.Rmd**).
 (Alternatively, specify manually in **\_bookdown.yml** which files should be merged into the body text.)
@@ -210,6 +203,8 @@ bibliography: references.bib
 ```
 
 The file **templates/brief_template.tex** formats the chapter in the OxThesis style but without including the front matter (table of contents, abstract, etc).
+
+**NOTE:** The bibliography path in your individual chapters' YAML headers needs to be identical to the one in **index.Rmd** - otherwise your individual chapters' bibliography path may override the path in **index.Rmd** and cause trouble when you knit the entire thesis.
 
 ## Customisations and extensions
 
