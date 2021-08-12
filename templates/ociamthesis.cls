@@ -360,7 +360,7 @@
 \renewenvironment{savequote}[1][8cm]{%
 \begin{lrbox}{\@quotebox}
 \begin{minipage}[t]{#1}\footnotesize\slshape%
-\setlength{\parskip}{6px}}{%
+\setlength{\parskip}{6pt}}{%
 \unskip\end{minipage}\end{lrbox}
 \global\setbox\@quotebox\copy\@quotebox
 \global\let\@printcites\@iprintcites
