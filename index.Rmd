@@ -134,6 +134,7 @@ frontmatter-linespacing: 17pt plus1pt minus1pt #spacing in roman-numbered pages 
 ### other stuff ###
 abstractseparate: false  # include front page w/ abstract for examination schools?
 includeline-num: false #show line numbering in PDF?
+line-wrapping-in-code: true #wrap overflowing lines in code blocks?
 
 
 #####################
@@ -180,7 +181,6 @@ source('scripts_and_filters/wrap_lines.R')
 <!--
 Include the create_chunk_options chunk above at the top of your index.Rmd file
 This will include code to create additional chunk options (e.g. for adding author references to savequotes)
-and to make sure lines in code soft wrap
 If you need to create your own additional chunk options, edit the file scripts/create_chunk_options.R
 -->
 
