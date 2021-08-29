@@ -6,52 +6,79 @@
 % Originally by Keith A. Gillow (gillow@maths.ox.ac.uk), 1997
 % Modified by Sam Evans (sam@samuelevansresearch.org), 2007
 % Modified by John McManigle (john@oxfordechoes.com), 2015
-% Modified by Ulrik Lyngs (ulrik.lyngs@cs.ox.ac.uk), 2018, for use with R Markdown
+% Modified by Ulrik Lyngs (ulrik.lyngs@cs.ox.ac.uk), 2018-, for use with R Markdown
 %
 % Ulrik Lyngs, 25 Nov 2018: Following John McManigle, broad permissions are granted to use, modify, and distribute this software
 % as specified in the MIT License included in this distribution's LICENSE file.
 %
-% John tried to comment this file extensively, so read through it to see how to use the various options.  Remember
-% that in LaTeX, any line starting with a % is NOT executed.  Several places below, you have a choice of which line to use
+% John commented this file extensively, so read through to see how to use the various options.  Remember that in LaTeX,
+% any line starting with a % is NOT executed.  Several places below, you have a choice of which line to use
 % out of multiple options (eg draft vs final, for PDF vs for binding, etc.)  When you pick one, add a % to the beginning of
 % the lines you don't want.
 
 
-%%%%% CHOOSE PAGE LAYOUT
+%%%%% PAGE LAYOUT
 % The most common choices should be below.  You can also do other things, like replacing "a4paper" with "letterpaper", etc.
 
-% This one will format for two-sided binding (ie left and right pages have mirror margins; blank pages inserted where needed):
+% This one formats for two-sided binding (ie left and right pages have mirror margins; blank pages inserted where needed):
 %\documentclass[a4paper,twoside]{templates/ociamthesis}
-% This one will format for one-sided binding (ie left margin > right margin; no extra blank pages):
+% This one formats for one-sided binding (ie left margin > right margin; no extra blank pages):
 %\documentclass[a4paper]{ociamthesis}
-% This one will format for PDF output (ie equal margins, no extra blank pages):
+% This one formats for PDF output (ie equal margins, no extra blank pages):
 %\documentclass[a4paper,nobind]{templates/ociamthesis}
-%UL 2 Dec 2018: pass this in from YAML
+
+% As you can see from the uncommented line below, oxforddown template uses the a4paper size, 
+% and passes in the binding option from the YAML header in index.Rmd:
 \documentclass[a4paper, nobind]{templates/ociamthesis}
 
-% UL 5 January 2021 - add packages used by kableExtra
-\usepackage{booktabs}
-\usepackage{longtable}
-\usepackage{array}
-\usepackage{multirow}
-\usepackage{wrapfig}
-\usepackage{colortbl}
-\usepackage{pdflscape}
-\usepackage{tabu}
-\usepackage{threeparttable}
-\usepackage{threeparttablex}
-\usepackage[normalem]{ulem}
-\usepackage{makecell}
-\usepackage[colorlinks=false,pdfpagelabels,hidelinks=true]{hyperref}
+
+%%%%% ADDING LATEX PACKAGES
+
+% add hyperref package with options from YAML %
+\usepackage[pdfpagelabels]{hyperref}
+% change the default coloring of links to something sensible
+\usepackage{xcolor}
+
+\definecolor{mylinkcolor}{RGB}{0,0,139}
+\definecolor{myurlcolor}{RGB}{0,0,139}
+\definecolor{mycitecolor}{RGB}{0,33,71}
+
+\hypersetup{
+  hidelinks,
+  colorlinks,
+  linktocpage=true,
+  linkcolor=mylinkcolor,
+  urlcolor=myurlcolor,
+  citecolor=mycitecolor
+}
+
+
+
+% add float package to allow manual control of figure positioning %
 \usepackage{float}
 
+% enable strikethrough
+\usepackage[normalem]{ulem}
 
-%UL set section header spacing
-\usepackage{titlesec}
-% 
-\titlespacing\subsubsection{0pt}{24pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+% use soul package for correction highlighting
+\usepackage{color, soul}
+\definecolor{correctioncolor}{HTML}{CCCCFF}
+\sethlcolor{correctioncolor}
+\newcommand{\ctext}[3][RGB]{%
+  \begingroup
+  \definecolor{hlcolor}{#1}{#2}\sethlcolor{hlcolor}%
+  \hl{#3}%
+  \endgroup
+}
+\soulregister\ref7
+\soulregister\cite7
+\soulregister\autocite7
+\soulregister\textcite7
+\soulregister\pageref7
 
-% UL 30 Nov 2018 pandoc puts lists in 'tightlist' command when no space between bullet points in Rmd file
+%%%%% FIXING / ADDING THINGS THAT'S SPECIAL TO R MARKDOWN'S USE OF LATEX TEMPLATES
+% pandoc puts lists in 'tightlist' command when no space between bullet points in Rmd file,
+% so we add this command to the template
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
  
@@ -107,31 +134,37 @@
   \vspace{8pt}%
 }
 
+% User-included things with header_includes or in_header will appear here
+% kableExtra packages will appear here if you use library(kableExtra)
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+
+
+%UL set section header spacing
+\usepackage{titlesec}
+% 
+\titlespacing\subsubsection{0pt}{24pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+
+
 %UL set whitespace around verbatim environments
 \usepackage{etoolbox}
 \makeatletter
 \preto{\@verbatim}{\topsep=0pt \partopsep=0pt }
 \makeatother
 
-%UL 26 Mar 2019, enable strikethrough
-\usepackage[normalem]{ulem}
 
-%UL use soul package for correction highlighting
-\usepackage{color, soul}
-\usepackage{xcolor}
-\definecolor{correctioncolor}{HTML}{CCCCFF}
-\sethlcolor{correctioncolor}
-\newcommand{\ctext}[3][RGB]{%
-  \begingroup
-  \definecolor{hlcolor}{#1}{#2}\sethlcolor{hlcolor}%
-  \hl{#3}%
-  \endgroup
-}
-\soulregister\ref7
-\soulregister\cite7
-\soulregister\autocite7
-\soulregister\textcite7
-\soulregister\pageref7
 
 %%%%%%% PAGE HEADERS AND FOOTERS %%%%%%%%%
 \usepackage{fancyhdr}
@@ -164,35 +197,34 @@
 %%%%% SELECT YOUR DRAFT OPTIONS
 % This adds a "DRAFT" footer to every normal page.  (The first page of each chapter is not a "normal" page.)
 
+% IP feb 2021: option to include line numbers in PDF
+
+% for line wrapping in code blocks
+\usepackage{fvextra}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
+
 % This highlights (in blue) corrections marked with (for words) \mccorrect{blah} or (for whole
 % paragraphs) \begin{mccorrection} . . . \end{mccorrection}.  This can be useful for sending a PDF of
 % your corrected thesis to your examiners for review.  Turn it off, and the blue disappears.
 \correctionstrue
 
+
 %%%%% BIBLIOGRAPHY SETUP
 % Note that your bibliography will require some tweaking depending on your department, preferred format, etc.
-% The options included below are just very basic "sciencey" and "humanitiesey" options to get started.
 % If you've not used LaTeX before, I recommend reading a little about biblatex/biber and getting started with it.
 % If you're already a LaTeX pro and are used to natbib or something, modify as necessary.
 % Either way, you'll have to choose and configure an appropriate bibliography format...
 
-% The science-type option: numerical in-text citation with references in order of appearance.
-% \usepackage[style=numeric-comp, sorting=none, backend=biber, doi=false, isbn=false]{biblatex}
-% \newcommand*{\bibtitle}{References}
 
-% The humanities-type option: author-year in-text citation with an alphabetical works cited.
-% \usepackage[style=authoryear, sorting=nyt, backend=biber, maxcitenames=2, useprefix, doi=false, isbn=false]{biblatex}
-% \newcommand*{\bibtitle}{Works Cited}
-
-%UL 3 Dec 2018: set this from YAML in index.Rmd
 \usepackage[style=authoryear, sorting=nyt, backend=biber, maxcitenames=2, useprefix, doi=true, isbn=false, uniquename=false]{biblatex}
 \newcommand*{\bibtitle}{Works Cited}
 
+\addbibresource{bibliography/references.bib}
+\addbibresource{bibliography/additional-references.bib}
+
+
 % This makes the bibliography left-aligned (not 'justified') and slightly smaller font.
 \renewcommand*{\bibfont}{\raggedright\small}
-
-% Change this to the name of your .bib file (usually exported from a citation manager like Zotero or EndNote).
-\addbibresource{references.bib}
 
 
 % Uncomment this if you want equation numbers per section (2.3.12), instead of per chapter (2.18):
@@ -250,7 +282,7 @@ Template for R Markdown}
 %
 % Oxford University logo on title page
 %
-\def\crest{{\includegraphics{templates/beltcrest.pdf}}}
+\def\crest{{\includegraphics[width=5cm]{templates/beltcrest.pdf}}}
 \renewcommand{\university}{University of Oxford}
 \renewcommand{\submittedtext}{A thesis submitted for the degree of}
 
@@ -274,13 +306,6 @@ Template for R Markdown}
 %%%%% ABSTRACT SEPARATE
 % This is used to create the separate, one-page abstract that you are required to hand into the Exam
 % Schools.  You can comment it out to generate a PDF for printing or whatnot.
-\begin{abstractseparate}
-  This \emph{R Markdown} template is for writing an Oxford University thesis. The template is built using Yihui Xie's \texttt{bookdown} package, with heavy inspiration from Chester Ismay's \texttt{thesisdown} and the \texttt{OxThesis} \LaTeX~template (most recently adapted by John McManigle).
-
-  This template's sample content include illustrations of how to write a thesis in R Markdown, and largely follows the structure from \href{https://ulyngs.github.io/rmarkdown-workshop-2019/}{this R Markdown workshop}.
-
-  Congratulations for taking a step further into the lands of open, reproducible science by writing your thesis using a tool that allows you to transparently include tables and dynamically generated plots directly from the underlying data. Hip hooray!
-\end{abstractseparate}
 
 % JEM: Pages are roman numbered from here, though page numbers are invisible until ToC.  This is in
 % keeping with most typesetting conventions.
@@ -344,7 +369,24 @@ Template for R Markdown}
 % This example includes a list of abbreviations.  Look at text/abbreviations.tex to see how that file is
 % formatted.  The template can handle any kind of list though, so this might be a good place for a
 % glossary, etc.
-\include{front-and-back-matter/abbreviations}
+% First parameter can be changed eg to "Glossary" or something.
+% Second parameter is the max length of bold terms.
+\begin{mclistof}{List of Abbreviations}{3.2cm}
+
+\item[1-D, 2-D]
+
+One- or two-dimensional, referring \textbf{in this thesis} to spatial dimensions in an image.
+
+\item[Otter]
+
+One of the finest of water mammals.
+
+\item[Hedgehog]
+
+Quite a nice prickly friend.
+
+\end{mclistof} 
+
 
 % The Roman pages, like the Roman Empire, must come to its inevitable close.
 \end{romanpages}
@@ -361,14 +403,13 @@ Template for R Markdown}
 \adjustmtc
 \markboth{Introduction}{}
 
-Welcome to the \emph{R Markdown} Oxford University thesis template.
-This sample content is adapted from \href{https://github.com/ismayc/thesisdown}{\texttt{thesisdown}} and the formatting of PDF output is adapted from the \href{https://github.com/mcmanigle/OxThesis}{OxThesis LaTeX template}.
-Hopefully, writing your thesis in R Markdown will provide a nicer interface to the OxThesis template if you haven't used TeX or LaTeX before.
-More importantly, using \emph{R Markdown} allows you to embed chunks of code directly into your thesis and generate plots and tables directly from the underlying data, avoiding copy-paste steps.
-This will get you into the habit of doing reproducible research, which benefits you long-term as a researcher, but also will greatly help anyone that is trying to reproduce or build upon your results down the road.
+Welcome to \texttt{oxforddown} \autocite{lyngsOxforddown2019}, a thesis template for R Markdown that I created when writing \href{https://ulyngs.github.io/phd-thesis/}{my own PhD thesis} at the University of Oxford.
+This template allows you to write in R Markdown, while formatting the PDF output with the beautiful and time-tested \href{https://github.com/mcmanigle/OxThesis}{OxThesis LaTeX template}.
+The sample content is partly adapted from \href{https://github.com/ismayc/thesisdown}{\texttt{thesisdown}} .
 
-Using LaTeX together with \emph{Markdown} is more consistent than the output of a word processor, much less prone to corruption or crashing, and the resulting file is smaller than a Word file.
-While you may never have had problems using Word in the past, your thesis is likely going to be about twice as large and complex as anything you've written before, taxing Word's capabilities.
+Hopefully, writing your thesis in R Markdown will provide a nicer interface to the OxThesis template if you haven't used TeX or LaTeX before.
+More importantly, \emph{R Markdown} allows you to embed chunks of code within your thesis and generate plots and tables directly from the underlying data, avoiding copy-paste steps.
+This gets you into the habit of doing reproducible research, which will benefit you long-term as a researcher, and also help anyone that is trying to reproduce or build upon your results down the road.
 
 \hypertarget{why-use-it}{%
 \section*{Why use it?}\label{why-use-it}}
@@ -380,12 +421,292 @@ In addition to creating a user friendly interface to LaTeX, \emph{R Markdown} al
 Further, it allows for results of code output to be passed inline to the commentary of your results.
 You'll see more on this later, focusing on \textbf{R}. If you are more into \textbf{Python} or something else, you can still use \emph{R Markdown} - see \href{https://bookdown.org/yihui/rmarkdown/language-engines.html}{`Other language engines'} in Yihui Xie's \href{https://bookdown.org/yihui/rmarkdown/language-engines.html}{\emph{R Markdown: The Definitive Guide}}.
 
+Using LaTeX together with \emph{Markdown} is more consistent than the output of a word processor, much less prone to corruption or crashing, and the resulting file is smaller than a Word file.
+While you may never have had problems using Word in the past, your thesis is likely going to be about twice as large and complex as anything you've written before, taxing Word's capabilities.
+
 \hypertarget{who-should-use-it}{%
 \section*{Who should use it?}\label{who-should-use-it}}
 \addcontentsline{toc}{section}{Who should use it?}
 
 Anyone who needs to use data analysis, math, tables, a lot of figures, complex cross-references, or who just cares about reproducibility in research can benefit from using \emph{R Markdown}.
 If you are working in `softer' fields, the user-friendly nature of the \emph{Markdown} syntax and its ability to keep track of and easily include figures, automatically generate a table of contents, index, references, table of figures, etc. should still make it of great benefit to your thesis project.
+
+\hypertarget{how-to-use}{%
+\chapter{How to use}\label{how-to-use}}
+
+\minitoc 
+
+\hypertarget{how-oxforddown-is-structured}{%
+\section{\texorpdfstring{How \texttt{oxforddown} is structured}{How oxforddown is structured}}\label{how-oxforddown-is-structured}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{.}
+\NormalTok{+{-}{-} index.Rmd}
+\NormalTok{+{-}{-} \_bookdown.yml}
+\NormalTok{+{-}{-} 00{-}introduction.Rmd}
+\NormalTok{|   ...}
+\NormalTok{+{-}{-} 07{-}conclusion.Rmd}
+\NormalTok{+{-}{-} front{-}and{-}back{-}matter}
+\NormalTok{|   +{-}{-} \_abstract.Rmd}
+\NormalTok{|   +{-}{-} 98{-}appendices.Rmd}
+\NormalTok{|   ...}
+\NormalTok{+{-}{-} bibliography}
+\NormalTok{|   +{-}{-} references.bib}
+\NormalTok{|   ...}
+\NormalTok{+{-}{-} figures}
+\NormalTok{|   ...}
+\NormalTok{+{-}{-} docs}
+\NormalTok{|   +{-}{-} \_main.pdf}
+\NormalTok{|   ...}
+\NormalTok{+{-}{-} scripts\_and\_filters}
+\NormalTok{|   +{-}{-} knit{-}functions.R}
+\NormalTok{|   ...}
+\NormalTok{+{-}{-} templates}
+\NormalTok{|   +{-}{-} template.tex}
+\NormalTok{|   ...}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{index.rmd-metadata-and-layout-options}{%
+\subsection{\texorpdfstring{index.Rmd: \textbf{metadata and layout options}}{index.Rmd: metadata and layout options}}\label{index.rmd-metadata-and-layout-options}}
+
+In index.Rmd, set your thesis' basic metadata (e.g., title, author name)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{title}\KeywordTok{: }\CharTok{|}
+\NormalTok{  \textasciigrave{}oxforddown\textasciigrave{}: \textbackslash{}}
+\NormalTok{  An Oxford University Thesis \textbackslash{}}
+\NormalTok{  Template for R Markdown}
+\FunctionTok{author}\KeywordTok{:}\AttributeTok{ Author Name}
+\FunctionTok{college}\KeywordTok{:}\AttributeTok{ Your College}
+\end{Highlighting}
+\end{Shaded}
+
+Also set filepath(s) to your abstract, acknowledgements, abbreviations, and bibliography (one or more \textbf{.bib} files):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{abstract}\KeywordTok{: }\CharTok{|}
+\NormalTok{  \textasciigrave{}r paste(readLines("front{-}and{-}back{-}matter/\_abstract.Rmd"), collapse = \textquotesingle{}\textbackslash{}n  \textquotesingle{})\textasciigrave{}}
+\FunctionTok{acknowledgements}\KeywordTok{: }\CharTok{|}
+\NormalTok{  \textasciigrave{}r paste(readLines("front{-}and{-}back{-}matter/\_acknowledgements.Rmd"), collapse = \textquotesingle{}\textbackslash{}n  \textquotesingle{})\textasciigrave{}}
+\FunctionTok{dedication}\KeywordTok{:}\AttributeTok{ For Yihui Xie}
+\FunctionTok{abbreviations}\KeywordTok{: }\CharTok{|}
+\NormalTok{  \textasciigrave{}r paste(readLines("front{-}and{-}back{-}matter/\_abbreviations.Rmd"), collapse = \textquotesingle{}\textbackslash{}n  \textquotesingle{})\textasciigrave{}}
+
+\CommentTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+\CommentTok{\#\# bibliography path \#\#}
+\CommentTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+\FunctionTok{bibliography}\KeywordTok{:}\AttributeTok{ }\KeywordTok{[}\AttributeTok{bibliography/references.bib}\KeywordTok{,}\AttributeTok{ bibliography/additional{-}references.bib}\KeywordTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+Finally, \textbf{index.Rmd} is also where you customise layout options.
+For example, in PDF output what should the heading for the bibliography section say?
+How should page numbers be positioned?
+Should line numbers be shown?
+In HTML output, what CSS files should be used for styling?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#\#\# citation and bibliography style }\AlertTok{\#\#\#}
+\FunctionTok{bibliography{-}heading{-}in{-}pdf}\KeywordTok{:}\AttributeTok{ Works Cited}
+\CommentTok{...}
+
+\CommentTok{\#\#\# position of page numbers \#\#\#}
+\CommentTok{ordinary{-}page{-}number{-}foot{-}or{-}head: foot \#\textquotesingle{}foot\textquotesingle{} puts page number in footer, \textquotesingle{}head\textquotesingle{} in header}
+\CommentTok{ordinary{-}page{-}number{-}position: C}
+\CommentTok{...}
+
+\CommentTok{includeline{-}num: false \#show line numbering in PDF?}
+\CommentTok{...}
+
+\CommentTok{  bookdown::bs4\_book: }
+\CommentTok{    css: }
+\CommentTok{      {-} templates/bs4\_style.css}
+\CommentTok{      {-} templates/corrections.css \# remove to stop highlighting corrections}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{other-.rmd-files-in-root-folder-thesis-chapters}{%
+\subsection{\texorpdfstring{other \textbf{.Rmd} files in root folder: thesis chapters}{other .Rmd files in root folder: thesis chapters}}\label{other-.rmd-files-in-root-folder-thesis-chapters}}
+
+\begin{itemize}
+\item
+  each chapter of your thesis should have its own \textbf{.Rmd} file in the root directory
+\item
+  when you knit \textbf{index.Rmd}, these chapters are merged together in alphabetical order, based on their filenames
+\end{itemize}
+
+\hypertarget{front-and-back-matter}{%
+\subsection{\texorpdfstring{\textbf{front-and-back-matter/}}{front-and-back-matter/}}\label{front-and-back-matter}}
+
+\begin{itemize}
+\item
+  this folder holds the front and back matter of your thesis
+\item
+  it has \textbf{.Rmd} files for your abstract, acknowledgements, abbreviations, and a welcome note that is included in HTML output.
+  Note how these files start with an underscore (e.g.~\textbf{\_abstract.Rmd}).
+  This means they will not automatically be merged into the thesis -- they are explicitly included in \textbf{index.Rmd}
+\item
+  \textbf{98-appendices} and \textbf{99-references.Rmd} are automatically merged into thesis, however - therefore their file names start with a high number, so that they will be included by the very end (merging is done alphabetically)
+\item
+  \textbf{99-references.Rmd} sole purpose is to set the heading for the references section in HTML and Word output
+\end{itemize}
+
+\hypertarget{bookdown.yml-build-options}{%
+\subsection{\texorpdfstring{\textbf{\_bookdown.yml}: build options}{\_bookdown.yml: build options}}\label{bookdown.yml-build-options}}
+
+\begin{itemize}
+\item
+  Set output directory for your thesis files (\textbf{docs/} is the default, as it makes it easy to publish HTML output on GitHub pages)
+\item
+  Should R Markdown automatically merge \textbf{.Rmd} files in alphabetical order?
+  Alternatively, specify explicitly which files should be included.
+\end{itemize}
+
+\hypertarget{scripts-and-filters}{%
+\subsection{\texorpdfstring{\textbf{scripts-and-filters}}{scripts-and-filters}}\label{scripts-and-filters}}
+
+\begin{itemize}
+\item
+  \textbf{knit-function.R} has the functions that are used when you build the entire thesis by knitting \textbf{index.Rmd}
+\item
+  \textbf{create\_chunk\_options.R} lets you include cute quotes at the start of a chapter in PDF output
+\item
+  \textbf{colour\_and\_highlight.lua} lets you color text or apply background color to text
+\end{itemize}
+
+\hypertarget{templates}{%
+\subsection{\texorpdfstring{\textbf{templates}}{templates}}\label{templates}}
+
+\begin{itemize}
+\item
+  \textbf{template.tex} is the LaTeX template used to build the entire thesis to PDF in the OxThesis layout (relies on \textbf{ociamthesis.cls})
+\item
+  \textbf{brief-template.tex} is the LaTeX template used to build a single chapter to PDF in the OxThesis layout (relies on \textbf{ociamthesis.cls})
+\item
+  \textbf{beltcrest.pdf}: the oxford logo used on the front page of the PDF output
+\end{itemize}
+
+\hypertarget{building-your-entire-thesis}{%
+\section{Building your entire thesis}\label{building-your-entire-thesis}}
+
+\begin{itemize}
+\tightlist
+\item
+  Build the entire thesis by opening \textbf{index.Rmd} and clicking the `knit' button.
+\item
+  The generated thesis files are saved in the \textbf{docs/} folder
+\item
+  To choose output formats, go to the top of \textbf{index.Rmd}'s YAML header and edit the line \texttt{thesis\_formats\ \textless{}-\ "pdf";} to the format(s) you want (options are ``pdf'', ``bs4'', ``gitbook'', and ``word'')
+\item
+  You can build to multiple formats simultaneously with, e.g., \texttt{thesis\_formats\ \textless{}-\ c("pdf",\ "bs4",\ "word")}
+\item
+  If you want to customise the build function, edit \textbf{scripts\_and\_filters/knit-functions.R}
+\end{itemize}
+
+\hypertarget{pdf-output}{%
+\subsubsection{PDF output}\label{pdf-output}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{knit}\KeywordTok{:}\AttributeTok{ (function(input, ...) \{}
+\AttributeTok{    thesis\_formats \textless{}{-} "pdf";}
+\AttributeTok{    ...}
+\end{Highlighting}
+\end{Shaded}
+
+When you build the entire thesis to PDF, Latex generates a whole bunch of auxillary files - these are automatically removed after the build process end by the custom knit function that is used when you knit \textbf{index.Rmd}.
+
+To change how this removal is done, edit \textbf{scripts\_and\_filters/knit-functions.R}.
+The line \texttt{file.remove(list.files(pattern\ =\ "*\textbackslash{}\textbackslash{}.(log\textbar{}mtc\textbackslash{}\textbackslash{}d*\textbar{}maf\textbar{}aux\textbar{}bcf\textbar{}lof\textbar{}lot\textbar{}out\textbar{}toc)\$"))} within \texttt{if\ ("pdf"\ \%in\%\ output\_format)\{} is the one that removes files after PDF output is generated.
+
+\hypertarget{bs4-book-output-html}{%
+\subsubsection{BS4 book output (HTML)}\label{bs4-book-output-html}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{knit}\KeywordTok{:}\AttributeTok{ (function(input, ...) \{}
+\AttributeTok{    thesis\_formats \textless{}{-} "bs4";}
+\AttributeTok{    ...}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  NOTE: the \href{https://pkgs.rstudio.com/bookdown/reference/bs4_book.html}{bs4 book output} requires the \texttt{downlit} and \texttt{bslib} R packages (install them with \texttt{install.packages})
+\item
+  Note also that to deploy a BS4 book on GitHub Pages, there must be a \textbf{.nojekyll} file in the \textbf{docs/} folder, otherwise GitHub does some voodoo that causes some filepaths not to work. This file is generated automatically by \texttt{oxforddown}s knitting function.
+\end{itemize}
+
+\hypertarget{gitbook-output-html}{%
+\subsubsection{Gitbook output (HTML)}\label{gitbook-output-html}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{knit}\KeywordTok{:}\AttributeTok{ (function(input, ...) \{}
+\AttributeTok{    thesis\_formats \textless{}{-} "gitbook";}
+\AttributeTok{    ...}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  Note that to deploy a gitbook on GitHub Pages, there must be a \textbf{.nojekyll} file in the \textbf{docs/} folder, otherwise GitHub does some voodoo that causes some filepaths not to work. This file is generated automatically by \texttt{oxforddown}s knitting function.
+\end{itemize}
+
+\hypertarget{word-output}{%
+\subsubsection{Word output}\label{word-output}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{knit}\KeywordTok{:}\AttributeTok{ (function(input, ...) \{}
+\AttributeTok{    thesis\_formats \textless{}{-} "word";}
+\AttributeTok{    ...}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  Note that the Word output has no templates behind it, and many things do not work (e.g.~image rotation, highlighting corrections). \textbf{I encourage pull requests that optimise the Word output, e.g.~by using tools from the \href{https://github.com/davidgohel/officer}{\texttt{officer}} package.}
+\end{itemize}
+
+\hypertarget{building-a-single-chapter}{%
+\section{Building a single chapter}\label{building-a-single-chapter}}
+
+To knit an individual chapter without compiling the entire thesis you:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  open the \textbf{.Rmd} file of a chapter
+\item
+  add a YAML header specifying the output format(s) (e.g.~\texttt{bookdown::word\_document2} for a word document you might want to upload to Google Docs for feedback from collaborators)
+\item
+  click the \texttt{knit} button (the output file is then saved in the root folder)
+\end{enumerate}
+
+As shown in the sample chapters' YAML headers, to output a single chapter to PDF, use e.g.:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{output}\KeywordTok{:}
+\AttributeTok{  bookdown:}\FunctionTok{:pdf\_document2}\KeywordTok{:}
+\AttributeTok{    }\FunctionTok{template}\KeywordTok{:}\AttributeTok{ templates/brief\_template.tex}
+\AttributeTok{    }\FunctionTok{citation\_package}\KeywordTok{:}\AttributeTok{ biblatex}
+\FunctionTok{documentclass}\KeywordTok{:}\AttributeTok{ book}
+\FunctionTok{bibliography}\KeywordTok{:}\AttributeTok{ references.bib}
+\end{Highlighting}
+\end{Shaded}
+
+The file \textbf{templates/brief\_template.tex} formats the chapter in the OxThesis style but without including the front matter (table of contents, abstract, etc).
 
 \begin{savequote}
 Neque porro quisquam est qui dolorem ipsum quia dolor sit amet,
@@ -624,14 +945,11 @@ f\left(k\right)=\binom{n}{k}p^k\left(1-p\right)^{n-k}
 For more (e.g.~how to theorems), see e.g.~the documentation on \href{https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html\#equations}{bookdown.org}
 
 \hypertarget{code}{%
-\section{Adding code}\label{code}}
+\section{Executable code chunks}\label{code}}
 
-The magic of R Markdown is that we can add code within our document to make it dynamic.
+The magic of R Markdown is that we can add executable code within our document to make it dynamic.
 
 We do this either as \emph{code chunks} (generally used for loading libraries and data, performing calculations, and adding images, plots, and tables), or \emph{inline code} (generally used for dynamically reporting results within our text).
-
-\hypertarget{code-chunks}{%
-\subsection{Code chunks}\label{code-chunks}}
 
 The syntax of a code chunk is shown in Figure \ref{fig:chunk-parts}.
 
@@ -658,7 +976,7 @@ Common chunk options include (see e.g.~\href{https://bookdown.org/yihui/rmarkdow
 \textbf{IMPORTANT}: Do \emph{not} use underscoores in your chunk labels - if you do, you are likely to get an error in PDF output saying something like ``! Package caption Error: \textbackslash caption outside float''.
 
 \hypertarget{setup-chunks---setup-images-plots}{%
-\subsubsection{Setup chunks - setup, images, plots}\label{setup-chunks---setup-images-plots}}
+\subsection{Setup chunks - setup, images, plots}\label{setup-chunks---setup-images-plots}}
 
 An R Markdown document usually begins with a chunk that is used to \textbf{load libraries}, and to \textbf{set default chunk options} with \texttt{knitr::opts\_chunk\$set}.
 
@@ -674,7 +992,7 @@ library(tidyverse)
 \end{verbatim}
 
 \hypertarget{including-images}{%
-\subsubsection{Including images}\label{including-images}}
+\subsection{Including images}\label{including-images}}
 
 Code chunks are also used for including images, with \texttt{include\_graphics} from the \texttt{knitr} package, as in Figure \ref{fig:oxford-logo}
 
@@ -704,8 +1022,8 @@ Useful chunk options for figures include:
 \end{itemize}
 
 \hypertarget{figure-rotation}{%
-\paragraph*{Figure rotation}\label{figure-rotation}}
-\addcontentsline{toc}{paragraph}{Figure rotation}
+\subsubsection*{Figure rotation}\label{figure-rotation}}
+\addcontentsline{toc}{subsubsection}{Figure rotation}
 
 You can use the chunk option \texttt{out.extra} to rotate images.
 
@@ -733,7 +1051,7 @@ Then you can reference that variable as the value of \texttt{out.extra} to rotat
 \end{figure}
 
 \hypertarget{including-plots}{%
-\subsubsection{Including plots}\label{including-plots}}
+\subsection{Including plots}\label{including-plots}}
 
 Similarly, code chunks are used for including dynamically generated plots.
 You use ordinary code in R or other languages - Figure \ref{fig:cars-plot} shows a plot of the \texttt{cars} dataset of stopping distances for cars at various speeds (this dataset is built in to \textbf{R}).
@@ -756,7 +1074,7 @@ You use ordinary code in R or other languages - Figure \ref{fig:cars-plot} shows
 Under the hood, plots are included in your document in the same way as images - when you build the book or knit a chapter, the plot is automatically generated from your code, saved as an image, then included into the output document.
 
 \hypertarget{including-tables}{%
-\subsubsection{Including tables}\label{including-tables}}
+\subsection{Including tables}\label{including-tables}}
 
 Tables are usually included with the \texttt{kable} function from the \texttt{knitr} package.
 
@@ -802,7 +1120,7 @@ speed & dist\\
 \end{itemize}
 
 \hypertarget{control-positioning}{%
-\subsubsection{Control positioning}\label{control-positioning}}
+\subsection{Control positioning}\label{control-positioning}}
 
 One thing that may be annoying is the way \emph{R Markdown} handles ``floats'' like tables and figures.
 In your PDF output, LaTeX will try to find the best place to put your object based on the text around it and until you're really, truly done writing you should just leave it where it lies.
@@ -826,10 +1144,10 @@ In general, you should allow LaTeX to do this, but if you really \emph{really} n
 
 As anyone who has tried to manually play around with the placement of figures in a Word document knows, this can have lots of side effects with extra spacing on other pages, etc.
 Therefore, it is not generally a good idea to do this - only do it when you really need to ensure that an image follows directly under text where you refer to it (in this document, I needed to do this for Figure \ref{fig:latex-font-sizing} in section \ref{max-power}).
-For more details, read the relevant section of the {[}R Markdown Cookbook{]}\url{https://bookdown.org/yihui/rmarkdown-cookbook/figure-placement.html}).
+For more details, read the relevant section of the \href{https://bookdown.org/yihui/rmarkdown-cookbook/figure-placement.html}{R Markdown Cookbook}.
 
-\hypertarget{inline-code-1}{%
-\subsection{Inline code}\label{inline-code-1}}
+\hypertarget{executable-inline-code}{%
+\section{Executable inline code}\label{executable-inline-code}}
 
 `Inline code' simply means inclusion of code inside text.
 The syntax for doing this is \texttt{\textasciigrave{}r\ R\_CODE\textasciigrave{}}
@@ -850,10 +1168,10 @@ We might then write:\\
 Which would output:\\
 ``In the \texttt{cars} dataset, we have 50 observations.''
 
-\hypertarget{referring-to-results-computed-in-other-languages-than-r}{%
-\subsubsection{Referring to results computed in other languages than R}\label{referring-to-results-computed-in-other-languages-than-r}}
+\hypertarget{executable-code-in-other-languages-than-r}{%
+\section{Executable code in other languages than R}\label{executable-code-in-other-languages-than-r}}
 
-If you want to use other languages than R, such as Python, Julia C++, or SQL, see \href{https://bookdown.org/yihui/rmarkdown-cookbook/other-languages.html}{the relevant section in the \emph{R Markdown Cookbook}}
+If you want to use other languages than R, such as Python, Julia C++, or SQL, see \href{https://bookdown.org/yihui/rmarkdown-cookbook/other-languages.html}{the relevant section of the \emph{R Markdown Cookbook}}
 
 \hypertarget{cites-and-refs}{%
 \chapter{Citations, cross-references, and collaboration}\label{cites-and-refs}}
@@ -892,8 +1210,8 @@ To default way to cite an entry in your text is with this syntax: \texttt{{[}@ci
 
 So I might cite some things \autocite{Shea2014,Lottridge2012}.
 
-\hypertarget{pdf-output}{%
-\subsection{PDF output}\label{pdf-output}}
+\hypertarget{pdf-output-1}{%
+\subsection{PDF output}\label{pdf-output-1}}
 
 In PDF output, the bibliography is handled by the OxThesis LaTeX template.
 If you set \texttt{bib-humanities:\ true} in \textbf{index.Rmd}, then in-text references will be formatted as author-year; otherwise references will be shown as numbers.
@@ -1211,7 +1529,7 @@ Fix this with the \texttt{kable\_styling} function from the \href{https://haozhu
 \end{Highlighting}
 \end{Shaded}
 
-\begin{table}[H]
+\begin{table}
 \centering
 \resizebox{\linewidth}{!}{
 \begin{tabular}{lrrrrrrrrrrr}
@@ -1880,19 +2198,21 @@ You can do so like this:
 \subsection{Short, inline corrections}\label{short-inline-corrections}}
 
 Highlight \textbf{short, inline corrections} by doing \texttt{{[}like\ this{]}\{.correction\}} --- the text between the square brackets will then \hl{be highlighted in blue} in the output.
-This should work, also with \hl{cross references (do you remember chapter \ref{rmd-basics}?)} or even \hl{citations \autocite{Shea2014}}.
 
-However, pandoc might get confused by citations and cross-references.
-In particular, it might get confused by \autocite[this][]{Shea2014}\{.correction\}
-In such cases, you could use LaTeX syntax directly.
-The correction highlighting is supplied by the \href{https://ctan.org/pkg/soul}{soul} package, so you can do like this:
+Note that pandoc might get confused by citations and cross-references inside inline corrections.
+In particular, it might get confused by \texttt{"{[}what\ @Shea2014\ said{]}\{.correction\}"} which becomes \autocite[what][ said]{Shea2014}\{.correction\}
+In such cases, you can use LaTeX syntax directly.
+The correction highlighting uses the \href{https://ctan.org/pkg/soul}{soul} package, so you can do like this:
 
-\begin{quote}
-\texttt{It\ doesn\textquotesingle{}t\ get\ confused\ by\ \textbackslash{}hl\{this\ \textbackslash{}textcite\{Shea2014\}\}}~\\
-Becomes: It doesn't get confused by \hl{this \textcite{Shea2014}}.
-\end{quote}
+\begin{itemize}
+\tightlist
+\item
+  If using biblatex for references, use \texttt{"\textbackslash{}hl\{what\ \textbackslash{}textcite\{Shea2014\}\ said\}}
+\item
+  If using natbib for references, use \texttt{"\textbackslash{}hl\{what\ \textbackslash{}cite\{Shea2014\}\ said\}}
+\end{itemize}
 
-This has the drawback of corrections then not showing up in HTML output at all, but you may only care about correction highlighting in the PDF for your examiners anyway!
+Using raw LaTeX has the drawback of corrections then not showing up in HTML output at all, but you might only care about correction highlighting in the PDF for your examiners anyway!
 
 \hypertarget{blocks-of-added-or-changed-material}{%
 \subsection{Blocks of added or changed material}\label{blocks-of-added-or-changed-material}}
@@ -1948,7 +2268,7 @@ The file \textbf{scripts\_and\_filters/colour\_and\_highlight.lua} implements th
 It works with both PDF and HTML output.
 
 \hypertarget{embed-pdf}{%
-\section{Including another paper in your thesis - embedding a PDF document}\label{embed-pdf}}
+\section{Including another paper in your thesis - embed a PDF document}\label{embed-pdf}}
 
 You may want to embed existing PDF documents into the thesis, for example if your department allows a `portfolio' style thesis and you need to include an existing typeset publication as a chapter.
 
@@ -1995,7 +2315,7 @@ You may also want to remove margins from the PDF files, which you can do with Ad
 \newpage \begin{center} \makebox[\linewidth][c]{\includegraphics[width=1.2\linewidth]{figures/sample-content/pdf_embed_example/split/_000000000000001.pdf}} \end{center} \newpage \begin{center} \makebox[\linewidth][c]{\includegraphics[width=1.2\linewidth]{figures/sample-content/pdf_embed_example/split/_000000000000011.pdf}} \end{center}
 
 \hypertarget{embed-rmd}{%
-\section{Including another paper in your thesis - include an R Markdown child document}\label{embed-rmd}}
+\section{Including another paper in your thesis - R Markdown child document}\label{embed-rmd}}
 
 Sometimes you want to include another paper you are currently writing as a chapter in your thesis.
 Above \ref{embed-pdf}, we described the simplest way to do this: include the other paper as a pdf.
@@ -2134,6 +2454,8 @@ In the YAML header of \textbf{paper\_to\_include/my\_paper.Rmd}, use this filter
 
 Now, your header levels will be correct both when you knit the paper on its own and when its included in your thesis.
 
+NOTE: There might be no need to use a lua filter to shift heading - it seems you could simply use \texttt{pandoc\_args:\ {[}"-\/-shift-heading-level-by=-1"{]}} (see \url{https://pandoc.org/MANUAL.html\#reader-options})
+
 \hypertarget{step-4.-make-sure-figure-widths-are-correct}{%
 \subsection{Step 4. Make sure figure widths are correct}\label{step-4.-make-sure-figure-widths-are-correct}}
 
@@ -2161,7 +2483,9 @@ Then, make sure use that parameter to set the output width when you include figu
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{include\_graphics}\NormalTok{(}\FunctionTok{str\_c}\NormalTok{(params}\SpecialCharTok{$}\NormalTok{other\_path, }\StringTok{"figures/cat.jpg"}\NormalTok{))}
+\InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}\{r, out.width=params$out\_width, fig.cap="A very funny cat"\}}
+\InformationTok{include\_graphics(str\_c(params$other\_path, "figures/cat.jpg"))}
+\InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2349,28 +2673,28 @@ Try doing this:
 \item
   type \texttt{make\ clean-knits} in the terminal tab (or run \texttt{file.remove(list.files(pattern\ =\ "*.(log\textbar{}mtc\textbar{}maf\textbar{}aux\textbar{}bbl\textbar{}blg\textbar{}xml)"))} in the R console) to clean up files generated by LaTeX during a build
 \item
-  then restart your computer
+  restart your computer
 \end{enumerate}
 
-This solved the problem for me, when I suddenly ran into this error after RStudio was abruptly shut down during a PDF build.
+If this does not solve the problem, try using the \href{https://www.overleaf.com/learn/latex/Bibliography_management_with_natbib}{natbib} LaTeX package instead of \href{https://www.overleaf.com/learn/latex/Articles/Getting_started_with_BibLaTeX}{biblatex} for handling references.
+To do this, go to \textbf{index.Rmd} and
 
-\hypertarget{todo-the-thing-about-icloud-drive}{%
-\section{TODO: the thing about icloud drive}\label{todo-the-thing-about-icloud-drive}}
-
-\begin{itemize}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  and how symlinks can help
-\end{itemize}
-
-\hypertarget{todo-add-the-thing-about-bibliography-paths}{%
-\section{TODO: Add the thing about bibliography paths}\label{todo-add-the-thing-about-bibliography-paths}}
-
-\begin{itemize}
-\tightlist
+  set \texttt{use-biblatex:\ false} and \texttt{use-natbib:\ true}
 \item
-  remove them in the individual chapter bibliography so that it doesn't override what is in index.Rmd
-\end{itemize}
+  set \texttt{citation\_package:\ natbib} under
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{output}\KeywordTok{:}
+\AttributeTok{  bookdown:}\FunctionTok{:pdf\_book}\KeywordTok{:}
+\AttributeTok{    }\FunctionTok{citation\_package}\KeywordTok{:}\AttributeTok{ natbib}
+\end{Highlighting}
+\end{Shaded}
 
 \begin{savequote}
 Alles Gescheite ist schon gedacht worden.\\
@@ -2428,16 +2752,10 @@ This first appendix includes an R chunk that was hidden in the document (using \
 
 
 %%%%% REFERENCES
-
-% JEM: Quote for the top of references (just like a chapter quote if you're using them).  Comment to skip.
-% \begin{savequote}[8cm]
-% The first kind of intellectual and artistic personality belongs to the hedgehogs, the second to the foxes \dots
-%   \qauthor{--- Sir Isaiah Berlin \cite{berlin_hedgehog_2013}}
-% \end{savequote}
-
 \setlength{\baselineskip}{0pt} % JEM: Single-space References
 
 {\renewcommand*\MakeUppercase[1]{#1}%
 \printbibliography[heading=bibintoc,title={\bibtitle}]}
+
 
 \end{document}
