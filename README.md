@@ -79,7 +79,8 @@ Examples of theses written with `oxforddown`:
           "makecell", "microtype", "minitoc", "multirow", "notoccite", 
           "oberdiek", "pdflscape", "pdfpages", "quotchap", "soul", "tabu", 
           "threeparttable", "threeparttablex", "titlesec", "tocbibind", 
-          "trimspaces", "ulem", "units", "utopia", "varwidth", "wrapfig"
+          "trimspaces", "ulem", "units", "utopia", "varwidth", "wrapfig",
+          "fvextra"
           )
         tinytex::tlmgr_install(missing_packages)
         ```
