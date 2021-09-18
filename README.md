@@ -162,7 +162,7 @@ knit: (function(input, ...) {
 ```
 
 -   NOTE: the [bs4 book output](https://pkgs.rstudio.com/bookdown/reference/bs4_book.html) requires the `downlit` and `bslib` R packages (install them with `install.packages`)
--   Note also that to deploy a BS4 book on GitHub Pages, there must be a **.nojekyll** file in the **docs/** folder, otherwise GitHub does some voodoo that causes some filepaths not to work. This file is generated automatically by `oxforddown`s knitting function.
+-   Note also that to deploy a BS4 book on GitHub Pages, there must be a **.nojekyll** file in the **docs/** folder, otherwise GitHub does some voodoo that causes some filepaths not to work. This file is generated automatically by `oxforddown`'s knitting function.
 
 #### Gitbook output (HTML)
 
