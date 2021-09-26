@@ -30,9 +30,10 @@ The template uses the [bookdown](https://bookdown.org) R package together with t
 Examples of theses written with `oxforddown`:
 
 -   [Ulysses in Cyberspace: Examining the Effectiveness of Design Patterns for Digital Self-Control](https://ulyngs.github.io/phd-thesis/) by [Ulrik Lyngs](https://ulriklyngs.com)
+-   [The Psychology of Managerial Capital Allocation](https://thesis.shirdekel.com) by [Shir Dekel](https://shirdekel.com)
 -   [Teens, Screens and Wellbeing: An Improved Approach](https://www.amyorben.com/docs/thesis/index.html) by [Amy Orben](https://www.amyorben.com)
 -   [Interpreting Neural Language Models for Linguistic Complexity Assessment](https://gsarti.com/thesis/introduction.html) by [Gabriele Sarti](https://gsarti.com)
--   [The Psychology of Managerial Capital Allocation](https://thesis.shirdekel.com) by [Shir Dekel](https://shirdekel.com)
+
 
 *NOTE: If you've used this template to write your thesis, drop me a line at [ulrik.lyngs\@cs.ox.ac.uk](mailto:ulrik.lyngs@cs.ox.ac.uk) and I'll add a link showcasing it!*
 
