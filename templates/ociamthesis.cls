@@ -168,6 +168,7 @@
 
 %define title page layout
 \newcommand{\university}{University of Oxford}
+\newcommand{\thesistitlesize}{\LARGE}
 
 \renewcommand{\maketitle}{%
 \begin{alwayssingle}\null
@@ -177,7 +178,7 @@
 \ifmasterssubmission
   \begin{center}
   \vspace*{-3ex}
-    { \LARGE {\bfseries {\@title}} \par}
+    { \thesistitlesize {\bfseries {\@title}} \par}
 {\large \vspace*{25mm} {\crest \par} \vspace*{20mm}}
     {{\Large Candidate no.\ \@candidateno} \par}
 {\large \vspace*{1ex}
@@ -193,7 +194,7 @@
   \end{center}
 \else
   \begin{center}
-    { \LARGE {\bfseries {\@title}} \par}
+    { \thesistitlesize {\bfseries {\@title}} \par}
 {\large \vspace*{30mm} {\crest \par} \vspace*{25mm}}
     {{\Large \@author} \par}
 {\large \vspace*{1ex}

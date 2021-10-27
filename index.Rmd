@@ -127,9 +127,11 @@ mini-lof: false  # include mini-list of figures by start of each chapter?
 space-before-code-block: 10pt
 space-after-code-block: 8pt
 
-### linespacing ###
+### linespacing & font size ###
 linespacing: 22pt plus2pt # 22pt is official for submission & library copies
 frontmatter-linespacing: 17pt plus1pt minus1pt #spacing in roman-numbered pages (acknowledgments, table of contents, etc.)
+title-size: 22pt
+title-size-linespacing: 28pt
 
 ### other stuff ###
 abstractseparate: false  # include front page w/ abstract for examination schools?
