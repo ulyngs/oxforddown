@@ -30,8 +30,10 @@ The template uses the [bookdown](https://bookdown.org) R package together with t
 Examples of theses written with `oxforddown`:
 
 -   [Ulysses in Cyberspace: Examining the Effectiveness of Design Patterns for Digital Self-Control](https://ulyngs.github.io/phd-thesis/) by [Ulrik Lyngs](https://ulriklyngs.com)
+-   [The Psychology of Managerial Capital Allocation](https://thesis.shirdekel.com) by [Shir Dekel](https://shirdekel.com)
 -   [Teens, Screens and Wellbeing: An Improved Approach](https://www.amyorben.com/docs/thesis/index.html) by [Amy Orben](https://www.amyorben.com)
 -   [Interpreting Neural Language Models for Linguistic Complexity Assessment](https://gsarti.com/thesis/introduction.html) by [Gabriele Sarti](https://gsarti.com)
+
 
 *NOTE: If you've used this template to write your thesis, drop me a line at [ulrik.lyngs\@cs.ox.ac.uk](mailto:ulrik.lyngs@cs.ox.ac.uk) and I'll add a link showcasing it!*
 
@@ -79,7 +81,8 @@ Examples of theses written with `oxforddown`:
           "makecell", "microtype", "minitoc", "multirow", "notoccite", 
           "oberdiek", "pdflscape", "pdfpages", "quotchap", "soul", "tabu", 
           "threeparttable", "threeparttablex", "titlesec", "tocbibind", 
-          "trimspaces", "ulem", "units", "utopia", "varwidth", "wrapfig"
+          "trimspaces", "ulem", "units", "utopia", "varwidth", "wrapfig",
+          "fvextra"
           )
         tinytex::tlmgr_install(missing_packages)
         ```
@@ -161,7 +164,7 @@ knit: (function(input, ...) {
 ```
 
 -   NOTE: the [bs4 book output](https://pkgs.rstudio.com/bookdown/reference/bs4_book.html) requires the `downlit` and `bslib` R packages (install them with `install.packages`)
--   Note also that to deploy a BS4 book on GitHub Pages, there must be a **.nojekyll** file in the **docs/** folder, otherwise GitHub does some voodoo that causes some filepaths not to work. This file is generated automatically by `oxforddown`s knitting function.
+-   Note also that to deploy a BS4 book on GitHub Pages, there must be a **.nojekyll** file in the **docs/** folder, otherwise GitHub does some voodoo that causes some filepaths not to work. This file is generated automatically by `oxforddown`'s knitting function.
 
 #### Gitbook output (HTML)
 
@@ -171,7 +174,7 @@ knit: (function(input, ...) {
     ...
 ```
 
--   Note that to deploy a gitbook on GitHub Pages, there must be a **.nojekyll** file in the **docs/** folder, otherwise GitHub does some voodoo that causes some filepaths not to work. This file is generated automatically by `oxforddown`s knitting function.
+-   Note that to deploy a gitbook on GitHub Pages, there must be a **.nojekyll** file in the **docs/** folder, otherwise GitHub does some voodoo that causes some filepaths not to work. This file is generated automatically by `oxforddown`'s knitting function.
 
 #### Word output
 
