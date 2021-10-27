@@ -278,8 +278,8 @@ For more details, read the relevant section of the [R Markdown Cookbook](https:/
 
 ## Executable inline code
 'Inline code' simply means inclusion of code inside text. 
-The syntax for doing this is `` ``r ''`r R_CODE` ``
-For example, `` ``r ''`r 4 + 4` `` will output `r 4 + 4` in your text.
+The syntax for doing this is ``` ``r ''`r R_CODE` ```
+For example, ``` ``r ''`r 4 + 4` ``` will output `r 4 + 4` in your text.
 
 You will usually use this in parts of your thesis where you report results - read in data or results in a code chunk, store things you want to report in a variable, then insert the value of that variable in your text.
 For example, we might assign the number of rows in the `cars` dataset to a variable:
@@ -289,7 +289,7 @@ num_car_observations <- nrow(cars)
 ```
 
 We might then write:\
-"In the `cars` dataset, we have `` ``r ''`r num_car_observations` `` observations."
+"In the `cars` dataset, we have ``` ``r ''`r num_car_observations` ``` observations."
 
 Which would output:\
 "In the `cars` dataset, we have `r num_car_observations` observations."
