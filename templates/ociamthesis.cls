@@ -169,6 +169,8 @@
 %define title page layout
 \newcommand{\university}{University of Oxford}
 \newcommand{\thesistitlesize}{\LARGE}
+\newcommand{\gapbeforecrest}{30mm}
+\newcommand{\gapaftercrest}{25mm}
 
 \renewcommand{\maketitle}{%
 \begin{alwayssingle}\null
@@ -179,7 +181,7 @@
   \begin{center}
   \vspace*{-3ex}
     { \thesistitlesize {\bfseries {\@title}} \par}
-{\large \vspace*{25mm} {\crest \par} \vspace*{20mm}}
+{\large \vspace*{\gapbeforecrest} {\crest \par} \vspace*{\gapaftercrest}}
     {{\Large Candidate no.\ \@candidateno} \par}
 {\large \vspace*{1ex}
     {Word count: {\@wordcount} \par}
@@ -195,7 +197,7 @@
 \else
   \begin{center}
     { \thesistitlesize {\bfseries {\@title}} \par}
-{\large \vspace*{30mm} {\crest \par} \vspace*{25mm}}
+{\large \vspace*{\gapbeforecrest} {\crest \par} \vspace*{\gapaftercrest}}
     {{\Large \@author} \par}
 {\large \vspace*{1ex}
     {{\@college} \par}
