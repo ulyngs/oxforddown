@@ -1,4 +1,3 @@
-eq:binom
 fig:chunk-parts
 fig:oxford-logo
 fig:oxford-logo-rotated
@@ -24,7 +23,7 @@ gitbook-output-html
 word-output
 building-a-single-chapter
 rmd-basics
-basic-markdown-syntax
+basic-markdown-syntaxz
 whitespace
 italics-and-bold
 inline-code
@@ -69,6 +68,7 @@ if-your-table-is-too-wide
 if-your-table-is-too-long
 max-power
 customisations-and-extensions
+chunk-caching-and-the-_bookdown_files-folder
 front-matter
 shorten-captions-shown-in-the-list-of-figures-pdf
 shorten-captions-shown-in-the-list-of-tables-pdf

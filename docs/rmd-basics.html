@@ -6,12 +6,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>2 R Markdown basics | oxforddown: An Oxford University Thesis Template for R Markdown</title>
 <meta name="author" content="Author Name">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.8/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.4/tabs.js"></script><script src="libs/bs3compat-0.2.4/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<meta name="generator" content="bookdown 0.23 with bs4_book()">
+<meta property="og:title" content="2 R Markdown basics | oxforddown: An Oxford University Thesis Template for R Markdown">
+<meta property="og:type" content="book">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2 R Markdown basics | oxforddown: An Oxford University Thesis Template for R Markdown">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.10/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.5.1/tabs.js"></script><script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS --><link rel="stylesheet" href="templates/bs4_style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="templates/bs4_style.css">
 <link rel="stylesheet" href="templates/corrections.css">
+<meta name="description" content="Here is a brief introduction to using R Markdown. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents and much, much more. R Markdown provides the flexibility of...">
+<meta property="og:description" content="Here is a brief introduction to using R Markdown. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents and much, much more. R Markdown provides the flexibility of...">
+<meta name="twitter:description" content="Here is a brief introduction to using R Markdown. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents and much, much more. R Markdown provides the flexibility of...">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -63,10 +71,11 @@ Template for R Markdown</p></a>
 <!-- LaTeX normally does not indent the first line after a heading - however, it does so after the mini table of contents. You can manually tell it not to with \noindent -->
 <p>Here is a brief introduction to using <em>R Markdown</em>.
 <em>Markdown</em> is a simple formatting syntax for authoring HTML, PDF, and MS Word documents and much, much more.
-<em>R Markdown</em> provides the flexibility of <em>Markdown</em> with the implementation of <strong>R</strong> input and output. For more details on using <em>R Markdown</em> see <a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a>.</p>
-<div id="basic-markdown-syntax" class="section level2" number="2.1">
+<em>R Markdown</em> provides the flexibility of <em>Markdown</em> with the implementation of <strong>R</strong> input and output.
+For more details on using <em>R Markdown</em> see <a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a>.</p>
+<div id="basic-markdown-syntaxz" class="section level2" number="2.1">
 <h2>
-<span class="header-section-number">2.1</span> Basic markdown syntax<a class="anchor" aria-label="anchor" href="#basic-markdown-syntax"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.1</span> Basic markdown syntaxz<a class="anchor" aria-label="anchor" href="#basic-markdown-syntaxz"><i class="fas fa-link"></i></a>
 </h2>
 <div id="whitespace" class="section level3" number="2.1.1">
 <h3>
@@ -128,7 +137,7 @@ In other words, there is no need to indent basic text in the Rmd document (in fa
 <span class="header-section-number">2.1.7</span> Endash (–), emdash (—)<a class="anchor" aria-label="anchor" href="#endash-emdash"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
-<li>– and — with -- and ---</li>
+<li>– and — with – and —</li>
 </ul>
 </div>
 <div id="blockquotes" class="section level3" number="2.1.8">
@@ -144,11 +153,11 @@ In other words, there is no need to indent basic text in the Rmd document (in fa
 <h3>
 <span class="header-section-number">2.1.9</span> Headings<a class="anchor" aria-label="anchor" href="#headings"><i class="fas fa-link"></i></a>
 </h3>
-<p>Section headers are created with #’s of increasing number, i.e. </p>
+<p>Section headers are created with #’s of increasing number, i.e.</p>
 <ul>
-<li># First-level heading</li>
-<li>## Second-level heading</li>
-<li>### Etc.</li>
+<li><p># First-level heading</p></li>
+<li><p>## Second-level heading</p></li>
+<li><p>### Etc.</p></li>
 </ul>
 <p>In PDF output, a level-five heading will turn into a paragraph heading, i.e. <code>\paragraph{My level-five heading}</code>, which appears as bold text on the same line as the subsequent paragraph.</p>
 </div>
@@ -169,9 +178,10 @@ Notice that you can mislabel the numbers and <em>Markdown</em> will still make t
 </ol>
 <p>To create a sublist, indent the values a bit (at least four spaces or a tab):</p>
 <ol style="list-style-type: decimal">
-<li>Item 1</li>
-<li>Item 2</li>
-<li>Item 3
+<li><p>Item 1</p></li>
+<li><p>Item 2</p></li>
+<li>
+<p>Item 3</p>
 <ul>
 <li>Item 3a</li>
 <li>Item 3b</li>
@@ -211,7 +221,7 @@ Violets are blue.</p>
 <span class="header-section-number">2.1.13</span> Footnotes<a class="anchor" aria-label="anchor" href="#footnotes"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
-<li>Are created<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;my footnote text&lt;/p&gt;"><sup>1</sup></a> by writing either ^[my footnote text] for supplying the footnote content inline, or something like <code>[^a-random-footnote-label]</code> and supplying the text elsewhere in the format shown below:<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;This is a random test.&lt;/p&gt;"><sup>2</sup></a>
+<li>Are created<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;my footnote text&lt;/p&gt;"><sup>1</sup></a> by writing either ^<span class="math display">\[my footnote text\]</span> for supplying the footnote content inline, or something like <code>[^a-random-footnote-label]</code> and supplying the text elsewhere in the format shown below:<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content="&lt;p&gt;This is a random test.&lt;/p&gt;"><sup>2</sup></a>
 </li>
 </ul>
 <p><code>[^a-random-footnote-label]: This is a random test.</code></p>
@@ -220,28 +230,29 @@ Violets are blue.</p>
 <h3>
 <span class="header-section-number">2.1.14</span> Comments<a class="anchor" aria-label="anchor" href="#comments"><i class="fas fa-link"></i></a>
 </h3>
-<p>To write comments within your text that won’t actually be included in the output, use the same syntax as for writing comments in HTML. That is, &lt;!-- this will not be included in the output --&gt;.</p>
+<p>To write comments within your text that won’t actually be included in the output, use the same syntax as for writing comments in HTML.
+That is, &lt;!–
+this will not be included in the output –&gt;.</p>
 <!-- It is super useful to use comments! -->
 </div>
 <div id="math" class="section level3" number="2.1.15">
 <h3>
 <span class="header-section-number">2.1.15</span> Math<a class="anchor" aria-label="anchor" href="#math"><i class="fas fa-link"></i></a>
 </h3>
-<p>The syntax for writing math is stolen from LaTeX. To write a math expression that will be shown <strong>inline</strong>, enclose it in dollar signs.
+<p>The syntax for writing math is stolen from LaTeX.
+To write a math expression that will be shown <strong>inline</strong>, enclose it in dollar signs.
 - This: $A = \pi*r^{2}$ Becomes: <span class="math inline">\(A = \pi*r^{2}\)</span></p>
 <p>To write a math expression that will be shown in a block, enclose it in two dollar signs.<br>
 This: <span>$</span>$A = \pi*r^{2}$$</p>
-<p>Becomes:
-<span class="math display">\[A = \pi*r^{2}\]</span></p>
+<p>Becomes: <span class="math display">\[A = \pi*r^{2}\]</span></p>
 <p>To create numbered equations, put them in an ‘equation’ environment and give them a label with the syntax <code>(\#eq:label)</code>, like this:</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb10-1"><a href="rmd-basics.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">equation</span>}<span class="ss"> </span></span>
 <span id="cb10-2"><a href="rmd-basics.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ss">  f</span><span class="sc">\left</span><span class="ss">(k</span><span class="sc">\right</span><span class="ss">) = </span><span class="sc">\binom</span><span class="ss">{n}{k} p^k</span><span class="sc">\left</span><span class="ss">(1-p</span><span class="sc">\right</span><span class="ss">)^{n-k}</span></span>
 <span id="cb10-3"><a href="rmd-basics.html#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="ss">  (</span><span class="sc">\#</span><span class="ss">eq:binom)</span></span>
 <span id="cb10-4"><a href="rmd-basics.html#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">equation</span>} </span></code></pre></div>
-<p>Becomes:
-<span class="math display" id="eq:binom">\[\begin{equation}
+<p>Becomes: <span class="math display">\[\begin{equation}
 f\left(k\right)=\binom{n}{k}p^k\left(1-p\right)^{n-k}
-\tag{2.1}
+(\#eq:binom)
 \end{equation}\]</span></p>
 <p>For more (e.g. how to theorems), see e.g. the documentation on <a href="https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html#equations">bookdown.org</a></p>
 </div>
@@ -254,7 +265,7 @@ f\left(k\right)=\binom{n}{k}p^k\left(1-p\right)^{n-k}
 <p>We do this either as <em>code chunks</em> (generally used for loading libraries and data, performing calculations, and adding images, plots, and tables), or <em>inline code</em> (generally used for dynamically reporting results within our text).</p>
 <p>The syntax of a code chunk is shown in Figure <a href="rmd-basics.html#fig:chunk-parts">2.1</a>.</p>
 <div class="figure">
-<span id="fig:chunk-parts"></span>
+<span style="display:block;" id="fig:chunk-parts"></span>
 <img src="figures/sample-content/chunk-parts.png" alt="Code chunk syntax" width="100%"><p class="caption">
 Figure 2.1: Code chunk syntax
 </p>
@@ -294,7 +305,7 @@ library(tidyverse)
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">include_graphics</a></span><span class="op">(</span><span class="st">"figures/sample-content/beltcrest.png"</span><span class="op">)</span></code></pre></div>
 <div class="figure" style="text-align: center">
-<span id="fig:oxford-logo"></span>
+<span style="display:block;" id="fig:oxford-logo"></span>
 <img src="figures/sample-content/beltcrest.png" alt="Oxford logo" width="50%"><p class="caption">
 Figure 2.2: Oxford logo
 </p>
@@ -319,7 +330,7 @@ Figure 2.2: Oxford logo
 <span class="op">}</span></code></pre></div>
 <p>Then you can reference that variable as the value of <code>out.extra</code> to rotate images, as in Figure <a href="rmd-basics.html#fig:oxford-logo-rotated">2.3</a>.</p>
 <div class="figure" style="text-align: center">
-<span id="fig:oxford-logo-rotated"></span>
+<span style="display:block;" id="fig:oxford-logo-rotated"></span>
 <img src="figures/sample-content/beltcrest.png" alt="Oxford logo, rotated" width="50%" style="transform:rotate(180deg);"><p class="caption">
 Figure 2.3: Oxford logo, rotated
 </p>
@@ -338,7 +349,7 @@ You use ordinary code in R or other languages - Figure <a href="rmd-basics.html#
     <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">speed</span>, y <span class="op">=</span> <span class="va">dist</span><span class="op">)</span> <span class="op">+</span>
     <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="figure">
-<span id="fig:cars-plot"></span>
+<span style="display:block;" id="fig:cars-plot"></span>
 <img src="_main_files/figure-html/cars-plot-1.png" alt="A ggplot of car stuff" width="672"><p class="caption">
 Figure 2.4: A ggplot of car stuff
 </p>
@@ -433,7 +444,7 @@ In your PDF output, LaTeX will try to find the best place to put your object bas
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">include_graphics</a></span><span class="op">(</span><span class="st">"figures/sample-content/beltcrest.png"</span><span class="op">)</span></code></pre></div>
 <div class="figure" style="text-align: center">
-<span id="fig:oxford-logo-controlled"></span>
+<span style="display:block;" id="fig:oxford-logo-controlled"></span>
 <img src="figures/sample-content/beltcrest.png" alt="An Oxford logo that LaTeX will try to place at this position in the text" width="50%"><p class="caption">
 Figure 2.5: An Oxford logo that LaTeX will try to place at this position in the text
 </p>
@@ -448,8 +459,7 @@ For more details, read the relevant section of the <a href="https://bookdown.org
 <span class="header-section-number">2.3</span> Executable inline code<a class="anchor" aria-label="anchor" href="#executable-inline-code"><i class="fas fa-link"></i></a>
 </h2>
 <p>‘Inline code’ simply means inclusion of code inside text.
-The syntax for doing this is <code>`r R_CODE`</code>
-For example, <code>`r 4 + 4`</code> will output 8 in your text.</p>
+The syntax for doing this is <code>`r R_CODE`</code> For example, <code>`r 4 + 4`</code> will output 8 in your text.</p>
 <p>You will usually use this in parts of your thesis where you report results - read in data or results in a code chunk, store things you want to report in a variable, then insert the value of that variable in your text.
 For example, we might assign the number of rows in the <code>cars</code> dataset to a variable:</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
@@ -476,7 +486,7 @@ For example, we might assign the number of rows in the <code>cars</code> dataset
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#rmd-basics"><span class="header-section-number">2</span> R Markdown basics</a></li>
 <li>
-<a class="nav-link" href="#basic-markdown-syntax"><span class="header-section-number">2.1</span> Basic markdown syntax</a><ul class="nav navbar-nav">
+<a class="nav-link" href="#basic-markdown-syntaxz"><span class="header-section-number">2.1</span> Basic markdown syntaxz</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#whitespace"><span class="header-section-number">2.1.1</span> Whitespace</a></li>
 <li><a class="nav-link" href="#italics-and-bold"><span class="header-section-number">2.1.2</span> Italics and bold</a></li>
 <li><a class="nav-link" href="#inline-code"><span class="header-section-number">2.1.3</span> Inline code</a></li>
@@ -544,6 +554,22 @@ Template for R Markdown</p></strong>" was written by Author Name. </p>
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
 </script>
 </body>
 </html>
