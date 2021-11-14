@@ -22,6 +22,22 @@ There is grandeur in this view of life, with its several powers, having been ori
 
 \noindent This chapter describes a number of additional tips and tricks as well as possible customizations to the `oxforddown` thesis.
 
+## Chunk caching and the **\_bookdown\_files** folder
+If you set `cache=TRUE` in a code chunk, in order to cache its results if it's time-consuming to run see [the R Markdown documentation](https://bookdown.org/yihui/rmarkdown-cookbook/cache.html), then the files for the caching are stored in the **_bookdown_files** folder.
+
+If you don't use caching and you would like to just have the **_bookdown_files** folder deleted after the build process is complete, then set `allow_cache = FALSE` in **index.Rmd**'s call to `knit_thesis`.
+
+That is, your YAML should then look like this:
+
+```yaml
+knit: (function(input, ...) {
+    thesis_formats <- "pdf";
+    
+    source("scripts_and_filters/knit-functions.R");
+    knit_thesis(input, thesis_formats, allow_cache = FALSE, ...)
+  })
+```
+
 ## Front matter
 ### Shorten captions shown in the list of figures (PDF)
 You might want your list of figures (which follows the table of contents) to have shorter (or just different) figure descriptions than the actual figure captions.
