@@ -39,7 +39,8 @@ Examples of theses written with `oxforddown`:
 
 ## How to cite
 
-[![DOI](https://zenodo.org/badge/159745024.svg)](https://zenodo.org/badge/latestdoi/159745024)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4876326.svg)](https://doi.org/10.5281/zenodo.4876326)
+
 
 ``` bibtex
 @misc{lyngsOxforddown2019,
@@ -49,7 +50,7 @@ Examples of theses written with `oxforddown`:
   publisher = {GitHub},
   journal = {GitHub repository},
   howpublished = {\url{https://github.com/ulyngs/oxforddown}},
-  doi = {10.5281/zenodo.3484682},
+  doi = {10.5281/zenodo.3484681},
 }
 ```
 
