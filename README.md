@@ -3,6 +3,7 @@
 # Contents
 
 -   [Requirements](#requirements)
+-   [How to cite](#how-to-cite)
 -   [How to use](#how-to-use)
     -   [How-to chapters](#how-to-chapters)
     -   [Video tutorials](#video-tutorials)
@@ -13,7 +14,6 @@
         -   [BS4 book output](#bs4-book-output)
         -   [Word output](#word-output)
     -   [Building a single chapter](#building-a-single-chapter)
-    -   [Cleaning up generated auxiliary files](#cleaning-up-generated-auxiliary-files)
 -   [Customisations and extensions](#customisations-and-extensions)
 -   [Limitations](#limitations)
     -   [Gotchas](#gotchas)
