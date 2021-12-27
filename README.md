@@ -3,6 +3,7 @@
 # Contents
 
 -   [Requirements](#requirements)
+-   [How to cite](#how-to-cite)
 -   [How to use](#how-to-use)
     -   [How-to chapters](#how-to-chapters)
     -   [Video tutorials](#video-tutorials)
@@ -13,7 +14,6 @@
         -   [BS4 book output](#bs4-book-output)
         -   [Word output](#word-output)
     -   [Building a single chapter](#building-a-single-chapter)
-    -   [Cleaning up generated auxiliary files](#cleaning-up-generated-auxiliary-files)
 -   [Customisations and extensions](#customisations-and-extensions)
 -   [Limitations](#limitations)
     -   [Gotchas](#gotchas)
@@ -212,8 +212,8 @@ The file **templates/brief_template.tex** formats the chapter in the OxThesis st
 
 ## Customisations and extensions
 
--   for some common things you might want to do in your thesis, read through the sample content
--   for example, the ['Customisations and extensions' chapter](https://ulyngs.github.io/oxforddown/customisations-and-extensions.html) (thanks \@bmvandoren!) adds tips on how to include PDF pages from a published typeset article in your thesis, and much more!
+-   for common things you might want to do in your thesis, read through the sample content
+-   the ['Customisations and extensions' chapter](https://ulyngs.github.io/oxforddown/customisations-and-extensions.html) (thanks \@bmvandoren!) has tips on how to include PDF pages from a published typeset article in your thesis, and much more!
 
 ## Limitations
 
