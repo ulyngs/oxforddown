@@ -28,8 +28,11 @@ university-logo-width: 5cm
 submitted-text: A thesis submitted for the degree of
 degree: Doctor of Philosophy
 degreedate: Michaelmas 2018
+abstract-heading: "Abstract"
 abstract: |
-  `r paste(readLines("front-and-back-matter/_abstract.Rmd"), collapse = '\n  ')`
+  `r paste(readLines("front-and-back-matter/_abstract.Rmd"), collapse = "\n  ")`
+# add a second abstract with abstract-second-heading: "Resume", and abstract-second: | etc.
+  
 acknowledgements: |
   `r paste(readLines("front-and-back-matter/_acknowledgements.Rmd"), collapse = '\n  ')`
 dedication: For Yihui Xie

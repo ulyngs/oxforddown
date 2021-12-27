@@ -250,12 +250,22 @@
 %the top of the page. The abstract itself appears in a quote environment,
 %i.e. tabbed in at both sides, and on its own page.
 
+\newcommand{\abstracttitle}{Abstract}
 \renewenvironment{abstract}%
-{   \begin{alwayssingle}\chapter*{Abstract}
+{   \begin{alwayssingle}\chapter*{\abstracttitle}
     \thispagestyle{empty}
     \pagestyle{empty}
    \setlength{\baselineskip}{\frontmatterbaselineskip}}
 {\end{alwayssingle}}
+
+\newcommand{\abstractsecondtitle}{Resumé}
+\newenvironment{abstractsecond}
+{   \begin{alwayssingle}\chapter*{\abstractsecondtitle}
+    \thispagestyle{empty}
+    \pagestyle{empty}
+   \setlength{\baselineskip}{\frontmatterbaselineskip}}
+{\end{alwayssingle}}
+
 
 %The abstractseparate environment is for running of a page with the abstract
 %on including title and author etc as required to be handed in separately

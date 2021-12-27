@@ -132,7 +132,6 @@ $endfor$
 \makeatother
 
 
-
 %%%%%%% PAGE HEADERS AND FOOTERS %%%%%%%%%
 \usepackage{fancyhdr}
 \setlength{\headheight}{15pt}
@@ -337,9 +336,17 @@ $endif$
 
 %%%%% ABSTRACT -- Nothing to do here except comment out if you don't want it.
 $if(abstract)$
+\renewcommand{\abstracttitle}{$abstract-heading$}
 \begin{abstract}
 	$abstract$
 \end{abstract}
+$endif$
+
+$if(abstract-second)$
+\renewcommand{\abstractsecondtitle}{$abstract-second-heading$}
+\begin{abstractsecond}
+	$abstract-second$
+\end{abstractsecond}
 $endif$
 
 %%%%% MINI TABLES
