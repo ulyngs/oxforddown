@@ -1,3 +1,4 @@
+eq:binom
 fig:chunk-parts
 fig:oxford-logo
 fig:oxford-logo-rotated
@@ -23,7 +24,7 @@ gitbook-output-html
 word-output
 building-a-single-chapter
 rmd-basics
-basic-markdown-syntaxz
+basic-markdown-syntax
 whitespace
 italics-and-bold
 inline-code
@@ -80,6 +81,7 @@ short-inline-corrections
 blocks-of-added-or-changed-material
 stopping-corrections-from-being-highlighted
 apply-custom-font-color-and-highlighting-to-text-html-pdf
+adding-a-second-abstract-pdf
 embed-pdf
 embed-rmd
 an-example-paper-in-another-folder
