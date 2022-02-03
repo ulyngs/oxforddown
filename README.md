@@ -27,7 +27,7 @@ The template uses the [bookdown](https://bookdown.org) R package together with t
 -   [Sample PDF output](https://github.com/ulyngs/oxforddown/blob/master/docs/_main.pdf)
 -   [Sample BS4 book output](https://ulyngs.github.io/oxforddown/)
 
-Examples of theses written with `oxforddown`:
+Examples of theses written with `oxforddown` (see also [Google Scholar](https://scholar.google.dk/scholar?oi=bibs&hl=en&cites=14343601209555768076)):
 
 -   [Ulysses in Cyberspace: Examining the Effectiveness of Design Patterns for Digital Self-Control](https://ulyngs.github.io/phd-thesis/) by [Ulrik Lyngs](https://ulriklyngs.com)
 -   [The Psychology of Managerial Capital Allocation](https://thesis.shirdekel.com) by [Shir Dekel](https://shirdekel.com)
