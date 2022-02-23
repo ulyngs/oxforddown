@@ -235,10 +235,11 @@
 % themselves appear in a quote environment, i.e. tabbed in at both sides, and
 % on its own page.
 
+\newcommand{\numberstyleacks}{empty}
 \newenvironment{acknowledgements}%
-{   \begin{alwayssingle}\chapter*{Acknowledgements}
-    \thispagestyle{empty}
-	\pagestyle{empty}
+{ \begin{alwayssingle}\chapter*{Acknowledgements}
+  \thispagestyle{\numberstyleacks}
+	\pagestyle{\numberstyleacks}
 	\setlength{\baselineskip}{\frontmatterbaselineskip}
 }
 {\end{alwayssingle}}
@@ -251,18 +252,19 @@
 %i.e. tabbed in at both sides, and on its own page.
 
 \newcommand{\abstracttitle}{Abstract}
+\newcommand{\numberstyleabstract}{empty}
 \renewenvironment{abstract}%
 {   \begin{alwayssingle}\chapter*{\abstracttitle}
-    \thispagestyle{empty}
-    \pagestyle{empty}
+    \thispagestyle{\numberstyleabstract}
+    \pagestyle{\numberstyleabstract}
    \setlength{\baselineskip}{\frontmatterbaselineskip}}
 {\end{alwayssingle}}
 
 \newcommand{\abstractsecondtitle}{Resumé}
 \newenvironment{abstractsecond}
 {   \begin{alwayssingle}\chapter*{\abstractsecondtitle}
-    \thispagestyle{empty}
-    \pagestyle{empty}
+    \thispagestyle{\numberstyleabstract}
+    \pagestyle{\numberstyleabstract}
    \setlength{\baselineskip}{\frontmatterbaselineskip}}
 {\end{alwayssingle}}
 

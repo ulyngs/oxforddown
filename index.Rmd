@@ -31,10 +31,11 @@ degreedate: Michaelmas 2018
 abstract-heading: "Abstract"
 abstract: |
   `r paste(readLines("front-and-back-matter/_abstract.Rmd"), collapse = "\n  ")`
-# add a second abstract with abstract-second-heading: "Resume", and abstract-second: | etc.
-  
+show-abstract-in-toc: true
+# add a second abstract with abstract-second-heading: "Abstract two", and abstract-second: "My abstract"
 acknowledgements: |
   `r paste(readLines("front-and-back-matter/_acknowledgements.Rmd"), collapse = '\n  ')`
+show-acknowledgements-in-toc: true
 dedication: For Yihui Xie
 abbreviations: |
   `r paste(readLines("front-and-back-matter/_abbreviations.Rmd"), collapse = '\n  ')`

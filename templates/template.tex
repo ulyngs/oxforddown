@@ -319,34 +319,56 @@ $else$
 \maketitle
 $endif$
 
-%%%%% DEDICATION -- If you'd like one, un-comment the following.
+%%%%% DEDICATION
 $if(dedication)$
 \begin{dedication}
   $dedication$
 \end{dedication}
 $endif$
 
-%%%%% ACKNOWLEDGEMENTS -- Nothing to do here except comment out if you don't want it.
+%%%%% ACKNOWLEDGEMENTS
 $if(acknowledgements)$
+
+$if(show-acknowledgements-in-toc)$
+\addcontentsline{toc}{chapter}{Acknowledgements}
+\renewcommand{\numberstyleacks}{plain}
+\renewcommand{\numberstyleabstract}{plain}
+$endif$
+
 \begin{acknowledgements}
  	$acknowledgements$
 \end{acknowledgements}
+
 $endif$
 
 
-%%%%% ABSTRACT -- Nothing to do here except comment out if you don't want it.
+%%%%% ABSTRACT
 $if(abstract)$
+
+$if(show-abstract-in-toc)$
+\addcontentsline{toc}{chapter}{$abstract-heading$}
+\renewcommand{\numberstyleabstract}{plain}
+$endif$
+
 \renewcommand{\abstracttitle}{$abstract-heading$}
 \begin{abstract}
 	$abstract$
 \end{abstract}
+
 $endif$
 
 $if(abstract-second)$
+
+$if(show-abstract-in-toc)$
+\addcontentsline{toc}{chapter}{$abstract-second-heading$}
+\renewcommand{\numberstyleabstract}{plain}
+$endif$
+
 \renewcommand{\abstractsecondtitle}{$abstract-second-heading$}
 \begin{abstractsecond}
 	$abstract-second$
 \end{abstractsecond}
+
 $endif$
 
 %%%%% MINI TABLES
