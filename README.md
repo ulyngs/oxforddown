@@ -27,7 +27,7 @@ The template uses the [bookdown](https://bookdown.org) R package together with t
 -   [Sample PDF output](https://github.com/ulyngs/oxforddown/blob/master/docs/_main.pdf)
 -   [Sample BS4 book output](https://ulyngs.github.io/oxforddown/)
 
-Examples of theses written with `oxforddown`:
+Examples of theses written with `oxforddown` (see also [Google Scholar](https://scholar.google.dk/scholar?oi=bibs&hl=en&cites=14343601209555768076)):
 
 -   [Ulysses in Cyberspace: Examining the Effectiveness of Design Patterns for Digital Self-Control](https://ulyngs.github.io/phd-thesis/) by [Ulrik Lyngs](https://ulriklyngs.com)
 -   [The Psychology of Managerial Capital Allocation](https://thesis.shirdekel.com) by [Shir Dekel](https://shirdekel.com)
@@ -107,7 +107,7 @@ Read the ['How to use' chapter](https://ulyngs.github.io/oxforddown/how-to-use.h
 
 For how to use R Markdown syntax in general and in `oxforddown` in particular, read the dedicated chapters on this ([R Markdown basics](https://ulyngs.github.io/oxforddown/rmd-basics.html), [Citations, cross-references, and collaboration](https://ulyngs.github.io/oxforddown/cites-and-refs.html), and [Tables](https://ulyngs.github.io/oxforddown/tables.html)).
 
-See also the general, official resources [*R Markdown: The Definitive Guide*](https://bookdown.org/yihui/rmarkdown/) and the [*R Markdown Cookbook*](https://bookdown.org/yihui/rmarkdown-cookbook/).
+See also the general, official R Markdown resources [*R Markdown: The Definitive Guide*](https://bookdown.org/yihui/rmarkdown/) and the [*R Markdown Cookbook*](https://bookdown.org/yihui/rmarkdown-cookbook/).
 
 ### Video tutorials
 
