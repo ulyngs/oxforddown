@@ -275,7 +275,11 @@ $endif$
 %
 % Customise title page
 %
+$if(university-logo)$
 \def\crest{{\includegraphics[width=$university-logo-width$]{$university-logo$}}}
+$else$
+\def\crest{}
+$endif$
 \renewcommand{\university}{$university$}
 \renewcommand{\submittedtext}{$submitted-text$}
 \renewcommand{\thesistitlesize}{\fontsize{$title-size$}{$title-size-linespacing$}\selectfont}
