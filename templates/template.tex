@@ -442,7 +442,7 @@ $if(use-biblatex)$
 $endif$
 
 $if(use-natbib)$
-\bibliography{$bibliography$}
+\bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
 $endif$
 
 \end{document}
