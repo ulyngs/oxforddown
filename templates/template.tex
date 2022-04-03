@@ -76,7 +76,7 @@ $endif$
 \usepackage[normalem]{ulem}
 
 % use soul package for correction highlighting
-\usepackage{color, soul}
+\usepackage{color, soulutf8}
 \definecolor{correctioncolor}{HTML}{CCCCFF}
 \sethlcolor{correctioncolor}
 \newcommand{\ctext}[3][RGB]{%
@@ -87,6 +87,7 @@ $endif$
 }
 \soulregister\ref7
 \soulregister\cite7
+\soulregister\citet7
 \soulregister\autocite7
 \soulregister\textcite7
 \soulregister\pageref7
@@ -197,11 +198,11 @@ $endif$
 
 $if(use-biblatex)$
 \usepackage[$bib-latex-options$]{biblatex}
-\newcommand*{\bibtitle}{$bibliography-heading-in-pdf$}
 
 $for(bibliography)$
 \addbibresource{$bibliography$}
 $endfor$
+
 $endif$
 
 $if(use-natbib)$
@@ -211,6 +212,7 @@ $if(use-natbib)$
 \addto\captionsenglish{%
   \renewcommand{\bibname}{$bibliography-heading-in-pdf$}
 }
+
 $endif$
 
 % This makes the bibliography left-aligned (not 'justified') and slightly smaller font.
@@ -430,7 +432,6 @@ $endif$
 
 % all your chapters and appendices will appear here
 $body$
-
 
 %%%%% REFERENCES
 $if(use-biblatex)$
