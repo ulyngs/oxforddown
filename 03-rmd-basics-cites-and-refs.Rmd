@@ -41,11 +41,13 @@ To default way to cite an entry in your text is with this syntax: `[@citation-id
 
 So I might cite some things [@Shea2014; @Lottridge2012; @Mill1965].
 
-### PDF output
-In PDF output, the bibliography is handled by the OxThesis LaTeX template.
-If you set `bib-humanities: true` in **index.Rmd**, then in-text references will be formatted as author-year; otherwise references will be shown as numbers.
+### Appearance of citations and references section (pandoc)
+By default, `oxforddown` lets [Pandoc](https://pandoc.org) handle how citations are inserted in your text and the references section.
 
-If you choose author-year formatting, a number of variations on the citation syntax are useful to know:
+You can change the appearance of citations and references by specifying a CSL (Citation Style Language) file in the `csl` metadata field.
+By default, it's set to the format used by the Americal Psychological Association (7th Edition), which is an author-year format.
+
+With this style, a number of variations on the citation syntax are useful to know:
 
 - Put author names outside the parenthesis
   - This: `@Shea2014 says blah.`
@@ -57,30 +59,19 @@ If you choose author-year formatting, a number of variations on the citation syn
   - This: `[see @Shea2014, pp. 33-35; also @Wu2016, ch. 1]`
   - Becomes: Blah blah [see @Shea2014, pp. 33-35; also @Wu2016, ch. 1].
 
-### Gitbook output
-In gitbook output, citations are by default inserted in the Chicago author-date format.
 
-To change the format, add `csl: some-other-style.csl` in **index.Rmd**'s YAML header. 
-You can browse through and download styles at [zotero.org/styles](https://www.zotero.org/styles).
-
+If you want a numerical citation style instead, try `csl: bibliography/transactions-on-computer-human-interaction.csl` or just have a browse through the [Zotero Style Repository](https://www.zotero.org/styles) and look for one you like.
+For convenience, you can set the line spacing and the space between the bibliographic entries in the reference section directly from the YAML header in **index.Rmd**.
 
 \clearpage
 
 <!-- clearpage ends the page, and also dumps out all floats.
   Floats are things like tables and figures. -->
 
-### Insert references easily with the `citr` add-in
-For an easy way to insert citations, try the [`citr`](https://github.com/crsh/citr) RStudio add-in (Figure \@ref(fig:citr)).
-You can install this add-in by typing `install.packages("citr")` in the R Console.
+### Insert references easily with RStudio's Visual Editor 
+For an easy way to insert citations, use RStudio's [Visual Editor](https://rstudio.github.io/visual-markdown-editing/citations.html).
+Make sure you have the latest version of RStudio -- the visual editor was originally really buggy, especially in relation to references, but as per v2022.02.0, it's great!
 
-```{r citr, echo=FALSE, fig.cap="The `citr` add-in", out.width="80%", fig.align='center'}
-# include dynamic gif if output is HTML; otherwise screenshot
-if (knitr::opts_knit$get('rmarkdown.pandoc.to') == 'html'){
-  knitr::include_graphics("https://raw.githubusercontent.com/crsh/citr/master/tools/images/addin_demo.gif")
-} else {
-  knitr::include_graphics("figures/sample-content/citr.png")
-}
-```
 
 ## Cross-referencing
 We can make cross-references to **sections** within our document, as well as to **figures** (images and plots) and **tables**.
