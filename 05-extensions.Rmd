@@ -343,107 +343,74 @@ Now, the output width of your figure will be 80% when knitting your paper on its
 
 
 
-## Customizing referencing 
+## Customizing citations and referencing {#customising-citations} 
 
-### Using a .csl file with pandoc instead of biblatex
-The `oxforddown` package uses biblatex in LaTeX for referencing. 
-It is also possible to use pandoc for referencing by providing a .csl file in the YAML header of **index.Rmd** (likely requiring commenting out the biblatex code in **templates/template.tex**). 
-This may be helpful for those who have a .csl file describing the referencing format for a particular journal. 
-However, note that this approach does not support chapter bibliographies (see Section \@ref(biblatex-custom)).
+### Using a .csl file with pandoc 
+See section \@ref(citation-appearance).
 
-```YAML
-csl: ecology.csl
+The only drawbacks to letting pandoc handle citations is that (i) it does not support chapter bibliographies, (ii) if you're a LaTeX veteran, you might be more comfortable with `biblatex` or `natbib`.
+
+### Using `biblatex` {#biblatex-custom}
+To use [biblatex](https://www.overleaf.com/learn/latex/Bibliography_management_with_biblatex) to handle citations, first uncomment this in **index.Rmd**, YAML header:
+
+```markdown
+use-biblatex: true
+bib-latex-options: "style=authoryear, sorting=nyt, backend=biber, maxcitenames=2, useprefix, doi=true, isbn=false, uniquename=false"
 ```
 
-### Customizing biblatex and adding chapter bibliographies {#biblatex-custom}
+Then tell R Markdown to use `biblatex` when inserting citations, by setting `citation_package: biblatex`:
 
-This section provides one example of customizing biblatex. Much of this code was combined from searches on Stack Exchange and other sources (e.g. [here](https://tex.stackexchange.com/questions/10682/suppress-in-biblatex)).
-
-In **templates/template.tex**, one can replace the existing biblatex calls with the following to achieve referencing that looks like this: 
-
-(Charmantier and Gienapp 2014)
-
-Charmantier, A. and P. Gienapp (2014). Climate change and timing of avian breeding and migration: evolutionary versus plastic changes. Evolutionary Applications 7(1):15–28. doi: 10.1111/eva.12126.
-
-
-```latex
-\usepackage[backend=biber,
-    bibencoding=utf8,
-    refsection=chapter, % referencing by chapter
-    style=authoryear, 
-    firstinits=true,
-    isbn=false,
-    doi=true,
-    url=false,
-    eprint=false,
-    related=false,
-    dashed=false,
-    clearlang=true,
-    maxcitenames=2,
-    mincitenames=1,
-    maxbibnames=10,
-    abbreviate=false,
-    minbibnames=3,
-    uniquelist=minyear,
-    sortcites=true,
-    date=year
-]{biblatex}
-\AtEveryBibitem{%
-  \clearlist{language}%
-  \clearfield{note}
-}
-
-\DeclareFieldFormat{titlecase}{\MakeTitleCase{#1}}
-
-\newrobustcmd{\MakeTitleCase}[1]{%
-  \ifthenelse{\ifcurrentfield{booktitle}\OR\ifcurrentfield{booksubtitle}%
-    \OR\ifcurrentfield{maintitle}\OR\ifcurrentfield{mainsubtitle}%
-    \OR\ifcurrentfield{journaltitle}\OR\ifcurrentfield{journalsubtitle}%
-    \OR\ifcurrentfield{issuetitle}\OR\ifcurrentfield{issuesubtitle}%
-    \OR\ifentrytype{book}\OR\ifentrytype{mvbook}\OR\ifentrytype{bookinbook}%
-    \OR\ifentrytype{booklet}\OR\ifentrytype{suppbook}%
-    \OR\ifentrytype{collection}\OR\ifentrytype{mvcollection}%
-    \OR\ifentrytype{suppcollection}\OR\ifentrytype{manual}%
-    \OR\ifentrytype{periodical}\OR\ifentrytype{suppperiodical}%
-    \OR\ifentrytype{proceedings}\OR\ifentrytype{mvproceedings}%
-    \OR\ifentrytype{reference}\OR\ifentrytype{mvreference}%
-    \OR\ifentrytype{report}\OR\ifentrytype{thesis}}
-    {#1}
-    {\MakeSentenceCase{#1}}}
-    
-% \renewbibmacro{in:}{}
-% suppress "in" for articles
-% 
-\renewbibmacro{in:}{%
-  \ifentrytype{article}{}{\printtext{\bibstring{in}\intitlepunct}}}
-%-- no "quotes" around titles of chapters/article titles
-\DeclareFieldFormat[article, inbook, incollection, inproceedings, misc, thesis, unpublished]
-{title}{#1}
-%-- no punctuation after volume
-\DeclareFieldFormat[article]
-{volume}{{#1}}
-%-- puts number/issue between brackets
-\DeclareFieldFormat[article, inbook, incollection, inproceedings, misc, thesis, unpublished]
-{number}{\mkbibparens{#1}} 
-%-- and then for articles directly the pages w/o any "pages" or "pp." 
-\DeclareFieldFormat[article]
-{pages}{#1}
-%-- for some types replace "pages" by "p."
-\DeclareFieldFormat[inproceedings, incollection, inbook]
-{pages}{p. #1}
-%-- format 16(4):224--225 for articles
-\renewbibmacro*{volume+number+eid}{
-  \printfield{volume}%
-  \printfield{number}%
-  \printunit{\addcolon}
-}
+```markdown
+output:
+  bookdown::pdf_book:
+    citation_package: biblatex
 ```
 
-If you would like chapter bibliographies, in addition insert the following code at the end of each chapter, and comment out the entire REFERENCES section at the end of template.tex.
+To customise the appearance of citations, change `bib-latex-options`. For example, to get **numerical citations**, with references in order of their appearance in the text, set it to 
+
+```markdown
+bib-latex-options: "style=numeric-comp, sorting=none, backend=biber, maxcitenames=2, useprefix, doi=true, isbn=false, uniquename=false"
+```
+
+#### Adding chapter bibliographies
+If you would like chapter bibliographies, first add "refsection=chapter" to the biblatex options, for example like this:
+
+```markdown
+bib-latex-options: "refsection=chapter, style=authoryear, sorting=nyt, backend=biber, maxcitenames=2, useprefix, doi=true, isbn=false, uniquename=false"
+```
+
+Second, set the parameter `insertHeadingInPDF: false` in **index.Rmd**, to suppress the inclusion of a 'References' heading at the end of the thesis.
+
+```markdown
+params:
+  insertHeadingInPDF: false
+```
+
+Finally insert this line at the end of each chapter, to print the bibliographies there:
 
 ```latex
 \printbibliography[segment=\therefsection,heading=subbibliography]
 ```
+
+
+### Using `natbib` {#natbib-custom}
+To use [natbib](https://www.overleaf.com/learn/latex/Bibliography_management_with_natbib) to handle citations, first uncomment this in **index.Rmd**, YAML header:
+
+```markdown
+use-natbib: true
+natbib-citation-style: authoryear #for science, you might want numbers,square
+natbib-bibliography-style: templates/ACM-Reference-Format.bst #e.g. "plainnat", unsrtnat, or path to a .bst file
+```
+
+Then tell R Markdown to use `natbib` when inserting citations, by setting `citation_package: natbib`:
+
+```markdown
+output:
+  bookdown::pdf_book:
+    citation_package: natbib
+```
+
+To customise the appearance of citations, change what **.bst** file you point to in `natbib-bibliography-style`.
 
 ## Customizing the page headers and footers (PDF)
 

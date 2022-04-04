@@ -10,7 +10,7 @@ documentclass: book
 #bibliography: [bibliography/references.bib, bibliography/additional-references.bib]
 ---
 
-# Citations, cross-references, and collaboration {#cites-and-refs} 
+# Citations, cross-references, and collaboration {#cites-and-refs}
 \chaptermark{Citations and cross-refs}
 \minitoc <!-- this will include a mini table of contents-->
 
@@ -41,11 +41,10 @@ To default way to cite an entry in your text is with this syntax: `[@citation-id
 
 So I might cite some things [@Shea2014; @Lottridge2012; @Mill1965].
 
-### Appearance of citations and references section (pandoc)
+### Appearance of citations and references section (pandoc) {#citation-appearance}
 By default, `oxforddown` lets [Pandoc](https://pandoc.org) handle how citations are inserted in your text and the references section.
-
-You can change the appearance of citations and references by specifying a CSL (Citation Style Language) file in the `csl` metadata field.
-By default, it's set to the format used by the Americal Psychological Association (7th Edition), which is an author-year format.
+You can change the appearance of citations and references by specifying a CSL (Citation Style Language) file in the `csl` metadata field of **index.Rmd**.
+By default, `oxforddown` by the Americal Psychological Association (7th Edition), which is an author-year format.
 
 With this style, a number of variations on the citation syntax are useful to know:
 
@@ -62,6 +61,8 @@ With this style, a number of variations on the citation syntax are useful to kno
 
 If you want a numerical citation style instead, try `csl: bibliography/transactions-on-computer-human-interaction.csl` or just have a browse through the [Zotero Style Repository](https://www.zotero.org/styles) and look for one you like.
 For convenience, you can set the line spacing and the space between the bibliographic entries in the reference section directly from the YAML header in **index.Rmd**.
+
+If you prefer to use `biblatex` or `natbib` to handle references, see [this chapter](customising-citations).
 
 \clearpage
 
