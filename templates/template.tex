@@ -210,9 +210,9 @@ $if(use-natbib)$
 \setcitestyle{$natbib-citation-style$}
 \bibliographystyle{$natbib-bibliography-style$}
 \addto\captionsenglish{%
-  \renewcommand{\bibname}{$bibliography-heading-in-pdf$}
+  \renewcommand{\bibname}{}
+  \renewcommand{\bibsection}{}
 }
-
 $endif$
 
 % This makes the bibliography left-aligned (not 'justified') and slightly smaller font.
@@ -437,8 +437,10 @@ $body$
 $if(use-biblatex)$
 \setlength{\baselineskip}{0pt} % JEM: Single-space References
 
+% we are setting the title for the references section in front-and-back-matter/99-references_heading.Rmd
 {\renewcommand*\MakeUppercase[1]{#1}%
-\printbibliography[heading=bibintoc,title={\bibtitle}]}
+\printbibliography[heading=none]}
+
 $endif$
 
 $if(use-natbib)$

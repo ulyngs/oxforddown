@@ -65,7 +65,9 @@ abbreviations-heading: List of Abbreviations
 
 
 ### citation and bibliography style ###
-bibliography-heading-in-pdf: Works Cited
+# heading title for the references section
+params:
+  referenceHeading: "References"
 
 # biblatex options #
 # unless you run into 'biber' error messages, use biblatex as it lets you customise your bibliography directly
@@ -77,6 +79,7 @@ bib-latex-options: "style=authoryear, sorting=nyt, backend=biber, maxcitenames=2
 use-natbib: false # to use natbib, set this to true, and change "output:bookdown::pdf_book:citation_package:" to "natbib"
 natbib-citation-style: authoryear #for science, you might want numbers,square
 natbib-bibliography-style: templates/ACM-Reference-Format.bst #e.g. "plainnat", unsrtnat, or path to a .bst file
+
 
 ### correction highlighting ###
 corrections: true

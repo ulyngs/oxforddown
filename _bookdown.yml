@@ -16,7 +16,7 @@ rmd_subdir: ["front-and-back-matter"]
 
 # You can override bookdown's automatic merging of files, and explicitly
 # specify files to include with "rmd_files" like this:
-#rmd_files: ["index.Rmd", "00-introduction.Rmd", "01-how-to-use.Rmd", "07-conclusion.Rmd", "front-and-back-matter/98-appendices.Rmd", "front-and-back-matter/99-references.Rmd"]
+#rmd_files: ["index.Rmd", "00-introduction.Rmd", "01-how-to-use.Rmd", "07-conclusion.Rmd", "front-and-back-matter/98-appendices.Rmd", "front-and-back-matter/99-references_heading.Rmd"]
 
 # If you want people to be able to suggest and submit changes to the source .Rmd
 # files on your github repo, do it like so (https://bookdown.org/yihui/bookdown/html.html)
