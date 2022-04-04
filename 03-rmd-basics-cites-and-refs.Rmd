@@ -39,7 +39,7 @@ Here is an example of an entry in a **.bib** file:
 In this entry highlighed section, 'Shea2014' is the **citation identifier**.
 To default way to cite an entry in your text is with this syntax: `[@citation-identifier]`.
 
-So I might cite some things [@Shea2014; @Lottridge2012].
+So I might cite some things [@Shea2014; @Lottridge2012; @Mill1965].
 
 ### PDF output
 In PDF output, the bibliography is handled by the OxThesis LaTeX template.
