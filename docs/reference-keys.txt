@@ -5,7 +5,6 @@ fig:oxford-logo-rotated
 fig:cars-plot
 tab:cars-table
 fig:oxford-logo-controlled
-fig:citr
 fig:captain
 tab:cars-table2
 fig:latex-font-sizing
@@ -50,9 +49,8 @@ executable-inline-code
 executable-code-in-other-languages-than-r
 cites-and-refs
 citations
-pdf-output-1
-gitbook-output
-insert-references-easily-with-the-citr-add-in
+citation-appearance
+insert-references-easily-with-rstudios-visual-editor
 cross-referencing
 section-references
 creating-custom-labels
@@ -90,9 +88,11 @@ step-2-make-file-paths-compatible
 note-on-html-output
 step-3-make-sure-header-levels-are-correct
 step-4.-make-sure-figure-widths-are-correct
-customizing-referencing
-using-a-.csl-file-with-pandoc-instead-of-biblatex
+customising-citations
+using-a-.csl-file-with-pandoc
 biblatex-custom
+adding-chapter-bibliographies
+natbib-custom
 customizing-the-page-headers-and-footers-pdf
 diving-in-to-the-oxthesis-latex-template-pdf
 customising-to-a-different-university

@@ -33,7 +33,6 @@
 
 
 %%%%% ADDING LATEX PACKAGES
-
 % add hyperref package with options from YAML %
 \usepackage[pdfpagelabels]{hyperref}
 % change the default coloring of links to something sensible
@@ -61,7 +60,7 @@
 \usepackage[normalem]{ulem}
 
 % use soul package for correction highlighting
-\usepackage{color, soul}
+\usepackage{color, soulutf8}
 \definecolor{correctioncolor}{HTML}{CCCCFF}
 \sethlcolor{correctioncolor}
 \newcommand{\ctext}[3][RGB]{%
@@ -72,6 +71,7 @@
 }
 \soulregister\ref7
 \soulregister\cite7
+\soulregister\citet7
 \soulregister\autocite7
 \soulregister\textcite7
 \soulregister\pageref7
@@ -165,7 +165,6 @@
 \makeatother
 
 
-
 %%%%%%% PAGE HEADERS AND FOOTERS %%%%%%%%%
 \usepackage{fancyhdr}
 \setlength{\headheight}{15pt}
@@ -215,16 +214,33 @@
 % If you're already a LaTeX pro and are used to natbib or something, modify as necessary.
 % Either way, you'll have to choose and configure an appropriate bibliography format...
 
+% this enables pandoc citations
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslentryspacingunit} % times entry-spacing
+\setlength{\cslentryspacingunit}{\parskip}
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+  \let\oldpar\par
+  \def\par{\hangindent=\cslhangindent\oldpar}
+  \fi
+  % set entry spacing
+  \setlength{\parskip}{1mm}
+  \setlength{\baselineskip}{6mm}
+ }%
+ {}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
-\usepackage[style=authoryear, sorting=nyt, backend=biber, maxcitenames=2, useprefix, doi=true, isbn=false, uniquename=false]{biblatex}
-\newcommand*{\bibtitle}{Works Cited}
 
-\addbibresource{bibliography/references.bib}
-\addbibresource{bibliography/additional-references.bib}
-
-
-% This makes the bibliography left-aligned (not 'justified') and slightly smaller font.
-\renewcommand*{\bibfont}{\raggedright\small}
 
 
 % Uncomment this if you want equation numbers per section (2.3.12), instead of per chapter (2.18):
@@ -280,11 +296,14 @@ Template for R Markdown}
 \setlength{\parskip}{2pt plus 1pt}
 
 %
-% Oxford University logo on title page
+% Customise title page
 %
 \def\crest{{\includegraphics[width=5cm]{templates/beltcrest.pdf}}}
 \renewcommand{\university}{University of Oxford}
 \renewcommand{\submittedtext}{A thesis submitted for the degree of}
+\renewcommand{\thesistitlesize}{\fontsize{22pt}{28pt}\selectfont}
+\renewcommand{\gapbeforecrest}{25mm}
+\renewcommand{\gapaftercrest}{25mm}
 
 
 % Leave this line alone; it gets things started for the real document.
@@ -314,12 +333,14 @@ Template for R Markdown}
 % Title page is created here
 \maketitle
 
-%%%%% DEDICATION -- If you'd like one, un-comment the following.
+%%%%% DEDICATION
 \begin{dedication}
   For Yihui Xie
 \end{dedication}
 
-%%%%% ACKNOWLEDGEMENTS -- Nothing to do here except comment out if you don't want it.
+%%%%% ACKNOWLEDGEMENTS
+
+
 \begin{acknowledgements}
  	This is where you will normally thank your advisor, colleagues, family and friends, as well as funding and institutional support. In our case, we will give our praises to the people who developed the ideas and tools that allow us to push open science a little step forward by writing plain-text, transparent, and reproducible theses in R Markdown.
 
@@ -337,7 +358,11 @@ Template for R Markdown}
 \end{acknowledgements}
 
 
-%%%%% ABSTRACT -- Nothing to do here except comment out if you don't want it.
+
+%%%%% ABSTRACT
+
+
+\renewcommand{\abstracttitle}{Abstract}
 \begin{abstract}
 	This \emph{R Markdown} template is for writing an Oxford University thesis. The template is built using Yihui Xie's \texttt{bookdown} package, with heavy inspiration from Chester Ismay's \texttt{thesisdown} and the \texttt{OxThesis} \LaTeX~template (most recently adapted by John McManigle).
 
@@ -345,6 +370,8 @@ Template for R Markdown}
 
  Congratulations for taking a step further into the lands of open, reproducible science by writing your thesis using a tool that allows you to transparently include tables and dynamically generated plots directly from the underlying data. Hip hooray!
 \end{abstract}
+
+
 
 %%%%% MINI TABLES
 % This lays the groundwork for per-chapter, mini tables of contents.  Comment the following line
@@ -403,7 +430,7 @@ Quite a nice prickly friend.
 \adjustmtc
 \markboth{Introduction}{}
 
-Welcome to \texttt{oxforddown} \autocite{lyngsOxforddown2019}, a thesis template for R Markdown that I created when writing \href{https://ulyngs.github.io/phd-thesis/}{my own PhD thesis} at the University of Oxford.
+Welcome to \texttt{oxforddown} (\protect\hyperlink{ref-lyngsOxforddown2019}{Lyngs, 2019}), a thesis template for R Markdown that I created when writing \href{https://ulyngs.github.io/phd-thesis/}{my own PhD thesis} at the University of Oxford.
 This template allows you to write in R Markdown, while formatting the PDF output with the beautiful and time-tested \href{https://github.com/mcmanigle/OxThesis}{OxThesis LaTeX template}.
 The sample content is partly adapted from \href{https://github.com/ismayc/thesisdown}{\texttt{thesisdown}} .
 
@@ -1208,15 +1235,16 @@ Here is an example of an entry in a \textbf{.bib} file:
 In this entry highlighed section, `Shea2014' is the \textbf{citation identifier}.
 To default way to cite an entry in your text is with this syntax: \texttt{{[}@citation-identifier{]}}.
 
-So I might cite some things \autocite{Shea2014,Lottridge2012}.
+So I might cite some things (\protect\hyperlink{ref-Lottridge2012}{Lottridge et al., 2012}; \protect\hyperlink{ref-Mill1965}{Mill, 1965 {[}1843{]}}; \protect\hyperlink{ref-Shea2014}{Shea et al., 2014}).
 
-\hypertarget{pdf-output-1}{%
-\subsection{PDF output}\label{pdf-output-1}}
+\hypertarget{citation-appearance}{%
+\subsection{Appearance of citations and references section (pandoc)}\label{citation-appearance}}
 
-In PDF output, the bibliography is handled by the OxThesis LaTeX template.
-If you set \texttt{bib-humanities:\ true} in \textbf{index.Rmd}, then in-text references will be formatted as author-year; otherwise references will be shown as numbers.
+By default, \texttt{oxforddown} lets \href{https://pandoc.org}{Pandoc} handle how citations are inserted in your text and the references section.
+You can change the appearance of citations and references by specifying a CSL (Citation Style Language) file in the \texttt{csl} metadata field of \textbf{index.Rmd}.
+By default, \texttt{oxforddown} by the Americal Psychological Association (7th Edition), which is an author-year format.
 
-If you choose author-year formatting, a number of variations on the citation syntax are useful to know:
+With this style, a number of variations on the citation syntax are useful to know:
 
 \begin{itemize}
 \tightlist
@@ -1228,7 +1256,7 @@ If you choose author-year formatting, a number of variations on the citation syn
   \item
     This: \texttt{@Shea2014\ says\ blah.}
   \item
-    Becomes: \textcite{Shea2014} says blah.
+    Becomes: Shea et al. (\protect\hyperlink{ref-Shea2014}{2014}) says blah.
   \end{itemize}
 \item
   Include only the citation-year (in parenthesis)
@@ -1238,7 +1266,7 @@ If you choose author-year formatting, a number of variations on the citation syn
   \item
     This: \texttt{Shea\ et\ al.\ says\ blah\ {[}-@Shea2014{]}}
   \item
-    Becomes: Shea et al.~says blah \autocite*{Shea2014}
+    Becomes: Shea et al.~says blah (\protect\hyperlink{ref-Shea2014}{2014})
   \end{itemize}
 \item
   Add text and page or chapter references to the citation
@@ -1248,34 +1276,22 @@ If you choose author-year formatting, a number of variations on the citation syn
   \item
     This: \texttt{{[}see\ @Shea2014,\ pp.\ 33-35;\ also\ @Wu2016,\ ch.\ 1{]}}
   \item
-    Becomes: Blah blah \autocites[see][pp.~33-35]{Shea2014}[also][ch.~1]{Wu2016}.
+    Becomes: Blah blah (see \protect\hyperlink{ref-Shea2014}{Shea et al., 2014, pp. 33--35}; also \protect\hyperlink{ref-Wu2016}{Wu, 2016}, ch.~1).
   \end{itemize}
 \end{itemize}
 
-\hypertarget{gitbook-output}{%
-\subsection{Gitbook output}\label{gitbook-output}}
+If you want a numerical citation style instead, try \texttt{csl:\ bibliography/transactions-on-computer-human-interaction.csl} or just have a browse through the \href{https://www.zotero.org/styles}{Zotero Style Repository} and look for one you like.
+For convenience, you can set the line spacing and the space between the bibliographic entries in the reference section directly from the YAML header in \textbf{index.Rmd}.
 
-In gitbook output, citations are by default inserted in the Chicago author-date format.
-
-To change the format, add \texttt{csl:\ some-other-style.csl} in \textbf{index.Rmd}'s YAML header.
-You can browse through and download styles at \href{https://www.zotero.org/styles}{zotero.org/styles}.
+If you prefer to use \texttt{biblatex} or \texttt{natbib} to handle references, see \href{customising-citations}{this chapter}.
 
 \clearpage
 
-\hypertarget{insert-references-easily-with-the-citr-add-in}{%
-\subsection{\texorpdfstring{Insert references easily with the \texttt{citr} add-in}{Insert references easily with the citr add-in}}\label{insert-references-easily-with-the-citr-add-in}}
+\hypertarget{insert-references-easily-with-rstudios-visual-editor}{%
+\subsection{Insert references easily with RStudio's Visual Editor}\label{insert-references-easily-with-rstudios-visual-editor}}
 
-For an easy way to insert citations, try the \href{https://github.com/crsh/citr}{\texttt{citr}} RStudio add-in (Figure \ref{fig:citr}).
-You can install this add-in by typing \texttt{install.packages("citr")} in the R Console.
-
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\linewidth]{figures/sample-content/citr} 
-
-}
-
-\caption{The `citr` add-in}\label{fig:citr}
-\end{figure}
+For an easy way to insert citations, use RStudio's \href{https://rstudio.github.io/visual-markdown-editing/citations.html}{Visual Editor}.
+Make sure you have the latest version of RStudio -- the visual editor was originally really buggy, especially in relation to references, but as per v2022.02.0, it's great!
 
 \hypertarget{cross-referencing}{%
 \section{Cross-referencing}\label{cross-referencing}}
@@ -2106,7 +2122,7 @@ been originally breathed into a few forms or into one; and that, whilst
 this planet has gone cycling on according to the fixed law of gravity,
 from so simple a beginning endless forms most beautiful and most
 wonderful have been, and are being, evolved.
-\qauthor{--- Charles Darwin \autocite{Darwin1859}}\end{savequote}
+\qauthor{--- Charles Darwin (\protect\hyperlink{ref-Darwin1859}{Darwin, 1859})}\end{savequote}
 
 
 
@@ -2116,6 +2132,26 @@ wonderful have been, and are being, evolved.
 \minitoc 
 
 \noindent This chapter describes a number of additional tips and tricks as well as possible customizations to the \texttt{oxforddown} thesis.
+
+\hypertarget{chunk-caching-and-the-_bookdown_files-folder}{%
+\section{\texorpdfstring{Chunk caching and the \textbf{\_bookdown\_files} folder}{Chunk caching and the \_bookdown\_files folder}}\label{chunk-caching-and-the-_bookdown_files-folder}}
+
+If you set \texttt{cache=TRUE} in a code chunk, in order to cache its results if it's time-consuming to run see \href{https://bookdown.org/yihui/rmarkdown-cookbook/cache.html}{the R Markdown documentation}, then the files for the caching are stored in the **\_bookdown\_files** folder.
+
+If you don't use caching and you would like to just have the **\_bookdown\_files** folder deleted after the build process is complete, then set \texttt{allow\_cache\ =\ FALSE} in \textbf{index.Rmd}'s call to \texttt{knit\_thesis}.
+
+That is, your YAML should then look like this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{knit}\KeywordTok{:}\AttributeTok{ (function(input, ...) \{}
+\AttributeTok{    thesis\_formats \textless{}{-} "pdf";}
+\AttributeTok{    }
+\AttributeTok{    source("scripts\_and\_filters/knit{-}functions.R");}
+\AttributeTok{    knit\_thesis(input, thesis\_formats, allow\_cache = FALSE, ...)}
+\AttributeTok{  \})}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{front-matter}{%
 \section{Front matter}\label{front-matter}}
@@ -2200,7 +2236,7 @@ You can do so like this:
 Highlight \textbf{short, inline corrections} by doing \texttt{{[}like\ this{]}\{.correction\}} --- the text between the square brackets will then \hl{be highlighted in blue} in the output.
 
 Note that pandoc might get confused by citations and cross-references inside inline corrections.
-In particular, it might get confused by \texttt{"{[}what\ @Shea2014\ said{]}\{.correction\}"} which becomes \autocite[what][ said]{Shea2014}\{.correction\}
+In particular, it might get confused by \texttt{"{[}what\ @Shea2014\ said{]}\{.correction\}"} which becomes \hl{what Shea et al. (\protect\hyperlink{ref-Shea2014}{2014}) said}
 In such cases, you can use LaTeX syntax directly.
 The correction highlighting uses the \href{https://ctan.org/pkg/soul}{soul} package, so you can do like this:
 
@@ -2255,7 +2291,7 @@ Becomes: Here's \sethlcolor{pink}\hl{some text in pink highlighting}\sethlcolor{
 \end{quote}
 
 \begin{quote}
-\texttt{{[}Here\textquotesingle{}s\ some\ text\ with\ blue\ font{]}\{color="blue"\}}~\\
+\texttt{{[}Here\textquotesingle{}s\ some\ text\ with\ blue\ font{]}\{color="blue"\}}\strut \\
 Becomes: \textcolor{blue}{Here's some text with blue font}
 \end{quote}
 
@@ -2266,6 +2302,20 @@ Becomes: \textcolor{yellow}{\sethlcolor{black}\hl{here's some text with black hi
 
 The file \textbf{scripts\_and\_filters/colour\_and\_highlight.lua} implements this, if you want to fiddle around with it.
 It works with both PDF and HTML output.
+
+\hypertarget{adding-a-second-abstract-pdf}{%
+\section{Adding a second abstract (PDF)}\label{adding-a-second-abstract-pdf}}
+
+You may need two abstracts in your thesis, if you e.g.~need both an abstract in English and some other language.
+
+You can add a second abstract in \textbf{index.Rmd} like so:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{abstract{-}second{-}heading}\KeywordTok{:}\AttributeTok{ }\StringTok{"Resumé"}
+\FunctionTok{abstract{-}second}\KeywordTok{:}\AttributeTok{ }\StringTok{"This is the second abstract, for example in beautiful French."}\AttributeTok{ }
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{embed-pdf}{%
 \section{Including another paper in your thesis - embed a PDF document}\label{embed-pdf}}
@@ -2501,116 +2551,98 @@ Finally, create the parameter \texttt{out\_width} in your thesis' \textbf{index.
 
 Now, the output width of your figure will be 80\% when knitting your paper on its own, and 100\% when knitting it as child document of your thesis.
 
-\hypertarget{customizing-referencing}{%
-\section{Customizing referencing}\label{customizing-referencing}}
+\hypertarget{customising-citations}{%
+\section{Customizing citations and referencing}\label{customising-citations}}
 
-\hypertarget{using-a-.csl-file-with-pandoc-instead-of-biblatex}{%
-\subsection{Using a .csl file with pandoc instead of biblatex}\label{using-a-.csl-file-with-pandoc-instead-of-biblatex}}
+\hypertarget{using-a-.csl-file-with-pandoc}{%
+\subsection{Using a .csl file with pandoc}\label{using-a-.csl-file-with-pandoc}}
 
-The \texttt{oxforddown} package uses biblatex in LaTeX for referencing.
-It is also possible to use pandoc for referencing by providing a .csl file in the YAML header of \textbf{index.Rmd} (likely requiring commenting out the biblatex code in \textbf{templates/template.tex}).
-This may be helpful for those who have a .csl file describing the referencing format for a particular journal.
-However, note that this approach does not support chapter bibliographies (see Section \ref{biblatex-custom}).
+See section \ref{citation-appearance}.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{csl}\KeywordTok{:}\AttributeTok{ ecology.csl}
-\end{Highlighting}
-\end{Shaded}
+The only drawbacks to letting pandoc handle citations is that (i) it does not support chapter bibliographies, (ii) if you're a LaTeX veteran, you might be more comfortable with \texttt{biblatex} or \texttt{natbib}.
 
 \hypertarget{biblatex-custom}{%
-\subsection{Customizing biblatex and adding chapter bibliographies}\label{biblatex-custom}}
+\subsection{\texorpdfstring{Using \texttt{biblatex}}{Using biblatex}}\label{biblatex-custom}}
 
-This section provides one example of customizing biblatex. Much of this code was combined from searches on Stack Exchange and other sources (e.g.~\href{https://tex.stackexchange.com/questions/10682/suppress-in-biblatex}{here}).
-
-In \textbf{templates/template.tex}, one can replace the existing biblatex calls with the following to achieve referencing that looks like this:
-
-(Charmantier and Gienapp 2014)
-
-Charmantier, A. and P. Gienapp (2014). Climate change and timing of avian breeding and migration: evolutionary versus plastic changes. Evolutionary Applications 7(1):15--28. doi: 10.1111/eva.12126.
+To use \href{https://www.overleaf.com/learn/latex/Bibliography_management_with_biblatex}{biblatex} to handle citations, first uncomment this in \textbf{index.Rmd}, YAML header:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\BuiltInTok{\textbackslash{}usepackage}\NormalTok{[backend=biber,}
-\NormalTok{    bibencoding=utf8,}
-\NormalTok{    refsection=chapter, }\CommentTok{\% referencing by chapter}
-\NormalTok{    style=authoryear, }
-\NormalTok{    firstinits=true,}
-\NormalTok{    isbn=false,}
-\NormalTok{    doi=true,}
-\NormalTok{    url=false,}
-\NormalTok{    eprint=false,}
-\NormalTok{    related=false,}
-\NormalTok{    dashed=false,}
-\NormalTok{    clearlang=true,}
-\NormalTok{    maxcitenames=2,}
-\NormalTok{    mincitenames=1,}
-\NormalTok{    maxbibnames=10,}
-\NormalTok{    abbreviate=false,}
-\NormalTok{    minbibnames=3,}
-\NormalTok{    uniquelist=minyear,}
-\NormalTok{    sortcites=true,}
-\NormalTok{    date=year}
-\NormalTok{]\{}\ExtensionTok{biblatex}\NormalTok{\}}
-\FunctionTok{\textbackslash{}AtEveryBibitem}\NormalTok{\{}\CommentTok{\%}
-  \FunctionTok{\textbackslash{}clearlist}\NormalTok{\{language\}}\CommentTok{\%}
-  \FunctionTok{\textbackslash{}clearfield}\NormalTok{\{note\}}
-\NormalTok{\}}
-
-\FunctionTok{\textbackslash{}DeclareFieldFormat}\NormalTok{\{titlecase\}\{}\FunctionTok{\textbackslash{}MakeTitleCase}\NormalTok{\{\#1\}\}}
-
-\FunctionTok{\textbackslash{}newrobustcmd}\NormalTok{\{}\FunctionTok{\textbackslash{}MakeTitleCase}\NormalTok{\}[1]\{}\CommentTok{\%}
-  \FunctionTok{\textbackslash{}ifthenelse}\NormalTok{\{}\FunctionTok{\textbackslash{}ifcurrentfield}\NormalTok{\{booktitle\}}\FunctionTok{\textbackslash{}OR\textbackslash{}ifcurrentfield}\NormalTok{\{booksubtitle\}}\CommentTok{\%}
-    \FunctionTok{\textbackslash{}OR\textbackslash{}ifcurrentfield}\NormalTok{\{maintitle\}}\FunctionTok{\textbackslash{}OR\textbackslash{}ifcurrentfield}\NormalTok{\{mainsubtitle\}}\CommentTok{\%}
-    \FunctionTok{\textbackslash{}OR\textbackslash{}ifcurrentfield}\NormalTok{\{journaltitle\}}\FunctionTok{\textbackslash{}OR\textbackslash{}ifcurrentfield}\NormalTok{\{journalsubtitle\}}\CommentTok{\%}
-    \FunctionTok{\textbackslash{}OR\textbackslash{}ifcurrentfield}\NormalTok{\{issuetitle\}}\FunctionTok{\textbackslash{}OR\textbackslash{}ifcurrentfield}\NormalTok{\{issuesubtitle\}}\CommentTok{\%}
-    \FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{book\}}\FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{mvbook\}}\FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{bookinbook\}}\CommentTok{\%}
-    \FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{booklet\}}\FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{suppbook\}}\CommentTok{\%}
-    \FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{collection\}}\FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{mvcollection\}}\CommentTok{\%}
-    \FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{suppcollection\}}\FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{manual\}}\CommentTok{\%}
-    \FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{periodical\}}\FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{suppperiodical\}}\CommentTok{\%}
-    \FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{proceedings\}}\FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{mvproceedings\}}\CommentTok{\%}
-    \FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{reference\}}\FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{mvreference\}}\CommentTok{\%}
-    \FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{report\}}\FunctionTok{\textbackslash{}OR\textbackslash{}ifentrytype}\NormalTok{\{thesis\}\}}
-\NormalTok{    \{\#1\}}
-\NormalTok{    \{}\FunctionTok{\textbackslash{}MakeSentenceCase}\NormalTok{\{\#1\}\}\}}
-    
-\CommentTok{\% \textbackslash{}renewbibmacro\{in:\}\{\}}
-\CommentTok{\% suppress "in" for articles}
-\CommentTok{\% }
-\FunctionTok{\textbackslash{}renewbibmacro}\NormalTok{\{in:\}\{}\CommentTok{\%}
-  \FunctionTok{\textbackslash{}ifentrytype}\NormalTok{\{article\}\{\}\{}\FunctionTok{\textbackslash{}printtext}\NormalTok{\{}\FunctionTok{\textbackslash{}bibstring}\NormalTok{\{in\}}\FunctionTok{\textbackslash{}intitlepunct}\NormalTok{\}\}\}}
-\CommentTok{\%{-}{-} no "quotes" around titles of chapters/article titles}
-\FunctionTok{\textbackslash{}DeclareFieldFormat}\NormalTok{[article, inbook, incollection, inproceedings, misc, thesis, unpublished]}
-\NormalTok{\{title\}\{\#1\}}
-\CommentTok{\%{-}{-} no punctuation after volume}
-\FunctionTok{\textbackslash{}DeclareFieldFormat}\NormalTok{[article]}
-\NormalTok{\{volume\}\{\{\#1\}\}}
-\CommentTok{\%{-}{-} puts number/issue between brackets}
-\FunctionTok{\textbackslash{}DeclareFieldFormat}\NormalTok{[article, inbook, incollection, inproceedings, misc, thesis, unpublished]}
-\NormalTok{\{number\}\{}\FunctionTok{\textbackslash{}mkbibparens}\NormalTok{\{\#1\}\} }
-\CommentTok{\%{-}{-} and then for articles directly the pages w/o any "pages" or "pp." }
-\FunctionTok{\textbackslash{}DeclareFieldFormat}\NormalTok{[article]}
-\NormalTok{\{pages\}\{\#1\}}
-\CommentTok{\%{-}{-} for some types replace "pages" by "p."}
-\FunctionTok{\textbackslash{}DeclareFieldFormat}\NormalTok{[inproceedings, incollection, inbook]}
-\NormalTok{\{pages\}\{p. \#1\}}
-\CommentTok{\%{-}{-} format 16(4):224{-}{-}225 for articles}
-\FunctionTok{\textbackslash{}renewbibmacro*}\NormalTok{\{volume+number+eid\}\{}
-  \FunctionTok{\textbackslash{}printfield}\NormalTok{\{volume\}}\CommentTok{\%}
-  \FunctionTok{\textbackslash{}printfield}\NormalTok{\{number\}}\CommentTok{\%}
-  \FunctionTok{\textbackslash{}printunit}\NormalTok{\{}\FunctionTok{\textbackslash{}addcolon}\NormalTok{\}}
-\NormalTok{\}}
+\AnnotationTok{use{-}biblatex:}\CommentTok{ true}
+\AnnotationTok{bib{-}latex{-}options:}\CommentTok{ "style=authoryear, sorting=nyt, backend=biber, maxcitenames=2, useprefix, doi=true, isbn=false, uniquename=false"}
 \end{Highlighting}
 \end{Shaded}
 
-If you would like chapter bibliographies, in addition insert the following code at the end of each chapter, and comment out the entire REFERENCES section at the end of template.tex.
+Then tell R Markdown to use \texttt{biblatex} when inserting citations, by setting \texttt{citation\_package:\ biblatex}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\AnnotationTok{output:}
+\NormalTok{  bookdown::pdf\_book:}
+\NormalTok{    citation\_package: biblatex}
+\end{Highlighting}
+\end{Shaded}
+
+To customise the appearance of citations, change \texttt{bib-latex-options}. For example, to get \textbf{numerical citations}, with references in order of their appearance in the text, set it to
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\AnnotationTok{bib{-}latex{-}options:}\CommentTok{ "style=numeric{-}comp, sorting=none, backend=biber, maxcitenames=2, useprefix, doi=true, isbn=false, uniquename=false"}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{adding-chapter-bibliographies}{%
+\subsubsection{Adding chapter bibliographies}\label{adding-chapter-bibliographies}}
+
+If you would like chapter bibliographies, first add ``refsection=chapter'' to the biblatex options, for example like this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\AnnotationTok{bib{-}latex{-}options:}\CommentTok{ "refsection=chapter, style=authoryear, sorting=nyt, backend=biber, maxcitenames=2, useprefix, doi=true, isbn=false, uniquename=false"}
+\end{Highlighting}
+\end{Shaded}
+
+Second, set the parameter \texttt{insertHeadingInPDF:\ false} in \textbf{index.Rmd}, to suppress the inclusion of a `References' heading at the end of the thesis.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\AnnotationTok{params:}
+\NormalTok{  insertHeadingInPDF: false}
+\end{Highlighting}
+\end{Shaded}
+
+Finally insert this line at the end of each chapter, to print the bibliographies there:
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{\textbackslash{}printbibliography}\NormalTok{[segment=}\FunctionTok{\textbackslash{}therefsection}\NormalTok{,heading=subbibliography]}
 \end{Highlighting}
 \end{Shaded}
+
+\hypertarget{natbib-custom}{%
+\subsection{\texorpdfstring{Using \texttt{natbib}}{Using natbib}}\label{natbib-custom}}
+
+To use \href{https://www.overleaf.com/learn/latex/Bibliography_management_with_natbib}{natbib} to handle citations, first uncomment this in \textbf{index.Rmd}, YAML header:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\AnnotationTok{use{-}natbib:}\CommentTok{ true}
+\AnnotationTok{natbib{-}citation{-}style:}\CommentTok{ authoryear \#for science, you might want numbers,square}
+\AnnotationTok{natbib{-}bibliography{-}style:}\CommentTok{ templates/ACM{-}Reference{-}Format.bst \#e.g. "plainnat", unsrtnat, or path to a .bst file}
+\end{Highlighting}
+\end{Shaded}
+
+Then tell R Markdown to use \texttt{natbib} when inserting citations, by setting \texttt{citation\_package:\ natbib}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\AnnotationTok{output:}
+\NormalTok{  bookdown::pdf\_book:}
+\NormalTok{    citation\_package: natbib}
+\end{Highlighting}
+\end{Shaded}
+
+To customise the appearance of citations, change what \textbf{.bst} file you point to in \texttt{natbib-bibliography-style}.
 
 \hypertarget{customizing-the-page-headers-and-footers-pdf}{%
 \section{Customizing the page headers and footers (PDF)}\label{customizing-the-page-headers-and-footers-pdf}}
@@ -2702,7 +2734,7 @@ Man muss nur versuchen, es noch einmal zu denken.
 
 All intelligent thoughts have already been thought;\\
 what is necessary is only to try to think them again.
-\qauthor{--- Johann Wolfgang von Goethe \autocite{von_goethe_wilhelm_1829}}\end{savequote}
+\qauthor{--- Johann Wolfgang von Goethe (\protect\hyperlink{ref-von_goethe_wilhelm_1829}{Goethe, 1829})}\end{savequote}
 
 
 
@@ -2750,12 +2782,36 @@ This first appendix includes an R chunk that was hidden in the document (using \
 \hypertarget{the-second-appendix-for-fun}{%
 \chapter{The Second Appendix, for Fun}\label{the-second-appendix-for-fun}}
 
+\hypertarget{references}{%
+\chapter*{References}\label{references}}
+\addcontentsline{toc}{chapter}{References}
+
+\hypertarget{refs}{}
+\begin{CSLReferences}{1}{0}
+\leavevmode\vadjust pre{\hypertarget{ref-Darwin1859}{}}%
+Darwin, C. (1859). \emph{{On the Origin of Species by Means of Natural Selection or the Preservation of Favoured Races in the Struggle for Life}}. John Murray.
+
+\leavevmode\vadjust pre{\hypertarget{ref-von_goethe_wilhelm_1829}{}}%
+Goethe, J. W. von. (1829). \emph{Wilhelm {Meisters} {Wanderjahre} oder die {Entsagenden}}. Cotta.
+
+\leavevmode\vadjust pre{\hypertarget{ref-Lottridge2012}{}}%
+Lottridge, D., Marschner, E., Wang, E., Romanovsky, M., \& Nass, C. (2012). {Browser design impacts multitasking}. \emph{Proceedings of the Human Factors and Ergonomics Society 56th Annual Meeting}. \url{https://doi.org/10.1177/1071181312561289}
+
+\leavevmode\vadjust pre{\hypertarget{ref-lyngsOxforddown2019}{}}%
+Lyngs, U. (2019). Oxforddown: An oxford university thesis template for r markdown. In \emph{GitHub repository}. \url{https://github.com/ulyngs/oxforddown}; GitHub. \url{https://doi.org/10.5281/zenodo.3484682}
+
+\leavevmode\vadjust pre{\hypertarget{ref-Mill1965}{}}%
+Mill, J. S. (1965 {[}1843{]}). \emph{A system of logic, ratiocinative and inductive: Being a connected view of the principles of evidence and the methods of scientific investigation}. Longmans.
+
+\leavevmode\vadjust pre{\hypertarget{ref-Shea2014}{}}%
+Shea, N., Boldt, A., Bang, D., Yeung, N., Heyes, C., \& Frith, C. D. (2014). {Supra-personal cognitive control and metacognition}. \emph{Trends in Cognitive Sciences}, \emph{18}(4), 186--193. \url{https://doi.org/10.1016/j.tics.2014.01.006}
+
+\leavevmode\vadjust pre{\hypertarget{ref-Wu2016}{}}%
+Wu, T. (2016). \emph{{The Attention Merchants: The Epic Scramble to Get Inside Our Heads}}. Knopf Publishing Group.
+
+\end{CSLReferences}
 
 %%%%% REFERENCES
-\setlength{\baselineskip}{0pt} % JEM: Single-space References
-
-{\renewcommand*\MakeUppercase[1]{#1}%
-\printbibliography[heading=bibintoc,title={\bibtitle}]}
 
 
 \end{document}

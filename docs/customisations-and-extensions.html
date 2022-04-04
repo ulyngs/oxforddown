@@ -116,7 +116,7 @@ Template for R Markdown</p></a>
 </h2>
 <p>You might want a chapter’s running header (i.e. the header showing the title of the current chapter at the top of page) to be shorter (or just different) to the actual chapter title.</p>
 <p>Do this by adding the latex command <code>\chaptermark{My shorter version}</code> after your chapter title.</p>
-<p>For example, chapter <a href="cites-and-refs.html#cites-and-refs">3</a>‘s running header is simply ’Cites and cross-refs,’ because it begins like this:</p>
+<p>For example, chapter <a href="cites-and-refs.html#cites-and-refs">3</a>‘s running header is simply ’Cites and cross-refs’, because it begins like this:</p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb31-1"><a href="customisations-and-extensions.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Citations, cross-references, and collaboration {#cites-and-refs} </span></span>
 <span id="cb31-2"><a href="customisations-and-extensions.html#cb31-2" aria-hidden="true" tabindex="-1"></a>\chaptermark{Cites and cross-refs}</span></code></pre></div>
 </div>
@@ -135,10 +135,10 @@ Template for R Markdown</p></a>
 <span class="header-section-number">5.5</span> Beginning chapters with quotes (PDF)<a class="anchor" aria-label="anchor" href="#beginning-chapters-with-quotes-pdf"><i class="fas fa-link"></i></a>
 </h2>
 <p>The OxThesis LaTeX template lets you inject some wittiness into your thesis by including a block of type <code>savequote</code> at the beginning of chapters.
-To do this, use the syntax <code>```{block type='savequote'}</code>.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;For more on custom block types, see the relevant section in &lt;a href="https://bookdown.org/yihui/bookdown/custom-blocks.html"&gt;&lt;em&gt;Authoring Books with R Markdown&lt;/em&gt;&lt;/a&gt;.&lt;/p&gt;'><sup>4</sup></a></p>
+To do this, use the syntax <code>```{block type='savequote'}</code>.<a href="references.html#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a></p>
 <p>Add the reference for the quote with the chunk option <code>quote_author="my author name"</code>.
 You will also want to add the chunk option <code>include=knitr::is_latex_output()</code> so that quotes are only included in PDF output.</p>
-<p>It’s not possible to use markdown syntax inside chunk options, so if you want to e.g. italicise a book name in the reference use a <a href="https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html#text-references">‘text reference’</a>: Create a named piece of text with ‘(ref:label-name) My text,’ then point to this in the chunk option with <code>quote_author='(ref:label-name)'</code>.</p>
+<p>It’s not possible to use markdown syntax inside chunk options, so if you want to e.g. italicise a book name in the reference use a <a href="https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html#text-references">‘text reference’</a>: Create a named piece of text with ‘(ref:label-name) My text’, then point to this in the chunk option with <code>quote_author='(ref:label-name)'</code>.</p>
 </div>
 <div id="highlighting-corrections-html-pdf" class="section level2" number="5.6">
 <h2>
@@ -152,7 +152,7 @@ You can do so like this:</p>
 </h3>
 <p>Highlight <strong>short, inline corrections</strong> by doing <code>[like this]{.correction}</code> — the text between the square brackets will then <span class="correction">be highlighted in blue</span> in the output.</p>
 <p>Note that pandoc might get confused by citations and cross-references inside inline corrections.
-In particular, it might get confused by <code>"[what @Shea2014 said]{.correction}"</code> which becomes <span class="citation">(what <a href="references.html#ref-Shea2014" role="doc-biblioref">Shea et al. 2014</a> said)</span>{.correction}
+In particular, it might get confused by <code>"[what @Shea2014 said]{.correction}"</code> which becomes <span class="correction">what <span class="citation">Shea et al. (<a href="references.html#ref-Shea2014" role="doc-biblioref">2014</a>)</span> said</span>
 In such cases, you can use LaTeX syntax directly.
 The correction highlighting uses the <a href="https://ctan.org/pkg/soul">soul</a> package, so you can do like this:</p>
 <ul>
@@ -167,11 +167,14 @@ The correction highlighting uses the <a href="https://ctan.org/pkg/soul">soul</a
 <h3>
 <span class="header-section-number">5.6.2</span> Blocks of added or changed material<a class="anchor" aria-label="anchor" href="#blocks-of-added-or-changed-material"><i class="fas fa-link"></i></a>
 </h3>
-<p>Highlight entire <strong>blocks of added or changed material</strong> by putting them in a block of type <code>correction</code>, using the syntax <code>```{block type='correction'}</code>.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;In the &lt;strong&gt;.tex&lt;/strong&gt; file for PDF output, this will put the content between &lt;code&gt;\begin{correction}&lt;/code&gt; and &lt;code&gt;\end{correction}&lt;/code&gt;; in gitbook output it will be put between &lt;code&gt;&amp;lt;div class="correction"&amp;gt;&lt;/code&gt; and &lt;code&gt;&amp;lt;/div&amp;gt;&lt;/code&gt;.&lt;/p&gt;'><sup>5</sup></a>
+<p>Highlight entire <strong>blocks of added or changed material</strong> by putting them in a block of type <code>correction</code>, using the syntax <code>```{block type='correction'}</code>.<a href="references.html#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>
 Like so:</p>
 <div class="correction">
 <p>
-For larger chunks, like this paragraph or indeed entire figures, you can use the <code>correction</code> block type. This environment <strong>highlights paragraph-sized and larger blocks</strong> with the same blue colour.
+For larger chunks, like this paragraph or indeed entire figures, you
+can use the <code>correction</code> block type. This environment
+<strong>highlights paragraph-sized and larger blocks</strong> with the
+same blue colour.
 </p>
 </div>
 <p><em>Note that correction blocks cannot be included in word output.</em></p>
@@ -379,100 +382,56 @@ In <strong>paper_to_include/my_paper.Rmd</strong>, first add a parameter we coul
 <p>Now, the output width of your figure will be 80% when knitting your paper on its own, and 100% when knitting it as child document of your thesis.</p>
 </div>
 </div>
-<div id="customizing-referencing" class="section level2" number="5.11">
+<div id="customising-citations" class="section level2" number="5.11">
 <h2>
-<span class="header-section-number">5.11</span> Customizing referencing<a class="anchor" aria-label="anchor" href="#customizing-referencing"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.11</span> Customizing citations and referencing<a class="anchor" aria-label="anchor" href="#customising-citations"><i class="fas fa-link"></i></a>
 </h2>
-<div id="using-a-.csl-file-with-pandoc-instead-of-biblatex" class="section level3" number="5.11.1">
+<div id="using-a-.csl-file-with-pandoc" class="section level3" number="5.11.1">
 <h3>
-<span class="header-section-number">5.11.1</span> Using a .csl file with pandoc instead of biblatex<a class="anchor" aria-label="anchor" href="#using-a-.csl-file-with-pandoc-instead-of-biblatex"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.11.1</span> Using a .csl file with pandoc<a class="anchor" aria-label="anchor" href="#using-a-.csl-file-with-pandoc"><i class="fas fa-link"></i></a>
 </h3>
-<p>The <code>oxforddown</code> package uses biblatex in LaTeX for referencing.
-It is also possible to use pandoc for referencing by providing a .csl file in the YAML header of <strong>index.Rmd</strong> (likely requiring commenting out the biblatex code in <strong>templates/template.tex</strong>).
-This may be helpful for those who have a .csl file describing the referencing format for a particular journal.
-However, note that this approach does not support chapter bibliographies (see Section <a href="customisations-and-extensions.html#biblatex-custom">5.11.2</a>).</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb46-1"><a href="customisations-and-extensions.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">csl</span><span class="kw">:</span><span class="at"> ecology.csl</span></span></code></pre></div>
+<p>See section <a href="cites-and-refs.html#citation-appearance">3.1.1</a>.</p>
+<p>The only drawbacks to letting pandoc handle citations is that (i) it does not support chapter bibliographies, (ii) if you’re a LaTeX veteran, you might be more comfortable with <code>biblatex</code> or <code>natbib</code>.</p>
 </div>
 <div id="biblatex-custom" class="section level3" number="5.11.2">
 <h3>
-<span class="header-section-number">5.11.2</span> Customizing biblatex and adding chapter bibliographies<a class="anchor" aria-label="anchor" href="#biblatex-custom"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.11.2</span> Using <code>biblatex</code><a class="anchor" aria-label="anchor" href="#biblatex-custom"><i class="fas fa-link"></i></a>
 </h3>
-<p>This section provides one example of customizing biblatex. Much of this code was combined from searches on Stack Exchange and other sources (e.g. <a href="https://tex.stackexchange.com/questions/10682/suppress-in-biblatex">here</a>).</p>
-<p>In <strong>templates/template.tex</strong>, one can replace the existing biblatex calls with the following to achieve referencing that looks like this:</p>
-<p>(Charmantier and Gienapp 2014)</p>
-<p>Charmantier, A. and P. Gienapp (2014). Climate change and timing of avian breeding and migration: evolutionary versus plastic changes. Evolutionary Applications 7(1):15–28. doi: 10.1111/eva.12126.</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb47-1"><a href="customisations-and-extensions.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>[backend=biber,</span>
-<span id="cb47-2"><a href="customisations-and-extensions.html#cb47-2" aria-hidden="true" tabindex="-1"></a>    bibencoding=utf8,</span>
-<span id="cb47-3"><a href="customisations-and-extensions.html#cb47-3" aria-hidden="true" tabindex="-1"></a>    refsection=chapter, <span class="co">% referencing by chapter</span></span>
-<span id="cb47-4"><a href="customisations-and-extensions.html#cb47-4" aria-hidden="true" tabindex="-1"></a>    style=authoryear, </span>
-<span id="cb47-5"><a href="customisations-and-extensions.html#cb47-5" aria-hidden="true" tabindex="-1"></a>    firstinits=true,</span>
-<span id="cb47-6"><a href="customisations-and-extensions.html#cb47-6" aria-hidden="true" tabindex="-1"></a>    isbn=false,</span>
-<span id="cb47-7"><a href="customisations-and-extensions.html#cb47-7" aria-hidden="true" tabindex="-1"></a>    doi=true,</span>
-<span id="cb47-8"><a href="customisations-and-extensions.html#cb47-8" aria-hidden="true" tabindex="-1"></a>    url=false,</span>
-<span id="cb47-9"><a href="customisations-and-extensions.html#cb47-9" aria-hidden="true" tabindex="-1"></a>    eprint=false,</span>
-<span id="cb47-10"><a href="customisations-and-extensions.html#cb47-10" aria-hidden="true" tabindex="-1"></a>    related=false,</span>
-<span id="cb47-11"><a href="customisations-and-extensions.html#cb47-11" aria-hidden="true" tabindex="-1"></a>    dashed=false,</span>
-<span id="cb47-12"><a href="customisations-and-extensions.html#cb47-12" aria-hidden="true" tabindex="-1"></a>    clearlang=true,</span>
-<span id="cb47-13"><a href="customisations-and-extensions.html#cb47-13" aria-hidden="true" tabindex="-1"></a>    maxcitenames=2,</span>
-<span id="cb47-14"><a href="customisations-and-extensions.html#cb47-14" aria-hidden="true" tabindex="-1"></a>    mincitenames=1,</span>
-<span id="cb47-15"><a href="customisations-and-extensions.html#cb47-15" aria-hidden="true" tabindex="-1"></a>    maxbibnames=10,</span>
-<span id="cb47-16"><a href="customisations-and-extensions.html#cb47-16" aria-hidden="true" tabindex="-1"></a>    abbreviate=false,</span>
-<span id="cb47-17"><a href="customisations-and-extensions.html#cb47-17" aria-hidden="true" tabindex="-1"></a>    minbibnames=3,</span>
-<span id="cb47-18"><a href="customisations-and-extensions.html#cb47-18" aria-hidden="true" tabindex="-1"></a>    uniquelist=minyear,</span>
-<span id="cb47-19"><a href="customisations-and-extensions.html#cb47-19" aria-hidden="true" tabindex="-1"></a>    sortcites=true,</span>
-<span id="cb47-20"><a href="customisations-and-extensions.html#cb47-20" aria-hidden="true" tabindex="-1"></a>    date=year</span>
-<span id="cb47-21"><a href="customisations-and-extensions.html#cb47-21" aria-hidden="true" tabindex="-1"></a>]{<span class="ex">biblatex</span>}</span>
-<span id="cb47-22"><a href="customisations-and-extensions.html#cb47-22" aria-hidden="true" tabindex="-1"></a><span class="fu">\AtEveryBibitem</span>{<span class="co">%</span></span>
-<span id="cb47-23"><a href="customisations-and-extensions.html#cb47-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">\clearlist</span>{language}<span class="co">%</span></span>
-<span id="cb47-24"><a href="customisations-and-extensions.html#cb47-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">\clearfield</span>{note}</span>
-<span id="cb47-25"><a href="customisations-and-extensions.html#cb47-25" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb47-26"><a href="customisations-and-extensions.html#cb47-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-27"><a href="customisations-and-extensions.html#cb47-27" aria-hidden="true" tabindex="-1"></a><span class="fu">\DeclareFieldFormat</span>{titlecase}{<span class="fu">\MakeTitleCase</span>{#1}}</span>
-<span id="cb47-28"><a href="customisations-and-extensions.html#cb47-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-29"><a href="customisations-and-extensions.html#cb47-29" aria-hidden="true" tabindex="-1"></a><span class="fu">\newrobustcmd</span>{<span class="fu">\MakeTitleCase</span>}[1]{<span class="co">%</span></span>
-<span id="cb47-30"><a href="customisations-and-extensions.html#cb47-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">\ifthenelse</span>{<span class="fu">\ifcurrentfield</span>{booktitle}<span class="fu">\OR\ifcurrentfield</span>{booksubtitle}<span class="co">%</span></span>
-<span id="cb47-31"><a href="customisations-and-extensions.html#cb47-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\OR\ifcurrentfield</span>{maintitle}<span class="fu">\OR\ifcurrentfield</span>{mainsubtitle}<span class="co">%</span></span>
-<span id="cb47-32"><a href="customisations-and-extensions.html#cb47-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\OR\ifcurrentfield</span>{journaltitle}<span class="fu">\OR\ifcurrentfield</span>{journalsubtitle}<span class="co">%</span></span>
-<span id="cb47-33"><a href="customisations-and-extensions.html#cb47-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\OR\ifcurrentfield</span>{issuetitle}<span class="fu">\OR\ifcurrentfield</span>{issuesubtitle}<span class="co">%</span></span>
-<span id="cb47-34"><a href="customisations-and-extensions.html#cb47-34" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\OR\ifentrytype</span>{book}<span class="fu">\OR\ifentrytype</span>{mvbook}<span class="fu">\OR\ifentrytype</span>{bookinbook}<span class="co">%</span></span>
-<span id="cb47-35"><a href="customisations-and-extensions.html#cb47-35" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\OR\ifentrytype</span>{booklet}<span class="fu">\OR\ifentrytype</span>{suppbook}<span class="co">%</span></span>
-<span id="cb47-36"><a href="customisations-and-extensions.html#cb47-36" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\OR\ifentrytype</span>{collection}<span class="fu">\OR\ifentrytype</span>{mvcollection}<span class="co">%</span></span>
-<span id="cb47-37"><a href="customisations-and-extensions.html#cb47-37" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\OR\ifentrytype</span>{suppcollection}<span class="fu">\OR\ifentrytype</span>{manual}<span class="co">%</span></span>
-<span id="cb47-38"><a href="customisations-and-extensions.html#cb47-38" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\OR\ifentrytype</span>{periodical}<span class="fu">\OR\ifentrytype</span>{suppperiodical}<span class="co">%</span></span>
-<span id="cb47-39"><a href="customisations-and-extensions.html#cb47-39" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\OR\ifentrytype</span>{proceedings}<span class="fu">\OR\ifentrytype</span>{mvproceedings}<span class="co">%</span></span>
-<span id="cb47-40"><a href="customisations-and-extensions.html#cb47-40" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\OR\ifentrytype</span>{reference}<span class="fu">\OR\ifentrytype</span>{mvreference}<span class="co">%</span></span>
-<span id="cb47-41"><a href="customisations-and-extensions.html#cb47-41" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\OR\ifentrytype</span>{report}<span class="fu">\OR\ifentrytype</span>{thesis}}</span>
-<span id="cb47-42"><a href="customisations-and-extensions.html#cb47-42" aria-hidden="true" tabindex="-1"></a>    {#1}</span>
-<span id="cb47-43"><a href="customisations-and-extensions.html#cb47-43" aria-hidden="true" tabindex="-1"></a>    {<span class="fu">\MakeSentenceCase</span>{#1}}}</span>
-<span id="cb47-44"><a href="customisations-and-extensions.html#cb47-44" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb47-45"><a href="customisations-and-extensions.html#cb47-45" aria-hidden="true" tabindex="-1"></a><span class="co">% \renewbibmacro{in:}{}</span></span>
-<span id="cb47-46"><a href="customisations-and-extensions.html#cb47-46" aria-hidden="true" tabindex="-1"></a><span class="co">% suppress "in" for articles</span></span>
-<span id="cb47-47"><a href="customisations-and-extensions.html#cb47-47" aria-hidden="true" tabindex="-1"></a><span class="co">% </span></span>
-<span id="cb47-48"><a href="customisations-and-extensions.html#cb47-48" aria-hidden="true" tabindex="-1"></a><span class="fu">\renewbibmacro</span>{in:}{<span class="co">%</span></span>
-<span id="cb47-49"><a href="customisations-and-extensions.html#cb47-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">\ifentrytype</span>{article}{}{<span class="fu">\printtext</span>{<span class="fu">\bibstring</span>{in}<span class="fu">\intitlepunct</span>}}}</span>
-<span id="cb47-50"><a href="customisations-and-extensions.html#cb47-50" aria-hidden="true" tabindex="-1"></a><span class="co">%-- no "quotes" around titles of chapters/article titles</span></span>
-<span id="cb47-51"><a href="customisations-and-extensions.html#cb47-51" aria-hidden="true" tabindex="-1"></a><span class="fu">\DeclareFieldFormat</span>[article, inbook, incollection, inproceedings, misc, thesis, unpublished]</span>
-<span id="cb47-52"><a href="customisations-and-extensions.html#cb47-52" aria-hidden="true" tabindex="-1"></a>{title}{#1}</span>
-<span id="cb47-53"><a href="customisations-and-extensions.html#cb47-53" aria-hidden="true" tabindex="-1"></a><span class="co">%-- no punctuation after volume</span></span>
-<span id="cb47-54"><a href="customisations-and-extensions.html#cb47-54" aria-hidden="true" tabindex="-1"></a><span class="fu">\DeclareFieldFormat</span>[article]</span>
-<span id="cb47-55"><a href="customisations-and-extensions.html#cb47-55" aria-hidden="true" tabindex="-1"></a>{volume}{{#1}}</span>
-<span id="cb47-56"><a href="customisations-and-extensions.html#cb47-56" aria-hidden="true" tabindex="-1"></a><span class="co">%-- puts number/issue between brackets</span></span>
-<span id="cb47-57"><a href="customisations-and-extensions.html#cb47-57" aria-hidden="true" tabindex="-1"></a><span class="fu">\DeclareFieldFormat</span>[article, inbook, incollection, inproceedings, misc, thesis, unpublished]</span>
-<span id="cb47-58"><a href="customisations-and-extensions.html#cb47-58" aria-hidden="true" tabindex="-1"></a>{number}{<span class="fu">\mkbibparens</span>{#1}} </span>
-<span id="cb47-59"><a href="customisations-and-extensions.html#cb47-59" aria-hidden="true" tabindex="-1"></a><span class="co">%-- and then for articles directly the pages w/o any "pages" or "pp." </span></span>
-<span id="cb47-60"><a href="customisations-and-extensions.html#cb47-60" aria-hidden="true" tabindex="-1"></a><span class="fu">\DeclareFieldFormat</span>[article]</span>
-<span id="cb47-61"><a href="customisations-and-extensions.html#cb47-61" aria-hidden="true" tabindex="-1"></a>{pages}{#1}</span>
-<span id="cb47-62"><a href="customisations-and-extensions.html#cb47-62" aria-hidden="true" tabindex="-1"></a><span class="co">%-- for some types replace "pages" by "p."</span></span>
-<span id="cb47-63"><a href="customisations-and-extensions.html#cb47-63" aria-hidden="true" tabindex="-1"></a><span class="fu">\DeclareFieldFormat</span>[inproceedings, incollection, inbook]</span>
-<span id="cb47-64"><a href="customisations-and-extensions.html#cb47-64" aria-hidden="true" tabindex="-1"></a>{pages}{p. #1}</span>
-<span id="cb47-65"><a href="customisations-and-extensions.html#cb47-65" aria-hidden="true" tabindex="-1"></a><span class="co">%-- format 16(4):224--225 for articles</span></span>
-<span id="cb47-66"><a href="customisations-and-extensions.html#cb47-66" aria-hidden="true" tabindex="-1"></a><span class="fu">\renewbibmacro*</span>{volume+number+eid}{</span>
-<span id="cb47-67"><a href="customisations-and-extensions.html#cb47-67" aria-hidden="true" tabindex="-1"></a>  <span class="fu">\printfield</span>{volume}<span class="co">%</span></span>
-<span id="cb47-68"><a href="customisations-and-extensions.html#cb47-68" aria-hidden="true" tabindex="-1"></a>  <span class="fu">\printfield</span>{number}<span class="co">%</span></span>
-<span id="cb47-69"><a href="customisations-and-extensions.html#cb47-69" aria-hidden="true" tabindex="-1"></a>  <span class="fu">\printunit</span>{<span class="fu">\addcolon</span>}</span>
-<span id="cb47-70"><a href="customisations-and-extensions.html#cb47-70" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<p>If you would like chapter bibliographies, in addition insert the following code at the end of each chapter, and comment out the entire REFERENCES section at the end of template.tex.</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb48-1"><a href="customisations-and-extensions.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\printbibliography</span>[segment=<span class="fu">\therefsection</span>,heading=subbibliography]</span></code></pre></div>
+<p>To use <a href="https://www.overleaf.com/learn/latex/Bibliography_management_with_biblatex">biblatex</a> to handle citations, first uncomment this in <strong>index.Rmd</strong>, YAML header:</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb46-1"><a href="customisations-and-extensions.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="an">use-biblatex:</span><span class="co"> true</span></span>
+<span id="cb46-2"><a href="customisations-and-extensions.html#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="an">bib-latex-options:</span><span class="co"> "style=authoryear, sorting=nyt, backend=biber, maxcitenames=2, useprefix, doi=true, isbn=false, uniquename=false"</span></span></code></pre></div>
+<p>Then tell R Markdown to use <code>biblatex</code> when inserting citations, by setting <code>citation_package: biblatex</code>:</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb47-1"><a href="customisations-and-extensions.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span></span>
+<span id="cb47-2"><a href="customisations-and-extensions.html#cb47-2" aria-hidden="true" tabindex="-1"></a>  bookdown::pdf_book:</span>
+<span id="cb47-3"><a href="customisations-and-extensions.html#cb47-3" aria-hidden="true" tabindex="-1"></a>    citation_package: biblatex</span></code></pre></div>
+<p>To customise the appearance of citations, change <code>bib-latex-options</code>. For example, to get <strong>numerical citations</strong>, with references in order of their appearance in the text, set it to</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb48-1"><a href="customisations-and-extensions.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="an">bib-latex-options:</span><span class="co"> "style=numeric-comp, sorting=none, backend=biber, maxcitenames=2, useprefix, doi=true, isbn=false, uniquename=false"</span></span></code></pre></div>
+<div id="adding-chapter-bibliographies" class="section level4" number="5.11.2.1">
+<h4>
+<span class="header-section-number">5.11.2.1</span> Adding chapter bibliographies<a class="anchor" aria-label="anchor" href="#adding-chapter-bibliographies"><i class="fas fa-link"></i></a>
+</h4>
+<p>If you would like chapter bibliographies, first add “refsection=chapter” to the biblatex options, for example like this:</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb49-1"><a href="customisations-and-extensions.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="an">bib-latex-options:</span><span class="co"> "refsection=chapter, style=authoryear, sorting=nyt, backend=biber, maxcitenames=2, useprefix, doi=true, isbn=false, uniquename=false"</span></span></code></pre></div>
+<p>Second, set the parameter <code>insertHeadingInPDF: false</code> in <strong>index.Rmd</strong>, to suppress the inclusion of a ‘References’ heading at the end of the thesis.</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb50-1"><a href="customisations-and-extensions.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="an">params:</span></span>
+<span id="cb50-2"><a href="customisations-and-extensions.html#cb50-2" aria-hidden="true" tabindex="-1"></a>  insertHeadingInPDF: false</span></code></pre></div>
+<p>Finally insert this line at the end of each chapter, to print the bibliographies there:</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb51-1"><a href="customisations-and-extensions.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\printbibliography</span>[segment=<span class="fu">\therefsection</span>,heading=subbibliography]</span></code></pre></div>
+</div>
+</div>
+<div id="natbib-custom" class="section level3" number="5.11.3">
+<h3>
+<span class="header-section-number">5.11.3</span> Using <code>natbib</code><a class="anchor" aria-label="anchor" href="#natbib-custom"><i class="fas fa-link"></i></a>
+</h3>
+<p>To use <a href="https://www.overleaf.com/learn/latex/Bibliography_management_with_natbib">natbib</a> to handle citations, first uncomment this in <strong>index.Rmd</strong>, YAML header:</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb52-1"><a href="customisations-and-extensions.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="an">use-natbib:</span><span class="co"> true</span></span>
+<span id="cb52-2"><a href="customisations-and-extensions.html#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="an">natbib-citation-style:</span><span class="co"> authoryear #for science, you might want numbers,square</span></span>
+<span id="cb52-3"><a href="customisations-and-extensions.html#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="an">natbib-bibliography-style:</span><span class="co"> templates/ACM-Reference-Format.bst #e.g. "plainnat", unsrtnat, or path to a .bst file</span></span></code></pre></div>
+<p>Then tell R Markdown to use <code>natbib</code> when inserting citations, by setting <code>citation_package: natbib</code>:</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb53-1"><a href="customisations-and-extensions.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span></span>
+<span id="cb53-2"><a href="customisations-and-extensions.html#cb53-2" aria-hidden="true" tabindex="-1"></a>  bookdown::pdf_book:</span>
+<span id="cb53-3"><a href="customisations-and-extensions.html#cb53-3" aria-hidden="true" tabindex="-1"></a>    citation_package: natbib</span></code></pre></div>
+<p>To customise the appearance of citations, change what <strong>.bst</strong> file you point to in <code>natbib-bibliography-style</code>.</p>
 </div>
 </div>
 <div id="customizing-the-page-headers-and-footers-pdf" class="section level2" number="5.12">
@@ -499,8 +458,8 @@ At the time of writing, you must set this directly in <strong>template.tex</stro
 <span class="header-section-number">5.14.1</span> The minimal route<a class="anchor" aria-label="anchor" href="#the-minimal-route"><i class="fas fa-link"></i></a>
 </h3>
 <p>If the front matter in the OxThesis LaTeX template is suitable to your university, customising <code>oxforddown</code> to your needs could be as simple as putting the name of your institution and the path to your university’s logo in <strong>index.Rmd</strong>:</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb49-1"><a href="customisations-and-extensions.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">university</span><span class="kw">:</span><span class="at"> University of You</span></span>
-<span id="cb49-2"><a href="customisations-and-extensions.html#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">university-logo</span><span class="kw">:</span><span class="at"> figures/your-logo-here.pdf</span></span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb54-1"><a href="customisations-and-extensions.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">university</span><span class="kw">:</span><span class="at"> University of You</span></span>
+<span id="cb54-2"><a href="customisations-and-extensions.html#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="fu">university-logo</span><span class="kw">:</span><span class="at"> figures/your-logo-here.pdf</span></span></code></pre></div>
 </div>
 <div id="replacing-the-entire-title-page-with-your-required-content" class="section level3" number="5.14.2">
 <h3>
@@ -508,14 +467,13 @@ At the time of writing, you must set this directly in <strong>template.tex</stro
 </h3>
 <p>If you have a <strong>.tex</strong> file with some required front matter from your university that you want to replace the OxThesis template’s title page altogether, you can provide a filepath to this file in <strong>index.Rmd</strong>.
 <code>oxforddown</code>’s sample content includes and example of this — if you use the YAML below, your front matter will look like this:</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb50-1"><a href="customisations-and-extensions.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">alternative-title-page</span><span class="kw">:</span><span class="at"> front-and-back-matter/alt-title-page-example.tex</span></span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb55-1"><a href="customisations-and-extensions.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">alternative-title-page</span><span class="kw">:</span><span class="at"> front-and-back-matter/alt-title-page-example.tex</span></span></code></pre></div>
 <embed src="figures/sample-content/alt_frontmatter_example/alt-frontmatter-example.pdf" width="100%" height="1000px" type="application/pdf"></embed><p>
-     </p>
+</p>
 
 </div>
 </div>
 </div>
-
   <div class="chapter-nav">
 <div class="prev"><a href="tables.html"><span class="header-section-number">4</span> Tables</a></div>
 <div class="next"><a href="troubleshooting.html"><span class="header-section-number">6</span> Troubleshooting</a></div>
@@ -553,9 +511,10 @@ At the time of writing, you must set this directly in <strong>template.tex</stro
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#customizing-referencing"><span class="header-section-number">5.11</span> Customizing referencing</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#using-a-.csl-file-with-pandoc-instead-of-biblatex"><span class="header-section-number">5.11.1</span> Using a .csl file with pandoc instead of biblatex</a></li>
-<li><a class="nav-link" href="#biblatex-custom"><span class="header-section-number">5.11.2</span> Customizing biblatex and adding chapter bibliographies</a></li>
+<a class="nav-link" href="#customising-citations"><span class="header-section-number">5.11</span> Customizing citations and referencing</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#using-a-.csl-file-with-pandoc"><span class="header-section-number">5.11.1</span> Using a .csl file with pandoc</a></li>
+<li><a class="nav-link" href="#biblatex-custom"><span class="header-section-number">5.11.2</span> Using biblatex</a></li>
+<li><a class="nav-link" href="#natbib-custom"><span class="header-section-number">5.11.3</span> Using natbib</a></li>
 </ul>
 </li>
 <li><a class="nav-link" href="#customizing-the-page-headers-and-footers-pdf"><span class="header-section-number">5.12</span> Customizing the page headers and footers (PDF)</a></li>

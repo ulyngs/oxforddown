@@ -72,7 +72,7 @@ Template for R Markdown</p></a>
 <h2>
 <span class="header-section-number">3.1</span> Citations<a class="anchor" aria-label="anchor" href="#citations"><i class="fas fa-link"></i></a>
 </h2>
-<p>The usual way to include citations in an <em>R Markdown</em> document is to put references in a plain text file with the extension <strong>.bib</strong>, in <strong>BibTex</strong> format.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;The bibliography can be in other formats as well, including EndNote (&lt;strong&gt;.enl&lt;/strong&gt;) and RIS (&lt;strong&gt;.ris&lt;/strong&gt;), see &lt;a href="https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html"&gt;rmarkdown.rstudio.com/authoring_bibliographies_and_citations&lt;/a&gt;.&lt;/p&gt;'><sup>3</sup></a>
+<p>The usual way to include citations in an <em>R Markdown</em> document is to put references in a plain text file with the extension <strong>.bib</strong>, in <strong>BibTex</strong> format.<a href="references.html#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>
 Then reference the path to this file in <strong>index.Rmd</strong>’s YAML header with <code>bibliography: example.bib</code>.</p>
 <p>Most reference managers can create a .bib file with you references automatically.
 However, the <strong>by far</strong> best reference manager to use with <em>R Markdown</em> is <a href="https://www.zotero.org">Zotero</a> with the <a href="https://retorque.re/zotero-better-bibtex/">Better BibTex plug-in</a>, because the <code>citr</code> plugin for RStudio (see below) can read references directly from your Zotero library!</p>
@@ -88,20 +88,21 @@ However, the <strong>by far</strong> best reference manager to use with <em>R Ma
 <span id="cb18-9"><a href="cites-and-refs.html#cb18-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>In this entry highlighed section, ‘Shea2014’ is the <strong>citation identifier</strong>.
 To default way to cite an entry in your text is with this syntax: <code>[@citation-identifier]</code>.</p>
-<p>So I might cite some things <span class="citation">(<a href="references.html#ref-Shea2014" role="doc-biblioref">Shea et al. 2014</a>; <a href="references.html#ref-Lottridge2012" role="doc-biblioref">Lottridge et al. 2012</a>)</span>.</p>
-<div id="pdf-output-1" class="section level3" number="3.1.1">
+<p>So I might cite some things <span class="citation">(<a href="references.html#ref-Lottridge2012" role="doc-biblioref">Lottridge et al., 2012</a>; <a href="references.html#ref-Mill1965" role="doc-biblioref">Mill, 1965 [1843]</a>; <a href="references.html#ref-Shea2014" role="doc-biblioref">Shea et al., 2014</a>)</span>.</p>
+<div id="citation-appearance" class="section level3" number="3.1.1">
 <h3>
-<span class="header-section-number">3.1.1</span> PDF output<a class="anchor" aria-label="anchor" href="#pdf-output-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.1.1</span> Appearance of citations and references section (pandoc)<a class="anchor" aria-label="anchor" href="#citation-appearance"><i class="fas fa-link"></i></a>
 </h3>
-<p>In PDF output, the bibliography is handled by the OxThesis LaTeX template.
-If you set <code>bib-humanities: true</code> in <strong>index.Rmd</strong>, then in-text references will be formatted as author-year; otherwise references will be shown as numbers.</p>
-<p>If you choose author-year formatting, a number of variations on the citation syntax are useful to know:</p>
+<p>By default, <code>oxforddown</code> lets <a href="https://pandoc.org">Pandoc</a> handle how citations are inserted in your text and the references section.
+You can change the appearance of citations and references by specifying a CSL (Citation Style Language) file in the <code>csl</code> metadata field of <strong>index.Rmd</strong>.
+By default, <code>oxforddown</code> by the Americal Psychological Association (7th Edition), which is an author-year format.</p>
+<p>With this style, a number of variations on the citation syntax are useful to know:</p>
 <ul>
 <li>Put author names outside the parenthesis
 <ul>
 <li>This: <code>@Shea2014 says blah.</code>
 </li>
-<li>Becomes: <span class="citation"><a href="references.html#ref-Shea2014" role="doc-biblioref">Shea et al.</a> (<a href="references.html#ref-Shea2014" role="doc-biblioref">2014</a>)</span> says blah.</li>
+<li>Becomes: <span class="citation">Shea et al. (<a href="references.html#ref-Shea2014" role="doc-biblioref">2014</a>)</span> says blah.</li>
 </ul>
 </li>
 <li>Include only the citation-year (in parenthesis)
@@ -116,33 +117,22 @@ If you set <code>bib-humanities: true</code> in <strong>index.Rmd</strong>, then
 <ul>
 <li>This: <code>[see @Shea2014, pp. 33-35; also @Wu2016, ch. 1]</code>
 </li>
-<li>Becomes: Blah blah <span class="citation">(see <a href="references.html#ref-Shea2014" role="doc-biblioref">Shea et al. 2014, 33–35</a>; also <a href="references.html#ref-Wu2016" role="doc-biblioref">Wu 2016</a>, ch. 1)</span>.</li>
+<li>Becomes: Blah blah <span class="citation">(see <a href="references.html#ref-Shea2014" role="doc-biblioref">Shea et al., 2014, pp. 33–35</a>; also <a href="references.html#ref-Wu2016" role="doc-biblioref">Wu, 2016</a>, ch. 1)</span>.</li>
 </ul>
 </li>
 </ul>
-</div>
-<div id="gitbook-output" class="section level3" number="3.1.2">
-<h3>
-<span class="header-section-number">3.1.2</span> Gitbook output<a class="anchor" aria-label="anchor" href="#gitbook-output"><i class="fas fa-link"></i></a>
-</h3>
-<p>In gitbook output, citations are by default inserted in the Chicago author-date format.</p>
-<p>To change the format, add <code>csl: some-other-style.csl</code> in <strong>index.Rmd</strong>’s YAML header.
-You can browse through and download styles at <a href="https://www.zotero.org/styles">zotero.org/styles</a>.</p>
+<p>If you want a numerical citation style instead, try <code>csl: bibliography/transactions-on-computer-human-interaction.csl</code> or just have a browse through the <a href="https://www.zotero.org/styles">Zotero Style Repository</a> and look for one you like.
+For convenience, you can set the line spacing and the space between the bibliographic entries in the reference section directly from the YAML header in <strong>index.Rmd</strong>.</p>
+<p>If you prefer to use <code>biblatex</code> or <code>natbib</code> to handle references, see <a href="customising-citations">this chapter</a>.</p>
 <!-- clearpage ends the page, and also dumps out all floats.
   Floats are things like tables and figures. -->
 </div>
-<div id="insert-references-easily-with-the-citr-add-in" class="section level3" number="3.1.3">
+<div id="insert-references-easily-with-rstudios-visual-editor" class="section level3" number="3.1.2">
 <h3>
-<span class="header-section-number">3.1.3</span> Insert references easily with the <code>citr</code> add-in<a class="anchor" aria-label="anchor" href="#insert-references-easily-with-the-citr-add-in"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.1.2</span> Insert references easily with RStudio’s Visual Editor<a class="anchor" aria-label="anchor" href="#insert-references-easily-with-rstudios-visual-editor"><i class="fas fa-link"></i></a>
 </h3>
-<p>For an easy way to insert citations, try the <a href="https://github.com/crsh/citr"><code>citr</code></a> RStudio add-in (Figure <a href="cites-and-refs.html#fig:citr">3.1</a>).
-You can install this add-in by typing <code>install.packages("citr")</code> in the R Console.</p>
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:citr"></span>
-<img src="https://raw.githubusercontent.com/crsh/citr/master/tools/images/addin_demo.gif" alt="The `citr` add-in" width="80%"><p class="caption">
-Figure 3.1: The <code>citr</code> add-in
-</p>
-</div>
+<p>For an easy way to insert citations, use RStudio’s <a href="https://rstudio.github.io/visual-markdown-editing/citations.html">Visual Editor</a>.
+Make sure you have the latest version of RStudio – the visual editor was originally really buggy, especially in relation to references, but as per v2022.02.0, it’s great!</p>
 </div>
 </div>
 <div id="cross-referencing" class="section level2" number="3.2">
@@ -188,11 +178,11 @@ See <a href="cites-and-refs.html#cites-and-refs">our chapter title</a> for an ex
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:captain"></span>
 <img src="figures/sample-content/captain.jpeg" alt="A marvel-lous meme" width="65%"><p class="caption">
-Figure 3.2: A marvel-lous meme
+Figure 3.1: A marvel-lous meme
 </p>
 </div>
 <p>We refer to this image with <code>\@ref(fig:captain)</code>.
-So Figure <a href="cites-and-refs.html#fig:captain">3.2</a> is <a href="cites-and-refs.html#fig:captain">this image</a>.</p>
+So Figure <a href="cites-and-refs.html#fig:captain">3.1</a> is <a href="cites-and-refs.html#fig:captain">this image</a>.</p>
 <p>And in Figure <a href="rmd-basics.html#fig:cars-plot">2.4</a> we saw a <a href="rmd-basics.html#fig:cars-plot">cars plot</a>.</p>
 </div>
 <div id="table-references" class="section level3" number="3.2.3">
@@ -282,7 +272,7 @@ LaTeX has a command for this, which looks like this: <code>\pageref{fig/tab:labe
 <h4>
 <span class="header-section-number">3.2.4.1</span> Include page numbers only in PDF output<a class="anchor" aria-label="anchor" href="#include-page-numbers-only-in-pdf-output"><i class="fas fa-link"></i></a>
 </h4>
-<p>A problem here is that LaTeX commands don’t display in HTML output, so in the gitbook output we’d see simply “Figure <a href="rmd-basics.html#fig:cars-plot">2.4</a> on page.”</p>
+<p>A problem here is that LaTeX commands don’t display in HTML output, so in the gitbook output we’d see simply “Figure <a href="rmd-basics.html#fig:cars-plot">2.4</a> on page”.</p>
 <p>One way to get around this is to use inline R code to insert the text, and use an <code>ifelse</code> statement to check the output format and then insert the appropriate text.</p>
 <ul>
 <li>So this: <code>`r ifelse(knitr::is_latex_output(), "Figure \\@ref(fig:cars-plot) on page \\pageref{fig:cars-plot}", "")`</code>
@@ -315,7 +305,6 @@ I suspect some great solution will be developed in the not-to-distant future, pr
 </ul>
 </div>
 </div>
-
   <div class="chapter-nav">
 <div class="prev"><a href="rmd-basics.html"><span class="header-section-number">2</span> R Markdown basics</a></div>
 <div class="next"><a href="tables.html"><span class="header-section-number">4</span> Tables</a></div>
@@ -325,9 +314,8 @@ I suspect some great solution will be developed in the not-to-distant future, pr
 <li><a class="nav-link" href="#cites-and-refs"><span class="header-section-number">3</span> Citations, cross-references, and collaboration</a></li>
 <li>
 <a class="nav-link" href="#citations"><span class="header-section-number">3.1</span> Citations</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#pdf-output-1"><span class="header-section-number">3.1.1</span> PDF output</a></li>
-<li><a class="nav-link" href="#gitbook-output"><span class="header-section-number">3.1.2</span> Gitbook output</a></li>
-<li><a class="nav-link" href="#insert-references-easily-with-the-citr-add-in"><span class="header-section-number">3.1.3</span> Insert references easily with the citr add-in</a></li>
+<li><a class="nav-link" href="#citation-appearance"><span class="header-section-number">3.1.1</span> Appearance of citations and references section (pandoc)</a></li>
+<li><a class="nav-link" href="#insert-references-easily-with-rstudios-visual-editor"><span class="header-section-number">3.1.2</span> Insert references easily with RStudio’s Visual Editor</a></li>
 </ul>
 </li>
 <li>
