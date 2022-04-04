@@ -68,6 +68,12 @@ abbreviations-heading: List of Abbreviations
 # heading title for the references section
 params:
   referenceHeading: "References"
+  
+# settings for pandoc citations #
+csl: bibliography/apa.csl    #try bibliography/transactions-on-computer-human-interaction.csl for numerical citations
+refs-line-spacing: 6mm
+refs-space-between-entries: 1mm
+
 
 # biblatex options #
 # unless you run into 'biber' error messages, use biblatex as it lets you customise your bibliography directly
