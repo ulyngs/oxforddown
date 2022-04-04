@@ -67,24 +67,23 @@ abbreviations-heading: List of Abbreviations
 ### citation and bibliography style ###
 # heading title for the references section
 params:
+  insertReferencesHeadingInPDF: true
+  insertReferencesHeadingInOtherOutput: true
   referenceHeading: "References"
-  
-# settings for pandoc citations #
-csl: bibliography/apa.csl    #try bibliography/transactions-on-computer-human-interaction.csl for numerical citations
+
+# citation and reference options (pandoc) #
+csl: bibliography/apa.csl # try csl: bibliography/transactions-on-computer-human-interaction.csl for numerical citations
 refs-line-spacing: 6mm
 refs-space-between-entries: 1mm
 
+## biblatex options ##
+#use-biblatex: true # set to true, and set "output:bookdown::pdf_book: citation_package: biblatex"
+#bib-latex-options: "style=authoryear, sorting=nyt, backend=biber, maxcitenames=2, useprefix, doi=true, isbn=false, uniquename=false" #for science, you might want style=numeric-comp, sorting=none for numerical in-text citation with references in order of appearance
 
-# biblatex options #
-# unless you run into 'biber' error messages, use biblatex as it lets you customise your bibliography directly
-use-biblatex: true
-bib-latex-options: "style=authoryear, sorting=nyt, backend=biber, maxcitenames=2, useprefix, doi=true, isbn=false, uniquename=false" #for science, you might want style=numeric-comp, sorting=none for numerical in-text citation with references in order of appearance
-
-# natbib options #
-# natbib runs into fewer errors than biblatex, but to customise your bibliography you need to fiddle with .bst files
-use-natbib: false # to use natbib, set this to true, and change "output:bookdown::pdf_book:citation_package:" to "natbib"
-natbib-citation-style: authoryear #for science, you might want numbers,square
-natbib-bibliography-style: templates/ACM-Reference-Format.bst #e.g. "plainnat", unsrtnat, or path to a .bst file
+## natbib options ##
+#use-natbib: true # set to true, and set "output:bookdown::pdf_book: citation_package: natbib"
+#natbib-citation-style: authoryear #for science, you might want numbers,square
+#natbib-bibliography-style: templates/ACM-Reference-Format.bst #e.g. "plainnat", unsrtnat, or path to a .bst file
 
 
 ### correction highlighting ###
@@ -152,7 +151,7 @@ gap-after-crest: 25mm
 
 ### other stuff ###
 abstractseparate: false  # include front page w/ abstract for examination schools?
-includeline-num: false #show line numbering in PDF?
+includeline-num: false # show line numbering in PDF?
 line-wrapping-in-code: true #wrap overflowing lines in code blocks?
 
 
@@ -161,7 +160,6 @@ line-wrapping-in-code: true #wrap overflowing lines in code blocks?
 #####################
 output:
   bookdown::pdf_book:
-    citation_package: biblatex
     template: templates/template.tex
     keep_tex: true
     pandoc_args: "--lua-filter=scripts_and_filters/colour_and_highlight.lua"
