@@ -18,7 +18,7 @@ documentclass: book
 
 ## How `oxforddown` is structured
 
-```markdown
+``` markdown
 .
 +-- index.Rmd
 +-- _bookdown.yml
@@ -74,7 +74,6 @@ abbreviations: |
 #######################
 bibliography: [bibliography/references.bib, bibliography/additional-references.bib]
 ```
-
 
 Finally, **index.Rmd** is also where you customise layout options.
 For example, in PDF output what should the heading for the bibliography section say?
@@ -152,7 +151,7 @@ includeline-num: false #show line numbering in PDF?
 
 #### PDF output
 
-``` {.yaml}
+``` yaml
 knit: (function(input, ...) {
     thesis_formats <- "pdf";
     ...
@@ -165,7 +164,7 @@ The line `file.remove(list.files(pattern = "*\\.(log|mtc\\d*|maf|aux|bcf|lof|lot
 
 #### BS4 book output (HTML)
 
-``` {.yaml}
+``` yaml
 knit: (function(input, ...) {
     thesis_formats <- "bs4";
     ...
@@ -176,7 +175,7 @@ knit: (function(input, ...) {
 
 #### Gitbook output (HTML)
 
-``` {.yaml}
+``` yaml
 knit: (function(input, ...) {
     thesis_formats <- "gitbook";
     ...
@@ -186,7 +185,7 @@ knit: (function(input, ...) {
 
 #### Word output
 
-``` {.yaml}
+``` yaml
 knit: (function(input, ...) {
     thesis_formats <- "word";
     ...
@@ -204,7 +203,7 @@ To knit an individual chapter without compiling the entire thesis you:
 
 As shown in the sample chapters' YAML headers, to output a single chapter to PDF, use e.g.:
 
-``` {.yaml}
+``` yaml
 output:
   bookdown::pdf_document2:
     template: templates/brief_template.tex
