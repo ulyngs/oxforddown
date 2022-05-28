@@ -83,7 +83,7 @@ Examples of theses written with `oxforddown` (see also [Google Scholar](https://
           "oberdiek", "pdflscape", "pdfpages", "quotchap", "soul", "tabu", 
           "threeparttable", "threeparttablex", "titlesec", "tocbibind", 
           "trimspaces", "ulem", "units", "utopia", "varwidth", "wrapfig",
-          "fvextra"
+          "fvextra", "xurl"
           )
         tinytex::tlmgr_install(missing_packages)
         ```
