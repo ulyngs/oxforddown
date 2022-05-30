@@ -179,8 +179,9 @@ $endif$
 
 % for line wrapping in code blocks
 $if(line-wrapping-in-code)$
+\usepackage{fancyvrb}
 \usepackage{fvextra}
-\DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines=true, breakanywhere=true, commandchars=\\\{\}}
 $endif$
 
 % This highlights (in blue) corrections marked with (for words) \mccorrect{blah} or (for whole
