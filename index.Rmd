@@ -161,6 +161,7 @@ line-wrapping-in-code: true #wrap overflowing lines in code blocks?
 output:
   bookdown::pdf_book:
     template: templates/template.tex
+    latex_engine: xelatex
     keep_tex: true
     pandoc_args: "--lua-filter=scripts_and_filters/colour_and_highlight.lua"
   bookdown::bs4_book: 
