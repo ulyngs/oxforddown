@@ -39,6 +39,7 @@ Examples of theses written with `oxforddown` (see also [Google Scholar](https://
 *NOTE: If you've used this template to write your thesis, drop me a line at [ulrik.lyngs\@cs.ox.ac.uk](mailto:ulrik.lyngs@cs.ox.ac.uk) and I'll add a link showcasing it!*
 
 ## How to cite
+If you use this template to write your thesis, please cite it!
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4876326.svg)](https://doi.org/10.5281/zenodo.4876326)
 
