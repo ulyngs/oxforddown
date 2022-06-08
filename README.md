@@ -33,6 +33,7 @@ Examples of theses written with `oxforddown` (see also [Google Scholar](https://
 -   [The Psychology of Managerial Capital Allocation](https://thesis.shirdekel.com) by [Shir Dekel](https://shirdekel.com)
 -   [Teens, Screens and Wellbeing: An Improved Approach](https://www.amyorben.com/docs/thesis/index.html) by [Amy Orben](https://www.amyorben.com)
 -   [Interpreting Neural Language Models for Linguistic Complexity Assessment](https://gsarti.com/thesis/introduction.html) by [Gabriele Sarti](https://gsarti.com)
+-   [Modeling of nutrient dynamics in an urbanized tropical estuary and application to eutrophication risk management](https://drive.google.com/file/d/1UFT8NfDxHqbFnDNOEk3KtV0IYofb5Go8/view) by Nguyen Truong An
 
 
 *NOTE: If you've used this template to write your thesis, drop me a line at [ulrik.lyngs\@cs.ox.ac.uk](mailto:ulrik.lyngs@cs.ox.ac.uk) and I'll add a link showcasing it!*
