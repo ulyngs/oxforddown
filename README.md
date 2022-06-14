@@ -1,7 +1,7 @@
 # How to cite
 If you use this template to write your thesis, please cite it!
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6340122.svg)](https://doi.org/10.5281/zenodo.6340122)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3484681.svg)](10.5281/zenodo.3484681)
 
 
 ``` bibtex
