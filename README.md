@@ -19,7 +19,6 @@ If you use this template to write your thesis, please cite it!
 # Contents
 
 -   [Requirements](#requirements)
--   [How to cite](#how-to-cite)
 -   [How to use](#how-to-use)
     -   [How-to chapters](#how-to-chapters)
     -   [Video tutorials](#video-tutorials)
