@@ -1,5 +1,5 @@
 # How to cite
-If you use this template to write your thesis, please cite it!
+If you use this template to write your thesis, please cite it! :smiling_face_with_three_hearts:
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3484681.svg)](10.5281/zenodo.3484681)
 
