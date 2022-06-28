@@ -1,9 +1,24 @@
-# NOTE Major change: To build the thesis, you now simply knit **index.Rmd** - see details below.
+# How to cite
+If you use this template to write your thesis, please cite it! :smiling_face_with_three_hearts:
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3484681.svg)](10.5281/zenodo.3484681)
+
+
+``` bibtex
+@misc{lyngsOxforddown2019,
+  author = {Lyngs, Ulrik},
+  title = {oxforddown: An Oxford University Thesis Template for R Markdown},
+  year = {2019},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  howpublished = {\url{https://github.com/ulyngs/oxforddown}},
+  doi = {10.5281/zenodo.3484681},
+}
+```
 
 # Contents
 
 -   [Requirements](#requirements)
--   [How to cite](#how-to-cite)
 -   [How to use](#how-to-use)
     -   [How-to chapters](#how-to-chapters)
     -   [Video tutorials](#video-tutorials)
@@ -33,26 +48,11 @@ Examples of theses written with `oxforddown` (see also [Google Scholar](https://
 -   [The Psychology of Managerial Capital Allocation](https://thesis.shirdekel.com) by [Shir Dekel](https://shirdekel.com)
 -   [Teens, Screens and Wellbeing: An Improved Approach](https://www.amyorben.com/docs/thesis/index.html) by [Amy Orben](https://www.amyorben.com)
 -   [Interpreting Neural Language Models for Linguistic Complexity Assessment](https://gsarti.com/thesis/introduction.html) by [Gabriele Sarti](https://gsarti.com)
+-   [Modeling of nutrient dynamics in an urbanized tropical estuary and application to eutrophication risk management](https://drive.google.com/file/d/1UFT8NfDxHqbFnDNOEk3KtV0IYofb5Go8/view) by Nguyen Truong An
 
 
 *NOTE: If you've used this template to write your thesis, drop me a line at [ulrik.lyngs\@cs.ox.ac.uk](mailto:ulrik.lyngs@cs.ox.ac.uk) and I'll add a link showcasing it!*
 
-## How to cite
-
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4876326.svg)](https://doi.org/10.5281/zenodo.4876326)
-
-
-``` bibtex
-@misc{lyngsOxforddown2019,
-  author = {Lyngs, Ulrik},
-  title = {oxforddown: An Oxford University Thesis Template for R Markdown},
-  year = {2019},
-  publisher = {GitHub},
-  journal = {GitHub repository},
-  howpublished = {\url{https://github.com/ulyngs/oxforddown}},
-  doi = {10.5281/zenodo.3484681},
-}
-```
 
 ## Requirements
 
