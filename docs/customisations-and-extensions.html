@@ -6,16 +6,42 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>5 Customisations and extensions | oxforddown: An Oxford University Thesis Template for R Markdown</title>
 <meta name="author" content="Author Name">
-<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta name="generator" content="bookdown 0.26 with bs4_book()">
 <meta property="og:title" content="5 Customisations and extensions | oxforddown: An Oxford University Thesis Template for R Markdown">
 <meta property="og:type" content="book">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="5 Customisations and extensions | oxforddown: An Oxford University Thesis Template for R Markdown">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="templates/bs4_style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="templates/bs4_style.css">
 <link rel="stylesheet" href="templates/corrections.css">
 <meta name="description" content="This chapter describes a number of additional tips and tricks as well as possible customizations to the oxforddown thesis.  5.1 Chunk caching and the _bookdown_files folder If you set cache=TRUE...">
 <meta property="og:description" content="This chapter describes a number of additional tips and tricks as well as possible customizations to the oxforddown thesis.  5.1 Chunk caching and the _bookdown_files folder If you set cache=TRUE...">
@@ -102,12 +128,12 @@ Template for R Markdown</p></a>
 <p>You might want your list of tables (which follows the list of figures in your thesis front matter) to have shorter (or just different) table descriptions than the actual table captions.</p>
 <p>If you are using <code><a href="https://rdrr.io/pkg/knitr/man/kable.html">knitr::kable</a></code> to generate a table, you can do this with the argument <code>caption.short</code>, e.g.:</p>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="va">mtcars</span>,
-              caption <span class="op">=</span> <span class="st">"A very long and descriptive (and potentially
-              boring) caption that doesn't fit in the list of figures,
-              but helps the reader understand what the figure 
-              communicates."</span>,
-              caption.short <span class="op">=</span> <span class="st">"A concise description for the list of tables"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="va">mtcars</span>,</span>
+<span>              caption <span class="op">=</span> <span class="st">"A very long and descriptive (and potentially</span></span>
+<span><span class="st">              boring) caption that doesn't fit in the list of figures,</span></span>
+<span><span class="st">              but helps the reader understand what the figure </span></span>
+<span><span class="st">              communicates."</span>,</span>
+<span>              caption.short <span class="op">=</span> <span class="st">"A concise description for the list of tables"</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
 <div id="shorten-running-header-pdf" class="section level2" number="5.3">
@@ -135,7 +161,7 @@ Template for R Markdown</p></a>
 <span class="header-section-number">5.5</span> Beginning chapters with quotes (PDF)<a class="anchor" aria-label="anchor" href="#beginning-chapters-with-quotes-pdf"><i class="fas fa-link"></i></a>
 </h2>
 <p>The OxThesis LaTeX template lets you inject some wittiness into your thesis by including a block of type <code>savequote</code> at the beginning of chapters.
-To do this, use the syntax <code>```{block type='savequote'}</code>.<a href="references.html#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a></p>
+To do this, use the syntax <code>```{block type='savequote'}</code>.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;For more on custom block types, see the relevant section in &lt;a href="https://bookdown.org/yihui/bookdown/custom-blocks.html"&gt;&lt;em&gt;Authoring Books with R Markdown&lt;/em&gt;&lt;/a&gt;.&lt;/p&gt;'><sup>4</sup></a></p>
 <p>Add the reference for the quote with the chunk option <code>quote_author="my author name"</code>.
 You will also want to add the chunk option <code>include=knitr::is_latex_output()</code> so that quotes are only included in PDF output.</p>
 <p>It’s not possible to use markdown syntax inside chunk options, so if you want to e.g. italicise a book name in the reference use a <a href="https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html#text-references">‘text reference’</a>: Create a named piece of text with ‘(ref:label-name) My text’, then point to this in the chunk option with <code>quote_author='(ref:label-name)'</code>.</p>
@@ -167,7 +193,7 @@ The correction highlighting uses the <a href="https://ctan.org/pkg/soul">soul</a
 <h3>
 <span class="header-section-number">5.6.2</span> Blocks of added or changed material<a class="anchor" aria-label="anchor" href="#blocks-of-added-or-changed-material"><i class="fas fa-link"></i></a>
 </h3>
-<p>Highlight entire <strong>blocks of added or changed material</strong> by putting them in a block of type <code>correction</code>, using the syntax <code>```{block type='correction'}</code>.<a href="references.html#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>
+<p>Highlight entire <strong>blocks of added or changed material</strong> by putting them in a block of type <code>correction</code>, using the syntax <code>```{block type='correction'}</code>.<a class="footnote-ref" tabindex="0" data-toggle="popover" data-content='&lt;p&gt;In the &lt;strong&gt;.tex&lt;/strong&gt; file for PDF output, this will put the content between &lt;code&gt;\begin{correction}&lt;/code&gt; and &lt;code&gt;\end{correction}&lt;/code&gt;; in gitbook output it will be put between &lt;code&gt;&amp;lt;div class="correction"&amp;gt;&lt;/code&gt; and &lt;code&gt;&amp;lt;/div&amp;gt;&lt;/code&gt;.&lt;/p&gt;'><sup>5</sup></a>
 Like so:</p>
 <div class="correction">
 <p>
@@ -231,29 +257,29 @@ It works with both PDF and HTML output.</p>
 <p>In gitbook output, you can simply use <code><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">knitr::include_graphics</a></code> and it should include a scrollable (and downloadable) PDF.
 You will probably want to set the chunk options <code>out.width='100%'</code> and <code>out.height='1000px'</code>:</p>
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">include_graphics</a></span><span class="op">(</span><span class="st">"figures/sample-content/pdf_embed_example/Lyngs2020_FB.pdf"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">include_graphics</a></span><span class="op">(</span><span class="st">"figures/sample-content/pdf_embed_example/Lyngs2020_FB.pdf"</span><span class="op">)</span></span></code></pre></div>
 <embed src="figures/sample-content/pdf_embed_example/Lyngs2020_FB.pdf" width="100%" height="1000px" type="application/pdf"></embed><p><br></p>
 <p>In LaTeX output, however, this approach can cause odd behaviour.
 Therefore, when you build your thesis to PDF, split the PDF into an alphanumerically sorted sequence of <strong>single-page</strong> PDF files (you can do this automatically with the package <code>pdftools</code>). You can then use the appropriate LaTeX command to insert them, as shown below (for brevity, in the <code>oxforddown</code> PDF sample content we’re only including two pages).
 <em>Note that the chunk option <code>results='asis'</code> must be set.</em>
 You may also want to remove margins from the PDF files, which you can do with Adobe Acrobat (paid version) and likely other software.</p>
 <div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># install.packages(pdftools)</span>
-<span class="co"># split PDF into pages stored in figures/sample-content/pdf_embed_example/split/</span>
-<span class="co"># pdftools::pdf_split("figures/sample-content/pdf_embed_example/Lyngs2020_FB.pdf",</span>
-<span class="co">#        output = "figures/sample-content/pdf_embed_example/split/")</span>
-
-<span class="co"># grab the pages</span>
-<span class="va">pages</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.files.html">list.files</a></span><span class="op">(</span><span class="st">"figures/sample-content/pdf_embed_example/split"</span>, full.names <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-
-<span class="co"># set how wide you want the inserted PDFs to be: </span>
-<span class="co"># 1.0 is 100 per cent of the oxforddown PDF page width;</span>
-<span class="co"># you may want to make it a bit bigger</span>
-<span class="va">pdf_width</span> <span class="op">&lt;-</span> <span class="fl">1.2</span>
-
-<span class="co"># for each PDF page, insert it nicely and</span>
-<span class="co"># end with a page break</span>
-<span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c</a></span><span class="op">(</span><span class="st">"\\newpage \\begin{center} \\makebox[\\linewidth][c]{\\includegraphics[width="</span>, <span class="va">pdf_width</span>, <span class="st">"\\linewidth]{"</span>, <span class="va">pages</span>, <span class="st">"}} \\end{center}"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># install.packages(pdftools)</span></span>
+<span><span class="co"># split PDF into pages stored in figures/sample-content/pdf_embed_example/split/</span></span>
+<span><span class="co"># pdftools::pdf_split("figures/sample-content/pdf_embed_example/Lyngs2020_FB.pdf",</span></span>
+<span><span class="co">#        output = "figures/sample-content/pdf_embed_example/split/")</span></span>
+<span></span>
+<span><span class="co"># grab the pages</span></span>
+<span><span class="va">pages</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.files.html">list.files</a></span><span class="op">(</span><span class="st">"figures/sample-content/pdf_embed_example/split"</span>, full.names <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># set how wide you want the inserted PDFs to be: </span></span>
+<span><span class="co"># 1.0 is 100 per cent of the oxforddown PDF page width;</span></span>
+<span><span class="co"># you may want to make it a bit bigger</span></span>
+<span><span class="va">pdf_width</span> <span class="op">&lt;-</span> <span class="fl">1.2</span></span>
+<span></span>
+<span><span class="co"># for each PDF page, insert it nicely and</span></span>
+<span><span class="co"># end with a page break</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c</a></span><span class="op">(</span><span class="st">"\\newpage \\begin{center} \\makebox[\\linewidth][c]{\\includegraphics[width="</span>, <span class="va">pdf_width</span>, <span class="st">"\\linewidth]{"</span>, <span class="va">pages</span>, <span class="st">"}} \\end{center}"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div id="embed-rmd" class="section level2" number="5.10">
 <h2>
@@ -311,11 +337,11 @@ In <strong>my_paper.Rmd</strong>, create a parameter called <code>other_path</co
 <span id="cb38-5"><a href="customisations-and-extensions.html#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
 <p>In <strong>my_paper.Rmd</strong>, put this at the start of the filepath when you read in data or include images:</p>
 <div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://yihui.org/knitr/">knitr</a></span><span class="op">)</span>
-
-<span class="va">cat_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c</a></span><span class="op">(</span><span class="va">params</span><span class="op">$</span><span class="va">other_path</span>, <span class="st">"data/cats.csv"</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">include_graphics</a></span><span class="op">(</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c</a></span><span class="op">(</span><span class="va">params</span><span class="op">$</span><span class="va">other_path</span>, <span class="st">"figures/cat.jpg"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://yihui.org/knitr/">knitr</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">cat_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c</a></span><span class="op">(</span><span class="va">params</span><span class="op">$</span><span class="va">other_path</span>, <span class="st">"data/cats.csv"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">include_graphics</a></span><span class="op">(</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_c.html">str_c</a></span><span class="op">(</span><span class="va">params</span><span class="op">$</span><span class="va">other_path</span>, <span class="st">"figures/cat.jpg"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>Finally, in your thesis folder’s <strong>index.Rmd</strong> file, also create the parameter <code>other_path</code>.
 But here, set it to where the <strong>paper_to_include/</strong> folder is relative to your thesis folder:</p>
 <div class="sourceCode" id="cb40"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb40-1"><a href="customisations-and-extensions.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">params</span><span class="kw">:</span></span>
@@ -474,6 +500,7 @@ At the time of writing, you must set this directly in <strong>template.tex</stro
 </div>
 </div>
 </div>
+
   <div class="chapter-nav">
 <div class="prev"><a href="tables.html"><span class="header-section-number">4</span> Tables</a></div>
 <div class="next"><a href="troubleshooting.html"><span class="header-section-number">6</span> Troubleshooting</a></div>
