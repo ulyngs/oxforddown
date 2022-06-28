@@ -62,7 +62,7 @@ With this style, a number of variations on the citation syntax are useful to kno
 If you want a numerical citation style instead, try `csl: bibliography/transactions-on-computer-human-interaction.csl` or just have a browse through the [Zotero Style Repository](https://www.zotero.org/styles) and look for one you like.
 For convenience, you can set the line spacing and the space between the bibliographic entries in the reference section directly from the YAML header in **index.Rmd**.
 
-If you prefer to use `biblatex` or `natbib` to handle references, see [this chapter](customising-citations).
+If you prefer to use `biblatex` or `natbib` to handle references, see [this chapter](#customising-citations).
 
 \clearpage
 
