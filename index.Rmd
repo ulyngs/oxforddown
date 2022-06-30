@@ -107,12 +107,14 @@ toc-link-page-numbers: true
 page-layout: nobind #'nobind' for equal margins (PDF output), 'twoside' for two-sided binding (mirror margins and blank pages), leave blank for one-sided binding (left margin > right margin)
 
 ### position of page numbers ###
+#C = center, R = right, L = left. If page layout is 'twoside', O = odd pages and E = even pages. E.g. RO,LE puts the page number to the right on odd pages and left on even pages
 ordinary-page-number-foot-or-head: foot #'foot' puts page number in footer, 'head' in header
-ordinary-page-number-position: C  #C = center, R = right, L = left. If page layout is 'twoside', O = odd pages and E = even pages. E.g. RO,LE puts the page number to the right on odd pages and left on even pages
+ordinary-page-number-position: C
 chapter-page-number-foot-or-head: foot #you may want it to be different on the chapter pages
 chapter-page-number-position: C
 
 ### position of running header ###
+#C = center, R = right, L = left. If page layout is 'twoside', O = odd pages and E = even pages. E.g. RO,LE puts the page number to the right on odd pages and left on even pages
 running-header: true #indicate current chapter/section in header?
 running-header-foot-or-head: head
 running-header-position-leftmark: LO #marks the chapter. If layout is 'nobind', only this is used.

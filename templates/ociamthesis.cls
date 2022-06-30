@@ -84,6 +84,17 @@
 \usepackage[includehead,hmargin={3.6cm, 2.6cm}, vmargin={2.5cm,2.7cm}, headsep=.8cm,footskip=1.2cm]{geometry}
 \fi
 
+% JEM fix header on cleared pages for openright
+\def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else
+   \hbox{}
+   \fancyhead[RE,LO]{}
+   \newpage
+   \if@twocolumn\hbox{}\newpage
+   \fi
+   \fancyhead[LO]{\emph{\leftmark}} 
+   \fancyhead[RE]{\emph{\rightmark}} 
+   \fi\fi}
+
 \usepackage{xcolor}
 \usepackage{graphicx} 
 \usepackage{microtype}
