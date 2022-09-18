@@ -1,4 +1,3 @@
 <!-- This .Rmd file serves only to add the References heading, irrespective of output, and irrespective of whether you are using biblatex, natbib, or pandoc for references -->
 
-`r if(knitr::is_latex_output() & params$insertReferencesHeadingInPDF) stringr::str_c("# ", params$referenceHeading, " {-}")`
-`r if(!knitr::is_latex_output() & params$insertReferencesHeadingInOtherOutput) stringr::str_c("# ", params$referenceHeading, " {-}")`
+# `r params$referenceHeading` {-}

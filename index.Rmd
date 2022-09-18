@@ -65,10 +65,9 @@ abbreviations-heading: List of Abbreviations
 
 
 ### citation and bibliography style ###
-# heading title for the references section
+# the title for the references section is created by front-and-back-matter/99-references_heading.Rmd, 
+# but you can set it from here for convenience
 params:
-  insertReferencesHeadingInPDF: true
-  insertReferencesHeadingInOtherOutput: true
   referenceHeading: "References"
 
 # citation and reference options (pandoc) #
@@ -77,13 +76,13 @@ refs-line-spacing: 6mm
 refs-space-between-entries: 1mm
 
 ## biblatex options ##
-#use-biblatex: true # set to true, and set "output:bookdown::pdf_book: citation_package: biblatex"
-#bib-latex-options: "style=authoryear, sorting=nyt, backend=biber, maxcitenames=2, useprefix, doi=true, isbn=false, uniquename=false" #for science, you might want style=numeric-comp, sorting=none for numerical in-text citation with references in order of appearance
+# use-biblatex: true # set to true, and set "output:bookdown::pdf_book: citation_package: biblatex"
+# bib-latex-options: "style=authoryear, sorting=nyt, backend=biber, maxcitenames=2, useprefix, doi=true, isbn=false, uniquename=false" #for science, you might want style=numeric-comp, sorting=none for numerical in-text citation with references in order of appearance
 
 ## natbib options ##
-#use-natbib: true # set to true, and set "output:bookdown::pdf_book: citation_package: natbib"
-#natbib-citation-style: authoryear #for science, you might want numbers,square
-#natbib-bibliography-style: templates/ACM-Reference-Format.bst #e.g. "plainnat", unsrtnat, or path to a .bst file
+# use-natbib: true # set to true, and set "output:bookdown::pdf_book: citation_package: natbib"
+# natbib-citation-style: authoryear #for science, you might want numbers,square
+# natbib-bibliography-style: templates/ACM-Reference-Format.bst #e.g. "plainnat", unsrtnat, or path to a .bst file
 
 
 ### correction highlighting ###
