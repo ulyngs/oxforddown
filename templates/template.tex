@@ -470,4 +470,7 @@ $if(use-natbib)$
 \bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
 $endif$
 
+% set the section header to the references heading
+\markboth{$params.referenceHeading$}{}
+
 \end{document}
