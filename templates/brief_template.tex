@@ -1,22 +1,76 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% BRIEF VERSION OF OXFORD THESIS TEMPLATE FOR CHAPTER PREVIEWS
 
-%%%%% CHOOSE PAGE LAYOUT
-% format for PDF output (ie equal margins, no extra blank pages):
-\documentclass[a4paper,nobind]{templates/ociamthesis}
+% As you can see from the uncommented line below, oxforddown template uses the a4paper size, 
+% and passes in the binding option from the YAML header in index.Rmd:
+\documentclass[a4paper, $if(page-layout)$$page-layout$$else$nobind$endif$]{templates/ociamthesis}
 
-% add hyperref package with links hidden %
-\usepackage[colorlinks=false,pdfpagelabels,hidelinks]{hyperref}
+
+%%%%% ADDING LATEX PACKAGES
+% add hyperref package with options from YAML %
+\usepackage[pdfpagelabels]{hyperref}
+% handle long urls
+\usepackage{xurl}
+% change the default coloring of links to something sensible
+\usepackage{xcolor}
+
+$if(linkcolor-rgb)$
+\definecolor{mylinkcolor}{RGB}{$linkcolor-rgb$}
+$endif$
+$if(urlcolor-rgb)$
+\definecolor{myurlcolor}{RGB}{$urlcolor-rgb$}
+$endif$
+$if(citecolor-rgb)$
+\definecolor{mycitecolor}{RGB}{$citecolor-rgb$}
+$endif$
+
+$if(colored-not-bordered-links)$
+\hypersetup{
+  hidelinks,
+  colorlinks,
+  linktocpage=$if(toc-link-page-numbers)$$toc-link-page-numbers$$else$false$endif$,
+  linkcolor=$if(linkcolor-rgb)$mylinkcolor$else$.$endif$,
+  urlcolor=$if(urlcolor-rgb)$myurlcolor$else$.$endif$,
+  citecolor=$if(citecolor-rgb)$mycitecolor$else$.$endif$
+}
+
+$else$
+\hypersetup{
+  colorlinks=false,
+  linktocpage=$if(link-toc-page)$$link-toc-page$$else$true$endif$,
+  linkbordercolor=$if(linkcolor-rgb)$mylinkcolor$else$.$endif$,
+  urlbordercolor=$if(urlcolor-rgb)$myurlcolor$else$.$endif$,
+  citebordercolor=$if(citecolor-rgb)$mycitecolor$else$.$endif$
+}
+$endif$
+
 
 % add float package to allow manual control of figure positioning %
 \usepackage{float}
 
-%UL set section header spacing
-\usepackage{titlesec}
-% 
-\titlespacing\subsubsection{0pt}{24pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+% enable strikethrough
+\usepackage[normalem]{ulem}
 
-% UL 30 Nov 2018 pandoc puts lists in 'tightlist' command when no space between bullet points in Rmd file
+% use soul package for correction highlighting
+\usepackage{color, soulutf8}
+\definecolor{correctioncolor}{HTML}{CCCCFF}
+\sethlcolor{correctioncolor}
+\newcommand{\ctext}[3][RGB]{%
+  \begingroup
+  \definecolor{hlcolor}{#1}{#2}\sethlcolor{hlcolor}%
+  \hl{#3}%
+  \endgroup
+}
+\soulregister\ref7
+\soulregister\cite7
+\soulregister\citet7
+\soulregister\autocite7
+\soulregister\textcite7
+\soulregister\pageref7
+
+%%%%% FIXING / ADDING THINGS THAT'S SPECIAL TO R MARKDOWN'S USE OF LATEX TEMPLATES
+% pandoc puts lists in 'tightlist' command when no space between bullet points in Rmd file,
+% so we add this command to the template
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
  
@@ -62,7 +116,7 @@
 \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 
-%UL 2 Dec 2018 add a bit of white space before and after code blocks
+%UL set white space before and after code blocks
 \renewenvironment{Shaded}
 {
   \vspace{10pt}%
@@ -71,128 +125,215 @@
   \end{snugshade}%
   \vspace{8pt}%
 }
-%UL 2 Dec 2018 reduce whitespace around verbatim environments
-\usepackage{etoolbox}
-\makeatletter
-\preto{\@verbatim}{\topsep=0pt \partopsep=0pt }
-\makeatother
 
-%UL 28 Mar 2019, enable strikethrough
-\usepackage[normalem]{ulem}
-
-%UL use soul package for correction highlighting
-\usepackage{soul}
-\usepackage{xcolor}
-\newcommand{\ctext}[3][RGB]{%
-  \begingroup
-  \definecolor{hlcolor}{#1}{#2}\sethlcolor{hlcolor}%
-  \hl{#3}%
-  \endgroup
-}
-\soulregister\ref7
-\soulregister\cite7
-\soulregister\autocite7
-\soulregister\textcite7
-\soulregister\pageref7
-
-% user-included things with header_includes or in_header will appear here
+% User-included things with header_includes or in_header will appear here
 % kableExtra packages will appear here if you use library(kableExtra)
 $for(header-includes)$
 $header-includes$
 $endfor$
 
-% line wrap text in code blocks
-\usepackage{fvextra}
-\DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
+
+%UL set section header spacing
+\usepackage{titlesec}
+% 
+\titlespacing\subsubsection{0pt}{24pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+
+
+%UL set whitespace around verbatim environments
+\usepackage{etoolbox}
+\makeatletter
+\preto{\@verbatim}{\topsep=0pt \partopsep=0pt }
+\makeatother
+
+
+%%%%%%% PAGE HEADERS AND FOOTERS %%%%%%%%%
+\usepackage{fancyhdr}
+\setlength{\headheight}{15pt}
+\fancyhf{} % clear the header and footers
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter. #1}{\thechapter. #1}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection. #1}} 
+\renewcommand{\headrulewidth}{0pt}
+
+$if(running-header)$
+\fancy$running-header-foot-or-head$[$running-header-position-leftmark$]{\emph{\leftmark}} 
+\fancy$running-header-foot-or-head$[$running-header-position-rightmark$]{\emph{\rightmark}} 
+$endif$
+
+$if(ordinary-page-number-foot-or-head)$
+% UL page number position 
+\fancy$ordinary-page-number-foot-or-head$[$ordinary-page-number-position$]{\emph{\thepage}} %regular pages
+\fancypagestyle{plain}{\fancyhf{}\fancy$chapter-page-number-foot-or-head$[$chapter-page-number-position$]{\emph{\thepage}}} %chapter pages
+$endif$
+
 
 %%%%% SELECT YOUR DRAFT OPTIONS
-% Three options going on here; use in any combination.  But remember to turn the first two off before
-% generating a PDF to send to the printer!
-
 % This adds a "DRAFT" footer to every normal page.  (The first page of each chapter is not a "normal" page.)
-$if(draft)$
-\fancyfoot[C]{\emph{DRAFT Printed on \today}}
+$if(draft-mark)$
+\fancy$draft-mark-foot-or-head$[$draft-mark-position$]{\emph{DRAFT Printed on \today}}
+$endif$
+
+% IP feb 2021: option to include line numbers in PDF
+$if(includeline-num)$
+\usepackage{lineno}
+\linenumbers
+$endif$
+
+% for line wrapping in code blocks
+$if(line-wrapping-in-code)$
+\usepackage{fancyvrb}
+\usepackage{fvextra}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines=true, breakanywhere=true, commandchars=\\\{\}}
 $endif$
 
 % This highlights (in blue) corrections marked with (for words) \mccorrect{blah} or (for whole
 % paragraphs) \begin{mccorrection} . . . \end{mccorrection}.  This can be useful for sending a PDF of
 % your corrected thesis to your examiners for review.  Turn it off, and the blue disappears.
-$if(params.corrections)$
+$if(corrections)$
 \correctionstrue
 $endif$
 
+
 %%%%% BIBLIOGRAPHY SETUP
-% Note that your bibliography will require some tweaking depending on your department, preferred format, etc.
-% The options included below are just very basic "sciencey" and "humanitiesey" options to get started.
-% If you've not used LaTeX before, I recommend reading a little about biblatex/biber and getting started with it.
-% If you're already a LaTeX pro and are used to natbib or something, modify as necessary.
-% Either way, you'll have to choose and configure an appropriate bibliography format...
 
-% The science-type option: numerical in-text citation with references in order of appearance.
-% \usepackage[style=numeric-comp, sorting=none, backend=biber, doi=false, isbn=false]{biblatex}
-% \newcommand*{\bibtitle}{References}
-
-% The humanities-type option: author-year in-text citation with an alphabetical works cited.
-% \usepackage[style=authoryear, sorting=nyt, backend=biber, maxcitenames=2, useprefix, doi=false, isbn=false]{biblatex}
-% \newcommand*{\bibtitle}{Works Cited}
-
-%UL 3 Dec 2018: set this from YAML in index.Rmd
-$if(bib-humanities)$
-\usepackage[style=authoryear, sorting=nyt, backend=biber, maxcitenames=2, useprefix, doi=false, isbn=false]{biblatex}
-\newcommand*{\bibtitle}{Works Cited}
-$else$
-\usepackage[style=numeric-comp, sorting=none, backend=biber, doi=false, isbn=false]{biblatex}
-\newcommand*{\bibtitle}{References}
+% this enables pandoc citations
+$if(csl-refs)$
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslentryspacingunit} % times entry-spacing
+\setlength{\cslentryspacingunit}{\parskip}
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+  \let\oldpar\par
+  \def\par{\hangindent=\cslhangindent\oldpar}
+  \fi
+  % set entry spacing
+  \setlength{\parskip}{1mm}
+  $if(refs-space-between-entries)$\setlength{\parskip}{$refs-space-between-entries$}$endif$
+  \setlength{\baselineskip}{6mm}
+  $if(refs-line-spacing)$\setlength{\baselineskip}{$refs-line-spacing$}$endif$
+ }%
+ {}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 $endif$
+
+$if(use-biblatex)$
+\usepackage[$bib-latex-options$]{biblatex}
+
+$for(bibliography)$
+\addbibresource{$bibliography$}
+$endfor$
 
 % This makes the bibliography left-aligned (not 'justified') and slightly smaller font.
 \renewcommand*{\bibfont}{\raggedright\small}
 
-% Change this to the name of your .bib file (usually exported from a citation manager like Zotero or EndNote).
-$for(bibliography)$
-\addbibresource{$bibliography$}
-$endfor$
+$endif$
+
+$if(use-natbib)$
+\usepackage{natbib}
+\setcitestyle{$natbib-citation-style$}
+\bibliographystyle{$natbib-bibliography-style$}
+\addto\captionsenglish{%
+  \renewcommand{\bibname}{}
+  \renewcommand{\bibsection}{}
+}
+
+% This makes the bibliography left-aligned (not 'justified') and slightly smaller font.
+\renewcommand*{\bibfont}{\raggedright\small}
+
+$endif$
+
+
+% Uncomment this if you want equation numbers per section (2.3.12), instead of per chapter (2.18):
+%\numberwithin{equation}{subsection}
+
 
 %%%%% YOUR OWN PERSONAL MACROS
 % This is a good place to dump your own LaTeX macros as they come up.
 
 % To make text superscripts shortcuts
-	\renewcommand{\th}{\textsuperscript{th}} % ex: I won 4\th place
-	\newcommand{\nd}{\textsuperscript{nd}}
-	\renewcommand{\st}{\textsuperscript{st}}
-	\newcommand{\rd}{\textsuperscript{rd}}
+\renewcommand{\th}{\textsuperscript{th}} % ex: I won 4\th place
+\newcommand{\nd}{\textsuperscript{nd}}
+\renewcommand{\st}{\textsuperscript{st}}
+\newcommand{\rd}{\textsuperscript{rd}}
 
 %%%%% THE ACTUAL DOCUMENT STARTS HERE
 \begin{document}
 
 %%%%% CHOOSE YOUR LINE SPACING HERE
-% This is the official option.  Use it for your submission copy and library copy:
+
 \setlength{\textbaselineskip}{22pt plus2pt}
-% This is closer spacing (about 1.5-spaced) that you might prefer for your personal copies:
-%\setlength{\textbaselineskip}{18pt plus2pt minus1pt}
+$if(linespacing)$
+\setlength{\textbaselineskip}{$linespacing$}
+$endif$
 
 % UL: You can set the general paragraph spacing here - I've set it to 2pt (was 0) so
 % it's less claustrophobic
 \setlength{\parskip}{2pt plus 1pt}
 
+
 % Leave this line alone; it gets things started for the real document.
 \setlength{\baselineskip}{\textbaselineskip}
+
+
+%%%%% CHOOSE YOUR SECTION NUMBERING DEPTH HERE
+% You have two choices.  First, how far down are sections numbered?  (Below that, they're named but
+% don't get numbers.)  Second, what level of section appears in the table of contents?  These don't have
+% to match: you can have numbered sections that don't show up in the ToC, or unnumbered sections that
+% do.  Throughout, 0 = chapter; 1 = section; 2 = subsection; 3 = subsubsection, 4 = paragraph...
+
+% The level that gets a number:
+\setcounter{secnumdepth}{2}
+$if(section-numbering-depth)$
+\setcounter{secnumdepth}{$section-numbering-depth$}
+$endif$
+
+%%%%% MINI TABLES
+% This lays the groundwork for per-chapter, mini tables of contents.  Comment the following line
+% (and remove \minitoc from the chapter files) if you don't want this.  Un-comment either of the
+% next two lines if you want a per-chapter list of figures or tables.
+$if(mini-toc)$
+  \dominitoc % include a mini table of contents
+$endif$
+$if(mini-lof)$
+  \dominilof  % include a mini list of figures
+$endif$
+$if(mini-lot)$
+  \dominilot  % include a mini list of tables
+$endif$
+
+
+%%%%% CHAPTERS
+% Add or remove any chapters you'd like here, by file name (excluding '.tex'):
+\flushbottom
 
 % all your chapters and appendices will appear here
 $body$
 
-
 %%%%% REFERENCES
-
-% JEM: Quote for the top of references (just like a chapter quote if you're using them).  Comment to skip.
-% \begin{savequote}[8cm]
-% The first kind of intellectual and artistic personality belongs to the hedgehogs, the second to the foxes \dots
-%   \qauthor{--- Sir Isaiah Berlin \cite{berlin_hedgehog_2013}}
-% \end{savequote}
-
+$if(use-biblatex)$
 \setlength{\baselineskip}{0pt} % JEM: Single-space References
 
+% we are setting the title for the references section in front-and-back-matter/99-references_heading.Rmd
 {\renewcommand*\MakeUppercase[1]{#1}%
-\printbibliography[heading=bibintoc,title={\bibtitle}]}
+\printbibliography[heading=none]}
+
+$endif$
+
+$if(use-natbib)$
+\bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
+$endif$
+
+% set the section header to the references heading
+\markboth{References}{}
 
 \end{document}
