@@ -4,7 +4,6 @@ output:
   #bookdown::word_document2: default
   bookdown::pdf_document2: 
     template: templates/brief_template.tex
-    citation_package: biblatex
 documentclass: book
 #bibliography: [bibliography/references.bib, bibliography/additional-references.bib]
 ---
