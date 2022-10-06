@@ -388,11 +388,12 @@ $endif$
 $if(abstract)$
 
 $if(show-abstract-in-toc)$
-\addcontentsline{toc}{chapter}{$abstract-heading$}
+
+\addcontentsline{toc}{chapter}{$if(abstract-heading)$$abstract-heading$$else$Abstract$endif$}
 \renewcommand{\numberstyleabstract}{plain}
 $endif$
 
-\renewcommand{\abstracttitle}{$abstract-heading$}
+\renewcommand{\abstracttitle}{$if(abstract-heading)$$abstract-heading$$else$Abstract$endif$}
 \begin{abstract}
 	$abstract$
 \end{abstract}
@@ -451,7 +452,7 @@ $endif$
 $if(abbreviations)$
 % First parameter can be changed eg to "Glossary" or something.
 % Second parameter is the max length of bold terms.
-\begin{mclistof}{$abbreviations-heading$}{$abbreviations-width$}
+\begin{mclistof}{$if(abbreviations-heading)$$abbreviations-heading$$else$List of Abbreviations$endif$}{$if(abbreviations-width)$$abbreviations-width$$else$3.2cm$endif$}
 
 $abbreviations$
 
