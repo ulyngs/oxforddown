@@ -485,9 +485,4 @@ $if(use-natbib)$
 \bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
 $endif$
 
-% set the section header to the references heading
-$if(params.referenceHeading)$
-\markboth{$params.referenceHeading$}{}
-$endif$
-
 \end{document}

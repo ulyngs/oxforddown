@@ -2,5 +2,11 @@
 
 # `r params$referenceHeading` {-}
 
+<!-- the below latex command is needed after unnumbered chapter headings -- without it, the running header will show the title of the previous chapter -->
+```{=tex}
+\markboth{`r params$referenceHeading`}{}
+```
+
 ::: {#refs}
 :::
+
