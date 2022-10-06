@@ -193,11 +193,10 @@ $endif$
 
 %%%%% BIBLIOGRAPHY SETUP
 % Note that your bibliography will require some tweaking depending on your department, preferred format, etc.
-% If you've not used LaTeX before, I recommend reading a little about biblatex/biber and getting started with it.
+% If you've not used LaTeX before, I recommend just using pandoc for citations -- this is what's used unless you specific e.g. "citation_package: natbib" in index.Rmd
 % If you're already a LaTeX pro and are used to natbib or something, modify as necessary.
-% Either way, you'll have to choose and configure an appropriate bibliography format...
 
-% this enables pandoc citations
+% this allows the latex template to handle pandoc citations
 $if(csl-refs)$
 \newlength{\cslhangindent}
 \setlength{\cslhangindent}{1.5em}
@@ -214,8 +213,8 @@ $if(csl-refs)$
   \def\par{\hangindent=\cslhangindent\oldpar}
   \fi
   % set entry spacing
-  \setlength{\parskip}{$refs-space-between-entries$}
-  \setlength{\baselineskip}{$refs-line-spacing$}
+  \setlength{\parskip}{$if(refs-space-between-entries)$$refs-space-between-entries$$else$1mm$endif$}
+  \setlength{\baselineskip}{$if(refs-line-spacing)$$refs-line-spacing$$else$6mm$endif$}
  }%
  {}
 \usepackage{calc}
@@ -226,7 +225,7 @@ $if(csl-refs)$
 $endif$
 
 $if(use-biblatex)$
-\usepackage[$bib-latex-options$]{biblatex}
+\usepackage[$if(bib-latex-options)$$bib-latex-options$$else$style=authoryear, sorting=nyt, backend=biber, maxcitenames=2, useprefix, doi=true, isbn=false, uniquename=false$endif$]{biblatex}
 
 $for(bibliography)$
 \addbibresource{$bibliography$}
@@ -239,8 +238,8 @@ $endif$
 
 $if(use-natbib)$
 \usepackage{natbib}
-\setcitestyle{$natbib-citation-style$}
-\bibliographystyle{$natbib-bibliography-style$}
+\setcitestyle{$if(natbib-citation-style)$$natbib-citation-style$$else$authoryear$endif$}
+\bibliographystyle{$if(natbib-bibliography-style)$$natbib-bibliography-style$$else$templates/ACM-Reference-Format.bst$endif$}
 \addto\captionsenglish{%
   \renewcommand{\bibname}{}
   \renewcommand{\bibsection}{}
