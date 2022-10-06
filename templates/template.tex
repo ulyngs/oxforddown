@@ -12,22 +12,19 @@
 % as specified in the MIT License included in this distribution's LICENSE file.
 %
 % John commented this file extensively, so read through to see how to use the various options.  Remember that in LaTeX,
-% any line starting with a % is NOT executed.  Several places below, you have a choice of which line to use
-% out of multiple options (eg draft vs final, for PDF vs for binding, etc.)  When you pick one, add a % to the beginning of
-% the lines you don't want.
-
+% any line starting with a % is NOT executed.
 
 %%%%% PAGE LAYOUT
-% The most common choices should be below.  You can also do other things, like replacing "a4paper" with "letterpaper", etc.
+% The most common choices should be below.  You can also do other things, like replace "a4paper" with "letterpaper", etc.
 
-% This one formats for two-sided binding (ie left and right pages have mirror margins; blank pages inserted where needed):
+% 'twoside' formats for two-sided binding (ie left and right pages have mirror margins; blank pages inserted where needed):
 %\documentclass[a4paper,twoside]{templates/ociamthesis}
-% This one formats for one-sided binding (ie left margin > right margin; no extra blank pages):
+% Specifying nothing formats for one-sided binding (ie left margin > right margin; no extra blank pages):
 %\documentclass[a4paper]{ociamthesis}
-% This one formats for PDF output (ie equal margins, no extra blank pages):
+% 'nobind' formats for PDF output (ie equal margins, no extra blank pages):
 %\documentclass[a4paper,nobind]{templates/ociamthesis}
 
-% As you can see from the uncommented line below, oxforddown template uses the a4paper size, 
+% As you can see from the line below, oxforddown uses the a4paper size, 
 % and passes in the binding option from the YAML header in index.Rmd:
 \documentclass[a4paper, $if(page-layout)$$page-layout$$endif$]{templates/ociamthesis}
 
@@ -471,6 +468,8 @@ $if(use-natbib)$
 $endif$
 
 % set the section header to the references heading
+$if(params.referenceHeading)$
 \markboth{$params.referenceHeading$}{}
+$endif$
 
 \end{document}
