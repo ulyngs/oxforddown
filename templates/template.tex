@@ -317,9 +317,10 @@ $else$
 $endif$
 \renewcommand{\university}{$university$}
 \renewcommand{\submittedtext}{$submitted-text$}
-\renewcommand{\thesistitlesize}{\fontsize{$title-size$}{$title-size-linespacing$}\selectfont}
-\renewcommand{\gapbeforecrest}{$gap-before-crest$}
-\renewcommand{\gapaftercrest}{$gap-after-crest$}
+\renewcommand{\thesistitlesize}{\fontsize{$if(title-size)$$title-size$$else$22pt$endif$}{$if(title-size-linespacing)$$title-size-linespacing$$else$28pt$endif$}\selectfont}
+\renewcommand{\gapbeforecrest}{$if(gap-before-crest)$$gap-before-crest$$else$25mm$endif$}
+\renewcommand{\gapaftercrest}{$if(gap-after-crest)$$gap-after-crest$$else$25mm$endif$
+}
 
 
 % Leave this line alone; it gets things started for the real document.
