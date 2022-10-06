@@ -89,7 +89,7 @@ refs-space-between-entries: 1mm
 corrections: true
 
 ### link highlighting ###
-colored-not-bordered-links: true # true = highlight links by coloring text; false = highlight links with a border
+border-around-links: false # false = links have colored text; true = links have a border around them
 
 # Set the link text/border coloring here, in RGB. 
 # Comment out a variable to use whatever the text's existing color is.

@@ -53,7 +53,15 @@ $else$
 \definecolor{mycitecolor}{RGB}{0,33,71}
 $endif$
 
-$if(colored-not-bordered-links)$
+$if(border-around-links)$
+\hypersetup{
+  colorlinks=false,
+  linktocpage=$if(link-toc-page)$$link-toc-page$$else$true$endif$,
+  linkbordercolor=mylinkcolor,
+  urlbordercolor=myurlcolor,
+  citebordercolor=mycitecolor
+}
+$else$
 \hypersetup{
   hidelinks,
   colorlinks,
@@ -61,15 +69,6 @@ $if(colored-not-bordered-links)$
   linkcolor=mylinkcolor,
   urlcolor=myurlcolor,
   citecolor=mycitecolor
-}
-
-$else$
-\hypersetup{
-  colorlinks=false,
-  linktocpage=$if(link-toc-page)$$link-toc-page$$else$true$endif$,
-  linkbordercolor=mylinkcolor,
-  urlbordercolor=myurlcolor,
-  citebordercolor=mycitecolor
 }
 $endif$
 
