@@ -419,13 +419,11 @@ $endif$
 % This lays the groundwork for per-chapter, mini tables of contents.  Comment the following line
 % (and remove \minitoc from the chapter files) if you don't want this.  Un-comment either of the
 % next two lines if you want a per-chapter list of figures or tables.
-$if(mini-toc)$
-  \dominitoc % include a mini table of contents
-$endif$
-$if(mini-lof)$
+$if(remove-mini-toc)$$else$\dominitoc$endif$ % include a mini table of contents
+$if(add-mini-lof)$
   \dominilof  % include a mini list of figures
 $endif$
-$if(mini-lot)$
+$if(add-mini-lot)$
   \dominilot  % include a mini list of tables
 $endif$
 
