@@ -39,12 +39,18 @@
 
 $if(linkcolor-rgb)$
 \definecolor{mylinkcolor}{RGB}{$linkcolor-rgb$}
+$else$
+\definecolor{mylinkcolor}{RGB}{0,0,139}
 $endif$
 $if(urlcolor-rgb)$
 \definecolor{myurlcolor}{RGB}{$urlcolor-rgb$}
+$else$
+\definecolor{myurlcolor}{RGB}{0,0,139}
 $endif$
 $if(citecolor-rgb)$
 \definecolor{mycitecolor}{RGB}{$citecolor-rgb$}
+$else$
+\definecolor{mycitecolor}{RGB}{0,33,71}
 $endif$
 
 $if(colored-not-bordered-links)$
@@ -52,18 +58,18 @@ $if(colored-not-bordered-links)$
   hidelinks,
   colorlinks,
   linktocpage=$if(toc-link-page-numbers)$$toc-link-page-numbers$$else$false$endif$,
-  linkcolor=$if(linkcolor-rgb)$mylinkcolor$else$.$endif$,
-  urlcolor=$if(urlcolor-rgb)$myurlcolor$else$.$endif$,
-  citecolor=$if(citecolor-rgb)$mycitecolor$else$.$endif$
+  linkcolor=mylinkcolor,
+  urlcolor=myurlcolor,
+  citecolor=mycitecolor
 }
 
 $else$
 \hypersetup{
   colorlinks=false,
   linktocpage=$if(link-toc-page)$$link-toc-page$$else$true$endif$,
-  linkbordercolor=$if(linkcolor-rgb)$mylinkcolor$else$.$endif$,
-  urlbordercolor=$if(urlcolor-rgb)$myurlcolor$else$.$endif$,
-  citebordercolor=$if(citecolor-rgb)$mycitecolor$else$.$endif$
+  linkbordercolor=mylinkcolor,
+  urlbordercolor=myurlcolor,
+  citebordercolor=mycitecolor
 }
 $endif$
 
