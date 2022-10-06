@@ -12,22 +12,19 @@
 % as specified in the MIT License included in this distribution's LICENSE file.
 %
 % John commented this file extensively, so read through to see how to use the various options.  Remember that in LaTeX,
-% any line starting with a % is NOT executed.  Several places below, you have a choice of which line to use
-% out of multiple options (eg draft vs final, for PDF vs for binding, etc.)  When you pick one, add a % to the beginning of
-% the lines you don't want.
-
+% any line starting with a % is NOT executed.
 
 %%%%% PAGE LAYOUT
-% The most common choices should be below.  You can also do other things, like replacing "a4paper" with "letterpaper", etc.
+% The most common choices should be below.  You can also do other things, like replace "a4paper" with "letterpaper", etc.
 
-% This one formats for two-sided binding (ie left and right pages have mirror margins; blank pages inserted where needed):
+% 'twoside' formats for two-sided binding (ie left and right pages have mirror margins; blank pages inserted where needed):
 %\documentclass[a4paper,twoside]{templates/ociamthesis}
-% This one formats for one-sided binding (ie left margin > right margin; no extra blank pages):
+% Specifying nothing formats for one-sided binding (ie left margin > right margin; no extra blank pages):
 %\documentclass[a4paper]{ociamthesis}
-% This one formats for PDF output (ie equal margins, no extra blank pages):
+% 'nobind' formats for PDF output (ie equal margins, no extra blank pages):
 %\documentclass[a4paper,nobind]{templates/ociamthesis}
 
-% As you can see from the uncommented line below, oxforddown template uses the a4paper size, 
+% As you can see from the line below, oxforddown uses the a4paper size, 
 % and passes in the binding option from the YAML header in index.Rmd:
 \documentclass[a4paper, nobind]{templates/ociamthesis}
 
@@ -35,6 +32,8 @@
 %%%%% ADDING LATEX PACKAGES
 % add hyperref package with options from YAML %
 \usepackage[pdfpagelabels]{hyperref}
+% handle long urls
+\usepackage{xurl}
 % change the default coloring of links to something sensible
 \usepackage{xcolor}
 
@@ -50,7 +49,6 @@
   urlcolor=myurlcolor,
   citecolor=mycitecolor
 }
-
 
 
 % add float package to allow manual control of figure positioning %
@@ -69,6 +67,7 @@
   \hl{#3}%
   \endgroup
 }
+% stop soul from freaking out when it sees citation commands
 \soulregister\ref7
 \soulregister\cite7
 \soulregister\citet7
@@ -82,7 +81,7 @@
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
  
-% UL 1 Dec 2018, fix to include code in shaded environments
+% allow us to include code blocks in shaded environments
 \usepackage{color}
 \usepackage{fancyvrb}
 \newcommand{\VerbBar}{|}
@@ -124,7 +123,9 @@
 \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 
-%UL set white space before and after code blocks
+% set white space before and after code blocks
+
+
 \renewenvironment{Shaded}
 {
   \vspace{10pt}%
@@ -177,20 +178,14 @@
 \fancyhead[LO]{\emph{\leftmark}} 
 \fancyhead[RE]{\emph{\rightmark}} 
 
+
+
+
 % UL page number position 
 \fancyfoot[C]{\emph{\thepage}} %regular pages
 \fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\emph{\thepage}}} %chapter pages
 
-% JEM fix header on cleared pages for openright
-\def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else
-   \hbox{}
-   \fancyfoot[C]{}
-   \newpage
-   \if@twocolumn\hbox{}\newpage
-   \fi
-   \fancyhead[LO]{\emph{\leftmark}} 
-   \fancyhead[RE]{\emph{\rightmark}} 
-   \fi\fi}
+
 
 
 %%%%% SELECT YOUR DRAFT OPTIONS
@@ -199,8 +194,9 @@
 % IP feb 2021: option to include line numbers in PDF
 
 % for line wrapping in code blocks
+\usepackage{fancyvrb}
 \usepackage{fvextra}
-\DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines=true, breakanywhere=true, commandchars=\\\{\}}
 
 % This highlights (in blue) corrections marked with (for words) \mccorrect{blah} or (for whole
 % paragraphs) \begin{mccorrection} . . . \end{mccorrection}.  This can be useful for sending a PDF of
@@ -210,11 +206,10 @@
 
 %%%%% BIBLIOGRAPHY SETUP
 % Note that your bibliography will require some tweaking depending on your department, preferred format, etc.
-% If you've not used LaTeX before, I recommend reading a little about biblatex/biber and getting started with it.
+% If you've not used LaTeX before, I recommend just using pandoc for citations -- this is what's used unless you specific e.g. "citation_package: natbib" in index.Rmd
 % If you're already a LaTeX pro and are used to natbib or something, modify as necessary.
-% Either way, you'll have to choose and configure an appropriate bibliography format...
 
-% this enables pandoc citations
+% this allows the latex template to handle pandoc citations
 \newlength{\cslhangindent}
 \setlength{\cslhangindent}{1.5em}
 \newlength{\csllabelwidth}
@@ -262,6 +257,7 @@ Template for R Markdown}
 %\renewcommand{\submittedtext}{Submitted in partial completion of the}
 % Your full degree name.  (But remember that DPhils aren't "in" anything.  They're just DPhils.)
 \degree{Doctor of Philosophy}
+
 % Term and year of submission, or date if your board requires (eg most masters)
 \degreedate{Michaelmas 2018}
 
@@ -270,10 +266,10 @@ Template for R Markdown}
 % This is a good place to dump your own LaTeX macros as they come up.
 
 % To make text superscripts shortcuts
-	\renewcommand{\th}{\textsuperscript{th}} % ex: I won 4\th place
-	\newcommand{\nd}{\textsuperscript{nd}}
-	\renewcommand{\st}{\textsuperscript{st}}
-	\newcommand{\rd}{\textsuperscript{rd}}
+\renewcommand{\th}{\textsuperscript{th}} % ex: I won 4\th place
+\newcommand{\nd}{\textsuperscript{nd}}
+\renewcommand{\st}{\textsuperscript{st}}
+\newcommand{\rd}{\textsuperscript{rd}}
 
 %%%%% THE ACTUAL DOCUMENT STARTS HERE
 \begin{document}
@@ -303,7 +299,8 @@ Template for R Markdown}
 \renewcommand{\submittedtext}{A thesis submitted for the degree of}
 \renewcommand{\thesistitlesize}{\fontsize{22pt}{28pt}\selectfont}
 \renewcommand{\gapbeforecrest}{25mm}
-\renewcommand{\gapaftercrest}{25mm}
+\renewcommand{\gapaftercrest}{25mm
+}
 
 
 % Leave this line alone; it gets things started for the real document.
@@ -344,17 +341,17 @@ Template for R Markdown}
 \begin{acknowledgements}
  	This is where you will normally thank your advisor, colleagues, family and friends, as well as funding and institutional support. In our case, we will give our praises to the people who developed the ideas and tools that allow us to push open science a little step forward by writing plain-text, transparent, and reproducible theses in R Markdown.
 
-  We must be grateful to John Gruber for inventing the original version of Markdown, to John MacFarlane for creating Pandoc (\url{http://pandoc.org}) which converts Markdown to a large number of output formats, and to Yihui Xie for creating \texttt{knitr} which introduced R Markdown as a way of embedding code in Markdown documents, and \texttt{bookdown} which added tools for technical and longer-form writing.
+ We must be grateful to John Gruber for inventing the original version of Markdown, to John MacFarlane for creating Pandoc (\url{http://pandoc.org}) which converts Markdown to a large number of output formats, and to Yihui Xie for creating \texttt{knitr} which introduced R Markdown as a way of embedding code in Markdown documents, and \texttt{bookdown} which added tools for technical and longer-form writing.
 
-  Special thanks to \href{http://chester.rbind.io}{Chester Ismay}, who created the \texttt{thesisdown} package that helped many a PhD student write their theses in R Markdown. And a very special thanks to John McManigle, whose adaption of Sam Evans' adaptation of Keith Gillow's original maths template for writing an Oxford University DPhil thesis in LaTeX provided the template that I in turn adapted for R Markdown.
+ Special thanks to \href{http://chester.rbind.io}{Chester Ismay}, who created the \texttt{thesisdown} package that helped many a PhD student write their theses in R Markdown. And a very special thanks to John McManigle, whose adaption of Sam Evans' adaptation of Keith Gillow's original maths template for writing an Oxford University DPhil thesis in LaTeX provided the template that I in turn adapted for R Markdown.
 
-  Finally, profuse thanks to JJ Allaire, the founder and CEO of \href{http://rstudio.com}{RStudio}, and Hadley Wickham, the mastermind of the tidyverse without whom we'd all just given up and done data science in Python instead. Thanks for making data science easier, more accessible, and more fun for us all.
+ Finally, profuse thanks to JJ Allaire, the founder and CEO of \href{http://rstudio.com}{RStudio}, and Hadley Wickham, the mastermind of the tidyverse without whom we'd all just given up and done data science in Python instead. Thanks for making data science easier, more accessible, and more fun for us all.
 
-  \begin{flushright}
-  Ulrik Lyngs \\
-  Linacre College, Oxford \\
-  2 December 2018
-  \end{flushright}
+ \begin{flushright}
+ Ulrik Lyngs \\
+ Linacre College, Oxford \\
+ 2 December 2018
+ \end{flushright}
 \end{acknowledgements}
 
 
@@ -366,9 +363,9 @@ Template for R Markdown}
 \begin{abstract}
 	This \emph{R Markdown} template is for writing an Oxford University thesis. The template is built using Yihui Xie's \texttt{bookdown} package, with heavy inspiration from Chester Ismay's \texttt{thesisdown} and the \texttt{OxThesis} \LaTeX~template (most recently adapted by John McManigle).
 
- This template's sample content include illustrations of how to write a thesis in R Markdown, and largely follows the structure from \href{https://ulyngs.github.io/rmarkdown-workshop-2019/}{this R Markdown workshop}.
+This template's sample content include illustrations of how to write a thesis in R Markdown, and largely follows the structure from \href{https://ulyngs.github.io/rmarkdown-workshop-2019/}{this R Markdown workshop}.
 
- Congratulations for taking a step further into the lands of open, reproducible science by writing your thesis using a tool that allows you to transparently include tables and dynamically generated plots directly from the underlying data. Hip hooray!
+Congratulations for taking a step further into the lands of open, reproducible science by writing your thesis using a tool that allows you to transparently include tables and dynamically generated plots directly from the underlying data. Hip hooray!
 \end{abstract}
 
 
@@ -377,7 +374,7 @@ Template for R Markdown}
 % This lays the groundwork for per-chapter, mini tables of contents.  Comment the following line
 % (and remove \minitoc from the chapter files) if you don't want this.  Un-comment either of the
 % next two lines if you want a per-chapter list of figures or tables.
-  \dominitoc % include a mini table of contents
+\dominitoc % include a mini table of contents
 
 % This aligns the bottom of the text of each page.  It generally makes things look better.
 \flushbottom
@@ -436,7 +433,9 @@ The sample content is partly adapted from \href{https://github.com/ismayc/thesis
 
 Hopefully, writing your thesis in R Markdown will provide a nicer interface to the OxThesis template if you haven't used TeX or LaTeX before.
 More importantly, \emph{R Markdown} allows you to embed chunks of code within your thesis and generate plots and tables directly from the underlying data, avoiding copy-paste steps.
-This gets you into the habit of doing reproducible research, which will benefit you long-term as a researcher, and also help anyone that is trying to reproduce or build upon your results down the road.
+This gets you into the habit of doing reproducible research, which will benefit you long-term as a researcher, and also help anyone that is trying to reproduce or build upon your results down the road.'
+
+(\protect\hyperlink{ref-adcockRewardMotivatedLearningMesolimbic2006}{Adcock et al., 2006}) (\protect\hyperlink{ref-aagaardMultitaskingDistractionConceptual2019}{Aagaard, 2019}) (\protect\hyperlink{ref-acohenRowersHighBehavioural2010}{a Cohen et al., 2010}; \protect\hyperlink{ref-a.westSixteenCommonMisconceptions2011}{a. West et al., 2011}; \protect\hyperlink{ref-aagaardRhetoricTechAddiction2021}{Aagaard, 2021a}, \protect\hyperlink{ref-aagaardSmallClickEntire2021}{2021b}; \protect\hyperlink{ref-adamicRatingFriendsMaking2011}{Adamic et al., 2011}; \protect\hyperlink{ref-adcockRewardMotivatedLearningMesolimbic2006}{Adcock et al., 2006})
 
 \hypertarget{why-use-it}{%
 \section*{Why use it?}\label{why-use-it}}
@@ -445,8 +444,10 @@ This gets you into the habit of doing reproducible research, which will benefit 
 \emph{R Markdown} creates a simple and straightforward way to interface with the beauty of LaTeX.
 Packages have been written in \textbf{R} to work directly with LaTeX to produce nicely formatting tables and paragraphs.
 In addition to creating a user friendly interface to LaTeX, \emph{R Markdown} allows you to read in your data, analyze it and to visualize it using \textbf{R}, \textbf{Python} or other languages, and provide documentation and commentary on the results of your project.\\
+
 Further, it allows for results of code output to be passed inline to the commentary of your results.
-You'll see more on this later, focusing on \textbf{R}. If you are more into \textbf{Python} or something else, you can still use \emph{R Markdown} - see \href{https://bookdown.org/yihui/rmarkdown/language-engines.html}{`Other language engines'} in Yihui Xie's \href{https://bookdown.org/yihui/rmarkdown/language-engines.html}{\emph{R Markdown: The Definitive Guide}}.
+You'll see more on this later, focusing on \textbf{R}.
+If you are more into \textbf{Python} or something else, you can still use \emph{R Markdown} - see \href{https://bookdown.org/yihui/rmarkdown/language-engines.html}{`Other language engines'} in Yihui Xie's \href{https://bookdown.org/yihui/rmarkdown/language-engines.html}{\emph{R Markdown: The Definitive Guide}}.
 
 Using LaTeX together with \emph{Markdown} is more consistent than the output of a word processor, much less prone to corruption or crashing, and the resulting file is smaller than a Word file.
 While you may never have had problems using Word in the past, your thesis is likely going to be about twice as large and complex as anything you've written before, taxing Word's capabilities.
@@ -1283,7 +1284,7 @@ With this style, a number of variations on the citation syntax are useful to kno
 If you want a numerical citation style instead, try \texttt{csl:\ bibliography/transactions-on-computer-human-interaction.csl} or just have a browse through the \href{https://www.zotero.org/styles}{Zotero Style Repository} and look for one you like.
 For convenience, you can set the line spacing and the space between the bibliographic entries in the reference section directly from the YAML header in \textbf{index.Rmd}.
 
-If you prefer to use \texttt{biblatex} or \texttt{natbib} to handle references, see \href{customising-citations}{this chapter}.
+If you prefer to use \texttt{biblatex} or \texttt{natbib} to handle references, see \protect\hyperlink{customising-citations}{this chapter}.
 
 \clearpage
 
@@ -2339,26 +2340,21 @@ You may also want to remove margins from the PDF files, which you can do with Ad
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# install.packages(pdftools)}
-\CommentTok{\# split PDF into pages stored in}
-\NormalTok{    figures}\SpecialCharTok{/}\NormalTok{sample}\SpecialCharTok{{-}}\NormalTok{content}\SpecialCharTok{/}\NormalTok{pdf\_embed\_example}\SpecialCharTok{/}\NormalTok{split}\SpecialCharTok{/}
-\CommentTok{\#}
-\NormalTok{    pdftools}\SpecialCharTok{::}\FunctionTok{pdf\_split}\NormalTok{(}\StringTok{"figures/sample{-}content/pdf\_embed\_example/Lyngs2020\_FB.pdf"}\NormalTok{,}
-\CommentTok{\# output = "figures/sample{-}content/pdf\_embed\_example/split/")}
+\CommentTok{\# split PDF into pages stored in figures/sample{-}content/pdf\_embed\_example/split/}
+\CommentTok{\# pdftools::pdf\_split("figures/sample{-}content/pdf\_embed\_example/Lyngs2020\_FB.pdf",}
+\CommentTok{\#        output = "figures/sample{-}content/pdf\_embed\_example/split/")}
 
 \CommentTok{\# grab the pages}
-\NormalTok{pages }\OtherTok{\textless{}{-}} \FunctionTok{list.files}\NormalTok{(}\StringTok{"figures/sample{-}content/pdf\_embed\_example/split"}\NormalTok{,}
-    \AttributeTok{full.names =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{pages }\OtherTok{\textless{}{-}} \FunctionTok{list.files}\NormalTok{(}\StringTok{"figures/sample{-}content/pdf\_embed\_example/split"}\NormalTok{, }\AttributeTok{full.names =} \ConstantTok{TRUE}\NormalTok{)}
 
-\CommentTok{\# set how wide you want the inserted PDFs to be:}
+\CommentTok{\# set how wide you want the inserted PDFs to be: }
 \CommentTok{\# 1.0 is 100 per cent of the oxforddown PDF page width;}
 \CommentTok{\# you may want to make it a bit bigger}
 \NormalTok{pdf\_width }\OtherTok{\textless{}{-}} \FloatTok{1.2}
 
 \CommentTok{\# for each PDF page, insert it nicely and}
 \CommentTok{\# end with a page break}
-\FunctionTok{cat}\NormalTok{(stringr}\SpecialCharTok{::}\FunctionTok{str\_c}\NormalTok{(}\StringTok{"}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{newpage }\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{begin\{center\}}
-\StringTok{    }\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{makebox[}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{linewidth][c]\{}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{includegraphics[width="}\NormalTok{, pdf\_width,}
-    \StringTok{"}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{linewidth]\{"}\NormalTok{, pages, }\StringTok{"\}\} }\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{end\{center\}"}\NormalTok{))}
+\FunctionTok{cat}\NormalTok{(stringr}\SpecialCharTok{::}\FunctionTok{str\_c}\NormalTok{(}\StringTok{"}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{newpage }\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{begin\{center\} }\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{makebox[}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{linewidth][c]\{}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{includegraphics[width="}\NormalTok{, pdf\_width, }\StringTok{"}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{linewidth]\{"}\NormalTok{, pages, }\StringTok{"\}\} }\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{end\{center\}"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2687,47 +2683,6 @@ If you have a \textbf{.tex} file with some required front matter from your unive
 \noindent
 \fbox{\includegraphics[width=0.32\linewidth]{figures/sample-content/alt_frontmatter_example/split/_000001.pdf}} \fbox{\includegraphics[width=0.32\linewidth]{figures/sample-content/alt_frontmatter_example/split/_000002.pdf}} \fbox{\includegraphics[width=0.32\linewidth]{figures/sample-content/alt_frontmatter_example/split/_000003.pdf}} \fbox{\includegraphics[width=0.32\linewidth]{figures/sample-content/alt_frontmatter_example/split/_000004.pdf}} \fbox{\includegraphics[width=0.32\linewidth]{figures/sample-content/alt_frontmatter_example/split/_000005.pdf}} \fbox{\includegraphics[width=0.32\linewidth]{figures/sample-content/alt_frontmatter_example/split/_000006.pdf}}
 
-\hypertarget{troubleshooting}{%
-\chapter{Troubleshooting}\label{troubleshooting}}
-
-This chapter describes common errors you may run into, and how to fix them.
-
-\hypertarget{error-failed-to-build-the-bibliography-via-biber}{%
-\section{Error: Failed to build the bibliography via biber}\label{error-failed-to-build-the-bibliography-via-biber}}
-
-This can happen if you've had a failed build, perhaps in relation to RStudio shutting down abruptly.
-
-Try doing this:
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  type \texttt{make\ clean-knits} in the terminal tab (or run \texttt{file.remove(list.files(pattern\ =\ "*.(log\textbar{}mtc\textbar{}maf\textbar{}aux\textbar{}bbl\textbar{}blg\textbar{}xml)"))} in the R console) to clean up files generated by LaTeX during a build
-\item
-  restart your computer
-\end{enumerate}
-
-If this does not solve the problem, try using the \href{https://www.overleaf.com/learn/latex/Bibliography_management_with_natbib}{natbib} LaTeX package instead of \href{https://www.overleaf.com/learn/latex/Articles/Getting_started_with_BibLaTeX}{biblatex} for handling references.
-To do this, go to \textbf{index.Rmd} and
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  set \texttt{use-biblatex:\ false} and \texttt{use-natbib:\ true}
-\item
-  set \texttt{citation\_package:\ natbib} under
-\end{enumerate}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{output}\KeywordTok{:}
-\AttributeTok{  bookdown:}\FunctionTok{:pdf\_book}\KeywordTok{:}
-\AttributeTok{    }\FunctionTok{citation\_package}\KeywordTok{:}\AttributeTok{ natbib}
-\end{Highlighting}
-\end{Shaded}
-
 \begin{savequote}
 Alles Gescheite ist schon gedacht worden.\\
 Man muss nur versuchen, es noch einmal zu denken.
@@ -2786,8 +2741,31 @@ This first appendix includes an R chunk that was hidden in the document (using \
 \chapter*{References}\label{references}}
 \addcontentsline{toc}{chapter}{References}
 
+\markboth{References}{}
+
 \hypertarget{refs}{}
 \begin{CSLReferences}{1}{0}
+\leavevmode\vadjust pre{\hypertarget{ref-acohenRowersHighBehavioural2010}{}}%
+a Cohen, E. E., Ejsmond-Frey, R., Knight, N., Dunbar, R. I. M., Cohen, E. E. a, Ejsmond-Frey, R., Knight, N., \& Dunbar, R. I. M. (2010). Rowers' high: Behavioural synchrony is correlated with elevated pain thresholds. \emph{Biology Letters}, \emph{6}(1), 106--108. \url{https://doi.org/10.1098/rsbl.2009.0670}
+
+\leavevmode\vadjust pre{\hypertarget{ref-a.westSixteenCommonMisconceptions2011}{}}%
+a. West, S., El Mouden, C., Gardner, A., West, S. a., El Mouden, C., \& Gardner, A. (2011). Sixteen common misconceptions about the evolution of cooperation in humans. \emph{Evolution and Human Behavior}, \emph{32}(4), 231--262. \url{https://doi.org/10.1016/j.evolhumbehav.2010.08.001}
+
+\leavevmode\vadjust pre{\hypertarget{ref-aagaardMultitaskingDistractionConceptual2019}{}}%
+Aagaard, J. (2019). Multitasking as distraction: {A} conceptual analysis of media multitasking research. \emph{Theory \& Psychology}, \emph{29}(1), 87--99. \url{https://doi.org/10.1177/0959354318815766}
+
+\leavevmode\vadjust pre{\hypertarget{ref-aagaardRhetoricTechAddiction2021}{}}%
+Aagaard, J. (2021a). Beyond the rhetoric of tech addiction: Why we should be discussing tech habits instead (and how). \emph{Phenomenology and the Cognitive Sciences}, \emph{20}(3), 559--572. \url{https://doi.org/10.1007/s11097-020-09669-z}
+
+\leavevmode\vadjust pre{\hypertarget{ref-aagaardSmallClickEntire2021}{}}%
+Aagaard, J. (2021b). {``{From} a small click to an entire action''}: Exploring students' anti-distraction strategies. \emph{Learning, Media and Technology}, \emph{46}(3), 355--365. \url{https://doi.org/10.1080/17439884.2021.1896540}
+
+\leavevmode\vadjust pre{\hypertarget{ref-adamicRatingFriendsMaking2011}{}}%
+Adamic, L. A., Lauterbach, D., Teng, C. C.-Y., \& Ackerman, M. S. (2011). Rating friends without making enemies. \emph{Proceedings of the {Fifth International AAAI Conference} on {Weblogs} and {Social Media}}, 8.
+
+\leavevmode\vadjust pre{\hypertarget{ref-adcockRewardMotivatedLearningMesolimbic2006}{}}%
+Adcock, R. A., Thangavel, A., Whitfield-Gabrieli, S., Knutson, B., \& Gabrieli, J. D. E. (2006). Reward-{Motivated Learning}: {Mesolimbic Activation Precedes Memory Formation}. \emph{Neuron}, \emph{50}(3), 507--517. \url{https://doi.org/10.1016/j.neuron.2006.03.036}
+
 \leavevmode\vadjust pre{\hypertarget{ref-Darwin1859}{}}%
 Darwin, C. (1859). \emph{{On the Origin of Species by Means of Natural Selection or the Preservation of Favoured Races in the Struggle for Life}}. John Murray.
 
