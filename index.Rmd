@@ -92,7 +92,6 @@ corrections: true
 border-around-links: false # false = links have colored text; true = links have a border around them
 
 # Set the link text/border coloring here, in RGB. 
-# Comment out a variable to use whatever the text's existing color is.
 # If printing a physical version of your thesis, you'll want to comment out all of these.
 urlcolor-rgb: "0,0,139"     # web addresses
 citecolor-rgb: "0,33,71"    # citations
