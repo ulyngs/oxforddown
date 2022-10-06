@@ -123,6 +123,7 @@ running-header-position-rightmark: RE  #marks the section.
 draft-mark: false # add a DRAFT mark?
 draft-mark-foot-or-head: foot ##'foot' = in footer, 'head' = in header
 draft-mark-position: C
+draft-mark-text: DRAFT on \today
 
 ### section numbering ###
 section-numbering-depth: 2 # to which depth should headings be numbered?

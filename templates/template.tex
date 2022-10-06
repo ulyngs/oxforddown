@@ -162,10 +162,12 @@ $endif$
 \fancypagestyle{plain}{\fancyhf{}\fancy$if(chapter-page-number-foot-or-head)$$chapter-page-number-foot-or-head$$else$foot$endif$[$if(chapter-page-number-position)$$chapter-page-number-position$$else$C$endif$]{\emph{\thepage}}} %chapter pages
 
 
+
+
 %%%%% SELECT YOUR DRAFT OPTIONS
 % This adds a "DRAFT" footer to every normal page.  (The first page of each chapter is not a "normal" page.)
 $if(draft-mark)$
-\fancy$draft-mark-foot-or-head$[$draft-mark-position$]{\emph{DRAFT Printed on \today}}
+\fancy$if(draft-mark-foot-or-head)$$draft-mark-foot-or-head$$else$foot$endif$[$if(draft-mark-position)$$draft-mark-position$$else$C$endif$]{\emph{$if(draft-mark-text)$$draft-mark-text$$else$DRAFT on \today$endif$}}
 $endif$
 
 % IP feb 2021: option to include line numbers in PDF
