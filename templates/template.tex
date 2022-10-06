@@ -257,34 +257,35 @@ $endif$
 
 %%%%% THESIS / TITLE PAGE INFORMATION
 % Everybody needs to complete the following:
-\title{$title$}
-\author{$author$}
-\college{$college$}
+$if(title)$\title{$title$}$endif$
+$if(author)$\author{$author$}$endif$
+$if(college)$\college{$college$}$endif$
 
 % Master's candidates who require the alternate title page (with candidate number and word count)
 % must also un-comment and complete the following three lines:
 $if(masters-submission)$
 \masterssubmissiontrue
-\candidateno{$candidate-number$}
-\wordcount{$word-count$}
+$if(candidate-number)$\candidateno{$candidate-number$}$endif$
+$if(word-count)$\wordcount{$word-count$}$endif$
 $endif$
 
 % Uncomment the following line if your degree also includes exams (eg most masters):
 %\renewcommand{\submittedtext}{Submitted in partial completion of the}
 % Your full degree name.  (But remember that DPhils aren't "in" anything.  They're just DPhils.)
-\degree{$degree$}
+$if(degree)$\degree{$degree$}$endif$
+
 % Term and year of submission, or date if your board requires (eg most masters)
-\degreedate{$degreedate$}
+$if(degreedate)$\degreedate{$degreedate$}$endif$
 
 
 %%%%% YOUR OWN PERSONAL MACROS
 % This is a good place to dump your own LaTeX macros as they come up.
 
 % To make text superscripts shortcuts
-	\renewcommand{\th}{\textsuperscript{th}} % ex: I won 4\th place
-	\newcommand{\nd}{\textsuperscript{nd}}
-	\renewcommand{\st}{\textsuperscript{st}}
-	\newcommand{\rd}{\textsuperscript{rd}}
+\renewcommand{\th}{\textsuperscript{th}} % ex: I won 4\th place
+\newcommand{\nd}{\textsuperscript{nd}}
+\renewcommand{\st}{\textsuperscript{st}}
+\newcommand{\rd}{\textsuperscript{rd}}
 
 %%%%% THE ACTUAL DOCUMENT STARTS HERE
 \begin{document}
