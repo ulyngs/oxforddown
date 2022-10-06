@@ -154,9 +154,12 @@ $if(running-header)$
 \fancy$if(running-header-foot-or-head)$$running-header-foot-or-head$$else$head$endif$[$if(running-header-position-rightmark)$$running-header-position-rightmark$$else$RE$endif$]{\emph{\rightmark}} 
 $endif$
 
+
+
+
 % UL page number position 
-\fancy$ordinary-page-number-foot-or-head$[$ordinary-page-number-position$]{\emph{\thepage}} %regular pages
-\fancypagestyle{plain}{\fancyhf{}\fancy$chapter-page-number-foot-or-head$[$chapter-page-number-position$]{\emph{\thepage}}} %chapter pages
+\fancy$if(ordinary-page-number-foot-or-head)$$ordinary-page-number-foot-or-head$$else$foot$endif$[$if(ordinary-page-number-position)$$ordinary-page-number-position$$else$C$endif$]{\emph{\thepage}} %regular pages
+\fancypagestyle{plain}{\fancyhf{}\fancy$if(chapter-page-number-foot-or-head)$$chapter-page-number-foot-or-head$$else$foot$endif$[$if(chapter-page-number-position)$$chapter-page-number-position$$else$C$endif$]{\emph{\thepage}}} %chapter pages
 
 
 %%%%% SELECT YOUR DRAFT OPTIONS
