@@ -129,6 +129,7 @@ draft-mark-text: DRAFT on \today
 section-numbering-depth: 2 # to which depth should headings be numbered?
 
 ### tables of content ###
+table-of-contents: true # should there be one?
 toc-depth: 1 # to which depth should headings be included in table of contents?
 lof: true # include list of figures in front matter?
 lot: true # include list of tables in front matter?
@@ -154,7 +155,7 @@ gap-after-crest: 25mm
 ### other stuff ###
 abstractseparate: false  # include front page w/ abstract for examination schools?
 includeline-num: false # show line numbering in PDF?
-line-wrapping-in-code: true #wrap overflowing lines in code blocks?
+no-line-wrapping-in-code: false # by default, we prevent lines in code blocks from going off into the margins -- set 'true' to override this
 
 
 #####################

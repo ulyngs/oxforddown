@@ -177,7 +177,8 @@ $if(includeline-num)$
 $endif$
 
 % for line wrapping in code blocks
-$if(line-wrapping-in-code)$
+$if(no-line-wrapping-in-code)$
+$else$
 \usepackage{fancyvrb}
 \usepackage{fvextra}
 \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines=true, breakanywhere=true, commandchars=\\\{\}}
@@ -432,7 +433,9 @@ $endif$
 \flushbottom
 
 % This is where the whole-document ToC appears:
+$if(table-of-contents)$
 \tableofcontents
+$endif$
 
 $if(lof)$
 \listoffigures
