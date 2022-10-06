@@ -334,9 +334,9 @@ $endif$
 % do.  Throughout, 0 = chapter; 1 = section; 2 = subsection; 3 = subsubsection, 4 = paragraph...
 
 % The level that gets a number:
-\setcounter{secnumdepth}{$section-numbering-depth$}
+\setcounter{secnumdepth}{$if(section-numbering-depth)$$section-numbering-depth$$else$2$endif$}
 % The level that shows up in the ToC:
-\setcounter{tocdepth}{$toc-depth$}
+\setcounter{tocdepth}{$if(toc-depth)$$toc-depth$$else$1$endif$}
 
 
 %%%%% ABSTRACT SEPARATE
@@ -353,10 +353,12 @@ $endif$
 \begin{romanpages}
 
 % Title page is created here
+$if(title-page)$
 $if(alternative-title-page)$
 \input{$alternative-title-page$}
 $else$
 \maketitle
+$endif$
 $endif$
 
 %%%%% DEDICATION

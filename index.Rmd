@@ -145,6 +145,7 @@ linespacing: 22pt plus2pt # 22pt is official for submission & library copies
 frontmatter-linespacing: 17pt plus1pt minus1pt #spacing in roman-numbered pages (acknowledgments, table of contents, etc.)
 
 ### title page
+title-page: true
 title-size: 22pt
 title-size-linespacing: 28pt
 gap-before-crest: 25mm
