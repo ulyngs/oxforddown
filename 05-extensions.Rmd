@@ -3,16 +3,16 @@ output:
   #bookdown::html_document2: default
   #bookdown::word_document2: default
   bookdown::pdf_document2: 
-    template: templates/brief_template.tex
+    template: templates/template.tex
 documentclass: book
 #bibliography: [bibliography/references.bib, bibliography/additional-references.bib]
 ---
 
 ```{block type='savequote', include=knitr::is_latex_output(), quote_author='(ref:darwin-quote)'}
 There is grandeur in this view of life, with its several powers, having been originally breathed into a few forms or into one; and that, whilst this planet has gone cycling on according to the fixed law of gravity, from so simple a beginning endless forms most beautiful and most wonderful have been, and are being, evolved.
-
 ```
 (ref:darwin-quote) --- Charles Darwin [@Darwin1859]
+<!-- note that the quote author won't show up when you knit just a single chapter -->
   
 # Customisations and extensions
 \minitoc <!-- this will include a mini table of contents-->

@@ -4,7 +4,7 @@
 #########################################
 output:
   bookdown::pdf_document2:
-    template: templates/brief_template.tex
+    template: templates/template.tex
   bookdown::html_document2: default
   bookdown::word_document2: default
 documentclass: book
