@@ -26,7 +26,7 @@
 
 % As you can see from the line below, oxforddown uses the a4paper size, 
 % and passes in the binding option from the YAML header in index.Rmd:
-\documentclass[a4paper, $if(page-layout)$$page-layout$$endif$]{templates/ociamthesis}
+\documentclass[a4paper, $if(page-layout)$$page-layout$$else$nobind$endif$]{templates/ociamthesis}
 
 
 %%%%% ADDING LATEX PACKAGES
