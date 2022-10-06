@@ -150,8 +150,8 @@ $endfor$
 \renewcommand{\headrulewidth}{0pt}
 
 $if(running-header)$
-\fancy$running-header-foot-or-head$[$running-header-position-leftmark$]{\emph{\leftmark}} 
-\fancy$running-header-foot-or-head$[$running-header-position-rightmark$]{\emph{\rightmark}} 
+\fancy$if(running-header-foot-or-head)$$running-header-foot-or-head$$else$head$endif$[$if(running-header-position-leftmark)$$running-header-position-leftmark$$else$LO$endif$]{\emph{\leftmark}} 
+\fancy$if(running-header-foot-or-head)$$running-header-foot-or-head$$else$head$endif$[$if(running-header-position-rightmark)$$running-header-position-rightmark$$else$RE$endif$]{\emph{\rightmark}} 
 $endif$
 
 % UL page number position 
