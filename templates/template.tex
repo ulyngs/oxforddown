@@ -107,14 +107,16 @@ $endif$
 $if(highlighting-macros)$
 $highlighting-macros$
 
-%UL set white space before and after code blocks
+% set white space before and after code blocks
+
+
 \renewenvironment{Shaded}
 {
-  \vspace{$space-before-code-block$}%
+  \vspace{$if(space-before-code-block)$$space-before-code-block$$else$10pt$endif$}%
   \begin{snugshade}%
 }{%
   \end{snugshade}%
-  \vspace{$space-after-code-block$}%
+  \vspace{$if(space-after-code-block)$$space-after-code-block$$else$8pt$endif$}%
 }
 $endif$
 
