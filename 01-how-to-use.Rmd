@@ -48,7 +48,7 @@ bibliography: [bibliography/references.bib, bibliography/additional-references.b
 
 In index.Rmd, set your thesis' basic metadata (e.g., title, author name)
 
-```yaml
+``` yaml
 title: |
   `oxforddown`: \
   An Oxford University Thesis \
@@ -59,7 +59,7 @@ college: Your College
 
 Also set filepath(s) to your abstract, acknowledgements, abbreviations, and bibliography (one or more **.bib** files):
 
-```yaml
+``` yaml
 abstract: |
   `r paste(readLines("front-and-back-matter/_abstract.Rmd"), collapse = '\n  ')`
 acknowledgements: |
@@ -80,7 +80,7 @@ How should page numbers be positioned?
 Should line numbers be shown?
 In HTML output, what CSS files should be used for styling?
 
-```yaml
+``` yaml
 ### citation and bibliography style ###
 bibliography-heading-in-pdf: Works Cited
 ...
