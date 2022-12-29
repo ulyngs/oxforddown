@@ -32,6 +32,7 @@ This gets you into the habit of doing reproducible research, which will benefit 
 *R Markdown* creates a simple and straightforward way to interface with the beauty of LaTeX.
 Packages have been written in **R** to work directly with LaTeX to produce nicely formatting tables and paragraphs.
 In addition to creating a user friendly interface to LaTeX, *R Markdown* allows you to read in your data, analyze it and to visualize it using **R**, **Python** or other languages, and provide documentation and commentary on the results of your project.\
+
 Further, it allows for results of code output to be passed inline to the commentary of your results.
 You'll see more on this later, focusing on **R**.
 If you are more into **Python** or something else, you can still use *R Markdown* - see ['Other language engines'](https://bookdown.org/yihui/rmarkdown/language-engines.html) in Yihui Xie's [*R Markdown: The Definitive Guide*](https://bookdown.org/yihui/rmarkdown/language-engines.html).
