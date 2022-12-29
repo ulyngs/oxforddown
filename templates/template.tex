@@ -184,6 +184,10 @@ $else$
 \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines=true, breakanywhere=true, commandchars=\\\{\}}
 $endif$
 
+% for quotations -- loaded here rather than in ociamthesis.cls, as it needs to
+% be loaded after fvextra, otherwise we get a warning message
+\usepackage{csquotes}
+
 % This highlights (in blue) corrections marked with (for words) \mccorrect{blah} or (for whole
 % paragraphs) \begin{mccorrection} . . . \end{mccorrection}.  This can be useful for sending a PDF of
 % your corrected thesis to your examiners for review.  Turn it off, and the blue disappears.
