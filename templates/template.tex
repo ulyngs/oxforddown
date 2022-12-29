@@ -373,6 +373,7 @@ $endif$
 $if(acknowledgements)$
 
 $if(show-acknowledgements-in-toc)$
+\phantomsection
 \addcontentsline{toc}{chapter}{Acknowledgements}
 \renewcommand{\numberstyleacks}{plain}
 \renewcommand{\numberstyleabstract}{plain}
@@ -389,7 +390,7 @@ $endif$
 $if(abstract)$
 
 $if(show-abstract-in-toc)$
-
+\phantomsection
 \addcontentsline{toc}{chapter}{$if(abstract-heading)$$abstract-heading$$else$Abstract$endif$}
 \renewcommand{\numberstyleabstract}{plain}
 $endif$
@@ -402,7 +403,7 @@ $endif$
 $endif$
 
 $if(abstract-second)$
-
+\phantomsection
 $if(show-abstract-in-toc)$
 \addcontentsline{toc}{chapter}{$abstract-second-heading$}
 \renewcommand{\numberstyleabstract}{plain}
