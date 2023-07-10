@@ -45,6 +45,7 @@ The template uses the [bookdown](https://bookdown.org) R package together with t
 Examples of theses written with `oxforddown` (see also [Google Scholar](https://scholar.google.dk/scholar?oi=bibs&hl=en&cites=14343601209555768076)):
 
 -   [Ulysses in Cyberspace: Examining the Effectiveness of Design Patterns for Digital Self-Control](https://ulyngs.github.io/phd-thesis/) by [Ulrik Lyngs](https://ulriklyngs.com)
+-   [The impact of heat on occupational injuries, illnesses and associated economic costs in Australia](https://digital.library.adelaide.edu.au/dspace/bitstream/2440/137773/1/Borg2022_PhD.pdf) by Matthew Anthony Borg
 -   [The Psychology of Managerial Capital Allocation](https://thesis.shirdekel.com) by [Shir Dekel](https://shirdekel.com)
 -   [Teens, Screens and Wellbeing: An Improved Approach](https://www.amyorben.com/docs/thesis/index.html) by [Amy Orben](https://www.amyorben.com)
 -   [Interpreting Neural Language Models for Linguistic Complexity Assessment](https://gsarti.com/thesis/introduction.html) by [Gabriele Sarti](https://gsarti.com)
