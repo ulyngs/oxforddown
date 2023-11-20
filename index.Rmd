@@ -158,7 +158,7 @@ table-of-contents: true # should there be one?
 toc-depth: 1 # to which depth should headings be included in table of contents?
 lof: true # include list of figures in front matter?
 lot: true # include list of tables in front matter?
-remove-mini-toc: false  # no mini-table of contents at start of each chapter? (for them to show up, this must be calse, and you must also add \minitoc after the chapter titles)
+remove-mini-toc: false  # no mini-table of contents at start of each chapter? (for them to show up, this must be false, and you must also add \minitoc after the chapter titles)
 add-mini-lot: false  # include mini-list of tables by start of each chapter?
 add-mini-lof: false  # include mini-list of figures by start of each chapter?
 
