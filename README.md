@@ -1,5 +1,5 @@
 > [!NOTE]  
-> It would be fab if someone would be willing to port `oxforddown` to Quarto (and maintain it!) :heart: 
+> It would be fab if someone is willing to port `oxforddown` to Quarto (and maintain it!) :heart: 
 
 # How to cite
 If you use this template to write your thesis, please cite it! :smiling_face_with_three_hearts: (and/or click 'Sponsor' and buy me a coffee... :wink: )
