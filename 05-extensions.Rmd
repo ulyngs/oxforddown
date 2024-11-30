@@ -100,7 +100,6 @@ You can do so like this:
 Highlight **short, inline corrections** by doing `[like this]{.correction}` --- the text between the square brackets will then [be highlighted in blue]{.correction} in the output.
 
 Note that pandoc might get confused by citations and cross-references inside inline corrections.
-In particular, it might get confused by `"[what @Shea2014 said]{.correction}"` which becomes [what @Shea2014 said]{.correction}
 In such cases, you can use LaTeX syntax directly. 
 The correction highlighting uses the [soul](https://ctan.org/pkg/soul) package, so you can do like this:
 
