@@ -191,6 +191,10 @@ documentclass: book
 always_allow_html: true #this allows html stuff in word (.docx) output
 ---
 
+```{r stop-tex-updates}
+# this line ensures that tinytex doesn't try to update LaTeX packages on every single knit
+options(tinytex.tlmgr_update = FALSE)
+```
 
 ```{r install_packages, include=FALSE}
 source('scripts_and_filters/install_packages_if_missing.R')
