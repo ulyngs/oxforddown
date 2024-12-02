@@ -1,4 +1,5 @@
-*I encourage someone to fork this repository and make it work with Quarto!* :)
+> [!NOTE]  
+> It would be fab if someone is willing to port `oxforddown` to Quarto :heart: 
 
 # How to cite
 If you use this template to write your thesis, please cite it! :smiling_face_with_three_hearts: (and/or click 'Sponsor' and buy me a coffee... :wink: )
