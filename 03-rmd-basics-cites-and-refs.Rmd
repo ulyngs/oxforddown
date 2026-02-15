@@ -78,7 +78,7 @@ We can make cross-references to **sections** within our document, as well as to 
 The general cross-referencing syntax is **`\@ref(label)`**
 
 ### Section references
-Headers are automatically assigned a reference label, which is the text in lower caps separated by dashes. For example, `# My header` is automatically given the label `my-header`. So `# My header` can be referenced with `\@ref(my-section)`
+Headers are automatically assigned a reference label, which is the text in lower caps separated by dashes. For example, `# My header` is automatically given the label `my-header`. So `# My header` can be referenced with `\@ref(my-header)`
 
 Remember what we wrote in section \@ref(citations)?
 
